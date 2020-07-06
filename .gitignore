@@ -1,0 +1,14 @@
+./wiley.pdf
+*.lof
+*.lot
+*.aux
+*.out
+*.toc
+*.bak
+*.log
+*.synctex.gz
+*.project
+*.fdb_latexmk
+*.fls
+*.dvi
+./SLIDE
