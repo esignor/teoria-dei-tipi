@@ -1,0 +1,172 @@
+\documentclass[10pt,a4paper, italian]{book}
+\usepackage[italian]{babel}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+\begin{document}
+\tableofcontents \pagebreak
+
+\chapter{Introduzione}
+\label{cap:introduzione}
+\section{La triplice faccia della teoria dei tipi}
+\label{sec:la-triplice-faccia}
+La teoria dei tipi offre una base teorica a fondamento dello sviluppo di:
+\begin{itemize}
+\item \textbf{Matematica}: nella teoria degli insiemi;
+\item \textbf{Logica}: come fondamento dei connettivi logici e dei quantificatori, con trattazione mediate tecniche di \textit{proof-teory} per dimostrarne la non falsit\`a o non contradditoriet\`a;
+\item \textbf{Informatica}: per la correttezza dei programmi, da una semantica operazionale a un certo tipo di operazioni.\\ 
+Con riferimento alla teoria degli insiemi, visto come linguaggio di programmazione funzionale, \`e possibile specificare con formule l'obiettivo di un programma e dimostrarne la correttezza attraverso la specifica.
+\end{itemize}
+\noindent
+La teoria dei tipi nasce per garantire la \textit{Certified Proof Correctness}. Ovvero la correttezza dei programmi, volta a costruire gli assistenti automatici per le formalizzazioni.
+
+\section{Come nasce la teoria dei tipi}
+\label{sec:come-nasce}
+Gli errori di programmazione sono stati preponderanti alla nascita di metodi automatici, che assicurassero la correttezza del \textit{software}. Alcuni di questi, degni di nota, sono stati:
+\begin{itemize}
+\item Incidente nel lancio dell'Apollo 11;
+\item Tragedie sanitarie: incidenti avvenuti tra il 1985-1987, in cui dei pazienti ricevettero una massiccia \textit{overdose} di radiazioni e per la quali alcuni morirono;
+\item Errori di vita civile: riserva di solo due cifre per il campo et\`a all'interno dei \textit{database}. Ecco che una signora danese ricevette per il suo 107-esimo compleanno, una mail dalle autorit\`a della scuola locale per iscriversi alla prima elementare.
+\end{itemize}
+\noindent 
+Per la matematica la correttezza delle dimostrazioni \`e irrilevante solo quando la soluzione \`e certa (come accade con il cubo di \textit{Rubik}, dove so che la soluzione \`e corretta quando ognuno dei lati \`e uniformemente colorato); e in generale questo \`e difficile che accada.\\
+Un'esempio di problema, dove la soluzione non \`e certa, \`e il Teorema dei Quattro Colori, risolto da un \textit{computer} e la cui prova di correttezza della dimostrazione fu data dal \textit{proof assistant} Coq. Quest'ultimo basato sulla teoria dei tipi e intellegibile dall'essere umano.\\\\
+Una citazione importante va al matematico Russo V.V. \textit{Voevodsky}, vincitore della medaglia \textit{ Fields}. Esso si batt\`e per la creazione di un \textit{proof assistant}, per rendere le dimostrazioni da informali, per problemi complessi, a completamente formalizzate, con l'impiego della teoria dei tipi. I suoi studi trovano principale applicazione in campo algebrico e geometrico; ma i concetti emersi hanno connotazioni pi\`u ampie. \textit{Voevodsky}, difatti, si rese conto che formalizzare equivale a programmare. Ci\`o significa che la teoria dei tipi permette di vedere una dimostrazione come un programma.
+\\\\
+Esiste la certezza assoluta per una certa teoria, esclusivamente, quando ha un numero di assiomi, accettati per fede, molto limitato. In quanto assiomalizzabile da un calcolatore.
+\\\\
+\textbf{Concetto chiave:} formalizzare in una teoria dei tipi (come quella degli insiemi) equivale a programmare un programma.
+
+\section{Il Paradosso di Russell}
+\label{sec:paradosso-di-russell}
+La base della teroria dei tipi, compresa quella di \textit{Martin-L$\ddot{o}$f}, si deve a B. \textit{Russell}. \\
+Siamo nel 1907 quando nasce la teoria dei tipi, sviluppata nei \textit{Principia Mathematica} da B. \textit{Russel} assieme ad A.N. \textit{Whitehead}. Tale teoria, intesa come logica e non informatica, nasce come soluzione alternativa alla teoria degli insiemi, di allora, con lo scopo di fondare la matematica su un sistema formale accettabile e non contradditorio.\\
+Di seguito espongo un sistema contradditorio della teoria degli insiemi.\\
+\\
+\textbf{Linguaggio \textit{L} di una teoria degli insiemi \textit{F}}\mbox{}
+\begin{itemize}
+\item \textit{L} linguaggio del primo ordine (=, \&, $\rightarrow$, $\lor$, $\forall{x}$, $\exists{x}$), con l'aggiunta del predicato $\in$ "appartiene"
+\item variabili VAR $\ni$ \{x, y, z, w,\dots \}
+\end{itemize}
+x, y, z sono da intendersi come insiemi\\
+x $\epsilon$ y = "x appartiene a y"\\\\
+All'interno di \textit{L} c'\`e una teoria degli insiemi. Tra cui prende posto l'\textbf{assioma di comprensione di \textit{Frege}}, definito nel modo seguente:\\
+Per ogni formula $\phi$(x) vale che $\exists$z $\forall$y (y$\in$z $\Leftrightarrow$ $\phi$(y)) [$\equiv$ $\exists$z z = \{x $\big|$ $\phi$(x)\}]\\\\
+\textbf{Teorema (o Paradosso) di \textit{Russell}}: la teoria \textit{F} \`e contradditoria.\\
+
+\noindent \textbf{Dimostrazione}:\\
+$\phi$(x) = x$\notin$x ($\equiv$ $\neg$ (x $\in$ x))\\
+Per l'assioma di comprensione	$\exists$z z = \{x $|$ x$\notin$x\} ($\exists$z $\forall$y (y$\in$z $\Leftrightarrow$ y$\notin$y))\\
+Ponendo y=z ottengo che z$\in$z $\Leftrightarrow$ z$\notin$z, risulta una \textbf{contraddizione}.\\\\
+L'assioma di comprensione \`e contradditorio perch\`e permette di formare insieme che non appartengono a se stessi.\\\\
+Come correggere la contraddizione?\\
+La soluzione accettabile \`e porre agli insiemi una gerarchia di tipi. In questo modo l'assioma di comprensione diventa:\\
+$\exists$z $\forall$y (y$\in$a $\to$ (y$\in$z $\Leftrightarrow$ $\phi$(y)) $\equiv$ z = \{x$\in$a $\big|$ $\phi$(x)\}\\\\
+In questo modo non posso pi\`u creare il Paradosso di \textit{Russell}.\\\\
+Al momento questa teoria dei tipi non \`e utilizzata. Una sua evoluzione diretta \`e 
+la teoria dei tipi di \textit{Martin-L$\ddot{o}$f}.\\\\
+\textbf{Concetto chiave:} l'idea di \textit{Russell} \`e quello di costruire insiemi partendo da una gerarchia.
+
+\section{Idee principali nelle teorie di tipo moderne}
+\label{sec:idee-teorie-moderne}
+Le teorie di tipo moderne (chiamate $\lambda$-calcolo tipato) nascono, nel corso degli anni '30, dalla combinazione della teoria di tipo di \textit{Russell} con il $\lambda$-calcolo di \textit{Church}.
+
+\subsection{Richiamo della teoria del $\lambda$-calcolo di \textit{Church}}
+\label{subsec:lambda-calcolo}
+Ha origine dalla logica, \`e un linguaggio in grado di trattare le funzioni e rivolto alla loro formalizzazione. Consiste in un linguaggio formale, le cui componenti principali sono programmi chiamati termini (pensati come funzioni).\\ La grammatica \`e la seguente:
+\begin{center} t $:=$ x $|$ b$_1$(b$_2$) $|$ $\lambda$x.t \end{center}
+Esempio di applicazione: tg(x) $\equiv$ $\lambda$x.tg(x)
+
+\paragraph{Regole di computazione di base}\mbox{}\\\\ 
+\[ (\lambda x.t)(b) \rightarrow t[\frac{x}{b}] \qquad
+\frac{b_1 \rightarrow b_2	\qquad a_1 \rightarrow a_2 }{b_1(a_1) \rightarrow b_2(a_2)} \qquad 
+\frac{b_1 \rightarrow b_2}{\lambda x.b_1 \rightarrow \lambda x.b_2} \]
+\noindent
+Si dice che un programma si riduca a un altro, cio\`e converge, solo se c'\`e una sequenza di riduzioni (applicazione di regole e/o assiomi), che connettono il primo programma con l'ultimo. Si parla, in questo modo, di \textbf{chiusura transitiva e simmetrica}, che si conclude quando il programma non \`e pi\`u riducibile. Quanto appena descritto pu\`o venire espresso nel seguente modo:\\ $t \rightarrow t'$ sse esiste un numero finito di passi per cui $t$ si riduce a $t'$, ovvero esiste $b_1 \dots b_m$ t.c. $t \rightarrow b_1 \rightarrow b_2 \dots \rightarrow b_m \rightarrow t'$.\\\\
+Il $\lambda$ calcolo permette di codificare qualsiasi programma scritto in qualunque linguaggio (imperativo, dichiarativo, Java, C++, BASIC, \dots). Tuttavia tale linguaggio non codifica solo programmi che terminano, ma anche programmi che non lo fanno.
+Un esempio di applicazione, per quest'ultimo, \`e un programma con computazione infinita: $\lambda x.x(x)$\\
+$\lambda x.x(x)$ lo applichiamo a se stesso. Perci\'o diventa $\Lambda \equiv (\lambda x.x(x))(\lambda x.x(x))$\\ 
+e seguendo la computazione si riduce a: \[x(x)[\frac{x}{\lambda x.x(x)}] \equiv (\lambda x.x(x))(\lambda x.x(x))\]\\
+Dunque esiste una catena di (t$_i$)$_{i\in\mathbb{N}}$ di termini t$_i \rightarrow$ t$_{i+1}$. Ci\`o significa che
+$\Lambda$ non termina in qualunque linguaggio sia interpretato.\\\\
+$\Lambda$ risulta un buon metodo per rappresentare le funzioni, ma non \`e completo, rispetto all'intuizione matematica di funzione. \`E necessario, per questo, tipare le variabili; ovvero $\lambda$x.x$\in$A$\rightarrow$B(x$\in$A).\\\\
+\textbf{Concetto chiave:} il $\lambda$-cacolo tipato, nato dal $\lambda$-calcolo "puro", \`e anch'esso un linguaggio di programmazione. Essendo tipato pu\`o essere trattato come una teoria degli insiemi.
+
+\section{Che cosa \`e un tipo?}
+\label{sec:cosa e un tipo}
+Per rispondere a questa domanda \`e necessario fornire la semantica intuitiva di tipo. Per farlo \`e utile pensare alla teoria dei tipi come paradigma di fondazione sia logico che matematico che informatico.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\hline 
+\rowcolor{orange}
+{\color[HTML]{FFFFFF}\textbf{Sintassi in teoria dei tipi moderna}} & {\color[HTML]{FFFFFF}\textbf{Sintassi in teoria degli insiemi}} & {\color[HTML]{FFFFFF} \textbf{Sintassi in un linguaggio logico/per una logica (anche predicativo)}} & {\color[HTML]{FFFFFF}\textbf{Sintassi in un linguaggio di programmazione}} \\
+\hline\hline 
+A type & A set & A prop & A data type \\ 
+\hline 
+a$\in$A & a$\in$A set & a$\in$A & a$\in$A \\ 
+\hline 
+\end{tabular}
+\caption{\label{tab:sintassi-paradigmi-funzionali}Sintassi per i diversi paradigmi funzionali.} 
+\end{table}
+\noindent
+Per la sintassi:
+\begin{itemize} 
+\item nella teoria dei tipi moderna a rappresenta un termine e A un tipo;
+\item nella sintassi in una teoria degli insiemi a \`e un elemento, coincidendo con la corrispondenza originale in mente da \textit{Russell};
+\item nella sitassi in un linguaggio logico a rappresenta una dimostrazione di A, perci\`o un \textit{proof-term} affermante come la proposizione di A sia vera;
+\item nella teoria in una sintassi di un linguaggio di programmazione a rappresenta un programma e A una specifica di A.
+\end{itemize}
+\noindent
+Quando parliamo di tipo ci riferiamo a un insieme, una proposizione o \textit{data type}, a seconda dell'applicazione di tipo che si ha in mente.\\\\
+Dal punto di vista logico non si hanno solo proposizioni, ma anche predicati. Parlare solo tipo non risulta quindi sufficiente. Per questo se si vuole rappresentare non una proposizione, ma un predicato A(x) si usa la seguente sitassi: \textbf{A(x) prop[x$\in$D]}.\\
+Dalla logica si sa che i predicati $\phi$(x) hanno x senza un dominio specifico, perch\`e la sintasssi non determina che cosa \`e in x. I predicati dunque hanno una variabile che deve essere tipata, nel modo sequente: \textbf{$\phi$(x) prop[x$\in$D]}.\\
+Dunque
+\begin{center}\textbf{$\exists$ z $\quad$ z=\{x$\in$ a$|$ $\phi$(x)\} $\qquad$ $\equiv$ $\qquad$ $\phi$(x)prop[x$\in$ a]}\end{center}
+\noindent
+Quanto appena definito sopra da origine al concetto di \textbf{tipo dipendente}, nel quale vengono tipate tutte le variabili che appartengono ad una famiglia di tipo.\\\\
+\textbf{Concetto chiave:} le famiglie di tipo sono indispensabili per rappresentare il concetto di predicato. Di seguito ho riassunto in forma tabellare le diverse famiglie.\\
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\rowcolor{orange}
+{\color[HTML]{FFFFFF}\textbf{Famiglia di tipi}} & {\color[HTML]{FFFFFF}\textbf{di insiemi}} & {\color[HTML]{FFFFFF} \textbf{in logica}} & {\color[HTML]{FFFFFF}\textbf{di dati dipendenti}} \\
+\hline\hline 
+A(x) prop[x$\in$D] & A(x) set[x$\in$D] & A(x) prop[x$\in$D] & A(x) datatype[x$\in$D]  \\  
+\hline 
+\end{tabular}
+\caption{\label{tab:famiglia-di-tipi}Famiglia di tipi.} 
+\end{table}
+\noindent
+Il concetto di tipo dipendente \`e stato introdotto per la prima volta da \textit{Martin-L$\ddot{o}$f}. \textit{Russell} si era limitato a definire esclusivamente il concetto di funzione proposizionale dipendente da un tipo.
+
+\section{Esempi di tipi (informale)}
+\label{sec:esempi-di-tipi}
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{2.5cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}|}
+\hline 
+\rowcolor{orange}
+{\color[HTML]{FFFFFF}\textbf{A type}} & {\color[HTML]{FFFFFF}\textbf{A set}} & {\color[HTML]{FFFFFF} \textbf{A set}} & {\color[HTML]{FFFFFF}\textbf{A data type}} \\
+\hline\hline 
+N$_1$ singoletto & l'insieme singoletto & \textit{tt} costante vero & tipo Unit  \\
+\hline 
+N$_0$ vuoto & l'insieme vuoto & \textit{$\bot$} costante falso & vuoto come datatype \\
+\hline
+BxC & l'insieme prodotto cartesiano dell'insieme B con l'insieme C & B\&C congiunzione della prop B e della prop C & tipo prodotto cartesiamo (come in \textit{set theory})\\ 
+\hline 
+B+C & l'insieme unione disgiunta dell'insieme B con l'insieme C\&B & B$\lor$C disgiunta della  proposizione B e della proposizione C & tipo unione disgiunta con codifica \\
+\hline 
+B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \small{A$\rightarrow$B$\equiv$\{f $|$ f:B$\rightarrow$C \}} & B$\rightarrow$C come implicazione & insieme delle funzioni dal \textit{datatype} B al \textit{datatype} C \\
+\end{tabular}
+\caption{\label{tab:famiglia-di-tipi}Famiglia di tipi.} 
+\end{table}
+\noindent
+
+
+
+
+
+\end{document}
