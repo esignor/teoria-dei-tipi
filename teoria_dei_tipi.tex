@@ -4,7 +4,6 @@
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
 \usepackage{float}
-\usepackage{hyperref}
 \begin{document}
 \tableofcontents \pagebreak
 
@@ -222,7 +221,7 @@ Ci sono quattro forme di giudizio (nelle quali $\Gamma$ identifica il contesto):
 \end{itemize}
 \noindent
 I giudizi solo esclusivamente asserzioni, dicono solo qualcosa quando \`e vera (non si usano i quantificatori). Essi limitano le frasi che si possono fare per codificare la logica intuizionistica. All'interno di ogni singolo giudizio si lavora con la teoria dei tipi.
-\subsubsection*{Simbolo $\in$}
+\subsubsection{Simbolo $\in$}
 \label{subsubsec:simbolo-appartiene}
 Il significato di a$\in$A in teoria dei tipi \`e differente da quello insiemistico. Espongo il concetto con un esempio trattato a lezione:
 \begin{equation}
@@ -236,20 +235,64 @@ Risulta vero che 1$\equiv$\{$\varnothing$\}, poich\`e 0 $\equiv$ $\varnothing$.
 \item Invece in \textbf{teoria dei tipi} (di \textit{Martin-L$\ddot{o}$f} come di \textit{Russell})
 1 rappresenta un elemento ma non un tipo e Nat il tipo dei Naturali. Vi \`e dunque la distinzione tra elemento e tipo (come quella tra programmi e tipi).
 \end{itemize}
-\subsubsection*{Uguaglianza estensionale}
+\subsubsection{Uguaglianza estensionale}
 \label{subsubsec:uguaglianza-estensionale}
 Specifico \textbf{a = b$\in$ A[$\Gamma$]} come l'uguaglianza computazionale/definizionale, che viene data come primitiva e non va confusa con l'uguaglianza proposizionale tra a e b.\\L'uguaglianza proposizionale a = b \`e rappresentata non da un giudizio, che asserisce solo ci\`o che \`e vero, ma bens\`i da un tipo Eq(A,a,b) che pu\`o anche essere senza termini ed essere falso, dal punto di vista logico.\\
 Visti come programmi, a e b rappresentano lo stesso programma. In $\lambda$-calcolo a$\rightarrow$b oppure b$\rightarrow$a (si riducono). Inoltre a e b possono essere sia termini finali che trovarsi in mezzo alla computazione.
 
-\subsubsection*{Regole per la teoria dei tipi}
+\subsubsection{Regole per la teoria dei tipi}
 \label{subsubsec:regole-teoria-dei-tipi}
 Esiste anche un quinto giudizio ausiliario:
-\begin{equation}
-\varnothing \quad contesto  \qquad \qquad
-F-C \quad \frac{A type[\Gamma]}{\Gamma, x\in A cont} \label{quinto_giudizio-eq:estensione-contesto}
-\end{equation}
-Il giudizio in \ref{quinto_giudizio-eq:estensione-contesto} permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
+\begin{center}
+\[
+\varnothing \hspace{0.2cm} contesto  \qquad \qquad
+F-C) \quad \frac{A \hspace{0.2cm} type[\Gamma]}{\Gamma, x\in A \hspace{0.2cm} cont}
+\]
+\end{center}
+Il giudizio in \textit{F-C} permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
 
+
+\subsection{Esempio di tipo: il tipo singoletto}
+\label{subsec:tipo-singoletto}
+Di seguito espongo alcune regole principali del tipo singoletto.
+
+\subsubsection{Formazione}
+\label{subsubsec:tipo-singoletto-formazione}
+\begin{center}
+\[
+S) \quad \frac{[\Gamma] \hspace{0.2cm} cont}{N1\hspace{0.2cm}type[\Gamma]}
+\]
+\end{center}
+\textit{Permette di dire che cosa \`e un tipo.}
+
+\subsubsection{Introduzione}
+\label{subsubsec:tipo-singoletto-introduzione}
+\begin{center}
+\[
+I-S) \quad \frac{[\Gamma] \hspace{0.2cm} cont}{*\in N1 \hspace{0.2cm}type[\Gamma]}
+\]
+\end{center}
+\textit{Permette di formare i termini, sia $N_1$ in ogni contesto $\Gamma$ partendo da contesto $\varnothing$.}
+
+\subsubsection{Eliminazione}
+\label{subsubsec:tipo-singoletto-eliminazione}
+\begin{center}
+\[
+E-S) \quad \frac{t_1 \in N1type[\Gamma] \quad  M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)[\Gamma]}{El_{N1}(t,c) \in M(t)[\Gamma]}
+\]
+\end{center}
+\textit{El trattasi di costruttori di funzioni e $M[t] = M(z)[\frac{z}{t}]$.}
+
+\subsubsection{Conversione}
+\label{subsubsec:tipo-singoletto-conversione}
+\begin{center}
+\[
+C-D) \quad \frac{M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)[\Gamma]}{El_{N1}(*,c) = C \in M(*)[\Gamma]}
+\]
+\end{center}
+\textit{La conversione rende possibile l'applicazione della regola di eliminazione introducendo delle uguaglianze.}
+\\\\
+Le regole sopra elencate hanno una spiegazione computazionale. Riguardano la compatibilit\`a tra tipi, ma non principali da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente
 
 
 \end{document}
