@@ -2,6 +2,7 @@
 \usepackage[italian]{babel}
 \usepackage{amssymb}
 \usepackage[table]{xcolor}
+\usepackage{tabularx}
 \begin{document}
 \tableofcontents \pagebreak
 
@@ -97,7 +98,7 @@ Per rispondere a questa domanda \`e necessario fornire la semantica intuitiva di
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\begin{tabularx}{\textwidth}{XXXX}
 \hline 
 \rowcolor{orange}
 {\color[HTML]{FFFFFF}\textbf{Sintassi in teoria dei tipi moderna}} & {\color[HTML]{FFFFFF}\textbf{Sintassi in teoria degli insiemi}} & {\color[HTML]{FFFFFF} \textbf{Sintassi in un linguaggio logico/per una logica (anche predicativo)}} & {\color[HTML]{FFFFFF}\textbf{Sintassi in un linguaggio di programmazione}} \\
@@ -106,7 +107,7 @@ A type & A set & A prop & A data type \\
 \hline 
 a$\in$A & a$\in$A set & a$\in$A & a$\in$A \\ 
 \hline 
-\end{tabular}
+\end{tabularx}
 \caption{\label{tab:sintassi-paradigmi-funzionali}Sintassi per i diversi paradigmi funzionali.} 
 \end{table}
 \noindent
@@ -129,24 +130,24 @@ Quanto appena definito sopra da origine al concetto di \textbf{tipo dipendente},
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|c|c|c|c|}
+\begin{tabularx}{\textwidth}{XXXp{3.1cm}}
 \hline 
 \rowcolor{orange}
-{\color[HTML]{FFFFFF}\textbf{Famiglia di tipi}} & {\color[HTML]{FFFFFF}\textbf{di insiemi}} & {\color[HTML]{FFFFFF} \textbf{in logica}} & {\color[HTML]{FFFFFF}\textbf{di dati dipendenti}} \\
+{\color[HTML]{FFFFFF}\textbf{di tipo}} & {\color[HTML]{FFFFFF}\textbf{negli insiemi}} & {\color[HTML]{FFFFFF} \textbf{in logica}} & {\color[HTML]{FFFFFF}\textbf{dati dipendenti}} \\
 \hline\hline 
 A(x) prop[x$\in$D] & A(x) set[x$\in$D] & A(x) prop[x$\in$D] & A(x) datatype[x$\in$D]  \\  
 \hline 
-\end{tabular}
+\end{tabularx}
 \caption{\label{tab:famiglia-di-tipi}Famiglia di tipi.} 
 \end{table}
 \noindent
 Il concetto di tipo dipendente \`e stato introdotto per la prima volta da \textit{Martin-L$\ddot{o}$f}. \textit{Russell} si era limitato a definire esclusivamente il concetto di funzione proposizionale dipendente da un tipo.
-
+\newpage
 \section{Esempi di tipi (informale)}
 \label{sec:esempi-di-tipi}
 \begin{table}[h]
 \centering
-\begin{tabular}{|p{2.5cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}|}
+\begin{tabularx}{\textwidth}{XXXX}
 \hline 
 \rowcolor{orange}
 {\color[HTML]{FFFFFF}\textbf{A type}} & {\color[HTML]{FFFFFF}\textbf{A set}} & {\color[HTML]{FFFFFF} \textbf{A set}} & {\color[HTML]{FFFFFF}\textbf{A data type}} \\
@@ -155,13 +156,48 @@ N$_1$ singoletto & l'insieme singoletto & \textit{tt} costante vero & tipo Unit 
 \hline 
 N$_0$ vuoto & l'insieme vuoto & \textit{$\bot$} costante falso & vuoto come datatype \\
 \hline
-BxC & l'insieme prodotto cartesiano dell'insieme B con l'insieme C & B\&C congiunzione della prop B e della prop C & tipo prodotto cartesiamo (come in \textit{set theory})\\ 
+BxC (tipo prodotto) & l'insieme prodotto cartesiano dell'insieme B con l'insieme C & B\&C congiunzione della proposizione B e della proposizione C & tipo prodotto cartesiamo (come in \textit{set theory})\\ 
 \hline 
-B+C & l'insieme unione disgiunta dell'insieme B con l'insieme C\&B & B$\lor$C disgiunta della  proposizione B e della proposizione C & tipo unione disgiunta con codifica \\
+B+C (tipo somma binaria) & l'insieme unione disgiunta dell'insieme B con l'insieme C & B$\lor$C disgiunta della  proposizione B e della proposizione C & tipo unione disgiunta con codifica \\
 \hline 
-B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \small{A$\rightarrow$B$\equiv$\{f $|$ f:B$\rightarrow$C \}} & B$\rightarrow$C come implicazione & insieme delle funzioni dal \textit{datatype} B al \textit{datatype} C \\
-\end{tabular}
+B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \small{A$\rightarrow$B$\equiv$\{f $|$ f:B$\rightarrow$C \}} & B$\rightarrow$C, implicazione della proposizone B e della proposizione C & insieme delle funzioni dal \textit{datatype} B al \textit{datatype} C \\
+\hline
+\end{tabularx}
 \caption{\label{tab:famiglia-di-tipi}Famiglia di tipi.} 
+\end{table}
+\noindent
+
+\subsection{I tipi dipendenti}
+\label{subsec:i-tipi-dipendenti}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c}
+\hline 
+\rowcolor{orange}
+{\color[HTML]{FFFFFF}\textbf{A(x)type[x$\in$B]}}\\
+\hline\hline
+\begin{tabular}[c]{cc}tipo indiciato \\ \scriptsize{$\displaystyle\prod\limits_{x\epsilon B}$}\end{tabular}\\
+\hline
+\begin{tabular}[c]{cc}tipo somma disgiunta indiciata \\ $\displaystyle\sum\limits_{x\epsilon B} C(x)$ \end{tabular}\\
+\hline
+\end{tabular}
+\end{table}
+\noindent
+
+\begin{table}[h]
+\centering
+\begin{tabularx}{\textwidth}{p{3.8cm}XX}
+\hline 
+\rowcolor{orange}
+{\color[HTML]{FFFFFF}\textbf{A(x)set[x$\in$B]}} & {\color[HTML]{FFFFFF} \textbf{A(x)prop[x$\in$B]}} & {\color[HTML]{FFFFFF}\textbf{A(x)datatype[x$\in$B]}}\\
+\hline\hline
+\centering \scriptsize{\{$\displaystyle f: B \rightarrow \displaystyle\coprod\limits_{x \epsilon B} C(x)$\}} \scriptsize{$\displaystyle\coprod\limits_{x \epsilon B} C(x) =$ \{$b,c | b\epsilon B \quad c\epsilon C(b)$\}}& \centering \small{$\displaystyle \forall {x \epsilon B} \quad C(x)$} & tipo prodotto indiciato come in \textit{set theory} (non esiste un \textit{data-type} specifico)\\
+\hline
+\centering \scriptsize{$\displaystyle\bigcup\limits_{x \epsilon B}^. C(x)$} \qquad \qquad \qquad \scriptsize{$\displaystyle\coprod\limits_{x \epsilon B} C(x) =$ \{$b,c | b\epsilon B \quad c\epsilon C(b)$\}} & \centering \small{$\displaystyle \exists{x \epsilon B} \quad C(x)$} & non \`e primitivo deriva sempre dalla \textit{set theory}\\
+
+\end{tabularx}
+\caption{\label{tab:tipi-dipendenti}Tipi dipendenti.} 
 \end{table}
 \noindent
 
