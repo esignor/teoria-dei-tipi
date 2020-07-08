@@ -399,7 +399,8 @@ c(x_1,...,x_n) = d(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_
 \end{split}
 \end{equation}
 
-
+\subsection{Regole proprie e derivabili}
+\label{subsec:regole-proprie-derivabili}
 In una teoria formale ci sono due tipi di regole:
 \begin{itemize}
 \item \textbf{regole proprie del calcolo}, come lo sono le regole strutturali e quelle del singoletto;
@@ -407,6 +408,18 @@ In una teoria formale ci sono due tipi di regole:
 \end{itemize}
 \noindent
 Una regola r $\frac{J_1,...,J_n}{J}$ \`e ammissibile in un calcolo t sse i giudizi derivabili in $t+r$ sono gli stessi dei giudizi derivabili in t. Ci\`o comporta che l'aggiunta di una regola rt non cambia i giudizi che ne possono derivare.\\ Quando un assioma \`e ammissibili e derivabile questo coincide con un giudizio derivabile.
+
+\subsection{Nozione di contesto telescopico}
+\label{subsec:contesto-telescopico}
+Un giudizio, in teoria dei tipi dipendenti si esprime nella forma
+\[A(x_1,...,x_n)[x_1 \in B_1,...,x_n \in B_n]\]
+e prende il nome di \textbf{contesto telescopico}.
+Questi presenta una dipendenza continua, esemplificata nel seguente giudizio
+\[A(x_1,x_2,x_3)\hspace{0.2cm}type[x \in C_1, x_2 \in C(x_1), x_3 \in C(x_1 x_2)..)\]
+Inoltre si parla di contesti rigidi, ovvero senza possibilit\`a di scambio. Come appare dall'esempio sotto. \\
+$[x \in Nat, y \in Nat, z \in Mat(x,y)]$ cont  $\Rightarrow$ \textbf{\`e derivabile}\\
+$[y \in Nat, x \in Nat, z \in Mat(x,y)]$ cont $\Rightarrow$ \textbf{\`e derivabile}\\
+$[y \in Nat, z \in Mat(x,y), x \in Nat]$ $\Rightarrow$ \textbf{non \`e un contesto}. \\\\ Percui non esiste lo scambio arbitrario, si deve porre attenzione alle dipendenza delle assunzioni, che provoca una sostituzione rigida.
 
 
 
