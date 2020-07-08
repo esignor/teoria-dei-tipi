@@ -292,6 +292,104 @@ C-D) \quad \frac{M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)type[\Gamma]}{El_{
 \\\\
 \textbf{Concetto chiave}: le regole (S), (I-S), (E-S) e (C-D)  hanno una spiegazione computazionale, e riguardano la compatibilit\`a tra tipi, ma non da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente.
 
+\chapter{Regole della teoria dei tipi}
+\label{cap:regole-teoria-dei-tipi}
+%%dalla lezione 7 alla lezione 11
+Lo scopo della teoria dei tipi \`e offrire un sistema formale in cui derivare, tramite regole e assiomi, giudizi nella forma:
+\[ A \hspace{0.2cm} type[\Gamma] \qquad
+A = B \hspace{0.2cm} type[\Gamma] \qquad
+a \in A\hspace{0.2cm} type[\Gamma] \qquad
+a=b \in A \hspace{0.2cm} type [\Gamma]
+\]
+\[
++ \hspace{0.2cm} ausiliaria \quad \Gamma \hspace{0.2cm} cont
+\]
+L'ultimo giudizio non \`e necessario, serve esclusivamente per imparare.\\
+Le regole minime che devono essere presenti, in una teoria dei tipi, riguardano la sua ottimizzazione e correttezza.\\\\
+Se la teoria dei tipi \`e dipendente si ha bisogno di tutti i giudizi. Invece in una teoria dei tipi non dipendente, come quella dei tipi semplici, il giudizio $A = B \hspace{0.2cm} type[\Gamma]$ pu\`o venire omesso.\\
+
+\section{Regole strutturali}
+\label{sec:regole-strutturali}
+Assioma unico: [\hspace{0.1cm}] cont\\\\
+Nel calcolo dei sequenti, in logica classica, le derivazioni di giudizio, valide in una teoria dei tipi con solo le regole singoletto, diventano derivazioni di sequenti nella forma $\Gamma$ $\dashv$ A e unico assioma $\varphi$ $\dashv$ $\varphi$.
+\[ F-S) \quad \frac{\Gamma\hspace{0.2cm}cont}{N_1\hspace{0.2cm}type[\Gamma]} \]
+\\\\
+Di seguito illustro le principali regole di contesto comuni a tutte le teorie dei tipi.
+\subsection{Regole di formazione dei contesti}
+\label{subsec:formazione-contesti}
+\begin{center} [\hspace{0.1cm}] cont \quad dove [\hspace{0.1cm}] = $\varnothing$ \end{center}
+\[ F-C) \quad \frac{A\hspace{0.2cm}type[\Gamma]}{\Gamma,\hspace{0.2cm}x \in A}
+\quad con \hspace{0.2cm} x\in A \notin \Gamma \]
+\subsection{Regole di assunzione delle variabili}
+\label{subsec:assunzione-variabili}
+\[ var-ass) \quad \frac{\Gamma, x \in A, \Delta \quad cont}{x \in A\hspace{0.2cm}type[\Gamma,x \in A, \Delta]} \]
+\subsection{Regole strutturali addizionali sull'uguaglianza}
+\label{subsec:uguaglianza}
+L'uguaglianza, in una teoria dei tipi, consiste in una relazione di equivalenza sia fra tipi che fra termini. Sono perci\`o valide le seguenti regole di uguaglianza tra tipi:
+\[ ref) \quad \frac{A\hspace{0.2cm}type[\Gamma]}{A=A\hspace{0.2cm}type[\Gamma]} \qquad sym) \quad \frac{A=B\hspace{0.2cm}type[\Gamma]}{B=A\hspace{0.2cm}type[\Gamma]} \]
+\[ tra) \quad \frac{A=B\hspace{0.2cm}type[\Gamma] \qquad B=C\hspace{0.2cm}type[\Gamma]}{A=C\hspace{0.2cm}type[\Gamma]} \]
+E allo stesso modo anche le regole di uguaglianza definizonale/computazionale tra termini:
+\[ ref) \quad \frac{a \in A\hspace{0.2cm}type[\Gamma]}{a=a \in A\hspace{0.2cm}type[\Gamma]} \qquad sym) \quad \frac{a=b\in A \hspace{0.2cm}type[\Gamma]}{b=a \in A\hspace{0.2cm}type[\Gamma]} \]
+\[ tra) \quad \frac{a=b \in A\hspace{0.2cm}type[\Gamma] \qquad b=c \in A\hspace{0.2cm}type[\Gamma]}{a=c \in A\hspace{0.2cm}type[\Gamma]} \]
+\subsection{Regole di conversione dell'uguaglianza per tipi uguali}
+\label{subsec:conversione-uguaglianza}
+L'appartenenza si conserva con l'uguaglianza di termini e tipi. Le regole da aggiungere, in una teoria dei tipi, per garantirlo sono:
+\[ conv) \quad \frac{a \in A\hspace{0.2cm}type[\Gamma] \quad A=B\hspace{0.2cm}type[\Gamma]}{a \in B\hspace{0.2cm}type[\Gamma]} \]
+\[ conv-eq) \quad \frac{a=b \in A\hspace{0.2cm}type[\Gamma] \qquad A=B\hspace{0.2cm}type[\Gamma]}{a=b \in B\hspace{0.2cm}type[\Gamma]} \]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Naturali, Somma disgiunta e liste}
+%%dalla lezione 12 alle lezione 15 inclusa
+
+\chapter{Uguaglianza proposizionale}
+%% lezione 16 e 17 inclusa
+
+\chapter{Somma indiciata forte e prodotto cartesiano}
+%% lezione 17b e 19 inclusa
+
+\chapter{Tipo delle funzioni e tipo prodotto dipendente}
+%% lezione 20 e 20 addendum
+
+\chapter{La logica della teoria dei tipi di \textit{Martin-L$\ddot{o}$f}}
+%% lezione 21, 22, 23 e 24 comprese
+
+\appendix
+\chapter{Tabelle}
 
 
 
