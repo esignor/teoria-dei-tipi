@@ -4,6 +4,14 @@
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
 \usepackage{float}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=linkcolor
+}	
+\usepackage{amsmath}
+\usepackage{amsfonts}
 \begin{document}
 \tableofcontents \pagebreak
 
@@ -241,7 +249,6 @@ Risulta vero che 1$\equiv$\{$\varnothing$\}, poich\`e 0 $\equiv$ $\varnothing$.
 \label{subsec:uguaglianza-estensionale}
 Specifico \textbf{a = b$\in$ A[$\Gamma$]} come l'uguaglianza computazionale/definizionale, che viene data come primitiva e non va confusa con l'uguaglianza proposizionale/estensionale tra a e b.\\L'uguaglianza proposizionale a = b \`e rappresentata non da un giudizio, che asserisce solo ci\`o che \`e vero, ma bens\`i da un tipo Eq(A,a,b) che pu\`o anche essere senza termini e/o essere falso, dal punto di vista logico.\\\\
 Visti come programmi, a e b rappresentano lo stesso programma. In $\lambda$-calcolo a$\rightarrow$b oppure b$\rightarrow$a (si riducono). Inoltre a e b possono essere sia termini finali che trovarsi in mezzo alla computazione.
-
 \subsection{Generazione di contesti}
 \label{subsec:generazione-di-contesti}
 Esiste anche un quinto giudizio ausiliario:
@@ -305,7 +312,7 @@ a=b \in A \hspace{0.2cm} type [\Gamma]
 + \hspace{0.2cm} ausiliaria \quad \Gamma \hspace{0.2cm} cont
 \]
 L'ultimo giudizio non \`e necessario, serve esclusivamente per imparare.\\
-Le regole minime che devono essere presenti, in una teoria dei tipi, riguardano la sua ottimizzazione e correttezza.\\\\
+Quando si formula una nuova teoria dei tipi \`e bene impiegare il minor numero possibile di regole strutturali e di formazione di tipi e termini. Tali regole devono essere rivolte all'ottimizzazione e correttezza della teoria. Alcune di queste, come quelle di indebolimento e sostituzione in \S\ref{subsec:indebolimento-sostituzione}, sono irrinunciabili, la cui validit\`a \`e sempre garantita e utilizzate nella derivazione di ogni teoria.\\\\
 Se la teoria dei tipi \`e dipendente si ha bisogno di tutti i giudizi. Invece in una teoria dei tipi non dipendente, come quella dei tipi semplici, il giudizio $A = B \hspace{0.2cm} type[\Gamma]$ pu\`o venire omesso.\\
 
 \section{Regole strutturali}
@@ -336,7 +343,70 @@ E allo stesso modo anche le regole di uguaglianza definizonale/computazionale tr
 L'appartenenza si conserva con l'uguaglianza di termini e tipi. Le regole da aggiungere, in una teoria dei tipi, per garantirlo sono:
 \[ conv) \quad \frac{a \in A\hspace{0.2cm}type[\Gamma] \quad A=B\hspace{0.2cm}type[\Gamma]}{a \in B\hspace{0.2cm}type[\Gamma]} \]
 \[ conv-eq) \quad \frac{a=b \in A\hspace{0.2cm}type[\Gamma] \qquad A=B\hspace{0.2cm}type[\Gamma]}{a=b \in B\hspace{0.2cm}type[\Gamma]} \]
+\subsection{Regole di indebolimento e di sostituzione}
+\label{subsec:indebolimento-sostituzione}
+\subsubsection{Indebolimento}
+\label{subsec:indebolimento}
+\[ ind-ty) \quad \frac{A\hspace{0.2cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.2cm}cont}{A\hspace{0.2cm}type[\Gamma,\Delta]} \quad ind-ty-eq) \quad \frac{A=B\hspace{0.2cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.2cm}cont}{A=B\hspace{0.2cm}type[\Gamma,\Delta]} \]
+\[ ind-te) \quad \frac{a \in A\hspace{0.2cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.2cm}cont}{a \in A\hspace{0.2cm}type[\Gamma,\Delta]} \quad ind-te) \quad \frac{a=b \in A\hspace{0.2cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.2cm}cont}{a=b \in A\hspace{0.2cm}type[\Gamma,\Delta]} \]
+\subsubsection{Sostituzione}
+\label{subsec:sostituzione}
+\begin{equation}
+\begin{split}
+C(x_1,...,x_n)\hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-typ) \quad \frac{a_1 \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ C(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+\end{split}
+\end{equation}
 
+\begin{equation}
+\begin{split}
+C(x_1,...,x_n)\hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-typ) \quad \frac{a_1 = b_1  \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ C(a_1,...,a_n) = C(b_1,...,b_n) \hspace{0.2cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-Eqtyp) \quad \frac{a_1 \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-Eqtyp) \quad \frac{a_1 = b_1\in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-ter) \quad \frac{a_1 in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ c(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+c(x_1,...,x_n) = d(x_1,...,x_n)  \in C(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eqter) \quad \frac{a_1 \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ c(a_1,...,a_n) = d(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-ter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ c(a_1,...,a_n) = c(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+c(x_1,...,x_n) = d(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-eqter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ c(a_1,...,a_n) = d(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+
+In una teoria formale ci sono due tipi di regole:
+\begin{itemize}
+\item \textbf{regole proprie del calcolo}, come lo sono le regole strutturali e quelle del singoletto;
+\item \textbf{regole derivabili}, come le regole di sostituzione, utili per abbreviare le derivazioni.
+\end{itemize}
+\noindent
+Una regola r $\frac{J_1,...,J_n}{J}$ \`e ammissibile in un calcolo t sse i giudizi derivabili in $t+r$ sono gli stessi dei giudizi derivabili in t. Ci\`o comporta che l'aggiunta di una regola rt non cambia i giudizi che ne possono derivare.\\ Quando un assioma \`e ammissibili e derivabile questo coincide con un giudizio derivabile.
 
 
 
