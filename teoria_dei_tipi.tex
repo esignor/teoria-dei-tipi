@@ -32,7 +32,7 @@ Gli errori di programmazione sono stati preponderanti alla nascita di metodi aut
 \noindent 
 Per la matematica la correttezza delle dimostrazioni \`e irrilevante solo quando la soluzione \`e certa (come accade con il cubo di \textit{Rubik}, dove so che la soluzione \`e corretta quando ognuno dei lati \`e uniformemente colorato); e in generale questo \`e difficile che accada.\\
 Un'esempio di problema, dove la soluzione non \`e certa, \`e il Teorema dei Quattro Colori, risolto da un \textit{computer} e la cui prova di correttezza della dimostrazione fu data dal \textit{proof assistant} Coq. Quest'ultimo basato sulla teoria dei tipi e intellegibile dall'essere umano.\\\\
-Una citazione importante va al matematico Russo V.V. \textit{Voevodsky}, vincitore della medaglia \textit{ Fields}. Esso si batt\`e per la creazione di un \textit{proof assistant}, per rendere le dimostrazioni da informali, per problemi complessi, a completamente formalizzate, con l'impiego della teoria dei tipi. I suoi studi trovano principale applicazione in campo algebrico e geometrico; ma i concetti emersi hanno connotazioni pi\`u ampie. \textit{Voevodsky}, difatti, si rese conto che formalizzare equivale a programmare. Ci\`o significa che la teoria dei tipi permette di vedere una dimostrazione come un programma.
+Una citazione importante va al matematico Russo V.V. \textit{Voevodsky}, vincitore della medaglia \textit{ Fields}. Esso si batt\`e per la creazione di un \textit{proof assistant}, per rendere le dimostrazioni da informali, per problemi complessi, a completamente formalizzate, con l'impiego della teoria dei tipi. I suoi studi trovano principale applicazione in campo algebrico e geometrico; ma i concetti emersi assunsero delle 1connotazioni pi\`u ampie. \textit{Voevodsky}, difatti, si rese conto che formalizzare equivale a programmare. Ci\`o significa che la teoria dei tipi permette di vedere una dimostrazione come un programma.
 \\\\
 Esiste la certezza assoluta per una certa teoria, esclusivamente, quando ha un numero di assiomi, accettati per fede, molto limitato. In quanto assiomalizzabile da un calcolatore.
 \\\\
@@ -40,7 +40,7 @@ Esiste la certezza assoluta per una certa teoria, esclusivamente, quando ha un n
 
 \section{Il Paradosso di Russell}
 \label{sec:paradosso-di-russell}
-La base della teroria dei tipi, compresa quella di \textit{Martin-L$\ddot{o}$f}, si deve a B. \textit{Russell}. \\
+La base della teoria dei tipi, compresa quella di \textit{Martin-L$\ddot{o}$f}, si deve a B. \textit{Russell}. \\
 Siamo nel 1907 quando nasce la teoria dei tipi, sviluppata nei \textit{Principia Mathematica} da B. \textit{Russel} assieme ad A.N. \textit{Whitehead}. Tale teoria, intesa come logica e non informatica, nasce come soluzione alternativa alla teoria degli insiemi, di allora, con lo scopo di fondare la matematica su un sistema formale accettabile e non contradditorio.\\
 Di seguito espongo un sistema contradditorio della teoria degli insiemi.\\
 \\
@@ -49,8 +49,8 @@ Di seguito espongo un sistema contradditorio della teoria degli insiemi.\\
 \item \textit{L} linguaggio del primo ordine (=, \&, $\rightarrow$, $\lor$, $\forall{x}$, $\exists{x}$), con l'aggiunta del predicato $\in$ "appartiene"
 \item variabili VAR $\ni$ \{x, y, z, w,\dots \}
 \end{itemize}
-x, y, z sono da intendersi come insiemi\\
-x $\epsilon$ y = "x appartiene a y"\\\\
+\noindent
+dove x, y, z sono da intendersi come insiemi e x $\epsilon$ y = "x appartiene a y".\\\\
 All'interno di \textit{L} c'\`e una teoria degli insiemi. Tra cui prende posto l'\textbf{assioma di comprensione di \textit{Frege}}, definito nel modo seguente:\\
 Per ogni formula $\phi$(x) vale che $\exists$z $\forall$y (y$\in$z $\Leftrightarrow$ $\phi$(y)) [$\equiv$ $\exists$z z = \{x $\big|$ $\phi$(x)\}]\\\\
 \textbf{Teorema (o Paradosso) di \textit{Russell}}: la teoria \textit{F} \`e contradditoria.\\
@@ -59,9 +59,9 @@ Per ogni formula $\phi$(x) vale che $\exists$z $\forall$y (y$\in$z $\Leftrightar
 $\phi$(x) = x$\notin$x ($\equiv$ $\neg$ (x $\in$ x))\\
 Per l'assioma di comprensione	$\exists$z z = \{x $|$ x$\notin$x\} ($\exists$z $\forall$y (y$\in$z $\Leftrightarrow$ y$\notin$y))\\
 Ponendo y=z ottengo che z$\in$z $\Leftrightarrow$ z$\notin$z, risulta una \textbf{contraddizione}.\\\\
-L'assioma di comprensione \`e contradditorio perch\`e permette di formare insieme che non appartengono a se stessi.\\\\
+L'assioma di comprensione \`e contradditorio perch\`e permette di formare insiemi che non appartengono a se stessi.\\\\
 Come correggere la contraddizione?\\
-La soluzione accettabile \`e porre agli insiemi una gerarchia di tipi. In questo modo l'assioma di comprensione diventa:\\
+La soluzione accettabile \`e porre agli insiemi una \textbf{gerarchia di tipi}. In questo modo l'assioma di comprensione diventa:\\
 $\exists$z $\forall$y (y$\in$a $\to$ (y$\in$z $\Leftrightarrow$ $\phi$(y)) $\equiv$ z = \{x$\in$a $\big|$ $\phi$(x)\}\\\\
 In questo modo non posso pi\`u creare il Paradosso di \textit{Russell}.\\\\
 Al momento questa teoria dei tipi non \`e utilizzata. Una sua evoluzione diretta \`e 
@@ -83,11 +83,11 @@ Esempio di applicazione: tg(x) $\equiv$ $\lambda$x.tg(x)
 \frac{b_1 \rightarrow b_2	\qquad a_1 \rightarrow a_2 }{b_1(a_1) \rightarrow b_2(a_2)} \qquad 
 \frac{b_1 \rightarrow b_2}{\lambda x.b_1 \rightarrow \lambda x.b_2} \]
 \noindent
-Si dice che un programma si riduca a un altro, cio\`e converge, solo se c'\`e una sequenza di riduzioni (applicazione di regole e/o assiomi), che connettono il primo programma con l'ultimo. Si parla, in questo modo, di \textbf{chiusura transitiva e simmetrica}, che si conclude quando il programma non \`e pi\`u riducibile. Quanto appena descritto pu\`o venire espresso nel seguente modo:\\ $t \rightarrow t'$ sse esiste un numero finito di passi per cui $t$ si riduce a $t'$, ovvero esiste $b_1 \dots b_m$ t.c. $t \rightarrow b_1 \rightarrow b_2 \dots \rightarrow b_m \rightarrow t'$.\\\\
+Si dice che un programma si riduca a un altro, cio\`e converge, solo se c'\`e una sequenza di riduzioni (applicazione di regole e/o assiomi), che connettono il primo programma con l'ultimo. Si parla, in questo modo, di \textbf{chiusura transitiva e simmetrica}, che si conclude quando il programma non \`e pi\`u riducibile. Quanto appena descritto pu\`o venire espresso nel seguente modo:\\\\ $t \rightarrow t'$ sse esiste un numero finito di passi per cui $t$ si riduce a $t'$, ovvero esiste $b_1 \dots b_m$ t.c. $t \rightarrow b_1 \rightarrow b_2 \dots \rightarrow b_m \rightarrow t'$.\\\\
 Il $\lambda$ calcolo permette di codificare qualsiasi programma scritto in qualunque linguaggio (imperativo, dichiarativo, Java, C++, BASIC, \dots). Tuttavia tale linguaggio non codifica solo programmi che terminano, ma anche programmi che non lo fanno.
-Un esempio di applicazione, per quest'ultimo, \`e un programma con computazione infinita: $\lambda x.x(x)$\\
-$\lambda x.x(x)$ lo applichiamo a se stesso. Perci\'o diventa $\Lambda \equiv (\lambda x.x(x))(\lambda x.x(x))$\\ 
-e seguendo la computazione si riduce a: \[x(x)[\frac{x}{\lambda x.x(x)}] \equiv (\lambda x.x(x))(\lambda x.x(x))\]\\
+Un esempio di applicazione, per quest'ultima categoria, \`e un programma con computazione infinita: $\lambda x.x(x)$\\
+$\lambda x.x(x)$ lo applichiamo a se stesso. Perci\'o diventa $\Lambda \equiv (\lambda x.x(x))(\lambda x.x(x))$
+che seguendo la computazione si riduce a: \[x(x)[\frac{x}{\lambda x.x(x)}] \equiv (\lambda x.x(x))(\lambda x.x(x))\]\\
 Dunque esiste una catena di (t$_i$)$_{i\in\mathbb{N}}$ di termini t$_i \rightarrow$ t$_{i+1}$. Ci\`o significa che
 $\Lambda$ non termina in qualunque linguaggio sia interpretato.\\\\
 $\Lambda$ risulta un buon metodo per rappresentare le funzioni, ma non \`e completo, rispetto all'intuizione matematica di funzione. \`E necessario, per questo, tipare le variabili; ovvero $\lambda$x.x$\in$A$\rightarrow$B(x$\in$A).\\\\
@@ -114,19 +114,19 @@ a$\in$A & a$\in$A set & a$\in$A & a$\in$A \\
 \noindent
 Per la sintassi:
 \begin{itemize} 
-\item nella teoria dei tipi moderna a rappresenta un termine e A un tipo;
-\item nella sintassi in una teoria degli insiemi a \`e un elemento, coincidendo con la corrispondenza originale in mente da \textit{Russell};
-\item nella sitassi in un linguaggio logico a rappresenta una dimostrazione di A, perci\`o un \textit{proof-term} affermante come la proposizione di A sia vera;
-\item nella teoria in una sintassi di un linguaggio di programmazione a rappresenta un programma e A una specifica di A.
+\item nella \textbf{teoria dei tipi moderna} \textit{a} rappresenta un termine e \textit{A} un tipo;
+\item nella sintassi in una \textbf{teoria degli insiemi} \textit{a} \`e un elemento e \textit{A} un insieme. Coincidendo con la corrispondenza originale in mente da \textit{Russell}.
+\item nella sitassi in un \textbf{linguaggio logico} \textit{a} rappresenta una proposizione di \textit{A}, inteso come insieme di tipo delle sue dimostrazioni. Perci\`o un \textit{proof-term} affermante come la proposizione di A sia vera.
+\item nella teoria in una sintassi di un \textbf{linguaggio di programmazione} \textit{a} rappresenta un programma e \textit{A} una specifica.
 \end{itemize}
 \noindent
-Quando parliamo di tipo ci riferiamo a un insieme, una proposizione o \textit{data type}, a seconda dell'applicazione di tipo che si ha in mente.\\\\
-Dal punto di vista logico non si hanno solo proposizioni, ma anche predicati. Parlare solo tipo non risulta quindi sufficiente. Per questo se si vuole rappresentare non una proposizione, ma un predicato A(x) si usa la seguente sitassi: \textbf{A(x) prop[x$\in$D]}.\\
-Dalla logica si sa che i predicati $\phi$(x) hanno x senza un dominio specifico, perch\`e la sintasssi non determina che cosa \`e in x. I predicati dunque hanno una variabile che deve essere tipata, nel modo sequente: \textbf{$\phi$(x) prop[x$\in$D]}.\\
-Dunque
+Dunque quando parliamo di tipo ci riferiamo a un insieme, una proposizione o \textit{data type}, a seconda dell'applicazione di tipo che si ha in mente.\\\\
+Dal punto di vista logico non si hanno solo proposizioni, ma anche predicati. Parlare solo di tipo non risulta quindi sufficiente. Per questo se si vuole rappresentare non una proposizione, ma un predicato A(x) si usa la seguente sitassi: \textbf{A(x) prop[x$\in$D]}.\\
+Dalla logica si sa che i predicati $\phi$(x) hanno x senza un dominio specifico, perch\`e la sintasssi non determina che cosa \`e in x. Al seguito di tutto questo i predicati hanno una variabile che deve essere tipata come \textbf{$\phi$(x) prop[x$\in$D]}.\\
+Dunque (definizione di predicato)
 \begin{center}\textbf{$\exists$ z $\quad$ z=\{x$\in$ a$|$ $\phi$(x)\} $\qquad$ $\equiv$ $\qquad$ $\phi$(x)prop[x$\in$ a]}\end{center}
 \noindent
-Quanto appena definito sopra da origine al concetto di \textbf{tipo dipendente}, nel quale vengono tipate tutte le variabili che appartengono ad una famiglia di tipo.\\\\
+Quanto appena definito da origine al concetto di \textbf{tipo dipendente}, nel quale vengono tipate tutte le variabili che appartengono ad una \textbf{famiglia di tipo}.\\\\
 \textbf{Concetto chiave:} le famiglie di tipo sono indispensabili per rappresentare il concetto di predicato. Di seguito ho riassunto in forma tabellare le diverse famiglie.\\
 
 \begin{table}[h]
@@ -144,14 +144,14 @@ A(x) prop[x$\in$D] & A(x) set[x$\in$D] & A(x) prop[x$\in$D] & A(x) datatype[x$\i
 \noindent
 Il concetto di tipo dipendente \`e stato introdotto per la prima volta da \textit{Martin-L$\ddot{o}$f}. \textit{Russell} si era limitato a definire esclusivamente il concetto di funzione proposizionale dipendente da un tipo.
 \newpage
-\section{Esempi di tipi (informale)}
+\section{Esempi di tipi}
 \label{sec:esempi-di-tipi}
 \begin{table}[h]
 \centering
 \begin{tabularx}{\textwidth}{XXXX}
 \hline 
 \rowcolor{orange}
-{\color[HTML]{FFFFFF}\textbf{A type}} & {\color[HTML]{FFFFFF}\textbf{A set}} & {\color[HTML]{FFFFFF} \textbf{A set}} & {\color[HTML]{FFFFFF}\textbf{A data type}} \\
+{\color[HTML]{FFFFFF}\textbf{A type}} & {\color[HTML]{FFFFFF}\textbf{A set}} & {\color[HTML]{FFFFFF} \textbf{A prop}} & {\color[HTML]{FFFFFF}\textbf{A data type}} \\
 \hline\hline 
 N$_1$ singoletto & l'insieme singoletto & \textit{tt} costante vero & tipo Unit  \\
 \hline 
@@ -161,7 +161,7 @@ BxC (tipo prodotto) & l'insieme prodotto cartesiano dell'insieme B con l'insieme
 \hline 
 B+C (tipo somma binaria) & l'insieme unione disgiunta dell'insieme B con l'insieme C & B$\lor$C disgiunta della  proposizione B e della proposizione C & tipo unione disgiunta con codifica \\
 \hline 
-B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \small{A$\rightarrow$B$\equiv$\{f $|$ f:B$\rightarrow$C \}} & B$\rightarrow$C, implicazione della proposizone B e della proposizione C & insieme delle funzioni dal \textit{datatype} B al \textit{datatype} C \\
+B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \small{A$\rightarrow$B $\equiv$ \{f $|$ f: B$\rightarrow$C\}} & B$\rightarrow$C, implicazione della proposizone B e della proposizione C & insieme delle funzioni dal \textit{datatype} B al \textit{datatype} C \\
 \hline
 \end{tabularx}
 \caption{\label{tab:famiglia-di-tipi}Famiglia di tipi.} 
@@ -178,7 +178,8 @@ B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \sm
 \rowcolor{orange}
 {\color[HTML]{FFFFFF}\textbf{A(x)type[x$\in$B]}}\\
 \hline\hline
-\begin{tabular}[c]{cc}tipo indiciato \\ \scriptsize{$\displaystyle\prod\limits_{x\epsilon B}$}\end{tabular}\\
+\begin{tabular}[c]{cc}tipo indiciato\\ 
+$\displaystyle\prod\limits_{x\epsilon B} C(x)$\end{tabular}\\
 \hline
 \begin{tabular}[c]{cc}tipo somma disgiunta indiciata \\ $\displaystyle\sum\limits_{x\epsilon B} C(x)$ \end{tabular}\\
 \hline
@@ -200,7 +201,7 @@ B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \sm
 \caption{\label{tab:tipi-dipendenti}Tipi dipendenti.} 
 \end{table}
 \noindent
-Lo slogan principale della teoria dei tipi \`e quello di tipare le variabili in un linguaggio formale set teorico/computazionale.\\\\
+\textbf{Concetto chiave:} lo slogan principale della teoria dei tipi \`e quello di tipare le variabili in un linguaggio formale set teorico/computazionale.\\\\
 Esite anche il \textbf{tipo uguaglianza}:
 \begin{itemize}
 \item intensionale: Id(B,c,d);
@@ -217,10 +218,11 @@ Ci sono quattro forme di giudizio (nelle quali $\Gamma$ identifica il contesto):
 \item \textbf{A type[$\Gamma$]}: A \`e un tipo, possibilmente indicato da variabili nel contesto $\Gamma$, dipendente da $\Gamma$ stesso. Rappresenta il giudizio di tipo.
 \item \textbf{A = B type[$\Gamma$]}: il tipo A dipendente da $\Gamma$ \`e uguale al tipo B dipendente da $\Gamma$. Rappresenta il giudizio di uguaglianza di tipo.
 \item \textbf{a $\in$ A type[$\Gamma$]}: a \`e un elemento del tipo A, possibilmente indiciato, ovvero dipendente da $\Gamma$ e dalle sue variabili di contesto. Un esempio di tipo dipendente \`e l'array, che ha termini di funzioni che dipendono da $\Gamma$. Invece il termine non \`e dipendente quando si parla di funzione costante senza variabili.
-\item \textbf{a = b $\in$ A type[$\Gamma$]}: a come elemento del tipo A dipende da $\Gamma$ ed \`e uguale in modo definizionale/computazionale al termine b. Quest'ultimo, anch'esso, elemento del tipo A dipendente da $\Gamma$.
+\item \textbf{a = b $\in$ A type[$\Gamma$]}: a come elemento del tipo A dipende da $\Gamma$ ed \`e uguale in modo definizionale/computazionale al termine b. Quest'ultimo, difatti, \`e elemento del tipo A dipendente da $\Gamma$.
 \end{itemize}
 \noindent
-I giudizi solo esclusivamente asserzioni, dicono solo qualcosa quando \`e vera (non si usano i quantificatori). Essi limitano le frasi che si possono fare per codificare la logica intuizionistica. All'interno di ogni singolo giudizio si lavora con la teoria dei tipi.
+All'interno di ogni singolo giudizio si lavora con la teoria dei tipi.\\
+I giudizi solo esclusivamente asserzioni, dicono solo qualcosa quando \`e vero (non si usano i quantificatori). Essi limitano le frasi che si possono fare per codificare la logica intuizionistica. 
 \subsection{Simbolo $\in$}
 \label{subsec:simbolo-appartiene}
 Il significato di a$\in$A in teoria dei tipi \`e differente da quello insiemistico. Espongo il concetto con un esempio trattato a lezione:
@@ -230,18 +232,18 @@ Il significato di a$\in$A in teoria dei tipi \`e differente da quello insiemisti
 
 
 \begin{itemize}
-\item In \textbf{\textit{set theory}} usuale $\in$ \`e tra insiemi. In \ref{esempio-eq:appartiene} 1 rappresenta lui stesso un'insieme e Nat l'insieme dei numeri Naturali.
+\item In \textbf{\textit{set theory}} usuale $\in$ \`e tra insiemi. Nell'equazione \ref{esempio-eq:appartiene}, 1 rappresenta lui stesso un'insieme e Nat l'insieme dei numeri Naturali.
 Risulta vero che 1$\equiv$\{$\varnothing$\}, poich\`e 0 $\equiv$ $\varnothing$.
 \item Invece in \textbf{teoria dei tipi} (di \textit{Martin-L$\ddot{o}$f} come di \textit{Russell})
-1 rappresenta un elemento ma non un tipo e Nat il tipo dei Naturali. Vi \`e dunque la distinzione tra elemento e tipo (come quella tra programmi e tipi).
+1 rappresenta un elemento ma non un tipo e Nat il tipo dei Naturali. Vi \`e dunque la distinzione tra elemento e tipo (come esiste quella tra programmi e tipi).
 \end{itemize}
 \subsection{Uguaglianza estensionale}
 \label{subsec:uguaglianza-estensionale}
-Specifico \textbf{a = b$\in$ A[$\Gamma$]} come l'uguaglianza computazionale/definizionale, che viene data come primitiva e non va confusa con l'uguaglianza proposizionale tra a e b.\\L'uguaglianza proposizionale a = b \`e rappresentata non da un giudizio, che asserisce solo ci\`o che \`e vero, ma bens\`i da un tipo Eq(A,a,b) che pu\`o anche essere senza termini ed essere falso, dal punto di vista logico.\\
+Specifico \textbf{a = b$\in$ A[$\Gamma$]} come l'uguaglianza computazionale/definizionale, che viene data come primitiva e non va confusa con l'uguaglianza proposizionale/estensionale tra a e b.\\L'uguaglianza proposizionale a = b \`e rappresentata non da un giudizio, che asserisce solo ci\`o che \`e vero, ma bens\`i da un tipo Eq(A,a,b) che pu\`o anche essere senza termini e/o essere falso, dal punto di vista logico.\\\\
 Visti come programmi, a e b rappresentano lo stesso programma. In $\lambda$-calcolo a$\rightarrow$b oppure b$\rightarrow$a (si riducono). Inoltre a e b possono essere sia termini finali che trovarsi in mezzo alla computazione.
 
-\subsection{Regole per la teoria dei tipi}
-\label{subsec:regole-teoria-dei-tipi}
+\subsection{Generazione di contesti}
+\label{subsec:generazione-di-contesti}
 Esiste anche un quinto giudizio ausiliario:
 \begin{center}
 \[
@@ -249,7 +251,7 @@ Esiste anche un quinto giudizio ausiliario:
 F-C) \quad \frac{A \hspace{0.2cm} type[\Gamma]}{\Gamma, x\in A \hspace{0.2cm} cont}
 \]
 \end{center}
-Il giudizio in \textit{F-C} permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
+Il giudizio \textit{F-C} permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
 
 
 \section{Esempio di tipo: il tipo singoletto}
@@ -270,25 +272,27 @@ S) \quad \frac{[\Gamma] \hspace{0.2cm} cont}{N1\hspace{0.2cm}type[\Gamma]}
 I-S) \quad \frac{[\Gamma] \hspace{0.2cm} cont}{*\in N1 \hspace{0.2cm}type[\Gamma]}
 \]
 \end{center}
-\textit{Permette di formare i termini, sia $N_1$ in ogni contesto $\Gamma$ partendo da contesto $\varnothing$.}
+\textit{Sia $N_1$ in ogni contesto $\Gamma$, partendo da contesto $\varnothing$, permette di formare i termini.}
 \\\\
 \noindent\textbf{Eliminazione}
 \begin{center}
 \[
-E-S) \quad \frac{t_1 \in N1type[\Gamma] \quad  M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)[\Gamma]}{El_{N1}(t,c) \in M(t)[\Gamma]}
+E-S) \quad \frac{t \in N1type[\Gamma] \quad  M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)type[\Gamma]}{El_{N1}(t,c) \in M(t)type[\Gamma]}
 \]
 \end{center}
-\textit{El trattasi di costruttori di funzioni e $M[t] = M(z)[\frac{z}{t}]$.}
+\textit{El trattasi di costruttore di funzioni e $M[t] = M(z)[\frac{z}{t}]$.}
 \\\\
 \noindent\textbf{Conversione}
 \begin{center}
 \[
-C-D) \quad \frac{M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)[\Gamma]}{El_{N1}(*,c) = C \in M(*)[\Gamma]}
+C-D) \quad \frac{M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)type[\Gamma]}{El_{N1}(*,c) = C \in M(*)type[\Gamma]}
 \]
 \end{center}
 \textit{La conversione rende possibile l'applicazione della regola di eliminazione introducendo delle uguaglianze.}
 \\\\
-Le regole sopra elencate hanno una spiegazione computazionale. Riguardano la compatibilit\`a tra tipi, ma non principali da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente
+\textbf{Concetto chiave}: le regole (S), (I-S), (E-S) e (C-D)  hanno una spiegazione computazionale, e riguardano la compatibilit\`a tra tipi, ma non da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente.
+
+
 
 
 \end{document}
