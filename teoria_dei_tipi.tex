@@ -252,14 +252,7 @@ Specifico \textbf{a = b$\in$ A[$\Gamma$]} come l'uguaglianza computazionale/defi
 Visti come programmi, a e b rappresentano lo stesso programma. In $\lambda$-calcolo a$\rightarrow$b oppure b$\rightarrow$a (si riducono). Inoltre a e b possono essere sia termini finali che trovarsi in mezzo alla computazione.
 \subsection{Generazione di contesti}
 \label{subsec:generazione-di-contesti}
-Esiste anche un quinto giudizio ausiliario:
-\begin{center}
-\[
-\varnothing \hspace{0.1cm} contesto  \qquad \qquad
-F-C) \quad \frac{A \hspace{0.1cm} type[\Gamma]}{\Gamma, x\in A \hspace{0.1cm} cont}
-\]
-\end{center}
-Il giudizio \textit{F-C} permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
+Esiste anche un quinto giudizio ausiliario (\$ \ref{subsec:formazione-contesti}) \textit{F-C}, che permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
 
 \chapter{Regole della teoria dei tipi}
 \label{cap:regole-teoria-dei-tipi}
@@ -281,17 +274,24 @@ Se la teoria dei tipi \`e dipendente si ha bisogno di tutti i giudizi. Invece in
 \label{sec:regole-strutturali}
 Assioma unico: [\hspace{0.1cm}] cont\\\\
 Nel calcolo dei sequenti, in logica classica, le derivazioni di giudizio, valide in una teoria dei tipi con solo le regole singoletto, diventano derivazioni di sequenti nella forma $\Gamma$ $\dashv$ A e unico assioma $\varphi$ $\dashv$ $\varphi$.
-\[ F-S) \quad \frac{\Gamma\hspace{0.1cm}cont}{N_1\hspace{0.1cm}type[\Gamma]} \]
 \\\\
 Di seguito illustro le principali regole di contesto comuni a tutte le teorie dei tipi.
 \subsection{Regole di formazione dei contesti}
 \label{subsec:formazione-contesti}
 \begin{center} [\hspace{0.1cm}] cont \quad dove [\hspace{0.1cm}] = $\varnothing$ \end{center}
-\[ F-C) \quad \frac{A\hspace{0.1cm}type[\Gamma]}{\Gamma,\hspace{0.1cm}x \in A}
-\quad con \hspace{0.1cm} x\in A \notin \Gamma \]
+\begin{prooftree}
+\AxiomC{A type[$\Gamma$]}
+\LeftLabel{F-C)}\RightLabel{x $\in$ A $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, x $\in$ A}
+\end{prooftree}
 \subsection{Regole di assunzione delle variabili}
 \label{subsec:assunzione-variabili}
-\[ var-ass) \quad \frac{\Gamma, x \in A, \Delta \quad cont}{x \in A\hspace{0.1cm}type[\Gamma,x \in A, \Delta]} \]
+\begin{prooftree}
+\AxiomC{$\Gamma$, x $\in$ A, $\Delta$}
+\AxiomC{cont}
+\LeftLabel{var-ass)}
+\BinaryInfC{x $\in$ type[$\Gamma$,x $\in$ A, $\Delta$]}
+\end{prooftree}
 \subsection{Regole strutturali addizionali sull'uguaglianza}
 \label{subsec:uguaglianza}
 L'uguaglianza, in una teoria dei tipi, consiste in una relazione di equivalenza sia fra tipi che fra termini. Sono perci\`o valide le seguenti regole di uguaglianza tra tipi:
@@ -385,21 +385,35 @@ $[y \in Nat, z \in Mat(x,y), x \in Nat]$ $\Rightarrow$ \textbf{non \`e un contes
 \subsection{Esempi di applicazione}
 \label{subsec:esempi-di-applicazione}
 Attenzione all'ordine di sostituzione si deve partire sempre da quello con meno dipendenze.
-\begin{center}
-$\frac{c\hspace{0.1cm} \in [C,\Gamma] \quad b\hspace{0.1cm} \in [B(c),\Gamma] \quad A(x,y)\hspace{0.1cm}type[x \in C, y \in B(x)]}{A(c,b)\hspace{0.1cm}type[\Gamma]}$
-\end{center}
-\begin{center}
-$\frac{c\hspace{0.1cm} \in [C,\Gamma] \quad b\hspace{0.1cm} \in [B(c),\Gamma] \quad A(x,y)\hspace{0.1cm}type[x \in C, y \in B(x)]}{a(c,b) \in A(c,b)\hspace{0.1cm}type[\Gamma]}$
-\end{center}
+\begin{prooftree}
+\AxiomC{c $\in$ [C, $\Gamma$]}
+\AxiomC{b $\in$ [B(c), $\Gamma]$}
+\AxiomC{A(x,y) type[x $\in$ C, y $\in$ B(x)]}
+\TrinaryInfC{A(c,b) type$[\Gamma]$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{c $\in$ [C,$\Gamma$]}
+\AxiomC{b $\in$ [B(c),$\Gamma]$}
+\AxiomC{A(x,y) type[x $\in$ C, y $\in$ B(x)]}
+\TrinaryInfC{a(c,b) $\in$ A(c,b) type$[\Gamma]$}
+\end{prooftree}
 Se si ha un tipo puo' venire usato il giudizio di uguaglianza tra termini e la sostituzione.
-\begin{center}
-$\frac{A(x)\hspace{0.1cm} type[\Gamma, x \in C] \quad c = e\hspace{0.1cm} \in C[\Gamma]}{A(c) = A(e)\hspace{0.1cm}type[\Gamma]}$
-\end{center}
+\begin{prooftree}
+\AxiomC{A(x) type[$\Gamma$, x $\in$ C]}
+\AxiomC{c = e $\in$ C[$\Gamma$]}
+\BinaryInfC{A(c) = A(e) type[$\Gamma$]}
+\end{prooftree}
+\noindent
 \`E dunque fondamentale il concetto di uguaglianza fra tipi. Se considero che ci sia un elemento
-\begin{center}
-$\frac{a(x) \in A(x)\hspace{0.1cm} type[\Gamma, x \in C] \quad c = e\hspace{0.1cm} \in C[\Gamma]}{a(c) = a(e) \in A(c)\hspace{0.1cm}type[\Gamma]}$
-\end{center}
-Per poter affermare che A(e) = A(c) devo poterlo dedurre. Per farlo mi sono indispensabili le \textbf{regole di conversione dell'uguaglianza del tipaggio (\S\ref{subsec:regole-tipaggio}}.
+
+\begin{prooftree}
+\AxiomC{a(x) $\in$ A(x) type[$\Gamma$, x $\in$ C]}
+\AxiomC{c = e $\in$ C[$\Gamma$]}
+\BinaryInfC{a(c) = a(e) $\in$ A(c) type[$\Gamma$]}
+\end{prooftree}
+\noindent
+Per poter affermare che A(e) = A(c) devo poterlo dedurre. Per farlo mi sono indispensabili le \textbf{regole di conversione dell'uguaglianza del tipaggio (\S\ref{subsec:regole-tipaggio})}.
 
 \subsection{Regole di tipaggio}
 \label{subsec:regole-tipaggio}
@@ -420,21 +434,24 @@ Questa regola permette di convertire le uguaglianze nel tipaggio di un termine.
 \label{sec:tipo-singoletto}
 Il tipo singoletto risulta essere paradigmatico per gli altri tipi. Per definirlo impiegher\`o i giudizi nella forma $A\hspace{0.1cm}type[\Gamma]$, $a \in A\hspace{0.1cm}type[\Gamma]$ e $a = b \in A\hspace{0.1cm}type[\Gamma]$. L'uguaglianza, invece, non verr\`a coinvolta, in quanto non pu\`o essere impiegata per definire un nuovo tipo, \`e difatti usata solo nelle derivazioni.\\\\
 Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivazione parte sempre dal contesto vuoto ($\varnothing$).
-\[ F-C) \quad \frac{A\hspace{0.1cm}type[\Gamma]}{\Gamma,\hspace{0.1cm}x \in A}
-\quad con \hspace{0.1cm} x\in A \notin \Gamma \]
+\begin{prooftree}
+\AxiomC{A type[$\Gamma$]}
+\LeftLabel{F-C)}\RightLabel{x $\in$ A $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, x $\in$ A}
+\end{prooftree}
+
 \subsection{Regola di formazione}
 \label{subsec:formazione}
-\begin{center}
-\[
-F-S) \quad \frac{[\Gamma] \hspace{0.1cm} cont}{N1\hspace{0.1cm}type[\Gamma]}
-\]
-\end{center}
+\begin{prooftree}
+\AxiomC{[$\Gamma$] cont}
+\LeftLabel{F-S)}
+\UnaryInfC{$N_1$ type[$\Gamma]$ cont}
+\end{prooftree}
 \textit{La regola F-S Permette di derivare vari giudizi e di dire che cosa \`e un tipo.}\\\\
 Con l'impiego solo delle regole \textit{F-C} e \textit{F-S} si possono derivare [$x_1$ $\in$ $N_1$... $x_n$ $\in$ $N_1$] cont e ottenere, cos\`i, contesti di una lista arbitraria di variabili diverse appartenenti a $N_1$, come si vede dall'esempio seguente.
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{\scriptsize{F-S)}}
-\UnaryInfC{$N_1$ type [ ]}
 \LeftLabel{\scriptsize{F-C)}}\RightLabel{\scriptsize{$x_1$ $\in$ $N_1$ $\notin$ $\varnothing$}}
 \UnaryInfC{[$x_1$ $\in$ $N_1$] cont}
 \LeftLabel{\scriptsize{F-S)}}
@@ -445,38 +462,70 @@ Con l'impiego solo delle regole \textit{F-C} e \textit{F-S} si possono derivare 
 
 \subsection{Regole di Introduzione}
 \label{subsec:introduzione}
-\begin{center}
-\[
-I-S) \quad \frac{[\Gamma] \hspace{0.1cm} cont}{*\in N1 \hspace{0.1cm}type[\Gamma]}
-\]
-\end{center}
+\begin{prooftree}
+\AxiomC{[$\Gamma$] cont}
+\LeftLabel{I-S)}
+\UnaryInfC{* $\in$ $N_1$ type[$\Gamma]$ cont}
+\end{prooftree}
 \textit{Sia $N_1$ in ogni contesto $\Gamma$, partendo da contesto $\varnothing$, la regola I-S permette di formare i termini, per mezzo dell'introduzione di un elemento costante * in $N_1$.}\\\\
 Un esempio diretto della sua applicazione \`e
 \begin{prooftree}
 \AxiomC{[ ] cont}
-\LeftLabel{\scriptsize{I-S)}}
+\LeftLabel{I-S)}
 \UnaryInfC{* $\in$ $N_1$ ($x_1$ $\in$ $N_1$...$x_n$ $\in$ $N_1$)}
 \end{prooftree}
 
-\noindent\textbf{Eliminazione}
-\begin{center}
-\[
-E-S) \quad \frac{t \in N1type[\Gamma] \quad  M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)type[\Gamma]}{El_{N1}(t,c) \in M(t)type[\Gamma]}
-\]
-\end{center}
+\subsection{Regole di Eliminazione}
+\label{subsec:eliminazione}
+\begin{prooftree}
+\AxiomC{t $\in$ $N_1$ type[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c  $\in$ M(*) type[$\Gamma$]}
+\LeftLabel{E-S)}
+\TrinaryInfC{$El_{N1}$(t, c) $\in$ M(*) type[$\Gamma$]}
+\end{prooftree}
+\noindent
 \textit{El trattasi di costruttore di funzioni e $M[t] = M(z)[\frac{z}{t}]$.}
-\\\\
-\noindent\textbf{Conversione}
-\begin{center}
-\[
-C-D) \quad \frac{M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)type[\Gamma]}{El_{N1}(*,c) = C \in M(*)type[\Gamma]}
-\]
-\end{center}
+\\
+La regola di eliminazione si pu\`o equivalentemente scrivere in un altro modo
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c  $\in$ M(*) type[$\Gamma$]}
+\LeftLabel{E-S)$_{dip}$}
+\BinaryInfC{$El_{N1}$(z, c) $\in$ M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\end{prooftree}
+Le regole \textit{E-S)$_{dip}$} + \textit{la regole di sostituzione} + \textit{F-S} + \textit{I-S} permettono di verificare la validit\`a di \textit{E-S}.
+\begin{prooftree}
+\AxiomC{t $\in$ $N_1$ type[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c $\in$ M(*) type[$\Gamma$]}
+\LeftLabel{E-S)$_{dip}$}
+\BinaryInfC{$El_{N1}$(z, c) $\in$ M(z) type[$\Gamma$]}
+\LeftLabel{sost)}
+\BinaryInfC{$El_{N1}$(t, c) $\in$ M(t) type[$\Gamma$]}
+\end{prooftree}
+\noindent
+Inoltre vale anche il viceversa, da \textit{E-S} si riesce a ottenere \textit{E-S$_{dip}$}.
+\subsection{Regole di Conversione}
+\label{subsec:conversione}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c $\in$ M(*) type[$\Gamma$]}
+\LeftLabel{C-S)}
+\BinaryInfC{$El_{N1}$(*, c) = c $\in$ M(*) type[$\Gamma$]}
+\end{prooftree}
 \textit{La conversione rende possibile l'applicazione della regola di eliminazione introducendo delle uguaglianze.}
 \\\\
-Le regole (S), (I-S), (E-S) e (C-D)  hanno una spiegazione computazionale, e riguardano la compatibilit\`a tra tipi, ma non da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente.
+Le regole \textit{(S), (I-S), (E-S)} e \textit{(C-S)}  hanno una spiegazione computazionale, e riguardano la compatibilit\`a tra tipi, ma non da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente.
+\\\\
+L'eliminatore El$_{N1}$(z, c) rappresenta una funzione definita per ricorsione su N$_1$, difatti in \textit{C-S} si ha che El$_{N1}$(z, c)[$\frac{z}{*}$] = El$_{N1}$(*, c).\\
+Supposto che se * $\in$ N$_1$[$\Gamma$] in \textit{E-S}, allora per la singola conversione vale che El$_{N1}$ = c $\in$ M(*).
+Dunque El$_{N1}$(z, c) rappresenta un programma funzionale per ricorsione. Questi \`e definito su N$_1$, a partire da c $\in$ M(*), perci\`o El$_{N1}$(*, c) = c.\\
+La regola di eliminazione permette di definire un programma funzionale da N$_1$ a M(z) esclusivamente con c $\in$ M(*), ovvero definendo * come \textbf{elemento canonico}.
 
-
+\section{Esercizi}
+\label{sec:esercizi-cap2}
+Dimostrare che da \textit{E-S} ri riesce a ottenere \textit{E-S$_{dip}$} usando le derivazioni.
 
 
 
