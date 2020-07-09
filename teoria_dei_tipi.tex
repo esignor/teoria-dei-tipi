@@ -246,8 +246,8 @@ Risulta vero che 1$\equiv$\{$\varnothing$\}, poich\`e 0 $\equiv$ $\varnothing$.
 \item Invece in \textbf{teoria dei tipi} (di \textit{Martin-L$\ddot{o}$f} come di \textit{Russell})
 1 rappresenta un elemento ma non un tipo e Nat il tipo dei Naturali. Vi \`e dunque la distinzione tra elemento e tipo (come esiste quella tra programmi e tipi).
 \end{itemize}
-\subsection{Uguaglianza estensionale}
-\label{subsec:uguaglianza-estensionale}
+\subsection{Uguaglianza definizionale vs uguaglianza proposizionale}
+\label{subsec:uguaglianza-computazionale-proposizionale}
 Specifico \textbf{a = b$\in$ A[$\Gamma$]} come l'uguaglianza computazionale/definizionale, che viene data come primitiva e non va confusa con l'uguaglianza proposizionale/estensionale tra a e b.\\L'uguaglianza proposizionale a = b \`e rappresentata non da un giudizio, che asserisce solo ci\`o che \`e vero, ma bens\`i da un tipo Eq(A,a,b) che pu\`o anche essere senza termini e/o essere falso, dal punto di vista logico.\\\\
 Visti come programmi, a e b rappresentano lo stesso programma. In $\lambda$-calcolo a$\rightarrow$b oppure b$\rightarrow$a (si riducono). Inoltre a e b possono essere sia termini finali che trovarsi in mezzo alla computazione.
 \subsection{Generazione di contesti}
@@ -517,11 +517,19 @@ Inoltre vale anche il viceversa, da \textit{E-S} si riesce a ottenere \textit{E-
 \textit{La conversione rende possibile l'applicazione della regola di eliminazione introducendo delle uguaglianze.}
 \\\\
 Le regole \textit{(S), (I-S), (E-S)} e \textit{(C-S)}  hanno una spiegazione computazionale, e riguardano la compatibilit\`a tra tipi, ma non da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente.
-\\\\
+\subsection{Osservazioni sul tipo singoletto}
+\label{subsec:osservazioni}
 L'eliminatore El$_{N1}$(z, c) rappresenta una funzione definita per ricorsione su N$_1$, difatti in \textit{C-S} si ha che El$_{N1}$(z, c)[$\frac{z}{*}$] = El$_{N1}$(*, c).\\
 Supposto che se * $\in$ N$_1$[$\Gamma$] in \textit{E-S}, allora per la singola conversione vale che El$_{N1}$ = c $\in$ M(*).
 Dunque El$_{N1}$(z, c) rappresenta un programma funzionale per ricorsione. Questi \`e definito su N$_1$, a partire da c $\in$ M(*), perci\`o El$_{N1}$(*, c) = c.\\
 La regola di eliminazione permette di definire un programma funzionale da N$_1$ a M(z) esclusivamente con c $\in$ M(*), ovvero definendo * come \textbf{elemento canonico}.
+\\\\
+In \begin{prooftree}
+\AxiomC{t $\in$ N$_1$[$\Gamma$]}
+\UnaryInfC{t = * $\in$ N$_1$[$\Gamma$]}
+\end{prooftree}
+risulta vera l'uguaglianza definizionale?\\
+No, non \`e vera. La regola di eliminazione consente di dare un valore al termine canonico, permettendo cos\`i di attribuire un valore a tutti i possibili termini del singoletto. Ma in generale questo non vale all'interno della teoria. Difatti l'uguaglianza definizionale \`e diversa da quella matematica e va intesa come computazionale e non proposizionale (come definito in \S \ref{subsec:uguaglianza-computazionale-proposizionale}).
 
 \section{Esercizi}
 \label{sec:esercizi-cap2}
