@@ -531,9 +531,53 @@ In \begin{prooftree}
 risulta vera l'uguaglianza definizionale?\\
 No, non \`e vera. La regola di eliminazione consente di dare un valore al termine canonico, permettendo cos\`i di attribuire un valore a tutti i possibili termini del singoletto. Ma in generale questo non vale all'interno della teoria. Difatti l'uguaglianza definizionale \`e diversa da quella matematica e va intesa come computazionale e non proposizionale (come definito in \S \ref{subsec:uguaglianza-computazionale-proposizionale}).
 
+\section{Sanitary checks rules}
+\label{sec:sanitary-checks}
+Le sanitary checks sono regole strutturali derivabili utili per abbreviare le derivazioni. Queste sono derivabili solo se la teoria dei tipi \`e corretta.\\\\
+\noindent
+T teoria dei tipi di riferimento.\\
+\begin{prooftree}
+\AxiomC{[$\Gamma$, $\Delta$] cont}
+\UnaryInfC{$\Gamma$ cont}
+\end{prooftree}
+Se [$\Gamma$, $\Delta$] cont \`e derivabile in T allora anche [$\Gamma$] cont \`e derivabile in T.
+\begin{prooftree}
+\AxiomC{J$_1$,...,J$_n$}
+\UnaryInfC{J}
+\end{prooftree}
+Se J$_i$ con i = 1,...,n in T sono derivabili allora anche J \`e derivabile in T.
+\begin{prooftree}
+\AxiomC{A type [$\Gamma$]}
+\UnaryInfC{$\Gamma$ cont}
+\end{prooftree}
+Se A type [$\Gamma$] \`e derivabile in T allora anche $\Gamma$ cont \`e derivabile in T.
+\begin{center}
+\AxiomC{A = B type [$\Gamma$]}
+\UnaryInfC{A type[$\Gamma$]}
+\DisplayProof
+\AxiomC{A = B type [$\Gamma$]}
+\UnaryInfC{B type[$\Gamma$]}
+\DisplayProof
+\end{center}
+Se A = B type [$\Gamma$] \`e derivabile in T allora anche A type[$\Gamma$] e B type[$\Gamma$] sono derivabili in T.
+\begin{prooftree}
+\AxiomC{a $\in$ A type [$\Gamma$]}
+\UnaryInfC{A type[$\Gamma$]}
+\end{prooftree}
+Se a $\in$ A type [$\Gamma$] \`e derivabile in T allora anche A type[$\Gamma$] \`e derivabile in T.
+\begin{center}
+\AxiomC{a = b $\in$ A type [$\Gamma$]}
+\UnaryInfC{a $\in$ A type[$\Gamma$]}
+\DisplayProof
+\AxiomC{a = b $\in$ A type [$\Gamma$]}
+\UnaryInfC{b $\in$ A type[$\Gamma$]}
+\DisplayProof
+\end{center}
+Se a = b $\in$ A type [$\Gamma$] \`e derivabile in T allora anche a $\in$ A type[$\Gamma$] e b $\in$ A type[$\Gamma$] sono  derivabile in T.
 \section{Esercizi}
 \label{sec:esercizi-cap2}
 Dimostrare che da \textit{E-S} ri riesce a ottenere \textit{E-S$_{dip}$} usando le derivazioni.
+
 
 
 
