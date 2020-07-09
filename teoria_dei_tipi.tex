@@ -12,6 +12,7 @@
 }	
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{bussproofs} % per alberi di deduzione naturale
 \begin{document}
 \tableofcontents \pagebreak
 
@@ -254,148 +255,109 @@ Visti come programmi, a e b rappresentano lo stesso programma. In $\lambda$-calc
 Esiste anche un quinto giudizio ausiliario:
 \begin{center}
 \[
-\varnothing \hspace{0.2cm} contesto  \qquad \qquad
-F-C) \quad \frac{A \hspace{0.2cm} type[\Gamma]}{\Gamma, x\in A \hspace{0.2cm} cont}
+\varnothing \hspace{0.1cm} contesto  \qquad \qquad
+F-C) \quad \frac{A \hspace{0.1cm} type[\Gamma]}{\Gamma, x\in A \hspace{0.1cm} cont}
 \]
 \end{center}
 Il giudizio \textit{F-C} permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
-
-
-\section{Esempio di tipo: il tipo singoletto}
-\label{sec:tipo-singoletto}
-Di seguito espongo alcune regole principali del tipo singoletto.
-\\\\
-\noindent\textbf{Formazione}
-\begin{center}
-\[
-S) \quad \frac{[\Gamma] \hspace{0.2cm} cont}{N1\hspace{0.2cm}type[\Gamma]}
-\]
-\end{center}
-\textit{Permette di dire che cosa \`e un tipo.}
-\\\\
-\noindent\textbf{Introduzione}
-\begin{center}
-\[
-I-S) \quad \frac{[\Gamma] \hspace{0.2cm} cont}{*\in N1 \hspace{0.2cm}type[\Gamma]}
-\]
-\end{center}
-\textit{Sia $N_1$ in ogni contesto $\Gamma$, partendo da contesto $\varnothing$, permette di formare i termini.}
-\\\\
-\noindent\textbf{Eliminazione}
-\begin{center}
-\[
-E-S) \quad \frac{t \in N1type[\Gamma] \quad  M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)type[\Gamma]}{El_{N1}(t,c) \in M(t)type[\Gamma]}
-\]
-\end{center}
-\textit{El trattasi di costruttore di funzioni e $M[t] = M(z)[\frac{z}{t}]$.}
-\\\\
-\noindent\textbf{Conversione}
-\begin{center}
-\[
-C-D) \quad \frac{M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)type[\Gamma]}{El_{N1}(*,c) = C \in M(*)type[\Gamma]}
-\]
-\end{center}
-\textit{La conversione rende possibile l'applicazione della regola di eliminazione introducendo delle uguaglianze.}
-\\\\
-\textbf{Concetto chiave}: le regole (S), (I-S), (E-S) e (C-D)  hanno una spiegazione computazionale, e riguardano la compatibilit\`a tra tipi, ma non da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente.
 
 \chapter{Regole della teoria dei tipi}
 \label{cap:regole-teoria-dei-tipi}
 %%dalla lezione 7 alla lezione 11
 Lo scopo della teoria dei tipi \`e offrire un sistema formale in cui derivare, tramite regole e assiomi, giudizi nella forma:
-\[ A \hspace{0.2cm} type[\Gamma] \qquad
-A = B \hspace{0.2cm} type[\Gamma] \qquad
-a \in A\hspace{0.2cm} type[\Gamma] \qquad
-a=b \in A \hspace{0.2cm} type [\Gamma]
+\[ A \hspace{0.1cm} type[\Gamma] \qquad
+A = B \hspace{0.1cm} type[\Gamma] \qquad
+a \in A\hspace{0.1cm} type[\Gamma] \qquad
+a=b \in A \hspace{0.1cm} type [\Gamma]
 \]
 \[
-+ \hspace{0.2cm} ausiliaria \quad \Gamma \hspace{0.2cm} cont
++ \hspace{0.1cm} ausiliaria \quad \Gamma \hspace{0.1cm} cont
 \]
 L'ultimo giudizio non \`e necessario, serve esclusivamente per imparare.\\
 Quando si formula una nuova teoria dei tipi \`e bene impiegare il minor numero possibile di regole strutturali e di formazione di tipi e termini. Tali regole devono essere rivolte all'ottimizzazione e correttezza della teoria. Alcune di queste, come quelle di indebolimento e sostituzione in \S\ref{subsec:indebolimento-sostituzione}, sono irrinunciabili, la cui validit\`a \`e sempre garantita e utilizzate nella derivazione di ogni teoria.\\\\
-Se la teoria dei tipi \`e dipendente si ha bisogno di tutti i giudizi. Invece in una teoria dei tipi non dipendente, come quella dei tipi semplici, il giudizio $A = B \hspace{0.2cm} type[\Gamma]$ pu\`o venire omesso.\\
+Se la teoria dei tipi \`e dipendente si ha bisogno di tutti i giudizi. Invece in una teoria dei tipi non dipendente, come quella dei tipi semplici, il giudizio $A = B \hspace{0.1cm} type[\Gamma]$ pu\`o venire omesso.\\
 
 \section{Regole strutturali}
 \label{sec:regole-strutturali}
 Assioma unico: [\hspace{0.1cm}] cont\\\\
 Nel calcolo dei sequenti, in logica classica, le derivazioni di giudizio, valide in una teoria dei tipi con solo le regole singoletto, diventano derivazioni di sequenti nella forma $\Gamma$ $\dashv$ A e unico assioma $\varphi$ $\dashv$ $\varphi$.
-\[ F-S) \quad \frac{\Gamma\hspace{0.2cm}cont}{N_1\hspace{0.2cm}type[\Gamma]} \]
+\[ F-S) \quad \frac{\Gamma\hspace{0.1cm}cont}{N_1\hspace{0.1cm}type[\Gamma]} \]
 \\\\
 Di seguito illustro le principali regole di contesto comuni a tutte le teorie dei tipi.
 \subsection{Regole di formazione dei contesti}
 \label{subsec:formazione-contesti}
 \begin{center} [\hspace{0.1cm}] cont \quad dove [\hspace{0.1cm}] = $\varnothing$ \end{center}
-\[ F-C) \quad \frac{A\hspace{0.2cm}type[\Gamma]}{\Gamma,\hspace{0.2cm}x \in A}
-\quad con \hspace{0.2cm} x\in A \notin \Gamma \]
+\[ F-C) \quad \frac{A\hspace{0.1cm}type[\Gamma]}{\Gamma,\hspace{0.1cm}x \in A}
+\quad con \hspace{0.1cm} x\in A \notin \Gamma \]
 \subsection{Regole di assunzione delle variabili}
 \label{subsec:assunzione-variabili}
-\[ var-ass) \quad \frac{\Gamma, x \in A, \Delta \quad cont}{x \in A\hspace{0.2cm}type[\Gamma,x \in A, \Delta]} \]
+\[ var-ass) \quad \frac{\Gamma, x \in A, \Delta \quad cont}{x \in A\hspace{0.1cm}type[\Gamma,x \in A, \Delta]} \]
 \subsection{Regole strutturali addizionali sull'uguaglianza}
 \label{subsec:uguaglianza}
 L'uguaglianza, in una teoria dei tipi, consiste in una relazione di equivalenza sia fra tipi che fra termini. Sono perci\`o valide le seguenti regole di uguaglianza tra tipi:
-\[ ref) \quad \frac{A\hspace{0.2cm}type[\Gamma]}{A=A\hspace{0.2cm}type[\Gamma]} \qquad sym) \quad \frac{A=B\hspace{0.2cm}type[\Gamma]}{B=A\hspace{0.2cm}type[\Gamma]} \]
-\[ tra) \quad \frac{A=B\hspace{0.2cm}type[\Gamma] \qquad B=C\hspace{0.2cm}type[\Gamma]}{A=C\hspace{0.2cm}type[\Gamma]} \]
+\[ ref) \quad \frac{A\hspace{0.1cm}type[\Gamma]}{A=A\hspace{0.1cm}type[\Gamma]} \qquad sym) \quad \frac{A=B\hspace{0.1cm}type[\Gamma]}{B=A\hspace{0.1cm}type[\Gamma]} \]
+\[ tra) \quad \frac{A=B\hspace{0.1cm}type[\Gamma] \qquad B=C\hspace{0.1cm}type[\Gamma]}{A=C\hspace{0.1cm}type[\Gamma]} \]
 E allo stesso modo anche le regole di uguaglianza definizonale/computazionale tra termini:
-\[ ref) \quad \frac{a \in A\hspace{0.2cm}type[\Gamma]}{a=a \in A\hspace{0.2cm}type[\Gamma]} \qquad sym) \quad \frac{a=b\in A \hspace{0.2cm}type[\Gamma]}{b=a \in A\hspace{0.2cm}type[\Gamma]} \]
-\[ tra) \quad \frac{a=b \in A\hspace{0.2cm}type[\Gamma] \qquad b=c \in A\hspace{0.2cm}type[\Gamma]}{a=c \in A\hspace{0.2cm}type[\Gamma]} \]
+\[ ref) \quad \frac{a \in A\hspace{0.1cm}type[\Gamma]}{a=a \in A\hspace{0.1cm}type[\Gamma]} \qquad sym) \quad \frac{a=b\in A \hspace{0.1cm}type[\Gamma]}{b=a \in A\hspace{0.1cm}type[\Gamma]} \]
+\[ tra) \quad \frac{a=b \in A\hspace{0.1cm}type[\Gamma] \qquad b=c \in A\hspace{0.1cm}type[\Gamma]}{a=c \in A\hspace{0.1cm}type[\Gamma]} \]
 \subsection{Regole di conversione dell'uguaglianza per tipi uguali}
 \label{subsec:conversione-uguaglianza}
 L'appartenenza si conserva con l'uguaglianza di termini e tipi. Le regole da aggiungere, in una teoria dei tipi, per garantirlo sono:
-\[ conv) \quad \frac{a \in A\hspace{0.2cm}type[\Gamma] \quad A=B\hspace{0.2cm}type[\Gamma]}{a \in B\hspace{0.2cm}type[\Gamma]} \]
-\[ conv-eq) \quad \frac{a=b \in A\hspace{0.2cm}type[\Gamma] \qquad A=B\hspace{0.2cm}type[\Gamma]}{a=b \in B\hspace{0.2cm}type[\Gamma]} \]
+\[ conv) \quad \frac{a \in A\hspace{0.1cm}type[\Gamma] \quad A=B\hspace{0.1cm}type[\Gamma]}{a \in B\hspace{0.1cm}type[\Gamma]} \]
+\[ conv-eq) \quad \frac{a=b \in A\hspace{0.1cm}type[\Gamma] \qquad A=B\hspace{0.1cm}type[\Gamma]}{a=b \in B\hspace{0.1cm}type[\Gamma]} \]
 \subsection{Regole di indebolimento e di sostituzione}
 \label{subsec:indebolimento-sostituzione}
 \subsubsection{Indebolimento}
 \label{subsec:indebolimento}
-\[ ind-ty) \quad \frac{A\hspace{0.2cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.2cm}cont}{A\hspace{0.2cm}type[\Gamma,\Delta]} \quad ind-ty-eq) \quad \frac{A=B\hspace{0.2cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.2cm}cont}{A=B\hspace{0.2cm}type[\Gamma,\Delta]} \]
-\[ ind-te) \quad \frac{a \in A\hspace{0.2cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.2cm}cont}{a \in A\hspace{0.2cm}type[\Gamma,\Delta]} \quad ind-te) \quad \frac{a=b \in A\hspace{0.2cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.2cm}cont}{a=b \in A\hspace{0.2cm}type[\Gamma,\Delta]} \]
+\[ ind-ty) \quad \frac{A\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{A\hspace{0.1cm}type[\Gamma,\Delta]} \quad ind-ty-eq) \quad \frac{A=B\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{A=B\hspace{0.1cm}type[\Gamma,\Delta]} \]
+\[ ind-te) \quad \frac{a \in A\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a \in A\hspace{0.1cm}type[\Gamma,\Delta]} \quad ind-te) \quad \frac{a=b \in A\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a=b \in A\hspace{0.1cm}type[\Gamma,\Delta]} \]
 \subsubsection{Sostituzione}
 \label{subsec:sostituzione}
 \begin{equation}
 \begin{split}
-C(x_1,...,x_n)\hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-typ) \quad \frac{a_1 \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ C(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+C(x_1,...,x_n)\hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-typ) \quad \frac{a_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-C(x_1,...,x_n)\hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-typ) \quad \frac{a_1 = b_1  \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ C(a_1,...,a_n) = C(b_1,...,b_n) \hspace{0.2cm}type[\Gamma]}
+C(x_1,...,x_n)\hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-typ) \quad \frac{a_1 = b_1  \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ C(a_1,...,a_n) = C(b_1,...,b_n) \hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-Eqtyp) \quad \frac{a_1 \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-Eqtyp) \quad \frac{a_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-Eqtyp) \quad \frac{a_1 = b_1\in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-Eqtyp) \quad \frac{a_1 = b_1\in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-ter) \quad \frac{a_1 in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ c(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-ter) \quad \frac{a_1 in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-c(x_1,...,x_n) = d(x_1,...,x_n)  \in C(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eqter) \quad \frac{a_1 \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ c(a_1,...,a_n) = d(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+c(x_1,...,x_n) = d(x_1,...,x_n)  \in C(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eqter) \quad \frac{a_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) = d(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-ter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ c(a_1,...,a_n) = c(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-ter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) = c(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-c(x_1,...,x_n) = d(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.2cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-eqter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.2cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.2cm}type[\Gamma]}{ c(a_1,...,a_n) = d(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.2cm}type[\Gamma]}
+c(x_1,...,x_n) = d(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-eqter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) = d(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
@@ -415,11 +377,104 @@ Un giudizio, in teoria dei tipi dipendenti si esprime nella forma
 \[A(x_1,...,x_n)[x_1 \in B_1,...,x_n \in B_n]\]
 e prende il nome di \textbf{contesto telescopico}.
 Questi presenta una dipendenza continua, esemplificata nel seguente giudizio
-\[A(x_1,x_2,x_3)\hspace{0.2cm}type[x \in C_1, x_2 \in C(x_1), x_3 \in C(x_1 x_2)..)\]
+\[A(x_1,x_2,x_3)\hspace{0.1cm}type[x \in C_1, x_2 \in C(x_1), x_3 \in C(x_1 x_2)..)\]
 Inoltre si parla di contesti rigidi, ovvero senza possibilit\`a di scambio. Come appare dall'esempio sotto. \\
 $[x \in Nat, y \in Nat, z \in Mat(x,y)]$ cont  $\Rightarrow$ \textbf{\`e derivabile}\\
 $[y \in Nat, x \in Nat, z \in Mat(x,y)]$ cont $\Rightarrow$ \textbf{\`e derivabile}\\
 $[y \in Nat, z \in Mat(x,y), x \in Nat]$ $\Rightarrow$ \textbf{non \`e un contesto}. \\\\ Percui non esiste lo scambio arbitrario, si deve porre attenzione alle dipendenza delle assunzioni, che provoca una sostituzione rigida.
+\subsection{Esempi di applicazione}
+\label{subsec:esempi-di-applicazione}
+Attenzione all'ordine di sostituzione si deve partire sempre da quello con meno dipendenze.
+\begin{center}
+$\frac{c\hspace{0.1cm} \in [C,\Gamma] \quad b\hspace{0.1cm} \in [B(c),\Gamma] \quad A(x,y)\hspace{0.1cm}type[x \in C, y \in B(x)]}{A(c,b)\hspace{0.1cm}type[\Gamma]}$
+\end{center}
+\begin{center}
+$\frac{c\hspace{0.1cm} \in [C,\Gamma] \quad b\hspace{0.1cm} \in [B(c),\Gamma] \quad A(x,y)\hspace{0.1cm}type[x \in C, y \in B(x)]}{a(c,b) \in A(c,b)\hspace{0.1cm}type[\Gamma]}$
+\end{center}
+Se si ha un tipo puo' venire usato il giudizio di uguaglianza tra termini e la sostituzione.
+\begin{center}
+$\frac{A(x)\hspace{0.1cm} type[\Gamma, x \in C] \quad c = e\hspace{0.1cm} \in C[\Gamma]}{A(c) = A(e)\hspace{0.1cm}type[\Gamma]}$
+\end{center}
+\`E dunque fondamentale il concetto di uguaglianza fra tipi. Se considero che ci sia un elemento
+\begin{center}
+$\frac{a(x) \in A(x)\hspace{0.1cm} type[\Gamma, x \in C] \quad c = e\hspace{0.1cm} \in C[\Gamma]}{a(c) = a(e) \in A(c)\hspace{0.1cm}type[\Gamma]}$
+\end{center}
+Per poter affermare che A(e) = A(c) devo poterlo dedurre. Per farlo mi sono indispensabili le \textbf{regole di conversione dell'uguaglianza del tipaggio (\S\ref{subsec:regole-tipaggio}}.
+
+\subsection{Regole di tipaggio}
+\label{subsec:regole-tipaggio}
+
+\subsubsection{Regole di conversione}
+\label{subsubsec:regole-di-conversione}
+\[\frac{c \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{C \in D\hspace{0.1cm}type [\Gamma]}\]
+Se due tipi sono uguali allora hanno gli stessi termini: $C=D \Rightarrow (c \in C \Leftrightarrow c \in D)$. L'uguaglianza fra tipi \`e per questo simmetrica.\\
+Tuttavia non sempre l'unicit\`a del tipaggio di un termine (il $\Leftrightarrow$) \`e garantito per ogni teoria. Nei casi trattati dal corso s\`i, in quanto verr\`a inteso che $C = D\hspace{0.1cm}type[\Gamma]$ sse due tipi hanno gli stessi elementi (come gi\`a accade in \textit{set theory}), ma pu\`o non essere sempre vero.
+
+\subsubsection{Regole di conversione dell'uguaglianza}
+\label{subsubsec:regole-di-conversione-uguaglianza}
+\[\frac{c=d \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{c = d \in D \hspace{0.1cm} type [\Gamma]}\]
+Questa regola permette di convertire le uguaglianze nel tipaggio di un termine.
+
+
+\section{Il tipo singoletto}
+\label{sec:tipo-singoletto}
+Il tipo singoletto risulta essere paradigmatico per gli altri tipi. Per definirlo impiegher\`o i giudizi nella forma $A\hspace{0.1cm}type[\Gamma]$, $a \in A\hspace{0.1cm}type[\Gamma]$ e $a = b \in A\hspace{0.1cm}type[\Gamma]$. L'uguaglianza, invece, non verr\`a coinvolta, in quanto non pu\`o essere impiegata per definire un nuovo tipo, \`e difatti usata solo nelle derivazioni.\\\\
+Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivazione parte sempre dal contesto vuoto ($\varnothing$).
+\[ F-C) \quad \frac{A\hspace{0.1cm}type[\Gamma]}{\Gamma,\hspace{0.1cm}x \in A}
+\quad con \hspace{0.1cm} x\in A \notin \Gamma \]
+\subsection{Regola di formazione}
+\label{subsec:formazione}
+\begin{center}
+\[
+F-S) \quad \frac{[\Gamma] \hspace{0.1cm} cont}{N1\hspace{0.1cm}type[\Gamma]}
+\]
+\end{center}
+\textit{La regola F-S Permette di derivare vari giudizi e di dire che cosa \`e un tipo.}\\\\
+Con l'impiego solo delle regole \textit{F-C} e \textit{F-S} si possono derivare [$x_1$ $\in$ $N_1$... $x_n$ $\in$ $N_1$] cont e ottenere, cos\`i, contesti di una lista arbitraria di variabili diverse appartenenti a $N_1$, come si vede dall'esempio seguente.
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{\scriptsize{F-S)}}
+\UnaryInfC{$N_1$ type [ ]}
+\LeftLabel{\scriptsize{F-C)}}\RightLabel{\scriptsize{$x_1$ $\in$ $N_1$ $\notin$ $\varnothing$}}
+\UnaryInfC{[$x_1$ $\in$ $N_1$] cont}
+\LeftLabel{\scriptsize{F-S)}}
+\UnaryInfC{$N_1$ type [$x_1$ $\in$ $N_1$]}
+\LeftLabel{\scriptsize{F-C)}}\RightLabel{\scriptsize{$x_2$ $\in$ $N_1$ $\notin$ $x_1$ $\in$ $N_1$}}
+\UnaryInfC{[$x_1$ $\in$ $N_1$, $x_2$ $\in$ $N_1$] cont}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\label{subsec:introduzione}
+\begin{center}
+\[
+I-S) \quad \frac{[\Gamma] \hspace{0.1cm} cont}{*\in N1 \hspace{0.1cm}type[\Gamma]}
+\]
+\end{center}
+\textit{Sia $N_1$ in ogni contesto $\Gamma$, partendo da contesto $\varnothing$, la regola I-S permette di formare i termini, per mezzo dell'introduzione di un elemento costante * in $N_1$.}\\\\
+Un esempio diretto della sua applicazione \`e
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{\scriptsize{I-S)}}
+\UnaryInfC{* $\in$ $N_1$ ($x_1$ $\in$ $N_1$...$x_n$ $\in$ $N_1$)}
+\end{prooftree}
+
+\noindent\textbf{Eliminazione}
+\begin{center}
+\[
+E-S) \quad \frac{t \in N1type[\Gamma] \quad  M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)type[\Gamma]}{El_{N1}(t,c) \in M(t)type[\Gamma]}
+\]
+\end{center}
+\textit{El trattasi di costruttore di funzioni e $M[t] = M(z)[\frac{z}{t}]$.}
+\\\\
+\noindent\textbf{Conversione}
+\begin{center}
+\[
+C-D) \quad \frac{M(z)type[\Gamma, z \in N_1] \quad c  \in M(*)type[\Gamma]}{El_{N1}(*,c) = C \in M(*)type[\Gamma]}
+\]
+\end{center}
+\textit{La conversione rende possibile l'applicazione della regola di eliminazione introducendo delle uguaglianze.}
+\\\\
+\textbf{Concetto chiave}: le regole (S), (I-S), (E-S) e (C-D)  hanno una spiegazione computazionale, e riguardano la compatibilit\`a tra tipi, ma non da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente.
 
 
 
@@ -473,6 +528,7 @@ $[y \in Nat, z \in Mat(x,y), x \in Nat]$ $\Rightarrow$ \textbf{non \`e un contes
 
 \appendix
 \chapter{Tabelle}
+
 
 
 
