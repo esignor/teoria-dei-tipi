@@ -13,7 +13,25 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{bussproofs} % per alberi di deduzione naturale
+\usepackage{graphicx}
+
 \begin{document}
+\begin{figure}[H]
+\centering
+  \includegraphics[width=0.6\linewidth]{./img/logo_dip.png}
+   \label{fig: logo-unip-dipartimento-matematica}
+\end{figure}
+\begin{center}\Large{\textbf{Universit\`a degli Studi di Padova\\Dipartimento di Matematica "Tullio Levi-Civita\\Corso di Laurea Magistrale in Informatica}}\end{center}
+\begin{center}\Large{Esame di Teoria dei Tipi}\end{center}
+\begin{flushright} 
+Teoria dei Tipi\\
+\textit{Elaborato scritto - Settembre 2020}\\
+Eleonora Signor, 1237581
+\end{flushright}
+
+
+\pagebreak
+
 \tableofcontents \pagebreak
 
 \chapter{Introduzione}
@@ -533,24 +551,24 @@ No, non \`e vera. La regola di eliminazione consente di dare un valore al termin
 
 \section{Sanitary checks rules}
 \label{sec:sanitary-checks}
-Le sanitary checks sono regole strutturali derivabili utili per abbreviare le derivazioni. Queste sono derivabili solo se la teoria dei tipi \`e corretta.\\\\
+Le \textit{Sanitary checks} sono regole strutturali utili per abbreviare le derivazioni. Queste sono derivabili solo se la teoria dei tipi \`e corretta.\\\\
 \noindent
-T teoria dei tipi di riferimento.\\
+Assumento \textit{T}, come una teoria dei tipi di riferimento, le \textit{sanitary checks} sono le seguenti:
 \begin{prooftree}
 \AxiomC{[$\Gamma$, $\Delta$] cont}
 \UnaryInfC{$\Gamma$ cont}
 \end{prooftree}
-Se [$\Gamma$, $\Delta$] cont \`e derivabile in T allora anche [$\Gamma$] cont \`e derivabile in T.
+Se [$\Gamma$, $\Delta$] cont \`e derivabile in \textit{T} allora anche [$\Gamma$] cont \`e derivabile in \textit{T}.
 \begin{prooftree}
 \AxiomC{J$_1$,...,J$_n$}
 \UnaryInfC{J}
 \end{prooftree}
-Se J$_i$ con i = 1,...,n in T sono derivabili allora anche J \`e derivabile in T.
+Se J$_i$ con i = 1,...,n in \textit{T} sono derivabili allora anche J \`e derivabile in \textit{T}.
 \begin{prooftree}
 \AxiomC{A type [$\Gamma$]}
 \UnaryInfC{$\Gamma$ cont}
 \end{prooftree}
-Se A type [$\Gamma$] \`e derivabile in T allora anche $\Gamma$ cont \`e derivabile in T.
+Se A type [$\Gamma$] \`e derivabile in \textit{T} allora anche $\Gamma$ cont \`e derivabile in \textit{T}.
 \begin{center}
 \AxiomC{A = B type [$\Gamma$]}
 \UnaryInfC{A type[$\Gamma$]}
@@ -559,12 +577,12 @@ Se A type [$\Gamma$] \`e derivabile in T allora anche $\Gamma$ cont \`e derivabi
 \UnaryInfC{B type[$\Gamma$]}
 \DisplayProof
 \end{center}
-Se A = B type [$\Gamma$] \`e derivabile in T allora anche A type[$\Gamma$] e B type[$\Gamma$] sono derivabili in T.
+Se A = B type [$\Gamma$] \`e derivabile in \textit{T} allora anche A type[$\Gamma$] e B type[$\Gamma$] sono derivabili in \textit{T}.
 \begin{prooftree}
 \AxiomC{a $\in$ A type [$\Gamma$]}
 \UnaryInfC{A type[$\Gamma$]}
 \end{prooftree}
-Se a $\in$ A type [$\Gamma$] \`e derivabile in T allora anche A type[$\Gamma$] \`e derivabile in T.
+Se a $\in$ A type [$\Gamma$] \`e derivabile in \textit{T} allora anche A type[$\Gamma$] \`e derivabile in \textit{T}.
 \begin{center}
 \AxiomC{a = b $\in$ A type [$\Gamma$]}
 \UnaryInfC{a $\in$ A type[$\Gamma$]}
@@ -573,10 +591,36 @@ Se a $\in$ A type [$\Gamma$] \`e derivabile in T allora anche A type[$\Gamma$] \
 \UnaryInfC{b $\in$ A type[$\Gamma$]}
 \DisplayProof
 \end{center}
-Se a = b $\in$ A type [$\Gamma$] \`e derivabile in T allora anche a $\in$ A type[$\Gamma$] e b $\in$ A type[$\Gamma$] sono  derivabile in T.
+Se a = b $\in$ A type [$\Gamma$] \`e derivabile in \textit{T} allora anche a $\in$ A type[$\Gamma$] e b $\in$ A type[$\Gamma$] sono  derivabili in \textit{T}.
 \section{Esercizi}
 \label{sec:esercizi-cap2}
-Dimostrare che da \textit{E-S} ri riesce a ottenere \textit{E-S$_{dip}$} usando le derivazioni.
+\textbf{Dimostrare che da \textit{E-S} si riesce a ottenere \textit{E-S$_{dip}$} usando le derivazioni.}\\\\
+\textbf{Dimostrare che la regola \textit{E-S} \`e derivabile in una teoria dei tipi \textit{T$_1$}, rimpiazzando la regola di eliminazione \textit{E-S} con la regola \textit{E-N${_1prog}$}, con aggiunta delle regole di indebolimento, sostituzione e di \textit{sanitary checks}}.
+\begin{prooftree}
+\AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{d $\in$ D(*) type[$\Gamma$] }
+\LeftLabel{E-N$_{1prog}$)}
+\BinaryInfC{EL$_N1$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{t` $\in$ N$_1$ type[$\sum$] }
+\AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{d` $\in$ M(*) type[$\sum$] }
+\LeftLabel{E-S)}
+\TrinaryInfC{El$_{N1}$(t`, d`) $\in$ M(t`) type[$\Gamma$]}
+\end{prooftree}
+\textbf{Svolgimento}\\\\
+
+
+
+
+%\begin{prooftree}
+%\AxiomC{t $\in$ N$_1$ type[$\Gamma$] }
+%\AxiomC{M(z) type [$\Gamma$, z $\in$ N$_1$]}
+%\LeftLabel{E-S}
+%\TrinaryInfC{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
+%\end{prooftree}
+
 
 
 
