@@ -463,7 +463,7 @@ Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivaz
 \begin{prooftree}
 \AxiomC{[$\Gamma$] cont}
 \LeftLabel{F-S)}
-\UnaryInfC{$N_1$ type[$\Gamma]$ cont}
+\UnaryInfC{$N_1$ type[$\Gamma]$}
 \end{prooftree}
 \textit{La regola F-S Permette di derivare vari giudizi e di dire che cosa \`e un tipo.}\\\\
 Con l'impiego solo delle regole \textit{F-C} e \textit{F-S} si possono derivare [$x_1$ $\in$ $N_1$... $x_n$ $\in$ $N_1$] cont e ottenere, cos\`i, contesti di una lista arbitraria di variabili diverse appartenenti a $N_1$, come si vede dall'esempio seguente.
@@ -483,14 +483,14 @@ Con l'impiego solo delle regole \textit{F-C} e \textit{F-S} si possono derivare 
 \begin{prooftree}
 \AxiomC{[$\Gamma$] cont}
 \LeftLabel{I-S)}
-\UnaryInfC{* $\in$ $N_1$ type[$\Gamma]$ cont}
+\UnaryInfC{$\ast$ $\in$ $N_1$ type[$\Gamma]$ cont}
 \end{prooftree}
-\textit{Sia $N_1$ in ogni contesto $\Gamma$, partendo da contesto $\varnothing$, la regola I-S permette di formare i termini, per mezzo dell'introduzione di un elemento costante * in $N_1$.}\\\\
+\textit{Sia $N_1$ in ogni contesto $\Gamma$, partendo da contesto $\varnothing$, la regola I-S permette di formare i termini, per mezzo dell'introduzione di un elemento costante $\ast$ in $N_1$.}\\\\
 Un esempio diretto della sua applicazione \`e
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{I-S)}
-\UnaryInfC{* $\in$ $N_1$ ($x_1$ $\in$ $N_1$...$x_n$ $\in$ $N_1$)}
+\UnaryInfC{$\ast$ $\in$ $N_1$ ($x_1$ $\in$ $N_1$...$x_n$ $\in$ $N_1$)}
 \end{prooftree}
 
 \subsection{Regole di Eliminazione}
@@ -498,9 +498,9 @@ Un esempio diretto della sua applicazione \`e
 \begin{prooftree}
 \AxiomC{t $\in$ $N_1$ type[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
-\AxiomC{c  $\in$ M(*) type[$\Gamma$]}
+\AxiomC{c  $\in$ M($\ast$) type[$\Gamma$]}
 \LeftLabel{E-S)}
-\TrinaryInfC{$El_{N1}$(t, c) $\in$ M(*) type[$\Gamma$]}
+\TrinaryInfC{$El_{N1}$(t, c) $\in$ M($\ast$) type[$\Gamma$]}
 \end{prooftree}
 \noindent
 \textit{El trattasi di costruttore di funzioni e $M[t] = M(z)[\frac{z}{t}]$.}
@@ -508,7 +508,7 @@ Un esempio diretto della sua applicazione \`e
 La regola di eliminazione si pu\`o equivalentemente scrivere in un altro modo
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
-\AxiomC{c  $\in$ M(*) type[$\Gamma$]}
+\AxiomC{c  $\in$ M($\ast$) type[$\Gamma$]}
 \LeftLabel{E-S)$_{dip}$}
 \BinaryInfC{$El_{N1}$(z, c) $\in$ M(z) type[$\Gamma$, z $\in$ $N_1$]}
 \end{prooftree}
@@ -516,7 +516,7 @@ Le regole \textit{E-S)$_{dip}$} + \textit{la regole di sostituzione} + \textit{F
 \begin{prooftree}
 \AxiomC{t $\in$ $N_1$ type[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
-\AxiomC{c $\in$ M(*) type[$\Gamma$]}
+\AxiomC{c $\in$ M($\ast$) type[$\Gamma$]}
 \LeftLabel{E-S)$_{dip}$}
 \BinaryInfC{$El_{N1}$(z, c) $\in$ M(z) type[$\Gamma$]}
 \LeftLabel{sost)}
@@ -528,23 +528,23 @@ Inoltre vale anche il viceversa, da \textit{E-S} si riesce a ottenere \textit{E-
 \label{subsec:conversione}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
-\AxiomC{c $\in$ M(*) type[$\Gamma$]}
+\AxiomC{c $\in$ M($\ast$) type[$\Gamma$]}
 \LeftLabel{C-S)}
-\BinaryInfC{$El_{N1}$(*, c) = c $\in$ M(*) type[$\Gamma$]}
+\BinaryInfC{$El_{N1}$($\ast$, c) = c $\in$ M($\ast$) type[$\Gamma$]}
 \end{prooftree}
 \textit{La conversione rende possibile l'applicazione della regola di eliminazione introducendo delle uguaglianze.}
 \\\\
 Le regole \textit{(S), (I-S), (E-S)} e \textit{(C-S)}  hanno una spiegazione computazionale, e riguardano la compatibilit\`a tra tipi, ma non da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente.
 \subsection{Osservazioni sul tipo singoletto}
 \label{subsec:osservazioni}
-L'eliminatore El$_{N1}$(z, c) rappresenta una funzione definita per ricorsione su N$_1$, difatti in \textit{C-S} si ha che El$_{N1}$(z, c)[$\frac{z}{*}$] = El$_{N1}$(*, c).\\
-Supposto che se * $\in$ N$_1$[$\Gamma$] in \textit{E-S}, allora per la singola conversione vale che El$_{N1}$ = c $\in$ M(*).
-Dunque El$_{N1}$(z, c) rappresenta un programma funzionale per ricorsione. Questi \`e definito su N$_1$, a partire da c $\in$ M(*), perci\`o El$_{N1}$(*, c) = c.\\
-La regola di eliminazione permette di definire un programma funzionale da N$_1$ a M(z) esclusivamente con c $\in$ M(*), ovvero definendo * come \textbf{elemento canonico}.
+L'eliminatore El$_{N1}$(z, c) rappresenta una funzione definita per ricorsione su N$_1$, difatti in \textit{C-S} si ha che El$_{N1}$(z, c)[$\frac{z}{\ast}$] = El$_{N1}$($\ast$, c).\\
+Supposto che se $\ast$ $\in$ N$_1$[$\Gamma$] in \textit{E-S}, allora per la singola conversione vale che El$_{N1}$ = c $\in$ M($\ast$).
+Dunque El$_{N1}$(z, c) rappresenta un programma funzionale per ricorsione. Questi \`e definito su N$_1$, a partire da c $\in$ M($\ast$), perci\`o El$_{N1}$($\ast$, c) = c.\\
+La regola di eliminazione permette di definire un programma funzionale da N$_1$ a M(z) esclusivamente con c $\in$ M($\ast$), ovvero definendo $\ast$ come \textbf{elemento canonico}.
 \\\\
 In \begin{prooftree}
 \AxiomC{t $\in$ N$_1$[$\Gamma$]}
-\UnaryInfC{t = * $\in$ N$_1$[$\Gamma$]}
+\UnaryInfC{t = $\ast$ $\in$ N$_1$[$\Gamma$]}
 \end{prooftree}
 risulta vera l'uguaglianza definizionale?\\
 No, non \`e vera. La regola di eliminazione consente di dare un valore al termine canonico, permettendo cos\`i di attribuire un valore a tutti i possibili termini del singoletto. Ma in generale questo non vale all'interno della teoria. Difatti l'uguaglianza definizionale \`e diversa da quella matematica e va intesa come computazionale e non proposizionale (come definito in \S \ref{subsec:uguaglianza-computazionale-proposizionale}).
@@ -596,18 +596,87 @@ Se a = b $\in$ A type [$\Gamma$] \`e derivabile in \textit{T} allora anche a $\i
 \label{sec:esercizi-cap2}
 \paragraph{1.}
 \textbf{Dimostrare che da \textit{E-S} si riesce a ottenere \textit{E-S$_{dip}$} usando le derivazioni.}
-\paragraph{2.} 
+\paragraph{2} 
+\textbf{Data}
+\begin{prooftree}
+\AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{d $\in$ M($\ast$) type[$\Gamma$]}
+\LeftLabel{E-N$_{1prog}$)}
+\BinaryInfC{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\end{prooftree}
+\textbf{dimostrare che in \textit{T$_1$} la regola \textit{E-N$_1prog$} \`e derivabile. Al fine di ci\`o basta mostrare che se i giudizi premessa sono derivabili, allora lo \`e anche il giudizio di conclusione.}\\\\
+\textbf{Soluzione}\\\\
+\textit{Per una maggiore comprensione delle derivazioni, ho ritenuto opportuno, ove necessario, spezzare l'albero in pi\`u parti.}
+
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{s-checks}
+\UnaryInfC{[$\Gamma$, w $\in$ N$_1$] cont}
+\LeftLabel{var}
+\UnaryInfC{w $\in$ N$_1$ type[$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{d $\in$ M($\ast$) type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$] cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{M(w) type[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$]}
+\AxiomC{}
+\UnaryInfC{z $\in$ $N_1$ type[$\Gamma$, z $\in$ $N_1$, w $\in$ N$_1$]}
+\LeftLabel{sub-typ}
+\BinaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{s-checks}
+\UnaryInfC{[$\Gamma$, w $\in$ N$_1$] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ $\Gamma$}
+\UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$] cont}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{s-checks}
+\UnaryInfC{[$\Gamma$, w $\in$ N$_1$] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ $\Gamma$}
+\UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$] cont}
+\LeftLabel{var}
+\UnaryInfC{z $\in$ $N_1$ type[$\Gamma$, z $\in$ $N_1$, w $\in$ N$_1$]}
+\end{prooftree}
+Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$) type[$\Gamma$]}) siano valide, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.
+
+
+
+
+
+\paragraph{3.} 
 \textbf{Dimostrare che la regola \textit{E-S} \`e derivabile in una teoria dei tipi \textit{T$_1$}, in cui si \`e rimpiazziata la regola di eliminazione \textit{E-S} con la regola \textit{E-N${_1prog}$}, aggiungendovi le regole di indebolimento, sostituzione e di \textit{sanitary checks}}.
 \begin{prooftree}
 \AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
-\AxiomC{d $\in$ D(*) type[$\Gamma$]}
+\AxiomC{d $\in$ M($\ast$) type[$\Gamma$]}
 \LeftLabel{E-N$_{1prog}$)}
-\BinaryInfC{EL$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\BinaryInfC{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
 \end{prooftree}
 \begin{prooftree}
 \AxiomC{t` $\in$ N$_1$ type[$\sum$] }
 \AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
-\AxiomC{d` $\in$ M(*) type[$\sum$] }
+\AxiomC{d` $\in$ M($\ast$) type[$\sum$] }
 \LeftLabel{E-S)}
 \TrinaryInfC{El$_{N1}$(t`, d`) $\in$ M(t`) type[$\Gamma$]}
 \end{prooftree}
@@ -619,13 +688,13 @@ Se a = b $\in$ A type [$\Gamma$] \`e derivabile in \textit{T} allora anche a $\i
 \AxiomC{}
 \UnaryInfC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
 \AxiomC{}
-\UnaryInfC{d $\in$ D(*) type[$\Gamma$]}
+\UnaryInfC{d $\in$ D($\ast$) type[$\Gamma$]}
 \LeftLabel{E-N$_{1prog}$)}
 \BinaryInfC{El$_{N1}$(w, d') $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
 \LeftLabel{sub-typ)}
 \BinaryInfC{El$_{N1}$(t', d') $\in$ M(t') type[$\Gamma$]}
 \end{prooftree}
-Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} e di \textit{E-S}.
+Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (come dimostro nell'esercizio 2) e di \textit{E-S}.
 
 
 
