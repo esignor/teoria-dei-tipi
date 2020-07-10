@@ -540,7 +540,7 @@ Le regole \textit{(S), (I-S), (E-S)} e \textit{(C-S)}  hanno una spiegazione com
 L'eliminatore El$_{N1}$(z, c) rappresenta una funzione definita per ricorsione su N$_1$, difatti in \textit{C-S} si ha che El$_{N1}$(z, c)[$\frac{z}{\ast}$] = El$_{N1}$($\ast$, c).\\
 Supposto che se $\ast$ $\in$ N$_1$[$\Gamma$] in \textit{E-S}, allora per la singola conversione vale che El$_{N1}$ = c $\in$ M($\ast$).
 Dunque El$_{N1}$(z, c) rappresenta un programma funzionale per ricorsione. Questi \`e definito su N$_1$, a partire da c $\in$ M($\ast$), perci\`o El$_{N1}$($\ast$, c) = c.\\
-La regola di eliminazione permette di definire un programma funzionale da N$_1$ a M(z) esclusivamente con c $\in$ M($\ast$), ovvero definendo $\ast$ come \textbf{elemento canonico}.
+La regola di eliminazione permette di definire un programma funzionale da N$_1$ a M(z) esclusivamente con c $\in$ M($\ast$), ovvero definendo $\ast$ come \textbf{elemento canonico}. Inoltre non svolge solo il compito di ricorsione, ma anche d'nduzione.
 \\\\
 In \begin{prooftree}
 \AxiomC{t $\in$ N$_1$[$\Gamma$]}
@@ -592,6 +592,44 @@ Se a $\in$ A type [$\Gamma$] \`e derivabile in \textit{T} allora anche A type[$\
 \DisplayProof
 \end{center}
 Se a = b $\in$ A type [$\Gamma$] \`e derivabile in \textit{T} allora anche a $\in$ A type[$\Gamma$] e b $\in$ A type[$\Gamma$] sono  derivabili in \textit{T}.
+
+\section{Schema generale}
+\label{sec: schema-generale}
+Di seguito illustro uno schema generale, valido per ogni teoria dei tipi, di produzione di regole definenti un tipo, i suoi termini e l'uguaglianza.
+\begin{enumerate}
+\item \textbf{Regole di formazione}
+Identificate con il preambolo F-\textit{T} con \textit{T} teoria dei tipi in esame.\\Tali regole sono del tipo k e rispettano la forma 
+\AxiomC{[$\Gamma$] cont}
+\UnaryInfC{\textit{T} type[$\Gamma$]}
+\DisplayProof
+\item \textbf{Regole di introduzione}
+identificate con il preambolo I-\textit{T} con \textit{T} teoria dei tipi in esame.\\Tali regole consistono nella forma introduttiva degli elementi canonici di \textit{T} e rispettono la forma
+\AxiomC{[$\Gamma$] cont}
+\UnaryInfC{t $\in$ \textit{T} type[$\Gamma$]}
+\DisplayProof
+\item \textbf{Regole di eliminazione}
+identificate con il preambolo E-\textit{T} con \textit{T} teoria dei tipi in esame.\\Tali regole sono definenti E$_k$, a partire dagli elementi di k a valori in un tipo M(z) type[$\Gamma$, z $\in$k]. L'ipotesi valida \`e che siano dati degli elementi in M(z) sui valori canonici di k.
+Tali regole sono del tipo k e rispettano la forma 
+\AxiomC{t $\in$ \textit{T} type[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ \textit{T}]}
+\AxiomC{c  $\in$ M($\ast$) type[$\Gamma$]}
+\TrinaryInfC{$El_{\textit{T}}$(t, c) $\in$ M($\ast$) type[$\Gamma$]}
+\DisplayProof
+\item \textbf{Regole di conversione}
+identificate con il preambolo C-\textit{T} con \textit{T} teoria dei tipi in esame.\\, che stabilscono che gli eliminatori in (3) sono stabiliti per ricorsione a partire dalle ipotesi.
+Tali regole sono del tipo k e rispettano la forma
+\AxiomC{M(z) type[$\Gamma$, z $\in$ \textit{T}]}
+\AxiomC{c $\in$ M(t) type[$\Gamma$]}
+\LeftLabel{C-S)}
+\BinaryInfC{El$_{\textit{T}}$(t, c) = c $\in$ M(t) type[$\Gamma$]}
+\DisplayProof
+\item \textbf{Regole di uguaglianza}
+tali regole stabiliscono che i costruttori di k in (2) e (3) permettono l'uguaglianza definizionale dei termini da cui dipendono.
+\end{enumerate}
+\noindent
+Le regole (5) sono implicite, in \textit{T}, ma non ovvie dal punto di vista computazionale.
+
+
 \section{Esercizi}
 \label{sec:esercizi-cap2}
 \paragraph{1.}
