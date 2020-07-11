@@ -1,5 +1,7 @@
 \documentclass[10pt,a4paper, italian]{book}
 \usepackage[italian]{babel}
+\usepackage[T1]{fontenc} % riconosce gli acenti
+\usepackage[utf8]{inputenc} % riconosce gli acenti
 \usepackage{amssymb}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
@@ -266,7 +268,7 @@ Risulta vero che 1$\equiv$\{$\varnothing$\}, poich\`e 0 $\equiv$ $\varnothing$.
 \end{itemize}
 \subsection{Uguaglianza definizionale vs uguaglianza proposizionale}
 \label{subsec:uguaglianza-computazionale-proposizionale}
-Specifico \textbf{a = b$\in$ A[$\Gamma$]} come l'uguaglianza computazionale/definizionale, che viene data come primitiva e non va confusa con l'uguaglianza proposizionale/estensionale tra a e b.\\L'uguaglianza proposizionale a = b \`e rappresentata non da un giudizio, che asserisce solo ci\`o che \`e vero, ma bens\`i da un tipo Eq(A,a,b) che pu\`o anche essere senza termini e/o essere falso, dal punto di vista logico.\\\\
+Specifico \textbf{a = b$\in$ A[$\Gamma$]} come l'uguaglianza computazionale/definizionale, che viene data come primitiva e non va confusa con l'uguaglianza proposizionale/estensionale tra a e b.\\L'uguaglianza proposizionale a =$_A$ b \`e rappresentata non da un giudizio, che asserisce solo ci\`o che \`e vero, ma bens\`i da un tipo Eq(A,a,b) che pu\`o anche essere senza termini e/o essere falso, dal punto di vista logico.\\\\
 Visti come programmi, a e b rappresentano lo stesso programma. In $\lambda$-calcolo a$\rightarrow$b oppure b$\rightarrow$a (si riducono). Inoltre a e b possono essere sia termini finali che trovarsi in mezzo alla computazione.
 \subsection{Generazione di contesti}
 \label{subsec:generazione-di-contesti}
@@ -635,6 +637,85 @@ Tali regole sono del tipo k e rispettano la forma\\
 \noindent
 Le regole (5) sono implicite in \textit{T}, ma non ovvie dal punto di vista computazionale.
 
+\section{Uguaglianza definizionale}
+\label{sec: uguaglianza-definizionale}
+\textit{Definizione}: se P$_1$ e P$_2$ programmi\\\\
+\textit{$P_1$, $P_2$: Nat$^m$  $\rightarrow$ Nat \quad allora \quad
+$P_1$ = $P_2$ sse $\forall$ n$_1$...n$_m$ e P$_1$(n$_1$...n$_m$) = P$_2$(n$_1$...n$_m$)} non \`e decidibile.\\\\
+Ovvero le funzioni ricorsive per P$_1$ e P$_2$ non sono decidibili. A seguito di ci\`o non esiste un algoritmo in grado di decidere se due programmi P$_1$ e P$_2$ sono estensionalmente (proposizionalemente) uguali o meno.\\\\
+Risulta per\`o vero il concetto di \textbf{ugualianza definizionale}/computazionale (intensionale). Dati a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] derivabili, nella nostra teoria \textit{T} di \textit{Martin-L$\ddot{o}$f}, esiste un algoritmo \textit{H} (a $\in$ A[$\Gamma$], b $\in$ A[$\Gamma$]) =
+$
+\begin{cases}
+\text{\textbf{sì} sse a = b} \in A[\Gamma]  \text{ è derivabile in \textit{T}} \\
+\text{\textbf{no} sse a = b} \in A[\Gamma] \text{ non ha derivazione in \textit{T}}
+\end{cases}
+$
+Il giudizio a $=$ b $\in$ A[$\Gamma$] \`e decidibile, anche con \textit{J} giuduzio, in teoria dei tipi di \textit{Martin-L$\ddot{o}$f}, derivabile. Percui con H si scrive: Giudizi di \textit{T} $\rightarrow$ \{0,1\}\\
+H[\textit{J}] =
+$
+\begin{cases}
+\textbf{1} \text{ sse \textit{J} è derivabile in \textit{T}}  \\
+\textbf{0} \text{ sse \textit{J} non è derivabile in \textit{T}}
+\end{cases}
+$
+\\
+H lavora come un \textit{proof assistant}(esempio \textit{COQ}).\\\\
+\noindent
+\textit{Definzione}: i termini \textit{untyped} sono
+\begin{center}t = x $|$ $\ast$ $|$ El$_N1$(t$_1$, t$_2$)\end{center}
+\textit{Definizione}: \begin{center}$\rightarrow$ $_1$ $\subseteq$ term x term\end{center}
+t$_1$ $\rightarrow$ $_1$ $\rightarrow$ $\equiv$ t$_1$ si riduce in un passo di computazione a t$_2$. Ecco che esiste una relazione che computa t$_1$ con t$_2$.\\
+La relazione viene definita all'interno dei termini con l'uso delle seguenti regole:
+\\\\
+\begin{itemize}
+\item $\beta$-rid) El$_{N1}$($\ast$, t) $\rightarrow$ $_1$ t
+\item \AxiomC{t$_1$ $\rightarrow$ t$_2$}
+\LeftLabel{red$_I$)}
+\UnaryInfC{El$_{N1}$(t$_1$, c) $\rightarrow$ $_1$ El$_{N1}$(t$_2$, c)}
+\DisplayProof
+\AxiomC{c$_1$ $\rightarrow$ c$_2$}
+\LeftLabel{red$_{II}$)}
+\UnaryInfC{El$_{N1}$(t, c$_1$) $\rightarrow$ $_1$ El$_{N1}$(t, c$_2$)}
+\DisplayProof
+\item red$_{I}$ e red$_{II}$ possono venire simultate da un'unica regola
+\AxiomC{t$_1$ $\rightarrow$ $_1$ t$_2$}
+\AxiomC{c$_1$ $\rightarrow$ $_1$ c$_2$}
+\BinaryInfC{El$_{N1}$(t$_1$, c$_1$) $\rightarrow$ $_1$ El$_{N1}$(t$_2$, c$_2$)}
+\DisplayProof
+\end{itemize}
+\noindent
+\textit{$\beta$-rid} risulta valida per \textit{C-S}, le regole di riduzione red$_{I}$ e red$_{II}$ per \textit{eq-E-S}.\\\\
+\noindent \textit{Definzione}:\textbf{Teoria di Validit\`a}\\ Dati t $\in$ A[$\Gamma$] e s $\in$ A[$\Gamma$] in \textit{T$_1$} \quad allora \quad $\rightarrow$ $_1$ s $\Rightarrow$ t = s $\in$ A[$\Gamma$] derivabile in \textit{T}.
+\\\\
+\noindent \textit{Definizione}: t termine \textit{untyped} \`e in forma normale (in NF) sse non esiste termine s tale che t $\rightarrow$ $_1$ s.\\  Le forme normali sono i valori assumibili dai programmi.
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{XXX}
+\hline 
+\rowcolor{orange}
+{\color[HTML]{FFFFFF}\textbf{termini}} & {\color[HTML]{FFFFFF} \textbf{termini in forma canonica}} & {\color[HTML]{FFFFFF}\textbf{termini non in forma canonica o introduttiva}}\\
+\hline\hline
+termini in NF & $\ast$ & x, El$_{N1}$(x, $\ast$)\\
+termini non in NF & No per N$_1$ & El$_{N1}$($\ast$, x)\\
+\end{tabularx}
+\caption{\label{tab:tipi-dipendenti}Termini a $\rightarrow$ $_1$ di N$_1$.} 
+\end{table}
+\noindent
+I termini non in forma canonica  derivano dalle regole di introduzione; invece quelli non in forma canonica vengono introdotte dall'eliminatore.\\\\
+L'uguaglianza definizionale ha come scopo la chiusura riflessiva, simmetrica e transitiva delle derivazioni.\\\\
+In N$_1$ sono vere le seguenti regole di $\beta$-red: 
+\begin{itemize}
+\item \textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow$ $_1$ $\ast$}
+\item \textit{El$_{N1}$($\ast$, x) $\rightarrow$ $_1$ x}
+\end{itemize}
+\noindent
+Per ogni teoria \text{T} $\rightarrow$ $_1$ non \`e deterministica.
+
+ 
+
+
 
 \section{Esercizi}
 \label{sec:esercizi-cap2}
@@ -706,9 +787,6 @@ Le regole (5) sono implicite in \textit{T}, ma non ovvie dal punto di vista comp
 Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$) type[$\Gamma$]}) siano valide, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.
 
 
-
-
-
 \paragraph{3.} 
 \textbf{Dimostrare che la regola \textit{E-S} \`e derivabile in una teoria dei tipi \textit{T$_1$}, in cui si \`e rimpiazziata la regola di eliminazione \textit{E-S} con la regola \textit{E-N${_1prog}$}, aggiungendovi le regole di indebolimento, sostituzione e di \textit{sanitary checks}}.
 \begin{prooftree}
@@ -740,6 +818,33 @@ Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\
 \end{prooftree}
 Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (come dimostro nell'esercizio 2) e di \textit{E-S}.
 
+\paragraph{4}
+\textbf{Costruire l'albero dei cammini di passi di riduzione  possibili fino a un termine in NF, ovvero non ulteriormente riducibile rispetto alla relazione del termine $\rightarrow$ $_1$ del termine.}
+\begin{center}
+El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))
+\end{center}
+\textbf{Soluzione}\\
+$\beta$-red:\\
+\textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow$ $_1$ $\ast$}\\
+\textit{El$_{N1}$($\ast$, x) $\rightarrow$ $_1$ x}
+
+\begin{prooftree}
+\AxiomC{x}
+\LeftLabel{$\beta$ N$_1$ red}
+\UnaryInfC{El$_{N1}$($\ast$, x)}
+\AxiomC{x}
+\RightLabel{$\beta$ N$_1$ red}
+\UnaryInfC{El$_{N1}$($\ast$, x)}
+\LeftLabel{$\beta$ N$_1$ red}\RightLabel{red$_{II}$}
+\BinaryInfC{El$_{NI}$($\ast$, El$_{N1}$($\ast$, x))}
+\AxiomC{x}
+\RightLabel{$\beta$ N$_1$ red}
+\UnaryInfC{El$_{N1}$($\ast$, x)}
+\RightLabel{red$_I$}
+\UnaryInfC{El$_{N1}$(El$_{N1}$($\ast$,$\ast$), x)}
+\LeftLabel{red$_{I}$}\RightLabel{red$_{II}$}
+\BinaryInfC{El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))}
+\end{prooftree}
 
 
 
