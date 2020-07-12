@@ -319,21 +319,58 @@ Prendendo in considerazione una strategia di riduzione deterministica \textit{ca
 \begin{center}($\lambda$x x(x))($\lambda$y y(y)) $\rightarrow_1$ ($\lambda$y y(y))($\lambda$y y(y))  $\rightarrow_1$ ... $\rightarrow_1$ ($\lambda$y y(y))($\lambda$y y(y)) $\rightarrow_1$ ... \end{center}
 Si riduce sempre a se stessa, a qualunque passo di computazione. Perci\`o ammette computazione infinita (diverge) non raggiungendo mai un valore finale.
 \paragraph{6} 
-Che relazione c'\`e tra il lambda-calcolo puro con le regole di riduzione date sopra rispetto a quello in cui adottando la stessa sintassi di termini imponiamo la seguente definizione di riduzione $\rightarrow_1^\ast$.
+Che relazione c'\`e tra il lambda-calcolo puro con le regole di riduzione date in \S{\ref{subsec:lambda-calcolo}, rispetto a quello in cui, adottando la stessa sintassi di termini, imponiamo la seguente definizione di riduzione $\rightarrow_1^\ast$.
 \begin{itemize}
 \item per ogni termine t e b ($\lambda$x.t)(b) $\rightarrow_1^\ast$ t[$\frac{x}{b}$]
-\item per ogni termine b, b1, b2 e a, a1, a2
-\begin{center}
+\item per ogni termine b, b$_1$, b$_2$ e a, a$_1$, a$_2$
 \AxiomC{a1 $\rightarrow_1^\ast$ a2}
 \AxiomC{b1 $\rightarrow_1^\ast$ b2}
+\begin{center}
+\LeftLabel{R$_I$}
 \BinaryInfC{a1(b1)$ \rightarrow_1^\ast$ a2(b2)}
 \DisplayProof
+\qquad
 \AxiomC{t1 $\rightarrow_1^\ast$ t2}
+\LeftLabel{R$_{II}$}
 \UnaryInfC{$\lambda$ x.t1 $\rightarrow_1^\ast$ $\lambda$x.t2}
 \DisplayProof
-
 \end{center}
 \end{itemize}
+\noindent
+\\\\
+\textit{Svolgiemento}\\\\
+\textit{Idea: devo provare che relazione esiste tra $\rightarrow_1^\ast$ e $\rightarrow$. Per cui verifico cosa accade per ($\rightarrow_1^\ast \subseteq \rightarrow_1$) e ($\rightarrow_1 \subseteq \rightarrow_1^\ast$)}\\\\
+\noindent Sia L(\textit{T}) l'insieme dei $\lambda$ termini che \`e possibile ridurre in forma normale, con la strategia di riduzione \textit{T}. Dimostro che valgono le seguenti relazioni tra $\rightarrow_1^\ast e \rightarrow$:
+\begin{enumerate}
+\item L($\rightarrow_1^\ast$) $\nsubseteq$ L($\rightarrow_1$)
+\item L($\rightarrow_1^\ast$) $\subset$ L($\rightarrow_1$)
+\end{enumerate}
+\noindent
+\begin{enumerate}
+\item Si ha il $\lambda$ termine t $\equiv$ (($\lambda$x.x)z)(($\lambda$y.y)w)\\
+Allora applicando la strategia di riduzione $\rightarrow$, ottengo
+\begin{prooftree}
+\AxiomC{$\lambda$x.x $\rightarrow$ z}
+\UnaryInfC{(($\lambda$x.x)z)(($\lambda$y.y)w) $\rightarrow$ z(($\lambda$y.y)w)}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{($\lambda$y.y)w $\rightarrow$ w}
+\UnaryInfC{z(($\lambda$y.y)w) $\rightarrow$ z(w)}
+\end{prooftree}
+\noindent Dunque riesco a giungere a una forma normale.\\
+Cosa che non \`e possibile con la strategia $\rightarrow_1^\ast$. In quanto (($\lambda$x.x)z)(($\lambda$y.y)w) $\rightarrow_1^\ast$ (($\lambda$x.x)z)(($\lambda$y.y)w)  che non \`e in forma normale ((($\lambda$x.x)z)(($\lambda$y.y)w) $\nrightarrow_1^\ast$).\\
+In conclusione risulta vero che L($\rightarrow_1^\ast$) $\nsubseteq$ L($\rightarrow_1$).
+\item Per provare l'inclusione di L($\rightarrow_1^\ast$) in L($\rightarrow_1$) basta che dimostro, per una valutazione che usa entrambe le strategie, il sempre possibile rimpiazzo della regola R$_I$ con la sua regola corrispondente in $\nrightarrow_1$ (A$_I$ + A$_{II}$) . Pi\`u formalmente significa provare che per ogni valutazione di un termine M, che usa la regola R$_I$, si pu\`o sempre ottenere una valutazione che usa solo regole della strategia $\nrightarrow_1$.\\ Per farlo procedo per induzione sul numero di volte n che la regola R$_I$ viene utilizzata durante la valutazione di M.
+\begin{itemize}
+\item (n=0): caso base. La regola R$_I$ non viene mai utilizzata nella valutazione di M, e dunque M \`e gi\`a impicitamente dimostrato con la strategia $\nrightarrow_1$
+\item (n $\rightarrow$ n+1): caso induttivo. Per n risulta vero che L($\rightarrow_1^\ast$) $\subset$ L($\rightarrow$), devo provare che vale anche per n+1. Inoltre la valutazione di M utilizza almeno una volta la regola R$_I$.\\
+Dunque ho M $\rightarrow$...$\xrightarrow[]{R_I}_1^\ast$M$^I$ e voglio costruire una derivazione M $\rightarrow$...$\xrightarrow[]{A_I}_1M_1\xrightarrow[]{A_{II}}_1M^I$.
+Le strategie di valutazione sono deterministiche, portano pertanto allo stesso risultato della sequenza di derivazione, percui R$_I$ = A$_I$ + A$_{II}$ risulta vero. Inoltre per ipotesi induttiva \`e sempre possibile avere una valutazione con l'utilizzo di solo regole $\rightarrow_1$ (A$_I$ + A$_{II}$ esistono). Perci\`o risulta corretto rimpiazzare $\rightarrow_1^\ast$ con $\rightarrow_1$.\\ In conclusione risulta vero che L($\rightarrow_1^\ast$) $\subset$ L($\rightarrow_1$).
+\end{itemize}
+\end{enumerate}
+
+
+
 
 
 
