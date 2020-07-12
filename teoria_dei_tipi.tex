@@ -274,6 +274,69 @@ Visti come programmi, a e b rappresentano lo stesso programma. In $\lambda$-calc
 \label{subsec:generazione-di-contesti}
 Esiste anche un quinto giudizio ausiliario (\$ \ref{subsec:formazione-contesti}) \textit{F-C}, che permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
 
+\section{Esercizi}
+\label{sec:esercizi-cap2}
+\paragraph{1} 
+\textbf{Dato il seguente termine, elencare quali sono le sue variabili libere e le sue variabili legate con i lambda relativi.}
+\begin{center}$\lambda$z.((($\lambda$x.$\lambda$x.yx)x)(v$\lambda$z.$\lambda$w.v))\end{center}
+\textit{Soluzione}\\\\
+$\lambda$z.((($\lambda$x.\textbf{\textcolor{red}{$\lambda$x}}.\textbf{\textcolor{green}{y}\textcolor{red}{x}})\textbf{\textcolor{green}{x}})(\textbf{\textcolor{green}{v}}$\lambda$z.$\lambda$w.\textbf{\textcolor{green}{v}}))
+\begin{itemize}
+\item le variabili libere (colorate in verde) sono \textit{y, x} e \textit{v}
+\item le variabili legate con i relativi lambda termini (colorate in rosso) sono la \textit{x}
+\end{itemize}
+
+\paragraph{2}
+\textbf{Rinominare le variabili legate nel seguente termine in modo che non ci siano due variabili legate con lo stesso nome.}
+\begin{center}x($\lambda$x.(($\lambda$x.x)x))\end{center}
+\textit{Soluzione}\\\\
+x(\textbf{\textcolor{red}{$\lambda$x}}.((\textbf{\textcolor{red}{$\lambda$x}}.x)x))\\\\
+Le variabili legate sono le x all'interno delle parentesi tonde. Una possibile rinomina, per evitare che queste variabili legate abbiano lo stesso nome, \`e x($\lambda$x.(($\lambda$y.y)x)), dove la x della parentesi pi\`u interna \`e stata sostituita con la y.
+
+\paragraph{3}
+Evidenziare di due colori diversi quali sono le variabili libere e quali quelle legate.
+\begin{center}($\lambda$x.(z($\lambda$z.((xyz)x))zx))x($\lambda$x.(($\lambda$y.yy)($\lambda$z.zz)))\end{center}
+\textit{Soluzione}\\\\
+($\lambda$x.(\textbf{\textcolor{green}{z}}($\lambda$z.((\textbf{\textcolor{red}{x}\textcolor{green}{y}\textcolor{red}{z}})\textbf{\textcolor{red}{x}}))\textbf{\textcolor{green}{z}\textcolor{red}{x}}))\textbf{\textcolor{green}{x}}($\lambda$x.(($\lambda$y.\textbf{\textcolor{red}{yy}})($\lambda$z.\textbf{\textcolor{red}{zz}})))
+\begin{itemize}
+\item le variabili libere sono le \textit{z, y} e \textit{x} colorate in verde
+\item le variabili legate sono le \textit{x, y} e \textit{z} colorate in rosso
+\end{itemize}
+
+\paragraph{4}
+Descrivere un termine del $\lambda$-calcolo, descritto in \S{\ref{subsec:lambda-calcolo},  che \`e convergente con almeno un passo di riduzione rispetto ad una specifica strategia di riduzione deterministica.\\\\
+\textit{Soluzione}\\\\
+Per definizione un termine t \`e convergente, rispetto a una strategia di
+riduzione deterministica, se esiste un numero finito n >= 1 di termini s$_1$,..., s$_n$ tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i + 1}$ per i = 1,..., n-1 e s$_n$ non \`e riducibile ad alcun termine.\\
+Prendendo in considerazione una strategia di riduzione deterministica \textit{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di termine t del $\lambda$-calcolo convergente in almeno un passo di riduzione \`e:
+\begin{center}t $\equiv$ (($\lambda$x.x)z)(($\lambda$y.y)w) $\rightarrow_1$ z(($\lambda$y.y)w) $\rightarrow_1$ z(w) $\equiv$ s$_n$ $\equiv$ s\end{center}
+\paragraph{5} 
+Descrivere due termini diversi del $\lambda$-calcolo, descritto in \S{\ref{subsec:lambda-calcolo}, che non sono convergenti sempre rispetto a una strategia di riduzione deterministica.\\\\
+\textit{Soluzione}\\\\
+Per definizione un termine t diverge (\`e non convergente), rispetto a una strategia
+di riduzione deterministica, se esiste una quantit\`a numerabile di termini s$_i$ al variare di i $\in$ Nat tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i+1}$. Per ogni i $\in$ Nat (ossia esiste una lista infinita di passi computazioni a partire da t).
+Prendendo in considerazione una strategia di riduzione deterministica \textit{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di due termine diversi del $\lambda$-calcolo che sono convergenti \`e:
+\begin{center}($\lambda$x x(x))($\lambda$y y(y)) $\rightarrow_1$ ($\lambda$y y(y))($\lambda$y y(y))  $\rightarrow_1$ ... $\rightarrow_1$ ($\lambda$y y(y))($\lambda$y y(y)) $\rightarrow_1$ ... \end{center}
+Si riduce sempre a se stessa, a qualunque passo di computazione. Perci\`o ammette computazione infinita (diverge) non raggiungendo mai un valore finale.
+\paragraph{6} 
+Che relazione c'\`e tra il lambda-calcolo puro con le regole di riduzione date sopra rispetto a quello in cui adottando la stessa sintassi di termini imponiamo la seguente definizione di riduzione $\rightarrow_1^\ast$.
+\begin{itemize}
+\item per ogni termine t e b ($\lambda$x.t)(b) $\rightarrow_1^\ast$ t[$\frac{x}{b}$]
+\item per ogni termine b, b1, b2 e a, a1, a2
+\begin{center}
+\AxiomC{a1 $\rightarrow_1^\ast$ a2}
+\AxiomC{b1 $\rightarrow_1^\ast$ b2}
+\BinaryInfC{a1(b1)$ \rightarrow_1^\ast$ a2(b2)}
+\DisplayProof
+\AxiomC{t1 $\rightarrow_1^\ast$ t2}
+\UnaryInfC{$\lambda$ x.t1 $\rightarrow_1^\ast$ $\lambda$x.t2}
+\DisplayProof
+
+\end{center}
+\end{itemize}
+
+
+
 \chapter{Regole della teoria dei tipi}
 \label{cap:regole-teoria-dei-tipi}
 %%dalla lezione 7 alla lezione 11
@@ -659,7 +722,7 @@ $
 \end{cases}
 $
 \\
-H lavora come un \textit{proof assistant}(esempio \textit{COQ}).\\\\
+H lavora come un \textit{proof assistant} (esempio \textit{COQ}).\\\\
 \noindent
 \textit{Definzione}: i termini \textit{untyped} sono
 \begin{center}t = x $|$ $\ast$ $|$ El$_N1$(t$_1$, t$_2$)\end{center}
@@ -761,9 +824,7 @@ Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_
 
 \section{Esercizi}
 \label{sec:esercizi-cap2}
-\paragraph{1.}
-\textbf{Dimostrare che da \textit{E-S} si riesce a ottenere \textit{E-S$_{dip}$} usando le derivazioni.}
-\paragraph{2} 
+\paragraph{1} 
 \textbf{Data}
 \begin{prooftree}
 \AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
@@ -829,7 +890,7 @@ Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_
 Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$) type[$\Gamma$]}) siano valide, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.
 
 
-\paragraph{3.} 
+\paragraph{2.} 
 \textbf{Dimostrare che la regola \textit{E-S} \`e derivabile in una teoria dei tipi \textit{T$_1$}, in cui si \`e rimpiazziata la regola di eliminazione \textit{E-S} con la regola \textit{E-N${_1prog}$}, aggiungendovi le regole di indebolimento, sostituzione e di \textit{sanitary checks}}.
 \begin{prooftree}
 \AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
@@ -860,12 +921,13 @@ Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\
 \end{prooftree}
 Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (come dimostro nell'esercizio 2) e di \textit{E-S}.
 
-\paragraph{4}
+\paragraph{3}
 \textbf{Costruire l'albero dei cammini di passi di riduzione  possibili fino a un termine in NF, ovvero non ulteriormente riducibile rispetto alla relazione del termine $\rightarrow$ $_1$ del termine.}
 \begin{center}
 El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))
 \end{center}
 \textbf{Soluzione}\\
+\textit{Idea: uso un albero di derivazione per mostrare ogni passo derivazione di ogni cammino.}\\\\
 $\beta$-red:\\
 \textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow$ $_1$ $\ast$}\\
 \textit{El$_{N1}$($\ast$, x) $\rightarrow$ $_1$ x}
