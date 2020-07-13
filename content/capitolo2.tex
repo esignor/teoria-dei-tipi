@@ -1,0 +1,788 @@
+\chapter{Regole della teoria dei tipi}
+\label{cap:regole-teoria-dei-tipi}
+%%dalla lezione 7 alla lezione 11
+Lo scopo della teoria dei tipi \`e offrire un sistema formale in cui derivare, tramite regole e assiomi, giudizi nella forma:
+\[ A \hspace{0.1cm} type[\Gamma] \qquad
+A = B \hspace{0.1cm} type[\Gamma] \qquad
+a \in A\hspace{0.1cm} [\Gamma] \qquad
+a=b \in A \hspace{0.1cm}[\Gamma]
+\]
+\[
++ \hspace{0.1cm} ausiliaria \quad \Gamma \hspace{0.1cm} cont
+\]
+L'ultimo giudizio non \`e necessario, serve esclusivamente per imparare.\\
+Quando si formula una nuova teoria dei tipi \`e bene impiegare il minor numero possibile di regole strutturali e di formazione di tipi e termini. Tali regole devono essere rivolte all'ottimizzazione e correttezza della teoria. Alcune di queste, come quelle di indebolimento e sostituzione in \S\ref{subsec:indebolimento-sostituzione}, sono irrinunciabili, la cui validit\`a \`e sempre garantita e utilizzate nella derivazione di ogni teoria.\\\\
+Se la teoria dei tipi \`e dipendente si ha bisogno di tutti i giudizi. Invece in una teoria dei tipi non dipendente, come quella dei tipi semplici, il giudizio $A = B \hspace{0.1cm} type[\Gamma]$ pu\`o venire omesso.\\
+
+\section{Regole strutturali}
+\label{sec:regole-strutturali}
+Assioma unico: [\hspace{0.1cm}] cont\\\\
+Nel calcolo dei sequenti, in logica classica, le derivazioni di giudizio, valide in una teoria dei tipi con solo le regole singoletto, diventano derivazioni di sequenti nella forma $\Gamma$ $\dashv$ A e unico assioma $\varphi$ $\dashv$ $\varphi$.
+\\\\
+Di seguito illustro le principali regole di contesto comuni a tutte le teorie dei tipi.
+\subsection{Regole di formazione dei contesti}
+\label{subsec:formazione-contesti}
+\begin{center} [\hspace{0.1cm}] cont \quad dove [\hspace{0.1cm}] = $\varnothing$ \end{center}
+\begin{prooftree}
+\AxiomC{A type[$\Gamma$]}
+\LeftLabel{F-C)}\RightLabel{x $\in$ A $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, x $\in$ A}
+\end{prooftree}
+\subsection{Regole di assunzione delle variabili}
+\label{subsec:assunzione-variabili}
+\begin{prooftree}
+\AxiomC{$\Gamma$, x $\in$ A, $\Delta$}
+\AxiomC{cont}
+\LeftLabel{var-ass)}
+\BinaryInfC{x $\in$ [$\Gamma$,x $\in$ A, $\Delta$]}
+\end{prooftree}
+\subsection{Regole strutturali addizionali sull'uguaglianza}
+\label{subsec:uguaglianza}
+L'uguaglianza, in una teoria dei tipi, consiste in una relazione di equivalenza sia fra tipi che fra termini. Sono perci\`o valide le seguenti regole di uguaglianza tra tipi:
+\[ ref) \quad \frac{A\hspace{0.1cm}type[\Gamma]}{A=A\hspace{0.1cm}type[\Gamma]} \qquad sym) \quad \frac{A=B\hspace{0.1cm}type[\Gamma]}{B=A\hspace{0.1cm}type[\Gamma]} \]
+\[ tra) \quad \frac{A=B\hspace{0.1cm}type[\Gamma] \qquad B=C\hspace{0.1cm}type[\Gamma]}{A=C\hspace{0.1cm}type[\Gamma]} \]
+E allo stesso modo anche le regole di uguaglianza definizonale/computazionale tra termini:
+\[ ref) \quad \frac{a \in A\hspace{0.1cm}[\Gamma]}{a=a \in A\hspace{0.1cm}[\Gamma]} \qquad sym) \quad \frac{a=b\in A \hspace{0.1cm}[\Gamma]}{b=a \in A\hspace{0.1cm}[\Gamma]} \]
+\[ tra) \quad \frac{a=b \in A\hspace{0.1cm}[\Gamma] \qquad b=c \in A\hspace{0.1cm}[\Gamma]}{a=c \in A\hspace{0.1cm}[\Gamma]} \]
+\subsection{Regole di conversione dell'uguaglianza per tipi uguali}
+\label{subsec:conversione-uguaglianza}
+L'appartenenza si conserva con l'uguaglianza di termini e tipi. Le regole da aggiungere, in una teoria dei tipi, per garantirlo sono:
+\[ conv) \quad \frac{a \in A\hspace{0.1cm}[\Gamma] \quad A=B\hspace{0.1cm}type[\Gamma]}{a \in B\hspace{0.1cm}[\Gamma]} \]
+\[ conv-eq) \quad \frac{a=b \in A\hspace{0.1cm}[\Gamma] \qquad A=B\hspace{0.1cm}type[\Gamma]}{a=b \in B\hspace{0.1cm}[\Gamma]} \]
+\subsection{Regole di indebolimento e di sostituzione}
+\label{subsec:indebolimento-sostituzione}
+\subsubsection{Indebolimento}
+\label{subsec:indebolimento}
+\[ ind-ty) \quad \frac{A\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{A\hspace{0.1cm}type[\Gamma,\Delta]} \quad ind-ty-eq) \quad \frac{A=B\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{A=B\hspace{0.1cm}type[\Gamma,\Delta]} \]
+\[ ind-te) \quad \frac{a \in A\hspace{0.1cm}[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a \in A\hspace{0.1cm}[\Gamma,\Delta]} \quad ind-te) \quad \frac{a=b \in A\hspace{0.1cm}
+[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a=b \in A\hspace{0.1cm}[\Gamma,\Delta]} \]
+\subsubsection{Sostituzione}
+\label{subsec:sostituzione}
+\begin{equation}
+\begin{split}
+C(x_1,...,x_n)\hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-typ) \quad \frac{a_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+C(x_1,...,x_n)\hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-typ) \quad \frac{a_1 = b_1  \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{C(a_1,...,a_n) = C(b_1,...,b_n) \hspace{0.1cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-Eqtyp) \quad \frac{a_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-Eqtyp) \quad \frac{a_1 = b_1\in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-ter) \quad \frac{a_1 in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+c(x_1,...,x_n) = d(x_1,...,x_n)  \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eqter) \quad \frac{a_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) = d(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-ter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) = c(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}[\Gamma]}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+c(x_1,...,x_n) = d(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-eqter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) = d(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}[\Gamma]}
+\end{split}
+\end{equation}
+
+\subsection{Regole proprie e derivabili}
+\label{subsec:regole-proprie-derivabili}
+In una teoria formale ci sono due tipi di regole:
+\begin{itemize}
+\item \textbf{regole proprie del calcolo}, come lo sono le regole strutturali e quelle del singoletto;
+\item \textbf{regole derivabili}, come le regole di sostituzione, utili per abbreviare le derivazioni.
+\end{itemize}
+\noindent
+Una regola r $\frac{J_1,...,J_n}{J}$ \`e ammissibile in un calcolo t sse i giudizi derivabili in $t+r$ sono gli stessi dei giudizi derivabili in t. Ci\`o comporta che l'aggiunta di una regola rt non cambia i giudizi che ne possono derivare.\\ Quando un assioma \`e ammissibili e derivabile questo coincide con un giudizio derivabile.
+
+\subsection{Nozione di contesto telescopico}
+\label{subsec:contesto-telescopico}
+Un giudizio, in teoria dei tipi dipendenti si esprime nella forma
+\[A(x_1,...,x_n)[x_1 \in B_1,...,x_n \in B_n]\]
+e prende il nome di \textbf{contesto telescopico}.
+Questi presenta una dipendenza continua, esemplificata nel seguente giudizio
+\[A(x_1,x_2,x_3)\hspace{0.1cm}type[x \in C_1, x_2 \in C(x_1), x_3 \in C(x_1 x_2)..)\]
+Inoltre si parla di contesti rigidi, ovvero senza possibilit\`a di scambio. Come appare dall'esempio sotto. \\
+$[x \in Nat, y \in Nat, z \in Mat(x,y)]$ cont  $\Rightarrow$ \textbf{\`e derivabile}\\
+$[y \in Nat, x \in Nat, z \in Mat(x,y)]$ cont $\Rightarrow$ \textbf{\`e derivabile}\\
+$[y \in Nat, z \in Mat(x,y), x \in Nat]$ $\Rightarrow$ \textbf{non \`e un contesto}. \\\\ Percui non esiste lo scambio arbitrario, si deve porre attenzione alle dipendenza delle assunzioni, che provoca una sostituzione rigida.
+\subsection{Esempi di applicazione}
+\label{subsec:esempi-di-applicazione}
+Attenzione all'ordine di sostituzione si deve partire sempre da quello con meno dipendenze.
+\begin{prooftree}
+\AxiomC{c $\in$ [C, $\Gamma$]}
+\AxiomC{b $\in$ [B(c), $\Gamma]$}
+\AxiomC{A(x,y) type[x $\in$ C, y $\in$ B(x)]}
+\TrinaryInfC{A(c,b) type$[\Gamma]$}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{c $\in$ [C,$\Gamma$]}
+\AxiomC{b $\in$ [B(c),$\Gamma]$}
+\AxiomC{A(x,y) type[x $\in$ C, y $\in$ B(x)]}
+\TrinaryInfC{a(c,b) $\in$ A(c,b) $[\Gamma]$}
+\end{prooftree}
+Se si ha un tipo puo' venire usato il giudizio di uguaglianza tra termini e la sostituzione.
+\begin{prooftree}
+\AxiomC{A(x) type[$\Gamma$, x $\in$ C]}
+\AxiomC{c = e $\in$ C[$\Gamma$]}
+\BinaryInfC{A(c) = A(e) type[$\Gamma$]}
+\end{prooftree}
+\noindent
+\`E dunque fondamentale il concetto di uguaglianza fra tipi. Se considero che ci sia un elemento
+
+\begin{prooftree}
+\AxiomC{a(x) $\in$ A(x) [$\Gamma$, x $\in$ C]}
+\AxiomC{c = e $\in$ C[$\Gamma$]}
+\BinaryInfC{a(c) = a(e) $\in$ A(c) [$\Gamma$]}
+\end{prooftree}
+\noindent
+Per poter affermare che A(e) = A(c) devo poterlo dedurre. Per farlo mi sono indispensabili le \textbf{regole di conversione dell'uguaglianza del tipaggio (\S\ref{subsec:regole-tipaggio})}.
+
+\subsection{Regole di tipaggio}
+\label{subsec:regole-tipaggio}
+
+\subsubsection{Regole di conversione}
+\label{subsubsec:regole-di-conversione}
+\[\frac{c \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{C \in D\hspace{0.1cm}[\Gamma]}\]
+Se due tipi sono uguali allora hanno gli stessi termini: $C=D \Rightarrow (c \in C \Leftrightarrow c \in D)$. L'uguaglianza fra tipi \`e per questo simmetrica.\\
+Tuttavia non sempre l'unicit\`a del tipaggio di un termine (il $\Leftrightarrow$) \`e garantito per ogni teoria. Nei casi trattati dal corso s\`i, in quanto verr\`a inteso che $C = D\hspace{0.1cm}type[\Gamma]$ sse due tipi hanno gli stessi elementi (come gi\`a accade in \textit{set theory}), ma pu\`o non essere sempre vero.
+
+\subsubsection{Regole di conversione dell'uguaglianza}
+\label{subsubsec:regole-di-conversione-uguaglianza}
+\[\frac{c=d \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{c = d \in D \hspace{0.1cm} [\Gamma]}\]
+Questa regola permette di convertire le uguaglianze nel tipaggio di un termine.
+
+
+\section{Il tipo singoletto}
+\label{sec:tipo-singoletto}
+Il tipo singoletto risulta essere paradigmatico per gli altri tipi. Per definirlo impiegher\`o i giudizi nella forma $A\hspace{0.1cm}type[\Gamma]$, $a \in A\hspace{0.1cm}[\Gamma]$ e $a = b \in A\hspace{0.1cm}[\Gamma]$. L'uguaglianza, invece, non verr\`a coinvolta, in quanto non pu\`o essere impiegata per definire un nuovo tipo, \`e difatti usata solo nelle derivazioni.\\\\
+Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivazione parte sempre dal contesto vuoto ($\varnothing$).
+\begin{prooftree}
+\AxiomC{A type[$\Gamma$]}
+\LeftLabel{F-C)}\RightLabel{x $\in$ A $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, x $\in$ A}
+\end{prooftree}
+
+\subsection{Regola di formazione}
+\label{subsec:formazione}
+\begin{prooftree}
+\AxiomC{[$\Gamma$] cont}
+\LeftLabel{F-S)}
+\UnaryInfC{$N_1$ type[$\Gamma]$}
+\end{prooftree}
+\textit{La regola F-S Permette di derivare vari giudizi e di dire che cosa \`e un tipo.}\\\\
+Con l'impiego solo delle regole \textit{F-C} e \textit{F-S} si possono derivare [$x_1$ $\in$ $N_1$... $x_n$ $\in$ $N_1$] cont e ottenere, cos\`i, contesti di una lista arbitraria di variabili diverse appartenenti a $N_1$, come si vede dall'esempio seguente.
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S)}
+\LeftLabel{F-C)}\RightLabel{$x_1$ $\in$ $N_1$ $\notin$ $\varnothing$}
+\UnaryInfC{[$x_1$ $\in$ $N_1$] cont}
+\LeftLabel{F-S)}
+\UnaryInfC{$N_1$ type [$x_1$ $\in$ $N_1$]}
+\LeftLabel{F-C)}\RightLabel{$x_2$ $\in$ $N_1$ $\notin$ $x_1$ $\in$ $N_1$}
+\UnaryInfC{[$x_1$ $\in$ $N_1$, $x_2$ $\in$ $N_1$] cont}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\label{subsec:introduzione}
+\begin{prooftree}
+\AxiomC{[$\Gamma$] cont}
+\LeftLabel{I-S)}
+\UnaryInfC{$\ast$ $\in$ $N_1$ [$\Gamma]$ cont}
+\end{prooftree}
+\textit{Sia $N_1$ in ogni contesto $\Gamma$, partendo da contesto $\varnothing$, la regola I-S permette di formare i termini, per mezzo dell'introduzione di un elemento costante $\ast$ in $N_1$.}\\\\
+Un esempio diretto della sua applicazione \`e
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{I-S)}
+\UnaryInfC{$\ast$ $\in$ $N_1$ ($x_1$ $\in$ $N_1$...$x_n$ $\in$ $N_1$)}
+\end{prooftree}
+
+\subsection{Regole di Eliminazione}
+\label{subsec:eliminazione}
+\begin{prooftree}
+\AxiomC{t $\in$ $N_1$ [$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c  $\in$ M($\ast$)[$\Gamma$]}
+\LeftLabel{E-S)}
+\TrinaryInfC{$El_{N1}$(t, c) $\in$ M($\ast$)[$\Gamma$]}
+\end{prooftree}
+\noindent
+\textit{El trattasi di costruttore di funzioni e $M[t] = M(z)[\frac{z}{t}]$.}
+\\
+La regola di eliminazione si pu\`o equivalentemente scrivere in un altro modo
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c  $\in$ M($\ast$)[$\Gamma$]}
+\LeftLabel{E-S)$_{dip}$}
+\BinaryInfC{$El_{N1}$(z, c) $\in$ M(z)[$\Gamma$, z $\in$ $N_1$]}
+\end{prooftree}
+Le regole \textit{E-S)$_{dip}$} + \textit{la regole di sostituzione} + \textit{F-S} + \textit{I-S} permettono di verificare la validit\`a di \textit{E-S}.
+\begin{prooftree}
+\AxiomC{t $\in$ $N_1$[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c $\in$ M($\ast$)[$\Gamma$]}
+\LeftLabel{E-S)$_{dip}$}
+\BinaryInfC{$El_{N1}$(z, c) $\in$ M(z)[$\Gamma$]}
+\LeftLabel{sost)}
+\BinaryInfC{$El_{N1}$(t, c) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+\noindent
+Inoltre vale anche il viceversa, da \textit{E-S} si riesce a ottenere \textit{E-S$_{dip}$}.
+\subsection{Regole di Conversione}
+\label{subsec:conversione}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c $\in$ M($\ast$)[$\Gamma$]}
+\LeftLabel{C-S)}
+\BinaryInfC{$El_{N1}$($\ast$, c) = c $\in$ M($\ast$)[$\Gamma$]}
+\end{prooftree}
+\textit{La conversione rende possibile l'applicazione della regola di eliminazione introducendo delle uguaglianze.}
+\\\\
+Le regole \textit{(S), (I-S), (E-S)} e \textit{(C-S)}  hanno una spiegazione computazionale, e riguardano la compatibilit\`a tra tipi, ma non da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente.
+\subsection{Osservazioni sul tipo singoletto}
+\label{subsec:osservazioni}
+L'eliminatore El$_{N1}$(z, c) rappresenta una funzione definita per ricorsione su N$_1$, difatti in \textit{C-S} si ha che El$_{N1}$(z, c)[$\frac{z}{\ast}$] = El$_{N1}$($\ast$, c).\\
+Supposto che se $\ast$ $\in$ N$_1$[$\Gamma$] in \textit{E-S}, allora per la singola conversione vale che El$_{N1}$ = c $\in$ M($\ast$).
+Dunque El$_{N1}$(z, c) rappresenta un programma funzionale per ricorsione. Questi \`e definito su N$_1$, a partire da c $\in$ M($\ast$), perci\`o El$_{N1}$($\ast$, c) = c.\\
+La regola di eliminazione permette di definire un programma funzionale da N$_1$ a M(z) esclusivamente con c $\in$ M($\ast$), ovvero definendo $\ast$ come \textbf{elemento canonico}. Inoltre non svolge solo il compito di ricorsione, ma anche d'nduzione.
+\\\\
+In \begin{prooftree}
+\AxiomC{t $\in$ N$_1$[$\Gamma$]}
+\UnaryInfC{t = $\ast$ $\in$ N$_1$[$\Gamma$]}
+\end{prooftree}
+risulta vera l'uguaglianza definizionale?\\
+No, non \`e vera. La regola di eliminazione consente di dare un valore al termine canonico, permettendo cos\`i di attribuire un valore a tutti i possibili termini del singoletto. Ma in generale questo non vale all'interno della teoria. Difatti l'uguaglianza definizionale \`e diversa da quella matematica e va intesa come computazionale e non proposizionale (come definito in \S \ref{subsec:uguaglianza-computazionale-proposizionale}).
+
+\section{Sanitary checks rules}
+\label{sec:sanitary-checks}
+Le \textit{Sanitary checks} sono regole strutturali utili per abbreviare le derivazioni. Queste sono derivabili solo se la teoria dei tipi \`e corretta.\\\\
+\noindent
+Assumento \textit{T}, come una teoria dei tipi di riferimento, le \textit{sanitary checks} sono le seguenti:
+\begin{prooftree}
+\AxiomC{[$\Gamma$, $\Delta$] cont}
+\UnaryInfC{$\Gamma$ cont}
+\end{prooftree}
+Se [$\Gamma$, $\Delta$] cont \`e derivabile in \textit{T} allora anche [$\Gamma$] cont \`e derivabile in \textit{T}.
+\begin{prooftree}
+\AxiomC{J$_1$,...,J$_n$}
+\UnaryInfC{J}
+\end{prooftree}
+Se J$_i$ con i = 1,...,n in \textit{T} sono derivabili allora anche J \`e derivabile in \textit{T}.
+\begin{prooftree}
+\AxiomC{A type [$\Gamma$]}
+\UnaryInfC{$\Gamma$ cont}
+\end{prooftree}
+Se A type [$\Gamma$] \`e derivabile in \textit{T} allora anche $\Gamma$ cont \`e derivabile in \textit{T}.
+\begin{center}
+\AxiomC{A = B type [$\Gamma$]}
+\UnaryInfC{A type[$\Gamma$]}
+\DisplayProof
+\AxiomC{A = B type [$\Gamma$]}
+\UnaryInfC{B type[$\Gamma$]}
+\DisplayProof
+\end{center}
+Se A = B type [$\Gamma$] \`e derivabile in \textit{T} allora anche A type[$\Gamma$] e B type[$\Gamma$] sono derivabili in \textit{T}.
+\begin{prooftree}
+\AxiomC{a $\in$ A[$\Gamma$]}
+\UnaryInfC{A type[$\Gamma$]}
+\end{prooftree}
+Se a $\in$ A[$\Gamma$] \`e derivabile in \textit{T} allora anche A type[$\Gamma$] \`e derivabile in \textit{T}.
+\begin{center}
+\AxiomC{a = b $\in$ A[$\Gamma$]}
+\UnaryInfC{a $\in$ A[$\Gamma$]}
+\DisplayProof
+\AxiomC{a = b $\in$ A[$\Gamma$]}
+\UnaryInfC{b $\in$ A[$\Gamma$]}
+\DisplayProof
+\end{center}
+Se a = b $\in$ A[$\Gamma$] \`e derivabile in \textit{T} allora anche a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] sono  derivabili in \textit{T}.
+
+\section{Schema generale}
+\label{sec: schema-generale}
+Di seguito illustro uno schema generale, valido per ogni teoria dei tipi, di produzione di regole definenti un tipo, i suoi termini e l'uguaglianza.
+\begin{enumerate}
+\item \textbf{Regole di formazione}
+Identificate con il preambolo F-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\Tali regole sono del tipo k e rispettano la forma 
+\AxiomC{[$\Gamma$] cont}
+\UnaryInfC{\textit{T} type[$\Gamma$]}
+\DisplayProof
+\item \textbf{Regole di introduzione}
+identificate con il preambolo I-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\Tali regole consistono nella forma introduttiva degli elementi canonici di \textit{T} e rispettono la forma
+\AxiomC{[$\Gamma$] cont}
+\UnaryInfC{t' $\in$ \textit{T}[$\Gamma$]}
+\DisplayProof
+\item \textbf{Regole di eliminazione}
+identificate con il preambolo E-\textit{T} con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\Tali regole sono definenti E$_k$, a partire dagli elementi di k a valori in un tipo M(z) type[$\Gamma$, z $\in$k]. L'ipotesi valida \`e che siano dati degli elementi in M(z) sui valori canonici di k.
+Tali regole sono del tipo k e rispettano la forma 
+\AxiomC{t $\in$ \textit{T}[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ \textit{T}]}
+\AxiomC{c  $\in$ M(t')[$\Gamma$]}
+\TrinaryInfC{$El_{\textit{T}}$(t, c) $\in$ M(t)[$\Gamma$]}
+\DisplayProof
+\item \textbf{Regole di conversione}
+identificate con il preambolo C-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\, che stabilscono che gli eliminatori in (3) sono stabiliti per ricorsione a partire dalle ipotesi.
+Tali regole sono del tipo k e rispettano la forma
+\AxiomC{M(z) type[$\Gamma$, z $\in$ \textit{T}]}
+\AxiomC{c $\in$ M(t')[$\Gamma$]}
+\BinaryInfC{El$_{\textit{T}}$(t', c) = c $\in$ M(t')[$\Gamma$]}
+\DisplayProof
+\item \textbf{Regole di uguaglianza}
+identificate con il preambolo eq-E-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.
+Tali regole stabiliscono che i costruttori di k in (2) e (3) permettono l'uguaglianza definizionale dei termini da cui dipendono.
+Tali regole sono del tipo k e rispettano la forma\\
+\AxiomC{t = s $\in$ N$_1$[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ N$_1$]}
+\AxiomC{c = d $\in$ M(t')[$\Gamma$]}
+\TrinaryInfC{El$_{\textit{T}}$(t', c) = c $\in$ M(t')[$\Gamma$]}
+\DisplayProof
+\end{enumerate}
+\noindent
+Le regole (5) sono implicite in \textit{T}, ma non ovvie dal punto di vista computazionale.
+
+\section{Uguaglianza definizionale}
+\label{sec: uguaglianza-definizionale}
+\textit{Definizione}: se P$_1$ e P$_2$ programmi\\\\
+\textit{$P_1$, $P_2$: Nat$^m$  $\rightarrow$ Nat \quad allora \quad
+$P_1$ = $P_2$ sse $\forall$ n$_1$...n$_m$ e P$_1$(n$_1$...n$_m$) = P$_2$(n$_1$...n$_m$)} non \`e decidibile.\\\\
+Ovvero le funzioni ricorsive per P$_1$ e P$_2$ non sono decidibili. A seguito di ci\`o non esiste un algoritmo in grado di decidere se due programmi P$_1$ e P$_2$ sono estensionalmente (proposizionalemente) uguali o meno.\\\\
+Risulta per\`o vero il concetto di \textbf{ugualianza definizionale}/computazionale (intensionale). Dati a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] derivabili, nella nostra teoria \textit{T} di \textit{Martin-L$\ddot{o}$f}, esiste un algoritmo \textit{H} (a $\in$ A[$\Gamma$], b $\in$ A[$\Gamma$]) =
+$
+\begin{cases}
+\text{\textbf{sì} sse a = b} \in A[\Gamma]  \text{ è derivabile in \textit{T}} \\
+\text{\textbf{no} sse a = b} \in A[\Gamma] \text{ non ha derivazione in \textit{T}}
+\end{cases}
+$
+Il giudizio a $=$ b $\in$ A[$\Gamma$] \`e decidibile, anche con \textit{J} giuduzio, in teoria dei tipi di \textit{Martin-L$\ddot{o}$f}, derivabile. Percui con H si scrive: Giudizi di \textit{T} $\rightarrow$ \{0,1\}\\
+H[\textit{J}] =
+$
+\begin{cases}
+\textbf{1} \text{ sse \textit{J} è derivabile in \textit{T}}  \\
+\textbf{0} \text{ sse \textit{J} non è derivabile in \textit{T}}
+\end{cases}
+$
+\\
+H lavora come un \textit{proof assistant} (esempio \textit{COQ}).\\\\
+\noindent
+\textit{Definzione}: i termini \textit{untyped} sono
+\begin{center}t = x $|$ $\ast$ $|$ El$_N1$(t$_1$, t$_2$)\end{center}
+\textit{Definizione}: \begin{center}$\rightarrow$ $_1$ $\subseteq$ term x term\end{center}
+t$_1$ $\rightarrow$ $_1$ $\rightarrow$ $\equiv$ t$_1$ si riduce in un passo di computazione a t$_2$. Ecco che esiste una relazione che computa t$_1$ con t$_2$.\\
+La relazione viene definita all'interno dei termini con l'uso delle seguenti regole:
+\\\\
+\begin{itemize}
+\item $\beta$-rid) El$_{N1}$($\ast$, t) $\rightarrow$ $_1$ t
+\item \AxiomC{t$_1$ $\rightarrow$ t$_2$}
+\LeftLabel{red$_I$)}
+\UnaryInfC{El$_{N1}$(t$_1$, c) $\rightarrow$ $_1$ El$_{N1}$(t$_2$, c)}
+\DisplayProof
+\AxiomC{c$_1$ $\rightarrow$ c$_2$}
+\LeftLabel{red$_{II}$)}
+\UnaryInfC{El$_{N1}$(t, c$_1$) $\rightarrow$ $_1$ El$_{N1}$(t, c$_2$)}
+\DisplayProof
+\item red$_{I}$ e red$_{II}$ possono venire simultate da un'unica regola
+\AxiomC{t$_1$ $\rightarrow$ $_1$ t$_2$}
+\AxiomC{c$_1$ $\rightarrow$ $_1$ c$_2$}
+\BinaryInfC{El$_{N1}$(t$_1$, c$_1$) $\rightarrow$ $_1$ El$_{N1}$(t$_2$, c$_2$)}
+\DisplayProof
+\end{itemize}
+\noindent
+\textit{$\beta$-rid} risulta valida per \textit{C-S}, le regole di riduzione red$_{I}$ e red$_{II}$ per \textit{eq-E-S}.\\\\
+\noindent \textit{Definzione}:\textbf{Teoria di Validit\`a}\\ Dati t $\in$ A[$\Gamma$] e s $\in$ A[$\Gamma$] in \textit{T$_1$} \quad allora \quad $\rightarrow$ $_1$ s $\Rightarrow$ t = s $\in$ A[$\Gamma$] derivabile in \textit{T}.
+\\\\
+\noindent \textit{Definizione}: t termine \textit{untyped} \`e in forma normale (in NF) sse non esiste termine s tale che t $\rightarrow$ $_1$ s.\\  Le forme normali sono i valori assumibili dai programmi.
+
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{XXX}
+\hline 
+\rowcolor{orange}
+{\color[HTML]{FFFFFF}\textbf{termini}} & {\color[HTML]{FFFFFF} \textbf{termini in forma canonica}} & {\color[HTML]{FFFFFF}\textbf{termini non in forma canonica o introduttiva}}\\
+\hline\hline
+termini in NF & $\ast$ & x, El$_{N1}$(x, $\ast$)\\
+termini non in NF & No per N$_1$ & El$_{N1}$($\ast$, x)\\
+\end{tabularx}
+\caption{\label{tab:termini-NF-nonNF-N1}Termini a $\rightarrow$ $_1$ di N$_1$.} 
+\end{table}
+\noindent
+I termini non in forma canonica  derivano dalle regole di introduzione; invece quelli non in forma canonica vengono introdotte dall'eliminatore.\\\\
+L'uguaglianza definizionale ha come scopo la chiusura riflessiva, simmetrica e transitiva delle derivazioni.\\\\
+In N$_1$ sono vere le seguenti regole di $\beta$-red, utili per provare quali termini sono uguali definizionalmente: 
+\begin{itemize}
+\item \textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow$ $_1$ $\ast$}
+\item \textit{El$_{N1}$($\ast$, x) $\rightarrow$ $_1$ x}
+\end{itemize}
+\noindent
+Per ogni teoria \text{T} $\rightarrow$ $_1$ non \`e deterministica.
+\\\\
+\textit{Definizione} \textbf{Riducibilit\`a}\\
+Dati i termini t e s allora \textbf{t \textit{Red$_{NF}$} s} sse s \`e in NF ed esistono h$_1$...h$_n$ (n>=1) tale che h$_1$ $\equiv$ t, h$_n$ $\equiv$ s e se n>1 h$_i$ $\rightarrow$ h$_{i+1}$ per i = 1 a n-1.\\\\
+\textbf{t \textit{Rid$_{NF}$} s} =
+$
+\begin{cases}
+\text{o t} \equiv \text{s e t è in NF} \\
+\text{esiste n>1, esistono } h_1\text{...}h_n \text{ termini tale che t} \equiv h_1 \rightarrow _1 h_2 \text{...}h_n
+\end{cases}
+$
+\\\\
+\noindent
+\textit{Definizione} \textbf{Teorema di Confluenza}$\rightarrow _1$ per \textit{T} computabile\\
+Dato t (termine) e s$_1$ e s$_2$ (in NF) tale che \textbf{t \textit{Red$_{NF}$ }s$_1$} e \textbf{t \textit{Red$_{NF}$} s$_2$} allora s$_1$ $\equiv$ s$_2$ (coincide a meno di rinomina di variabile  vincolante).\\
+Quando t si riduce s$_1$ e in s$_2$ c'e' l'unicit\`a della forma normale.
+\\\\
+\noindent
+\textit{Definizione} \textbf{Teorema della forma normale (debole)}\\
+Dato t termine della grammatica esiste s termine in NF tale che \textbf{t \textit{Red$_{NF}$ }s}. Allora esistono t $\equiv$ h$_1$ $\rightarrow$ $_1$...$\rightarrow$ $_1$ h$_n$ con n>1 se t non \`e gi\`a in NF; oppure t $\equiv$ s se t \`e gi\`a in NF.\\
+Questo significa che \`e sempre possibile rendere un programma convergente. Ma si pu\`o dire di pi\`u $\nexists$ programmi che divergono. 
+\\\\
+\noindent
+\textit{Definizione} \textbf{Teorema della forma normale (forte)}\\
+Per ogni termine t, l'albero dei cammini di riduzione di t \`e ben formato (ovvero $\nexists$ un cammino di riduzioni $\rightarrow$ $_1$ infinito).\\
+Dato t $\in$ A[$\Gamma$] derivabile in \textit{T}\\
+NF(t$_1$) $\equiv$
+$
+\begin{cases}
+\text{\textbf{t} se t è in NF} \\
+\text{\textbf{s} se \textit{\textbf{t Red}}}_{NF} \text{\textit{\textbf{ s}}}
+\end{cases}
+$
+\\
+Dunque se t non \`e in NF per il teorema normale comunque esiste una riduzione in NF.\\
+Dati a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] giudizi derivabili in \textit{T$_i$} allora a = b $\in$ A[$\Gamma$] sse NF(a) $\equiv$ NF(b) sse
+\begin{enumerate}
+\item a e b sono in NF e quindi a $\equiv$ b
+\item a non in NF, b in NF e \textbf{a \textit{Red$_{NF}$ }b}
+\item a in NF, b non in NF e \textbf{b \textit{Red$_{NF}$ }a}
+\item n\`e a n\`e b sono in NF, allora esiste s in NF tale che \textbf{a \textit{Red$_{NF}$ }s} e \textbf{b \textit{Red$_{NF}$ }s}
+\end{enumerate}
+Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_{NF}$ }NF(a)} allora a = NF(a) $\in$ A[$\Gamma$] \`e derivabile (la forma normale \`e uguale al termine stesso).
+
+ 
+
+
+
+\section{Esercizi}
+\label{sec:esercizi-cap2}
+\subsection{Tipo singoletto}
+\label{subsec: tipo-singoletto}
+\paragraph{1} 
+\textbf{Data}
+\begin{prooftree}
+\AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{d $\in$ M($\ast$) type[$\Gamma$]}
+\LeftLabel{E-N$_{1prog}$)}
+\BinaryInfC{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\end{prooftree}
+\textbf{dimostrare che in \textit{T$_1$} la regola \textit{E-N$_1prog$} \`e derivabile. Al fine di ci\`o basta mostrare che se i giudizi premessa sono derivabili, allora lo \`e anche il giudizio di conclusione.}\\\\
+\textbf{Soluzione}\\\\
+\textit{Per una maggiore comprensione delle derivazioni, ho ritenuto opportuno, ove necessario, spezzare l'albero in pi\`u parti.}
+
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{s-checks}
+\UnaryInfC{[$\Gamma$, w $\in$ N$_1$] cont}
+\LeftLabel{var}
+\UnaryInfC{w $\in$ N$_1$[$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{d $\in$ M($\ast$)[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
+\end{prooftree}
+\scriptsize{
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{s-checks}
+\UnaryInfC{[$\Gamma$, w $\in$ N$_1$] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ $\Gamma$}
+\UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$] cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{M(w) type[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$]}
+\AxiomC{}
+\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{s-checks}
+\UnaryInfC{[$\Gamma$, w $\in$ N$_1$] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ $\Gamma$}
+\UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$] cont}
+\LeftLabel{var}
+\UnaryInfC{z $\in$ $N_1$[$\Gamma$, z $\in$ $N_1$, w $\in$ N$_1$]}
+\LeftLabel{sub-typ}
+\BinaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
+\end{prooftree}
+}
+\noindent
+\normalsize{Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$)[$\Gamma$]}) siano valide, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.}
+
+
+\paragraph{2.} 
+\textbf{Dimostrare che la regola \textit{E-S} \`e derivabile in una teoria dei tipi \textit{T$_1$}, in cui si \`e rimpiazziata la regola di eliminazione \textit{E-S} con la regola \textit{E-N${_1prog}$}, aggiungendovi le regole di indebolimento, sostituzione e di \textit{sanitary checks}}.
+\begin{prooftree}
+\AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{d $\in$ M($\ast$)[$\Gamma$]}
+\LeftLabel{E-N$_{1prog}$)}
+\BinaryInfC{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{t` $\in$ N$_1$[$\sum$] }
+\AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{d` $\in$ M($\ast$)[$\sum$] }
+\LeftLabel{E-S)}
+\TrinaryInfC{El$_{N1}$(t`, d`) $\in$ M(t`)[$\Gamma$]}
+\end{prooftree}
+\textbf{Soluzione}\\\\
+\textit{Idea: parto dalla regola di eliminazione E-S, vi applico la regola di sostituzione sub-typ giungendo cos\`i alle premessi di E-N$_{1prog}$}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{t' $\in$ N$_1$[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{d $\in$ D($\ast$)[$\Gamma$]}
+\LeftLabel{E-N$_{1prog}$}
+\BinaryInfC{El$_{N1}$(w, d') $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{sub-typ}
+\BinaryInfC{El$_{N1}$(t', d') $\in$ M(t')[$\Gamma$]}
+\end{prooftree}
+Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (come dimostro nell'esercizio 2) e di \textit{E-S}.
+
+\paragraph{3}
+\textbf{Costruire l'albero dei cammini di passi di riduzione  possibili fino a un termine in NF, ovvero non ulteriormente riducibile rispetto alla relazione del termine $\rightarrow$ $_1$ del termine.}
+\begin{center}
+El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))
+\end{center}
+\textbf{Soluzione}\\\\
+\textit{Idea: uso un albero di derivazione per mostrare ogni passo derivazione di ogni cammino.}\\\\
+$\beta$-red:\\
+\textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow$ $_1$ $\ast$}\\
+\textit{El$_{N1}$($\ast$, x) $\rightarrow$ $_1$ x}
+
+\begin{prooftree}
+\AxiomC{x}
+\LeftLabel{$\beta$ N$_1$ red}
+\UnaryInfC{El$_{N1}$($\ast$, x)}
+\AxiomC{x}
+\RightLabel{$\beta$ N$_1$ red}
+\UnaryInfC{El$_{N1}$($\ast$, x)}
+\LeftLabel{$\beta$ N$_1$ red}\RightLabel{red$_{II}$}
+\BinaryInfC{El$_{NI}$($\ast$, El$_{N1}$($\ast$, x))}
+\AxiomC{x}
+\RightLabel{$\beta$ N$_1$ red}
+\UnaryInfC{El$_{N1}$($\ast$, x)}
+\RightLabel{red$_I$}
+\UnaryInfC{El$_{N1}$(El$_{N1}$($\ast$,$\ast$), x)}
+\LeftLabel{red$_{I}$}\RightLabel{red$_{II}$}
+\BinaryInfC{El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))}
+\end{prooftree}
+
+\paragraph{4} \textbf{Sia \textit{T$_1$} la teoria dei tipi definita del tipo singoletto con le regole strutturali, definite in questo capitolo, incluse quelle di sostituzione e indebolimento. Allora stabilire se i seguenti termini sono tipabili come termini del tipo singoletto, secondo \textit{T$_1$} e quali sono uguali definizionalmente.}
+\begin{itemize}
+\item El$_{N1}$($\ast$, $\ast$)
+\item El$_{N1}$(x, $\ast$)
+\item El$_{N1}$($\ast$, y)
+\item El$_{N1}$(x, y)
+\item El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$))
+\end{itemize}
+\noindent
+\\
+\textbf{Soluzione}\\\\
+\scriptsize
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$1$[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{[z $\in$ N$_1$] cont}
+\LeftLabel{I-S}
+\UnaryInfC{N$_1$ type[z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[ ]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$($\ast$, $\ast$) $\in$ $N_1$[ ]}
+\end{prooftree}
+\normalsize
+Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$($\ast$, $\ast$) $\rightarrow_1$ $\ast$ \\
+El$_{N1}$($\ast$, $\ast$) \`e uguale definizionalmente.
+
+\scriptsize
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[x $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ (x $\in$ N$_1$)}
+\UnaryInfC{x $\in$ N$_1$, z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$, z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$]}
+\end{prooftree}
+
+\noindent
+\normalsize
+Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$(x, $\ast$) $\nrightarrow_1$ \\
+El$_{N1}$(x, $\ast$) non \`e uguale definizionalmente.
+
+\scriptsize
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$ cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[y $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$  cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ y $\in$ N$_1$} 
+\UnaryInfC{y $\in$ N$_1$, z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$, z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ N$_1$[y $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$]}
+\end{prooftree}
+
+\noindent
+\normalsize
+Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$($\ast$, y) $\rightarrow_1$ y \\
+El$_{N1}$($\ast$, y) \`e uguale definizionalmente.}
+\scriptsize
+\begin{adjustwidth}{-11em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ x $\in$ N$_1$}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ (x $\in$ N$_1$)}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$, y $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ N$_1$) $\notin$ (x $\in$  \\N$_1$, y $\in$ N$_1$)\end{tabular}}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$, z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$, y $\in$ N$_1$, z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ x $\in$ N$_1$}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$(x, y) $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\noindent
+\normalsize
+Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$(x, y)$\nrightarrow_1$ \\
+El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

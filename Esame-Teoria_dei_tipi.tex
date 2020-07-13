@@ -1,0 +1,55 @@
+\documentclass[10pt,a4paper, italian]{book}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc} % riconosce gli acenti
+\usepackage[utf8]{inputenc} % riconosce gli acenti
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=linkcolor
+}	
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bussproofs} % per alberi di deduzione naturale
+\usepackage{graphicx} % per le immagini
+\usepackage[strict]{changepage}
+
+
+\begin{document}
+\setcounter{section}{0}
+\setcounter{page}{1}
+
+%-----------------------------------------------------------------------------------%
+% FIRST PAGE
+\begin{figure}[H]
+\centering
+  \includegraphics[width=0.6\linewidth]{./img/logo_dip.png}
+   \label{fig: logo-unip-dipartimento-matematica}
+\end{figure}
+\begin{center}\Large{\textbf{Universit\`a degli Studi di Padova\\Dipartimento di Matematica "Tullio Levi-Civita\\Corso di Laurea Magistrale in Informatica}}\end{center}
+\begin{center}\Large{Esame di Teoria dei Tipi}\end{center}
+\begin{flushright} 
+Teoria dei Tipi\\
+\textit{Elaborato scritto - Settembre 2020}\\
+Eleonora Signor, 1237581
+\end{flushright}
+\pagebreak
+
+%-----------------------------------------------------------------------------------%
+% INDEX OF PAGES
+\tableofcontents \pagebreak
+%-----------------------------------------------------------------------------------%
+
+\input{./content/capitolo1.tex}\pagebreak
+\input{./content/capitolo2.tex}\pagebreak
+\input{./content/capitolo3.tex}\pagebreak
+\input{./content/capitolo4.tex}\pagebreak
+\input{./content/capitolo5.tex}\pagebreak
+\input{./content/capitolo6.tex}\pagebreak
+\input{./content/capitolo7.tex}\pagebreak
+\input{./content/appendice.tex}\pagebreak
+\end{document}
