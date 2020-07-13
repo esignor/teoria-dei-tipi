@@ -807,7 +807,7 @@ termini non in NF & No per N$_1$ & El$_{N1}$($\ast$, x)\\
 \noindent
 I termini non in forma canonica  derivano dalle regole di introduzione; invece quelli non in forma canonica vengono introdotte dall'eliminatore.\\\\
 L'uguaglianza definizionale ha come scopo la chiusura riflessiva, simmetrica e transitiva delle derivazioni.\\\\
-In N$_1$ sono vere le seguenti regole di $\beta$-red: 
+In N$_1$ sono vere le seguenti regole di $\beta$-red, utili per provare quali termini sono uguali definizionalmente: 
 \begin{itemize}
 \item \textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow$ $_1$ $\ast$}
 \item \textit{El$_{N1}$($\ast$, x) $\rightarrow$ $_1$ x}
@@ -891,21 +891,10 @@ Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_
 \LeftLabel{E-S}
 \TrinaryInfC{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
 \end{prooftree}
-
+\scriptsize{
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
-\AxiomC{}
-\UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$] cont}
-\LeftLabel{ind-ty}
-\BinaryInfC{M(w) type[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$]}
-\AxiomC{}
-\UnaryInfC{z $\in$ $N_1$[$\Gamma$, z $\in$ $N_1$, w $\in$ N$_1$]}
-\LeftLabel{sub-typ}
-\BinaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
-\end{prooftree}
-
-\begin{prooftree}
 \AxiomC{}
 \UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
 \LeftLabel{s-checks}
@@ -914,9 +903,8 @@ Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_
 \UnaryInfC{N$_1$ type[$\Gamma$, w $\in$ N$_1$]}
 \LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ $\Gamma$}
 \UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$] cont}
-\end{prooftree}
-
-\begin{prooftree}
+\LeftLabel{ind-ty}
+\BinaryInfC{M(w) type[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$]}
 \AxiomC{}
 \UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
 \LeftLabel{s-checks}
@@ -927,8 +915,12 @@ Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_
 \UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$] cont}
 \LeftLabel{var}
 \UnaryInfC{z $\in$ $N_1$[$\Gamma$, z $\in$ $N_1$, w $\in$ N$_1$]}
+\LeftLabel{sub-typ}
+\BinaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
 \end{prooftree}
-Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$)[$\Gamma$]}) siano valide, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.
+}
+\noindent
+\normalsize{Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$)[$\Gamma$]}) siano valide, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.}
 
 
 \paragraph{2.} 
@@ -1013,14 +1005,65 @@ $\beta$-red:\\
 \UnaryInfC{[z $\in$ N$_1$] cont}
 \LeftLabel{I-S}
 \UnaryInfC{N$_1$ type[z $\in$ N$_1$]}
-\AxiomC{[] cont}
+\AxiomC{[ ] cont}
 \LeftLabel{I-S}
 \UnaryInfC{$\ast$ $\in$ N$_1$[ ]}
 \LeftLabel{E-S}
 \TrinaryInfC{El$_{N1}$($\ast$, $\ast$) $\in$ $N_1$[ ]}
 \end{prooftree}
+Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$($\ast$, $\ast$) $\rightarrow_1$ $\ast$ \\
+El$_{N1}$($\ast$, $\ast$) \`e uguale definizionalmente.
 
+\scriptsize{
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[x $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ (x $\in$ N$_1$)}
+\UnaryInfC{x $\in$ N$_1$, z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$, z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$]}
+\end{prooftree}
+}
+\noindent
+\normalsize{Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$(x, $\ast$) $\nrightarrow_1$ \\
+El$_{N1}$(x, $\ast$) non \`e uguale definizionalmente.}
 
+\scriptsize{
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\UnaryInfC{$\ast$ $\in$ N$_1$[y $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$, z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\UnaryInfC{y $\in$ N$_1$[y $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$]}
+\end{prooftree}
+}
+\noindent
+\normalsize{Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$($\ast$, y) $\rightarrow_1$ y \\
+El$_{N1}$($\ast$, y) \`e uguale definizionalmente.}
 
 
 
