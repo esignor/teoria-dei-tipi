@@ -16,6 +16,8 @@
 \usepackage{amsfonts}
 \usepackage{bussproofs} % per alberi di deduzione naturale
 \usepackage{graphicx} % per le immagini
+\usepackage[strict]{changepage}
+
 
 \begin{document}
 \begin{figure}[H]
@@ -994,6 +996,7 @@ $\beta$-red:\\
 \noindent
 \\
 \textbf{Soluzione}\\\\
+\scriptsize
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{I-S}
@@ -1011,10 +1014,11 @@ $\beta$-red:\\
 \LeftLabel{E-S}
 \TrinaryInfC{El$_{N1}$($\ast$, $\ast$) $\in$ $N_1$[ ]}
 \end{prooftree}
+\normalsize
 Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$($\ast$, $\ast$) $\rightarrow_1$ $\ast$ \\
 El$_{N1}$($\ast$, $\ast$) \`e uguale definizionalmente.
 
-\scriptsize{
+\scriptsize
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-S}
@@ -1044,27 +1048,96 @@ El$_{N1}$($\ast$, $\ast$) \`e uguale definizionalmente.
 \LeftLabel{E-S}
 \TrinaryInfC{El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$]}
 \end{prooftree}
-}
-\noindent
-\normalsize{Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$(x, $\ast$) $\nrightarrow_1$ \\
-El$_{N1}$(x, $\ast$) non \`e uguale definizionalmente.}
 
-\scriptsize{
+\noindent
+\normalsize
+Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$(x, $\ast$) $\nrightarrow_1$ \\
+El$_{N1}$(x, $\ast$) non \`e uguale definizionalmente.
+
+\scriptsize
 \begin{prooftree}
 \AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$ cont}
+\LeftLabel{I-S}
 \UnaryInfC{$\ast$ $\in$ N$_1$[y $\in$ N$_1$]}
 \AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$  cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ y $\in$ N$_1$} 
+\UnaryInfC{y $\in$ N$_1$, z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[y $\in$ N$_1$, z $\in$ N$_1$]}
 \AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$ cont}
+\LeftLabel{var}
 \UnaryInfC{y $\in$ N$_1$[y $\in$ N$_1$]}
 \LeftLabel{E-S}
 \TrinaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$]}
 \end{prooftree}
-}
-\noindent
-\normalsize{Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$($\ast$, y) $\rightarrow_1$ y \\
-El$_{N1}$($\ast$, y) \`e uguale definizionalmente.}
 
+\noindent
+\normalsize
+Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$($\ast$, y) $\rightarrow_1$ y \\
+El$_{N1}$($\ast$, y) \`e uguale definizionalmente.}
+\scriptsize
+\begin{adjustwidth}{-11em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ x $\in$ N$_1$}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ (x $\in$ N$_1$)}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$, y $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ N$_1$) $\notin$ (x $\in$  \\N$_1$, y $\in$ N$_1$)\end{tabular}}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$, z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$, y $\in$ N$_1$, z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ x $\in$ N$_1$}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$(x, y) $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\noindent
+\normalsize
+Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$(x, y)$\nrightarrow_1$ \\
+El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
 
 
 
