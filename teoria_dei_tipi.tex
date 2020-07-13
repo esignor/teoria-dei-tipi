@@ -246,8 +246,8 @@ Ci sono quattro forme di giudizio (nelle quali $\Gamma$ identifica il contesto):
 \begin{itemize}
 \item \textbf{A type[$\Gamma$]}: A \`e un tipo, possibilmente indicato da variabili nel contesto $\Gamma$, dipendente da $\Gamma$ stesso. Rappresenta il giudizio di tipo.
 \item \textbf{A = B type[$\Gamma$]}: il tipo A dipendente da $\Gamma$ \`e uguale al tipo B dipendente da $\Gamma$. Rappresenta il giudizio di uguaglianza di tipo.
-\item \textbf{a $\in$ A type[$\Gamma$]}: a \`e un elemento del tipo A, possibilmente indiciato, ovvero dipendente da $\Gamma$ e dalle sue variabili di contesto. Un esempio di tipo dipendente \`e l'array, che ha termini di funzioni che dipendono da $\Gamma$. Invece il termine non \`e dipendente quando si parla di funzione costante senza variabili.
-\item \textbf{a = b $\in$ A type[$\Gamma$]}: a come elemento del tipo A dipende da $\Gamma$ ed \`e uguale in modo definizionale/computazionale al termine b. Quest'ultimo, difatti, \`e elemento del tipo A dipendente da $\Gamma$.
+\item \textbf{a $\in$ A [$\Gamma$]}: a \`e un elemento del tipo A, possibilmente indiciato, ovvero dipendente da $\Gamma$ e dalle sue variabili di contesto. Un esempio di tipo dipendente \`e l'array, che ha termini di funzioni che dipendono da $\Gamma$. Invece il termine non \`e dipendente quando si parla di funzione costante senza variabili.
+\item \textbf{a = b $\in$ A [$\Gamma$]}: a come elemento del tipo A dipende da $\Gamma$ ed \`e uguale in modo definizionale/computazionale al termine b. Quest'ultimo, difatti, \`e elemento del tipo A dipendente da $\Gamma$.
 \end{itemize}
 \noindent
 All'interno di ogni singolo giudizio si lavora con la teoria dei tipi.\\
@@ -275,11 +275,12 @@ Visti come programmi, a e b rappresentano lo stesso programma. In $\lambda$-calc
 Esiste anche un quinto giudizio ausiliario (\$ \ref{subsec:formazione-contesti}) \textit{F-C}, che permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
 
 \section{Esercizi}
-\label{sec:esercizi-cap2}
+\subsection{$\lambda$-calcolo puro}
+\subsection{subsec:$\lambda$-calcolo-puro}
 \paragraph{1} 
 \textbf{Dato il seguente termine, elencare quali sono le sue variabili libere e le sue variabili legate con i lambda relativi.}
 \begin{center}$\lambda$z.((($\lambda$x.$\lambda$x.yx)x)(v$\lambda$z.$\lambda$w.v))\end{center}
-\textit{Soluzione}\\\\
+\textbf{Soluzione}\\\\
 $\lambda$z.((($\lambda$x.\textbf{\textcolor{red}{$\lambda$x}}.\textbf{\textcolor{green}{y}\textcolor{red}{x}})\textbf{\textcolor{green}{x}})(\textbf{\textcolor{green}{v}}$\lambda$z.$\lambda$w.\textbf{\textcolor{green}{v}}))
 \begin{itemize}
 \item le variabili libere (colorate in verde) sono \textit{y, x} e \textit{v}
@@ -289,14 +290,14 @@ $\lambda$z.((($\lambda$x.\textbf{\textcolor{red}{$\lambda$x}}.\textbf{\textcolor
 \paragraph{2}
 \textbf{Rinominare le variabili legate nel seguente termine in modo che non ci siano due variabili legate con lo stesso nome.}
 \begin{center}x($\lambda$x.(($\lambda$x.x)x))\end{center}
-\textit{Soluzione}\\\\
+\textbf{Soluzione}\\\\
 x(\textbf{\textcolor{red}{$\lambda$x}}.((\textbf{\textcolor{red}{$\lambda$x}}.x)x))\\\\
 Le variabili legate sono le x all'interno delle parentesi tonde. Una possibile rinomina, per evitare che queste variabili legate abbiano lo stesso nome, \`e x($\lambda$x.(($\lambda$y.y)x)), dove la x della parentesi pi\`u interna \`e stata sostituita con la y.
 
 \paragraph{3}
 Evidenziare di due colori diversi quali sono le variabili libere e quali quelle legate.
 \begin{center}($\lambda$x.(z($\lambda$z.((xyz)x))zx))x($\lambda$x.(($\lambda$y.yy)($\lambda$z.zz)))\end{center}
-\textit{Soluzione}\\\\
+\textbf{Soluzione}\\\\
 ($\lambda$x.(\textbf{\textcolor{green}{z}}($\lambda$z.((\textbf{\textcolor{red}{x}\textcolor{green}{y}\textcolor{red}{z}})\textbf{\textcolor{red}{x}}))\textbf{\textcolor{green}{z}\textcolor{red}{x}}))\textbf{\textcolor{green}{x}}($\lambda$x.(($\lambda$y.\textbf{\textcolor{red}{yy}})($\lambda$z.\textbf{\textcolor{red}{zz}})))
 \begin{itemize}
 \item le variabili libere sono le \textit{z, y} e \textit{x} colorate in verde
@@ -308,11 +309,11 @@ Descrivere un termine del $\lambda$-calcolo, descritto in \S{\ref{subsec:lambda-
 \textit{Soluzione}\\\\
 Per definizione un termine t \`e convergente, rispetto a una strategia di
 riduzione deterministica, se esiste un numero finito n >= 1 di termini s$_1$,..., s$_n$ tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i + 1}$ per i = 1,..., n-1 e s$_n$ non \`e riducibile ad alcun termine.\\
-Prendendo in considerazione una strategia di riduzione deterministica \textit{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di termine t del $\lambda$-calcolo convergente in almeno un passo di riduzione \`e:
+Prendendo in considerazione una strategia di riduzione deterministica \textbf{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di termine t del $\lambda$-calcolo convergente in almeno un passo di riduzione \`e:
 \begin{center}t $\equiv$ (($\lambda$x.x)z)(($\lambda$y.y)w) $\rightarrow_1$ z(($\lambda$y.y)w) $\rightarrow_1$ z(w) $\equiv$ s$_n$ $\equiv$ s\end{center}
 \paragraph{5} 
 Descrivere due termini diversi del $\lambda$-calcolo, descritto in \S{\ref{subsec:lambda-calcolo}, che non sono convergenti sempre rispetto a una strategia di riduzione deterministica.\\\\
-\textit{Soluzione}\\\\
+\textbf{Soluzione}\\\\
 Per definizione un termine t diverge (\`e non convergente), rispetto a una strategia
 di riduzione deterministica, se esiste una quantit\`a numerabile di termini s$_i$ al variare di i $\in$ Nat tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i+1}$. Per ogni i $\in$ Nat (ossia esiste una lista infinita di passi computazioni a partire da t).
 Prendendo in considerazione una strategia di riduzione deterministica \textit{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di due termine diversi del $\lambda$-calcolo che sono convergenti \`e:
@@ -338,7 +339,7 @@ Che relazione c'\`e tra il lambda-calcolo puro con le regole di riduzione date i
 \end{itemize}
 \noindent
 \\\\
-\textit{Svolgiemento}\\\\
+\textbf{Soluzione}\\\\
 \textit{Idea: devo provare che relazione esiste tra $\rightarrow_1^\ast$ e $\rightarrow$. Per cui verifico cosa accade per ($\rightarrow_1^\ast \subseteq \rightarrow_1$) e ($\rightarrow_1 \subseteq \rightarrow_1^\ast$)}\\\\
 \noindent Sia L(\textit{T}) l'insieme dei $\lambda$ termini che \`e possibile ridurre in forma normale, con la strategia di riduzione \textit{T}. Dimostro che valgono le seguenti relazioni tra $\rightarrow_1^\ast e \rightarrow$:
 \begin{enumerate}
@@ -380,8 +381,8 @@ Le strategie di valutazione sono deterministiche, portano pertanto allo stesso r
 Lo scopo della teoria dei tipi \`e offrire un sistema formale in cui derivare, tramite regole e assiomi, giudizi nella forma:
 \[ A \hspace{0.1cm} type[\Gamma] \qquad
 A = B \hspace{0.1cm} type[\Gamma] \qquad
-a \in A\hspace{0.1cm} type[\Gamma] \qquad
-a=b \in A \hspace{0.1cm} type [\Gamma]
+a \in A\hspace{0.1cm} [\Gamma] \qquad
+a=b \in A \hspace{0.1cm}[\Gamma]
 \]
 \[
 + \hspace{0.1cm} ausiliaria \quad \Gamma \hspace{0.1cm} cont
@@ -410,7 +411,7 @@ Di seguito illustro le principali regole di contesto comuni a tutte le teorie de
 \AxiomC{$\Gamma$, x $\in$ A, $\Delta$}
 \AxiomC{cont}
 \LeftLabel{var-ass)}
-\BinaryInfC{x $\in$ type[$\Gamma$,x $\in$ A, $\Delta$]}
+\BinaryInfC{x $\in$ [$\Gamma$,x $\in$ A, $\Delta$]}
 \end{prooftree}
 \subsection{Regole strutturali addizionali sull'uguaglianza}
 \label{subsec:uguaglianza}
@@ -418,66 +419,67 @@ L'uguaglianza, in una teoria dei tipi, consiste in una relazione di equivalenza 
 \[ ref) \quad \frac{A\hspace{0.1cm}type[\Gamma]}{A=A\hspace{0.1cm}type[\Gamma]} \qquad sym) \quad \frac{A=B\hspace{0.1cm}type[\Gamma]}{B=A\hspace{0.1cm}type[\Gamma]} \]
 \[ tra) \quad \frac{A=B\hspace{0.1cm}type[\Gamma] \qquad B=C\hspace{0.1cm}type[\Gamma]}{A=C\hspace{0.1cm}type[\Gamma]} \]
 E allo stesso modo anche le regole di uguaglianza definizonale/computazionale tra termini:
-\[ ref) \quad \frac{a \in A\hspace{0.1cm}type[\Gamma]}{a=a \in A\hspace{0.1cm}type[\Gamma]} \qquad sym) \quad \frac{a=b\in A \hspace{0.1cm}type[\Gamma]}{b=a \in A\hspace{0.1cm}type[\Gamma]} \]
-\[ tra) \quad \frac{a=b \in A\hspace{0.1cm}type[\Gamma] \qquad b=c \in A\hspace{0.1cm}type[\Gamma]}{a=c \in A\hspace{0.1cm}type[\Gamma]} \]
+\[ ref) \quad \frac{a \in A\hspace{0.1cm}[\Gamma]}{a=a \in A\hspace{0.1cm}[\Gamma]} \qquad sym) \quad \frac{a=b\in A \hspace{0.1cm}[\Gamma]}{b=a \in A\hspace{0.1cm}[\Gamma]} \]
+\[ tra) \quad \frac{a=b \in A\hspace{0.1cm}[\Gamma] \qquad b=c \in A\hspace{0.1cm}[\Gamma]}{a=c \in A\hspace{0.1cm}[\Gamma]} \]
 \subsection{Regole di conversione dell'uguaglianza per tipi uguali}
 \label{subsec:conversione-uguaglianza}
 L'appartenenza si conserva con l'uguaglianza di termini e tipi. Le regole da aggiungere, in una teoria dei tipi, per garantirlo sono:
-\[ conv) \quad \frac{a \in A\hspace{0.1cm}type[\Gamma] \quad A=B\hspace{0.1cm}type[\Gamma]}{a \in B\hspace{0.1cm}type[\Gamma]} \]
-\[ conv-eq) \quad \frac{a=b \in A\hspace{0.1cm}type[\Gamma] \qquad A=B\hspace{0.1cm}type[\Gamma]}{a=b \in B\hspace{0.1cm}type[\Gamma]} \]
+\[ conv) \quad \frac{a \in A\hspace{0.1cm}[\Gamma] \quad A=B\hspace{0.1cm}type[\Gamma]}{a \in B\hspace{0.1cm}[\Gamma]} \]
+\[ conv-eq) \quad \frac{a=b \in A\hspace{0.1cm}[\Gamma] \qquad A=B\hspace{0.1cm}type[\Gamma]}{a=b \in B\hspace{0.1cm}[\Gamma]} \]
 \subsection{Regole di indebolimento e di sostituzione}
 \label{subsec:indebolimento-sostituzione}
 \subsubsection{Indebolimento}
 \label{subsec:indebolimento}
 \[ ind-ty) \quad \frac{A\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{A\hspace{0.1cm}type[\Gamma,\Delta]} \quad ind-ty-eq) \quad \frac{A=B\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{A=B\hspace{0.1cm}type[\Gamma,\Delta]} \]
-\[ ind-te) \quad \frac{a \in A\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a \in A\hspace{0.1cm}type[\Gamma,\Delta]} \quad ind-te) \quad \frac{a=b \in A\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a=b \in A\hspace{0.1cm}type[\Gamma,\Delta]} \]
+\[ ind-te) \quad \frac{a \in A\hspace{0.1cm}[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a \in A\hspace{0.1cm}[\Gamma,\Delta]} \quad ind-te) \quad \frac{a=b \in A\hspace{0.1cm}
+[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a=b \in A\hspace{0.1cm}[\Gamma,\Delta]} \]
 \subsubsection{Sostituzione}
 \label{subsec:sostituzione}
 \begin{equation}
 \begin{split}
-C(x_1,...,x_n)\hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-typ) \quad \frac{a_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+C(x_1,...,x_n)\hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-typ) \quad \frac{a_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-C(x_1,...,x_n)\hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-typ) \quad \frac{a_1 = b_1  \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ C(a_1,...,a_n) = C(b_1,...,b_n) \hspace{0.1cm}type[\Gamma]}
+C(x_1,...,x_n)\hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-typ) \quad \frac{a_1 = b_1  \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{C(a_1,...,a_n) = C(b_1,...,b_n) \hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-Eqtyp) \quad \frac{a_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-Eqtyp) \quad \frac{a_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-Eqtyp) \quad \frac{a_1 = b_1\in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-Eqtyp) \quad \frac{a_1 = b_1\in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-ter) \quad \frac{a_1 in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-ter) \quad \frac{a_1 in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-c(x_1,...,x_n) = d(x_1,...,x_n)  \in C(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eqter) \quad \frac{a_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) = d(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+c(x_1,...,x_n) = d(x_1,...,x_n)  \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eqter) \quad \frac{a_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) = d(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-ter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) = c(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-ter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) = c(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}[\Gamma]}
 \end{split}
 \end{equation}
 
 \begin{equation}
 \begin{split}
-c(x_1,...,x_n) = d(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-eqter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) = d(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+c(x_1,...,x_n) = d(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-eqter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) = d(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}[\Gamma]}
 \end{split}
 \end{equation}
 
@@ -516,7 +518,7 @@ Attenzione all'ordine di sostituzione si deve partire sempre da quello con meno 
 \AxiomC{c $\in$ [C,$\Gamma$]}
 \AxiomC{b $\in$ [B(c),$\Gamma]$}
 \AxiomC{A(x,y) type[x $\in$ C, y $\in$ B(x)]}
-\TrinaryInfC{a(c,b) $\in$ A(c,b) type$[\Gamma]$}
+\TrinaryInfC{a(c,b) $\in$ A(c,b) $[\Gamma]$}
 \end{prooftree}
 Se si ha un tipo puo' venire usato il giudizio di uguaglianza tra termini e la sostituzione.
 \begin{prooftree}
@@ -528,9 +530,9 @@ Se si ha un tipo puo' venire usato il giudizio di uguaglianza tra termini e la s
 \`E dunque fondamentale il concetto di uguaglianza fra tipi. Se considero che ci sia un elemento
 
 \begin{prooftree}
-\AxiomC{a(x) $\in$ A(x) type[$\Gamma$, x $\in$ C]}
+\AxiomC{a(x) $\in$ A(x) [$\Gamma$, x $\in$ C]}
 \AxiomC{c = e $\in$ C[$\Gamma$]}
-\BinaryInfC{a(c) = a(e) $\in$ A(c) type[$\Gamma$]}
+\BinaryInfC{a(c) = a(e) $\in$ A(c) [$\Gamma$]}
 \end{prooftree}
 \noindent
 Per poter affermare che A(e) = A(c) devo poterlo dedurre. Per farlo mi sono indispensabili le \textbf{regole di conversione dell'uguaglianza del tipaggio (\S\ref{subsec:regole-tipaggio})}.
@@ -540,19 +542,19 @@ Per poter affermare che A(e) = A(c) devo poterlo dedurre. Per farlo mi sono indi
 
 \subsubsection{Regole di conversione}
 \label{subsubsec:regole-di-conversione}
-\[\frac{c \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{C \in D\hspace{0.1cm}type [\Gamma]}\]
+\[\frac{c \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{C \in D\hspace{0.1cm}[\Gamma]}\]
 Se due tipi sono uguali allora hanno gli stessi termini: $C=D \Rightarrow (c \in C \Leftrightarrow c \in D)$. L'uguaglianza fra tipi \`e per questo simmetrica.\\
 Tuttavia non sempre l'unicit\`a del tipaggio di un termine (il $\Leftrightarrow$) \`e garantito per ogni teoria. Nei casi trattati dal corso s\`i, in quanto verr\`a inteso che $C = D\hspace{0.1cm}type[\Gamma]$ sse due tipi hanno gli stessi elementi (come gi\`a accade in \textit{set theory}), ma pu\`o non essere sempre vero.
 
 \subsubsection{Regole di conversione dell'uguaglianza}
 \label{subsubsec:regole-di-conversione-uguaglianza}
-\[\frac{c=d \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{c = d \in D \hspace{0.1cm} type [\Gamma]}\]
+\[\frac{c=d \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{c = d \in D \hspace{0.1cm} [\Gamma]}\]
 Questa regola permette di convertire le uguaglianze nel tipaggio di un termine.
 
 
 \section{Il tipo singoletto}
 \label{sec:tipo-singoletto}
-Il tipo singoletto risulta essere paradigmatico per gli altri tipi. Per definirlo impiegher\`o i giudizi nella forma $A\hspace{0.1cm}type[\Gamma]$, $a \in A\hspace{0.1cm}type[\Gamma]$ e $a = b \in A\hspace{0.1cm}type[\Gamma]$. L'uguaglianza, invece, non verr\`a coinvolta, in quanto non pu\`o essere impiegata per definire un nuovo tipo, \`e difatti usata solo nelle derivazioni.\\\\
+Il tipo singoletto risulta essere paradigmatico per gli altri tipi. Per definirlo impiegher\`o i giudizi nella forma $A\hspace{0.1cm}type[\Gamma]$, $a \in A\hspace{0.1cm}[\Gamma]$ e $a = b \in A\hspace{0.1cm}[\Gamma]$. L'uguaglianza, invece, non verr\`a coinvolta, in quanto non pu\`o essere impiegata per definire un nuovo tipo, \`e difatti usata solo nelle derivazioni.\\\\
 Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivazione parte sempre dal contesto vuoto ($\varnothing$).
 \begin{prooftree}
 \AxiomC{A type[$\Gamma$]}
@@ -585,7 +587,7 @@ Con l'impiego solo delle regole \textit{F-C} e \textit{F-S} si possono derivare 
 \begin{prooftree}
 \AxiomC{[$\Gamma$] cont}
 \LeftLabel{I-S)}
-\UnaryInfC{$\ast$ $\in$ $N_1$ type[$\Gamma]$ cont}
+\UnaryInfC{$\ast$ $\in$ $N_1$ [$\Gamma]$ cont}
 \end{prooftree}
 \textit{Sia $N_1$ in ogni contesto $\Gamma$, partendo da contesto $\varnothing$, la regola I-S permette di formare i termini, per mezzo dell'introduzione di un elemento costante $\ast$ in $N_1$.}\\\\
 Un esempio diretto della sua applicazione \`e
@@ -598,11 +600,11 @@ Un esempio diretto della sua applicazione \`e
 \subsection{Regole di Eliminazione}
 \label{subsec:eliminazione}
 \begin{prooftree}
-\AxiomC{t $\in$ $N_1$ type[$\Gamma$]}
+\AxiomC{t $\in$ $N_1$ [$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
-\AxiomC{c  $\in$ M($\ast$) type[$\Gamma$]}
+\AxiomC{c  $\in$ M($\ast$)[$\Gamma$]}
 \LeftLabel{E-S)}
-\TrinaryInfC{$El_{N1}$(t, c) $\in$ M($\ast$) type[$\Gamma$]}
+\TrinaryInfC{$El_{N1}$(t, c) $\in$ M($\ast$)[$\Gamma$]}
 \end{prooftree}
 \noindent
 \textit{El trattasi di costruttore di funzioni e $M[t] = M(z)[\frac{z}{t}]$.}
@@ -610,19 +612,19 @@ Un esempio diretto della sua applicazione \`e
 La regola di eliminazione si pu\`o equivalentemente scrivere in un altro modo
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
-\AxiomC{c  $\in$ M($\ast$) type[$\Gamma$]}
+\AxiomC{c  $\in$ M($\ast$)[$\Gamma$]}
 \LeftLabel{E-S)$_{dip}$}
-\BinaryInfC{$El_{N1}$(z, c) $\in$ M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\BinaryInfC{$El_{N1}$(z, c) $\in$ M(z)[$\Gamma$, z $\in$ $N_1$]}
 \end{prooftree}
 Le regole \textit{E-S)$_{dip}$} + \textit{la regole di sostituzione} + \textit{F-S} + \textit{I-S} permettono di verificare la validit\`a di \textit{E-S}.
 \begin{prooftree}
-\AxiomC{t $\in$ $N_1$ type[$\Gamma$]}
+\AxiomC{t $\in$ $N_1$[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
-\AxiomC{c $\in$ M($\ast$) type[$\Gamma$]}
+\AxiomC{c $\in$ M($\ast$)[$\Gamma$]}
 \LeftLabel{E-S)$_{dip}$}
-\BinaryInfC{$El_{N1}$(z, c) $\in$ M(z) type[$\Gamma$]}
+\BinaryInfC{$El_{N1}$(z, c) $\in$ M(z)[$\Gamma$]}
 \LeftLabel{sost)}
-\BinaryInfC{$El_{N1}$(t, c) $\in$ M(t) type[$\Gamma$]}
+\BinaryInfC{$El_{N1}$(t, c) $\in$ M(t)[$\Gamma$]}
 \end{prooftree}
 \noindent
 Inoltre vale anche il viceversa, da \textit{E-S} si riesce a ottenere \textit{E-S$_{dip}$}.
@@ -630,9 +632,9 @@ Inoltre vale anche il viceversa, da \textit{E-S} si riesce a ottenere \textit{E-
 \label{subsec:conversione}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
-\AxiomC{c $\in$ M($\ast$) type[$\Gamma$]}
+\AxiomC{c $\in$ M($\ast$)[$\Gamma$]}
 \LeftLabel{C-S)}
-\BinaryInfC{$El_{N1}$($\ast$, c) = c $\in$ M($\ast$) type[$\Gamma$]}
+\BinaryInfC{$El_{N1}$($\ast$, c) = c $\in$ M($\ast$)[$\Gamma$]}
 \end{prooftree}
 \textit{La conversione rende possibile l'applicazione della regola di eliminazione introducendo delle uguaglianze.}
 \\\\
@@ -681,19 +683,19 @@ Se A type [$\Gamma$] \`e derivabile in \textit{T} allora anche $\Gamma$ cont \`e
 \end{center}
 Se A = B type [$\Gamma$] \`e derivabile in \textit{T} allora anche A type[$\Gamma$] e B type[$\Gamma$] sono derivabili in \textit{T}.
 \begin{prooftree}
-\AxiomC{a $\in$ A type [$\Gamma$]}
+\AxiomC{a $\in$ A[$\Gamma$]}
 \UnaryInfC{A type[$\Gamma$]}
 \end{prooftree}
-Se a $\in$ A type [$\Gamma$] \`e derivabile in \textit{T} allora anche A type[$\Gamma$] \`e derivabile in \textit{T}.
+Se a $\in$ A[$\Gamma$] \`e derivabile in \textit{T} allora anche A type[$\Gamma$] \`e derivabile in \textit{T}.
 \begin{center}
-\AxiomC{a = b $\in$ A type [$\Gamma$]}
-\UnaryInfC{a $\in$ A type[$\Gamma$]}
+\AxiomC{a = b $\in$ A[$\Gamma$]}
+\UnaryInfC{a $\in$ A[$\Gamma$]}
 \DisplayProof
-\AxiomC{a = b $\in$ A type [$\Gamma$]}
-\UnaryInfC{b $\in$ A type[$\Gamma$]}
+\AxiomC{a = b $\in$ A[$\Gamma$]}
+\UnaryInfC{b $\in$ A[$\Gamma$]}
 \DisplayProof
 \end{center}
-Se a = b $\in$ A type [$\Gamma$] \`e derivabile in \textit{T} allora anche a $\in$ A type[$\Gamma$] e b $\in$ A type[$\Gamma$] sono  derivabili in \textit{T}.
+Se a = b $\in$ A[$\Gamma$] \`e derivabile in \textit{T} allora anche a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] sono  derivabili in \textit{T}.
 
 \section{Schema generale}
 \label{sec: schema-generale}
@@ -707,31 +709,31 @@ Identificate con il preambolo F-\textit{T}, con \textit{T} teoria dei tipi in es
 \item \textbf{Regole di introduzione}
 identificate con il preambolo I-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\Tali regole consistono nella forma introduttiva degli elementi canonici di \textit{T} e rispettono la forma
 \AxiomC{[$\Gamma$] cont}
-\UnaryInfC{t' $\in$ \textit{T} type[$\Gamma$]}
+\UnaryInfC{t' $\in$ \textit{T}[$\Gamma$]}
 \DisplayProof
 \item \textbf{Regole di eliminazione}
 identificate con il preambolo E-\textit{T} con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\Tali regole sono definenti E$_k$, a partire dagli elementi di k a valori in un tipo M(z) type[$\Gamma$, z $\in$k]. L'ipotesi valida \`e che siano dati degli elementi in M(z) sui valori canonici di k.
 Tali regole sono del tipo k e rispettano la forma 
-\AxiomC{t $\in$ \textit{T} type[$\Gamma$]}
+\AxiomC{t $\in$ \textit{T}[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ \textit{T}]}
-\AxiomC{c  $\in$ M(t') type[$\Gamma$]}
-\TrinaryInfC{$El_{\textit{T}}$(t, c) $\in$ M(t) type[$\Gamma$]}
+\AxiomC{c  $\in$ M(t')[$\Gamma$]}
+\TrinaryInfC{$El_{\textit{T}}$(t, c) $\in$ M(t)[$\Gamma$]}
 \DisplayProof
 \item \textbf{Regole di conversione}
 identificate con il preambolo C-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\, che stabilscono che gli eliminatori in (3) sono stabiliti per ricorsione a partire dalle ipotesi.
 Tali regole sono del tipo k e rispettano la forma
 \AxiomC{M(z) type[$\Gamma$, z $\in$ \textit{T}]}
-\AxiomC{c $\in$ M(t') type[$\Gamma$]}
-\BinaryInfC{El$_{\textit{T}}$(t', c) = c $\in$ M(t') type[$\Gamma$]}
+\AxiomC{c $\in$ M(t')[$\Gamma$]}
+\BinaryInfC{El$_{\textit{T}}$(t', c) = c $\in$ M(t')[$\Gamma$]}
 \DisplayProof
 \item \textbf{Regole di uguaglianza}
 identificate con il preambolo eq-E-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.
 Tali regole stabiliscono che i costruttori di k in (2) e (3) permettono l'uguaglianza definizionale dei termini da cui dipendono.
 Tali regole sono del tipo k e rispettano la forma\\
-\AxiomC{t = s $\in$ N$_1$ type[$\Gamma$]}
+\AxiomC{t = s $\in$ N$_1$[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ N$_1$]}
-\AxiomC{c = d $\in$ M(t') type[$\Gamma$]}
-\TrinaryInfC{El$_{\textit{T}}$(t', c) = c $\in$ M(t') type[$\Gamma$]}
+\AxiomC{c = d $\in$ M(t')[$\Gamma$]}
+\TrinaryInfC{El$_{\textit{T}}$(t', c) = c $\in$ M(t')[$\Gamma$]}
 \DisplayProof
 \end{enumerate}
 \noindent
@@ -861,6 +863,8 @@ Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_
 
 \section{Esercizi}
 \label{sec:esercizi-cap2}
+\subsection{Tipo singoletto}
+\label{subsec: tipo-singoletto}
 \paragraph{1} 
 \textbf{Data}
 \begin{prooftree}
@@ -879,13 +883,13 @@ Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_
 \LeftLabel{s-checks}
 \UnaryInfC{[$\Gamma$, w $\in$ N$_1$] cont}
 \LeftLabel{var}
-\UnaryInfC{w $\in$ N$_1$ type[$\Gamma$, w $\in$ N$_1$]}
+\UnaryInfC{w $\in$ N$_1$[$\Gamma$, w $\in$ N$_1$]}
 \AxiomC{}
 \UnaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
 \AxiomC{}
-\UnaryInfC{d $\in$ M($\ast$) type[$\Gamma$, w $\in$ N$_1$]}
+\UnaryInfC{d $\in$ M($\ast$)[$\Gamma$, w $\in$ N$_1$]}
 \LeftLabel{E-S}
-\TrinaryInfC{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\TrinaryInfC{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
 \end{prooftree}
 
 \begin{prooftree}
@@ -896,7 +900,7 @@ Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_
 \LeftLabel{ind-ty}
 \BinaryInfC{M(w) type[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$]}
 \AxiomC{}
-\UnaryInfC{z $\in$ $N_1$ type[$\Gamma$, z $\in$ $N_1$, w $\in$ N$_1$]}
+\UnaryInfC{z $\in$ $N_1$[$\Gamma$, z $\in$ $N_1$, w $\in$ N$_1$]}
 \LeftLabel{sub-typ}
 \BinaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
 \end{prooftree}
@@ -922,39 +926,39 @@ Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_
 \LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ $\Gamma$}
 \UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$] cont}
 \LeftLabel{var}
-\UnaryInfC{z $\in$ $N_1$ type[$\Gamma$, z $\in$ $N_1$, w $\in$ N$_1$]}
+\UnaryInfC{z $\in$ $N_1$[$\Gamma$, z $\in$ $N_1$, w $\in$ N$_1$]}
 \end{prooftree}
-Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$) type[$\Gamma$]}) siano valide, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.
+Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$)[$\Gamma$]}) siano valide, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.
 
 
 \paragraph{2.} 
 \textbf{Dimostrare che la regola \textit{E-S} \`e derivabile in una teoria dei tipi \textit{T$_1$}, in cui si \`e rimpiazziata la regola di eliminazione \textit{E-S} con la regola \textit{E-N${_1prog}$}, aggiungendovi le regole di indebolimento, sostituzione e di \textit{sanitary checks}}.
 \begin{prooftree}
 \AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
-\AxiomC{d $\in$ M($\ast$) type[$\Gamma$]}
+\AxiomC{d $\in$ M($\ast$)[$\Gamma$]}
 \LeftLabel{E-N$_{1prog}$)}
-\BinaryInfC{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\BinaryInfC{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
 \end{prooftree}
 \begin{prooftree}
-\AxiomC{t` $\in$ N$_1$ type[$\sum$] }
+\AxiomC{t` $\in$ N$_1$[$\sum$] }
 \AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
-\AxiomC{d` $\in$ M($\ast$) type[$\sum$] }
+\AxiomC{d` $\in$ M($\ast$)[$\sum$] }
 \LeftLabel{E-S)}
-\TrinaryInfC{El$_{N1}$(t`, d`) $\in$ M(t`) type[$\Gamma$]}
+\TrinaryInfC{El$_{N1}$(t`, d`) $\in$ M(t`)[$\Gamma$]}
 \end{prooftree}
 \textbf{Soluzione}\\\\
 \textit{Idea: parto dalla regola di eliminazione E-S, vi applico la regola di sostituzione sub-typ giungendo cos\`i alle premessi di E-N$_{1prog}$}
 \begin{prooftree}
 \AxiomC{}
-\UnaryInfC{t' $\in$ N$_1$ type[$\Gamma$]}
+\UnaryInfC{t' $\in$ N$_1$[$\Gamma$]}
 \AxiomC{}
 \UnaryInfC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
 \AxiomC{}
-\UnaryInfC{d $\in$ D($\ast$) type[$\Gamma$]}
+\UnaryInfC{d $\in$ D($\ast$)[$\Gamma$]}
 \LeftLabel{E-N$_{1prog}$}
-\BinaryInfC{El$_{N1}$(w, d') $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\BinaryInfC{El$_{N1}$(w, d') $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
 \LeftLabel{sub-typ}
-\BinaryInfC{El$_{N1}$(t', d') $\in$ M(t') type[$\Gamma$]}
+\BinaryInfC{El$_{N1}$(t', d') $\in$ M(t')[$\Gamma$]}
 \end{prooftree}
 Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (come dimostro nell'esercizio 2) e di \textit{E-S}.
 
@@ -963,7 +967,7 @@ Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (c
 \begin{center}
 El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))
 \end{center}
-\textbf{Soluzione}\\
+\textbf{Soluzione}\\\\
 \textit{Idea: uso un albero di derivazione per mostrare ogni passo derivazione di ogni cammino.}\\\\
 $\beta$-red:\\
 \textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow$ $_1$ $\ast$}\\
@@ -987,6 +991,34 @@ $\beta$-red:\\
 \BinaryInfC{El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))}
 \end{prooftree}
 
+\paragraph{4} \textbf{Sia \textit{T$_1$} la teoria dei tipi definita del tipo singoletto con le regole strutturali, definite in questo capitolo, incluse quelle di sostituzione e indebolimento. Allora stabilire se i seguenti termini sono tipabili come termini del tipo singoletto, secondo \textit{T$_1$} e quali sono uguali definizionalmente.}
+\begin{itemize}
+\item El$_{N1}$($\ast$, $\ast$)
+\item El$_{N1}$(x, $\ast$)
+\item El$_{N1}$($\ast$, y)
+\item El$_{N1}$(x, y)
+\item El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$))
+\end{itemize}
+\noindent
+\\
+\textbf{Soluzione}\\\\
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$1$[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{[z $\in$ N$_1$] cont}
+\LeftLabel{I-S}
+\UnaryInfC{N$_1$ type[z $\in$ N$_1$]}
+\AxiomC{[] cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[ ]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$($\ast$, $\ast$) $\in$ $N_1$[ ]}
+\end{prooftree}
 
 
 
