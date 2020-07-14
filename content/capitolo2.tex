@@ -387,29 +387,29 @@ $
 H lavora come un \textit{proof assistant} (esempio \textit{COQ}).\\\\
 \noindent
 \textit{Definzione}: i termini \textit{untyped} sono
-\begin{center}t = x $|$ $\ast$ $|$ El$_N1$(t$_1$, t$_2$)\end{center}
+\begin{center}t = x $|$ $\ast$ $|$ El$_{N1}$(t$_1$, t$_2$)\end{center}
 \textit{Definizione}: \begin{center}$\rightarrow$ $_1$ $\subseteq$ term x term\end{center}
-t$_1$ $\rightarrow$ $_1$ $\rightarrow$ $\equiv$ t$_1$ si riduce in un passo di computazione a t$_2$. Ecco che esiste una relazione che computa t$_1$ con t$_2$.\\
+t$_1$ $\rightarrow$ $_1$ t$_2$ $\equiv$ t$_1$, ovvero t$_1$ si riduce in un passo di computazione a t$_2$. Ecco che esiste una relazione che computa t$_1$ con t$_2$.\\
 La relazione viene definita all'interno dei termini con l'uso delle seguenti regole:
 \\\\
 \begin{itemize}
-\item $\beta$-rid) El$_{N1}$($\ast$, t) $\rightarrow$ $_1$ t
-\item \AxiomC{t$_1$ $\rightarrow$ t$_2$}
+\item $\beta$-red) El$_{N1}$($\ast$, t) $\rightarrow_1$ t
+\item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
 \LeftLabel{red$_I$)}
-\UnaryInfC{El$_{N1}$(t$_1$, c) $\rightarrow$ $_1$ El$_{N1}$(t$_2$, c)}
-\DisplayProof
-\AxiomC{c$_1$ $\rightarrow$ c$_2$}
+\UnaryInfC{El$_{N1}$(t$_1$, c) $\rightarrow_1$ El$_{N1}$(t$_2$, c)}
+\DisplayProof \qquad
+\AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
 \LeftLabel{red$_{II}$)}
-\UnaryInfC{El$_{N1}$(t, c$_1$) $\rightarrow$ $_1$ El$_{N1}$(t, c$_2$)}
-\DisplayProof
+\UnaryInfC{El$_{N1}$(t, c$_1$) $\rightarrow_1$ El$_{N1}$(t, c$_2$)}
+\DisplayProof 
 \item red$_{I}$ e red$_{II}$ possono venire simultate da un'unica regola
-\AxiomC{t$_1$ $\rightarrow$ $_1$ t$_2$}
-\AxiomC{c$_1$ $\rightarrow$ $_1$ c$_2$}
-\BinaryInfC{El$_{N1}$(t$_1$, c$_1$) $\rightarrow$ $_1$ El$_{N1}$(t$_2$, c$_2$)}
+\AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
+\BinaryInfC{El$_{N1}$(t$_1$, c$_1$) $\rightarrow_1$ El$_{N1}$(t$_2$, c$_2$)}
 \DisplayProof
 \end{itemize}
 \noindent
-\textit{$\beta$-rid} risulta valida per \textit{C-S}, le regole di riduzione red$_{I}$ e red$_{II}$ per \textit{eq-E-S}.\\\\
+\textit{$\beta$-red} risulta valida per \textit{C-S}, le regole di riduzione red$_{I}$ e red$_{II}$ per \textit{eq-E-S}.\\\\
 \noindent \textit{Definzione}:\textbf{Teoria di Validit\`a}\\ Dati t $\in$ A[$\Gamma$] e s $\in$ A[$\Gamma$] in \textit{T$_1$} \quad allora \quad $\rightarrow$ $_1$ s $\Rightarrow$ t = s $\in$ A[$\Gamma$] derivabile in \textit{T}.
 \\\\
 \noindent \textit{Definizione}: t termine \textit{untyped} \`e in forma normale (in NF) sse non esiste termine s tale che t $\rightarrow$ $_1$ s.\\  Le forme normali sono i valori assumibili dai programmi.
@@ -423,28 +423,28 @@ La relazione viene definita all'interno dei termini con l'uso delle seguenti reg
 {\color[HTML]{FFFFFF}\textbf{termini}} & {\color[HTML]{FFFFFF} \textbf{termini in forma canonica}} & {\color[HTML]{FFFFFF}\textbf{termini non in forma canonica o introduttiva}}\\
 \hline\hline
 termini in NF & $\ast$ & x, El$_{N1}$(x, $\ast$)\\
-termini non in NF & No per N$_1$ & El$_{N1}$($\ast$, x)\\
+termini non in NF & $\varnothing$ & El$_{N1}$($\ast$, x)\\
 \end{tabularx}
 \caption{\label{tab:termini-NF-nonNF-N1}Termini a $\rightarrow$ $_1$ di N$_1$.} 
 \end{table}
 \noindent
 I termini non in forma canonica  derivano dalle regole di introduzione; invece quelli non in forma canonica vengono introdotte dall'eliminatore.\\\\
 L'uguaglianza definizionale ha come scopo la chiusura riflessiva, simmetrica e transitiva delle derivazioni.\\\\
-In N$_1$ sono vere le seguenti regole di $\beta$-red, utili per provare quali termini sono uguali definizionalmente: 
+In N$_1$ sono vere le seguenti regole di $\beta$-red, indispensabili per provare quali termini sono uguali definizionalmente: 
 \begin{itemize}
 \item \textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow$ $_1$ $\ast$}
 \item \textit{El$_{N1}$($\ast$, x) $\rightarrow$ $_1$ x}
 \end{itemize}
 \noindent
-Per ogni teoria \text{T} $\rightarrow$ $_1$ non \`e deterministica.
+Inoltre vale che ogni teoria \text{T} $\rightarrow$ $_1$ non \`e deterministica.
 \\\\
 \textit{Definizione} \textbf{Riducibilit\`a}\\
 Dati i termini t e s allora \textbf{t \textit{Red$_{NF}$} s} sse s \`e in NF ed esistono h$_1$...h$_n$ (n>=1) tale che h$_1$ $\equiv$ t, h$_n$ $\equiv$ s e se n>1 h$_i$ $\rightarrow$ h$_{i+1}$ per i = 1 a n-1.\\\\
 \textbf{t \textit{Rid$_{NF}$} s} =
 $
 \begin{cases}
-\text{o t} \equiv \text{s e t è in NF} \\
-\text{esiste n>1, esistono } h_1\text{...}h_n \text{ termini tale che t} \equiv h_1 \rightarrow _1 h_2 \text{...}h_n
+\text{\textbf{t}} \equiv \text{s e t è in NF} \\
+\text{esiste n>1, esistono } h_1\text{...}h_n \text{ termini tale che \textbf{t}} \equiv h_1 \rightarrow _1 h_2 \text{...}h_n
 \end{cases}
 $
 \\\\
@@ -456,7 +456,7 @@ Quando t si riduce s$_1$ e in s$_2$ c'e' l'unicit\`a della forma normale.
 \noindent
 \textit{Definizione} \textbf{Teorema della forma normale (debole)}\\
 Dato t termine della grammatica esiste s termine in NF tale che \textbf{t \textit{Red$_{NF}$ }s}. Allora esistono t $\equiv$ h$_1$ $\rightarrow$ $_1$...$\rightarrow$ $_1$ h$_n$ con n>1 se t non \`e gi\`a in NF; oppure t $\equiv$ s se t \`e gi\`a in NF.\\
-Questo significa che \`e sempre possibile rendere un programma convergente. Ma si pu\`o dire di pi\`u $\nexists$ programmi che divergono. 
+Questo significa che \`e sempre possibile rendere un programma convergente. Ma si pu\`o dire di pi\`u: $\nexists$ programmi che divergono. 
 \\\\
 \noindent
 \textit{Definizione} \textbf{Teorema della forma normale (forte)}\\
@@ -470,15 +470,15 @@ $
 \end{cases}
 $
 \\
-Dunque se t non \`e in NF per il teorema normale comunque esiste una riduzione in NF.\\
+Dunque se t non \'e in NF per il teorema normale comunque esiste una riduzione in NF.\\
 Dati a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] giudizi derivabili in \textit{T$_i$} allora a = b $\in$ A[$\Gamma$] sse NF(a) $\equiv$ NF(b) sse
 \begin{enumerate}
 \item a e b sono in NF e quindi a $\equiv$ b
 \item a non in NF, b in NF e \textbf{a \textit{Red$_{NF}$ }b}
 \item a in NF, b non in NF e \textbf{b \textit{Red$_{NF}$ }a}
-\item n\`e a n\`e b sono in NF, allora esiste s in NF tale che \textbf{a \textit{Red$_{NF}$ }s} e \textbf{b \textit{Red$_{NF}$ }s}
+\item n\'e a n\'e b sono in NF esiste s in NF tale che \textbf{a \textit{Red$_{NF}$ }s} e \textbf{b \textit{Red$_{NF}$ }s}
 \end{enumerate}
-Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_{NF}$ }NF(a)} allora a = NF(a) $\in$ A[$\Gamma$] \`e derivabile (la forma normale \`e uguale al termine stesso).
+Dai punti elencanti sopra trova validit\`a la relazione \textbf{a \textit{Red$_{NF}$ }NF(a)} $\Rightarrow$ a = NF(a) $\in$ A[$\Gamma$] \`e derivabile (la forma normale \`e uguale al termine stesso).
 
  
 
