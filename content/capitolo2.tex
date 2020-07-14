@@ -325,38 +325,38 @@ Se a = b $\in$ A[$\Gamma$] \`e derivabile in \textit{T} allora anche a $\in$ A[$
 Di seguito illustro uno schema generale, valido per ogni teoria dei tipi, di produzione di regole definenti un tipo, i suoi termini e l'uguaglianza.
 \begin{enumerate}
 \item \textbf{Regole di formazione}
-Identificate con il preambolo F-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\Tali regole sono del tipo k e rispettano la forma 
+Identificate con il preambolo F-\textit{T}, con \textit{T} teoria dei tipi in esame e t{\scriptsize $^I$} elemento canonico.\\Tali regole sono del tipo k e rispettano la forma 
 \AxiomC{[$\Gamma$] cont}
 \UnaryInfC{\textit{T} type[$\Gamma$]}
 \DisplayProof
 \item \textbf{Regole di introduzione}
-identificate con il preambolo I-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\Tali regole consistono nella forma introduttiva degli elementi canonici di \textit{T} e rispettono la forma
+identificate con il preambolo I-\textit{T}, con \textit{T} teoria dei tipi in esame e t{\scriptsize $^I$} elemento canonico.\\Tali regole consistono nella forma introduttiva degli elementi canonici di \textit{T} e rispettono la forma
 \AxiomC{[$\Gamma$] cont}
-\UnaryInfC{t' $\in$ \textit{T}[$\Gamma$]}
+\UnaryInfC{t{\scriptsize $^I$} $\in$ \textit{T}[$\Gamma$]}
 \DisplayProof
 \item \textbf{Regole di eliminazione}
-identificate con il preambolo E-\textit{T} con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\Tali regole sono definenti E$_k$, a partire dagli elementi di k a valori in un tipo M(z) type[$\Gamma$, z $\in$k]. L'ipotesi valida \`e che siano dati degli elementi in M(z) sui valori canonici di k.
+identificate con il preambolo E-\textit{T} con \textit{T} teoria dei tipi in esame e t{\scriptsize $^I$} elemento canonico.\\Tali regole sono definenti E$_k$, a partire dagli elementi di k a valori in un tipo M(z) type[$\Gamma$, z $\in$k]. L'ipotesi valida \`e che siano dati degli elementi in M(z) sui valori canonici di k.
 Tali regole sono del tipo k e rispettano la forma 
 \AxiomC{t $\in$ \textit{T}[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ \textit{T}]}
-\AxiomC{c  $\in$ M(t')[$\Gamma$]}
+\AxiomC{c  $\in$ M(t{\scriptsize $^I$})[$\Gamma$]}
 \TrinaryInfC{$El_{\textit{T}}$(t, c) $\in$ M(t)[$\Gamma$]}
 \DisplayProof
 \item \textbf{Regole di conversione}
-identificate con il preambolo C-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.\\, che stabilscono che gli eliminatori in (3) sono stabiliti per ricorsione a partire dalle ipotesi.
+identificate con il preambolo C-\textit{T}, con \textit{T} teoria dei tipi in esame e t{\scriptsize $^I$} elemento canonico.\\, che stabilscono che gli eliminatori in (3) sono stabiliti per ricorsione a partire dalle ipotesi.
 Tali regole sono del tipo k e rispettano la forma
 \AxiomC{M(z) type[$\Gamma$, z $\in$ \textit{T}]}
-\AxiomC{c $\in$ M(t')[$\Gamma$]}
-\BinaryInfC{El$_{\textit{T}}$(t', c) = c $\in$ M(t')[$\Gamma$]}
+\AxiomC{c $\in$ M(t{\scriptsize $^I$})[$\Gamma$]}
+\BinaryInfC{El$_{\textit{T}}$(t{\scriptsize $^I$}, c) = c $\in$ M(t{\scriptsize $^I$})[$\Gamma$]}
 \DisplayProof
 \item \textbf{Regole di uguaglianza}
-identificate con il preambolo eq-E-\textit{T}, con \textit{T} teoria dei tipi in esame e t' elemento canonico.
+identificate con il preambolo eq-E-\textit{T}, con \textit{T} teoria dei tipi in esame e t{\scriptsize $^I$} elemento canonico.
 Tali regole stabiliscono che i costruttori di k in (2) e (3) permettono l'uguaglianza definizionale dei termini da cui dipendono.
 Tali regole sono del tipo k e rispettano la forma\\
 \AxiomC{t = s $\in$ N$_1$[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ N$_1$]}
-\AxiomC{c = d $\in$ M(t')[$\Gamma$]}
-\TrinaryInfC{El$_{\textit{T}}$(t', c) = c $\in$ M(t')[$\Gamma$]}
+\AxiomC{c = d $\in$ M(t{\scriptsize $^I$})[$\Gamma$]}
+\TrinaryInfC{El$_{\textit{T}}$(t{\scriptsize $^I$}, c) = c $\in$ M(t{\scriptsize $^I$})[$\Gamma$]}
 \DisplayProof
 \end{enumerate}
 \noindent
@@ -555,58 +555,29 @@ Dai punti elencanti sopra trova validit\`a la relazione\\\textbf{a \textit{Red$_
 \BinaryInfC{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
 \end{prooftree}
 \begin{prooftree}
-\AxiomC{t` $\in$ N$_1$[$\sum$] }
+\AxiomC{t{\scriptsize $^I$} $\in$ N$_1$[$\sum$] }
 \AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
-\AxiomC{d` $\in$ M($\ast$)[$\sum$] }
+\AxiomC{d{\scriptsize $^I$} $\in$ M($\ast$)[$\sum$] }
 \LeftLabel{E-S)}
-\TrinaryInfC{El$_{N1}$(t`, d`) $\in$ M(t`)[$\Gamma$]}
+\TrinaryInfC{El$_{N1}$(t{\scriptsize $^I$}, d{\scriptsize $^I$}) $\in$ M(t{\scriptsize $^I$})[$\Gamma$]}
 \end{prooftree}
 \textbf{Soluzione}\\\\
 \textit{Idea: parto dalla regola di eliminazione E-S, vi applico la regola di sostituzione sub-typ giungendo cos\`i alle premessi di E-N$_{1prog}$}
 \begin{prooftree}
 \AxiomC{}
-\UnaryInfC{t' $\in$ N$_1$[$\Gamma$]}
+\UnaryInfC{t{\scriptsize $^I$} $\in$ N$_1$[$\Gamma$]}
 \AxiomC{}
 \UnaryInfC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
 \AxiomC{}
 \UnaryInfC{d $\in$ D($\ast$)[$\Gamma$]}
 \LeftLabel{E-N$_{1prog}$}
-\BinaryInfC{El$_{N1}$(w, d') $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
+\BinaryInfC{El$_{N1}$(w, d{\scriptsize $^I$}) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
 \LeftLabel{sub-typ}
-\BinaryInfC{El$_{N1}$(t', d') $\in$ M(t')[$\Gamma$]}
+\BinaryInfC{El$_{N1}$(t{\scriptsize $^I$}, d{\scriptsize $^I$}) $\in$ M(t{\scriptsize $^I$})[$\Gamma$]}
 \end{prooftree}
 Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (come dimostro nell'esercizio 2) e di \textit{E-S}.
 
-\paragraph{3}
-\textbf{Costruire l'albero dei cammini di passi di riduzione  possibili fino a un termine in NF, ovvero non ulteriormente riducibile rispetto alla relazione del termine $\rightarrow$ $_1$ del termine.}
-\begin{center}
-El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))
-\end{center}
-\textbf{Soluzione}\\\\
-\textit{Idea: uso un albero di derivazione per mostrare ogni passo derivazione di ogni cammino.}\\\\
-$\beta$-red:\\
-\textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow$ $_1$ $\ast$}\\
-\textit{El$_{N1}$($\ast$, x) $\rightarrow$ $_1$ x}
-
-\begin{prooftree}
-\AxiomC{x}
-\LeftLabel{$\beta$ N$_1$ red}
-\UnaryInfC{El$_{N1}$($\ast$, x)}
-\AxiomC{x}
-\RightLabel{$\beta$ N$_1$ red}
-\UnaryInfC{El$_{N1}$($\ast$, x)}
-\LeftLabel{$\beta$ N$_1$ red}\RightLabel{red$_{II}$}
-\BinaryInfC{El$_{NI}$($\ast$, El$_{N1}$($\ast$, x))}
-\AxiomC{x}
-\RightLabel{$\beta$ N$_1$ red}
-\UnaryInfC{El$_{N1}$($\ast$, x)}
-\RightLabel{red$_I$}
-\UnaryInfC{El$_{N1}$(El$_{N1}$($\ast$,$\ast$), x)}
-\LeftLabel{red$_{I}$}\RightLabel{red$_{II}$}
-\BinaryInfC{El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))}
-\end{prooftree}
-
-\paragraph{4} \textbf{Sia \textit{T$_1$} la teoria dei tipi definita del tipo singoletto con le regole strutturali, definite in questo capitolo, incluse quelle di sostituzione e indebolimento. Allora stabilire se i seguenti termini sono tipabili come termini del tipo singoletto, secondo \textit{T$_1$} e quali sono uguali definizionalmente.}
+\paragraph{3} \textbf{Sia \textit{T$_1$} la teoria dei tipi definita del tipo singoletto con le regole strutturali, definite in questo capitolo, incluse quelle di sostituzione e indebolimento. Allora stabilire se i seguenti termini sono tipabili come termini del tipo singoletto, secondo \textit{T$_1$} e quali sono uguali definizionalmente.}
 \begin{itemize}
 \item El$_{N1}$($\ast$, $\ast$)
 \item El$_{N1}$(x, $\ast$)
@@ -872,10 +843,67 @@ Pi\`u nel dettaglio la riduzione \`e la seguente
 \end{prooftree}
 \normalsize El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$)) \`e uguale definizionalmente.
 
+\paragraph{4} \textbf{Dati i termini definiti dalla seguente grammatica relativa ai termini del tipo singoletto
+\begin{center} t $\equiv$ v $|$ $\ast$ $|$ El$_{N1}$(t$_1$, t$_2$)\end{center}
+con v $\in$ \{x,y,w,z\} $\bigcup$ \{x$_i$ $|$ i $\in$ Nat\}, ovvero considerando come variabili le ultime lettere dell'alfabeto inglese e poi tutte le variabili ottenute ponendo alla variabili x un indice che varia nei numeri naturali.\\
+Sia $\rightarrow_1$ una relazione binaria tra questi termini \textit{untyped} definita a partire dalle seguenti regole
+\begin{center} $\beta_{N1})$ red \qquad El$_{Nat}$(0,c) $\rightarrow_1$ c\end{center} 
+}
+\textbf{
+\AxiomC{t$_1$ $\rightarrow$ t$_2$}
+\LeftLabel{red$_I$)}
+\UnaryInfC{El$_{N1}$(t$_1$, c) $\rightarrow$ $_1$ El$_{N1}$(t$_2$, c)}
+\DisplayProof \qquad
+\AxiomC{c$_1$ $\rightarrow$ c$_2$}
+\LeftLabel{red$_{II}$)}
+\UnaryInfC{El$_{N1}$(t, c$_1$) $\rightarrow$ $_1$ El$_{N1}$(t, c$_2$)}
+\DisplayProof
+\noindent
+\begin{itemize}
+\item Costruire l'albero dei cammini (ovvero sequenze) di passi di riduzione possibili fino a un termine in forma normale, ovvero non ulteriormente riducibile rispetto alla relazione $\rightarrow_1$ del termine
+\begin{center}El${N_1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x)) \end{center}
+\item Produrre un infinit\`a di termini del tipo singoletto che non sono riducibili secondo la relazione di un passo di riduzione$\rightarrow_1$.\\
+Dati due di questi termini , si riesce a dire che sono definionalmente uguali secondo le regole del tipo singoletto?
+\end{itemize}
+}  
 
 
+\textbf{Soluzione}\\\\
+\textit{Idea: uso un albero di derivazione per mostrare ogni passo derivazione di ogni cammino.}\\\\
+$\beta$-red:\\
+\textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow_1$ $\ast$}\\
+\textit{El$_{N1}$($\ast$, x) $\rightarrow_1$ x}
 
-
+\begin{prooftree}
+\AxiomC{x}
+\LeftLabel{$\beta$ N$_1$ red}
+\UnaryInfC{El$_{N1}$($\ast$, x)}
+\AxiomC{x}
+\RightLabel{$\beta$ N$_1$ red}
+\UnaryInfC{El$_{N1}$($\ast$, x)}
+\LeftLabel{$\beta$ N$_1$ red}\RightLabel{red$_{II}$}
+\BinaryInfC{El$_{NI}$($\ast$, El$_{N1}$($\ast$, x))}
+\AxiomC{x}
+\RightLabel{$\beta$ N$_1$ red}
+\UnaryInfC{El$_{N1}$($\ast$, x)}
+\RightLabel{red$_I$}
+\UnaryInfC{El$_{N1}$(El$_{N1}$($\ast$,$\ast$), x)}
+\LeftLabel{red$_{I}$}\RightLabel{red$_{II}$}
+\BinaryInfC{El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))}
+\end{prooftree}
+\noindent
+Termine t non pi\`u riducibile significa che \`e un termine \textit{untyped} che \`e in forma normale perch\`e non esiste alcun altro termine s tale che t $\rightarrow_1$ s. Dunque l'infinit\`a di termini singoletto, non pi\`u riducibili rispetterano la definizione data sopra\\
+\begin{center}
+t $\equiv$
+$
+\begin{cases}
+v \\
+\ast \\
+El_{N1}(t_1, t_2)
+\end{cases}
+$
+\end{center}
+\noindent Dati due termini t$^I$ e t$^{II}$ termini \textit{untyped} non riesco a dire che sono definizionalmente uguali perch\`e gi\`a e in forma normale. Difatti  per il teorema della forma normale forte vale $\rightarrow_0$.
 
 
 
