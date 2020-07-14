@@ -1,3 +1,177 @@
 \chapter{Naturali, Somma disgiunta e Liste}
 \label{naturali-somma-disgiunta-liste}
 %%dalla lezione 12 alle lezione 15 inclusa
+
+\section{Tipo dei numeri Naturali}
+\label{sec: tipo-naturali}
+\begin{itemize}
+\item \textbf{Regole di Formazione}
+\begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{F-Nat)}
+\UnaryInfC{Nat type[$\Gamma$]}
+\end{prooftree}
+
+\item \textbf{Regole di Introduzione}
+\begin{center}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_1$-Nat)}
+\UnaryInfC{0 $\in$ Nat[$\Gamma$]}
+\DisplayProof \qquad
+\AxiomC{m $\in$ Nat[$\Gamma$]}
+\LeftLabel{I$_2$-Nat)}
+\UnaryInfC{succ(m) $\in$ Nat[$\Gamma$]}
+\DisplayProof
+\end{center}
+
+\item \textbf{Regole di Eliminazione}
+\small
+\begin{prooftree}
+\AxiomC{t $\in$ Nat[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
+\AxiomC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+\LeftLabel{E-Nat)}
+\QuaternaryInfC{El$_{Nat}$(t,c,e) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+
+\item \normalsize\textbf{Regole di Conversione}
+\small
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
+\AxiomC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+\LeftLabel{C$_1$-Nat)}
+\TrinaryInfC{El$_{Nat}$(0,c,e) = c $\in$ M(0)[$\Gamma$]}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{m  $\in$ Nat[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
+\AxiomC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+\LeftLabel{C$_2$-Nat)}
+\QuaternaryInfC{El$_{Nat}$(succ(m),c,e) = e(m, El$_{Nat}$(m,c,e)) $\in$ M(succ(m))[$\Gamma$]}
+\end{prooftree}
+\end{itemize}
+\noindent
+\normalsize
+Le regole di formazione dei tipi e dei loro termini sono formulate in modo da rendere la regole si sostituzione per tipi e termini ammissibili.\\
+Ad esempio la regola di introduzione del successore di un numero naturale si pu\`o formulare come un esplicito programma funzionale visto come termine dipendente.
+\begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_2$-Nat$_{dip}$)}
+\UnaryInfC{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}
+\end{prooftree}
+Il medesimo discorso vale per la regola di eliminazione
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
+\AxiomC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+\LeftLabel{E-Nat$_{dip}$)}
+\TrinaryInfC{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat]}
+\end{prooftree}
+\noindent\\\\
+\textit{Definizione:} \textbf{Primitiva ricorsiva}\\
+Nat$^n$ $\times$ Nat $\rightarrow$ Nat\\
+Dati g$_0$: Nat$^m$ $\rightarrow$ Nat e g$_1$: Nat$^m$ $\times$ Nat $\times$ Nat $\rightarrow$ Nat\\
+n$_1$...n$_m$ $\in$ Nat allora\\\\
+rec(n$_1$...n$_m$, 0) $\equiv$ g$_0$(n$_1$...n$_m$)\\
+rec(n$_1$...n$_m$, k+1) $\equiv$ g$_0$(n$_1$...n$_m$, k, rec(n$_1$...n$_m$, k))
+
+\section{Esercizi}
+\label{sec:esercizi-cap3}
+
+\subsection{Naturali}
+\label{subsec: naturali}
+\paragraph{1}
+\textbf{Dimostrare che le regole enunciate in \S\ref{sec: tipo-naturali}, \textit{I$_2$-Nat$_{prog}$} ed \textit{E-Nat$_{prog}$}, sono ammissibili nel sistema di teoria dei tipi dei numeri naturali.}
+\\\\
+\textbf{Soluzione}\\\\
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\Gamma$ count}
+\LeftLabel{I$_1$-Nat}
+\UnaryInfC{0 $\in$ Nat[$\Gamma]$}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{$\vdots$}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{x-1 $\in$ Nat[$\Gamma]$}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{x $\in$ Nat[$\Gamma]$}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{succ(x) $\in$ Nat[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{$\Gamma$ count}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, x $\in$ Nat cont}
+\LeftLabel{ind-te}
+\BinaryInfC{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}
+\end{prooftree}
+\noindent
+\normalsize{Assumo che le premesse di \textit{I$_2$-Nat$_{prog}$} (\textit{$\Gamma$ count}) sia valida, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}, di conseguenza derivabile in \textit{T}.}
+
+
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{El$_{Nat}$(t,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat, t $\in$ Nat]}
+\AxiomC{[ ] count}
+\UnaryInfC{$\vdots$}
+\UnaryInfC{$\Gamma$ count}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, w $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{w $\in$ Nat[$\Gamma$, w $\in$ Nat]}
+\LeftLabel{sub-ter}
+\BinaryInfC{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat]}
+\end{prooftree}
+\noindent
+\normalsize{Assumo che le premesse di \textit{I$_E$-Nat$_{prog}$} (\textit{M(z) type[$\Gamma$, z $\in$ Nat], c $\in$ M(0)[$\Gamma$], e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}) sia valida, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat]}, di conseguenza derivabile in \textit{T}.}
+
+\paragraph{2}
+\textbf{Definire w + 2 $\in$ Nat[w $\in$ Nat], ove 2 \`e l'abbreviazione del termine ottenuto applicando 2 $\equiv$ succ(succ(0)).}
+\\\\
+\textbf{Soluzione}\\\\
+Usando lo schema di ricorsione primitv vale che w + 2 $\equiv$ El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]
+
+\small
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{w $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[w $\in$ Nat]}
+\AxiomC{[ ] cont}
+\LeftLabel{I$1$-Nat}
+\UnaryInfC{0 $\in$ Nat[ ]}
+\LeftLabel{I$2$-Nat}
+\UnaryInfC{1 $\in$ Nat[ ]}
+\LeftLabel{I$2$-Nat}
+\UnaryInfC{2 $\in$ Nat[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{I$2$-Nat$_{dip}$}
+\UnaryInfC{succ(y) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]}
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]}
+\end{prooftree}
+\noindent
+\normalsize \textit{Dimostrazione di correttezza di El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]}
+\begin{itemize}
+\item El$_{Nat}$(0, 2, (x,y).succ(y)) $\rightarrow_1$ 2 per \textit{$\beta_{1Nat}$-red}
+\item El$_{Nat}$(succ(m), 2, (x,y).succ(y)) $\rightarrow_1$ succ(El$_{Nat}$(m, 2, (x,y).succ(y))) per \textit{$\beta_{2Nat}$-red}
+\end{itemize}
+
+
+
+
+
