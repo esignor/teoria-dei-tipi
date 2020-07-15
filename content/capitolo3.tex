@@ -4,15 +4,17 @@
 
 \section{Tipo dei numeri Naturali}
 \label{sec: tipo-naturali}
-\begin{itemize}
-\item \textbf{Regole di Formazione}
+
+\subsection{Regole di Formazione}
+\label{subsec: formazione-nat}
 \begin{prooftree}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{F-Nat)}
 \UnaryInfC{Nat type[$\Gamma$]}
 \end{prooftree}
 
-\item \textbf{Regole di Introduzione}
+\subsection{Regole di Introduzione}
+\label{subsec: eliminazione-nat}
 \begin{center}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{I$_1$-Nat)}
@@ -24,7 +26,8 @@
 \DisplayProof
 \end{center}
 
-\item \textbf{Regole di Eliminazione}
+\subsection{Regole di Eliminazione}
+\label{subsec: eliminazione-nat}
 \small
 \begin{prooftree}
 \AxiomC{t $\in$ Nat[$\Gamma$]}
@@ -35,7 +38,8 @@
 \QuaternaryInfC{El$_{Nat}$(t,c,e) $\in$ M(t)[$\Gamma$]}
 \end{prooftree}
 
-\item \normalsize\textbf{Regole di Conversione}
+\subsection{Regole di Conversione}
+\label{subsec: conversione-nat}
 \small
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
@@ -53,14 +57,23 @@
 \LeftLabel{C$_2$-Nat)}
 \QuaternaryInfC{El$_{Nat}$(succ(m),c,e) = e(m, El$_{Nat}$(m,c,e)) $\in$ M(succ(m))[$\Gamma$]}
 \end{prooftree}
-\end{itemize}
-\noindent
+
+\subsection{Regole di Uguaglianza}
+\label{subsec: uguaglianza-nat}
+\begin{prooftree}
+\AxiomC{t$_1$ = t$_2$ $\in$ Nat[$\Gamma$]}
+\LeftLabel{Eq-Nat)}
+\UnaryInfC{succ(t$_1$) $\rightarrow_1$ succ(t$_2$)}
+\end{prooftree}
+
+\subsection{Osservazioni sul tipo dei naturali}
+\label{subsec:osservazioni-naturali}
 \normalsize
 Le regole di formazione dei tipi e dei loro termini sono formulate in modo da rendere la regole si sostituzione per tipi e termini ammissibili.\\
 Ad esempio la regola di introduzione del successore di un numero naturale si pu\`o formulare come un esplicito programma funzionale visto come termine dipendente.
 \begin{prooftree}
 \AxiomC{$\Gamma$ cont}
-\LeftLabel{I$_2$-Nat$_{dip}$)}
+\LeftLabel{I$_2$-Nat$_{prog}$)}
 \UnaryInfC{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}
 \end{prooftree}
 Il medesimo discorso vale per la regola di eliminazione
@@ -71,13 +84,40 @@ Il medesimo discorso vale per la regola di eliminazione
 \LeftLabel{E-Nat$_{dip}$)}
 \TrinaryInfC{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat]}
 \end{prooftree}
-\noindent\\\\
-\textit{Definizione:} \textbf{Primitiva ricorsiva}\\
+\noindent
+\textit{E-Nat} \`e equivalente a \textit{E-Nat$_{dip}$}. Difatti la teoria \textit{T$_{N1Nat}$}, in cui c'\`e \textit{E-Nat}, \`e equivalente a \textit{T{\scriptsize $^I$}} senza \textit{E-Nat}, ma con \textit{E-Nat$_{dip}$}, le regole di sosituzione e di \textit{sanitary check}.
+
+\subsection{Primitiva ricorsiva}
+\label{subsec: primitiva-ricorsiva}
+\textit{Definizione}\\\\
 Nat$^n$ $\times$ Nat $\rightarrow$ Nat\\
 Dati g$_0$: Nat$^m$ $\rightarrow$ Nat e g$_1$: Nat$^m$ $\times$ Nat $\times$ Nat $\rightarrow$ Nat\\
 n$_1$...n$_m$ $\in$ Nat allora\\\\
 rec(n$_1$...n$_m$, 0) $\equiv$ g$_0$(n$_1$...n$_m$)\\
 rec(n$_1$...n$_m$, k+1) $\equiv$ g$_0$(n$_1$...n$_m$, k, rec(n$_1$...n$_m$, k))
+
+\section{Semantica operazionale dei numeri naturali}
+\label{sec: semantica-operazionale-naturali}
+La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
+\begin{itemize}
+\item $\beta_{1Nat}$-red) El$_{Nat}$(0, c, e) $\rightarrow_1$ c
+\item $\beta_{2Nat}$-red) El$_{Nat}$(succ(m), c, e) $\rightarrow_1$ e(m,El$_{Nat}$(m, c, e))
+\item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\LeftLabel{red$_I$)}
+\UnaryInfC{El$_{N1}$(t$_1$, c, e) $\rightarrow_1$ El$_{N1}$(t$_2$, c, e)}
+\DisplayProof \qquad
+\AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
+\LeftLabel{red$_{II}$)}
+\UnaryInfC{El$_{N1}$(t, c$_1$, e) $\rightarrow_1$ El$_{N1}$(t, c$_2$, e)}
+\DisplayProof 
+\item Novit\`a dei numeri naturali rispetto al tipo singoletto
+\AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\LeftLabel{N-red)}
+\UnaryInfC{succ(t$_1$) $\rightarrow_1$ succ(t$_2$)}
+\DisplayProof
+\item + riduzione $\rightarrow_1$ rispetto a N$_1$
+\end{itemize}
+
 
 \section{Esercizi}
 \label{sec:esercizi-cap3}
@@ -136,7 +176,7 @@ rec(n$_1$...n$_m$, k+1) $\equiv$ g$_0$(n$_1$...n$_m$, k, rec(n$_1$...n$_m$, k))
 \textbf{Definire w + 2 $\in$ Nat[w $\in$ Nat], ove 2 \`e l'abbreviazione del termine ottenuto applicando 2 $\equiv$ succ(succ(0)).}
 \\\\
 \textbf{Soluzione}\\\\
-Usando lo schema di ricorsione primitv vale che w + 2 $\equiv$ El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]
+Usando lo schema di ricorsione primitva vale che w + 2 $\equiv$ El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]
 
 \small
 \begin{prooftree}
@@ -159,7 +199,7 @@ Usando lo schema di ricorsione primitv vale che w + 2 $\equiv$ El$_{Nat}$(w, 2, 
 \UnaryInfC{Nat type [ ]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
 \UnaryInfC{x $\in$ Nat cont}
-\LeftLabel{I$2$-Nat$_{dip}$}
+\LeftLabel{I$2$-Nat$_{prog}$}
 \UnaryInfC{succ(y) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]}
 \LeftLabel{E-Nat$_{dip}$}
 \TrinaryInfC{El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]}
@@ -168,10 +208,86 @@ Usando lo schema di ricorsione primitv vale che w + 2 $\equiv$ El$_{Nat}$(w, 2, 
 \normalsize \textit{Dimostrazione di correttezza di El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]}
 \begin{itemize}
 \item El$_{Nat}$(0, 2, (x,y).succ(y)) $\rightarrow_1$ 2 per \textit{$\beta_{1Nat}$-red}
-\item El$_{Nat}$(succ(m), 2, (x,y).succ(y)) $\rightarrow_1$ succ(El$_{Nat}$(m, 2, (x,y).succ(y))) per \textit{$\beta_{2Nat}$-red}
+\item El$_{Nat}$(succ(m), 2, (x,y).succ(y)) $\rightarrow_1$ succ(El$_{Nat}$(m, 2, (x,y).succ(y))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per m = 0 $\equiv$ succ(El$_{Nat}$(0, 2, (x,y).succ(y))) $\rightarrow_1$ succ(2) = 3 (dal punto precedente).
 \end{itemize}
 
+\paragraph{3}
+\textbf{Definire l'operazione di addizione usando le regole del tipo dei numeri naturali.}
+\begin{center} x + y $\in$ Nat[x $\in$ Nat, y $\in$ Nat\end{center}
+in modo tale che valga x + 0 = x $\in$  Nat[x $\in$ Nat]
+\\\\
+\textbf{Soluzione}\\\\
+Usando lo schema di ricorsione primitva vale che x + y $\equiv$ El$_{Nat}$(y, x, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]
 
 
+\scriptsize
+\begin{adjustwidth}{-16em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[x $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ Nat) $\notin$ \\ x $\in$ Nat \end{tabular}}
+\UnaryInfC{x $\in$ Nat, y $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[x $\in$ Nat, y $\in$ Nat]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ Nat[x $\in$ Nat]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[x $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{ccc}(w $\in$ Nat) \\ $\notin$ (x $\in$ Nat)\end{tabular}}
+\UnaryInfC{x $\in$ Nat, w $\in$ Nat cont}
+\LeftLabel{I$_{2}$-Nat$_{prog}$}
+\UnaryInfC{succ(z) $\in$ Nat[x $\in$ Nat, w $\in$ Nat, z $\in$ Nat]}
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(y, x, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\normalsize \textit{Dimostrazione di correttezza di El$_{Nat}$(y, x, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]}
+\begin{itemize}
+\item El$_{Nat}$(0, x, (w,z).succ(z))  $\rightarrow_1$ x per \textit{$\beta_{1Nat}$-red}
+\item El$_{Nat}$(succ(y), x, (w,z).succ(z)) $\rightarrow_1$ succ(El$_{Nat}$(y, x, (w,z).succ(z))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per y=0 $\equiv$ succ(El$_{Nat}$(0, x, (w,z).succ(z))) $\rightarrow_1$ succ(x) = x + 1  (dal punto precedente).
+\end{itemize}
+
+\paragraph{4}
+\textbf{Definire l'operazione di addizione usando le regole del tipo dei numeri naturali.}
+\begin{center} x + y $\in$ Nat[x $\in$ Nat, y $\in$ Nat\end{center}
+in modo tale che valga 0 + y = x $\in$  Nat[x $\in$ Nat]
+\\\\
+\textbf{Soluzione}\\\\
+Usando lo schema di ricorsione primitva vale che x + y $\equiv$ El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[y $\in$ Nat, x $\in$ Nat]
 
 
+\scriptsize
+\begin{adjustwidth}{-16em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\UnaryInfC{succ(z) $\in$[y $\in$ Nat, w $\in$ Nat, z $\in$ Nat}
+\AxiomC{[ ] cont}
+\UnaryInfC{x $\in$ Nat[x $\in$ Nat]}
+\AxiomC{[ ] cont}
+\UnaryInfC{Nat[y $\in$ Nat, x $\in$ Nat]}
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[y $\in$ Nat, x $\in$ Nat]}
+\end{prooftree}
+\end{adjustwidth}
+\noindent\\
+\normalsize \textit{Dimostrazione di correttezza di El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[y $\in$ Nat, x $\in$ Nat]}
+\begin{itemize}
+\item El$_{Nat}$(0, y, (w,z).succ(z)  $\rightarrow_1$ y per \textit{$\beta_{1Nat}$-red}
+\item El$_{Nat}$(succ(x), y, (w,z).succ(z)) $\rightarrow_1$ succ(El$_{Nat}$(x, y, (w,z).succ(z))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per x=0 $\equiv$ succ(El$_{Nat}$(0, y, (w,z).succ(z))) $\rightarrow_1$ succ(y) = y + 1  (dal punto precedente).
+\end{itemize}
