@@ -186,7 +186,7 @@ Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivaz
 \end{prooftree}
 
 \subsection{Regola di formazione}
-\label{subsec:formazione}
+\label{subsec:formazione-singoletto}
 \begin{prooftree}
 \AxiomC{[$\Gamma$] cont}
 \LeftLabel{F-S)}
@@ -206,7 +206,7 @@ Con l'impiego solo delle regole \textit{F-C} e \textit{F-S} si possono derivare 
 \end{prooftree}
 
 \subsection{Regole di Introduzione}
-\label{subsec:introduzione}
+\label{subsec:introduzione-singoletto}
 \begin{prooftree}
 \AxiomC{[$\Gamma$] cont}
 \LeftLabel{I-S)}
@@ -221,7 +221,7 @@ Un esempio diretto della sua applicazione \`e
 \end{prooftree}
 
 \subsection{Regole di Eliminazione}
-\label{subsec:eliminazione}
+\label{subsec:eliminazione-singoletto}
 \begin{prooftree}
 \AxiomC{t $\in$ $N_1$ [$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
@@ -252,7 +252,7 @@ Le regole \textit{E-S)$_{dip}$} + \textit{la regole di sostituzione} + \textit{F
 \noindent
 Inoltre vale anche il viceversa, da \textit{E-S} si riesce a ottenere \textit{E-S$_{dip}$}.
 \subsection{Regole di Conversione}
-\label{subsec:conversione}
+\label{subsec:conversione-singoletto}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
 \AxiomC{c $\in$ M($\ast$)[$\Gamma$]}
@@ -263,7 +263,7 @@ Inoltre vale anche il viceversa, da \textit{E-S} si riesce a ottenere \textit{E-
 \\\\
 Le regole \textit{(S), (I-S), (E-S)} e \textit{(C-S)}  hanno una spiegazione computazionale, e riguardano la compatibilit\`a tra tipi, ma non da caratterizzare il tipo dei tipi.\\ Inoltre il tipo singoletto non \`e dipendente.
 \subsection{Osservazioni sul tipo singoletto}
-\label{subsec:osservazioni}
+\label{subsec:osservazioni-singoletto}
 L'eliminatore El$_{N1}$(z, c) rappresenta una funzione definita per ricorsione su N$_1$, difatti in \textit{C-S} si ha che El$_{N1}$(z, c)[$\frac{z}{\ast}$] = El$_{N1}$($\ast$, c).\\
 Supposto che se $\ast$ $\in$ N$_1$[$\Gamma$] in \textit{E-S}, allora per la singola conversione vale che El$_{N1}$ = c $\in$ M($\ast$).
 Dunque El$_{N1}$(z, c) rappresenta un programma funzionale per ricorsione. Questi \`e definito su N$_1$, a partire da c $\in$ M($\ast$), perci\`o El$_{N1}$($\ast$, c) = c.\\
@@ -367,8 +367,8 @@ Le regole (5) sono implicite in \textit{T}, ma non ovvie dal punto di vista comp
 \textit{Definizione}: se P$_1$ e P$_2$ programmi\\\\
 \textit{$P_1$, $P_2$: Nat$^m$  $\rightarrow$ Nat \quad allora \quad
 $P_1$ = $P_2$ sse $\forall$ n$_1$...n$_m$ e P$_1$(n$_1$...n$_m$) = P$_2$(n$_1$...n$_m$)} non \`e decidibile.\\\\
-Ovvero le funzioni ricorsive per P$_1$ e P$_2$ non sono decidibili. A seguito di ci\`o non esiste un algoritmo in grado di decidere se due programmi P$_1$ e P$_2$ sono estensionalmente (proposizionalemente) uguali o meno.\\\\
-Risulta per\`o vero il concetto di \textbf{ugualianza definizionale}/computazionale (intensionale). Dati a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] derivabili, nella nostra teoria \textit{T} di \textit{Martin-L$\ddot{o}$f}, esiste un algoritmo \textit{H} (a $\in$ A[$\Gamma$], b $\in$ A[$\Gamma$]) =
+Ovvero le funzioni ricorsive per P$_1$ e P$_2$ non sono decidibili. A seguito di ci\`o non esiste un algoritmo in grado di decidere se due programmi P$_1$ e P$_2$ sono estensionalmente (proposizionalmente) uguali o meno.\\\\
+Risulta per\`o vero il concetto di \textbf{ugualianza definizionale}/computazionale (in teoria dei tipi intensionali). Dati a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] derivabili, nella nostra teoria \textit{T} di \textit{Martin-L$\ddot{o}$f}, esiste un algoritmo \textit{H} (a $\in$ A[$\Gamma$], b $\in$ A[$\Gamma$]) =
 $
 \begin{cases}
 \text{\textbf{sì} sse a = b} \in A[\Gamma]  \text{ è derivabile in \textit{T}} \\
@@ -386,33 +386,19 @@ $
 \\
 H lavora come un \textit{proof assistant} (esempio \textit{COQ}).\\\\
 \noindent
+
+\subsection{Applicazione dell'uguaglianza definizionale tra termini}
+\label{subsec: applicazione-uguaglianza-definizionale-tra-termini}
 \textit{Definzione}: i termini \textit{untyped} sono
 \begin{center}t = x $|$ $\ast$ $|$ El$_{N1}$(t$_1$, t$_2$)\end{center}
-\textit{Definizione}: \begin{center}$\rightarrow$ $_1$ $\subseteq$ term x term\end{center}
-t$_1$ $\rightarrow$ $_1$ t$_2$ $\equiv$ t$_1$, ovvero t$_1$ si riduce in un passo di computazione a t$_2$. Ecco che esiste una relazione che computa t$_1$ con t$_2$.\\
-La relazione viene definita all'interno dei termini con l'uso delle seguenti regole:
+\textit{Definizione}: relazione di riduzione
+\begin{center}$\rightarrow$ $_1$ $\subseteq$ term x term\end{center}
+t$_1$ $\rightarrow$ $_1$ t$_2$ $\equiv$ t$_1$ si riduce in un passo di computazione a t$_2$. Ecco che esiste una relazione che computa t$_1$ con t$_2$.\\
+Le \textbf{relazioni di computazione}, dell'uguaglianza definizionale, le ho descritte in \S\ref{sec: semantica-operazionale-singoletto}.
 \\\\
-\begin{itemize}
-\item $\beta$-red) El$_{N1}$($\ast$, t) $\rightarrow_1$ t
-\item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
-\LeftLabel{red$_I$)}
-\UnaryInfC{El$_{N1}$(t$_1$, c) $\rightarrow_1$ El$_{N1}$(t$_2$, c)}
-\DisplayProof \qquad
-\AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
-\LeftLabel{red$_{II}$)}
-\UnaryInfC{El$_{N1}$(t, c$_1$) $\rightarrow_1$ El$_{N1}$(t, c$_2$)}
-\DisplayProof 
-\item red$_{I}$ e red$_{II}$ possono venire simultate da un'unica regola
-\AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
-\AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
-\BinaryInfC{El$_{N1}$(t$_1$, c$_1$) $\rightarrow_1$ El$_{N1}$(t$_2$, c$_2$)}
-\DisplayProof
-\end{itemize}
-\noindent
-\textit{$\beta$-red} risulta valida per \textit{C-S}, le regole di riduzione red$_{I}$ e red$_{II}$ per \textit{eq-E-S}.\\\\
-\noindent \textit{Definzione}:\textbf{Teoria di Validit\`a}\\ Dati t $\in$ A[$\Gamma$] e s $\in$ A[$\Gamma$] in \textit{T$_1$} \quad allora \quad $\rightarrow$ $_1$ s $\Rightarrow$ t = s $\in$ A[$\Gamma$] derivabile in \textit{T}.
+\textit{Definizione}: t termine \textit{untyped} \`e in forma normale (in NF) sse non esiste termine s tale che t $\rightarrow$ $_1$ s. Ovvero non \`e pi\`u riducibile a nulla. \\  Le forme normali sono i valori assumibili dai programmi.\\
 \\\\
-\noindent \textit{Definizione}: t termine \textit{untyped} \`e in forma normale (in NF) sse non esiste termine s tale che t $\rightarrow$ $_1$ s.\\  Le forme normali sono i valori assumibili dai programmi.
+\textit{Definzione}:\textbf{Teoria di Validit\`a}\\ Dati t $\in$ A[$\Gamma$] e s $\in$ A[$\Gamma$] in \textit{T$_1$} \quad allora \quad $\rightarrow$ $_1$ s $\Rightarrow$ t = s $\in$ A[$\Gamma$] derivabile in \textit{T}.
 
 
 \begin{table}[H]
@@ -429,15 +415,10 @@ termini non in NF & $\varnothing$ & El$_{N1}$($\ast$, x)\\
 \end{table}
 \noindent
 I termini non in forma canonica  derivano dalle regole di introduzione; invece quelli non in forma canonica vengono introdotte dall'eliminatore.\\\\
-L'uguaglianza definizionale ha come scopo la chiusura riflessiva, simmetrica e transitiva delle derivazioni.\\\\
-In N$_1$ sono vere le seguenti regole di $\beta$-red, indispensabili per provare quali termini sono uguali definizionalmente: 
-\begin{itemize}
-\item \textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow$ $_1$ $\ast$}
-\item \textit{El$_{N1}$($\ast$, x) $\rightarrow$ $_1$ x}
-\end{itemize}
-\noindent
-Inoltre vale che ogni teoria \text{T} $\rightarrow$ $_1$ non \`e deterministica.
+La chiusura riflessiva, simmetrica e transitiva delle derivazioni \`e proprio l'uguaglianza definizionale. Tale propriet\`a non vale esclusivamente per $\rightarrow_1$ ma per qualsiasi combinazione delle riduzioni in \$\ref{sec: semantica-operazionale-singoletto}, con  variazione per\`o delle forma normali (che non sono altro che i risultati dei nostri programmi, derivanti dai diversi cammini di computazione).\\
+Un esempio significativo di applicazione di strategie di computazione l'ho riportato in \S\ref{sec:esercizi-cap2}, esercizio 4. Utile per comprendere a cosa serve la relazione $\rightarrow_1$   e che ogni teoria \textit{T} $\rightarrow$ $_1$ non \`e deterministica.
 \\\\
+Le definizioni seguenti sono definite sulla regole di semantica operazionale.\\\\
 \textit{Definizione} \textbf{Riducibilit\`a}\\
 Dati i termini t e s allora \textbf{t \textit{Red$_{NF}$} s} sse s \`e in NF ed esistono h$_1$...h$_n$ (n>=1) tale che h$_1$ $\equiv$ t, h$_n$ $\equiv$ s e se n>1 h$_i$ $\rightarrow$ h$_{i+1}$ per i = 1 a n-1.\\\\
 \textbf{t \textit{Rid$_{NF}$} s} =
@@ -461,6 +442,8 @@ Questo significa che \`e sempre possibile rendere un programma convergente. Ma s
 \noindent
 \textit{Definizione} \textbf{Teorema della forma normale (forte)}\\
 Per ogni termine t, l'albero dei cammini di riduzione di t \`e ben formato (ovvero $\nexists$ un cammino di riduzioni $\rightarrow$ $_1$ infinito).\\
+In questo modo ogni strategia deterministica \`e convergente.\\
+Con quanto appena enunciato sopra possiamo denfinire quanto segue.\\
 Dato t $\in$ A[$\Gamma$] derivabile in \textit{T}\\
 NF(t$_1$) $\equiv$
 $
@@ -471,17 +454,37 @@ $
 $
 \\
 Dunque se t non \'e in NF per il teorema normale comunque esiste una riduzione in NF.\\
-Dati a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] giudizi derivabili in \textit{T$_i$} allora a = b $\in$ A[$\Gamma$] sse NF(a) $\equiv$ NF(b) sse
+Sono cos\`i in grado di dimostrare che, dati a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$], giudizi derivabili in \textit{T$_i$} allora a = b $\in$ A[$\Gamma$] sse NF(a) $\equiv$ NF(b) sse
 \begin{enumerate}
 \item a e b sono in NF e quindi a $\equiv$ b
 \item a non in NF, b in NF e \textbf{a \textit{Red$_{NF}$ }b}
 \item a in NF, b non in NF e \textbf{b \textit{Red$_{NF}$ }a}
 \item n\'e a n\'e b sono in NF esiste s in NF tale che \textbf{a \textit{Red$_{NF}$ }s} e \textbf{b \textit{Red$_{NF}$ }s}
 \end{enumerate}
-Dai punti elencanti sopra trova validit\`a la relazione \textbf{a \textit{Red$_{NF}$ }NF(a)} $\Rightarrow$ a = NF(a) $\in$ A[$\Gamma$] \`e derivabile (la forma normale \`e uguale al termine stesso). Dunque esiste P programma tale che P(a) = NF(a), per ogni a termine \textit{untyped} in \textit{T$_1$}.
+Per i punti elencanti sopra trova validit\`a la relazione \textbf{a \textit{Red$_{NF}$ }NF(a)} $\Rightarrow$ a = NF(a) $\in$ A[$\Gamma$] \`e derivabile (la forma normale \`e uguale al termine stesso).\\ Questo rende l'uguaglianza computabile, si \`e difatti in grado di dimostrare che esiste P programma tale che P(a) = NF(a), per ogni a termine \textit{untyped} in \textit{T}(incluso \textit{T$1$}).\\\\
+In conclusione la computabilit\`a dell'uguaglianza (uguaglianza definizionale) tra due termini, si riduce a computare le forme normali del primo termine con quelle del secondo e a verificare se sono identicamente la stessa (a meno di rinomia di variabili).
 
- 
-
+\section{Semantica operazionale del singoletto}
+\label{sec: semantica-operazionale-singoletto}
+La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
+\begin{itemize}
+\item $\beta_{N1}$-red) El$_{N1}$($\ast$, t) $\rightarrow_1$ t
+\item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\LeftLabel{red$_I$)}
+\UnaryInfC{El$_{N1}$(t$_1$, c) $\rightarrow_1$ El$_{N1}$(t$_2$, c)}
+\DisplayProof \qquad
+\AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
+\LeftLabel{red$_{II}$)}
+\UnaryInfC{El$_{N1}$(t, c$_1$) $\rightarrow_1$ El$_{N1}$(t, c$_2$)}
+\DisplayProof 
+\item red$_{I}$ e red$_{II}$ possono venire simultate da un'unica regola
+\AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
+\BinaryInfC{El$_{N1}$(t$_1$, c$_1$) $\rightarrow_1$ El$_{N1}$(t$_2$, c$_2$)}
+\DisplayProof
+\end{itemize}
+\noindent
+\textit{$\beta_{N1}$-red} risulta valida per \textit{C-S}, le regole di riduzione red$_{I}$ e red$_{II}$ per \textit{eq-E-S}.\\\\
 
 
 \section{Esercizi}
@@ -588,7 +591,7 @@ Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (c
 \noindent
 \\
 \textbf{Soluzione}\\\\
-\textit{Per una maggiore comprensione delle derivazioni, ho ritenuto opportuno, ove necessario, spezzare l'albero in pi\`u parti.}
+\textit{Per una maggiore comprensione delle derivazioni, ho ritenuto opportuno, ove necessario, spezzare l'albero in pi\`u parti.}\\
 \noindent
 \textbf{1}\\
 \small
@@ -870,10 +873,12 @@ Dati due di questi termini , si riesce a dire che sono definionalmente uguali se
 
 
 \textbf{Soluzione}\\\\
-\textit{Idea: uso un albero di derivazione per mostrare ogni passo derivazione di ogni cammino.}\\\\
+\textit{Idea: uso un albero di derivazione per mostrare ogni passo derivazione di ogni cammino.\\
+Se w = El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x)) combino il lambda termine w  con l'applicazione della strategia deterministica di riduzione ($\rightarrow_1$), con la quale il termine si riduce eventualmente a forma normale (implicando la definizione di riducibilit\`a).\\
 $\beta$-red:\\
 \textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow_1$ $\ast$}\\
 \textit{El$_{N1}$($\ast$, x) $\rightarrow_1$ x}
+}
 
 \begin{prooftree}
 \AxiomC{x}
@@ -892,6 +897,8 @@ $\beta$-red:\\
 \LeftLabel{red$_{I}$}\RightLabel{red$_{II}$}
 \BinaryInfC{El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))}
 \end{prooftree}
+\noindent
+ $\Rightarrow$ (w, (red$_II$, red$_I$, $\beta_{N1red}$)) rappresenta un programma.\\\\
 \noindent
 Termine t non pi\`u riducibile significa che \`e un termine \textit{untyped} che \`e in forma normale perch\`e non esiste alcun altro termine s tale che t $\rightarrow_1$ s. Dunque l'infinit\`a di termini singoletto, non pi\`u riducibili rispetterano la definizione data sopra\\
 \begin{center}
