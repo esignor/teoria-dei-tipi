@@ -518,6 +518,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \TrinaryInfC{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
 \end{prooftree}
 \scriptsize{
+\begin{adjustwidth}{-10em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
@@ -544,6 +545,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \LeftLabel{sub-typ}
 \BinaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
 \end{prooftree}
+\end{adjustwidth}
 }
 \noindent
 \normalsize{Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$)[$\Gamma$]}) siano valide, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.}
@@ -690,10 +692,9 @@ El$_{N1}$(x, $\ast$) non \`e uguale definizionalmente.
 \noindent
 \normalsize
 Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$($\ast$, y) $\rightarrow_1$ y \\
-El$_{N1}$($\ast$, y) \`e uguale definizionalmente.
-\newpage
+El$_{N1}$($\ast$, y) \`e uguale definizionalmente.\\\\
 \noindent
-\textbf{4}\\
+\textbf{4}\\\\
 \scriptsize
 \begin{adjustwidth}{-17em}{}
 \begin{prooftree}
@@ -747,7 +748,7 @@ El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
 \noindent
 \textbf{5}\\
 \small
-\begin{adjustwidth}{-11em}{}
+\begin{adjustwidth}{-7em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$, x $\in$ N$_1$]}
@@ -760,8 +761,8 @@ El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
 \end{prooftree}
 \end{adjustwidth}
 
+\begin{center}
 \small
-\begin{adjustwidth}{-11em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$]}
@@ -777,10 +778,8 @@ El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
 \LeftLabel{ind-te}
 \BinaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$, x $\in$ N$_1$]}
 \end{prooftree}
-\end{adjustwidth}
 
 \small
-\begin{adjustwidth}{-11em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-S}
@@ -798,7 +797,7 @@ El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[y $\in$ N$_1$, x $\in$ N$_1$, z $\in$ N$_1$]}
 \end{prooftree}
-\end{adjustwidth}
+\end{center}
 
 \small
 \begin{adjustwidth}{-11em}{}
