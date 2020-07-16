@@ -163,13 +163,13 @@ Per poter affermare che A(e) = A(c) devo poterlo dedurre. Per farlo mi sono indi
 \subsection{Regole di tipaggio}
 \label{subsec:regole-tipaggio}
 
-\subsubsection{Regole di conversione}
+\subsubsection{Regole di Conversione}
 \label{subsubsec:regole-di-conversione}
 \[\frac{c \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{C \in D\hspace{0.1cm}[\Gamma]}\]
 Se due tipi sono uguali allora hanno gli stessi termini: $C=D \Rightarrow (c \in C \Leftrightarrow c \in D)$. L'uguaglianza fra tipi \`e per questo simmetrica.\\
 Tuttavia non sempre l'unicit\`a del tipaggio di un termine (il $\Leftrightarrow$) \`e garantito per ogni teoria. Nei casi trattati dal corso s\`i, in quanto verr\`a inteso che $C = D\hspace{0.1cm}type[\Gamma]$ sse due tipi hanno gli stessi elementi (come gi\`a accade in \textit{set theory}), ma pu\`o non essere sempre vero.
 
-\subsubsection{Regole di conversione dell'uguaglianza}
+\subsubsection{Regole di Conversione dell'uguaglianza}
 \label{subsubsec:regole-di-conversione-uguaglianza}
 \[\frac{c=d \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{c = d \in D \hspace{0.1cm} [\Gamma]}\]
 Questa regola permette di convertire le uguaglianze nel tipaggio di un termine.
@@ -185,7 +185,7 @@ Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivaz
 \UnaryInfC{$\Gamma$, x $\in$ A}
 \end{prooftree}
 
-\subsection{Regola di formazione}
+\subsection{Regola di Formazione}
 \label{subsec:formazione-singoletto}
 \begin{prooftree}
 \AxiomC{[$\Gamma$] cont}
@@ -324,17 +324,17 @@ Se a = b $\in$ A[$\Gamma$] \`e derivabile in \textit{T} allora anche a $\in$ A[$
 \label{sec: schema-generale}
 Di seguito illustro uno schema generale, valido per ogni teoria dei tipi, di produzione di regole definenti un tipo, i suoi termini e l'uguaglianza.
 \begin{enumerate}
-\item \textbf{Regole di formazione}
+\item \textbf{Regole di Formazione}
 Identificate con il preambolo F-\textit{T}, con \textit{T} teoria dei tipi in esame e t{\scriptsize $^I$} elemento canonico.\\Tali regole sono del tipo k e rispettano la forma 
 \AxiomC{[$\Gamma$] cont}
 \UnaryInfC{\textit{T} type[$\Gamma$]}
 \DisplayProof
-\item \textbf{Regole di introduzione}
+\item \textbf{Regole di Introduzione}
 identificate con il preambolo I-\textit{T}, con \textit{T} teoria dei tipi in esame e t{\scriptsize $^I$} elemento canonico.\\Tali regole consistono nella forma introduttiva degli elementi canonici di \textit{T} e rispettono la forma
 \AxiomC{[$\Gamma$] cont}
 \UnaryInfC{t{\scriptsize $^I$} $\in$ \textit{T}[$\Gamma$]}
 \DisplayProof
-\item \textbf{Regole di eliminazione}
+\item \textbf{Regole di Eliminazione}
 identificate con il preambolo E-\textit{T} con \textit{T} teoria dei tipi in esame e t{\scriptsize $^I$} elemento canonico.\\Tali regole sono definenti E$_k$, a partire dagli elementi di k a valori in un tipo M(z) type[$\Gamma$, z $\in$k]. L'ipotesi valida \`e che siano dati degli elementi in M(z) sui valori canonici di k.
 Tali regole sono del tipo k e rispettano la forma 
 \AxiomC{t $\in$ \textit{T}[$\Gamma$]}
@@ -342,14 +342,14 @@ Tali regole sono del tipo k e rispettano la forma
 \AxiomC{c  $\in$ M(t{\scriptsize $^I$})[$\Gamma$]}
 \TrinaryInfC{$El_{\textit{T}}$(t, c) $\in$ M(t)[$\Gamma$]}
 \DisplayProof
-\item \textbf{Regole di conversione}
+\item \textbf{Regole di Conversione}
 identificate con il preambolo C-\textit{T}, con \textit{T} teoria dei tipi in esame e t{\scriptsize $^I$} elemento canonico.\\, che stabilscono che gli eliminatori in (3) sono stabiliti per ricorsione a partire dalle ipotesi.
 Tali regole sono del tipo k e rispettano la forma
 \AxiomC{M(z) type[$\Gamma$, z $\in$ \textit{T}]}
 \AxiomC{c $\in$ M(t{\scriptsize $^I$})[$\Gamma$]}
 \BinaryInfC{El$_{\textit{T}}$(t{\scriptsize $^I$}, c) = c $\in$ M(t{\scriptsize $^I$})[$\Gamma$]}
 \DisplayProof
-\item \textbf{Regole di uguaglianza}
+\item \textbf{Regole di Uguaglianza}
 identificate con il preambolo eq-E-\textit{T}, con \textit{T} teoria dei tipi in esame e t{\scriptsize $^I$} elemento canonico.
 Tali regole stabiliscono che i costruttori di k in (2) e (3) permettono l'uguaglianza definizionale dei termini da cui dipendono.
 Tali regole sono del tipo k e rispettano la forma\\
