@@ -193,7 +193,7 @@ In conclusione, l'uguaglianza definizionale di termini con variabili \`e diversa
 \label{sec: tipo-delle-liste-di-un-tipo}
 Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e definito dalle regole seguenti.
 
-\subsection{Regole di formazione}
+\subsection{Regole di Formazione}
 \label{subsec: formazione-liste}
 \begin{prooftree}
 \AxiomC{A type [$\Gamma$]}
@@ -245,7 +245,7 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \AxiomC{\begin{tabular}[c]{ccc} s $\in$ List(A)[$\Gamma$] \\ a $\in$ A[$\Gamma$] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
 \LeftLabel{C$_2$-list)}
-\TrinaryInfC{El$_{list}$(cons(s,a),c,e) = e(s,a, E$_list$(s,c,e) $\in$ M(cons(s,a))[$\Gamma$]}
+\TrinaryInfC{El$_{list}$(cons(s,a),c,e) = e(s,a, E$_{list}$(s,c,e) $\in$ M(cons(s,a))[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -427,7 +427,7 @@ La ricorsione la faccio y, usando lo schema di ricorsione primitva, vale che x +
 
 
 \scriptsize
-\begin{adjustwidth}{-15em}{}
+\begin{adjustwidth}{-10em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
@@ -454,7 +454,7 @@ La ricorsione la faccio y, usando lo schema di ricorsione primitva, vale che x +
 \UnaryInfC{x $\in$ Nat cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[x $\in$ Nat]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{ccc}(w $\in$ Nat) \\ $\notin$ (x $\in$ Nat)\end{tabular}}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{ccc}(w $\in$ Nat) \\ $\notin$ x $\in$ Nat \end{tabular}}
 \UnaryInfC{x $\in$ Nat, w $\in$ Nat cont}
 \LeftLabel{I$_{2}$-Nat$_{prog}$}
 \UnaryInfC{succ(z) $\in$ Nat[x $\in$ Nat, w $\in$ Nat, z $\in$ Nat]}
@@ -549,21 +549,159 @@ Posso vedere una lista come una collezione di n singoletti. Ecco che posso defin
 \begin{center}
 0 = nil \\
 1 = cons(nil, $\ast$) \\
-n = const(cons(n-1), $\ast$)
+n = cons(cons(n-1), $\ast$)
 \end{center}
 
 \paragraph{2}
 \textbf{Dato un tipo A semplice, ovvero non dipendente, per esempio A = N{$_1$}, se si vuole definire un'operazione \begin{center} append$_1$(x$\backprime$,y$\backprime$) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ A]\end{center}
-\noindent tale che l'elemento y$\backprime$ venga posto alla fine della lista x$\backprime$, allora basta definire append$_1$ nel modo seguente \begin{center}append$_1$(x$\backprime$,y$\backprime$) = cons(x$\backprime$,y$\backprime$) $\in$ List(A)[x$\backprime$ $in$ List(A), y$\backprime$ $in$ A]\end{center}}
+\noindent tale che l'elemento y$\backprime$ venga posto alla fine della lista x$\backprime$, allora basta definire append$_1$ nel modo seguente \begin{center}append$_1$(x$\backprime$,y$\backprime$) = cons(x$\backprime$,y$\backprime$) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ A]\end{center}
 \noindent Ma se si vuole definire un'operazione \begin{center} append$_2$(x$\backprime$,y$\backprime$) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ A]\end{center} 
-\noindent tale che y$\backprime$ venga posto all'inizio di della lista x$\backprime$ allora come occorre procedere?.}\\\\
-\textbf{Soluzione}\textit{Procedimento preso dalle note}
+\noindent tale che y$\backprime$ venga posto all'inizio della lista x$\backprime$ ,allora come occorre procedere?.}\\\\
+\textbf{Soluzione} (\textit{Procedimento preso dalle note})
+\\\\
+Per riuscire a porre y$\backprime$ all'inizio della lista x$\backprime$, devo usare la regola di eliminazione sulla lista x$\backprime$. Per farlo, devo prima di tutto definire equazionalmente la definizione ricorsiva di append$_2$
+\begin{center}
+append$_2$(nil, y$\backprime$) =  cons(nil, y$\backprime$) = y$\backprime$\\
+append$_2$(cons(s, x$\backprime$), y$\backprime$) = cons(append$_2$(s, y$\backprime$), x$\backprime$)\\
+\end{center}
+Ora posso applicare la regola dell'eliminazione nel modo seguente:
+\begin{itemize}
+\item Premesse:
+\begin{itemize}
+\item M(z) type[$\Gamma$, z $\in$ List(A)] $\equiv$ List(A) type[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A)]
+\item t $\in$ List(A)[$\Gamma$] $\equiv$ x$\backprime$ $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A)]
+\item c $\in$ M(nil)[$\Gamma$] $\equiv$ y$\backprime$ $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A)]
+\item e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)] $\equiv$
+cons(z,y) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A), z $\in$ List(A), y$\in$ A]
+\end{itemize}
+\noindent
+\item Giudizio di conclusione:
+\begin{itemize}
+\item El$_{list}$(t,c,e) $\in$ M(t)[$\Gamma$] $\equiv$ El$_{list}$(x$\backprime$, y$\backprime$,(x,y,z).cons(z,y)) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A)]
+\end{itemize}
+\end{itemize}
 
 
 
-\paragraph{2}
-\textbf{Definire l'operazione \textit{append}} di accostamento di una lista a un'altra di tipo A type[ ] usando le regole del tipo delle liste
+\paragraph{3}
+\textbf{Definire l'operazione \textit{append} di accostamento di una lista a un'altra di tipo A type[ ] usando le regole del tipo delle liste
 \begin{center}append(x,y) $\in$ List(A)[x $\in$ List(A), x $\in$ List(A)]\end{center}
-in modo tale che valga append(x,null) = x $\in$ List(A)[x $\in$ List(A)]
+in modo tale che valga append(x,nil) = x $\in$ List(A)[x $\in$ List(A)]
+}
 
+\textbf{Soluzione}
+\\\\
+Per riuscire a poter concatenare la lista x alla lista y, devo usare la regola di eliminazione sulla lista x. Per farlo, devo prima di tutto definire equazionalmente la definizione ricorsiva di append
+\begin{center}
+append(x, nil) =  cons(x, nil) = x\\
+append(x, cons(y, a)) = cons(x, append(y, a))\\
+\end{center}
+Ora posso applicare la regola dell'eliminazione nel modo seguente:
+\begin{itemize}
+\item Premesse:
+\begin{itemize}
+\item M(z) type[$\Gamma$, z $\in$ List(A)] $\equiv$ List(A) type[x $\in$ List(A), y $\in$ List(A)]
+\item t $\in$ List(A)[$\Gamma$] $\equiv$ y $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]
+\item c $\in$ M(nil)[$\Gamma$] $\equiv$ x $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]
+\item e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)] $\equiv$
+cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$ A]
+\end{itemize}
+\noindent
+\item Giudizio di conclusione:
+\begin{itemize}
+\item El$_{list}$(t,c,e) $\in$ M(t)[$\Gamma$] $\equiv$ El$_{list}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]
+\end{itemize}
+\end{itemize}
 
+\begin{prooftree}
+\AxiomC{}%\AxiomC{[ ] cont}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[ ]}
+%\LeftLabel{F-cost}
+%\UnaryInfC{List(A) type [ ]}
+%\LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
+%\UnaryInfC{x $\in$ List(A) cont}
+%\AxiomC{[ ] cont}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[ ]}
+%\LeftLabel{ind-ty}
+%\BinaryInfC{A type[x $\in$ List(A)]}
+%\AxiomC{[ ] cont}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[ ]}
+%\LeftLabel{F-cost}
+%\UnaryInfC{List(A) type [ ]}
+%\LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
+%\UnaryInfC{x $\in$ List(A) cont}
+%\AxiomC{[ ] cont}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[ ]}
+%\LeftLabel{ind-ty}
+%\BinaryInfC{A type[x $\in$ List(A)]}
+%\LeftLabel{F-cost}
+%\UnaryInfC{List(A) type[x $\in$ List(A)]}
+%\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ x $\in$ List(A)}
+%\UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
+%\LeftLabel{ind-ty}
+%\BinaryInfC{A type[x $\in$ List(A), y $\in$ List(A)]}
+%\LeftLabel{F-cost}
+\UnaryInfC{\textbf{1}}%\UnaryInfC{List(A) type[x $\in$ List(A), y $\in$ List(A)]}
+\AxiomC{}%\AxiomC{[ ] cont}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[ ]}
+%\LeftLabel{F-cost}
+%\UnaryInfC{List(A) type [ ]}
+%\LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
+%\UnaryInfC{x $\in$ List(A) cont}
+%\AxiomC{[ ] cont}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[ ]}
+%\LeftLabel{ind-ty}
+%\BinaryInfC{A type[x $\in$ List(A)]}
+%\LeftLabel{F-cost}
+%\UnaryInfC{List(A) type[x $\in$ List(A)]}
+%\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ x $\in$ List(A)}
+%\UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
+%\LeftLabel{var}
+\UnaryInfC{\textbf{2}}%\UnaryInfC{y $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
+%\AxiomC{[ ] cont}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[ ]}
+%\LeftLabel{F-cost}
+%\UnaryInfC{List(A) type [ ]}
+%\LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
+%\UnaryInfC{x $\in$ List(A) cont}
+%\AxiomC{[ ] cont}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[ ]}
+%\LeftLabel{ind-ty}
+%\BinaryInfC{A type[x $\in$ List(A)]}
+%\LeftLabel{F-cost}
+%\UnaryInfC{List(A) type[x $\in$ List(A)]}
+%\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ x $\in$ List(A)}
+%\UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
+\AxiomC{}%\AxiomC{[ ] cont}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[ ]}
+%\LeftLabel{F-cost}
+%\UnaryInfC{List(A) type [ ]}
+%\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ [ ]}
+%\UnaryInfC{y $\in$ List(A) cont}
+%\AxiomC{[ ] cont}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[ ]}
+%\LeftLabel{ind-ty}
+%\UnaryInfC{A type[y $\in$ List(A)]}
+%\LeftLabel{F-cost}
+%\UnaryInfC{List(A) type[y $\in$ List(A)]}
+%\LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ y $\in$ List(A)}
+%\UnaryInfC{y $\in$ List(A), x $\in$ List(A) cont}
+%\LeftLabel{var}
+%\UnaryInfC{x $\in$ List(A)[y $\in$ List(A), x $\in$ List(A)]}
+%\LeftLabel{ex-te}
+\UnaryInfC{\textbf{3}}%\BinaryInfC{x $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
+\AxiomC{}
+\UnaryInfC{\textbf{4}}%\UnaryInfC{cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$ A]}
+\LeftLabel{E-list}
+\QuaternaryInfC{El$_{list}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)}
+\end{prooftree}
