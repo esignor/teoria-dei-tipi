@@ -588,7 +588,8 @@ cons(z,y) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A)
 \begin{center}append(x,y) $\in$ List(A)[x $\in$ List(A), x $\in$ List(A)]\end{center}
 in modo tale che valga append(x,nil) = x $\in$ List(A)[x $\in$ List(A)]
 }
-
+\\\\
+\noindent
 \textbf{Soluzione}
 \\\\
 Per riuscire a poter concatenare la lista x alla lista y, devo usare la regola di eliminazione sulla lista x. Per farlo, devo prima di tutto definire equazionalmente la definizione ricorsiva di append
@@ -612,9 +613,9 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \item El$_{list}$(t,c,e) $\in$ M(t)[$\Gamma$] $\equiv$ El$_{list}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]
 \end{itemize}
 \end{itemize}
-
+\vspace{0.5cm}
 \begin{prooftree}
-\AxiomC{}%\AxiomC{[ ] cont}
+%\AxiomC{[ ] cont}
 %\LeftLabel{s-checks}
 %\UnaryInfC{A type[ ]}
 %\LeftLabel{F-cost}
@@ -645,8 +646,8 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 %\LeftLabel{ind-ty}
 %\BinaryInfC{A type[x $\in$ List(A), y $\in$ List(A)]}
 %\LeftLabel{F-cost}
-\UnaryInfC{\textbf{1}}%\UnaryInfC{List(A) type[x $\in$ List(A), y $\in$ List(A)]}
-\AxiomC{}%\AxiomC{[ ] cont}
+\AxiomC{\textbf{1}}%\UnaryInfC{List(A) type[x $\in$ List(A), y $\in$ List(A)]}
+%\AxiomC{[ ] cont}
 %\LeftLabel{s-checks}
 %\UnaryInfC{A type[ ]}
 %\LeftLabel{F-cost}
@@ -663,7 +664,7 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 %\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ x $\in$ List(A)}
 %\UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
 %\LeftLabel{var}
-\UnaryInfC{\textbf{2}}%\UnaryInfC{y $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
+\AxiomC{\textbf{2}}%\UnaryInfC{y $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
 %\AxiomC{[ ] cont}
 %\LeftLabel{s-checks}
 %\UnaryInfC{A type[ ]}
@@ -680,7 +681,7 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 %\UnaryInfC{List(A) type[x $\in$ List(A)]}
 %\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ x $\in$ List(A)}
 %\UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
-\AxiomC{}%\AxiomC{[ ] cont}
+%\AxiomC{[ ] cont}
 %\LeftLabel{s-checks}
 %\UnaryInfC{A type[ ]}
 %\LeftLabel{F-cost}
@@ -699,9 +700,144 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 %\LeftLabel{var}
 %\UnaryInfC{x $\in$ List(A)[y $\in$ List(A), x $\in$ List(A)]}
 %\LeftLabel{ex-te}
-\UnaryInfC{\textbf{3}}%\BinaryInfC{x $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
-\AxiomC{}
-\UnaryInfC{\textbf{4}}%\UnaryInfC{cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$ A]}
+\AxiomC{\textbf{3}}%\BinaryInfC{x $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
+\AxiomC{\textbf{4}}%\UnaryInfC{cons(z,w) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A]}
 \LeftLabel{E-list}
-\QuaternaryInfC{El$_{list}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)}
+\QuaternaryInfC{El$_{list}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
 \end{prooftree}
+\vspace{1cm}
+\normalsize \textbf{1}
+\small
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
+\UnaryInfC{x $\in$ List(A) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[x $\in$ List(A)]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type[x $\in$ List(A)]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ List(A)) $\notin$ \\ x $\in$ List(A)\end{tabular}}
+\UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[x $\in$ List(A), y $\in$ List(A)]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type[x $\in$ List(A), y $\in$ List(A)]}
+\end{prooftree}
+\vspace{1.5cm}
+\normalsize \textbf{2}
+\small
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
+\UnaryInfC{x $\in$ List(A) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[x $\in$ List(A)]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type[x $\in$ List(A)]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ x $\in$ List(A)}
+\UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
+\end{prooftree}
+\vspace{1cm}
+\normalsize \textbf{3}
+\small
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type [ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ [ ]}
+\UnaryInfC{y $\in$ List(A) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[y $\in$ List(A)]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type[y $\in$ List(A)]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(x $\in$ List(A)) $\notin$ \\ y $\in$ List(A)\end{tabular}}
+\UnaryInfC{y $\in$ List(A), x $\in$ List(A) cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
+\end{prooftree}
+\vspace{1cm}
+\normalsize \textbf{4}
+\small
+\begin{adjustwidth}{-11em}{}
+\begin{prooftree}
+\AxiomC{\textbf{4$^\backprime$}}
+\UnaryInfC{x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A cont}
+\LeftLabel{var}
+\UnaryInfC{z $\in$ List(A)[x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A]}
+\AxiomC{\textbf{4$^\backprime$}}
+\UnaryInfC{x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$ A cont}
+\LeftLabel{var}
+\UnaryInfC{w $\in$ A[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$ A]}
+\LeftLabel{I$_2$-list}
+\BinaryInfC{cons(z,w) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A]}
+\end{prooftree}
+\end{adjustwidth}
+\vspace{1cm}
+\normalsize \textbf{4$^\backprime$}
+\small
+\begin{adjustwidth}{-11em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type [ ]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
+\UnaryInfC{x $\in$ List(A) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[x $\in$ List(A)]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type[x $\in$ List(A)]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ x $\in$ List(A)}
+\UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[x $\in$ List(A), y $\in$ List(A)]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type[x $\in$ List(A), y $\in$ List(A)]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ List(A)) $\notin$ (x $\in$ List(A), \\ y $\in$ List(A)))\end{tabular}}
+\UnaryInfC{x $\in$ List(A), y $\in$ List(A), z $\in$ List(A) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[x $\in$ List(A), y $\in$ List(A), z $\in$ List(A)]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(w $\in$ A) $\notin$  (x $\in$ List(A), y $\in$ List(A),\\ z $\in$ List(A))\end{tabular}}
+\UnaryInfC{x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$ A cont}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\normalsize \textit{Dimostrazione di correttezza di El$_{list}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
+\begin{itemize}
+\item El$_{list}$(nil, x,(u,v,z).cons(z,v)) $\rightarrow_1$ x per \textit{$\beta_{1list}$-red}
+\item  El$_{list}$(cons(y,a), x,(u,v,z).cons(z,v)) $\rightarrow_1$ cons(El$_{list}$(y, x, (u,v,z).cons(z,v))) per \textit{$\beta_{2list}$-red} $\Rightarrow$ per y = nil $\equiv$ cons(El$_{list}$(nil, x, (u,v,z).cons(z,v))) $\rightarrow_1$ cons(nil, x) $\in$ List(A) = x (dal punto precedente).
+\end{itemize}
