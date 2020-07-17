@@ -1,5 +1,5 @@
-\chapter{Naturali, Somma disgiunta e Liste}
-\label{naturali-somma-disgiunta-liste}
+\chapter{Naturali, Liste e Somma disgiunta}
+\label{naturali-somma-liste-disgiunta}
 %%dalla lezione 12 alle lezione 15 inclusa
 
 \section{Tipo dei numeri Naturali}
@@ -841,3 +841,95 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \item El$_{list}$(nil, x,(u,v,z).cons(z,v)) $\rightarrow_1$ x per \textit{$\beta_{1list}$-red}
 \item  El$_{list}$(cons(y,a), x,(u,v,z).cons(z,v)) $\rightarrow_1$ cons(El$_{list}$(y, x, (u,v,z).cons(z,v))) per \textit{$\beta_{2list}$-red} $\Rightarrow$ per y = nil $\equiv$ cons(El$_{list}$(nil, x, (u,v,z).cons(z,v))) $\rightarrow_1$ cons(nil, x) $\in$ List(A) = x (dal punto precedente).
 \end{itemize}
+
+
+\section{Tipo della somma disgiunta}
+\label{sec: tipo-somma-disgiunta}
+Il tipo somma disgiunta \`e un costruttore di tipo. Questi non \`e dipendente se da solo, lo diventa solo quando agisce su un tipo dipendente.\\
+Anche con il tipo somma disgiunta si parla di tipo induttivo (accade gi\`a per N$_1$, Nat, List(A)).\\
+Le regole del tipo della somma disgiunta sono le seguenti.
+
+\subsection{Regole di Formazione}
+\label{subsec: formazione-disjointsum}
+\begin{prooftree}
+\AxiomC{B type [$\Gamma$]}
+\AxiomC{C type [$\Gamma$]}
+\LeftLabel{F-$+$)}
+\BinaryInfC{B + C type [$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\label{subsec: introduzione-disjointsum}
+\begin{center}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\AxiomC{B + C type[$\Gamma$]}
+\LeftLabel{I$_1$-$+$)}
+\BinaryInfC{inl(b) $\in$ B + C[$\Gamma$]}
+\DisplayProof \qquad
+\AxiomC{c $\in$ C[$\Gamma$]}
+\AxiomC{B + C type[$\Gamma$]}
+\LeftLabel{I$_2$-$+$)}
+\BinaryInfC{inr(c) $\in$ B + C[$\Gamma$]}
+\DisplayProof
+\end{center}
+
+\subsection{Regole di Eliminaione}
+\label{subsec: eliminazione-disjointsum}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ B + C]\\t $\in$ B + C[$\Gamma$]\end{tabular}}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{E-$+$)}
+\TrinaryInfC{El$_+$(t,e$_B$,e$_C$) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\subsection{Regole di Conservazione}
+\label{subsec: conservazione-disjointsum}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ B + C]\\b $\in$ B[$\Gamma$]\end{tabular}}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{C$_1$-$+$)}
+\TrinaryInfC{El$_+$(inl(b),e$_B$,e$_C$) $\in$ M(t)[$\Gamma$] = e$_B$(b) $\in$ M(inl(b))[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ B + C]\\c $\in$ C[$\Gamma$]\end{tabular}}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{C$_1$-$+$)}
+\TrinaryInfC{El$_+$(inr(c),e$_B$,e$_C$) $\in$ M(t)[$\Gamma$] = e$_C$(c) $\in$ M(inr(c))[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+
+\subsection{Regole di Uguaglianza}
+\label{subsec: uguaglianza-disjointsum}
+\normalsize
+\begin{prooftree}
+\AxiomC{B$_1$ = B$_2$ $\in$ type[$\Gamma$]}
+\AxiomC{C$_1$ = C$_2$ $\in$ type[$\Gamma$]}
+\LeftLabel{eq-F-$+$)}
+\BinaryInfC{B$_1$ + C$_1$ = B$_2$ + C$_2$ type($\Gamma$)}
+\end{prooftree}
+
+\subsection{Eliminatore dipendente}
+\label{subsec:eliminatore dipendente-disjointsum}
+L'eliminatore ha, anche nel caso della somma disgiunta, la forma dipendente.
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ B + C]}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{E$_{dip}$-$+$)}
+\TrinaryInfC{El$_+$(z,e$_B$,e$_C$) $\in$ M(z)[z $\in$ B + C]}
+\end{prooftree}
+\end{adjustwidth}
