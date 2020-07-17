@@ -69,7 +69,7 @@
 \end{prooftree}
 \end{center}
 
-\subsection{Introduzione ed eliminatore dipendente}
+\subsection{Introduzione ed Eliminatore dipendente}
 \label{subsec:introduzione-eliminatore dipendente-naturale}
 Le regole di formazione dei tipi e dei loro termini sono formulate in modo da rendere la regole si sostituzione per tipi e termini ammissibili.\\
 Ad esempio la regola di introduzione del successore di un numero naturale si pu\`o formulare come un esplicito programma funzionale visto come termine dipendente.
@@ -335,13 +335,9 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{$\Gamma$ count}
-\LeftLabel{I$_1$-Nat}
-\UnaryInfC{0 $\in$ Nat[$\Gamma]$}
-\LeftLabel{I$_2$-Nat}
-\UnaryInfC{$\vdots$}
-\LeftLabel{I$_2$-Nat}
-\UnaryInfC{x-1 $\in$ Nat[$\Gamma]$}
-\LeftLabel{I$_2$-Nat}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[$\Gamma]$}
+\LeftLabel{s-checks}
 \UnaryInfC{x $\in$ Nat[$\Gamma]$}
 \LeftLabel{I$_2$-Nat}
 \UnaryInfC{succ(x) $\in$ Nat[$\Gamma$]}
@@ -355,24 +351,38 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \BinaryInfC{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}
 \end{prooftree}
 \noindent
-\normalsize{Assumo che le premesse di \textit{I$_2$-Nat$_{prog}$} (\textit{$\Gamma$ count}) sia valida, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}, di conseguenza derivabile in \textit{T}.}
+\normalsize{Assumo che le premesse di \textit{I$_2$-Nat$_{prog}$} (\textit{$\Gamma$ count}) sia valida, perci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}, di conseguenza derivabile in \textit{T$^\backprime$}.}
 
-
+\scriptsize
+\begin{adjustwidth}{-11em}{}
 \begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{s-checks}
+\UnaryInfC{Nat type[$\Gamma$]}
+\LeftLabel{s-checks}
+\UnaryInfC{w $\in$ Nat type[$\Gamma$]}
 \AxiomC{}
-\UnaryInfC{El$_{Nat}$(t,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat, t $\in$ Nat]}
-\AxiomC{[ ] cont}
-\UnaryInfC{$\vdots$}
-\UnaryInfC{$\Gamma$ count}
+\UnaryInfC{\begin{tabular}[c]{ccc} e(x,y) $\in$ M(succ(x))[ \\ $\Gamma$, x $\in$ Nat, \\ y $\in$ Nat, y $\in$ M(x)]\end{tabular}}
+\AxiomC{}
+\UnaryInfC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{\begin{tabular}[c]{cc} M(z) type Nat [ \\$\Gamma$, z $\in$ Nat] \end{tabular}}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{s-checks}
+\UnaryInfC{t $\in$ Nat[$\Gamma$]}
+\LeftLabel{E-S}
+\QuaternaryInfC{El$_{Nat}$(t,c,e) $\in$ M(t)[$\Gamma$]}
+\LeftLabel{sub-ter}
+\BinaryInfC{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$]}
+\AxiomC{$\Gamma$ cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ $\Gamma$}
+\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ [ ]}
 \UnaryInfC{$\Gamma$, w $\in$ Nat cont}
-\LeftLabel{var}
-\UnaryInfC{w $\in$ Nat[$\Gamma$, w $\in$ Nat]}
-\LeftLabel{sub-ter}
+\LeftLabel{ind-ty}
 \BinaryInfC{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat]}
 \end{prooftree}
+\end{adjustwidth}
 \noindent
 \normalsize{Assumo che le premesse di \textit{I$_E$-Nat$_{prog}$} (\textit{M(z) type[$\Gamma$, z $\in$ Nat], c $\in$ M(0)[$\Gamma$], e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}) sia valida, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat]}, di conseguenza derivabile in \textit{T}.}
 
@@ -419,7 +429,7 @@ La ricorsione la faccio w, usando lo schema di ricorsione primitva, vale che w +
 
 \paragraph{3}
 \textbf{Definire l'operazione di addizione usando le regole del tipo dei numeri naturali.}
-\begin{center} x + y $\in$ Nat[x $\in$ Nat, y $\in$ Nat\end{center}
+\begin{center} x + y $\in$ Nat[x $\in$ Nat, y $\in$ Nat]\end{center}
 in modo tale che valga x + 0 = x $\in$  Nat[x $\in$ Nat]
 \\\\
 \textbf{Soluzione}\\\\
@@ -553,31 +563,31 @@ n = cons(cons(n-1), $\ast$)
 \end{center}
 
 \paragraph{2}
-\textbf{Dato un tipo A semplice, ovvero non dipendente, per esempio A = N{$_1$}, se si vuole definire un'operazione \begin{center} append$_1$(x$\backprime$,y$\backprime$) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ A]\end{center}
-\noindent tale che l'elemento y$\backprime$ venga posto alla fine della lista x$\backprime$, allora basta definire append$_1$ nel modo seguente \begin{center}append$_1$(x$\backprime$,y$\backprime$) = cons(x$\backprime$,y$\backprime$) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ A]\end{center}
-\noindent Ma se si vuole definire un'operazione \begin{center} append$_2$(x$\backprime$,y$\backprime$) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ A]\end{center} 
-\noindent tale che y$\backprime$ venga posto all'inizio della lista x$\backprime$ ,allora come occorre procedere?.}\\\\
+\textbf{Dato un tipo A semplice, ovvero non dipendente, per esempio A = N{$_1$}, se si vuole definire un'operazione \begin{center} append$_1$(x$^\backprime$,y$^\backprime$) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]\end{center}
+\noindent tale che l'elemento y$^\backprime$ venga posto alla fine della lista x$\backprime$, allora basta definire append$_1$ nel modo seguente \begin{center}append$_1$(x$\backprime$,y$\backprime$) = cons(x$^\backprime$,y$^\backprime$) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]\end{center}
+\noindent Ma se si vuole definire un'operazione \begin{center} append$_2$(x$^\backprime$,y$^\backprime$) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]\end{center} 
+\noindent tale che y$^\backprime$ venga posto all'inizio della lista x$^\backprime$ ,allora come occorre procedere?.}\\\\
 \textbf{Soluzione} (\textit{Procedimento preso dalle note})
 \\\\
-Per riuscire a porre y$\backprime$ all'inizio della lista x$\backprime$, devo usare la regola di eliminazione sulla lista x$\backprime$. Per farlo, devo prima di tutto definire equazionalmente la definizione ricorsiva di append$_2$
+Per riuscire a porre y$^\backprime$ all'inizio della lista x$^\backprime$, devo usare la regola di eliminazione sulla lista x$^\backprime$. Per farlo, devo prima di tutto definire equazionalmente la definizione ricorsiva di append$_2$
 \begin{center}
-append$_2$(nil, y$\backprime$) =  cons(nil, y$\backprime$) = y$\backprime$\\
-append$_2$(cons(s, x$\backprime$), y$\backprime$) = cons(append$_2$(s, y$\backprime$), x$\backprime$)\\
+append$_2$(nil, y$^\backprime$) =  cons(nil, y$^\backprime$) = y$^\backprime$\\
+append$_2$(cons(s, x$^\backprime$), y$^\backprime$) = cons(append$_2$(s, y$^\backprime$), x$^\backprime$)\\
 \end{center}
 Ora posso applicare la regola dell'eliminazione nel modo seguente:
 \begin{itemize}
 \item Premesse:
 \begin{itemize}
-\item M(z) type[$\Gamma$, z $\in$ List(A)] $\equiv$ List(A) type[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A)]
-\item t $\in$ List(A)[$\Gamma$] $\equiv$ x$\backprime$ $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A)]
-\item c $\in$ M(nil)[$\Gamma$] $\equiv$ y$\backprime$ $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A)]
+\item M(z) type[$\Gamma$, z $\in$ List(A)] $\equiv$ List(A) type[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ List(A)]
+\item t $\in$ List(A)[$\Gamma$] $\equiv$ x$^\backprime$ $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ List(A)]
+\item c $\in$ M(nil)[$\Gamma$] $\equiv$ y$^\backprime$ $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ List(A)]
 \item e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)] $\equiv$
-cons(z,y) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A), z $\in$ List(A), y$\in$ A]
+cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ List(A), z $\in$ List(A), y$\in$ A]
 \end{itemize}
 \noindent
 \item Giudizio di conclusione:
 \begin{itemize}
-\item El$_{list}$(t,c,e) $\in$ M(t)[$\Gamma$] $\equiv$ El$_{list}$(x$\backprime$, y$\backprime$,(x,y,z).cons(z,y)) $\in$ List(A)[x$\backprime$ $\in$ List(A), y$\backprime$ $\in$ List(A)]
+\item El$_{list}$(t,c,e) $\in$ M(t)[$\Gamma$] $\equiv$ El$_{list}$(x$^\backprime$, y$^\backprime$,(x,y,z).cons(z,y)) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ List(A)]
 \end{itemize}
 \end{itemize}
 
