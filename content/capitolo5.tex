@@ -1,2 +1,225 @@
-\chapter{Somma indiciata forte e prodotto cartesiano}
-%% lezione 17b e 19 inclusa
+\chapter{Tipo della somma disgiunta}
+\label{sec: tipo-somma-disgiunta}
+Il tipo somma disgiunta \`e un costruttore di tipo. Questi non \`e dipendente se da solo, lo diventa solo quando agisce su un tipo dipendente.\\
+Anche con il tipo somma disgiunta si parla di tipo induttivo (accade gi\`a per N$_1$, Nat, List(A)).\\
+Le regole del tipo della somma disgiunta sono le seguenti.
+
+\section{Regole di Formazione}
+\label{subsec: formazione-disjointsum}
+\begin{prooftree}
+\AxiomC{B type [$\Gamma$]}
+\AxiomC{C type [$\Gamma$]}
+\LeftLabel{F-$+$)}
+\BinaryInfC{B + C type [$\Gamma$]}
+\end{prooftree}
+
+\section{Regole di Introduzione}
+\label{subsec: introduzione-disjointsum}
+\begin{center}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\AxiomC{B + C type[$\Gamma$]}
+\LeftLabel{I$_1$-$+$)}
+\BinaryInfC{inl(b) $\in$ B + C[$\Gamma$]}
+\DisplayProof \qquad
+\AxiomC{c $\in$ C[$\Gamma$]}
+\AxiomC{B + C type[$\Gamma$]}
+\LeftLabel{I$_2$-$+$)}
+\BinaryInfC{inr(c) $\in$ B + C[$\Gamma$]}
+\DisplayProof
+\end{center}
+
+\section{Regole di Eliminazione}
+\label{subsec: eliminazione-disjointsum}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ B + C]\\t $\in$ B + C[$\Gamma$]\end{tabular}}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{E-$+$)}
+\TrinaryInfC{El$_+$(t,e$_B$,e$_C$) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\section{Regole di Conservazione}
+\label{subsec: conservazione-disjointsum}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ B + C]\\b $\in$ B[$\Gamma$]\end{tabular}}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{C$_1$-$+$)}
+\TrinaryInfC{El$_+$(inl(b),e$_B$,e$_C$) = e$_B$(b) $\in$ M(inl(b))[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ B + C]\\c $\in$ C[$\Gamma$]\end{tabular}}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{C$_1$-$+$)}
+\TrinaryInfC{El$_+$(inr(c),e$_B$,e$_C$) = e$_C$(c) $\in$ M(inr(c))[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+
+\section{Regole di Uguaglianza}
+\label{subsec: uguaglianza-disjointsum}
+\normalsize
+\begin{prooftree}
+\AxiomC{B$_1$ = B$_2$ $\in$ type[$\Gamma$]}
+\AxiomC{C$_1$ = C$_2$ $\in$ type[$\Gamma$]}
+\LeftLabel{eq-F-$+$)}
+\BinaryInfC{B$_1$ + C$_1$ = B$_2$ + C$_2$ type($\Gamma$)}
+\end{prooftree}
+
+\section{Eliminatore dipendente}
+\label{subsec:eliminatore dipendente-disjointsum}
+L'eliminatore ha, anche nel caso della somma disgiunta, la forma dipendente.
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ B + C]}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{E$_{dip}$-$+$)}
+\TrinaryInfC{El$_+$(z,e$_B$,e$_C$) $\in$ M(z)[z $\in$ B + C]}
+\end{prooftree}
+\end{adjustwidth}
+
+\section{Semantica operazionale della somma disgiunta}
+\label{subsec: semantica-operazionale-somma-disgiunta}
+La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
+\begin{itemize}
+\item $\beta_{1+}$-red) El$_+$(inl(b), e$_B$, e$_C$) $\rightarrow_1$ e$_B$(b)
+\item $\beta_{2+}$-red) El$_{+s}$(inl(b), e$_B$, e$_C$) $\rightarrow_1$ e$_C$(c)
+\item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\LeftLabel{red$_I$)}
+\UnaryInfC{El$_+$(t$_1$, e$_B$, e$_C$) $\rightarrow_1$ El$_+$(t$_2$, e$_B$, e$_C$)}
+\DisplayProof \qquad
+\item Novit\`a della somma disgiunta rispetto al tipo singoletto
+\AxiomC{b$_1$ $\rightarrow_1$ b$_2$}
+\LeftLabel{S-red$_I$)}
+\UnaryInfC{inl(b$_1$) $\rightarrow_1$ inl(b$_2$)}
+\DisplayProof
+\item \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
+\LeftLabel{S-red$_{II}$)}
+\UnaryInfC{inr(c$_1$) $\rightarrow_1$ inr(c$_2$)}
+\DisplayProof
+\item + riduzione $\rightarrow_1$ rispetto a N$_1$
+\end{itemize}
+
+\section{Esercizi}
+\label{sec: es-somma-disgiunta}
+\paragraph{1}
+\textbf{Si scrivano le regole del tipo booleano come tipo semplice e si provi che \`e rappresentabile come N$_1$ + N$_2$.}\\\\
+\textbf{Soluzione}\\\\
+Definisco il tipo Bool nel modo seguente
+Bool = {true || false}\\
+inl($\ast$) $\equiv$ true\\
+inr($\ast$) $\equiv$ false\\
+\begin{itemize}
+\item Le regole del tipo Bool sono:
+
+\begin{itemize}
+\item\textbf{Regole di Formazione}
+\begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{F-Bool)}
+\UnaryInfC{Bool type[$\Gamma$]}
+\end{prooftree}
+
+\item\textbf{Regole di Introduzione}
+\begin{center}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_1$-Bool)}
+\UnaryInfC{true $\in$ Bool[$\Gamma$]}
+\DisplayProof \qquad
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_2$-Bool)}
+\UnaryInfC{false $\in$ Bool[$\Gamma$]}
+\DisplayProof
+\end{center}
+
+\item\textbf{Regole di Eliminazione}
+\small
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
+\AxiomC{t $\in$ Bool[$\Gamma$]}
+\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{E-Bool)}
+\QuaternaryInfC{El$_{Bool}$(t,e$_B$,e$_C$) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+
+\item\normalsize\textbf{Regole di Conversione}
+\small
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
+\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{C$_1$-Bool)}
+\TrinaryInfC{El$_{Bool}$(true,e$_B$,e$_C$) = e$_C$ $\in$ M(true)[$\Gamma$]}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
+\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{C$_1$-Bool)}
+\TrinaryInfC{El$_{Bool}$(false,e$_B$,e$_C$) = e$_C$ $\in$ M(false)[$\Gamma$]}
+\end{prooftree}
+
+\item\normalsize\textbf{Regole di Uguaglianza}
+\small
+\begin{center}
+\AxiomC{M(z) type [$\Gamma$, z $\in$ Bool]}
+\AxiomC{e$_B$ = s $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ = t $\in$ M(false)[$\Gamma$]}
+\LeftLabel{eq$_1$-E-Bool)}
+\TrinaryInfC{El$_{Bool}$(true,e$_B$,e$_C$) = El$_{Bool}$(true,s,t) $\in$ M(true)[$\Gamma$]}
+\DisplayProof \\
+\vspace{0.3cm}
+\AxiomC{M(z) type [$\Gamma$, z $\in$ Bool]}
+\AxiomC{e$_B$ = s $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ = t $\in$ M(false)[$\Gamma$]}
+\LeftLabel{eq$_2$-E-Bool)}
+\TrinaryInfC{El$_{Bool}$(false,e$_B$,e$_C$) = El$_{Bool}$(false,s,t) $\in$ M(false)[$\Gamma$]}
+\DisplayProof  \\
+\vspace{0.3cm}
+\AxiomC{t = t$\backprime$ $\in$ Bool[$\Gamma$]]}
+\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{eq$_1$-Bool)}
+\TrinaryInfC{M(t) = M(t$\backprime$) $\in$ M(true)[$Gamma$]}
+\DisplayProof \\
+\vspace{0.3cm}
+\AxiomC{t = t$\backprime$ $\in$ Bool[$\Gamma$]]}
+\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{eq$_2$-Bool)}
+\TrinaryInfC{M(t) = M(t$\backprime$) $\in$ M(false)[$\Gamma$]}
+\DisplayProof
+\end{center}
+\end{itemize}
+
+\item Semantica operazionale del tipo Bool:
+\begin{itemize}
+\item $\beta_{1Bool}$-red) El$_{list}$(true, e$_B$, e$_C$) $\rightarrow_1$ e$_B$(x)
+\item $\beta_{2Bool}$-red) El$_{list}$(true, e$_B$, e$_C$) $\rightarrow_1$ e$_C$(x)
+\item IF-true) if true then M else N $\rightarrow_1$ M
+\item IF-false) if false then M else N $\rightarrow_1$ N
+\item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\LeftLabel{red)}
+\UnaryInfC{El$_{list}$(t$_1$, e$_B$, e$_C$) $\rightarrow_1$ El$_{list}$(t$_2$, e$_B$, e$_C$)}
+\DisplayProof
+\item \AxiomC{M$_1$ $\rightarrow_1$ M$_1^\backprime$}
+\LeftLabel{IF)}
+\UnaryInfC{if M$_1$ then M$_2$ else M$_3$ $\rightarrow_1$ if M$_1^\backprime$ then M$_2$ else M$_3$}
+\DisplayProof
+\end{itemize}
+
+\end{itemize}
+
+

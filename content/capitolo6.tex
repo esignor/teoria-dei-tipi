@@ -1,2 +1,81 @@
-\chapter{Tipo delle funzioni e tipo prodotto dipendente}
-%% lezione 20 e 20 addendum
+\chapter{Uguaglianza proposizionale}
+\label{cap: uguaglianza-proposizionale}
+%% lezione 16 e 17 inclusa
+Pi\`u modi permettono di descrivere il tipo dell'uguaglianza, uno di questi \`e il tipo dell'uguaglianza proposizionale, definito dalle regole seguenti.
+
+\section{Regole di Formazione}
+\label{subsec: formazione-id}
+\begin{prooftree}
+\AxiomC{A type [$\Gamma$]}
+\AxiomC{a $\in$ A[$\Gamma$]}
+\AxiomC{b $\in$ A[$\Gamma$]}
+\LeftLabel{F-Id)}
+\TrinaryInfC{Id(A,a,b) type[$\Gamma$]}
+\end{prooftree}
+
+\section{Regole di Introduzione}
+\label{subsec: introduzione-id}
+\begin{prooftree}
+\AxiomC{a $\in$ A[$\Gamma$]}
+\LeftLabel{I$_1$-Id)}
+\UnaryInfC{id(a) $\in$ Id(A,a,a)[$\Gamma$]}
+\end{prooftree}
+
+\section{Regole di Eliminazione}
+\label{subsec: eliminazione-id}
+\small
+\begin{adjustwidth}{-7em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cccc}M(z$_1$,z$_2$,z$_3$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)]\\a $\in$ A[$\Gamma$] \\b $\in$ A[$\Gamma$] \\ t $\in$ Id(A,a,b)[$\Gamma$]\end{tabular}}
+\AxiomC{e(x) $\in$ M(x,x,Id(x)))[$\Gamma$, x $\in$ A]}
+\LeftLabel{E-List)}
+\BinaryInfC{El$_{Id}$(t, (x).e(x) $\in$ M(a,b,t)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\section{Regole di Conservazione}
+\label{subsec: conservazione-liste}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ List(A)] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
+\AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
+\LeftLabel{C$_1$-list)}
+\BinaryInfC{El$_{list}$(nil,c,e) = c $\in$ M(nil)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+\small
+\begin{adjustwidth}{-7em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ List(A)]}
+\AxiomC{\begin{tabular}[c]{ccc} s $\in$ List(A)[$\Gamma$] \\ a $\in$ A[$\Gamma$] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
+\AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
+\LeftLabel{C$_2$-list)}
+\TrinaryInfC{El$_{list}$(cons(s,a),c,e) = e(s,a, E$_{list}$(s,c,e) $\in$ M(cons(s,a))[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+
+\section{Regole di Uguaglianza}
+\label{subsec: uguaglianza-liste}
+\normalsize
+\AxiomC{A$_1$ = A$_2$ $\in$ type[$\Gamma$]}
+\LeftLabel{eq-I$_1$-List)}
+\UnaryInfC{List(A$_1$) = List(A$_2$) type($\Gamma$)}
+\DisplayProof  \\
+\AxiomC{s$_1$ = s$_2$ $\in$ List(A)[$\Gamma$]}
+\AxiomC{a$_1$ = a$_2$ $\in$ A[$\Gamma$]}
+\LeftLabel{eq-I$_2$-List)}
+\BinaryInfC{cons(s$_1$,a$_1$) = cons(s$_2$,a$_2$) $\in$ List(A)($\Gamma$)}
+\DisplayProof
+\small
+\begin{adjustwidth}{-10em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{ccc} M(z) type[$\Gamma$, z $\in$ List(A)] \\ t$_1$ = t$_2$ $\in$ list(A)[$\Gamma$] \\ c$_1$ = c$_2$ $\in$ M(nil)[$\Gamma$]\end{tabular}}
+\AxiomC{e$_1$(x,w,y) = e$_2$(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
+\LeftLabel{E-eq-List)}
+\BinaryInfC{El$_{list}$(t$_1$, c$_1$, e$_1$) = El$_{list}$(t$_2$, c$_2$, e$_2$ $\in$ M(t$_1$)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+\normalsize
+
