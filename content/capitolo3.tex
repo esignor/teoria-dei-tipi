@@ -375,7 +375,7 @@ Le regole del tipo della somma disgiunta sono le seguenti.
 \AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
 \AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
 \LeftLabel{C$_1$-$+$)}
-\TrinaryInfC{El$_+$(inl(b),e$_B$,e$_C$) $\in$ M(t)[$\Gamma$] = e$_B$(b) $\in$ M(inl(b))[$\Gamma$]}
+\TrinaryInfC{El$_+$(inl(b),e$_B$,e$_C$) = e$_B$(b) $\in$ M(inl(b))[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 \small
@@ -385,7 +385,7 @@ Le regole del tipo della somma disgiunta sono le seguenti.
 \AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
 \AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
 \LeftLabel{C$_1$-$+$)}
-\TrinaryInfC{El$_+$(inr(c),e$_B$,e$_C$) $\in$ M(t)[$\Gamma$] = e$_C$(c) $\in$ M(inr(c))[$\Gamma$]}
+\TrinaryInfC{El$_+$(inr(c),e$_B$,e$_C$) = e$_C$(c) $\in$ M(inr(c))[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -1095,6 +1095,114 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \begin{itemize}
 \item El$_{list}$(nil, x,(u,v,z).cons(z,v)) $\rightarrow_1$ x per \textit{$\beta_{1list}$-red}
 \item  El$_{list}$(cons(y,a), x,(u,v,z).cons(z,v)) $\rightarrow_1$ cons(El$_{list}$(y, x, (u,v,z).cons(z,v))) per \textit{$\beta_{2list}$-red} $\Rightarrow$ per y = nil $\equiv$ cons(El$_{list}$(nil, x, (u,v,z).cons(z,v))) $\rightarrow_1$ cons(x, nil) $\in$ List(A) = x (dal punto precedente).
+\end{itemize}
+
+\subsection{Tipo della somma disgiunta}
+\label{subsec: somma-disgiunta}
+\paragraph{1}
+\textbf{Si scrivano le regole del tipo booleano come tipo semplice e si provi che \`e rappresentabile come N$_1$ + N$_2$.}\\\\
+\textbf{Soluzione}\\\\
+Definisco il tipo Bool nel modo seguente
+Bool = {true || false}\\
+inl($\ast$) $\equiv$ true\\
+inr($\ast$) $\equiv$ false\\
+Le regole del tipo Bool sono:
+
+\begin{itemize}
+\item\textbf{Regole di Formazione}
+\begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{F-Bool)}
+\UnaryInfC{Bool type[$\Gamma$]}
+\end{prooftree}
+
+\item\textbf{Regole di Introduzione}
+\begin{center}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_1$-Bool)}
+\UnaryInfC{true $\in$ Bool[$\Gamma$]}
+\DisplayProof \qquad
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_2$-Bool)}
+\UnaryInfC{false $\in$ Bool[$\Gamma$]}
+\DisplayProof
+\end{center}
+
+\item\textbf{Regole di Eliminazione}
+\small
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
+\AxiomC{t $\in$ Bool[$\Gamma$]}
+\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{E-Bool)}
+\QuaternaryInfC{El$_{Bool}$(t,e$_B$,e$_C$) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+
+\item\normalsize\textbf{Regole di Conversione}
+\small
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
+\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{C$_1$-Bool)}
+\TrinaryInfC{El$_{Bool}$(true,e$_B$,e$_C$) = e$_C$ $\in$ M(true)[$\Gamma$]}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
+\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{C$_1$-Bool)}
+\TrinaryInfC{El$_{Bool}$(false,e$_B$,e$_C$) = e$_C$ $\in$ M(false)[$\Gamma$]}
+\end{prooftree}
+
+\item\normalsize\textbf{Regole di Uguaglianza}
+\small
+\begin{center}
+\AxiomC{M(z) type [$\Gamma$, z $\in$ Bool]}
+\AxiomC{e$_B$ = s $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ = t $\in$ M(false)[$\Gamma$]}
+\LeftLabel{eq$_1$-E-Bool)}
+\TrinaryInfC{El$_{Bool}$(true,e$_B$,e$_C$) = El$_{Bool}$(true,s,t) $\in$ M(true)[$\Gamma$]}
+\DisplayProof \\
+\vspace{0.3cm}
+\AxiomC{M(z) type [$\Gamma$, z $\in$ Bool]}
+\AxiomC{e$_B$ = s $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ = t $\in$ M(false)[$\Gamma$]}
+\LeftLabel{eq$_2$-E-Bool)}
+\TrinaryInfC{El$_{Bool}$(false,e$_B$,e$_C$) = El$_{Bool}$(false,s,t) $\in$ M(false)[$\Gamma$]}
+\DisplayProof  \\
+\vspace{0.3cm}
+\AxiomC{t = t$\backprime$ $\in$ Bool[$\Gamma$]]}
+\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{eq$_1$-Bool)}
+\TrinaryInfC{M(t) = M(t$\backprime$) $\in$ M(true)[$Gamma$]}
+\DisplayProof \\
+\vspace{0.3cm}
+\AxiomC{t = t$\backprime$ $\in$ Bool[$\Gamma$]]}
+\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
+\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{eq$_2$-Bool)}
+\TrinaryInfC{M(t) = M(t$\backprime$) $\in$ M(false)[$\Gamma$]}
+\DisplayProof
+\end{center}
+\end{itemize}
+
+Semantica operazionale del tipo Bool:
+\begin{itemize}
+\item $\beta_{1Bool}$-red) El$_{list}$(true, e$_B$, e$_C$) $\rightarrow_1$ e$_B$(x)
+\item $\beta_{2Bool}$-red) El$_{list}$(true, e$_B$, e$_C$) $\rightarrow_1$ e$_C$(x)
+\item IF-true) if true then M else N $\rightarrow_1$ M
+\item IF-false) if false then M else N $\rightarrow_1$ N
+\item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\LeftLabel{red)}
+\UnaryInfC{El$_{list}$(t$_1$, e$_B$, e$_C$) $\rightarrow_1$ El$_{list}$(t$_2$, e$_B$, e$_C$)}
+\DisplayProof
+\item \AxiomC{M$_1$ $\rightarrow_1$ M$_1^\backprime$}
+\LeftLabel{IF)}
+\UnaryInfC{if M$_1$ then M$_2$ else M$_3$ $\rightarrow_1$ if M$_1^\backprime$ then M$_2$ else M$_3$}
+\DisplayProof
 \end{itemize}
 
 
