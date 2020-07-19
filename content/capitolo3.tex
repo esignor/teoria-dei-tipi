@@ -80,7 +80,7 @@ Il medesimo discorso vale per la regola di eliminazione
 \AxiomC{c $\in$ M(0)[$\Gamma$]}
 \AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
 \LeftLabel{E-Nat$_{dip}$)}
-\TrinaryInfC{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat]}
+\TrinaryInfC{El$_{Nat}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ Nat]}
 \end{prooftree}
 \noindent
 \textit{E-Nat} \`e equivalente a \textit{E-Nat$_{dip}$}. Difatti la teoria \textit{T$_{N1Nat}$}, in cui c'\`e \textit{E-Nat}, \`e equivalente a \textit{T$\backprime$} senza \textit{E-Nat}, ma con \textit{E-Nat$_{dip}$}, le regole di sosituzione e di \textit{sanitary check}.
@@ -192,71 +192,91 @@ In conclusione, l'uguaglianza definizionale di termini con variabili \`e diversa
 \textbf{Dimostrare che le regole enunciate in \S\ref{sec: tipo-naturali}, \textit{I$_2$-Nat$_{prog}$} ed \textit{E-Nat$_{dip}$}, sono ammissibili nel sistema di teoria dei tipi dei numeri naturali.}
 \\\\
 \textbf{Soluzione}\\\\
+\noindent
+In I$_2$-Nat$_{prog}$ il contesto \`e $\Sigma$ = $\Gamma$, x $\in$ Nat che permette l'applicazione di I$_2$ Nat.
 \begin{prooftree}
-\AxiomC{}
-\UnaryInfC{$\Gamma$ count}
-\LeftLabel{F-Nat}
-\UnaryInfC{Nat type[$\Gamma]$}
-\LeftLabel{s-checks}
-\UnaryInfC{x $\in$ Nat[$\Gamma]$}
-\LeftLabel{I$_2$-Nat}
-\UnaryInfC{succ(x) $\in$ Nat[$\Gamma$]}
-\AxiomC{}
-\UnaryInfC{$\Gamma$ count}
+\AxiomC{$\Gamma$ cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$, x $\in$ Nat cont}
-\LeftLabel{ind-te}
-\BinaryInfC{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ Nat[$\Gamma$, x $\in$ Nat]}
+\LeftLabel{I$_2$ Nat}
+\UnaryInfC{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}
 \end{prooftree}
+\vspace{0.5cm}
 \noindent
 \normalsize{Assumo che le premesse di \textit{I$_2$-Nat$_{prog}$} (\textit{$\Gamma$ count}) sia valida, perci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}, di conseguenza derivabile in \textit{T$^\backprime$}.}
-
-\small
-\begin{prooftree}
-\AxiomC{\textbf{1}}
-\UnaryInfC{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$]}
-\AxiomC{\textbf{2}}
-\UnaryInfC{$\Gamma$, w $\in$ Nat cont}
-\LeftLabel{ind-ty}
-\BinaryInfC{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat]}
-\end{prooftree}
+\\\\
 \noindent
-\textbf{1}
-\begin{adjustwidth}{-11em}{}
-\begin{prooftree}
-\AxiomC{$\Gamma$ cont}
-\LeftLabel{s-checks}
-\UnaryInfC{Nat type[$\Gamma$]}
-\LeftLabel{s-checks}
-\UnaryInfC{w $\in$ Nat type[$\Gamma$]}
-\AxiomC{}
-\UnaryInfC{\begin{tabular}[c]{ccc} e(x,y) $\in$ M(succ(x))[ \\ $\Gamma$, x $\in$ Nat, \\ y $\in$ Nat, y $\in$ M(x)]\end{tabular}}
-\AxiomC{}
-\UnaryInfC{c $\in$ M(0)[$\Gamma$]}
-\AxiomC{}
-\UnaryInfC{\begin{tabular}[c]{cc} M(z) type Nat [ \\$\Gamma$, z $\in$ Nat] \end{tabular}}
-\AxiomC{$\Gamma$ cont}
-\LeftLabel{s-checks}
-\UnaryInfC{t $\in$ Nat[$\Gamma$]}
-\LeftLabel{E-S}
-\QuaternaryInfC{El$_{Nat}$(t,c,e) $\in$ M(t)[$\Gamma$]}
-\LeftLabel{sub-ter}
-\BinaryInfC{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$]}
-\end{prooftree}
-\end{adjustwidth}
-\vspace{0.5cm}
-\textbf{2}
+In E-Nat$_{dip}$ il contesto \`e $\Sigma$ = $\Gamma$, z $\in$ Nat, che permette l'applicazione di E-Nat.
+\scriptsize
+\begin{adjustwidth}{-15em}{}
 \begin{prooftree}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ [ ]}
-\UnaryInfC{$\Gamma$, w $\in$ Nat cont}
+\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, z $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{z $\in$ Nat[$\Gamma$, z $\in$ Nat]}
+\AxiomC{}
+\UnaryInfC{M(z) type[$\Gamma$,z $\in$ Nat]}
+\AxiomC{\textbf{1}}
+\UnaryInfC{c $\in$ M(0)[$\Gamma$,z $\in$ Nat]}
+\AxiomC{\textbf{2}}
+\UnaryInfC{e(x,y) $\in$ M(succ(x))[$\Gamma$, z $\in$ Nat, x $\in$ Nat, y $\in$ Nat]}
+\LeftLabel{E-Nat}
+\QuaternaryInfC{El$_{Nat}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ Nat]}
+\end{prooftree}
+\end{adjustwidth}
+\vspace{0.5cm}
+\small
+\textbf{1}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, z $\in$ Nat cont}
+\LeftLabel{ind-te}
+\BinaryInfC{c $\in$ M(0)[$\Gamma$,z $\in$ Nat]}
 \end{prooftree}
 \noindent
-\normalsize{Assumo che le premesse di \textit{E-Nat$_{dip}$} (\textit{M(z) type[$\Gamma$, z $\in$ Nat], c $\in$ M(0)[$\Gamma$], e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}) siano valide e che $\Gamma$ cont sia assioma ([ ] cont = [$\Gamma$] cont con $\Gamma$ = $\varnothing$), perci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{Nat}$(w,c,e) $\in$ M(t)[$\Gamma$, w $\in$ Nat]}, di conseguenza derivabile in \textit{T$^\backprime$}.}
+\textbf{2}
+\scriptsize
+\begin{adjustwidth}{-15em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ Nat]}
+\AxiomC{$\Gamma$ cont}
+\UnaryInfC{Nat type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ $\Gamma$}
+\UnaryInfC{z $\in$ Nat cont}
+\LeftLabel{ind-te}
+\BinaryInfC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ Nat, z $\in$ Nat]}
+\AxiomC{$\Gamma$ cont}
+\UnaryInfC{Nat type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, z $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[$\Gamma$, z $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ ($\Gamma$,z $\in$ Nat)}
+\UnaryInfC{$\Gamma$, z $\in$ Nat, x $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ Nat) $\notin$ ($\Gamma$, \\ z $\in$ Nat, x $\in$ Nat)\end{tabular}}
+\UnaryInfC{$\Gamma$, z $\in$ Nat, x $\in$ Nat, y $\in$ Nat cont}
+\LeftLabel{ex-te}
+\BinaryInfC{e(x,y) $\in$ M(succ(x))[$\Gamma$, z $\in$ Nat, x $\in$ Nat, y $\in$ Nat]}
+\end{prooftree}
+\end{adjustwidth}
+\vspace{0.5cm}
+\noindent
+\normalsize{Assumo che le premesse di \textit{E-Nat$_{dip}$} (\textit{M(z) type[$\Gamma$, z $\in$ Nat], c $\in$ M(0)[$\Gamma$], e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}) siano valide e che $\Gamma$ cont sia assioma ([ ] cont = [$\Gamma$] cont con $\Gamma$ = $\varnothing$), perci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{Nat}$(z,c,e) $\in$ M(z)[$\Gamma$, w $\in$ Nat]}, di conseguenza derivabile in \textit{T$^\backprime$}.}
 
 \paragraph{2}
 \textbf{Definire w + 2 $\in$ Nat[w $\in$ Nat], ove 2 \`e l'abbreviazione del termine ottenuto applicando 2 $\equiv$ succ(succ(0)).}

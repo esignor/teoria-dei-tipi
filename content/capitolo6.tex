@@ -83,10 +83,14 @@ Ovvero l'guaglianza proposizionale rende uguali i termini, definizionalmente, ma
 Percui se p $\in$ Id(A,a,b)[$\Gamma$] \`e derivabile $\nRightarrow$ a = b non \`e derivabile.\\
 Formalmente si pu\`o trovare con il tipo singoletto, nel modo seguente: "? $\in$ Id(N$_1$,x,$\ast$)[x $\in$ N$_1$] $\nRightarrow$ x = $\ast$ $\in$ N$_1$[x $\in$ N$_1$] (non \`e vero che x \`e uguale a $\ast$)"\\\\
 \textit{Dimostrazione} 
-\begin{prooftree}
-\AxiomC{a = b $\in$ A[$\Gamma$]}
-\UnaryInfC{Id(a) $\in$ Id(A,a,b)[$\Gamma]}
-\end{prooftree}
+%\begin{prooftree}
+%\UnaryInfC{a = b $\in$ A[$\Gamma$]}
+%\LeftLabel{s-checks}
+%\UnaryInfC{A type[$\Gamma$]}
+%\UnaryInfC{a $\in$ A[$\Gamma$]}
+%\LeftLabel{F-Id}
+%\TrinaryInfC{Id(a) $\in$ Id(A,a,a)[$\Gamma$]}
+%\end{prooftree}
 
 
 
@@ -114,7 +118,7 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \noindent
 \textbf{1}
 \scriptsize
-\begin{adjustwidth}{-15em}{}
+\begin{adjustwidth}{-10em}{}
 \begin{prooftree}
 \AxiomC{\textbf{1$_A$}}
 \UnaryInfC{A type [$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
@@ -133,8 +137,7 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \small
 \begin{adjustwidth}{-8em}{}
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type [ ]}
 \AxiomC{\textbf{1$_A^\backprime$}}
 \UnaryInfC{A type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}
@@ -157,14 +160,11 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \textbf{1$_A^\backprime$}}
 \small
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type [ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type [ ]}
-\AxiomC{$\Gamma$ cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ A) $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$, z$_1$ $\in$ A cont}
@@ -180,11 +180,9 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \textbf{1$_B^\backprime$}}
 \small
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type [ ]}
-\AxiomC{$\Gamma$ cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ A) $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$, z$_1$ $\in$ A cont}
@@ -200,11 +198,9 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \textbf{1$_C^\backprime$}
 \small
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type [ ]}
-\AxiomC{$\Gamma$ cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ A) $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$, z$_1$ $\in$ A cont}
@@ -222,15 +218,14 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \textbf{2}
 \small
 \begin{prooftree}
-\AxiomC{$\Gamma$}
-\LeftLabel{s-checks}
-\AxiomC{A type[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{A type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ A) $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$, x $\in$ A cont}
 \LeftLabel{var}
 \UnaryInfC{x $\in$ A[$\Gamma$, x $\in$ A]}
 \LeftLabel{I-id}
-\BinaryInfC{{id(x) $\in$ Id(A,x,x)[$\Gamma$, x $\in$ A]}}
+\UnaryInfC{{id(x) $\in$ Id(A,x,x)[$\Gamma$, x $\in$ A]}}
 \end{prooftree}
 \noindent
 \textit{Le derivazioni \textbf{2} e \textbf{3} sono simili a quelle in \textbf{1}. Le ometto per evitare una sovradimensionalit\`a del numero di derivazioni}\\\\
@@ -241,8 +236,8 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \\\\
 \noindent $\Delta$ = $\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)\\
 \noindent $\theta$ = A, z$_1$ $\in$ A, z$_2$ $\in$ A\\
-\scriptsize
-\begin{adjustwidth}{-7em}{}
+\small
+\begin{adjustwidth}{-13em}{}
 \begin{prooftree}
 \AxiomC{($\ast$)}
 \UnaryInfC{w $\in$ A[$\Delta$]}
@@ -269,8 +264,7 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \normalsize \textbf{1}
 \small
 \begin{prooftree}
-\AxiomC{$\Gamma$ cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
 \AxiomC{($\ast$)}
 \UnaryInfC{A type[ ]}

@@ -188,13 +188,13 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \small
 \begin{prooftree}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{F-S}
 \UnaryInfC{A type[ ]}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{}
 \UnaryInfC{A type[ ]}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{F-S}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
@@ -214,10 +214,10 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \small
 \begin{prooftree}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{F-S}
 \UnaryInfC{A type[ ]}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{F-S}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
@@ -235,10 +235,10 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \small
 \begin{prooftree}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{F-S}
 \UnaryInfC{A type[ ]}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{F-S}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
@@ -274,16 +274,16 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \begin{adjustwidth}{-7em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{F-S}
 \UnaryInfC{A type[ ]}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{F-S}
 \UnaryInfC{A type[ ]}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{F-S}
 \UnaryInfC{A type[ ]}
 \AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\LeftLabel{F-S}
 \UnaryInfC{A type [ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
@@ -441,14 +441,11 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \normalsize \textbf{1}
 \small
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
@@ -469,11 +466,9 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \normalsize \textbf{2}
 \small
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
@@ -492,11 +487,9 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \normalsize \textbf{3}
 \small
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
@@ -533,17 +526,13 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \small
 \begin{adjustwidth}{-7em}{}
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{s-checks}
+\AxiomC{}
 \UnaryInfC{A type [ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
