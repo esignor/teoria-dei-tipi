@@ -58,7 +58,7 @@ Pi\`u modi permettono di descrivere il tipo dell'uguaglianza, uno di questi \`e 
 \DisplayProof
 
 \section{Eliminatore dipendente}
-\label{subsec:eliminatore dipendente-id}
+\label{sec:eliminatore dipendente-id}
 L'eliminatore ha anche la forma dipendente.
 \small
 \begin{prooftree}
@@ -67,6 +67,28 @@ L'eliminatore ha anche la forma dipendente.
 \LeftLabel{El-Id$_{dip}$)}
 \BinaryInfC{El$_{Id}$(z$_3$, (x).e(x)) $\in$ M(z$_1$, z$_2$, z$_3$)[$\Gamma$,z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$, z$_2$)]}
 \end{prooftree}
+\normalsize
+
+\section{Lemma dell'Id}
+\label{sec: lemma-ind}
+\`E derivabile la regola
+\begin{prooftree}
+\AxiomC{a = b $\in$ A[$\Gamma$]}
+\UnaryInfC{Id(a) $\in$ Id(A,a,b)}
+\end{prooftree}
+\noindent
+Con Id(a) = Id(b)\\\\
+\noindent
+Ovvero l'guaglianza proposizionale rende uguali i termini, definizionalmente, ma non vale il contrario. 
+Percui se p $\in$ Id(A,a,b)[$\Gamma$] \`e derivabile $\nRightarrow$ a = b non \`e derivabile.\\
+Formalmente si pu\`o trovare con il tipo singoletto, nel modo seguente: "? $\in$ Id(N$_1$,x,$\ast$)[x $\in$ N$_1$] $\nRightarrow$ x = $\ast$ $\in$ N$_1$[x $\in$ N$_1$] (non \`e vero che x \`e uguale a $\ast$)"\\\\
+\textit{Dimostrazione} 
+\begin{prooftree}
+\AxiomC{a = b $\in$ A[$\Gamma$]}
+\UnaryInfC{Id(a) $\in$ Id(A,a,b)[$\Gamma]}
+\end{prooftree}
+
+
 
 \section{Esercizi}
 \label{sec: es-id}
