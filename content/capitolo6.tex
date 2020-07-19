@@ -74,7 +74,7 @@ L'eliminatore ha anche la forma dipendente.
 \textbf{Si dimostri che esiste una funzione h$_1$ che mi permetta di dimostrare la simmetria dell'uguaglianza. Si dia la prova che z$_2$ = z$_1$ non appena [$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A,  z$_3$ $\in$ Id(A,z$_1$,z$_2$)] con A type[$\Gamma$].
 \begin{center}h$_1$(z$_1$,z$_2$,z$_3$) $\in$ Id(A,z$_1$,z$_2$)[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)] \end{center}}
 \noindent
-\textbf{Soluzione}\\\\
+\textbf{Soluzione} (\textit{Si chiede di dimostrare che h$_1$ \`e \textit{proof term} nella forma indicata sopra})\\\\
 \textit{Assunzione dell'esercizio: Id(A, z$_1$, z$_2$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}\\\\
 M(z$_1$,z$_2$,z$_3$) $\equiv$ Id(A, z$_2$, z$_1$)\\
 h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
@@ -212,4 +212,57 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \end{prooftree}
 \noindent
 \textit{Le derivazioni \textbf{2} e \textbf{3} sono simili a quelle in \textbf{1}. Le ometto per evitare una sovradimensionalit\`a del numero di derivazioni}\\\\
-Vale che \textit{$\Gamma$  cont} \`e assioma ([ ] cont = $\Gamma$ cont con $\Gamma$ = $\varnothing$)
+Vale che \textit{$\Gamma$  cont} \`e assioma ([ ] cont = $\Gamma$ cont con $\Gamma$ = $\varnothing$)\\\\
+\noindent
+\textbf{Verifico che Id(A, z$_1$ $\in$ A, z$_2$ $\in$ A)[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A] \`e una premessa valida rispetto al giudizio di conclusione Id(A, z$_2$ $\in$ A, z$_1$ $\in$ A)[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
+\\\\
+\noindent $\Delta$ = $\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)\\
+\noindent $\theta$ = A, z$_1$ $\in$ A, z$_2$ $\in$ A\\
+\scriptsize
+\begin{adjustwidth}{-7em}{}
+\begin{prooftree}
+\AxiomC{($\ast$)}
+\UnaryInfC{w $\in$ A[$\Delta$]}
+\AxiomC{($\ast$)}
+\UnaryInfC{z$_2$ $\in$ A[$\Delta$]}
+\AxiomC{($\ast$)}
+\UnaryInfC{z$_1$ $\in$ A[$\Delta$]}
+\AxiomC{}
+\UnaryInfC{\textbf{Id($\theta$)[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}}
+\AxiomC{\textbf{1}}
+\UnaryInfC{z$_3$ $\in$ Id($\theta$), w $\in$ A cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{Id($\theta$)[$\Delta$, w $\in$ A]}
+\LeftLabel{sub-typ}
+\BinaryInfC{Id(A, w $\in$ A, z$_2$ $\in$ A)[$\Delta$, w $\in$ A]}
+\LeftLabel{sub-typ}
+\BinaryInfC{Id(A, w $\in$ A, z$_1$ $\in$ A)[$\Delta$, w $\in$ A]}
+\LeftLabel{sub-typ}
+\BinaryInfC{Id(A, z$_2$ $\in$ A, z$_1$ $\in$ A)[$\Delta$]}
+\end{prooftree}
+\end{adjustwidth}
+\vspace{0.5cm}
+\noindent
+\normalsize \textbf{1}
+\small
+\begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[ ]}
+\AxiomC{($\ast$)}
+\UnaryInfC{A type[ ]}
+\AxiomC{($\ast$)}
+\UnaryInfC{$z_1$ $\in$ A type[ ]}
+\AxiomC{($\ast$)}
+\UnaryInfC{$z_2$ $\in$ A type[ ]}
+\LeftLabel{F-Id}
+\TrinaryInfC{Id(A,z$_1$,z$_2$) type[ ]}
+\LeftLabel{F-c}\RightLabel{(z$_3$ $\in$ Id($\theta$)) $\notin$ [ ]}
+\UnaryInfC{z$_3$ $\in$ Id($\theta$) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[z$_3$ $\in$ Id($\theta$)]}
+\LeftLabel{F-c}\RightLabel{(w $\in$ A) $\notin$ z$_3$ $\in$ Id($\theta$)}
+\UnaryInfC{z$_3$ $\in$ Id($\theta$), w $\in$ A cont}
+\end{prooftree}
+\noindent
+Con il simbolo ($\ast)$ indico quelle derivazioni che terminano su un assioma, che per evitare ripetizioni nella derivazione ho omesso.
