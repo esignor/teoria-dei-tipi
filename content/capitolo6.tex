@@ -67,3 +67,149 @@ L'eliminatore ha anche la forma dipendente.
 \LeftLabel{El-Id$_{dip}$)}
 \BinaryInfC{El$_{Id}$(z$_3$, (x).e(x)) $\in$ M(z$_1$, z$_2$, z$_3$)[$\Gamma$,z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$, z$_2$)]}
 \end{prooftree}
+
+\section{Esercizi}
+\label{sec: es-id}
+\paragraph{1}
+\textbf{Si dimostri che esiste una funzione h$_1$ che mi permetta di dimostrare la simmetria dell'uguaglianza. Si dia la prova che z$_2$ = z$_1$ non appena [$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A,  z$_3$ $\in$ Id(A,z$_1$,z$_2$)] con A type[$\Gamma$].
+\begin{center}h$_1$(z$_1$,z$_2$,z$_3$) $\in$ Id(A,z$_1$,z$_2$)[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)] \end{center}}
+\noindent
+\textbf{Soluzione}\\\\
+\textit{Assunzione dell'esercizio: Id(A, z$_1$, z$_2$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}\\\\
+M(z$_1$,z$_2$,z$_3$) $\equiv$ Id(A, z$_2$, z$_1$)\\
+h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
+
+\small
+\begin{prooftree}
+\AxiomC{\textbf{1}}
+\UnaryInfC{Id(A,z$_2$,z$_1$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)]}
+\AxiomC{\textbf{2}}
+\UnaryInfC{id(x) $\in$ Id(A,x,x)[$\Gamma$, x $\in$ A]}
+\LeftLabel{El-Id$_{dip}$)}
+\BinaryInfC{h$_1$(z$_1$,z$2$,z$_3$) $\in$ Id(A,z$_2$,z$_1$)[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)]}
+\end{prooftree}
+\vspace{0.5cm}
+\noindent
+\textbf{1}
+\scriptsize
+\begin{adjustwidth}{-15em}{}
+\begin{prooftree}
+\AxiomC{\textbf{1$_A$}}
+\UnaryInfC{A type [$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
+\AxiomC{\textbf{1$_B$}}
+\UnaryInfC{z$_2$ $\in$ A[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
+\AxiomC{\textbf{1$_C$}}
+\UnaryInfC{z$_1$ $\in$ A[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
+\LeftLabel{F-id}
+\TrinaryInfC{Id(A,z$_2$,z$_1$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
+\end{prooftree}
+\end{adjustwidth}
+
+\vspace{0.5cm}
+\noindent
+\textbf{1$_A$}
+\small
+\begin{adjustwidth}{-8em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type [ ]}
+\AxiomC{\textbf{1$_A^\backprime$}}
+\UnaryInfC{A type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}
+\AxiomC{\textbf{1$_B^\backprime$}}
+\UnaryInfC{z$_1$ $\in$ [$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}
+\AxiomC{\textbf{1$_C^\backprime$}}
+\UnaryInfC{z$_2$ $\in$ [$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}
+\LeftLabel{F-Id}
+\TrinaryInfC{Id(A,z$_1$,z$_2$)[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z$_3$ $\in$ Id(A,z$_1$,z$_2$)) $\notin$ \\ ($\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A)\end{tabular}}
+\UnaryInfC{$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$) cont}
+\LeftLabel{ind-te}
+\BinaryInfC{A type [$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
+\end{prooftree}
+\end{adjustwidth}
+
+
+\vspace{0.5cm}
+\noindent
+\textbf{1$_A^\backprime$}}
+\small
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type [ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type [ ]}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ A) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, z$_1$ $\in$ A cont}
+\LeftLabel{ind-te}
+\BinaryInfC{A type[$\Gamma$, z$_1$ $\in$ A]}
+\LeftLabel{F-c}\RightLabel{(z$_2$ $\in$ A) $\notin$ ($\Gamma$, z$_1$ $\in$ A)}
+\UnaryInfC{$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A cont}
+\LeftLabel{ind-te}
+\BinaryInfC{A type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}
+\end{prooftree}
+
+\noindent
+\textbf{1$_B^\backprime$}}
+\small
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type [ ]}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ A) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, z$_1$ $\in$ A cont}
+\LeftLabel{ind-te}
+\BinaryInfC{A type[$\Gamma$, z$_1$ $\in$ A]}
+\LeftLabel{F-c}\RightLabel{(z$_2$ $\in$ A) $\notin$ ($\Gamma$, z$_1$ $\in$ A)}
+\UnaryInfC{$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A cont}
+\LeftLabel{var}
+\UnaryInfC{z$_1$ $\in$ A[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}
+\end{prooftree}
+
+\noindent
+\textbf{1$_C^\backprime$}
+\small
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type [ ]}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ A) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, z$_1$ $\in$ A cont}
+\LeftLabel{ind-te}
+\BinaryInfC{A type[$\Gamma$, z$_1$ $\in$ A]}
+\LeftLabel{F-c}\RightLabel{(z$_2$ $\in$ A) $\notin$ ($\Gamma$, z$_1$ $\in$ A)}
+\UnaryInfC{$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A cont}
+\LeftLabel{var}
+\UnaryInfC{z$_2$ $\in$ A[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A]}
+\end{prooftree}
+
+
+\vspace{0.5cm}
+\noindent
+\textbf{2}
+\small
+\begin{prooftree}
+\AxiomC{$\Gamma$}
+\LeftLabel{s-checks}
+\AxiomC{A type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ A) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, x $\in$ A cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ A[$\Gamma$, x $\in$ A]}
+\LeftLabel{I-id}
+\BinaryInfC{{id(x) $\in$ Id(A,x,x)[$\Gamma$, x $\in$ A]}}
+\end{prooftree}
+\noindent
+\textit{Le derivazioni \textbf{2} e \textbf{3} sono simili a quelle in \textbf{1}. Le ometto per evitare una sovradimensionalit\`a del numero di derivazioni}\\\\
+Vale che \textit{$\Gamma$  cont} \`e assioma ([ ] cont = $\Gamma$ cont con $\Gamma$ = $\varnothing$)
