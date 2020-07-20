@@ -83,14 +83,41 @@ Ovvero l'guaglianza proposizionale rende uguali i termini, definizionalmente, ma
 Percui se p $\in$ Id(A,a,b)[$\Gamma$] \`e derivabile $\nRightarrow$ a = b non \`e derivabile.\\
 Formalmente si pu\`o trovare con il tipo singoletto, nel modo seguente: "? $\in$ Id(N$_1$,x,$\ast$)[x $\in$ N$_1$] $\nRightarrow$ x = $\ast$ $\in$ N$_1$[x $\in$ N$_1$] (non \`e vero che x \`e uguale a $\ast$)"\\\\
 \textit{Dimostrazione} 
-%\begin{prooftree}
-%\UnaryInfC{a = b $\in$ A[$\Gamma$]}
-%\LeftLabel{s-checks}
-%\UnaryInfC{A type[$\Gamma$]}
-%\UnaryInfC{a $\in$ A[$\Gamma$]}
-%\LeftLabel{F-Id}
-%\TrinaryInfC{Id(a) $\in$ Id(A,a,a)[$\Gamma$]}
-%\end{prooftree}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{a $=$ b $\in$ A[$\Gamma$]}
+\LeftLabel{s-checks}
+\UnaryInfC{a $\in$ A[$\Gamma$]}
+\LeftLabel{I-Id}
+\UnaryInfC{Id(a) $\in$ Id(A,a,a)[$\Gamma$]}
+\AxiomC{\textbf{1}}
+\UnaryInfC{Id(A,a,a) $=$ Id(A,a,b) type[$\Gamma$]}
+\LeftLabel{conv}
+\BinaryInfC{Id(a) $\in$ Id(A,a,b)[$\Gamma$]}
+\end{prooftree}
+\vspace{0.5cm}
+\textbf{1}\\
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{a $=$ b $\in$ [$\Gamma$]}
+\LeftLabel{s-checks}
+\UnaryInfC{a $\in$ A[$\Gamma$]}
+\LeftLabel{s-checks}
+\UnaryInfC{A type[$\Gamma$]}
+\LeftLabel{ref}
+\UnaryInfC{A $=$ A type[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{a $=$ b $\in$ [$\Gamma$]}
+\LeftLabel{s-checks}
+\UnaryInfC{a $\in$ [$\Gamma$]}
+\LeftLabel{ref}
+\UnaryInfC{a $=$ a $\in$ [$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{a $=$ b $\in$ [$\Gamma$]}
+\LeftLabel{Eq-F-Id}
+\TrinaryInfC{Id(A,a,a)[$\Gamma$] = Id(A,a,b)[$\Gamma$]}
+\end{prooftree}
+
 
 
 
