@@ -518,78 +518,76 @@ La ricorsione la faccio x, percui, usando lo schema di ricorsione primitva, vale
 \item El$_{Nat}$(succ(x), y, (w,z).succ(z)) $\rightarrow_1$ succ(El$_{Nat}$(x, y, (w,z).succ(z))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per x=0 $\equiv$ succ(El$_{Nat}$(0, y, (w,z).succ(z))) $\rightarrow_1$ succ(y) $\in$ Nat = y + 1  (dal punto precedente).
 \end{itemize}
 
-\noindent
-\textbf{4}
+\paragraph{4}
 \textbf{Un concetto importante del $\lambda$-cacolo \`e $\alpha$-equivalenza ($\alpha$-eq).
 Questa consiste in una forma base di equivalenza, definibile in termini \textit{lambda}, dove una qualsiasi variabile legata pu\`o essere convertita in un'altra. Per esempio, $\lambda$ x.x e $\lambda$ y.y lambda sono termini \textit{$\alpha$-eq} che rappresentano la medesima funzione.\\
 Nella dispensa ho utilizzato \textit{$\alpha$-eq} per provare la validit\`a delle conclusioni , quando ne sussistevano le premesse per farlo.\\ Di seguito dimostro la validit\`a di \textit{$\alpha$-eq} derivando
 la sua stessa regola.}
 \begin{prooftree}
-\AxiomC{M(x) type[$\Gamma$, x $\in$ A]}
-\UnaryInfC{M(w) type[$\Gamma$, w $\in$ A]}
+\AxiomC{M(x) type[x $\in$ A]}
+\UnaryInfC{M(w) type[w $\in$ A]}
 \end{prooftree}
 \noindent
 \\\\
 \textbf{Soluzione}\\\\
 \noindent
-Assumo per ipotesi che A sia un tipo dipendente (A $\equiv$ Nat), vale per\`o per qualsiasi teoria dei tipi.
+Assumo per ipotesi che A sia un tipo non dipendente (A $\equiv$ Nat), vale per\`o per qualsiasi teoria dei tipi.
 
 \scriptsize
 \begin{prooftree}
-\AxiomC{$\Gamma$ cont}
+\AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
-\UnaryInfC{Nat type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ $\Gamma$}
-\UnaryInfC{$\Gamma$, w $\in$ Nat cont}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ $\varnothing$}
+\UnaryInfC{w $\in$ Nat cont}
 \LeftLabel{var}
-\UnaryInfC{w $\in$ Nat[$\Gamma$, w $\in$ Nat]}
+\UnaryInfC{w $\in$ Nat[w $\in$ Nat]}
 
 
 \AxiomC{\textbf{1}}
-\UnaryInfC{M(x) type[$\Gamma$, x $\in$ Nat, w $\in$ Nat]}
+\UnaryInfC{M(x) type[x $\in$ Nat, w $\in$ Nat]}
 
 \AxiomC{\textbf{2}}
-\UnaryInfC{$\Gamma$, w $\in$ Nat, x $\in$ Nat cont}
+\UnaryInfC{w $\in$ Nat, x $\in$ Nat cont}
 
 \LeftLabel{ex-ty}
-\BinaryInfC{M(x) type[$\Gamma$, w $\in$ Nat, x $\in$ Nat]}
+\BinaryInfC{M(x) type[w $\in$ Nat, x $\in$ Nat]}
 
 \LeftLabel{sub-typ}
-\BinaryInfC{M(w) type[$\Gamma$, w $\in$ Nat]}
+\BinaryInfC{M(w) type[w $\in$ Nat]}
 \end{prooftree}
 \noindent
 \normalsize \textbf{1}
 \small
 \begin{prooftree}
 \AxiomC{}
-\UnaryInfC{M(x) type[$\Gamma$, x $\in$ Nat]}
+\UnaryInfC{M(x) type[x $\in$ Nat]}
 
-\AxiomC{$\Gamma$ cont}
+\AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
-\UnaryInfC{Nat type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ $\Gamma$}
-\UnaryInfC{$\Gamma$, x $\in$ Nat cont}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ $\varnothing$}
+\UnaryInfC{x $\in$ Nat cont}
 \LeftLabel{F-Nat}
-\UnaryInfC{Nat type[$\Gamma$, x $\in$ Nat]}
+\UnaryInfC{Nat type[x $\in$ Nat]}
 \LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ x $\in$ Nat}
-\UnaryInfC{$\Gamma$, x $\in$ Nat, w $\in$ Nat cont}
+\UnaryInfC{x $\in$ Nat, w $\in$ Nat cont}
 \LeftLabel{ind-ty} 
-\BinaryInfC{M(x) type[$\Gamma$, x $\in$ Nat, w $\in$ Nat]}
+\BinaryInfC{M(x) type[x $\in$ Nat, w $\in$ Nat]}
 \end{prooftree}
 \noindent
 \normalsize \textbf{2}
 \small
 \begin{prooftree}
-\AxiomC{$\Gamma$ cont}
+\AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
-\UnaryInfC{Nat type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ $\Gamma$}
-\UnaryInfC{$\Gamma$, w $\in$ Nat cont}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ $\varnothing$}
+\UnaryInfC{w $\in$ Nat cont}
 \LeftLabel{F-Nat}
-\UnaryInfC{Nat type[$\Gamma$, w $\in$ Nat]}
+\UnaryInfC{Nat type[w $\in$ Nat]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ w $\in$ Nat}
-\UnaryInfC{$\Gamma$, w $\in$ Nat, x $\in$ Nat cont}
+\UnaryInfC{w $\in$ Nat, x $\in$ Nat cont}
 \end{prooftree}
 \noindent
 \normalsize
-$\Gamma$ cont \`e assioma ([ ] cont $\equiv$ $\Gamma$ = $\varnothing$).
