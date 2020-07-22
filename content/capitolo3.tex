@@ -85,14 +85,6 @@ Il medesimo discorso vale per la regola di eliminazione
 \noindent
 \textit{E-Nat} \`e equivalente a \textit{E-Nat$_{dip}$}. Difatti la teoria \textit{T$_{N1Nat}$}, in cui c'\`e \textit{E-Nat}, \`e equivalente a \textit{T$\backprime$} senza \textit{E-Nat}, ma con \textit{E-Nat$_{dip}$}, le regole di sosituzione e di \textit{sanitary check}.
 
-\section{Primitiva ricorsiva}
-\label{subsec: primitiva-ricorsiva}
-\textit{Definizione}\\\\
-Nat$^n$ $\times$ Nat $\rightarrow$ Nat\\
-Dati g$_0$: Nat$^m$ $\rightarrow$ Nat e g$_1$: Nat$^m$ $\times$ Nat $\times$ Nat $\rightarrow$ Nat\\
-n$_1$...n$_m$ $\in$ Nat allora\\\\
-rec(n$_1$...n$_m$, 0) $\equiv$ g$_0$(n$_1$...n$_m$)\\
-rec(n$_1$...n$_m$, k+1) $\equiv$ g$_0$(n$_1$...n$_m$, k, rec(n$_1$...n$_m$, k))
 
 \section{Semantica operazionale dei numeri Naturali}
 \label{subsec: semantica-operazionale-naturali}
@@ -101,11 +93,11 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \item $\beta_{1Nat}$-red) El$_{Nat}$(0, c, e) $\rightarrow_1$ c
 \item $\beta_{2Nat}$-red) El$_{Nat}$(succ(m), c, e) $\rightarrow_1$ e(m,El$_{Nat}$(m, c, e))
 \item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
-\LeftLabel{red$_I$)}
+\LeftLabel{Nat-red$_1$)}
 \UnaryInfC{El$_{Nat}$(t$_1$, c, e) $\rightarrow_1$ El$_{Nat}$(t$_2$, c, e)}
 \DisplayProof \qquad
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
-\LeftLabel{red$_{II}$)}
+\LeftLabel{Nat-red$_2$)}
 \UnaryInfC{El$_{Nat}$(t, c$_1$, e) $\rightarrow_1$ El$_{Nat}$(t, c$_2$, e)}
 \DisplayProof 
 \item Novit\`a dei numeri naturali rispetto al tipo singoletto
@@ -114,6 +106,15 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \UnaryInfC{succ(t$_1$) $\rightarrow_1$ succ(t$_2$)}
 \DisplayProof
 \end{itemize}
+
+\section{Primitiva ricorsiva}
+\label{subsec: primitiva-ricorsiva}
+\textit{Definizione}\\\\
+Nat$^n$ $\times$ Nat $\rightarrow$ Nat\\
+Dati g$_0$: Nat$^m$ $\rightarrow$ Nat e g$_1$: Nat$^m$ $\times$ Nat $\times$ Nat $\rightarrow$ Nat\\
+n$_1$...n$_m$ $\in$ Nat allora\\\\
+rec(n$_1$...n$_m$, 0) $\equiv$ g$_0$(n$_1$...n$_m$)\\
+rec(n$_1$...n$_m$, k+1) $\equiv$ g$_0$(n$_1$...n$_m$, k, rec(n$_1$...n$_m$, k))
 
 \section{Addizione per ricorsione}
 \label{subsec: addizione-per-ricorsione}

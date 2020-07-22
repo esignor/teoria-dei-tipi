@@ -116,11 +116,11 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \item $\beta_{1list}$-red) El$_{list}$(nil, c, e) $\rightarrow_1$ c
 \item $\beta_{2list}$-red) El$_{list}$(cons(s,a), c, e) $\rightarrow_1$ e(s,a,El$_{list}$(s, c, e))
 \item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
-\LeftLabel{red$_I$)}
+\LeftLabel{List-red$_1$)}
 \UnaryInfC{El$_{list}$(t$_1$, c, e) $\rightarrow_1$ El$_{list}$(t$_2$, c, e)}
 \DisplayProof \qquad
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
-\LeftLabel{red$_{II}$)}
+\LeftLabel{List-red$_2$)}
 \UnaryInfC{El$_{list}$(t, c$_1$, e) $\rightarrow_1$ El$_{list}$(t, c$_2$, e)}
 \DisplayProof 
 \item Novit\`a delle liste rispetto al tipo singoletto
