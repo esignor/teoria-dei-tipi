@@ -60,7 +60,7 @@ Le regole del tipo della somma disgiunta sono le seguenti.
 \AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
 \AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
 \LeftLabel{C$_1$-$+$)}
-\TrinaryInfC{El$_+$(inr(c),e$_B$,e$_C$) = e$_C$(c) $\in$ M(inr(c))[$\Gamma$]}
+\TrinaryInfC{El$_+$(inr(c),e$_B$,e$_C$) $=$ e$_C$(c) $\in$ M(inr(c))[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -69,10 +69,10 @@ Le regole del tipo della somma disgiunta sono le seguenti.
 \label{subsec: uguaglianza-disjointsum}
 \normalsize
 \begin{prooftree}
-\AxiomC{B$_1$ = B$_2$ $\in$ type[$\Gamma$]}
-\AxiomC{C$_1$ = C$_2$ $\in$ type[$\Gamma$]}
+\AxiomC{B$_1$ $=$ B$_2$ $\in$ type[$\Gamma$]}
+\AxiomC{C$_1$ $=$ C$_2$ $\in$ type[$\Gamma$]}
 \LeftLabel{eq-F-$+$)}
-\BinaryInfC{B$_1$ + C$_1$ = B$_2$ + C$_2$ type($\Gamma$)}
+\BinaryInfC{B$_1$ + C$_1$ $=$ B$_2$ + C$_2$ type($\Gamma$)}
 \end{prooftree}
 
 \section{Eliminatore dipendente}
@@ -101,14 +101,13 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \DisplayProof \qquad
 \item Novit\`a della somma disgiunta rispetto al tipo singoletto
 \AxiomC{b$_1$ $\rightarrow_1$ b$_2$}
-\LeftLabel{S-red$_I$)}
+\LeftLabel{$+$-red$_I$)}
 \UnaryInfC{inl(b$_1$) $\rightarrow_1$ inl(b$_2$)}
 \DisplayProof
 \item \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
-\LeftLabel{S-red$_{II}$)}
+\LeftLabel{$+$-red$_{II}$)}
 \UnaryInfC{inr(c$_1$) $\rightarrow_1$ inr(c$_2$)}
 \DisplayProof
-\item + riduzione $\rightarrow_1$ rispetto a N$_1$
 \end{itemize}
 
 \section{Esercizi}

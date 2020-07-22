@@ -59,9 +59,9 @@
 \normalsize
 \begin{center}
 \begin{prooftree}
-\AxiomC{t$_1$ = t$_2$ $\in$ Nat[$\Gamma$]}
+\AxiomC{t$_1$ $=$ t$_2$ $\in$ Nat[$\Gamma$]}
 \LeftLabel{eq-Nat)}
-\UnaryInfC{succ(t$_1$) = succ(t$_2$) $\in$ Nat[$\Gamma$]}
+\UnaryInfC{succ(t$_1$) $=$ succ(t$_2$) $\in$ Nat[$\Gamma$]}
 \end{prooftree}
 \end{center}
 
@@ -94,7 +94,7 @@ n$_1$...n$_m$ $\in$ Nat allora\\\\
 rec(n$_1$...n$_m$, 0) $\equiv$ g$_0$(n$_1$...n$_m$)\\
 rec(n$_1$...n$_m$, k+1) $\equiv$ g$_0$(n$_1$...n$_m$, k, rec(n$_1$...n$_m$, k))
 
-\section{Semantica operazionale dei numeri naturali}
+\section{Semantica operazionale dei numeri Naturali}
 \label{subsec: semantica-operazionale-naturali}
 La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
 \begin{itemize}
@@ -102,18 +102,17 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \item $\beta_{2Nat}$-red) El$_{Nat}$(succ(m), c, e) $\rightarrow_1$ e(m,El$_{Nat}$(m, c, e))
 \item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
 \LeftLabel{red$_I$)}
-\UnaryInfC{El$_{N1}$(t$_1$, c, e) $\rightarrow_1$ El$_{N1}$(t$_2$, c, e)}
+\UnaryInfC{El$_{Nat}$(t$_1$, c, e) $\rightarrow_1$ El$_{Nat}$(t$_2$, c, e)}
 \DisplayProof \qquad
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
 \LeftLabel{red$_{II}$)}
-\UnaryInfC{El$_{N1}$(t, c$_1$, e) $\rightarrow_1$ El$_{N1}$(t, c$_2$, e)}
+\UnaryInfC{El$_{Nat}$(t, c$_1$, e) $\rightarrow_1$ El$_{Nat}$(t, c$_2$, e)}
 \DisplayProof 
 \item Novit\`a dei numeri naturali rispetto al tipo singoletto
 \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
-\LeftLabel{N-red)}
+\LeftLabel{Nat-red)}
 \UnaryInfC{succ(t$_1$) $\rightarrow_1$ succ(t$_2$)}
 \DisplayProof
-\item + riduzione $\rightarrow_1$ rispetto a N$_1$
 \end{itemize}
 
 \section{Addizione per ricorsione}

@@ -146,19 +146,19 @@ Attenzione all'ordine di sostituzione si deve partire sempre da quello con meno 
 Se si ha un tipo puo' venire usato il giudizio di uguaglianza tra termini e la sostituzione.
 \begin{prooftree}
 \AxiomC{A(x) type[$\Gamma$, x $\in$ C]}
-\AxiomC{c = e $\in$ C[$\Gamma$]}
-\BinaryInfC{A(c) = A(e) type[$\Gamma$]}
+\AxiomC{c $=$ e $\in$ C[$\Gamma$]}
+\BinaryInfC{A(c) $=$ A(e) type[$\Gamma$]}
 \end{prooftree}
 \noindent
 \`E dunque fondamentale il concetto di uguaglianza fra tipi. Se considero che ci sia un elemento
 
 \begin{prooftree}
 \AxiomC{a(x) $\in$ A(x) [$\Gamma$, x $\in$ C]}
-\AxiomC{c = e $\in$ C[$\Gamma$]}
-\BinaryInfC{a(c) = a(e) $\in$ A(c) [$\Gamma$]}
+\AxiomC{c $=$ e $\in$ C[$\Gamma$]}
+\BinaryInfC{a(c) $=$ a(e) $\in$ A(c) [$\Gamma$]}
 \end{prooftree}
 \noindent
-Per poter affermare che A(e) = A(c) devo poterlo dedurre. Per farlo mi sono indispensabili le \textbf{regole di conversione dell'uguaglianza del tipaggio (\S\ref{subsec:regole-tipaggio})}.
+Per poter affermare che A(e) $=$ A(c) devo poterlo dedurre. Per farlo mi sono indispensabili le \textbf{regole di conversione dell'uguaglianza del tipaggio (\S\ref{subsec:regole-tipaggio})}.
 
 \subsection{Regole di tipaggio}
 \label{subsec:regole-tipaggio}
@@ -237,7 +237,7 @@ Un esempio diretto della sua applicazione \`e
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
 \AxiomC{c $\in$ M($\ast$)[$\Gamma$]}
 \LeftLabel{C-S)}
-\BinaryInfC{$El_{N1}$($\ast$, c) = c $\in$ M($\ast$)[$\Gamma$]}
+\BinaryInfC{$El_{N1}$($\ast$, c) $=$ c $\in$ M($\ast$)[$\Gamma$]}
 \end{prooftree}
 \textit{La conversione rende possibile l'applicazione della regola di eliminazione introducendo delle uguaglianze.}
 \\\\

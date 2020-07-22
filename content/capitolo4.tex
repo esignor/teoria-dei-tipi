@@ -54,7 +54,7 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \AxiomC{\begin{tabular}[c]{ccc} s $\in$ List(A)[$\Gamma$] \\ a $\in$ A[$\Gamma$] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
 \LeftLabel{C$_2$-list)}
-\TrinaryInfC{El$_{list}$(cons(s,a),c,e) = e(s,a, E$_{list}$(s,c,e) $\in$ M(cons(s,a))[$\Gamma$]}
+\TrinaryInfC{El$_{list}$(cons(s,a),c,e) $=$ e(s,a, E$_{list}$(s,c,e) $\in$ M(cons(s,a))[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -62,22 +62,24 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \section{Regole di Uguaglianza}
 \label{subsec: uguaglianza-liste}
 \normalsize
-\AxiomC{A$_1$ = A$_2$ $\in$ type[$\Gamma$]}
+\begin{prooftree}
+\AxiomC{A$_1$ $=$ A$_2$ $\in$ type[$\Gamma$]}
 \LeftLabel{eq-I$_1$-List)}
-\UnaryInfC{List(A$_1$) = List(A$_2$) type($\Gamma$)}
-\DisplayProof  \\
-\AxiomC{s$_1$ = s$_2$ $\in$ List(A)[$\Gamma$]}
-\AxiomC{a$_1$ = a$_2$ $\in$ A[$\Gamma$]}
+\UnaryInfC{List(A$_1$) $=$ List(A$_2$) type($\Gamma$)}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{s$_1$ $=$ s$_2$ $\in$ List(A)[$\Gamma$]}
+\AxiomC{a$_1$ $=$ a$_2$ $\in$ A[$\Gamma$]}
 \LeftLabel{eq-I$_2$-List)}
 \BinaryInfC{cons(s$_1$,a$_1$) = cons(s$_2$,a$_2$) $\in$ List(A)($\Gamma$)}
-\DisplayProof
+\end{prooftree}
 \small
 \begin{adjustwidth}{-10em}{}
 \begin{prooftree}
-\AxiomC{\begin{tabular}[c]{ccc} M(z) type[$\Gamma$, z $\in$ List(A)] \\ t$_1$ = t$_2$ $\in$ list(A)[$\Gamma$] \\ c$_1$ = c$_2$ $\in$ M(nil)[$\Gamma$]\end{tabular}}
-\AxiomC{e$_1$(x,w,y) = e$_2$(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
+\AxiomC{\begin{tabular}[c]{ccc} M(z) type[$\Gamma$, z $\in$ List(A)] \\ t$_1$ = t$_2$ $\in$ list(A)[$\Gamma$] \\ c$_1$ $=$ c$_2$ $\in$ M(nil)[$\Gamma$]\end{tabular}}
+\AxiomC{e$_1$(x,w,y) $=$ e$_2$(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
 \LeftLabel{E-eq-List)}
-\BinaryInfC{El$_{list}$(t$_1$, c$_1$, e$_1$) = El$_{list}$(t$_2$, c$_2$, e$_2$ $\in$ M(t$_1$)[$\Gamma$]}
+\BinaryInfC{El$_{list}$(t$_1$, c$_1$, e$_1$) $=$ El$_{list}$(t$_2$, c$_2$, e$_2$ $\in$ M(t$_1$)[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 \normalsize
@@ -106,6 +108,7 @@ Quando si scrive un programma \'e bene scrivere la sostituzione espressamente, c
 \end{prooftree}
 \end{adjustwidth}
 
+\normalsize
 \section{Semantica operazionale del tipo lista}
 \label{subsec: semantica-operazionale-lista}
 La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
@@ -122,14 +125,13 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \DisplayProof 
 \item Novit\`a delle liste rispetto al tipo singoletto
 \AxiomC{s$_1$ $\rightarrow_1$ s$_2$}
-\LeftLabel{L-red$_I$)}
+\LeftLabel{List-red$_I$)}
 \UnaryInfC{cons(s$_1$,a) $\rightarrow_1$ cons(s$_2$,a)}
 \DisplayProof
 \item \AxiomC{a$_1$ $\rightarrow_1$ a$_2$}
-\LeftLabel{L-red$_{II}$)}
+\LeftLabel{List-red$_{II}$)}
 \UnaryInfC{cons(s,a$_1$) $\rightarrow_1$ cons(s,a$_2$)}
 \DisplayProof
-\item + riduzione $\rightarrow_1$ rispetto a N$_1$
 \end{itemize}
 
 \section{Esercizi}
@@ -271,7 +273,7 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \vspace{1cm}
 \normalsize \textbf{4$^\backprime$}
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-3em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-S}
@@ -507,7 +509,7 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \vspace{1cm}
 \normalsize \textbf{4}
 \small
-\begin{adjustwidth}{-11em}{}
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{\textbf{4$^\backprime$}}
 \UnaryInfC{x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A cont}
@@ -524,7 +526,7 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \vspace{1cm}
 \normalsize \textbf{4$^\backprime$}
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-4em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type[ ]}
