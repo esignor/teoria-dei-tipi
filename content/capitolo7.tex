@@ -349,24 +349,28 @@ Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
 \end{itemize}
 \noindent
 
+\subsection{Correttezza del prodotto cartesiano}
+\label{subsec:correttezza-del-prod-cart}
 \textit{Dimostrazione}\\\\
 \noindent
 Dimostro che B $\times$ C ${\overset{\mathit{def}}{=}}$ $\bigcup\limits_{x \epsilon B\hspace{0.1cm}set}^.$C, trovando \textit{PJ$_1$-x} e \textit{PJ$_2$-x} usando E-$\Sigma_{dip}$.
-\begin{enumerate}
-\item Parto dalla prima proiezione\\
-\noindent
+
 \begin{center}
 M(z) $\equiv$ B\\
 \noindent
-$\sum\limits_{x \epsilon B\hspace{0.1cm}set}$C $\equiv$ B $\times$ C
+$\sum\limits_{x \epsilon B}$C $\equiv$ B $\times$ C
+\end{center}
+\noindent
+\textit{Assumo derivabili B type[$\Gamma$] e C type[$\Gamma$]}
+\begin{enumerate}
+\item Sulla prima proiezione\\
 \noindent
 
 El$_\Sigma$(z,(x,y).x) $\equiv$ $\pi_1$z
-\end{center}
+
 \noindent
 La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e x\\\\
 \noindent
-\textit{Assumo derivabili B type[$\Gamma$] e C type[$\Gamma$]}\\
 \small
 \begin{adjustwidth}{-8em}{}
 \begin{prooftree}
@@ -389,15 +393,63 @@ La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e x\\\\
 \LeftLabel{var}
 \UnaryInfC{x $\in$ B[$\Gamma$,x $\in$ B,y $\in$ C]}
 \LeftLabel{E-$\Sigma_{dip}$}
-\BinaryInfC{$\pi_1$z $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B\hspace{0.1cm}set}$C] }
+\BinaryInfC{$\pi_1$z $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C] }
 \end{prooftree}
 \end{adjustwidth}
 \noindent
 \normalsize
-Ho concluso con ($\ast$) i sequenti gi\`a risolti all'interno dello stesso albero, per evitare ripetizioni.\\
 
 \noindent
 In conclusione
-\begin{center}$\pi_1$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $\equiv$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C(x)]\end{center}
+\begin{center}$\pi_1$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]\end{center}
 
+\item Sulla seconda proiezione\\
+\noindent
+El$_\Sigma$(z,(x,y).y) $\equiv$ $\pi_2$z
+
+\noindent
+La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e y\\\\
+\small
+\begin{adjustwidth}{-8em}{}
+\begin{prooftree}
+\AxiomC{($\ast)$}
+\LeftLabel{ind-ty}
+\UnaryInfC{B type[$\Gamma$,x $\in$ B,y $\in$ C]}
+\AxiomC{($\ast$)}
+\UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C cont}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ B[$\Gamma$,x $\in$ B,y $\in$ C]}
+\LeftLabel{E-$\Sigma_{dip}$}
+\BinaryInfC{$\pi_2$z $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C] }
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\normalsize
+
+\noindent
+In conclusione
+\begin{center}$\pi_2$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).y) $\in$ C[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]\end{center}
+\noindent
+Ho concluso con ($\ast$) i sequenti gi\`a risolti, per evitare ripetizioni.\\
 \end{enumerate}
+Per verificare che effettivamente \textbf{$\pi_1$z} e \textbf{$\pi_2$z} siano \textit{PJ$_1$-x} e \textit{PJ$_2$-x}, utilizzo le riduzioni \textit{$\beta_x$-red$_1$} e \textit{$\beta_x$-red$_2$}.\\
+La riduzione El$_\Sigma$($<$b,c$>$, e) $\rightarrow_1$ e(b,c) riscritta con sostituzioni diventa El$_\Sigma$($<$b,c$>$, e) $\rightarrow_1$ e[$\frac{x}{b}$,$\frac{y}{c}$]\\\\
+\noindent
+Allora applicata a una coppia $<$b,c$>$:
+\begin{itemize}
+\item  $\pi_1$($<$b,c$>$) ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) = El$_\Sigma$($<$b,c$>$,(x,y).x) $\rightarrow_1$ x[$\frac{x}{b}$, $\frac{y}{c}$] $\rightarrow$ b
+\item $\pi_2$($<$b,c$>$) ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).y) = El$_\Sigma$($<$b,c$>$,(x,y).y) $\rightarrow_1$ y[$\frac{x}{b}$, $\frac{y}{c}$] $\rightarrow$ c
+\end{itemize}
+\noindent
+Entrambe le \textit{$\beta_x$-red} sono verificate. Percui la definizione B $\times$ C ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \epsilon B}$C \`e giustificata.
+
+\subsection{Esempi}
+\label{subsec:esempi}
+L'unione disgiunta non \`e l'unione insiemistica e questo lo si vede chiaramente dalla relazione sotto\\
+\noindent
+$\bigcup\limits_{x \epsilon Nat}^.$Nat $\equiv$ \{(x,y) $\bullet$ x $\in$ Nat,y $\in$ Nat\} $\equiv$ Nat $\times$ Nat $\neq$ $\bigcup\limits_{x \epsilon Nat}$Nat \{y: y $\in$ Nat, per un certo x $\in$ Nat\}\\
+\noindent
+La prima parte della relazione, se la famiglia \`e costante ingloba il prodotto cartesiano.\\\\
+\noindent
+Un esempio di unioni genuine, che si possono formare con tipi che non coincidono con il prodotto cartesiano, \`e $\sum\limits_{x \epsilon Nat}$ Mat(x $\bullet$ x), ove Mat sono le matrici quadratiche.\\
+A livello insiemisitico potremmo dover proiettare, data una coppia $<$x,k$>$ (con x elementi e k una certa matrice), sull'indice o sull'elemento di cui stiamo parlando, della matrice. Dunque dovremmo poter avere a disposizione le due proiezioni \textit{PJ$_1$-x} e \textit{PJ$_2$-x} anche su famiglie non costanti.
