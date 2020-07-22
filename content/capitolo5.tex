@@ -120,17 +120,17 @@ Bool = {true || false}\\
 inl($\ast$) $\equiv$ true\\
 inr($\ast$) $\equiv$ false\\
 \begin{itemize}
-\item Le regole del tipo Bool sono:
+\item \textbf{Regole del tipo Bool:}
 
 \begin{itemize}
-\item\textbf{Regole di Formazione}
+\item\textit{Regole di Formazione}
 \begin{prooftree}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{F-Bool)}
 \UnaryInfC{Bool type[$\Gamma$]}
 \end{prooftree}
 
-\item\textbf{Regole di Introduzione}
+\item\textit{Regole di Introduzione}
 \begin{center}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{I$_1$-Bool)}
@@ -142,7 +142,7 @@ inr($\ast$) $\equiv$ false\\
 \DisplayProof
 \end{center}
 
-\item\textbf{Regole di Eliminazione}
+\item\textit{Regole di Eliminazione}
 \small
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
@@ -153,7 +153,7 @@ inr($\ast$) $\equiv$ false\\
 \QuaternaryInfC{El$_{Bool}$(t,e$_B$,e$_C$) $\in$ M(t)[$\Gamma$]}
 \end{prooftree}
 
-\item\normalsize\textbf{Regole di Conversione}
+\item\normalsize\textit{Regole di Conversione}
 \small
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
@@ -170,7 +170,7 @@ inr($\ast$) $\equiv$ false\\
 \TrinaryInfC{El$_{Bool}$(false,e$_B$,e$_C$) = e$_C$ $\in$ M(false)[$\Gamma$]}
 \end{prooftree}
 
-\item\normalsize\textbf{Regole di Uguaglianza}
+\item\normalsize\textit{Regole di Uguaglianza}
 \small
 \begin{center}
 \AxiomC{M(z) type [$\Gamma$, z $\in$ Bool]}
@@ -203,7 +203,7 @@ inr($\ast$) $\equiv$ false\\
 \end{center}
 \end{itemize}
 
-\item Semantica operazionale del tipo Bool:
+\item \textbf{Semantica operazionale del tipo Bool:}
 \begin{itemize}
 \item $\beta_{1Bool}$-red) El$_{list}$(true, e$_B$, e$_C$) $\rightarrow_1$ e$_B$(x)
 \item $\beta_{2Bool}$-red) El$_{list}$(true, e$_B$, e$_C$) $\rightarrow_1$ e$_C$(x)

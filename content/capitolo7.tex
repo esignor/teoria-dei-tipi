@@ -8,7 +8,7 @@ La somma indiciata forte \`e il potenzialmento indiciato della somma disgiunta b
 \textbf{
 \begin{center}$\bigcup\limits_{x \epsilon B\hspace{0.1cm}set}^.$C(x) \qquad (C(x) set) x $\in$ B \end{center}
 $\neq$ \quad $\bigcup$ \{y : $\exists$ x $\in$ B \quad y $\in$ C(x)\}\\
-\begin{center}$\equiv$ \{(b,c) b $\in$ B e c $\in$ C(b)\}\end{center}
+\begin{center}${\overset{\mathit{def}}{=}}$ \{(b,c)$:$ b $\in$ B e c $\in$ C(b)\}\end{center}
 }
 \`E l'unione disgiunta di una famiglia di insiemi, definito dalle regole seguenti.
 
@@ -110,4 +110,78 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \LeftLabel{$\Sigma$-red$_{II}$)}
 \UnaryInfC{$<$b, c$_1>$ $\rightarrow_1$ $<$b, c$_2>$}
 \DisplayProof
+\end{itemize}
+
+\section{Esercizi}
+\label{sec: es-indixed-sum-type}
+\paragraph{1}
+\textbf{Provare a scrivere le regole del prodotto cartesiano A $\times$ B di un tipo A con un tipo B}\\\\
+\noindent
+\textbf{Svolgimento}
+\noindent
+A $\times$ B ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \in A}$ B\\\\
+\noindent
+
+\begin{itemize}
+\item \textbf{Regole del tipo prodotto cartesiano:}
+\begin{itemize}
+\item \textit{Regole di Formazione}
+\begin{prooftree}
+\AxiomC{A type [$\Gamma$]}
+\AxiomC{B type [$\Gamma$]}
+\LeftLabel{F-x)}
+\BinaryInfC{B $\times$ C type[$\Gamma$]}
+\end{prooftree}
+
+\item \textit{Regole di Introduzione}
+\begin{prooftree}
+\AxiomC{a $\in$ A[$\Gamma$]}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\LeftLabel{I-x)}
+\BinaryInfC{$<$a,b$>$ A $\times$ B[$\Gamma$]}
+\end{prooftree}
+
+\item \textit{Regole di Proiezione}
+\begin{prooftree}
+\AxiomC{d $\in$ A $\times$ B[$\Gamma$]}
+\LeftLabel{PJ$_1$-x)}
+\UnaryInfC{$\pi_1$d $\in$ A[$\Gamma$]}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{d $\in$ A $\times$ B[$\Gamma$]}
+\LeftLabel{PJ$_2$-x)}
+\UnaryInfC{$\pi_2$d $\in$ B[$\Gamma$]}
+\end{prooftree}
+
+\item \textit{Regole di Uguaglianza delle proiezioni}
+\begin{prooftree}
+\AxiomC{a $\in$ A[$\Gamma$]}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\LeftLabel{PJ$_1$-eq)}
+\BinaryInfC{$\pi_1$($<$a,b$>$) $=$ a $\in$ A[$\Gamma$]}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{a $\in$ A[$\Gamma$]}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\LeftLabel{PJ$_2$-eq)}
+\BinaryInfC{$\pi_2$($<$a,b$>$) $=$ b $\in$ B[$\Gamma$]}
+\end{prooftree}
+\item \textbf{Semantica operazionale del tipo prodotto cartesiano:}
+\item $\beta_x$-red$_1$) El$_\Sigma$($<$a,b$>$, e) $\rightarrow_1$ e(a,b)
+\item $\beta_x$-red$_2$) $\pi_1$($<$a,b$>$) $\rightarrow_1$ a
+\item $\beta_x$-red$_3$) $\pi_1$($<$a,b$>$) $\rightarrow_1$ b
+\item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\LeftLabel{red$_I$)}
+\UnaryInfC{El$_\Sigma$ (t$_1$, e) $\rightarrow_1$ El$_\Sigma$ (t$_2$, e)}
+\DisplayProof \qquad
+\item \AxiomC{a$_1$ $\rightarrow_1$ a$_2$}
+\LeftLabel{x-red$_I$)}
+\UnaryInfC{$<$a$_1$, b$>$ $\rightarrow_1$ $<$a$_2$, b$>$}
+\DisplayProof
+\item \AxiomC{b$_1$ $\rightarrow_1$ b$_2$}
+\LeftLabel{x-red$_{II}$)}
+\UnaryInfC{$<$a, b$_1>$ $\rightarrow_1$ $<$a, b$_2>$}
+\DisplayProof
+
+\end{itemize}
 \end{itemize}
