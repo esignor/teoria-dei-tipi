@@ -319,7 +319,7 @@ Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
 \AxiomC{b $\in$ B[$\Gamma$]}
 \AxiomC{c $\in$ C[$\Gamma$]}
 \LeftLabel{PJ$_1$-eq)}
-\BinaryInfC{$\pi_1$($<$b,c$>$) $=$ b $\in$ A[$\Gamma$]}
+\BinaryInfC{$\pi_1$($<$b,c$>$) $=$ b $\in$ B[$\Gamma$]}
 \end{prooftree}
 \begin{prooftree}
 \AxiomC{b $\in$ B[$\Gamma$]}
@@ -347,3 +347,57 @@ Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
 \UnaryInfC{$<$b, c$_1>$ $\rightarrow_1$ $<$b, c$_2>$}
 \DisplayProof
 \end{itemize}
+\noindent
+
+\textit{Dimostrazione}\\\\
+\noindent
+Dimostro che B $\times$ C ${\overset{\mathit{def}}{=}}$ $\bigcup\limits_{x \epsilon B\hspace{0.1cm}set}^.$C, trovando \textit{PJ$_1$-x} e \textit{PJ$_2$-x} usando E-$\Sigma_{dip}$.
+\begin{enumerate}
+\item Parto dalla prima proiezione\\
+\noindent
+\begin{center}
+M(z) $\equiv$ B\\
+\noindent
+$\sum\limits_{x \epsilon B\hspace{0.1cm}set}$C $\equiv$ B $\times$ C
+\noindent
+
+El$_\Sigma$(z,(x,y).x) $\equiv$ $\pi_1$z
+\end{center}
+\noindent
+La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e x\\\\
+\noindent
+\textit{Assumo derivabili B type[$\Gamma$] e C type[$\Gamma$]}\\
+\small
+\begin{adjustwidth}{-8em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{B type[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{C type[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{B type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ B) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$,x $\in$ B cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{C type[$\Gamma$,x $\in$ B]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ C) $\notin$ ($\Gamma$,x $\in$ B)}
+\UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{B type[$\Gamma$,x $\in$ B,y $\in$ C]}
+\AxiomC{($\ast$)}
+\UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ B[$\Gamma$,x $\in$ B,y $\in$ C]}
+\LeftLabel{E-$\Sigma_{dip}$}
+\BinaryInfC{$\pi_1$z $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B\hspace{0.1cm}set}$C] }
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\normalsize
+Ho concluso con ($\ast$) i sequenti gi\`a risolti all'interno dello stesso albero, per evitare ripetizioni.\\
+
+\noindent
+In conclusione
+\begin{center}$\pi_1$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $\equiv$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C(x)]\end{center}
+
+\end{enumerate}
