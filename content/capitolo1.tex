@@ -238,7 +238,7 @@ Esiste anche un quinto giudizio ausiliario (\$ \ref{subsec:formazione-contesti})
 
 \section{Esercizi}
 \label{subsec: lambda-calcolo-puro}
-\paragraph{1} 
+\paragraph{1)} 
 \textbf{Dato il seguente termine, elencare quali sono le sue variabili libere e le sue variabili legate con i lambda relativi.}
 \begin{center}$\lambda$z.((($\lambda$x.$\lambda$x.yx)x)(v$\lambda$z.$\lambda$w.v))\end{center}
 \textbf{Soluzione}\\\\
@@ -248,14 +248,14 @@ $\lambda$z.((($\lambda$x.\textbf{\textcolor{red}{$\lambda$x}}.\textbf{\textcolor
 \item le variabili legate con i relativi lambda termini (colorate in rosso) sono la \textit{x}
 \end{itemize}
 
-\paragraph{2}
+\paragraph{2)}
 \textbf{Rinominare le variabili legate nel seguente termine in modo che non ci siano due variabili legate con lo stesso nome.}
 \begin{center}x($\lambda$x.(($\lambda$x.x)x))\end{center}
 \textbf{Soluzione}\\\\
 x(\textbf{\textcolor{red}{$\lambda$x}}.((\textbf{\textcolor{red}{$\lambda$x}}.x)x))\\\\
 Le variabili legate sono le x all'interno delle parentesi tonde. Una possibile rinomina, per evitare che queste variabili legate abbiano lo stesso nome, \`e x($\lambda$x.(($\lambda$y.y)x)), dove la x della parentesi pi\`u interna \`e stata sostituita con la y.
 
-\paragraph{3}
+\paragraph{3)}
 Evidenziare di due colori diversi quali sono le variabili libere e quali quelle legate.
 \begin{center}($\lambda$x.(z($\lambda$z.((xyz)x))zx))x($\lambda$x.(($\lambda$y.yy)($\lambda$z.zz)))\end{center}
 \textbf{Soluzione}\\\\
@@ -265,14 +265,14 @@ Evidenziare di due colori diversi quali sono le variabili libere e quali quelle 
 \item le variabili legate sono le \textit{x, y} e \textit{z} colorate in rosso
 \end{itemize}
 
-\paragraph{4}
+\paragraph{4)}
 Descrivere un termine del $\lambda$-calcolo, descritto in \S{\ref{subsec:lambda-calcolo},  che \`e convergente con almeno un passo di riduzione rispetto ad una specifica strategia di riduzione deterministica.\\\\
 \textit{Soluzione}\\\\
 Per definizione un termine t \`e convergente, rispetto a una strategia di
 riduzione deterministica, se esiste un numero finito n >= 1 di termini s$_1$,..., s$_n$ tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i + 1}$ per i = 1,..., n-1 e s$_n$ non \`e riducibile ad alcun termine.\\
 Prendendo in considerazione una strategia di riduzione deterministica \textbf{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di termine t del $\lambda$-calcolo convergente in almeno un passo di riduzione \`e:
 \begin{center}t $\equiv$ (($\lambda$x.x)z)(($\lambda$y.y)w) $\rightarrow_1$ z(($\lambda$y.y)w) $\rightarrow_1$ z(w) $\equiv$ s$_n$ $\equiv$ s\end{center}
-\paragraph{5} 
+\paragraph{5)} 
 Descrivere due termini diversi del $\lambda$-calcolo, descritto in \S{\ref{subsec:lambda-calcolo}, che non sono convergenti sempre rispetto a una strategia di riduzione deterministica.\\\\
 \textbf{Soluzione}\\\\
 Per definizione un termine t diverge (\`e non convergente), rispetto a una strategia
@@ -280,7 +280,7 @@ di riduzione deterministica, se esiste una quantit\`a numerabile di termini s$_i
 Prendendo in considerazione una strategia di riduzione deterministica \textit{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di due termine diversi del $\lambda$-calcolo che sono convergenti \`e:
 \begin{center}($\lambda$x x(x))($\lambda$y y(y)) $\rightarrow_1$ ($\lambda$y y(y))($\lambda$y y(y))  $\rightarrow_1$ ... $\rightarrow_1$ ($\lambda$y y(y))($\lambda$y y(y)) $\rightarrow_1$ ... \end{center}
 Si riduce sempre a se stessa, a qualunque passo di computazione. Perci\`o ammette computazione infinita (diverge) non raggiungendo mai un valore finale.
-\paragraph{6} 
+\paragraph{6)} 
 Che relazione c'\`e tra il lambda-calcolo puro con le regole di riduzione date in \S{\ref{subsec:lambda-calcolo}, rispetto a quello in cui, adottando la stessa sintassi di termini, imponiamo la seguente definizione di riduzione $\rightarrow_1^\ast$.
 \begin{itemize}
 \item per ogni termine t e b ($\lambda$x.t)(b) $\rightarrow_1^\ast$ t[$\frac{x}{b}$]
