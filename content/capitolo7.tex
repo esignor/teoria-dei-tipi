@@ -463,99 +463,177 @@ La prima parte della relazione, se la famiglia \`e costante ingloba il prodotto 
 Un esempio di unioni genuine, che si possono formare con tipi che non coincidono con il prodotto cartesiano, \`e $\sum\limits_{x \epsilon Nat}$ Mat(x $\bullet$ x), ove Mat sono le matrici quadratiche.\\
 A livello insiemisitico potremmo dover proiettare, data una coppia $<$x,k$>$ (con x elementi e k una certa matrice), sull'indice o sull'elemento di cui stiamo parlando. Dunque dovremmo poter avere a disposizione le due proiezioni \textit{PJ$_1$-x} e \textit{PJ$_2$-x} anche su famiglie non costanti.\\\\
 \noindent
-Per individuare correttamente $\pi_1$(z) e $\pi_2$(z) assumo che $\sum\limits_{x \epsilon B}$C(x) type[$\Gamma$] sia derivabile. Tale ipotesi \`e vincolante per l'ottenimento della famiglia. In questo modo
+Per individuare correttamente $\pi_1$(z) e $\pi_2$(z) assumo che $\sum\limits_{x \epsilon B}$C(x) type[$\Gamma$] sia derivabile. Tale ipotesi \`e vincolante per l'ottenimento della famiglia. \\\\
+\noindent
+Definisco $\omega$ = z $\in$ $\sum\limits_{x \epsilon B}$C(x)
 \begin{enumerate}
 \item Per la prima proiezione
 \small
-\begin{adjustwidth}{-14em}{}
+\begin{adjustwidth}{-8em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{B type[$\Gamma$]}
 \AxiomC{}
-\UnaryInfC{C(x) type[$\Gamma$]}
-\AxiomC{($\ast$)}
-\UnaryInfC{$\Gamma$, x $\in$ B cont}
+%\UnaryInfC{C(x) type[$\Gamma$]}
+%\AxiomC{($\ast$)}
+%\UnaryInfC{$\Gamma$, x $\in$ B cont}
+%\LeftLabel{ind-ty}
+%\UnaryInfC{C(x) type[$\Gamma$, x $\in$ B]}
+%\LeftLabel{F-$\Sigma$}
+\UnaryInfC{$\sum\limits_{x \epsilon B}$C(x)type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{$\omega$ $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$, $\omega$ cont}
 \LeftLabel{ind-ty}
-\BinaryInfC{C(x) type[$\Gamma$, x $\in$ B]}
-\LeftLabel{F-$\Sigma$}
-\UnaryInfC{$\sum\limits_{x \epsilon B}$C(x)[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ $\sum\limits_{x \epsilon B}$C(x)) $\notin$ $\Gamma$}
-\UnaryInfC{$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x) cont}
-\LeftLabel{ind-ty}
-\BinaryInfC{B type[$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x)]}
+\BinaryInfC{B type[$\Gamma$, $\omega$]}
 
 \AxiomC{}
-\UnaryInfC{C(x) type[$\Gamma$]}
-\AxiomC{($\ast$)}
-\UnaryInfC{$\Gamma$,x $\in$ B cont}
-\LeftLabel{ind-ty}
-\BinaryInfC{C(x) type[$\Gamma$,x $\in$ B]}
+%\UnaryInfC{C(x) type[$\Gamma$]}
+%\AxiomC{($\ast$)}
+%\UnaryInfC{$\Gamma$,x $\in$ B cont}
+%\LeftLabel{ind-ty}
+\UnaryInfC{C(x) type[$\Gamma$,x $\in$ B]}
 \LeftLabel{F-c}\RightLabel{(y $\in$ C(x)) $\notin$ ($\Gamma$,x $\in$ B)}
 \UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C(x) cont}
 \LeftLabel{var}
 \UnaryInfC{x $\in$ B[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
 \LeftLabel{E-$\Sigma_{dip}$}
-\BinaryInfC{El$_\Sigma$(z,(x,y).x) $\in$ B[$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x)]}
+\BinaryInfC{El$_\Sigma$(z,(x,y).x) $\in$ B[$\Gamma$, $\omega$]}
 \end{prooftree}
 \end{adjustwidth}
 \noindent
 \normalsize
 In conclusione
-\begin{center}$\pi_1$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C(x)]\end{center}
+\begin{center}$\pi_1$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $\in$ B[$\omega$]\end{center}
 
 \item Per la seconda proiezione\\
 \noindent
-$\pi_2$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).y) $\in$ C($\pi_1(z)$)[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C(x)]\\
+$\pi_2$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).y) $\in$ C($\pi_1(z)$)[$\omega$]\\\\
 \noindent
 Allora usando che M(z) $\equiv$ C($\pi_1$z) $\Rightarrow$ M($<$x,y$>$) $\equiv$ C($\pi_1<$x,y$>$)\\
 \noindent
-\textit{Assumo che $\sum\limits_{x \epsilon B}$C(x) type[$\Gamma$] sia derivabile}
+\begin{prooftree}
+\AxiomC{\textbf{1}}
+\UnaryInfC{C($\pi_1$z) type[$\Gamma$, $\omega$]}
+\AxiomC{\textbf{2}}
+\UnaryInfC{y $\in$ C($\pi_1<$x,y$>$)[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
+\LeftLabel{E-$\Sigma_{dip}$}
+\BinaryInfC{El$_\Sigma$(z,(x,y).y) $\in$ C($\pi_1$z)[$\Gamma$, $\omega$]}
+\end{prooftree}
+\noindent
+\normalsize
+\vspace{0.5cm}
+\textbf{\textbf{1}}
 \small
-\begin{adjustwidth}{-14em}{}
+\begin{adjustwidth}{-15em}{}
 \begin{prooftree}
 \AxiomC{($\ast$)}
-\UnaryInfC{$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x) cont}
-\LeftLabel{var}
-\UnaryInfC{z $\in$ B[$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x)]}
-\LeftLabel{PJ$_1$-x}
-\UnaryInfC{$\pi_1$z $\in$ B[$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x)]}
+\LeftLabel{E-$\Sigma_{dip}$}
+\UnaryInfC{$\pi_1$z $\in$ B[$\Gamma$,$\omega$]}
 
 
 \AxiomC{}
-\UnaryInfC{C(x) type[$\Gamma$]}
+\UnaryInfC{C(x) type[$\Gamma$,x $\in$ B]}
+\AxiomC{($\ast$)}
+\UnaryInfC{$\Gamma$,x $\in$ B,$\omega$ cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{C(x) type[$\Gamma$,x $\in$ B,$\omega$]}
 \AxiomC{}
 \UnaryInfC{B type[$\Gamma$]}
 \AxiomC{}
 \UnaryInfC{$\sum\limits_{x \epsilon B}$C(x) type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ $\sum\limits_{x \epsilon B}$C(x)) $\notin$ $\Gamma$}
-\UnaryInfC{$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x) cont}
+\LeftLabel{F-c}\RightLabel{$\omega$ $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$,$\omega$ cont}
 \LeftLabel{ind-ty}
-\BinaryInfC{B type[$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x)]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ B) $\notin$ ($\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x))}
-\UnaryInfC{$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x), x $\in$ B cont}
-\LeftLabel{ind-ty}
-\BinaryInfC{C(x) type[$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x), x $\in$ B]}
+\BinaryInfC{B type[$\Gamma$,$\omega$]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ B) $\notin$ ($\Gamma$,$\omega$)}
+\UnaryInfC{$\Gamma$,$\omega$, x $\in$ B cont}
+\LeftLabel{ex-ty}
+\BinaryInfC{C(x) type[$\Gamma$,$\omega$, x $\in$ B]}
 \LeftLabel{sub-typ}
-\BinaryInfC{C($\pi_1$z) type[$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x)]}
-
-\AxiomC{($\ast$)}
-\LeftLabel{F-c}
-\UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C(x) cont}
-\LeftLabel{var}
-\UnaryInfC{y $\in$ C(x)[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
-
-
-
-\UnaryInfC{C(x) $=$ C($\pi_1<$x,y$>$)[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
-\LeftLabel{conv}
-\BinaryInfC{y $\in$ C($\pi_1<$x,y$>$)[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
-\LeftLabel{E-$\Sigma_{dip}$}
-\BinaryInfC{El$_\Sigma$(z,(x,y).y) $\in$ C($\pi_1$z)[$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C(x)]}
+\BinaryInfC{C($\pi_1$z) type[$\Gamma$,$\omega$]}
 \end{prooftree}
 \end{adjustwidth}
 \noindent
 \normalsize
-In conclusione
-\begin{center}$\pi_1$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C(x)]\end{center}
+\vspace{0.5cm}
+\textbf{\textbf{2}}
+\small
+\begin{adjustwidth}{-14em}{}
+\begin{prooftree}
+\AxiomC{($\ast$)}
+\UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C(x) cont}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ C(x)[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
+
+\AxiomC{\textbf{2$^A$}}
+\UnaryInfC{x $=$ $\pi_1<$x,y$> \in$ B[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
+
+\AxiomC{\textbf{2$^B$}}
+\UnaryInfC{C(w)type[$\Gamma$,x $\in$ B,y $\in$ C(x),w $\in$ B]}
+
+\LeftLabel{sub-eq-typ}
+\BinaryInfC{C(x) $=$ C($\pi_1<$x,y$>$)[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
+\LeftLabel{conv}
+\BinaryInfC{y $\in$ C($\pi_1<$x,y$>$)[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
+\end{prooftree}
+\end{adjustwidth}
+
+\noindent
+\normalsize
+\vspace{0.5cm}
+\textbf{\textbf{2$^A$}}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{($\ast$)}
+\UnaryInfC{B type[$\Gamma$]}
+\AxiomC{($\ast$)}
+\UnaryInfC{x $\in$ B[$\Gamma$]}
+\AxiomC{($\ast$)}
+\UnaryInfC{y $\in$ C(x)}
+\AxiomC{($\ast$)}
+\UnaryInfC{x $\in$ B[$\Gamma$, x $\in$ B, y $\in$ C(x)]}
+\LeftLabel{C-$\Sigma$}
+\QuaternaryInfC{$\pi_1<$x,y$> $=$ x \in$ B[$\Gamma$]}
+\AxiomC{($\ast$)}
+\UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C(x) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{$\pi_1<$x,y$> $=$ x \in$ B[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
+\LeftLabel{sym}
+\UnaryInfC{x $=$ $\pi_1<$x,y$> \in$ B[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
+\end{prooftree}
+\end{adjustwidth}
+
+\noindent
+\normalsize
+\vspace{0.5cm}
+\textbf{\textbf{2$^B$}}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{C(x)type[$\Gamma$,x $\in$ B]}
+\AxiomC{($\ast$)}
+\UnaryInfC{$\Gamma$,x $\in$ B cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{C(x)type[$\Gamma$,x $\in$ B]}
+\LeftLabel{$\alpha$-eq}
+\UnaryInfC{C(w)type[$\Gamma$,w $\in$ B]}
+\AxiomC{($\ast$)}
+\UnaryInfC{$\Gamma$,w $\in$ B,x $\in$ B,y $\in$ C(x) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{C(w)type[$\Gamma$,w $\in$ B,x $\in$ B,y $\in$ C(x)]}
+\AxiomC{($\ast$)}
+\UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C(x),w $\in$ B cont}
+\LeftLabel{ex-ty}
+\BinaryInfC{C(w)type[$\Gamma$,x $\in$ B,y $\in$ C(x),w $\in$ B]}
+\end{prooftree}
+\end{adjustwidth}
+
+\noindent
+\normalsize
+In conclusione vale $\pi_2$z\\
+\noindent
+Ho concluso con ($\ast$) una derivazione per semplificare o evitare ripetizioni nella derivazione stessa.
 
 \end{enumerate}
