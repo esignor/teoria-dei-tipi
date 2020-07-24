@@ -268,7 +268,8 @@ Se
 \noindent C(x) $\equiv$ C$^\backprime$ dove C$^\backprime$ non varia \quad $\Rightarrow$ \quad ${\overset{\mathit{def}}{=}}$ \{(b,c)$:$ b$\in$ B e c $\in$ C(b)\} $\simeq$ B $\times$
 C$^\backprime$ \\\\
 \noindent
-B $\times$ C ${\overset{\mathit{def}}{=}}$ $\bigcup\limits_{x \epsilon B\hspace{0.1cm}set}^.$C \\\\
+\begin{center} B $\times$ C ${\overset{\mathit{def}}{=}}$ $\bigcup\limits_{x \epsilon B\hspace{0.1cm}set}^.$C\end{center}
+\vspace{1cm}
 \noindent
 Supposto che 
 \begin{prooftree}
@@ -649,3 +650,33 @@ In conclusione vale $\pi_2$z\\
 Ho concluso con ($\ast$) una derivazione per semplificare o evitare ripetizioni nella derivazione stessa.
 
 \end{enumerate}
+
+\section{Usi del tipo somma indiciata per rappresentare l'assioma di separazione e di quantificazione universale}
+\label{sec:usi-del-tipo-somma-indiciata}
+Il tipo $\sum\limits_{x \epsilon B}$C(x) viene usato per rappresentare:
+\begin{enumerate}
+\item uso \textit{set} teoretico: l'unione indiciata disgiunta insiemistica (C(x) set[x $\in$ B])
+\item uso \textit{set} teoretico: con assioma di separazione
+\item uso logico: proposizionale
+\end{enumerate}
+\noindent
+Il punto (1) l'ho gi\`a spiegato nella prima parte di questo capitolo, ora presento le implicazioni di (2) e (3).\\\\
+\noindent
+L'assioma di separazione dice che dato B, insieme, esiste l'insieme ottenuto per separazione da B tramite $\varphi$(x) definito come  \{x $\in$ B $|$ $\varphi$(x)\} con $\varphi$(x) predicato.\\
+Perci\`o per ogni y insieme, y \& \{x $\in$ B $|$ $\varphi$(x)\} $\Leftrightarrow$ $\varphi$(y) vale.\\
+Si pu\`o, dunque, simulare l'insieme degli y per cui vale $\varphi$(y) nel momento in cui si ha una proposizione 
+\begin{prooftree}
+\AxiomC{$\varphi$(x) prop[$\Gamma$,x $\in$ B]}
+\LeftLabel{$\Sigma$-F}
+\UnaryInfC{$\sum\limits_{x \epsilon B}$ $\varphi$(x) type[$\Gamma$]}
+\end{prooftree}
+\noindent
+dove, nella regola sopra, prop viene pensato come un type\\\\
+\noindent
+\textit{Dimostrazione}
+\begin{itemize}
+\item ($\Leftarrow$) Da $\sum\limits_{x \epsilon B}$ $\varphi$(x) significa avere b $\in$ B $+$ pf $\in$ $\varphi$(b), e quindi b soddisfa $\varphi$(x). Ecco che non \`e solo b ma $<$b,pf$>$ $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con pf $\in$ $\varphi$(b) $_{I-\Sigma}\Leftarrow$ $\varphi$(b).\\
+\item ($\Rightarrow$) z $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con z che sarebbe una coppia e x $\in$ B $\equiv$ $\sum\limits_{x \epsilon B}$ $\varphi$(x) $\nRightarrow$ $\varphi$(z) vale, in quanto z \`e una coppia tipata.\\ 
+Ma posso tuttavia dimostrare che $\varphi(\pi_1z)$ vale usando le proiezioni. Ecco che $\pi_2$(z) $\in$ $\varphi$($\pi_1$z). $\pi_2$(z) \`e cosi \textit{proof term} per cui $\varphi$($\pi_1$z) vale.
+\end{itemize}
+
