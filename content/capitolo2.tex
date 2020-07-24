@@ -25,7 +25,7 @@ Di seguito illustro le principali regole di contesto comuni a tutte le teorie de
 \begin{center} [\hspace{0.1cm}] cont \quad dove [\hspace{0.1cm}] = $\varnothing$ \end{center}
 \begin{prooftree}
 \AxiomC{A type[$\Gamma$]}
-\LeftLabel{F-C)}\RightLabel{x $\in$ A $\notin$ $\Gamma$}
+\LeftLabel{F-c)}\RightLabel{x $\in$ A $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$, x $\in$ A}
 \end{prooftree}
 \subsection{Regole di assunzione delle variabili}
@@ -181,7 +181,7 @@ Il tipo singoletto risulta essere paradigmatico per gli altri tipi. Per definirl
 Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivazione parte sempre dal contesto vuoto ($\varnothing$).
 \begin{prooftree}
 \AxiomC{A type[$\Gamma$]}
-\LeftLabel{F-C)}\RightLabel{x $\in$ A $\notin$ $\Gamma$}
+\LeftLabel{F-c)}\RightLabel{x $\in$ A $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$, x $\in$ A}
 \end{prooftree}
 
@@ -193,15 +193,15 @@ Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivaz
 \UnaryInfC{$N_1$ type[$\Gamma]$}
 \end{prooftree}
 \textit{La regola F-S Permette di derivare vari giudizi e di dire che cosa \`e un tipo.}\\\\
-Con l'impiego solo delle regole \textit{F-C} e \textit{F-S} si possono derivare [$x_1$ $\in$ $N_1$... $x_n$ $\in$ $N_1$] cont e ottenere, cos\`i, contesti di una lista arbitraria di variabili diverse appartenenti a $N_1$, come si vede dall'esempio seguente.
+Con l'impiego solo delle regole \textit{F-c} e \textit{F-S} si possono derivare [$x_1$ $\in$ $N_1$... $x_n$ $\in$ $N_1$] cont e ottenere, cos\`i, contesti di una lista arbitraria di variabili diverse appartenenti a $N_1$, come si vede dall'esempio seguente.
 \begin{prooftree}
 \AxiomC{[ ] cont}
-\LeftLabel{F-S)}
-\LeftLabel{F-C)}\RightLabel{$x_1$ $\in$ $N_1$ $\notin$ $\varnothing$}
+\LeftLabel{F-S}
+\LeftLabel{F-c}\RightLabel{$x_1$ $\in$ $N_1$ $\notin$ $\varnothing$}
 \UnaryInfC{[$x_1$ $\in$ $N_1$] cont}
-\LeftLabel{F-S)}
+\LeftLabel{F-S}
 \UnaryInfC{$N_1$ type [$x_1$ $\in$ $N_1$]}
-\LeftLabel{F-C)}\RightLabel{$x_2$ $\in$ $N_1$ $\notin$ $x_1$ $\in$ $N_1$}
+\LeftLabel{F-c}\RightLabel{$x_2$ $\in$ $N_1$ $\notin$ $x_1$ $\in$ $N_1$}
 \UnaryInfC{[$x_1$ $\in$ $N_1$, $x_2$ $\in$ $N_1$] cont}
 \end{prooftree}
 

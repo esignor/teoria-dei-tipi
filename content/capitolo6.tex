@@ -518,3 +518,54 @@ Un \textbf{pf} \`e un qualsiasi elemento di un qualsiasi tipo di uguaglianza pro
 \BinaryInfC{id(a) $\in$ Id(A,a,b)[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
+
+\paragraph{4)}
+\textbf{Si dimostri che esiste un \textit{proof-term} pf del tipo
+\begin{center} pf $\in$ Id(N$_1$,x,$\ast$)[x $\in$ N$_1$] \end{center}}
+\noindent
+\\\\
+\textbf{Soluzione}\\\\
+\noindent
+Uso l'eliminatore dipendente del tipo N$_1$\\\\\
+z $\equiv$ x\\
+El$_{N1}$(z,c) $\equiv$ pf $\equiv$ El$_{N1}$(x,x.id($\ast$))\\
+M(z) $\equiv$ Id(N$_1$,x,$\ast$)\\
+c $\in$ M($\ast$)[$\Gamma$] $\equiv$ id($\ast$) $\in$ id(N$_1$,$\ast$,$\ast$)[x $\in$ N$_1$]\\
+
+\small
+\begin{adjustwidth}{-4em}{}
+\begin{prooftree}
+
+\AxiomC{}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{$\ast$ $\in$ N$_1$[x $\in$ N$_1$]}
+\LeftLabel{F-Id}
+\TrinaryInfC{Id(N$_1$,x,$\ast$)type[x $\in$ N$_1$]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[ ]}
+\LeftLabel{I-Id}
+\UnaryInfC{id($\ast$) $\in$ id(N$_1$,$\ast$,$\ast$)[ ]}
+\LeftLabel{E-S$_{dip}$}
+\BinaryInfC{El$_{N1}$(x,x.id($\ast$)) $\in$ Id(N$_1$,x,$\ast$)[x $\in$ N$_1$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\paragraph{5)}
+\textbf{Si dimostri che esiste un \textit{proof-term} pf tale che sia possibile definire l'addizione tra numeri naturali
+\begin{center} x $+$ y$ \in$ Nat[x $\in$ Nat,y $\in$ Nat] \end{center} 
+in modo tale che esistano dei \textit{proof-term} pf$_1$ e pf$_2$ tali che
+\begin{center}
+pf$_1$ $\in$ Id(Nat,x+0,x)[x $\in$ Nat]
+\quad
+pf$_2$ $\in$ Id(Nat,0+x,x)[x $\in$ Nat]
+\end{center}
+}
+
+\paragraph{6)}
+\textbf{Si dimostri che esiste un \textit{proof-term} del tipo
+\begin{center} pf $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A,z $\in$ A,w$_1$ $\in$ Id(A,x,y),w$_2$ $\in$ Id(A,y,z)] \end{center}}
