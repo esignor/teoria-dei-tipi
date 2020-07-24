@@ -189,14 +189,12 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \normalsize \textbf{1}
 \small
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{F-S}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
 \AxiomC{[ ] cont}
 \LeftLabel{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{F-S}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
@@ -214,33 +212,45 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \vspace{1cm}
 \normalsize \textbf{2}
 \small
+\begin{adjustwidth}{-10em}{}
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{F-S}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{F-S}
+\AxiomC{}
+\UnaryInfC{A type[ ]}
+\LeftLabel{F-c}\RightLabel{(y$^\backprime$ $\in$ A) $\notin$ [ ]}
+\UnaryInfC{y$^\backprime$ $\in$ A cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[y$^\backprime$ $\in$ A]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type[y$^\backprime$ $\in$ A]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(x$^\backprime$ $\in$ List(A)) $\notin$ \\ y$^\backprime$ $\in$ A\end{tabular}}
+\UnaryInfC{y$^\backprime$ $\in$ A, x$^\backprime$ $\in$ List(A) cont}
+\LeftLabel{var}
+\UnaryInfC{x$^\backprime$ $\in$ List(A)[y$^\backprime$ $\in$ A, x$^\backprime$ $\in$ List(A)]}
+\AxiomC{}
+\UnaryInfC{A type[ ]}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
-\UnaryInfC{List(A) type [ ]}
+\UnaryInfC{List(A) type[ ])}
 \LeftLabel{F-c}\RightLabel{(x$^\backprime$ $\in$ List(A)) $\notin$ [ ]}
 \UnaryInfC{x$^\backprime$ $\in$ List(A) cont}
 \LeftLabel{ind-ty}
 \BinaryInfC{A type[x$^\backprime$ $\in$ List(A)]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y$^\backprime$ $\in$ A) $\notin$ \\ x$^\backprime$ $\in$ List(A)\end{tabular}}
+\LeftLabel{F-c}\RightLabel{(y$^\backprime$ $\in$ A) $\notin$ x$^\backprime$ $\in$ List(A)}
 \UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A cont}
-\LeftLabel{var}
-\UnaryInfC{x$^\backprime$ $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]}
+\LeftLabel{ex-ty}
+\BinaryInfC{x$^\backprime$ $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]}
 \end{prooftree}
+\end{adjustwidth}
 \vspace{1cm}
 \normalsize \textbf{3}
 \small
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{F-S}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{F-S}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
@@ -275,17 +285,13 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \small
 \begin{adjustwidth}{-3em}{}
 \begin{prooftree}
-\AxiomC{[ ] cont}
-\LeftLabel{F-S}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{F-S}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{F-S}
+\AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
-\LeftLabel{F-S}
+\AxiomC{}
 \UnaryInfC{A type [ ]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A) type [ ]}
@@ -488,6 +494,7 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \vspace{1cm}
 \normalsize \textbf{3}
 \small
+\begin{adjustwidth}{-14em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type[ ]}
@@ -504,12 +511,30 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(x $\in$ List(A)) $\notin$ \\ y $\in$ List(A)\end{tabular}}
 \UnaryInfC{y $\in$ List(A), x $\in$ List(A) cont}
 \LeftLabel{var}
-\UnaryInfC{x $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
+\UnaryInfC{x $\in$ List(A)[y $\in$ List(A), x $\in$ List(A)]}
+
+\AxiomC{}
+\UnaryInfC{A type[ ]}
+\AxiomC{}
+\UnaryInfC{A type[ ]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
+\UnaryInfC{x $\in$ List(A) cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[x $\in$ List(A)]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A)type[x $\in$ List(A)]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ x $\in$ List(A)}
+\UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
+\LeftLabel{ex-ty}
+\BinaryInfC{x $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
 \end{prooftree}
+\end{adjustwidth}
 \vspace{1cm}
 \normalsize \textbf{4}
 \small
-\begin{adjustwidth}{-6em}{}
+\begin{adjustwidth}{-11em}{}
 \begin{prooftree}
 \AxiomC{\textbf{4$^\backprime$}}
 \UnaryInfC{x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A cont}

@@ -383,7 +383,7 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[ ]}
-\LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ Nat) $\notin$ $\varnothing$}
+\LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ Nat) $\notin$ [ ]}
 \UnaryInfC{z$_1$ $\in$ Nat cont}
 \LeftLabel{ind-ty}
 \BinaryInfC{Nat type[z$_1$ $\in$ Nat]}
@@ -398,7 +398,7 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 \normalsize
 \textbf{1$_B^\backprime$}
 \small
-\begin{adjustwidth}{6em}{}
+\begin{adjustwidth}{-1em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
@@ -406,14 +406,25 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[ ]}
-\LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ Nat) $\notin$ $\varnothing$}
-\UnaryInfC{z$_1$ $\in$ Nat cont}
+\LeftLabel{F-c}\RightLabel{(z$_2$ $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{z$_2$ $\in$ Nat cont}
 \LeftLabel{ind-ty}
-\BinaryInfC{Nat type[z$_1$ $\in$ Nat]}
-\LeftLabel{F-c}\RightLabel{(z$_2$ $\in$ Nat) $\notin$ z$_1$ $\in$ Nat)}
-\UnaryInfC{z$_1$ $\in$ Nat, z$_2$ $\in$ Nat cont}
+\BinaryInfC{Nat type[z$_2$ $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ Nat) $\notin$ z$_2$ $\in$ Nat}
+\UnaryInfC{z$_2$ $\in$ Nat, z$_1$ $\in$ Nat cont}
 \LeftLabel{var}
-\UnaryInfC{z$_1$ $\in$ [z$_1$ $\in$ Nat, z$_2$ $\in$ Nat]}
+\UnaryInfC{z$_1$ $\in$ Nat [z$_2$ $\in$ Nat, z$_1$ $\in$ Nat]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{z$_1$ $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[z$_1$ $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{(z$_2$ $\in$ Nat) $\notin$ z$_1$ $\in$ Nat}
+\UnaryInfC{z$_1$ $\in$ Nat, z$_2$ $\in$ Nat cont}
+\LeftLabel{ex-te}
+\BinaryInfC{z$_1$ $\in$ Nat [z$_1$ $\in$ Nat, z$_2$ $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -429,14 +440,14 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[ ]}
-\LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ Nat) $\notin$ $\varnothing$}
+\LeftLabel{F-c}\RightLabel{(z$_1$ $\in$ Nat) $\notin$ [ ]}
 \UnaryInfC{z$_1$ $\in$ Nat cont}
 \LeftLabel{ind-ty}
 \BinaryInfC{Nat type[z$_1$ $\in$ Nat]}
 \LeftLabel{F-c}\RightLabel{(z$_2$ $\in$ Nat) $\notin$ z$_1$ $\in$ Nat}
 \UnaryInfC{z$_1$ $\in$ Nat, z$_2$ $\in$ Nat cont}
 \LeftLabel{var}
-\UnaryInfC{z$_2$ $\in$ [z$_1$ $\in$ Nat, z$_2$ $\in$ Nat]}
+\UnaryInfC{z$_2$ $\in$ Nat[z$_1$ $\in$ Nat, z$_2$ $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -451,7 +462,7 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[ ]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ $\varnothing$}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
 \UnaryInfC{x $\in$ Nat cont}
 \LeftLabel{var}
 \UnaryInfC{x $\in$ Nat[x $\in$ Nat]}
