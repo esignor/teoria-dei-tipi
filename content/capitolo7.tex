@@ -668,9 +668,9 @@ L'assioma di separazione dice che dato B, insieme, esiste l'insieme ottenuto per
 Perci\`o per ogni y insieme, y \& \{x $\in$ B $|$ $\varphi$(x)\} $\Leftrightarrow$ $\varphi$(y) vale.\\
 Si pu\`o, dunque, simulare l'insieme degli y per cui vale $\varphi$(y) nel momento in cui si ha una proposizione 
 \begin{prooftree}
-\AxiomC{$\varphi$(x) prop[$\Gamma$,x $\in$ B]}
-\LeftLabel{$\Sigma$-F}
-\UnaryInfC{$\sum\limits_{x \epsilon B}$ $\varphi$(x) type[$\Gamma$]}
+\AxiomC{$\varphi$(x) $\cancel{prop}_{\textbf{type}}$[$\Gamma$,x $\in$ B]}
+\LeftLabel{F-$\Sigma$}
+\UnaryInfC{$\sum\limits_{x \epsilon B}$ $\varphi$(x) $\cancel{type}_{\textbf{set}}$[$\Gamma$]}
 \end{prooftree}
 \noindent
 dove, nella regola sopra, prop viene pensato come un type\\\\
@@ -681,4 +681,108 @@ dove, nella regola sopra, prop viene pensato come un type\\\\
 \item ($\Rightarrow$) z $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con z che sarebbe una coppia e x $\in$ B $\equiv$ $\sum\limits_{x \epsilon B}$ $\varphi$(x) $\nRightarrow$ $\varphi$(z) vale, in quanto z \`e una coppia tipata.\\ 
 Ma posso tuttavia dimostrare che $\varphi(\pi_1z)$ vale usando le proiezioni. Ecco che $\pi_2$(z) $\in$ $\varphi$($\pi_1$z). $\pi_2$(z) \`e cosi \textit{proof term} per cui $\varphi$($\pi_1$z) vale.
 \end{itemize}
+\noindent
+Questo ha permesso a \textit{Martin-L$\ddot{o}$f} di inglobare la \textit{set theory} all'interno della teoria dei tipi.
+
+\subsection{Proposizionale}
+\label{subsec:proposizionale}
+\begin{prooftree}
+\AxiomC{C(x) type[$\Gamma$,x $\in$ B$_{set}$] $\equiv$ $\varphi$(x) prop}
+\LeftLabel{$\Sigma$-F}
+\UnaryInfC{$\sum\limits_{x \epsilon B}$ $\varphi$(x) $\cancel{type}_{\textbf{prop}}$[$\Gamma$] ${\overset{\mathit{def}}{=}} \exists_{x \in B} \varphi(x)$}
+\end{prooftree}
+\noindent
+\`E la quantificazione esistenziale, in logica, di $\varphi$ che varia sull'insieme B.\\
+\noindent
+\paragraph{Giustificazione}\mbox{}\\\\
+\noindent
+$\phi$ prop[$\Gamma,x_1 \in \varphi_1,...,x_n \in \varphi_n]$\\
+\noindent Sotto ipotesi $\varphi_i$ prop[$\Gamma$] \quad i $=$ 1..n\\
+\noindent e $\varphi$ prop[$\Gamma$] con prop $\equiv$ type (ovvero tipi/\textit{set} delle loro dimostrazioni)\\\\
+\noindent
+\textit{Definizione} \textbf{\textit{proof-term}}\\ t $\in$ $\varphi[\Gamma]$ dove $\varphi$ \`e prop\\\\
+\noindent 
+Se devo dire che
+pf $\in \phi[\Gamma,x_1 \in \varphi_1,...,x_n \in \varphi_n]$
+$\equiv \phi$ \`e vero[$\Gamma, \varphi$ vero,...,$\varphi_n$ vero] (nessuno degli elementi del contesto dipende dal precedente)
+$\equiv$ $\varphi_1,...,\varphi_n$ $\vdash_\Gamma$ $\phi$
+\\\\\\
+\noindent
+Sappiamo che la logica lavora con variabili \textit{untyped}, dunque noi ora aggiungiamo in  $\exists$x$_{\in B}$ $\varphi$(x) e $\forall$x$_{\in B}$ $\varphi$(x) l'informazione sul tipo.
+\\\\
+\noindent
+Per quanto assunto sopra, la regola di Introduzione viene nel modo sequente riscritta\\\\
+\noindent
+Assumendo che $\exists_{x \in B}$ $\varphi$(x) type[$\Gamma$] sia ben formata
+\begin{prooftree}
+\AxiomC{b $\in$ B$_{set}$[$\Gamma$]}
+\AxiomC{c $\in$ $\varphi$(b)[$\Gamma$]}
+\LeftLabel{$\Sigma$-I}
+\BinaryInfC{\cancel{$<b,c>$} $\in$ $\sum\limits_{x \epsilon B}$ C(x)[$\Gamma$]}
+\end{prooftree}
+\noindent
+c $\in$ $\varphi$(b)[$\Gamma$] $\equiv$ $\varphi$(b) \`e vero [$\Gamma$,x$_1$ $\in$ $\gamma_1$,...,x$_n$ $\in$ $\gamma_n$] $\equiv$ $\gamma_1$,...,$\gamma_n$ $\vdash$ $\varphi$(b)\\
+$\sum\limits_{x \epsilon B}$ C(x)[$\Gamma$] $\equiv$ $\exists$ x $\in$ B $\varphi$(x) vero[$\Gamma$]\\\\
+\noindent
+In conclusione, riscritta, la regola di Introduzione, con il calcolo dei sequenti diventa\\
+\begin{prooftree}
+\AxiomC{$\gamma_1$,...,$\gamma_n$ $\vdash$ $\varphi$(b)}
+\LeftLabel{$\Sigma$-I}
+\UnaryInfC{$\gamma_1$,...,$\gamma_n$ $\vdash_\Gamma$ $\exists$ x $\in$ B $\varphi$(x)}
+\end{prooftree}
+\noindent
+Che non \`e altro che la regola a destra dell'esiste.
+\\\\
+\noindent
+Ora definisco la regola dell'Eliminatore dipendente.\\
+\noindent
+Per farlo suppongo di avere un'altra proposizione definita come segue
+\begin{prooftree}
+\AxiomC{$\phi$ prop[$\Gamma$]}
+\UnaryInfC{$\phi$ prop[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}\varphi(x)$]}
+\end{prooftree}
+\noindent
+
+\begin{prooftree}
+\AxiomC{$\phi$ prop[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ $\phi$[$\Gamma$,x $\in$ B,y $\in$ $\varphi$(x)]}
+\LeftLabel{E-$\Sigma_{dip}$}
+\BinaryInfC{$\gamma$ $\in$ $\phi$[$\Gamma$,z $\in$ $\exists$ x $\in$ B $\varphi$(x)}
+\end{prooftree}
+\noindent
+e(x,y) $\equiv$ $\varphi$ vero\\
+\noindent
+$\phi$[$\Gamma$,x $\in$ B,y $\in$ $\varphi$(x)] $\equiv$ $\phi$ \`e vero[$\Gamma$,x $\in$ B,$\varphi$(x) vero]\\
+\noindent
+$\gamma$ $\in$ $\phi$ $\equiv$ $\phi$ vera\\
+\noindent
+z $\in$ $\exists$ x $\in$ B $\varphi$(x) $\equiv$ $\exists$ x $\in$ B $\varphi$(x) vero\\\\
+\noindent
+In conclusione, riscritta, la regola dell'Eliminatore dipendente, con il calcolo dei sequenti diventa\\
+\begin{prooftree}
+\AxiomC{$\gamma_1$,...,$\gamma_n$ $\varphi$(x) vero $\vdash_{\Gamma,x \in B}$ $\phi$}
+\LeftLabel{E-$\Sigma_{dip}$}
+\UnaryInfC{$\gamma_1$,...,$\gamma_n$, $\exists$ x $\in$ B $\varphi$(x) $\vdash_\Gamma$ $\phi$}
+\end{prooftree}
+\noindent
+Che non \`e altro che la regola a sinistra dell'esiste.
+
+\subsection{Conclusioni sugli usi del tipo della somma indiciata disgiunta}
+\label{subsec:conclusioni-usi-somma-indiciata-disgiunta}
+Per
+\begin{enumerate}
+\item $\sum\limits_{x \epsilon B}C(x)$ \`e un \textit{set} (dove sia x $\in$ B che C(x) sono rispettivamente dei \textit{set}) $\Rightarrow$ B $\times$ C \`e il prodotto cartesiano
+\item $\sum\limits_{x \epsilon B}\varphi(x)$ dove $\varphi$ \`e una proposizione $\Rightarrow$ rappresenta l'assioma di separazione \{x $\in$ B $|$ $\varphi$(x)\}\\\
+\noindent
+Esempio:
+$\sum\limits_{z \epsilon list(Nat)}$ Id(Nat,lh(z),2) $\Rightarrow$ rappresenta il sottoinsieme delle liste di lunghezza 2
+\item $\exists$ x $\in$ B $\varphi$(x) $\Rightarrow$ $\sum\limits_{x \epsilon B}$ $\varphi$(x), ove $\varphi$(x) e $\sum\limits_{x \epsilon B}$ $\varphi$(x) sono proposizioni
+\end{enumerate}
+\noindent
+Questo serve per:
+\begin{itemize}
+\item Capire in che modo formalizzare
+\item Comprendere il significato della teoria dei tipi che sto leggendo
+\end{itemize}
+
 
