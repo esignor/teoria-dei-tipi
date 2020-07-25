@@ -725,7 +725,8 @@ $\Delta$ $\equiv$ x $\in$ Nat,y $\in$ Id(Nat,x+0,x)
 \AxiomC{\textbf{3$^\backprime_B$}}
 \UnaryInfC{succ(x+0) $=$ succ(x)+0 $\in$ Nat[$\Delta$]}
 
-\AxiomC{\textbf{3$^\backprime_C$}}
+
+\AxiomC{\textbf{$\bigstar$}}
 \UnaryInfC{x $\in$ Nat[$\Delta$]}
 \LeftLabel{I$_2$-Nat}
 \UnaryInfC{succ(x) $\in$ Nat[$\Delta$]}
@@ -771,27 +772,38 @@ c $\in$ M(t)[$\Gamma$] $\equiv$ succ(x+0) $\in$ Nat[$\Gamma$]
 \begin{adjustwidth}{-5em}{}
 \begin{prooftree}
 
-\AxiomC{\textbf{$\ast$}}
-
+\AxiomC{\textbf{$\bigstar$}}
 \UnaryInfC{Nat type[$\Delta$]}
+
+\AxiomC{\textbf{$\heartsuit$}}
+\UnaryInfC{x+0 $\in$ Nat[x $\in$ Nat]}
+\AxiomC{\textbf{$\bigstar$}}
+\UnaryInfC{$\Delta$ cont}
+\LeftLabel{ind-te}
+\BinaryInfC{x+0 $\in$ Nat[$\Delta$]}
+\LeftLabel{I$_2$-Nat}
 \UnaryInfC{succ(x+0) $\in$ Nat[$\Delta$]}
+
+\AxiomC{\textbf{$\bigstar$}}
+\UnaryInfC{$\Delta$, w $\in$ Nat, z $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{z $\in$ Nat[$\Delta$, w $\in$ Nat, z $\in$ Nat]}
+\LeftLabel{I$_2$-Nat}
 \UnaryInfC{succ(z) $\in$ Nat[$\Delta$, w $\in$ Nat, z $\in$ Nat]}
+
 \LeftLabel{C$_1$-Nat}
-\UnaryInfC{succ(x)+0  $=$ succ(x+0) $\in$ Nat[$\Delta$]}
+\TrinaryInfC{succ(x)+0  $=$ succ(x+0) $\in$ Nat[$\Delta$]}
 \LeftLabel{sym}
 \UnaryInfC{succ(x+0) $=$ succ(x)+0 $\in$ Nat[$\Delta$]}
 
 \end{prooftree}
 \end{adjustwidth}
 
-\vspace{1cm}
 \normalsize
 \noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
 \textbf{$\heartsuit$} derivazione gi\`a risolta in \S\ref{sec: es-naturali}, esercizio 3.\\
-\textbf{$\diamondsuit$} derivazione gi\`a risolta nell'esercizio 2, di questa sezione (necessaria applicazione di \textit{$\alpha$-eq})
-
-
-
+\textbf{$\diamondsuit$} derivazione gi\`a risolta nell'esercizio 2, di questa sezione (necessaria applicazione di \textit{$\alpha$-eq}).\\
+\textbf{$\bigstar$} derivazione gi\`a risolte negli esercizi precedenti, Prevede una combinazioni di istruzioni di indebolimento/assunzione di variabili/formazione di contesto per verificare l'assioma [ ] cont.
 
 \noindent
 \item pf$_2$ $\in$ Id(Nat,0+x,x)[x $\in$ Nat]\\\\
