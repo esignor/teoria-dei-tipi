@@ -59,7 +59,7 @@ Questi \`e dipendente, in modo primitivo ed \`e definito dalle regole seguenti.
 \UnaryInfC{Id(a$_1$) = Id(a$_2$) $\in$ Id(A,a$_1$,a$_1$)[$\Gamma$]}
 \DisplayProof
 
-\section{Eliminatore dipendente}
+\section{e}
 \label{sec:eliminatore dipendente-id}
 L'eliminatore ha anche la forma dipendente.
 \small
@@ -318,7 +318,7 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 \small
 \begin{prooftree}
 \AxiomC{\textbf{1}}
-\UnaryInfC{Id(Nat,succ(z$_1$),succ($_2$)) $\in$ [$\Sigma$]}
+\UnaryInfC{Id(Nat,succ(z$_1$),succ(z$_2$)) $\in$ [$\Sigma$]}
 \AxiomC{\textbf{2}}
 \UnaryInfC{Id(succ(x)) $\in$ Id(Nat,succ(x),succ(x))[x $\in$ Nat]}
 \LeftLabel{E-Id$_{dip}$}
@@ -530,7 +530,7 @@ Uso l'eliminatore dipendente del tipo N$_1$\\\\\
 z $\equiv$ x\\
 El$_{N1}$(z,c) $\equiv$ pf $\equiv$ El$_{N1}$(x,x.id($\ast$))\\
 M(z) $\equiv$ Id(N$_1$,x,$\ast$)\\
-c $\in$ M($\ast$)[$\Gamma$] $\equiv$ id($\ast$) $\in$ id(N$_1$,$\ast$,$\ast$)[x $\in$ N$_1$]\\
+c $\in$ M($\ast$)[$\Gamma$] $\equiv$ id($\ast$) $\in$ Id(N$_1$,$\ast$,$\ast$)[x $\in$ N$_1$]\\
 
 \small
 \begin{adjustwidth}{-4em}{}
@@ -549,7 +549,7 @@ c $\in$ M($\ast$)[$\Gamma$] $\equiv$ id($\ast$) $\in$ id(N$_1$,$\ast$,$\ast$)[x 
 \LeftLabel{I-S}
 \UnaryInfC{$\ast$ $\in$ N$_1$[ ]}
 \LeftLabel{I-Id}
-\UnaryInfC{id($\ast$) $\in$ id(N$_1$,$\ast$,$\ast$)[ ]}
+\UnaryInfC{id($\ast$) $\in$ Id(N$_1$,$\ast$,$\ast$)[ ]}
 \LeftLabel{E-S$_{dip}$}
 \BinaryInfC{El$_{N1}$(x,x.id($\ast$)) $\in$ Id(N$_1$,x,$\ast$)[x $\in$ N$_1$]}
 \end{prooftree}
@@ -565,7 +565,67 @@ pf$_1$ $\in$ Id(Nat,x+0,x)[x $\in$ Nat]
 pf$_2$ $\in$ Id(Nat,0+x,x)[x $\in$ Nat]
 \end{center}
 }
+\noindent
+\\\\
+\textbf{Soluzione}\\\\
+pf$_1$ $\in$ Id(Nat,x+0,x)[x $\in$ Nat]\\\\
+\noindent
+Uso l'eliminatore dipendente del tipo Nat.\\
+Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dalle richieste dell'esercizio), dunque
+\begin{itemize}
+\item Premesse:
+\begin{itemize}
+\item M(z) type[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,x+0,x)[x $\in$ Nat]
+\item c $\in$ M(0)[$\Gamma$] $\equiv$ id(0) $\in$ Id(Nat,0+0,0)[]
+\item M(z) $\equiv$ M(x) per $\alpha$-eq
+\item e(x,y) $\in$ M(succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ M(x)] $\equiv$ h(x+0,x,y) $\in$ Id(Nat,succ(x)+0,succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ Id(Nat,x+0,x)]
+\end{itemize}
+\item Conclusioni:
+\begin{itemize}
+\item El$_{Nat}$(z,c,e) $\equiv$ El$_{Nat}$(x,id(0),(w,x,y).h(x+0,x,y))
+\item M(z)[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,x+0,x)[x $\in$ Nat]
+\end{itemize}
+\end{itemize}
 
-\paragraph{6)}
-\textbf{Si dimostri che esiste un \textit{proof-term} del tipo
-\begin{center} pf $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A,z $\in$ A,w$_1$ $\in$ Id(A,x,y),w$_2$ $\in$ Id(A,y,z)] \end{center}}
+\small
+\begin{adjustwidth}{-9em}{}
+\begin{prooftree}
+
+\AxiomC{\textbf{1}}
+\UnaryInfC{Id(Nat,x+0,x)type[x $\in$ Nat]}
+\AxiomC{\textbf{2}}
+\UnaryInfC{id(0) $\in$ Id(Nat,0+0,0)[]}
+\AxiomC{\textbf{3}}
+\UnaryInfC{h(x+0,x,y) $\in$ Id(Nat,succ(x)+0,succ(x))[x $\in$ Nat,y $\in$ Id(Nat,x+0,x)]}
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(x,id(0),(w,x,y).h(x+0,x,y))Id(Nat,x+0,x)[x $\in$ Nat]}
+\end{prooftree}
+\end{adjustwidth}
+
+
+
+
+
+\noindent
+pf$_2$ $\in$ Id(Nat,0+x,x)[x $\in$ Nat]\\\\
+\noindent
+Uso l'eliminatore dipendente del tipo Nat.\\
+Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dalle richieste dell'esercizio), dunque
+\begin{itemize}
+\item Premesse:
+\begin{itemize}
+\item M(z) type[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+x,x)[x $\in$ Nat]
+\item c $\in$ M(0)[$\Gamma$] $\equiv$ id(0) $\in$ Id(Nat,0+0,0)[]
+\item M(z) $\equiv$ M(x) per $\alpha$-eq
+\item e(x,y) $\in$ M(succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ M(x)] $\equiv$ h(0+x,x,y) $\in$ Id(Nat,0+succ(x),succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ Id(Nat,0+x,x)]
+\end{itemize}
+\item Conclusioni:
+\begin{itemize}
+\item El$_{Nat}$(z,c,e) $\equiv$ El$_{Nat}$(x,id(0),(w,x,y).h(0+x,x,y))
+\item M(z)[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+x,x)[x $\in$ Nat]
+\end{itemize}
+\end{itemize}
+
+%\paragraph{6)}
+%\textbf{Si dimostri che esiste un \textit{proof-term} del tipo
+%\begin{center} pf $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A,z $\in$ A,w$_1$ $\in$ Id(A,x,y),w$_2$ $\in$ Id(A,y,z)] \end{center}}

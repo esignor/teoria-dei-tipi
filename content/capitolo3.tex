@@ -134,7 +134,7 @@ Ecco che l'albero di derivazione assume la seguente forma:
 \UnaryInfC{w $\in$ Nat cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[w $\in$ Nat]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ w $\in$ Nat}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ Nat) $\notin$ \\ w $\in$ Nat\end{tabular}}
 \UnaryInfC{w $\in$ Nat, z $\in$ Nat cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[w $\in$ Nat, z $\in$ Nat]}
@@ -155,9 +155,9 @@ Ecco che l'albero di derivazione assume la seguente forma:
 \LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ Nat) $\notin$ \\ w $\in$ Nat \end{tabular}}
 \UnaryInfC{w $\in$ Nat, z $\in$ Nat cont}
 \LeftLabel{I$_2$-Nat$_{prog}$}
-\UnaryInfC{succ(y) $\in$ [w $\in$ Nat, z $\in$ Nat, y $\in$ Nat]}
+\UnaryInfC{succ(y) $\in$ $\in$ Nat [w $\in$ Nat, z $\in$ Nat, y $\in$ Nat]}
 \LeftLabel{E-Nat$_{dip}$}
-\TrinaryInfC{El$_{Nat}$(z, w, (x,y).succ(y))[w $\in$ Nat, z $\in$ Nat]}
+\TrinaryInfC{El$_{Nat}$(z, w, (x,y).succ(y))$\in$ Nat[w $\in$ Nat, z $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
 \noindent
