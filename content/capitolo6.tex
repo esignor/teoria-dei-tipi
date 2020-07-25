@@ -59,7 +59,7 @@ Questi \`e dipendente, in modo primitivo ed \`e definito dalle regole seguenti.
 \UnaryInfC{Id(a$_1$) = Id(a$_2$) $\in$ Id(A,a$_1$,a$_1$)[$\Gamma$]}
 \DisplayProof
 
-\section{e}
+\section{Eliminatore dipendente}
 \label{sec:eliminatore dipendente-id}
 L'eliminatore ha anche la forma dipendente.
 \small
@@ -568,7 +568,8 @@ pf$_2$ $\in$ Id(Nat,0+x,x)[x $\in$ Nat]
 \noindent
 \\\\
 \textbf{Soluzione}\\\\
-pf$_1$ $\in$ Id(Nat,x+0,x)[x $\in$ Nat]\\\\
+\begin{enumerate}
+\item pf$_1$ $\in$ Id(Nat,x+0,x)[x $\in$ Nat]\\\\
 \noindent
 Uso l'eliminatore dipendente del tipo Nat.\\
 Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dalle richieste dell'esercizio), dunque
@@ -576,8 +577,8 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \item Premesse:
 \begin{itemize}
 \item M(z) type[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,x+0,x)[x $\in$ Nat]
-\item c $\in$ M(0)[$\Gamma$] $\equiv$ id(0) $\in$ Id(Nat,0+0,0)[]
-\item M(z) $\equiv$ M(x) per $\alpha$-eq
+\item c $\in$ M(0)[$\Gamma$] $\equiv$ id(0) $\in$ Id(Nat,0+0,0)[ ]
+\item M(z) $\equiv$ M(x) per $\alpha$-eq (dimostrazione in \S\ref{sec: es-naturali}, esercizio 5
 \item e(x,y) $\in$ M(succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ M(x)] $\equiv$ h(x+0,x,y) $\in$ Id(Nat,succ(x)+0,succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ Id(Nat,x+0,x)]
 \end{itemize}
 \item Conclusioni:
@@ -586,28 +587,214 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \item M(z)[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,x+0,x)[x $\in$ Nat]
 \end{itemize}
 \end{itemize}
+\noindent
+
 
 \small
-\begin{adjustwidth}{-9em}{}
+\begin{adjustwidth}{-12.5em}{}
 \begin{prooftree}
 
 \AxiomC{\textbf{1}}
 \UnaryInfC{Id(Nat,x+0,x)type[x $\in$ Nat]}
 \AxiomC{\textbf{2}}
-\UnaryInfC{id(0) $\in$ Id(Nat,0+0,0)[]}
+\UnaryInfC{id(0) $\in$ Id(Nat,0+0,0)[ ]}
 \AxiomC{\textbf{3}}
 \UnaryInfC{h(x+0,x,y) $\in$ Id(Nat,succ(x)+0,succ(x))[x $\in$ Nat,y $\in$ Id(Nat,x+0,x)]}
 \LeftLabel{E-Nat$_{dip}$}
 \TrinaryInfC{El$_{Nat}$(x,id(0),(w,x,y).h(x+0,x,y))Id(Nat,x+0,x)[x $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
+\vspace{0.5cm}
+\normalsize \textbf{1}
+\small
+\begin{prooftree}
 
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[x $\in$ Nat]}
+
+\AxiomC{\textbf{$\heartsuit$}}
+\UnaryInfC{x+0 $\in$ Nat[x $\in$ Nat]}
+
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ Nat[x $\in$ Nat]}
+\LeftLabel{F-Id}
+\TrinaryInfC{Id(Nat,x+0,x)type[x $\in$ Nat]}
+\end{prooftree}
+
+\vspace{0.5cm}
+\normalsize \textbf{2}
+\small
+\begin{prooftree}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I-Nat}
+\UnaryInfC{0 $\in$ Nat[ ]}
+\LeftLabel{I-Id}
+\UnaryInfC{id(0) $\in$ Id(Nat,0,0)[ ]}
+
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{0 $\in$ Nat[ ]}
+\LeftLabel{ref}
+\UnaryInfC{0 $=$ 0 $\in$ Nat[ ]}
+
+
+\AxiomC{\textbf{2$^\backprime$}}
+\UnaryInfC{0 $=$ 0+0 $\in$ Nat[ ]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{ref}
+\UnaryInfC{Nat $=$ Nat type[ ]}
+\LeftLabel{eq-F-Id}
+\TrinaryInfC{Id(Nat,0,0) $=$ Id(Nat,0+0,0)[ ]}
+\LeftLabel{conv}
+\BinaryInfC{id(0) $\in$ Id(Nat,0+0,0)[ ]}
+\end{prooftree}
+\normalsize
+
+\vspace{0.5cm}
+\normalsize \textbf{2$^\backprime$}\\\\
+El$_{Nat}$(0,c,e) $\equiv$ El$_{Nat}$(0,0,(w,x).succ(x))\\
+c $\in$ M(t)[$\Gamma$] $\equiv$ 0 $\in$ Nat[$\Gamma$]
+\small
+\begin{adjustwidth}{-4em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I-Nat}
+\UnaryInfC{0 $\in$ Nat[ ]}
+
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{w $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[w $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ w $\in$ Nat}
+\UnaryInfC{w $\in$ Nat,x $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ Nat[w $\in$ Nat,x $\in$ Nat]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{succ(x) $\in$ Nat[w $\in$ Nat,x $\in$ Nat]}
+\LeftLabel{C$_1$-Nat}
+\TrinaryInfC{0+0 $=$ 0 $\in$ Nat[ ]}
+\LeftLabel{sym}
+\UnaryInfC{0 $=$ 0+0 $\in$ Nat[ ]}
+\end{prooftree}
+\end{adjustwidth}
+\vspace{0.5cm}
+\normalsize \textbf{3}\\\\
+$\Delta$ $\equiv$ x $\in$ Nat,y $\in$ Id(Nat,x+0,x)
+\small
+\begin{adjustwidth}{-12em}{}
+\begin{prooftree}
+\AxiomC{\textbf{$\diamondsuit$}}
+\UnaryInfC{h(x+0,x,y) $\in$ Id(Nat,succ(x+0),succ(x))[$\Delta$]}
+\AxiomC{\textbf{3$^\backprime$}}
+\UnaryInfC{Id(Nat,succ(x+0),succ(x)) $=$ Id(Nat,succ(x)+0,succ(x))[$\Delta$]}
+\LeftLabel{conv}
+\BinaryInfC{h(x+0,x,y) $\in$ Id(Nat,succ(x)+0,succ(x))[$\Delta$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\vspace{0.5cm}
+\normalsize \textbf{3$^\backprime$}\\\\
+\small
+\begin{adjustwidth}{-15em}{}
+\begin{prooftree}
+\AxiomC{\textbf{3$^\backprime_A$}}
+\UnaryInfC{Id(Nat,x+0,x)type[x $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ Id(Nat,x+0,x))\\ $\notin$ x $\in$ Nat\end{tabular}}
+\UnaryInfC{$\Delta$ cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[$\Delta$]}
+\LeftLabel{ref}
+\UnaryInfC{Nat $=$ Nat type[$\Delta$]}
+
+\AxiomC{\textbf{3$^\backprime_B$}}
+\UnaryInfC{succ(x+0) $=$ succ(x)+0 $\in$ Nat[$\Delta$]}
+
+\AxiomC{\textbf{3$^\backprime_C$}}
+\UnaryInfC{x $\in$ Nat[$\Delta$]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{succ(x) $\in$ Nat[$\Delta$]}
+\LeftLabel{ref}
+\UnaryInfC{succ(x) $=$ succ(x) $\in$ Nat[$\Delta$]}
+\LeftLabel{eq-F-Id}
+\TrinaryInfC{Id(Nat,succ(x+0),succ(x)) $=$ Id(Nat,succ(x)+0,succ(x))[$\Delta$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\vspace{0.5cm}
+\normalsize \textbf{3$^\backprime_A$}\\\\
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[x $\in$ Nat]}
+
+\AxiomC{\textbf{$\heartsuit$}}
+\UnaryInfC{x+0 $\in$ Nat[x $\in$ Nat]}
+
+\AxiomC{\textbf{$\ast$}}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ Nat[x $\in$ Nat]}
+\LeftLabel{F-Id}
+\TrinaryInfC{Id(Nat,x+0,x)type[x $\in$ Nat]}
+
+\end{prooftree}
+\end{adjustwidth}
+
+
+\vspace{0.5cm}
+\normalsize \textbf{3$^\backprime_B$}\\\\
+El$_{Nat}$(0,c,e) $\equiv$ El$_{Nat}$(0,succ(x+0),(w,z).succ(z))\\
+c $\in$ M(t)[$\Gamma$] $\equiv$ succ(x+0) $\in$ Nat[$\Gamma$]
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+
+\AxiomC{\textbf{$\ast$}}
+
+\UnaryInfC{Nat type[$\Delta$]}
+\UnaryInfC{succ(x+0) $\in$ Nat[$\Delta$]}
+\UnaryInfC{succ(z) $\in$ Nat[$\Delta$, w $\in$ Nat, z $\in$ Nat]}
+\LeftLabel{C$_1$-Nat}
+\UnaryInfC{succ(x)+0  $=$ succ(x+0) $\in$ Nat[$\Delta$]}
+\LeftLabel{sym}
+\UnaryInfC{succ(x+0) $=$ succ(x)+0 $\in$ Nat[$\Delta$]}
+
+\end{prooftree}
+\end{adjustwidth}
+
+\vspace{1cm}
+\normalsize
+\noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
+\textbf{$\heartsuit$} derivazione gi\`a risolta in \S\ref{sec: es-naturali}, esercizio 3.\\
+\textbf{$\diamondsuit$} derivazione gi\`a risolta nell'esercizio 2, di questa sezione (necessaria applicazione di \textit{$\alpha$-eq})
 
 
 
 
 \noindent
-pf$_2$ $\in$ Id(Nat,0+x,x)[x $\in$ Nat]\\\\
+\item pf$_2$ $\in$ Id(Nat,0+x,x)[x $\in$ Nat]\\\\
 \noindent
 Uso l'eliminatore dipendente del tipo Nat.\\
 Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dalle richieste dell'esercizio), dunque
@@ -616,7 +803,7 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \begin{itemize}
 \item M(z) type[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+x,x)[x $\in$ Nat]
 \item c $\in$ M(0)[$\Gamma$] $\equiv$ id(0) $\in$ Id(Nat,0+0,0)[]
-\item M(z) $\equiv$ M(x) per $\alpha$-eq
+\item M(z) $\equiv$ M(x) per $\alpha$-eq (dimostrazione in \S\ref{cap:sec: es-naturali} esercizio 5)
 \item e(x,y) $\in$ M(succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ M(x)] $\equiv$ h(0+x,x,y) $\in$ Id(Nat,0+succ(x),succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ Id(Nat,0+x,x)]
 \end{itemize}
 \item Conclusioni:
@@ -625,6 +812,8 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \item M(z)[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+x,x)[x $\in$ Nat]
 \end{itemize}
 \end{itemize}
+
+\end{enumerate}
 
 %\paragraph{6)}
 %\textbf{Si dimostri che esiste un \textit{proof-term} del tipo
