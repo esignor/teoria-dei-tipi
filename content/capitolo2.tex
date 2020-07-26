@@ -178,7 +178,7 @@ Questa regola permette di convertire le uguaglianze nel tipaggio di un termine.
 \section{Il tipo singoletto}
 \label{sec:tipo-singoletto}
 Il tipo singoletto risulta essere paradigmatico per gli altri tipi. Per definirlo impiegher\`o i giudizi nella forma $A\hspace{0.1cm}type[\Gamma]$, $a \in A\hspace{0.1cm}[\Gamma]$ e $a = b \in A\hspace{0.1cm}[\Gamma]$. L'uguaglianza, invece, non verr\`a coinvolta, in quanto non pu\`o essere impiegata per definire un nuovo tipo, \`e difatti usata solo nelle derivazioni.\\\\
-Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivazione parte sempre dal contesto vuoto ($\varnothing$).
+Innanzitutto come gi\`a visto in \S\ref{subsec:formazione-contesti} ogni derivazione parte sempre dal contesto vuoto ([ ]).
 \begin{prooftree}
 \AxiomC{A type[$\Gamma$]}
 \LeftLabel{F-c)}\RightLabel{x $\in$ A $\notin$ $\Gamma$}
@@ -197,7 +197,7 @@ Con l'impiego solo delle regole \textit{F-c} e \textit{F-S} si possono derivare 
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-S}
-\LeftLabel{F-c}\RightLabel{$x_1$ $\in$ $N_1$ $\notin$ $\varnothing$}
+\LeftLabel{F-c}\RightLabel{$x_1$ $\in$ $N_1$ $\notin$ [ ]}
 \UnaryInfC{[$x_1$ $\in$ $N_1$] cont}
 \LeftLabel{F-S}
 \UnaryInfC{$N_1$ type [$x_1$ $\in$ $N_1$]}

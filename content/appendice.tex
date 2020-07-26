@@ -1,2 +1,480 @@
 \appendix
-\chapter{Tabelle}
+\chapter{Regole}
+
+\section{Il tipo singoletto}
+\subsection{Regola di Formazione}
+\begin{prooftree}
+\AxiomC{[$\Gamma$] cont}
+\LeftLabel{F-S)}
+\UnaryInfC{$N_1$ type[$\Gamma]$}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\begin{prooftree}
+\AxiomC{[$\Gamma$] cont}
+\LeftLabel{I-S)}
+\UnaryInfC{$\ast$ $\in$ $N_1$ [$\Gamma]$ cont}
+\end{prooftree}
+
+\subsection{Regole di Eliminazione}
+\begin{prooftree}
+\AxiomC{t $\in$ $N_1$ [$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c  $\in$ M($\ast$)[$\Gamma$]}
+\LeftLabel{E-S)}
+\TrinaryInfC{$El_{N1}$(t, c) $\in$ M($\ast$)[$\Gamma$]}
+\end{prooftree}
+\noindent
+\subsection{Regole di Conversione}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c $\in$ M($\ast$)[$\Gamma$]}
+\LeftLabel{C-S)}
+\BinaryInfC{$El_{N1}$($\ast$, c) $=$ c $\in$ M($\ast$)[$\Gamma$]}
+\end{prooftree}
+\subsection{Eliminatore dipendente}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $N_1$]}
+\AxiomC{c  $\in$ M($\ast$)[$\Gamma$]}
+\LeftLabel{E-S)$_{dip}$}
+\BinaryInfC{$El_{N1}$(z, c) $\in$ M(z)[$\Gamma$, z $\in$ $N_1$]}
+\end{prooftree}
+\newpage
+
+\section{Tipo dei numeri Naturali}
+
+\subsection{Regole di Formazione}
+\begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{F-Nat)}
+\UnaryInfC{Nat type[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\begin{center}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_1$-Nat)}
+\UnaryInfC{0 $\in$ Nat[$\Gamma$]}
+\DisplayProof \qquad
+\AxiomC{m $\in$ Nat[$\Gamma$]}
+\LeftLabel{I$_2$-Nat)}
+\UnaryInfC{succ(m) $\in$ Nat[$\Gamma$]}
+\DisplayProof
+\end{center}
+
+\subsection{Regole di Eliminazione}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{t $\in$ Nat[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
+\AxiomC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+\LeftLabel{E-Nat)}
+\QuaternaryInfC{El$_{Nat}$(t,c,e) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\subsection{Regole di Conversione}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
+\AxiomC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+\LeftLabel{C$_1$-Nat)}
+\TrinaryInfC{El$_{Nat}$(0,c,e) = c $\in$ M(0)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{m  $\in$ Nat[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
+\AxiomC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+\LeftLabel{C$_2$-Nat)}
+\QuaternaryInfC{El$_{Nat}$(succ(m),c,e) = e(m, El$_{Nat}$(m,c,e)) $\in$ M(succ(m))[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\subsection{Regole di Uguaglianza}
+\normalsize
+\begin{center}
+\begin{prooftree}
+\AxiomC{t$_1$ $=$ t$_2$ $\in$ Nat[$\Gamma$]}
+\LeftLabel{eq-Nat)}
+\UnaryInfC{succ(t$_1$) $=$ succ(t$_2$) $\in$ Nat[$\Gamma$]}
+\end{prooftree}
+\end{center}
+
+\subsection{Introduzione ed Eliminatore dipendente}
+\begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_2$-Nat$_{prog}$)}
+\UnaryInfC{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}
+\end{prooftree}
+
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
+\AxiomC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+\LeftLabel{E-Nat$_{dip}$)}
+\TrinaryInfC{El$_{Nat}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ Nat]}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\newpage
+\section{Tipo delle liste di un tipo}
+\begin{prooftree}
+\AxiomC{A type [$\Gamma$]}
+\LeftLabel{F-cost)}
+\UnaryInfC{List(A)type [$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\begin{center}
+\AxiomC{list(A) type [$\Gamma$]}
+\LeftLabel{I$_1$-list)}
+\UnaryInfC{nil $\in$ List(A)[$\Gamma$]}
+\DisplayProof \qquad
+\AxiomC{s $\in$ List(A)[$\Gamma$]}
+\AxiomC{a $\in$ A[$\Gamma$]}
+\LeftLabel{I$_2$-list)}
+\BinaryInfC{cons(s,a) $\in$ List(A)[$\Gamma$]}
+\DisplayProof
+\end{center}
+
+\subsection{Regole di Eliminazione}
+\small
+\begin{adjustwidth}{-7em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{ccc}M(z) type[$\Gamma$, z $\in$ List(A)]\\t $\in$ List(A)[$\Gamma$] \\c $\in$ M(nil)[$\Gamma$]\end{tabular}}
+\AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
+\LeftLabel{E-List)}
+\BinaryInfC{El$_{list}$(t,c,e) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\subsection{Regole di Conservazione}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ List(A)] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
+\AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
+\LeftLabel{C$_1$-list)}
+\BinaryInfC{El$_{list}$(nil,c,e) = c $\in$ M(nil)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+\small
+\begin{adjustwidth}{-7em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ List(A)]}
+\AxiomC{\begin{tabular}[c]{ccc} s $\in$ List(A)[$\Gamma$] \\ a $\in$ A[$\Gamma$] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
+\AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
+\LeftLabel{C$_2$-list)}
+\TrinaryInfC{El$_{list}$(cons(s,a),c,e) $=$ e(s,a, E$_{list}$(s,c,e) $\in$ M(cons(s,a))[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+
+\subsection{Regole di Uguaglianza}
+\normalsize
+\begin{prooftree}
+\AxiomC{A$_1$ $=$ A$_2$ $\in$ type[$\Gamma$]}
+\LeftLabel{eq-I$_1$-List)}
+\UnaryInfC{List(A$_1$) $=$ List(A$_2$) type($\Gamma$)}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{s$_1$ $=$ s$_2$ $\in$ List(A)[$\Gamma$]}
+\AxiomC{a$_1$ $=$ a$_2$ $\in$ A[$\Gamma$]}
+\LeftLabel{eq-I$_2$-List)}
+\BinaryInfC{cons(s$_1$,a$_1$) = cons(s$_2$,a$_2$) $\in$ List(A)($\Gamma$)}
+\end{prooftree}
+\small
+\begin{adjustwidth}{-7em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{ccc} M(z) type[$\Gamma$, z $\in$ List(A)] \\ t$_1$ = t$_2$ $\in$ list(A)[$\Gamma$] \\ c$_1$ $=$ c$_2$ $\in$ M(nil)[$\Gamma$]\end{tabular}}
+\AxiomC{e$_1$(x,w,y) $=$ e$_2$(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
+\LeftLabel{E-eq-List)}
+\BinaryInfC{El$_{list}$(t$_1$, c$_1$, e$_1$) $=$ El$_{list}$(t$_2$, c$_2$, e$_2$ $\in$ M(t$_1$)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+\normalsize
+\subsection{Eliminatore dipendente}
+\small
+\begin{adjustwidth}{-7em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ List(A)]}
+\AxiomC{c $\in$ M(nil)[$\Gamma$]}
+\AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
+\LeftLabel{E-List$_{dip}$)}
+\TrinaryInfC{El$_{list}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ List(A)]}
+\end{prooftree}
+\end{adjustwidth}
+\newpage
+
+\section{Tipo della somma disgiunta}
+\subsection{Regole di Formazione}
+\begin{prooftree}
+\AxiomC{B type [$\Gamma$]}
+\AxiomC{C type [$\Gamma$]}
+\LeftLabel{F-$+$)}
+\BinaryInfC{B + C type [$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\begin{center}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\AxiomC{B + C type[$\Gamma$]}
+\LeftLabel{I$_1$-$+$)}
+\BinaryInfC{inl(b) $\in$ B + C[$\Gamma$]}
+\DisplayProof \qquad
+\AxiomC{c $\in$ C[$\Gamma$]}
+\AxiomC{B + C type[$\Gamma$]}
+\LeftLabel{I$_2$-$+$)}
+\BinaryInfC{inr(c) $\in$ B + C[$\Gamma$]}
+\DisplayProof
+\end{center}
+\subsection{Regole di Eliminazione}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ B + C]\\t $\in$ B + C[$\Gamma$]\end{tabular}}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{E-$+$)}
+\TrinaryInfC{El$_+$(t,e$_B$,e$_C$) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\subsection{Regole di Conservazione}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ B + C]\\b $\in$ B[$\Gamma$]\end{tabular}}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{C$_1$-$+$)}
+\TrinaryInfC{El$_+$(inl(b),e$_B$,e$_C$) = e$_B$(b) $\in$ M(inl(b))[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ B + C]\\c $\in$ C[$\Gamma$]\end{tabular}}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{C$_1$-$+$)}
+\TrinaryInfC{El$_+$(inr(c),e$_B$,e$_C$) $=$ e$_C$(c) $\in$ M(inr(c))[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+
+\subsection{Regole di Uguaglianza}
+\normalsize
+\begin{prooftree}
+\AxiomC{B$_1$ $=$ B$_2$ $\in$ type[$\Gamma$]}
+\AxiomC{C$_1$ $=$ C$_2$ $\in$ type[$\Gamma$]}
+\LeftLabel{eq-F-$+$)}
+\BinaryInfC{B$_1$ + C$_1$ $=$ B$_2$ + C$_2$ type($\Gamma$)}
+\end{prooftree}
+
+\subsection{Eliminatore dipendente}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ B + C]}
+\AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
+\AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
+\LeftLabel{E$_{dip}$-$+$)}
+\TrinaryInfC{El$_+$(z,e$_B$,e$_C$) $\in$ M(z)[z $\in$ B + C]}
+\end{prooftree}
+\end{adjustwidth}
+\normalsize
+\newpage
+
+\section{Tipo dell'uguaglianza proposizionale}
+\subsection{Regole di Formazione}
+\begin{prooftree}
+\AxiomC{A type [$\Gamma$]}
+\AxiomC{a $\in$ A[$\Gamma$]}
+\AxiomC{b $\in$ A[$\Gamma$]}
+\LeftLabel{F-Id)}
+\TrinaryInfC{Id(A,a,b) type[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\begin{prooftree}
+\AxiomC{a $\in$ A[$\Gamma$]}
+\LeftLabel{I-Id)}
+\UnaryInfC{id(a) $\in$ Id(A,a,a)[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Eliminazione}
+\small
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cccc}M(z$_1$,z$_2$,z$_3$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)]\\a $\in$ A[$\Gamma$] \\b $\in$ A[$\Gamma$] \\ t $\in$ Id(A,a,b)[$\Gamma$]\end{tabular}}
+\AxiomC{e(x) $\in$ M(x,x,Id(x))[$\Gamma$, x $\in$ A]}
+\LeftLabel{E-Id)}
+\BinaryInfC{El$_{Id}$(t, (x).e(x)) $\in$ M(a,b,t)[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Conservazione}
+\small
+\begin{prooftree}
+\AxiomC{\begin{tabular}[c]{cc}M(z$_1$,z$_2$,z$_3$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)] \\ a $\in$ A[$\Gamma$]\end{tabular}}
+\AxiomC{e(x) $\in$ M(x,x,Id(x))[$\Gamma$, x $\in$ A]}
+\LeftLabel{E-Id)}
+\BinaryInfC{El$_{Id}$(Id(a), (x).e(x)) $=$ e(a) $\in$ M(a,a,Id(a))[$\Gamma$]}
+\end{prooftree}
+
+
+\subsection{Regole di Uguaglianza}
+\normalsize
+\AxiomC{A$_1$ = A$_2$ type[$\Gamma$]}
+\AxiomC{a$_1$ = a$_2$ $\in$ A[$\Gamma$]}
+\AxiomC{b$_1$ = b$_2$ $\in$ A[$\Gamma$]}
+\LeftLabel{eq-F-Id)}
+\TrinaryInfC{Id(A$_1$,a$_1$,b$_1$) = Id(A$_2$,a$_2$,b$_2$) type[$\Gamma$]}
+\DisplayProof  \\
+\vspace{0.5cm}\\
+\AxiomC{a$_1$ = a$_2$ $\in$ A[$\Gamma$]}
+\LeftLabel{eq-I-Id)}
+\UnaryInfC{Id(a$_1$) = Id(a$_2$) $\in$ Id(A,a$_1$,a$_1$)[$\Gamma$]}
+\DisplayProof
+
+\subsection{Eliminatore dipendente}
+\small
+\begin{prooftree}
+\AxiomC{M(z$_1$,z$_2$,z$_3$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)]}
+\AxiomC{e(x) $\in$ M(x,x,Id(x)))[$\Gamma$, x $\in$ A]}
+\LeftLabel{E-Id$_{dip}$)}
+\BinaryInfC{El$_{Id}$(z$_3$, (x).e(x)) $\in$ M(z$_1$, z$_2$, z$_3$)[$\Gamma$,z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$, z$_2$)]}
+\end{prooftree}
+\normalsize
+\newpage
+
+\section{Tipo somma indiciata forte}
+\subsection{Regole di Formazione}
+\begin{prooftree}
+\AxiomC{C(x) type [$\Gamma$, x $\in$ B]}
+\LeftLabel{F-$\Sigma$)}
+\UnaryInfC{$\sum\limits_{x \in B}$ C(x) type[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\begin{prooftree}
+\AxiomC{k $\in$ B[$\Gamma$]}
+\AxiomC{c $\in$ C(b)[$\Gamma$]}
+\AxiomC{$\sum\limits_{x \in B}$ C(x) type[$\Gamma$]}
+\LeftLabel{I-$\Sigma$)}
+\TrinaryInfC{$<$b,c$>$ $\in$ $\sum\limits_{x\in B}$ C(x) type[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Eliminazione}
+\begin{adjustwidth}{-4em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $\sum\limits_{x \in B}$ C(x)]}
+\AxiomC{t $\in$ $\sum\limits_{x \in B}$ C(x)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ M($<$x,y$>$)[$\Gamma$, x $\in$ B, y $\in$ C(x)]}
+\LeftLabel{E-$\Sigma$)}
+\TrinaryInfC{El$_\Sigma$(t,(x,y).e(x,y)) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\subsection{Regole di Conservazione}
+\small
+\begin{adjustwidth}{-4em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $\sum\limits_{x \in B}$ C(x)]}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\AxiomC{c $\in$ C(b)}
+\AxiomC{e(x,y) $\in$ M($<$x,y$>$)[$\Gamma$, x $\in$ B, y $\in$ C(x)]}
+\LeftLabel{C-$\Sigma$)}
+\QuaternaryInfC{El$_\Sigma$($<$b,c$>$,e) $=$ e(b,c) $\in$ M($<$b,c$>$)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\subsection{Regole di Uguaglianza}
+\small
+\begin{prooftree}
+\AxiomC{B$_1$ $=$ B$_2$ type[$\Gamma$]}
+\AxiomC{C$_1$(x) $=$ C$_2$(x) type[$\Gamma$, x $\in$ B$_1$]}
+\LeftLabel{eq-F-$\Sigma$)}
+\BinaryInfC{$\sum\limits_{x \in B_1}$ C$_1$(x) $=$ $\sum\limits_{x \in B_2}$ C$_2$(x) type[$\Gamma$]}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{$\sum\limits_{x \in B}$ C(x) type[$\Gamma$]}
+\AxiomC{b$_1$ $=$ b$_2$ $\in$ B[$\Gamma$]}
+\AxiomC{c$_1$ $=$ c$_2$ $\in$ C(b$_1$)[$\Gamma$]}
+\LeftLabel{eq-I-$\Sigma$)}
+\TrinaryInfC{$<$b$_1$,c$_1$$>$ $=$ $<$b$_2$,c$_2$$>$ $\in$ $\sum\limits_{x \in B}$ C(x) type[$\Gamma$]}
+\end{prooftree}
+\begin{adjustwidth}{-8em}{}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $\sum\limits_{x \in B}$ C(x)]}
+\AxiomC{t$_1$ $=$ t$_2$ $\in$ $\sum\limits_{x \in B}$ C(x)[$\Gamma$]}
+\AxiomC{e$_1$(x,y) $=$ e$_2$(x,y) $\in$ M($<$x,y$>$)[$\Gamma$, x $\in$ B, y $\in$ C(x)]}
+\LeftLabel{eq-E-$\Sigma$)}
+\TrinaryInfC{El$_\Sigma$(t$_1$,e$_1$) $=$ El$_\Sigma$(t$_2$,e$_2$) $\in$ M(t$_1$)[$\Gamma$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\subsection{Eliminatore dipendente}
+\small
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ $\sum\limits_{x \in B}$ C(x)]}
+\AxiomC{e(x,y) $\in$ M($<$x,y$>$)[$\Gamma$, x $\in$ B, y $\in$ C(x)]}
+\LeftLabel{E-$\Sigma_{dip}$)}
+\BinaryInfC{El$_\Sigma$(z,(x,y).e(x,y)) $\in$ M(z)[$\Gamma$, z $\in$ $\sum\limits_{x \in B}$ C(x)]}
+\end{prooftree}
+\normalsize
+\newpage
+
+\section{Tipo prodotto cartesiano}
+
+\subsection{Regole di Formazione}
+\begin{prooftree}
+\AxiomC{B type [$\Gamma$]}
+\AxiomC{C type [$\Gamma$]}
+\LeftLabel{F-x)}
+\BinaryInfC{B $\times$ C type[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\begin{prooftree}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\AxiomC{c $\in$ C[$\Gamma$]}
+\LeftLabel{I-x)}
+\BinaryInfC{$<$b,c$>$ $\in$ B $\times$ C[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Proiezione}
+\begin{prooftree}
+\AxiomC{d $\in$ B $\times$ C[$\Gamma$]}
+\LeftLabel{PJ$_1$-x)}
+\UnaryInfC{$\pi_1$d $\in$ B[$\Gamma$]}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{d $\in$ B $\times$ C[$\Gamma$]}
+\LeftLabel{PJ$_2$-x)}
+\UnaryInfC{$\pi_2$d $\in$ C[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Uguaglianza delle proiezioni}
+\begin{prooftree}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\AxiomC{c $\in$ C[$\Gamma$]}
+\LeftLabel{PJ$_1$-eq)}
+\BinaryInfC{$\pi_1$($<$b,c$>$) $=$ b $\in$ B[$\Gamma$]}
+\end{prooftree}
+\begin{prooftree}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\AxiomC{c $\in$ C[$\Gamma$]}
+\LeftLabel{PJ$_2$-eq)}
+\BinaryInfC{$\pi_2$($<$b,c$>$) $=$ c $\in$ B[$\Gamma$]}
+\end{prooftree}
+\newpage
+
