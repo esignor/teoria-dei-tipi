@@ -820,10 +820,194 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \end{itemize}
 \item Conclusioni:
 \begin{itemize}
-\item El$_{Nat}$(z,c,e) $\equiv$ El$_{Nat}$(x,id(0),(w,x,y).h(0+x,x,y))
+\item El$_{Nat}$(z,c,e) $\equiv$ El$_{Nat}$(x,id(0),(w,z,v).h(0+z,z,v))
 \item M(z)[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+x,x)[x $\in$ Nat]
 \end{itemize}
 \end{itemize}
+
+
+\small
+\begin{adjustwidth}{-12.5em}{}
+\begin{prooftree}
+
+\AxiomC{\textbf{1}}
+\UnaryInfC{Id(Nat,0+x,x)type[x $\in$ Nat]}
+\AxiomC{\textbf{2}}
+\UnaryInfC{id(0) $\in$ Id(Nat,0+0,0)[ ]}
+\AxiomC{\textbf{3}}
+\UnaryInfC{h(z+0,z,v) $\in$ Id(Nat,0+succ(z),succ(z))[z $\in$ Nat,v $\in$ Id(Nat,0+z,z)]}
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(x,id(0),(w,z,v).h(0+z,z,v))Id(Nat,0+x,x)[x $\in$ Nat]}
+\end{prooftree}
+\end{adjustwidth}
+\vspace{0.5cm}
+\normalsize \textbf{1}
+\small
+\begin{prooftree}
+
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[x $\in$ Nat]}
+
+\AxiomC{\textbf{$\heartsuit$}}
+\UnaryInfC{0+x $\in$ Nat[x $\in$ Nat]}
+
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ Nat[x $\in$ Nat]}
+\LeftLabel{F-Id}
+\TrinaryInfC{Id(Nat,0+x,x)type[x $\in$ Nat]}
+\end{prooftree}
+
+\vspace{0.5cm}
+\normalsize \textbf{2}
+\small
+\begin{adjustwidth}{-7em}{}
+\begin{prooftree}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I-Nat}
+\UnaryInfC{0 $\in$ Nat[ ]}
+\LeftLabel{I-Id}
+\UnaryInfC{id(0) $\in$ Id(Nat,0,0)[ ]}
+
+
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{ref}
+\UnaryInfC{Nat $=$ Nat type[ ]}
+
+\AxiomC{\textbf{$\surd$}}
+\UnaryInfC{0 $=$ 0+0 $\in$ Nat[ ]}
+
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{0 $\in$ Nat[ ]}
+\LeftLabel{ref}
+\UnaryInfC{0 $=$ 0 $\in$ Nat[ ]}
+\LeftLabel{eq-F-Id}
+\TrinaryInfC{Id(Nat,0,0) $=$ Id(Nat,0+0,0)[ ]}
+\LeftLabel{conv}
+\BinaryInfC{id(0) $\in$ Id(Nat,0+0,0)[ ]}
+\end{prooftree}
+\end{adjustwidth}
+
+\normalsize \textbf{3}\\\\
+$\Delta$ $\equiv$ z $\in$ Nat,v $\in$ Id(Nat,z+0,z)
+\small
+\begin{adjustwidth}{-12em}{}
+\begin{prooftree}
+\AxiomC{\textbf{$\diamondsuit$}}
+\UnaryInfC{h(z+0,z,v) $\in$ Id(Nat,succ(z+0),succ(z))[$\Delta$]}
+\AxiomC{\textbf{3$^\backprime$}}
+\UnaryInfC{Id(Nat,succ(z+0),succ(z)) $=$ Id(Nat,succ(z)+0,succ(z))[$\Delta$]}
+\LeftLabel{conv}
+\BinaryInfC{h(z+0,z,v) $\in$ Id(Nat,succ(z)+0,succ(z))[$\Delta$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\vspace{0.5cm}
+\normalsize \textbf{3$^\backprime$}\\\\
+\small
+\begin{adjustwidth}{-15em}{}
+\begin{prooftree}
+\AxiomC{\textbf{3$^\backprime_A$}}
+\UnaryInfC{Id(Nat,z+0,z)type[z $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ Id(Nat,z+0,z))\\ $\notin$ z $\in$ Nat\end{tabular}}
+\UnaryInfC{$\Delta$ cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[$\Delta$]}
+\LeftLabel{ref}
+\UnaryInfC{Nat $=$ Nat type[$\Delta$]}
+
+\AxiomC{\textbf{3$^\backprime_B$}}
+\UnaryInfC{succ(z+0) $=$ succ(z)+0 $\in$ Nat[$\Delta$]}
+
+
+\AxiomC{\textbf{$\bigstar$}}
+\UnaryInfC{z $\in$ Nat[$\Delta$]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{succ(z) $\in$ Nat[$\Delta$]}
+\LeftLabel{ref}
+\UnaryInfC{succ(z) $=$ succ(z) $\in$ Nat[$\Delta$]}
+\LeftLabel{eq-F-Id}
+\TrinaryInfC{Id(Nat,succ(z+0),succ(z)) $=$ Id(Nat,succ(z)+0,succ(z))[$\Delta$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\vspace{0.5cm}
+\normalsize \textbf{3$^\backprime_A$}\\\\
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{z $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[z $\in$ Nat]}
+
+\AxiomC{\textbf{$\heartsuit$}}
+\UnaryInfC{x+0 $\in$ Nat[x $\in$ Nat]}
+
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{z $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{z $\in$ Nat[z $\in$ Nat]}
+\LeftLabel{F-Id}
+\TrinaryInfC{Id(Nat,z+0,z)type[z $\in$ Nat]}
+
+\end{prooftree}
+\end{adjustwidth}
+
+
+\vspace{0.5cm}
+\normalsize \textbf{3$^\backprime_B$}\\\\
+El$_{Nat}$(0,c,e) $\equiv$ El$_{Nat}$(0,succ(z+0),(w,u).succ(u))\\
+c $\in$ M(0)[$\Gamma$] $\equiv$ succ(z+0) $\in$ Nat[$\Delta$]
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+
+\AxiomC{\textbf{$\bigstar$}}
+\UnaryInfC{Nat type[$\Delta$]}
+
+\AxiomC{\textbf{$\heartsuit$}}
+\UnaryInfC{z+0 $\in$ Nat[z $\in$ Nat]}
+\AxiomC{\textbf{$\bigstar$}}
+\UnaryInfC{$\Delta$ cont}
+\LeftLabel{ind-te}
+\BinaryInfC{z+0 $\in$ Nat[$\Delta$]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{succ(z+0) $\in$ Nat[$\Delta$]}
+
+\AxiomC{\textbf{$\bigstar$}}
+\UnaryInfC{$\Delta$, w $\in$ Nat, u $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{u $\in$ Nat[$\Delta$, w $\in$ Nat, u $\in$ Nat]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{succ(u) $\in$ Nat[$\Delta$, w $\in$ Nat, u $\in$ Nat]}
+
+\LeftLabel{C$_1$-Nat}
+\TrinaryInfC{succ(z)+0  $=$ succ(z+0) $\in$ Nat[$\Delta$]}
+\LeftLabel{sym}
+\UnaryInfC{succ(z+0) $=$ succ(z)+0 $\in$ Nat[$\Delta$]}
+
+\end{prooftree}
+\end{adjustwidth}
+
+\normalsize
+\noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
+\textbf{$\heartsuit$} derivazione gi\`a risolta in \S\ref{sec: es-naturali}, esercizio 3 (necessaria applicazione di \textit{$\alpha$-eq}).\\
+\textbf{$\diamondsuit$} derivazione gi\`a risolta nell'esercizio 2, di questa sezione (necessaria applicazione di \textit{$\alpha$-eq}).\\
+\textbf{$\bigstar$} derivazione gi\`a risolte negli esercizi precedenti, Prevede una combinazioni di istruzioni di indebolimento/assunzione di variabili/formazione di contesto per verificare l'assioma [ ] cont.\\
+\textbf{$\surd$} derivazione risolta nel punto precedente di questo esercizio.
 
 \end{enumerate}
 

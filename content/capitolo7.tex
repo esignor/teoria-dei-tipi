@@ -423,6 +423,10 @@ La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e y\\\\
 \begin{adjustwidth}{-8em}{}
 \begin{prooftree}
 
+
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{B type[$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C]}
+
 \AxiomC{}
 \UnaryInfC{C type[$\Gamma$]}
 \AxiomC{}
@@ -434,9 +438,9 @@ La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e y\\\\
 \LeftLabel{F-c}\RightLabel{(y $\in$ C) $\notin$ ($\Gamma$, x $\in$ B)}
 \UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C cont}
 \LeftLabel{var}
-\UnaryInfC{y $\in$ B[$\Gamma$,x $\in$ B,y $\in$ C]}
+\UnaryInfC{y $\in$ C[$\Gamma$,x $\in$ B,y $\in$ C]}
 \LeftLabel{E-$\Sigma_{dip}$}
-\BinaryInfC{$\pi_2$z $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]}
+\BinaryInfC{$\pi_2$z $\in$ C[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]}
 \end{prooftree}
 \end{adjustwidth}
 \noindent
