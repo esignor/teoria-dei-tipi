@@ -706,7 +706,7 @@ $\equiv \phi$ \`e vero[$\Gamma, \varphi$ vero,...,$\varphi_n$ vero] (nessuno deg
 $\equiv$ $\varphi_1,...,\varphi_n$ $\vdash_\Gamma$ $\phi$
 \\\\\\
 \noindent
-Sappiamo che la logica lavora con variabili \textit{untyped}, dunque noi ora aggiungiamo in  $\exists$x$_{\in B}$ $\varphi$(x) e $\forall$x$_{\in B}$ $\varphi$(x) l'informazione sul tipo.
+Sappiamo che la logica lavora con variabili \textit{untyped}, dunque noi ora aggiungiamo in  $\exists_{ x\in B}$ $\varphi$(x) e $\forall$x$_{\in B}$ $\varphi$(x) l'informazione sul tipo.
 \\\\
 \noindent
 Per quanto assunto sopra, la regola di Introduzione viene nel modo sequente riscritta\\\\
@@ -783,4 +783,58 @@ Questo serve per:
 \item Comprendere il significato della teoria dei tipi che sto leggendo
 \end{itemize}
 
+\section{Congiunzione come tipo prodotto cartesiano}
+\label{sec:congiunzione-come-tipo-prodotto-cartesiano}
+Il tipo prodotto cartesiano permette di interpretare la congiunzione della logica.\\\\
+\noindent
+Date due preposizioni $\varphi$ prop[$\Gamma$] e $\psi$ prop[$\Gamma$]
+\begin{center}
+$\varphi$ \& $\psi$ ${\overset{\mathit{def}}{=}}$ $\varphi$ $\times$ $\psi$
+\end{center}
+L'uguaglianza vale in quanto $\varphi$ prop[$\Gamma$] $\equiv$ $\varphi$ type[$\Gamma$] che \`e il tipo delle sue dimostrazioni \\\\
+\noindent 
+La regola di \textit{Introduzione} del prodotto cartesiano \`e la seguente
+\begin{prooftree}
+\AxiomC{a $\in$ $\varphi$[$\Gamma$]}
+\AxiomC{b $\in$ $\psi$[$\Gamma$]}
+\LeftLabel{I-x}
+\BinaryInfC{$<a,b>$ $\in$ $\varphi$ $\times$ $\psi$ [$\Gamma$]}
+\end{prooftree}
+\noindent
+$\Rightarrow$ a $\in$ $\varphi$[$\Gamma$] $\equiv$ $\varphi$ true[$\Gamma$]\\
+$\Rightarrow$ b $\in$ $\psi$[$\Gamma$] $\equiv$ $\psi$ true[$\Gamma$]\\
+$\Rightarrow$ $\varphi$ $\times$ $\psi$ $\equiv$ $\varphi$ \& $psi$\\
+$\Rightarrow$ $\varphi$ \& $\psi$ vero[$\Gamma$]\\
+\noindent
+\textbf{$(1)$} Dunque $\varphi$ true[$\Gamma$] e $\psi$ true[$\Gamma$] ($\Rightarrow$) $\varphi$ \& $\psi$ true[$\Gamma$]\\\\
+\noindent
+Con la regole di \textit{Eliminazione} riesco a provare anche il verso opposto dell'implicazione. In quanto d $\in$ $\varphi$ $\times$ $\psi$[$\Gamma$] \`e come dire $\varphi$ \& $\psi$ true[$\Gamma$], per cui, grazie alle regole di Proiezione del prodotto cartesiano
+\begin{center}
+\AxiomC{d $\in$ $\varphi$ \& $\psi$[$\Gamma$]}
+\LeftLabel{PJ$_1$-x}
+\UnaryInfC{$\pi_1$d $\in$ $\varphi$ [$\Gamma$]}
+\DisplayProof
+\end{center}
+d $\in$ $\varphi$ \& $\psi$[$\Gamma$] $\equiv$ $\varphi$ \& $\psi$ true[$\Gamma$]\\
+$\pi_1$d $\in$ $\varphi$ [$\Gamma$] $\equiv$ $\varphi$ vero[$\Gamma$]\\
+\begin{center}
+\AxiomC{d $\in$ $\varphi$ \& $\psi$[$\Gamma$]}
+\LeftLabel{PJ$_1$-x}
+\UnaryInfC{$\pi_2$d $\in$ $\psi$ [$\Gamma$]}
+\DisplayProof
+\end{center}
+d $\in$ $\varphi$ \& $\psi$[$\Gamma$] $\equiv$ $\varphi$ \& $\psi$ true[$\Gamma$]\\
+$\pi_2$d $\in$ $\varphi$ [$\Gamma$] $\equiv$ $\psi$ vero[$\Gamma$]\\
 
+\noindent
+\textbf{$(2)$} Dunque con le regole di Eliminazione si \`e mostrato come se $\varphi$ \& $\psi$ true[$\Gamma$] $\Rightarrow$ $\varphi$ true[$\Gamma$] e $\psi$ true[$\Gamma$].
+\\\\
+\noindent
+Quanto definito in (1) e (2) permettono di concludere che date $\varphi$ prop[$\Gamma$] e $\psi$ prop[$\Gamma$] (interpretate come tipi delle loro dimostrazioni), \`e corretto definire  $\varphi$ \& $\psi$ ${\overset{\mathit{def}}{=}}$ $\varphi$ $\times$ $\psi$.\\
+Questo  perch\`e una formula e\`vera quando
+$\varphi$ true[$\Gamma$] sse \textit{(def)} $\exists$ pf $\in$ $\varphi$[$\Gamma$]. Tale definizione di \textit{proof-term} rende vera entrambe le propriet\`a (1) e (2), e quindi si pu\`o ben interpretare la congiunzione come prodotto cartesiano.
+\\\\
+\noindent 
+In conclusione $\varphi$ \& $\psi$ ${\overset{\mathit{def}}{=}}$  $\varphi$ $\times$ $\psi$ $\equiv$ $\sum\limits_{x \epsilon \varphi}$ $\psi$.\\\\
+\noindent
+Nella teoria dei tipi semplici $\varphi$ \& $\psi$ ${\overset{\mathit{def}}{=}}$ $\varphi$ $\times$ $\psi$ era gi\`a stato introdotto da \textit{Curry-Howard}.
