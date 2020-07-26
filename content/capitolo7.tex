@@ -422,25 +422,19 @@ La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e y\\\\
 \small
 \begin{adjustwidth}{-8em}{}
 \begin{prooftree}
-\AxiomC{($\ast$)}
-\UnaryInfC{B type[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]}
 
 \AxiomC{}
-\UnaryInfC{B type[$\Gamma$]}
-\AxiomC{}
 \UnaryInfC{C type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(y $\in$ C) $\notin$ $\Gamma$}
-\UnaryInfC{$\Gamma$,y $\in$ C cont}
+\AxiomC{}
+\UnaryInfC{B type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ B) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$,x $\in$ B cont}
 \LeftLabel{ind-ty}
-\BinaryInfC{B type[$\Gamma$,y $\in$ C]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ B) $\notin$ ($\Gamma$, y $\in$ C)}
-\UnaryInfC{$\Gamma$,y $\in$ C,x $\in$ B cont}
-\LeftLabel{var}
-\UnaryInfC{y $\in$ B[$\Gamma$,y $\in$ C,x $\in$ B]}
-\AxiomC{($\ast$)}
+\BinaryInfC{C type[$\Gamma$,x $\in$ B]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ C) $\notin$ ($\Gamma$, x $\in$ B)}
 \UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C cont}
-\LeftLabel{ex-te}
-\BinaryInfC{y $\in$ B[$\Gamma$,x $\in$ B,y $\in$ C]}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ B[$\Gamma$,x $\in$ B,y $\in$ C]}
 \LeftLabel{E-$\Sigma_{dip}$}
 \BinaryInfC{$\pi_2$z $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]}
 \end{prooftree}
