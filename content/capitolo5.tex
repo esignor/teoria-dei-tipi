@@ -1,3 +1,4 @@
+
 \chapter{Tipo della somma disgiunta}
 \label{cap: tipo-somma-disgiunta}
 Il tipo somma disgiunta \`e un costruttore di tipo. Questi non \`e dipendente se da solo, lo diventa solo quando agisce su un tipo dipendente.\\
@@ -5,7 +6,7 @@ Anche con il tipo somma disgiunta si parla di tipo induttivo (accade gi\`a per N
 Le regole del tipo della somma disgiunta sono le seguenti.
 
 \section{Regole di Formazione}
-\label{subsec: formazione-disjointsum}
+\label{sec: formazione-disjointsum}
 \begin{prooftree}
 \AxiomC{B type [$\Gamma$]}
 \AxiomC{C type [$\Gamma$]}
@@ -14,7 +15,7 @@ Le regole del tipo della somma disgiunta sono le seguenti.
 \end{prooftree}
 
 \section{Regole di Introduzione}
-\label{subsec: introduzione-disjointsum}
+\label{sec: introduzione-disjointsum}
 \begin{center}
 \AxiomC{b $\in$ B[$\Gamma$]}
 \AxiomC{B + C type[$\Gamma$]}
@@ -29,7 +30,7 @@ Le regole del tipo della somma disgiunta sono le seguenti.
 \end{center}
 
 \section{Regole di Eliminazione}
-\label{subsec: eliminazione-disjointsum}
+\label{sec: eliminazione-disjointsum}
 \small
 \begin{adjustwidth}{-5em}{}
 \begin{prooftree}
@@ -42,7 +43,7 @@ Le regole del tipo della somma disgiunta sono le seguenti.
 \end{adjustwidth}
 
 \section{Regole di Conservazione}
-\label{subsec: conservazione-disjointsum}
+\label{sec: conservazione-disjointsum}
 \small
 \begin{adjustwidth}{-5em}{}
 \begin{prooftree}
@@ -66,7 +67,7 @@ Le regole del tipo della somma disgiunta sono le seguenti.
 
 
 \section{Regole di Uguaglianza}
-\label{subsec: uguaglianza-disjointsum}
+\label{sec: uguaglianza-disjointsum}
 \normalsize
 \begin{prooftree}
 \AxiomC{B$_1$ $=$ B$_2$ $\in$ type[$\Gamma$]}
@@ -76,7 +77,7 @@ Le regole del tipo della somma disgiunta sono le seguenti.
 \end{prooftree}
 
 \section{Eliminatore dipendente}
-\label{subsec:eliminatore dipendente-disjointsum}
+\label{sec:eliminatore dipendente-disjointsum}
 L'eliminatore ha, anche nel caso della somma disgiunta, la forma dipendente.
 \small
 \begin{adjustwidth}{-5em}{}
@@ -85,12 +86,15 @@ L'eliminatore ha, anche nel caso della somma disgiunta, la forma dipendente.
 \AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
 \AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
 \LeftLabel{E$_{dip}$-$+$)}
-\TrinaryInfC{El$_+$(z,e$_B$,e$_C$) $\in$ M(z)[z $\in$ B + C]}
+\TrinaryInfC{El$_+$(z,e$_B$,e$_C$) $\in$ M(z)[$\Gamma$,z $\in$ B + C]}
 \end{prooftree}
 \end{adjustwidth}
+\noindent
 \normalsize
+Con questi non si definisce solo che si ricorre su B $+$ C, ma si da anche un principio di induzione.
+
 \section{Semantica operazionale della somma disgiunta}
-\label{subsec: semantica-operazionale-somma-disgiunta}
+\label{sec: semantica-operazionale-somma-disgiunta}
 La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
 \begin{itemize}
 \item $\beta_{1+}$-red) El$_+$(inl(b), e$_B$, e$_C$) $\rightarrow_1$ e$_B$(b)
@@ -109,6 +113,80 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \UnaryInfC{inr(c$_1$) $\rightarrow_1$ inr(c$_2$)}
 \DisplayProof
 \end{itemize}
+
+\section{Osservazioni dal punto di vista logico}
+\label{sec:osservazioni-dal-punto-di-vista-logico-disjointsum} 
+Le regole di eliminazione/introduzione partono dalle regole di congiunzione nella logica (nel caso in sia B che C siano proposizioni), inoltre nel caso dell'eliminazione per andare a eliminare verso altre proposizione. Questo concetto \`e stato voluto da \textit{Martin-L$\ddot{o}$f}, per riuscire a interpretare la logica con la teoria dei tipi.
+\subsection{La regola di Formazione}
+\label{subsec:la-regola-di-formazione-osservazioni-disjointsum}
+Se si hanno le preposizioni $\beta$ prop[$\Gamma$] e $\gamma$ prop[$\Gamma$] e si interpreta la somma come disgiunzione, allora la regola di \textit{Formazione} diventa
+\begin{prooftree}
+\AxiomC{$\beta$ type [$\Gamma$]}
+\AxiomC{$\gamma$ type [$\Gamma$]}
+\LeftLabel{F-$+$)}
+\BinaryInfC{B $\vee$ C type [$\Gamma$]}
+\end{prooftree}
+Questi ha influenza sia sulla regola \textit{E-$_{dip}+$} che  \textit{(I-$+$)}. 
+
+\subsubsection{La regola di Eliminazione}
+\begin{prooftree}
+\AxiomC{$\xi$ prop[$\Gamma$]}
+\AxiomC{$\xi$ \`e vero[$\Gamma$,supponiamo $\beta$ vero]}
+\AxiomC{$\xi$ \`e vero[$\Gamma$,$\gamma$ \`e vero]}
+\LeftLabel{E$_{dip}$-$+$)}
+\TrinaryInfC{\cancel{El$_+$(z,e$_B$,e$_C$)} $\in$ $\xi$ vero[$\Gamma$,z $\in$ B $\vee$ C vero]}
+\end{prooftree}
+Questa, nel calocolo dei sequenti, equivale alla or a sinistra
+\begin{prooftree}
+\AxiomC{$\beta$ $\vdash_\Gamma$ $\xi$]}
+\AxiomC{$\gamma$ $\vdash_\Gamma$ $\xi$]}
+\LeftLabel{$\vee$-S)}
+\BinaryInfC{$\beta$ $\vee$ $\gamma$ $\vdash_\Gamma$ $\xi$]}
+\end{prooftree}
+\noindent
+Allo stesso modo le regole di Introduzione si possono vedere in modo molto semplice.
+
+\subsubsection{La regola di Introduzione}
+\begin{prooftree}
+\AxiomC{b $\in$ $\beta$[$\Gamma$]}
+\AxiomC{$\gamma$ + $\gamma$ type[$\Gamma$]}
+\LeftLabel{I$_1$-$+$)}
+\BinaryInfC{inl(b) $\in$ $\beta$ $\vee$ $\gamma$[$\Gamma$]}
+\end{prooftree}
+b $\in$ $\beta$ $\equiv$ $\beta$ vero\\
+$\beta$ $\vee$ $\gamma$ $\equiv$ $\beta$ $\vee$ $\gamma$ \`e vero
+Questa, nel calocolo dei sequenti, equivale alla or a destra
+\begin{prooftree}
+\AxiomC{$\Delta$ $\vdash_\Gamma$ $\beta$}
+\LeftLabel{$\vee$-D)}
+\UnaryInfC{$\Delta$ $\vdash_\Gamma$ $\beta$ $\vee$ $\gamma$}
+\end{prooftree}
+\noindent
+
+\begin{prooftree}
+\AxiomC{c $\in$ $\gamma$[$\Gamma$]}
+\AxiomC{$\gamma$ + $\gamma$ type[$\Gamma$]}
+\LeftLabel{I$_1$-$+$)}
+\BinaryInfC{inr(c) $\in$ $\beta$ $\vee$ $\gamma$[$\Gamma$]}
+\end{prooftree}
+c $\in$ $\gamma$ $\equiv$ $\gamma$ vero\\
+$\beta$ $\vee$ $\gamma$ $\equiv$ $\beta$ $\vee$ $\gamma$ \`e vero
+Questa, nel calocolo dei sequenti, equivale alla regola di riduzione naturale nella logica
+\begin{prooftree}
+\AxiomC{$\Delta$ $\vdash_\Gamma$ $\gamma$}
+\LeftLabel{$\vee$-D)}
+\UnaryInfC{$\Delta$ $\vdash_\Gamma$ $\beta$ $\vee$ $\gamma$}
+\end{prooftree}
+\noindent
+\vspace{0.5cm}
+
+
+\begin{prooftree}
+\AxiomC{c $\in$ C[$\Gamma$]}
+\AxiomC{B + C type[$\Gamma$]}
+\LeftLabel{I$_2$-$+$)}
+\BinaryInfC{inr(c) $\in$ B + C[$\Gamma$]}
+\end{prooftree}
 
 \section{Esercizi}
 \label{sec: es-somma-disgiunta}
@@ -220,5 +298,7 @@ inr($\ast$) $\equiv$ false\\
 \end{itemize}
 
 \end{itemize}
+
+
 
 
