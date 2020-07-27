@@ -1,0 +1,74 @@
+\chapter{Tipo vuoto}
+\label{cap: N0}
+%lezione 20 addendum
+Il tipo vuoto (N$_0$) \`e un tipo induttivo generato dalle sue regole di introduzione (che non ci sono). Queste regole sono le seguenti.
+
+\section{Regole di Formazione}
+\label{sec: formazione-N0}
+\begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{N$_0$-F)}
+\UnaryInfC{N$_0$ type [$\Gamma$]}
+\end{prooftree}
+
+\section{Regole di Introduzione}
+\label{sec: introduzione-N0}
+N$_0$ $=$ $\varnothing$[$\Gamma$] $\Rightarrow$ non ci sono valori canonici
+\textit{Non ci sono le regole di Introduzione, in quanto N$_0$ si vuole che sia un tipo vuoto}
+
+\section{Regole di Eliminazione}
+\label{sec: eliminazione-N0}
+\begin{prooftree}
+\AxiomC{t $\in$ N$_0$[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$,z $\in$ N$_0$]}
+\LeftLabel{E-N$_0$)}
+\BinaryInfC{El$_{N0}$(t) $\in$ M(t)[$\Gamma$]}
+\end{prooftree}
+
+\section{Regole di Conservazione}
+\label{sec: conservazione-funzione}
+\textit{Non esiste alcuna regola di Conversione. In quanto non vi \`e alcuna ipotesi dell'eliminatore sui temini M(0), essendo il tipo vuoto privo di elementi canonici.}
+
+\section{Regole di Uguaglianza}
+\label{sec: uguaglianza-funzione}
+\begin{prooftree}
+\AxiomC{t$_1$ $=$ t$_2$ $\in$ N$_0$[$\Gamma$]}
+\AxiomC{M(z) type[$\Gamma$,z $\in$ N$_0$]}
+\LeftLabel{eq-E-N$_0$)}
+\BinaryInfC{El$_{N0}$(t$_1$) $=$ El$_{N0}$(t$_2$) $\in$ M(t$_1$)[$\Gamma$]}
+\end{prooftree}
+\noindent
+\textit{Non servono nessun'altra ipotesi non essendoci alcun elemento canonico.\\ Inoltre questo comporta la non necessit\`a delle altre regole di uguaglianza}
+
+\section{Eliminatore dipendente}
+\label{sec:eliminatore dipendente-N0}
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$,z $\in$ N$_0$]}
+\LeftLabel{E-N$_{0dip}$)}
+\UnaryInfC{El$_{N0}$(z) $\in$ M(z)[$\Gamma$,z $\in$ N$_0$]}
+\end{prooftree}
+
+
+\section{Semantica operazionale del tipo funzione}
+\label{sec: semantica-operazionale-funzione}
+La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
+\begin{itemize}
+\item $\beta_{\rightarrow}$-red) NON ESISTE 
+\item Per far interagire N$_0$ con altri tipi
+\AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\LeftLabel{N$_0$-red)}
+\UnaryInfC{El$_{N0}$(t$_1$) $\rightarrow_1$ El$_{N0}$(t$_2$)}
+\DisplayProof
+\end{itemize}
+
+\section{Osservazioni dal punto di vista logico}
+\label{sec:osservazioni-dal-punto-di-vista-logico-N0}
+L'applicazione in logica di N$_0$ viene definita 
+\begin{center}$\bot$ ${\overset{\mathit{def}}{\equiv}}$ N$_0$\end{center}
+\noindent
+$\exists$t $\in$ N$_0$ $\Leftrightarrow$
+\AxiomC{$\bot$ \`e vero[$\Gamma$]}
+\AxiomC{$\varphi$(z) prop[$\Gamma$]}
+\LeftLabel{)}
+\BinaryInfC{El$_{N0}$(t$_1$) $\rightarrow_1$ El$_{N0}$(t$_2$)}
+\DisplayProof
