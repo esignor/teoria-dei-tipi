@@ -4,7 +4,7 @@
 Il tipo delle funzione \`e definito dalle regole seguenti.
 
 \section{Regole di Formazione}
-\label{subsec: formazione-funzioni}
+\label{sec: formazione-funzioni}
 \begin{prooftree}
 \AxiomC{B type [$\Gamma$]}
 \AxiomC{C type [$\Gamma$]}
@@ -13,17 +13,17 @@ Il tipo delle funzione \`e definito dalle regole seguenti.
 \end{prooftree}
 
 \section{Regole di Introduzione}
-\label{subsec: introduzione-funzioni}
+\label{sec: introduzione-funzioni}
 \begin{prooftree}
 \AxiomC{c(x) $\in$ C[$\Gamma$,x $\in$ B]}
 \LeftLabel{I-$\rightarrow$)}
-\UnaryInfC{$\lambda$x$^B$.c(x) $\in$ B $\rightarrow$ C}
+\UnaryInfC{$\lambda$x$^B$.c(x) $\in$ B $\rightarrow$ C[$\Gamma$]}
 \end{prooftree}
 \noindent
-\textit{c \`e una meta-variabile, con il quale si indica un termine che pu\`o dipendere o meno da x}
+\textit{c \`e una meta-variabile, con il quale si indica un termine che pu\`o dipendere o meno da x.}
 
 \section{Regole di Eliminazione}
-\label{subsec: eliminazione-funzione}
+\label{sec: eliminazione-funzione}
 \begin{prooftree}
 \AxiomC{f $\in$ B $\rightarrow$ C[$\Gamma$]}
 \AxiomC{b $\in$ B[$\Gamma$]}
@@ -31,10 +31,10 @@ Il tipo delle funzione \`e definito dalle regole seguenti.
 \BinaryInfC{Ap(f,b) $\in$ C[$\Gamma$]}
 \end{prooftree}
 \noindent
-\textit{Il tipo non \`e induttivo, per cui la regola di eliminazione non definisce un ricorsivo, n\`e principi di induzione}
+\textit{Il tipo non \`e induttivo, per cui la regola di eliminazione non definisce un ricorsivo, n\`e principi di induzione.}
 
 \section{Regole di Conservazione}
-\label{subsec: conservazione-funzione}
+\label{sec: conservazione-funzione}
 \begin{prooftree}
 \AxiomC{c(x) $\in$ C[$\Gamma$, x $\in$ B]}
 \AxiomC{b $\in$ B[$\Gamma$]}
@@ -43,29 +43,29 @@ Il tipo delle funzione \`e definito dalle regole seguenti.
 \end{prooftree}
 
 \section{Regole di Uguaglianza}
-\label{subsec: uguaglianza-funzione}
+\label{sec: uguaglianza-funzione}
 \begin{prooftree}
 \AxiomC{f$_1$ $=$ f$_2$ $\in$ B $\rightarrow$ C[$\Gamma$]}
 \AxiomC{b$_1$ $=$ b$_2$ $\in$ B[$\Gamma$]}
-\LeftLabel{eq-F-$\rightarrow$)}
+\LeftLabel{eq-E-$\rightarrow$)}
 \BinaryInfC{Ap(f$_1$,b$_1$) $=$ Ap(f$_2$,b$_2$) $\in$ C[$\Gamma$]}
 \end{prooftree}
 
 \begin{prooftree}
 \AxiomC{c$_1$(x) $=$ c$_2$(x) $\in$ C[$\Gamma$,x $\in$ B]}
 \LeftLabel{eq-I-$\rightarrow$)}
-\UnaryInfC{$\lambda$x$^B$.c$_1$(x) $=$ $\lambda$x$^B$x.c$_2$ $\in$ B $\rightarrow$ C[$\Gamma$]}
+\UnaryInfC{$\lambda$x$^B$.c$_1$(x) $=$ $\lambda$x$^B$.c$_2$(x) $\in$ B $\rightarrow$ C[$\Gamma$]}
 \end{prooftree}
 \normalsize
-\textit{Prende anche il nome di $\xi$-rule ed \`e una regola difficile da modellare}
+\textit{La regola (eq-I-$\rightarrow$) prende anche il nome di $\xi$-rule ed \`e una regola difficile da modellare.}
 
 
 \section{Semantica operazionale del tipo funzione}
-\label{subsec: semantica-operazionale-funzione}
+\label{sec: semantica-operazionale-funzione}
 La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
 \begin{itemize}
 \item $\beta_{\rightarrow}$-red) Ap($\lambda$x.c(x),b) $\rightarrow_1$ c(b) \\
-\textit{Per la programmazione:} ($\lambda$x.c,b) $\rightarrow_1$ c[$\frac{x}{b}$] 
+\textit{Per la programmazione:} Ap($\lambda$x.c,b) $\rightarrow_1$ c[$\frac{x}{b}$] 
 \item \AxiomC{f$_1$ $\rightarrow_1$ f$_2$}
 \LeftLabel{$\rightarrow$-red$_1$)}
 \UnaryInfC{Ap(f$_1$,b) $\rightarrow_1$ Ap(f$_2$,b)}
@@ -81,8 +81,12 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \DisplayProof
 \end{itemize}
 
-\section{Osservazioni sulla regola di Introduzione}
-\label{sec:osservazioni-introduzione-funzione}
+\section{Osservazioni dal punto di vista logico}
+\label{sec:osservazioni-dal-punto-di-vista-logico-funzione}
+
+\subsection{La regola di Introduzione}
+\label{subsec:osservazioni-introduzione-funzione}
+Questo tipo \`e importante perch\`e c'\`e di mezzo la logica. Se difatti prendo la regola di \textit{Introduzione} e ci metto le preposizioni
 \begin{prooftree}
 \AxiomC{$\beta$ prop[$\Gamma$]}
 \AxiomC{$\gamma$ prop[$\Gamma$]}
@@ -104,10 +108,157 @@ c(x) $\in$ $\gamma$ $\equiv$ $\gamma$ vero\\
 x $\in$ $\beta$ $\equiv$ $\beta$ vero\\
 $\beta$ $\rightarrow$ $\gamma$ $\equiv$ $\beta$ $\rightarrow$ $\gamma$ vero\\\\
 \noindent
-Che non \`e altro che la regola 
+Che non \`e altro che la regola, nel calcolo dei sequenti, dell'implica a destra
 \begin{prooftree}
 \AxiomC{$\varphi_1,..\varphi_n,\beta$ $\vdash_\Gamma$ $\gamma$}
 \LeftLabel{$\rightarrow$-D)}
 \UnaryInfC{$\varphi_1,..\varphi_n$ $\vdash_\Gamma$ $\beta \rightarrow \gamma$}
 \end{prooftree}
+
+\subsection{La regola di Eliminazione (Modus Pones)}
+\label{subsec:osservazioni-eliminazione-funzione}
+\begin{prooftree}
+\AxiomC{f $\in$ $\beta$ $\rightarrow$ $\gamma$[$\Gamma$]}
+\AxiomC{b $\in$ $\beta$[$\Gamma$]}
+\LeftLabel{E-$\rightarrow$)}
+\BinaryInfC{? $\in$ $\gamma$[$\Gamma$]}
+\end{prooftree}
+\noindent
+f $\in$ $\beta$ $\rightarrow$ $\gamma$ $\equiv$ $\beta$ $\rightarrow$ $\gamma$ vero\\
+b $\in$ $\beta$ $\equiv$ $\beta$ vero\\
+? $\in$ $\gamma$ $\equiv$ $\gamma$ vero\\
+Che non \`e altro che la regola, nel calcolo dei sequenti, del Modus Pones
+\begin{prooftree}
+\AxiomC{$\gamma_1,..\gamma_n$ $\vdash_\Gamma$ $\beta$ $\rightarrow$ $\gamma$}
+\AxiomC{$\gamma_1,..\gamma_n$ $\vdash_\Gamma$ $\beta$}
+\LeftLabel{MP)}
+\BinaryInfC{$\gamma_1,..\gamma_n$ $\vdash_\Gamma$ $\gamma$}
+\end{prooftree} 
+
+
+\section{Tipo prodotto dipendente}
+\label{sec: tipo-prodotto-dipendente}
+Il tipo prodotto dipendente o  indiciato (si chiama anche $\prod$), come gi\`a riscontrato per il tipo funzione, \`e un tipo non induttivo. Inoltre \`e un potenziamento espressivo, sempre, del tipo dello spazio delle funzioni (tipo funzioni \`e un caso particolare).\\
+Le regole del prodotto indiciato dipendente che agisce su un tipo dipendente sono le seguenti.
+
+\subsection{Regole di Formazione}
+\label{subsec: formazione-prodotto-dip}
+\begin{prooftree}
+\AxiomC{B type [$\Gamma$]}
+\AxiomC{C(x) type [$\Gamma$,x $\in$ B]}
+\LeftLabel{F-{\scriptsize$\prod$})}
+\BinaryInfC{$\prod\limits_{x \in B}$ C(x) type[$\Gamma$]}
+\end{prooftree}
+
+\section{Regole di Introduzione}
+\label{sec: introduzione-prodotto-dip}
+\begin{prooftree}
+\AxiomC{c(x) $\in$ C(x)[$\Gamma$,x $\in$ B]}
+\LeftLabel{I-{\scriptsize$\prod$})}
+\UnaryInfC{$\lambda$x$^B$.c(x) $\in$ $\prod\limits_{x \in B}$ C(x)[$\Gamma$]}
+\end{prooftree}
+
+\section{Regole di Eliminazione}
+\label{sec: eliminazione-prodotto-dip}
+\begin{prooftree}
+\AxiomC{f $\in$ $\prod\limits_{x \in B}$ C(x)[$\Gamma$]}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\LeftLabel{E-{\scriptsize$\prod$})}
+\BinaryInfC{Ap(f,b) $\in$ C(b)[$\Gamma$]}
+\end{prooftree}
+\noindent
+
+\section{Regole di Conservazione}
+\label{sec: conservazione-prodotto-dip}
+\begin{prooftree}
+\AxiomC{c(x) $\in$ C(x)[$\Gamma$, x $\in$ B]}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\LeftLabel{C-{\scriptsize$\prod$})}
+\BinaryInfC{Ap($\lambda$x$^B$.c(x),b] $=$ c(b)$\in$ C(b)[$\Gamma$]}
+\end{prooftree}
+
+\section{Regole di Uguaglianza}
+\label{sec: uguaglianza-prodottop-dip}
+\begin{prooftree}
+\AxiomC{f$_1$ $=$ f$_2$ $\in$  $\prod\limits_{x \in B}$ C(x)[$\Gamma$]}
+\AxiomC{b$_1$ $=$ b$_2$ $\in$ B[$\Gamma$]}
+\LeftLabel{eq-E-{\scriptsize$\prod$})}
+\BinaryInfC{Ap(f$_1$,b$_1$) $=$ Ap(f$_2$,b$_2$) $\in$ C(b$_1$)[$\Gamma$]}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{c$_1$(x) $=$ c$_2$(x) $\in$ C(x)[$\Gamma$,x $\in$ B]}
+\LeftLabel{eq-I-{\scriptsize$\prod$})}
+\UnaryInfC{$\lambda$x$^B$.c$_1$(x) $=$ $\lambda$x$^B$.c$_2$(x) $\in$  $\prod\limits_{x \in B}$ C(x)[$\Gamma$]}
+\end{prooftree}
+\textit{La regola (eq-I-{\scriptsize$\prod$}) prende anche il nome di $\xi$-rule ed \`e una regola difficile da modellare.}
+
+\begin{prooftree}
+\AxiomC{B$_1$ $=$ B$_2$ $\in$ type[$\Gamma$]}
+\AxiomC{c$_1$(x) $=$ c$_2$(x) type[$\Gamma$,x $\in$ B$_1$]}
+\LeftLabel{eq-F-{\scriptsize$\prod$})}
+\BinaryInfC{$\prod\limits_{x \in B}$ C$_1$(x)[$\Gamma$] $=$ $\prod\limits_{x \in B}$ C$_2$(x)[$\Gamma$]}
+\end{prooftree}
+\normalsize
+
+\section{Osservazioni dal punto di vista logico}
+\label{sec:osservazioni-dal-punto-di-vista-logico-prodotto-dip}
+
+\subsection{La regola di Formazione}
+\label{subsec:osservazioni-formazione-prodotto-dip}
+Se prendo la regola di \textit{Formazione} e ci metto le preposizioni, questa diventa
+\begin{prooftree}
+\AxiomC{B type [$\Gamma$]}
+\AxiomC{$\varphi$(x) prop [$\Gamma$,x $\in$ B]}
+\LeftLabel{F-{\scriptsize$\prod$})}
+\BinaryInfC{$\forall_{x \in B}$ $\varphi$(x) prop[$\Gamma$]}
+\end{prooftree}
+\noindent
+Vale la seguente definizione
+\begin{center}$\forall_{x \in B}$ $\varphi$(x) ${\overset{\mathit{def}}{=}}$ $\prod_{x \in B}$ $\varphi$(x)\end{center}
+Questo risulta vero dalle regole \textit{(I-{\scriptsize$\prod$})} e \textit{(El-{\scriptsize$\prod$})}.\\
+\begin{prooftree}
+\AxiomC{c(x) $\in$ $\varphi$(x)[$\Gamma$,x $\in$ B]}
+\LeftLabel{I-{\scriptsize$\prod$})}
+\UnaryInfC{? $\in$ $\prod_{x \in B}$ $\varphi$(x)[$\Gamma$]}
+\end{prooftree}
+\noindent
+definisce nella \textit{set-theory} la regola del $\forall$. Difatti la regola sopra, con le opportune sostituzioni diventa
+\begin{prooftree}
+\AxiomC{$\varphi$(x) vero[$\Gamma$,$\Delta$,x $\in$ B]}
+\LeftLabel{I-{\scriptsize$\prod$})}
+\UnaryInfC{$\forall_{x \in B}$ $\varphi$(x) vero[$\Gamma$,$\Delta$]}
+\end{prooftree}
+\noindent
+con $\Delta$ $\equiv$[x$_1$...$\varphi_1$...$x_n$...$\varphi_n$]\\
+Nel calcolo dei sequenti equivale a
+\begin{prooftree}
+\AxiomC{$\Delta$ $\vdash_\Gamma,x \in B$ $\varphi(x)$}
+\LeftLabel{$\forall$-D)}\RightLabel{x $\in$ vL($\Delta$)}
+\UnaryInfC{$\Delta$ $\vdash_\Gamma$ $_{x \in B}$ $\varphi(x)$}
+\end{prooftree} 
+
+\begin{prooftree}
+\AxiomC{f $\in$ $\prod_{x \in B}$ $\varphi$(x)[$\Gamma$]}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\LeftLabel{E-{\scriptsize$\prod$})}
+\BinaryInfC{? $\in$ $\varphi$(b)[$\Gamma$]}
+\end{prooftree}
+\noindent
+con le opportune sostituzioni diventa, nel calcolo dei sequenti, una regola di eliminazione della riduzione Naturale
+\begin{prooftree}
+\AxiomC{$\Delta$ $\vdash$ $\forall_{x \in B}$ $\varphi(x)$}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\LeftLabel{E-{\scriptsize$\prod$})}
+\BinaryInfC{$\Delta$ $\vdash$ $\varphi$(b)}
+\end{prooftree}
+con $\Delta$ $\equiv$ tutte assunzioni di prop[$\Gamma$]
+\noindent
+\\\\
+In conclusione, il prodotto dipendente definisce sia l'implicazione
+\begin{center} $\beta$ $\rightarrow$ $\psi$ $\equiv$ $\forall_{x \in B}$ $\varphi$ \end{center}
+dove $\rightarrow$ indica famiglia costante\\
+che la quantificazione esistenziale
+\begin{center}$\forall_{x \in B}$ $\varphi(x)$ $\equiv$ $\prod_{x \in B}$ $\varphi(x)$ \end{center}
+
 
