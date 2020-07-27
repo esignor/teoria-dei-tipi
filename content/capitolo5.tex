@@ -98,7 +98,7 @@ Con questi non si definisce solo che si ricorre su B $+$ C, ma si da anche un pr
 La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
 \begin{itemize}
 \item $\beta_{1+}$-red) El$_+$(inl(b), e$_B$, e$_C$) $\rightarrow_1$ e$_B$(b)
-\item $\beta_{2+}$-red) El$_{+s}$(inl(b), e$_B$, e$_C$) $\rightarrow_1$ e$_C$(c)
+\item $\beta_{2+}$-red) El$_+$(inl(b), e$_B$, e$_C$) $\rightarrow_1$ e$_C$(c)
 \item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
 \LeftLabel{$+$-red)}
 \UnaryInfC{El$_+$(t$_1$, e$_B$, e$_C$) $\rightarrow_1$ El$_+$(t$_2$, e$_B$, e$_C$)}
@@ -116,17 +116,17 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 
 \section{Osservazioni dal punto di vista logico}
 \label{sec:osservazioni-dal-punto-di-vista-logico-disjointsum} 
-Le regole di eliminazione/introduzione partono dalle regole di congiunzione nella logica (nel caso in sia B che C siano proposizioni), inoltre nel caso dell'eliminazione per andare a eliminare verso altre proposizione. Questo concetto \`e stato voluto da \textit{Martin-L$\ddot{o}$f}, per riuscire a interpretare la logica con la teoria dei tipi.
+Le regole di \textit{Eliminazione/Introduzione} partono dalle regole di congiunzione nella logica (nel caso in cui sia B che C siano proposizioni), inoltre nel caso dell'eliminazione si va a eliminare verso altre proposizioni.\\Tale concetto \`e stato voluto da \textit{Martin-L$\ddot{o}$f}, per riuscire a interpretare la logica con la teoria dei tipi.
 \subsection{La regola di Formazione}
 \label{subsec:la-regola-di-formazione-osservazioni-disjointsum}
 Se si hanno le preposizioni $\beta$ prop[$\Gamma$] e $\gamma$ prop[$\Gamma$] e si interpreta la somma come disgiunzione, allora la regola di \textit{Formazione} diventa
 \begin{prooftree}
-\AxiomC{$\beta$ type [$\Gamma$]}
-\AxiomC{$\gamma$ type [$\Gamma$]}
+\AxiomC{$\beta$ prop [$\Gamma$]}
+\AxiomC{$\gamma$ prop [$\Gamma$]}
 \LeftLabel{F-$+$)}
-\BinaryInfC{B $\vee$ C type [$\Gamma$]}
+\BinaryInfC{B $\vee$ C prop [$\Gamma$]}
 \end{prooftree}
-Questi ha influenza sia sulla regola \textit{E-$_{dip}+$} che  \textit{(I-$+$)}. 
+Questi ha influenza sia sulla regola \textit{(E-$_{dip}+$)} che  \textit{(I-$+$)}. 
 
 \subsubsection{La regola di Eliminazione}
 \begin{prooftree}
@@ -134,59 +134,54 @@ Questi ha influenza sia sulla regola \textit{E-$_{dip}+$} che  \textit{(I-$+$)}.
 \AxiomC{$\xi$ \`e vero[$\Gamma$,supponiamo $\beta$ vero]}
 \AxiomC{$\xi$ \`e vero[$\Gamma$,$\gamma$ \`e vero]}
 \LeftLabel{E$_{dip}$-$+$)}
-\TrinaryInfC{\cancel{El$_+$(z,e$_B$,e$_C$)} $\in$ $\xi$ vero[$\Gamma$,z $\in$ B $\vee$ C vero]}
+\TrinaryInfC{\cancel{El$_+$(z,e$_B$,e$_C$)} $\in$ $\xi$ vero[$\Gamma$,z $\in$ $\beta$ $\vee$ $\gamma$ vero]}
 \end{prooftree}
-Questa, nel calocolo dei sequenti, equivale alla or a sinistra
+che, nel calcolo dei sequenti, equivale alla or a sinistra
 \begin{prooftree}
-\AxiomC{$\beta$ $\vdash_\Gamma$ $\xi$]}
-\AxiomC{$\gamma$ $\vdash_\Gamma$ $\xi$]}
+\AxiomC{$\beta$ $\vdash_\Gamma$ $\xi$}
+\AxiomC{$\gamma$ $\vdash_\Gamma$ $\xi$}
 \LeftLabel{$\vee$-S)}
-\BinaryInfC{$\beta$ $\vee$ $\gamma$ $\vdash_\Gamma$ $\xi$]}
+\BinaryInfC{$\beta$ $\vee$ $\gamma$ $\vdash_\Gamma$ $\xi$}
 \end{prooftree}
 \noindent
 Allo stesso modo le regole di Introduzione si possono vedere in modo molto semplice.
 
-\subsubsection{La regola di Introduzione}
+\subsubsection{Le regole di Introduzione}
 \begin{prooftree}
 \AxiomC{b $\in$ $\beta$[$\Gamma$]}
-\AxiomC{$\gamma$ + $\gamma$ type[$\Gamma$]}
+\AxiomC{$\beta$ + $\gamma$ prop[$\Gamma$]}
 \LeftLabel{I$_1$-$+$)}
-\BinaryInfC{inl(b) $\in$ $\beta$ $\vee$ $\gamma$[$\Gamma$]}
+\BinaryInfC{inl(b) $\in$ $\beta$ $\vee$ $\gamma$}
 \end{prooftree}
 b $\in$ $\beta$ $\equiv$ $\beta$ vero\\
-$\beta$ $\vee$ $\gamma$ $\equiv$ $\beta$ $\vee$ $\gamma$ \`e vero
-Questa, nel calocolo dei sequenti, equivale alla or a destra
+$\beta$ $\vee$ $\gamma$ $\equiv$ $\beta$ $\vee$ $\gamma$ \`e vero\\
+Questa, nel calocolo dei sequenti, equivale alla or a destra\\
+$\Delta$ contesto, allora
 \begin{prooftree}
 \AxiomC{$\Delta$ $\vdash_\Gamma$ $\beta$}
 \LeftLabel{$\vee$-D)}
 \UnaryInfC{$\Delta$ $\vdash_\Gamma$ $\beta$ $\vee$ $\gamma$}
 \end{prooftree}
 \noindent
-
+Lo stesso si pu\`o fare sulla seconda regola di Introduzione.
 \begin{prooftree}
 \AxiomC{c $\in$ $\gamma$[$\Gamma$]}
-\AxiomC{$\gamma$ + $\gamma$ type[$\Gamma$]}
-\LeftLabel{I$_1$-$+$)}
-\BinaryInfC{inr(c) $\in$ $\beta$ $\vee$ $\gamma$[$\Gamma$]}
+\AxiomC{$\beta$ + $\gamma$ prop[$\Gamma$]}
+\LeftLabel{I$_2$-$+$)}
+\BinaryInfC{inr(c) $\in$ $\beta$ $\vee$ $\gamma$}
 \end{prooftree}
 c $\in$ $\gamma$ $\equiv$ $\gamma$ vero\\
-$\beta$ $\vee$ $\gamma$ $\equiv$ $\beta$ $\vee$ $\gamma$ \`e vero
-Questa, nel calocolo dei sequenti, equivale alla regola di riduzione naturale nella logica
+$\beta$ $\vee$ $\gamma$ $\equiv$ $\beta$ $\vee$ $\gamma$ \`e vero\\
+Questa, nel calcolo dei sequenti, equivale alla regola di riduzione naturale nella logica\\
+$\Delta$ contesto, allora
 \begin{prooftree}
 \AxiomC{$\Delta$ $\vdash_\Gamma$ $\gamma$}
-\LeftLabel{$\vee$-D)}
+\LeftLabel{I$_2$-$+$)}
 \UnaryInfC{$\Delta$ $\vdash_\Gamma$ $\beta$ $\vee$ $\gamma$}
 \end{prooftree}
 \noindent
 \vspace{0.5cm}
 
-
-\begin{prooftree}
-\AxiomC{c $\in$ C[$\Gamma$]}
-\AxiomC{B + C type[$\Gamma$]}
-\LeftLabel{I$_2$-$+$)}
-\BinaryInfC{inr(c) $\in$ B + C[$\Gamma$]}
-\end{prooftree}
 
 \section{Esercizi}
 \label{sec: es-somma-disgiunta}
