@@ -214,38 +214,41 @@ Se prendo la regola di \textit{Formazione} e ci metto le preposizioni, questa di
 \BinaryInfC{$\forall_{x \in B}$ $\varphi$(x) prop[$\Gamma$]}
 \end{prooftree}
 \noindent
-Vale la seguente definizione
-\begin{center}$\forall_{x \in B}$ $\varphi$(x) ${\overset{\mathit{def}}{=}}$ $\prod_{x \in B}$ $\varphi$(x)\end{center}
-Questo risulta vero dalle regole \textit{(I-{\scriptsize$\prod$})} e \textit{(El-{\scriptsize$\prod$})}.\\
+che rende vera la seguente definizione
+\begin{center}$\forall_{x \in B}$ $\varphi$(x) ${\overset{\mathit{def}}{=}}$ $\prod\limits_{x \in B}$ $\varphi$(x)\end{center}
+dalle regole \textit{(I-{\scriptsize$\prod$})} e \textit{(E-{\scriptsize$\prod$})}.\\
+\begin{itemize}
+\item Per la regola di Introduzione
 \begin{prooftree}
 \AxiomC{c(x) $\in$ $\varphi$(x)[$\Gamma$,x $\in$ B]}
 \LeftLabel{I-{\scriptsize$\prod$})}
-\UnaryInfC{? $\in$ $\prod_{x \in B}$ $\varphi$(x)[$\Gamma$]}
+\UnaryInfC{? $\in$ $\prod\limits_{x \in B}$ $\varphi$(x)[$\Gamma$]}
 \end{prooftree}
 \noindent
-definisce nella \textit{set-theory} la regola del $\forall$. Difatti la regola sopra, con le opportune sostituzioni diventa
+che definisce nella \textit{set-theory} la regola del $\forall$. Difatti, la regola, con le opportune sostituzioni diventa
 \begin{prooftree}
 \AxiomC{$\varphi$(x) vero[$\Gamma$,$\Delta$,x $\in$ B]}
 \LeftLabel{I-{\scriptsize$\prod$})}
 \UnaryInfC{$\forall_{x \in B}$ $\varphi$(x) vero[$\Gamma$,$\Delta$]}
 \end{prooftree}
 \noindent
-con $\Delta$ $\equiv$[x$_1$...$\varphi_1$...$x_n$...$\varphi_n$]\\
+con $\Delta$ $\equiv$[x$_1$...$\varphi_1$...$x_n$...$\varphi_n$] e $\varphi_i$ prop[$\Gamma$]\\
 Nel calcolo dei sequenti equivale a
 \begin{prooftree}
-\AxiomC{$\Delta$ $\vdash_\Gamma,x \in B$ $\varphi(x)$}
-\LeftLabel{$\forall$-D)}\RightLabel{x $\in$ vL($\Delta$)}
-\UnaryInfC{$\Delta$ $\vdash_\Gamma$ $_{x \in B}$ $\varphi(x)$}
-\end{prooftree} 
-
+\AxiomC{$\Delta$ $\vdash_{\Gamma,x \in B}$ $\varphi(x)$}
+\LeftLabel{$\forall$-D)}\RightLabel{x $\notin$ fv($\Delta$)}
+\UnaryInfC{$\Delta$ $\vdash_\Gamma$ $\forall_{x \in B}$ $\varphi(x)$}
+\end{prooftree}
+\noindent 
+\item Per la regola di Eliminazione
 \begin{prooftree}
-\AxiomC{f $\in$ $\prod_{x \in B}$ $\varphi$(x)[$\Gamma$]}
+\AxiomC{f $\in$ $\forall_{x \in B}$ $\varphi$(x)[$\Gamma$]}
 \AxiomC{b $\in$ B[$\Gamma$]}
 \LeftLabel{E-{\scriptsize$\prod$})}
 \BinaryInfC{? $\in$ $\varphi$(b)[$\Gamma$]}
 \end{prooftree}
 \noindent
-con le opportune sostituzioni diventa, nel calcolo dei sequenti, una regola di eliminazione della riduzione Naturale
+che con le opportune sostituzioni diventa, nel calcolo dei sequenti, una regola di eliminazione della riduzione naturale
 \begin{prooftree}
 \AxiomC{$\Delta$ $\vdash$ $\forall_{x \in B}$ $\varphi(x)$}
 \AxiomC{b $\in$ B[$\Gamma$]}
@@ -254,11 +257,16 @@ con le opportune sostituzioni diventa, nel calcolo dei sequenti, una regola di e
 \end{prooftree}
 con $\Delta$ $\equiv$ tutte assunzioni di prop[$\Gamma$]
 \noindent
-\\\\
-In conclusione, il prodotto dipendente definisce sia l'implicazione
-\begin{center} $\beta$ $\rightarrow$ $\psi$ $\equiv$ $\forall_{x \in B}$ $\varphi$ \end{center}
-dove $\rightarrow$ indica famiglia costante\\
-che la quantificazione esistenziale
-\begin{center}$\forall_{x \in B}$ $\varphi(x)$ $\equiv$ $\prod_{x \in B}$ $\varphi(x)$ \end{center}
+\end{itemize}
+\vspace{0.5cm}
+\noindent
+Per concludere, il prodotto dipendente definisce sia:
+\begin{enumerate}
+\item L'\textbf{implicazione}
+\begin{center} $\beta$ $\rightarrow$ $\gamma$ $\equiv$ $\prod\limits_{x \in B}$ $\gamma$ \end{center}
+dove $\rightarrow$ indica famiglia costante
+\item La \textbf{quantificazione esistenziale}
+\begin{center}$\forall_{x \in B}$ $\varphi(x)$ $\equiv$ $\prod\limits_{x \in B}$ $\varphi(x)$ \end{center}
+\end{enumerate}
 
 
