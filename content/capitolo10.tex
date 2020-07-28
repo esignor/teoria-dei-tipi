@@ -1,0 +1,62 @@
+\chapter{La logica della teoria dei tipi di \textit{Martin-L$\ddot{o}$f}}
+Molti tipi, come visto nei capitoli precedenti hanno un significato logico.\\\textit{Ma qual'\`e la logica che viene affrontata in \textit{type-theory}?}\\\\
+\noindent I tipi descritti fino a ora sono sufficienti per interpretare le formule, con predicati dipendenti dal tipo, della logica \textbf{predicativa con l'uguaglianza}. Tuttavia la logica che la teoria dei tipi, di questi tipi, rende valida \`e la \textbf{logica intuizionistica} e non quella classica.\\\\
+\noindent
+\textit{Quale \`e la logica valida in teoria dei tipi?}\\\\
+\noindent Dipende dalla teoria dei tipi (dalla teoria dei tipi di \textit{Martin-L$\ddot{o}$f} si rende valida solo quella intuizionistica).\\
+Di seguito do la definizione per induzione sulle formule. In queste il contesto tipa le variabili libere della formula.
+\begin{center}
+($\bot$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ N$_0$ (tipo vuoto) type[$\Gamma$]\\
+(\textit{tt})$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ N$_1$ (tipo singoletto) type[$\Gamma$]\\
+($\varphi$ $\vee$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $+$ $\psi^I$ type[$\Gamma$]\\
+($\varphi$ $\&$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\times$ $\psi^I$ type[$\Gamma$]\\
+($\varphi$ $\rightarrow$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\rightarrow$ $\psi^I$ type[$\Gamma$]\\
+($\neg$ $\varphi$)$^I$ ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\rightarrow$ $\bot^I$ ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\rightarrow$ N$_0$ type[$\Gamma$]\\
+($\forall_{x \in A}$ $\varphi$(x)) ${\overset{\mathit{def}}{\equiv}}$ $\prod\limits_{x \in A}$($\varphi$(x))$^I$[$\Gamma$, x $\in$ A] type[$\Gamma$]\\
+(t $\equiv$ s)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ Id(A,t,s) type[$\Gamma$] $\Rightarrow$ \textit{unico predicato atomico}\\
+($\exists_{x \in A}$ $\varphi$(x))$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\sum\limits_{x \in A}$($\varphi$(x))$^I$[$\Gamma$]
+\end{center}
+\noindent
+Da tenere presente che per noi vale
+\begin{center}$\varphi$(x) type[x $\in$ A]\end{center}
+e in generale una formula $\varphi$(x) prop[x $\in$ A], con prop che dipendono da tipi e A tipi.\\
+Invece sono formule non valide
+\cancel{$\forall$ $\varphi$(x)} \cancel{$\exists$ $\varphi$(x)}, 
+in quanto le variabili senza tipo non esistono in teoria dei tipi.\\\\
+\noindent
+\textbf{Lemma} Per ogni formula interpretata, il giudizio di tipo che la interpreta \`e derivabile nella teoria dei tipi.\\\\
+\noindent
+\textit{Definizione}\\\\
+\noindent
+Con il giudizio \textbf{$\alpha$ prop[$\Gamma$]} (sintassi della logica del primo ordine), con $\alpha$ formula del linguaggio predicativo con l'uguaglianza a variabili tipate
+si intende il giudizio \textbf{$\alpha^I$ type[$\Gamma$]} (in teoria dei tipi), ove questo \`e la traduzione di $\alpha$ nel linguaggio di una formula predicativa con l'uguaglianza.\\\\
+\noindent
+Va ricordato che $\alpha$ prop[$\Gamma$] $\equiv$ un predicato \`e una formula proposizionale su $\Gamma$
+\begin{center}
+$\alpha$ prop (secondo il solito uso di preposizione) \quad sse \quad $\alpha$ prop[$\Gamma$]
+\end{center}
+\textit{Definizione}\\\\
+\noindent
+Introduciamo il concetto di dimostrazioni logiche.\\
+Date le preposizioni $\phi$ prop[$\Gamma$] e $\alpha_i$ prop[$\Gamma$] per i $=$ 1,..,n derivabili in teoria dei tipi.\\
+Introduciamo il giudizio $\phi$ true[$\Gamma$,$\alpha_1$ true,...,$\alpha_n$ true]. In questo modo definisce il contesto spuro dove $\Gamma$ \`e il solito contesto e $\alpha_1$ true,...,$\alpha_n$ true \`e un constesto nuovo di assunzioni di proposizioni.\\\\
+\noindent
+Introdotto il giudizio diciamo che \`e derivabile se esiste un termine (detto \textit{proof-term}) pf tale che pf $\in$ $\phi$[$\Gamma$,x$_1$ $\in$ $\alpha_1$,...,x$_n$ $\in$ $\alpha_n$] \`e derivabile in una teoria dei tipi.\\\\
+\noindent \textit{Definizione} (per ricollegare il calcolo del primo ordine con la logica del primo anno)\\\\
+\noindent 
+Preso un sequente in formule della logica predicativa con l'uguaglianza  e variabili, nel linguaggio \textit{L}, tipate vale che\\
+({\scriptsize $\sum$} $\vdash_\Gamma$ $\Delta$)$^I$ ${\overset{\mathit{def}}{=}}$ ($\Delta^\vee$)$^I$ type $[$ $\Gamma$,x $\in$ ($\sum^\&$)$^\bot$ $]$\\
+Per il quale vale una definizione per induzione dei termini
+\begin{itemize}
+\item ${\scriptsize\sum}^\&$
+\begin{itemize}
+\item $[$ $]$ $^\&$ $\equiv$ \textit{tt}
+\item $[${\scriptsize$\sum$}$^I$,$\varphi$ $]$ $^\&$ $\equiv$ ({\scriptsize$\sum$}$^\&$) \& $\varphi$
+\end{itemize}
+\item $\Delta^\vee$
+\begin{itemize}
+\item $[$ $]$ $^\vee$ $\equiv$ \textit{bot}
+\item $[$ $\Delta^I$,$\varphi$ $]$ $^\vee$ $\equiv$ ($\Delta^\vee$) $\vee$ $\varphi$
+\end{itemize}
+
+\end{itemize}
