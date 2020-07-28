@@ -18,45 +18,76 @@ Di seguito do la definizione per induzione sulle formule. In queste il contesto 
 \end{center}
 \noindent
 Da tenere presente che per noi vale
-\begin{center}$\varphi$(x) type[x $\in$ A]\end{center}
+\begin{center}\textbf{$\varphi$(x) type[x $\in$ A}]\end{center}
 e in generale una formula $\varphi$(x) prop[x $\in$ A], con prop che dipendono da tipi e A tipi.\\
 Invece sono formule non valide
 \cancel{$\forall$ $\varphi$(x)} \cancel{$\exists$ $\varphi$(x)}, 
 in quanto le variabili senza tipo non esistono in teoria dei tipi.\\\\
 \noindent
-\textbf{Lemma} Per ogni formula interpretata, il giudizio di tipo che la interpreta \`e derivabile nella teoria dei tipi.\\\\
+\textbf{Lemma} per ogni formula interpretata, il giudizio di tipo che la interpreta \`e derivabile nella teoria dei tipi.\\\\
 \noindent
 \textit{Definizione}\\\\
 \noindent
-Con il giudizio \textbf{$\alpha$ prop[$\Gamma$]} (sintassi della logica del primo ordine), con $\alpha$ formula del linguaggio predicativo con l'uguaglianza a variabili tipate
+Con il giudizio \textbf{$\alpha$ prop[$\Gamma$]} (sintassi della logica del primo ordine), con $\alpha$ formula del linguaggio predicativo con l'uguaglianza a variabili tipate,
 si intende il giudizio \textbf{$\alpha^I$ type[$\Gamma$]} (in teoria dei tipi), ove questo \`e la traduzione di $\alpha$ nel linguaggio di una formula predicativa con l'uguaglianza.\\\\
 \noindent
-Va ricordato che $\alpha$ prop[$\Gamma$] $\equiv$ un predicato \`e una formula proposizionale su $\Gamma$
+Va ricordato che $\alpha$ prop[$\Gamma$] $\equiv$ predicato che \`e una formula proposizionale su $\Gamma$
 \begin{center}
-$\alpha$ prop (secondo il solito uso di preposizione) \quad sse \quad $\alpha$ prop[$\Gamma$]
+\textbf{$\alpha$ prop} (secondo il solito uso di preposizione) \quad \textbf{sse} \quad \textbf{$\alpha$ prop[$\Gamma$]}
 \end{center}
+\vspace{0.3cm}
 \textit{Definizione}\\\\
 \noindent
-Introduciamo il concetto di dimostrazioni logiche.\\
+Introduciamo il concetto di \textbf{dimostrazioni logiche}.\\
 Date le preposizioni $\phi$ prop[$\Gamma$] e $\alpha_i$ prop[$\Gamma$] per i $=$ 1,..,n derivabili in teoria dei tipi.\\
-Introduciamo il giudizio $\phi$ true[$\Gamma$,$\alpha_1$ true,...,$\alpha_n$ true]. In questo modo definisce il contesto spuro dove $\Gamma$ \`e il solito contesto e $\alpha_1$ true,...,$\alpha_n$ true \`e un constesto nuovo di assunzioni di proposizioni.\\\\
+Introduciamo il \textbf{giudizio $\phi$ true[$\Gamma$,$\alpha_1$ true,...,$\alpha_n$ true]}. In questo modo, si definisce il \textbf{contesto spuro}, dove $\Gamma$ \`e il solito contesto e $\alpha_1$ true,...,$\alpha_n$ true \`e un constesto nuovo di assunzioni di proposizioni.\\\\
 \noindent
 Introdotto il giudizio diciamo che \`e derivabile se esiste un termine (detto \textit{proof-term}) pf tale che pf $\in$ $\phi$[$\Gamma$,x$_1$ $\in$ $\alpha_1$,...,x$_n$ $\in$ $\alpha_n$] \`e derivabile in una teoria dei tipi.\\\\
-\noindent \textit{Definizione} (per ricollegare il calcolo del primo ordine con la logica del primo anno)\\\\
+\noindent \textit{Definizione}\\
+(Per ricollegare il calcolo del primo ordine con la logica del primo anno)\\\\
 \noindent 
-Preso un sequente in formule della logica predicativa con l'uguaglianza  e variabili, nel linguaggio \textit{L}, tipate vale che\\
-({\scriptsize $\sum$} $\vdash_\Gamma$ $\Delta$)$^I$ ${\overset{\mathit{def}}{=}}$ ($\Delta^\vee$)$^I$ type $[$ $\Gamma$,x $\in$ ($\sum^\&$)$^\bot$ $]$\\
-Per il quale vale una definizione per induzione dei termini
+Preso un sequente, in formule della logica predicativa con l'uguaglianza  e variabili, nel linguaggio \textit{L}, tipate vale che\\
+\textbf{({\scriptsize$\sum$} $\vdash_\Gamma$ $\Delta$)$^I$ ${\overset{\mathit{def}}{=}}$ ($\Delta^\vee$)$^I$ type $[$ $\Gamma$,x $\in$ ({\scriptsize$\sum$}$^\&$)$^I$ $]$}\\
+Per il quale vale una definizione per induzione dei termini:
 \begin{itemize}
-\item ${\scriptsize\sum}^\&$
+\item {\scriptsize$\sum$}$^\&$
 \begin{itemize}
 \item $[$ $]$ $^\&$ $\equiv$ \textit{tt}
 \item $[${\scriptsize$\sum$}$^I$,$\varphi$ $]$ $^\&$ $\equiv$ ({\scriptsize$\sum$}$^\&$) \& $\varphi$
 \end{itemize}
 \item $\Delta^\vee$
 \begin{itemize}
-\item $[$ $]$ $^\vee$ $\equiv$ \textit{bot}
+\item $[$ $]$ $^\vee$ $\equiv$ \textit{$\bot$}
 \item $[$ $\Delta^I$,$\varphi$ $]$ $^\vee$ $\equiv$ ($\Delta^\vee$) $\vee$ $\varphi$
 \end{itemize}
-
 \end{itemize}
+\noindent
+\newpage
+\noindent \textit{Definzione}\\\\
+\noindent Un sequente {\scriptsize$\sum$} $\vdash_\Gamma$ $\Delta$ \`e valido in teoria dei tipi sse ($\Delta^\vee$)$^I$ true [$\Gamma$,({\scriptsize$\sum$}$^\&$)$^I$ true] \`e derivabile.\\
+Ovvero se esiste un pf tale che pf $\in$ ($\Delta^\vee$)$^I$[$\Gamma$,x $\in$ ({\scriptsize$\sum$}$^\&$)$^I$].\\
+Si pu\`o dimostrare ({\scriptsize$\sum$} $\vdash_\Gamma$ $\Delta$)$^I$ \`e derivabile sse ($\Delta^\vee$)$^I$ type[$\Gamma$] \`e derivabile.
+\\\\
+\noindent
+\textbf{Teorema} i sequenti derivabili del calcolo della deduzione naturale \textit{DNI}\footnote{Logica Intuizionistica.} sono validi.\\
+\textit{Non sono validi quelli della logica classica. Perch\`e?} Per il Principio del terzo escluso.\\\\
+\noindent
+\textbf{Il Principio del terzo escluso} non \`e valido in teoria dei tipi perch\`e per ogni $\varphi$ noi dovremmo dedurre, in teoria dei tipi, un \textbf{pf $\in$ ($\varphi$ $\vee$ $\neg\varphi$)$^I$ $[$ $]$ $\equiv$ $\varphi^I$ $+$ $\neg\varphi^I$ $[$ $]$}. 
+\begin{center}
+\textit{DNI} $+$ Principio del terzo escluso $\equiv$ calcolo dei sequenti della logica classica prediativa con l'uguaglianza
+\end{center}
+\noindent
+$\Rightarrow$ logica classica $=$ logica intuizionistica $+$ la derivabilit\`a $\vdash$ $\varphi$ $\vee$ $\neg\varphi$\\\\
+\noindent
+Il Principio del terzo escluso \`e la derivabilit\`a $\vdash$ $\varphi$ $\vee$ $\neg\varphi$, per la formula $\varphi$. Ma $\vdash$ $\varphi$ $\vee$ $\neg\varphi$ non \`e valido in teoria dei tipi perch\`e esiste G, formula, per cui $\vdash$ G $\vee$ $\neg$G non \`e valido.\\\\\
+\noindent
+\textit{Idea della Dimostrazione}\\\\
+\noindent Metto assieme il teorema di \textit{G$\ddot{o}$del} con quello della forma normale forte.
+\begin{center}pf $\in$ G $\vee$ $\neg$G $=$ G$^I$ $+$ $\neg$G$^I$\end{center}
+Questa va ridotta in forma normale, che corrisponde a una delle due forme seguenti:
+\begin{itemize}
+\item NF(pf) $=$ inl(pf$_1$) con pf$_1$ $\in$ G$[$ $]$
+\item NF(pf) $=$ inr(pf$_2$) con pf$_2$ $\in$ G$[$ $]$
+\end{itemize}
+Ma \textit{G$\ddot{o}$del} ha dimostrato che n\`e $\vdash$ G$[$ $]$ e neanche $\vdash$ $\neg$G$[$ $]$ sono derivabili ($\Leftrightarrow$ non valido in teoria dei tipi.)
+
