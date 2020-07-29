@@ -120,6 +120,52 @@ Formalmente si pu\`o trovare con il tipo singoletto, nel modo seguente: "? $\in$
 \TrinaryInfC{Id(A,a,a)[$\Gamma$] $=$ Id(A,a,b)[$\Gamma$]}
 \end{prooftree}
 
+\section{Esercizio di dimostrazione per induzione su addizione con zero}
+\label{sec:esercizio-di-dimostrazione-per-induzione-su-addizione-con-zero}
+\textit{Nel dettaglio l'esercizio presentato in questa sezione, e svolto a lezione, viene risolto in \S{sec: es-id}, esercizio 5}
+$\varphi$(0) $\&$ $\forall_{x \in Nat}$($\varphi$(x) $\rightarrow$ $\varphi$(succ(x))) $\rightarrow$ $\forall_{z \in Nat}$ $\varphi$(z) (\S \ref{cap:principi-di-induzione-per-tipi-induttivi}).
+\\\\
+\noindent
+\textit{Definizione} \textbf{Somma dei numeri Naturali}
+w $+$ z $\in$ Nat[w $\in$ Nat,z $\in$ Nat]\\
+w $+$ z ${\overset{\mathit{def}}{\equiv}}$ El$_{Nat}$(z,w,(x,y).succ(y))\\\\ 
+\noindent
+w $+$ 0 $=$ w $\in$ Nat[w $\in$ Nat] per \textit{$\beta_{1Nat}$-red}\\
+ma definizionalmente 0 $+$ z $\neq$ z\\
+El$_{Nat}$(z,0,(x,y).succ(y)) \`e in forma normale $\neq$ da z, anch'essa in forma normale\\
+$\rightarrow$ 0 $+$ z $=$ z $\in$ Nat[z $\in$ Nat] non \`e derivabile in teoria dei tipi sui Naturali.\\\\
+\noindent 
+In realt\`a, si pu\`o risolvere 0 $+$ z $=$ z $\in$ Nat[z $\in$ Nat], non con l'uso dell'uguaglianza definizionale, ma con l'identit\`a proposizionale, nel modo seguente.\\
+\begin{center}\textbf{Obiettivo:} trovare pf $\in$ $\forall_{z \in Nat}$ Id(Nat,0$+$z,z)\end{center}
+Sappiamo che\\
+$\forall_{w \in Nat}$ Id(Nat,w+0,w) $\equiv$ $\lambda$w.id(w) [ ]\\
+Invece pf $\in$ $\forall_{z \in Nat}$ Id(Nat,0$+$z,z) va dimostrato per induzione.
+\noindent
+\\\\
+Uso il \textit{proof-term} cos\`i definito in una precedente lezione:
+\begin{center} h$_2$(z$_1$,z$_2$,z$_3$) $\in$ Id(Nat,succ(z$_1$),succ(z$_2$))[z$_1$ $\in$ Nat,z$_2$ $\in$ Nat,z$_3$ $\in$ Id(Nat,z$_2$,z$_3$)]\end{center}
+
+\small
+\begin{adjustwidth}{-9.5em}{}
+\begin{prooftree}
+
+\AxiomC{}
+\UnaryInfC{Id(Nat,0+z,z)type[z $\in$ Nat]}
+\AxiomC{}
+\UnaryInfC{id(0) $\in$ Id(Nat,0+0,0)[ ]}
+\AxiomC{}
+\UnaryInfC{h$_2$(0+x,x,y) $\in$ Id(Nat,0+succ(x),succ(x))[x $\in$ Nat,y $\in$ Id(Nat,0+x,x)]}
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(z,id(0),(x,y).h$_2$(0+x,x,y))Id(Nat,0+z,z)[z $\in$ Nat]}
+\LeftLabel{I-{\scriptsize $\prod$}}
+\UnaryInfC{? $\forall_{z \in Nat}$ Id(Nat,0+z,z)[ ]}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\vspace{0.3cm}
+\normalsize \begin{center}\textbf{In conclusione:} $\forall_{z \in Nat}$ Id(Nat,0+z,z)\end{center}
+
+
 
 
 
@@ -148,7 +194,7 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \normalsize
 \textbf{1}
 \scriptsize
-\begin{adjustwidth}{-10em}{}
+\begin{adjustwidth}{-14em}{}
 \begin{prooftree}
 \AxiomC{\textbf{1$_A$}}
 \UnaryInfC{A type [$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
@@ -166,7 +212,7 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \normalsize
 \textbf{1$_A$}
 \small
-\begin{adjustwidth}{-4em}{}
+\begin{adjustwidth}{-8em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type [$\Gamma$]}
@@ -275,7 +321,7 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \noindent $\Delta$ $=$ $\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)\\
 \noindent $\theta$ $=$ A, z$_1$ $\in$ A, z$_2$ $\in$ A\\
 \scriptsize
-\begin{adjustwidth}{-15em}{}
+\begin{adjustwidth}{-10em}{}
 \begin{prooftree}
 \AxiomC{($\ast$)}
 \UnaryInfC{z$_2$ $\in$ A[$\Delta$]}
@@ -347,7 +393,7 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 \normalsize
 \textbf{1$_A$}
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-11em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{Nat type [ ]}
@@ -398,7 +444,7 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 \normalsize
 \textbf{1$_B^\backprime$}
 \small
-\begin{adjustwidth}{-1em}{}
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
@@ -578,12 +624,12 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \begin{itemize}
 \item M(z) type[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,x+0,x)[x $\in$ Nat]
 \item c $\in$ M(0)[$\Gamma$] $\equiv$ id(0) $\in$ Id(Nat,0+0,0)[ ]
-\item M(z) $\equiv$ M(x) per $\alpha$-eq (dimostrazione in \S\ref{sec: es-naturali}, esercizio 5
+\item M(z) $\equiv$ M(x) per $\alpha$-eq (dimostrazione in \S\ref{sec: es-naturali}, esercizio 5)
 \item e(x,y) $\in$ M(succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ M(x)] $\equiv$ h(x+0,x,y) $\in$ Id(Nat,succ(x)+0,succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ Id(Nat,x+0,x)]
 \end{itemize}
 \item Conclusioni:
 \begin{itemize}
-\item El$_{Nat}$(z,c,e) $\equiv$ El$_{Nat}$(x,id(0),(w,z,v).h(z+0,z,v))
+\item El$_{Nat}$(z,c,e) $\equiv$ El$_{Nat}$(x,id(0),(z,v).h(z+0,z,v))
 \item M(z)[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,x+0,x)[x $\in$ Nat]
 \end{itemize}
 \end{itemize}
@@ -601,7 +647,7 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \AxiomC{\textbf{3}}
 \UnaryInfC{h(z+0,z,v) $\in$ Id(Nat,succ(z)+0,succ(z))[z $\in$ Nat,v $\in$ Id(Nat,z+0,z)]}
 \LeftLabel{E-Nat$_{dip}$}
-\TrinaryInfC{El$_{Nat}$(x,id(0),(w,z,v).h(z+0,z,v))Id(Nat,x+0,x)[x $\in$ Nat]}
+\TrinaryInfC{El$_{Nat}$(x,id(0),(z,v).h(z+0,z,v))Id(Nat,x+0,x)[x $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
 \vspace{0.5cm}
@@ -814,30 +860,30 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \item Premesse:
 \begin{itemize}
 \item M(z) type[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+x,x)[x $\in$ Nat]
-\item c $\in$ M(0)[$\Gamma$] $\equiv$ id(0) $\in$ Id(Nat,0+0,0)[]
+\item c $\in$ M(0)[$\Gamma$] $\equiv$ id(0) $\in$ Id(Nat,0+0,0)[ ]
 \item M(z) $\equiv$ M(x) per $\alpha$-eq (dimostrazione in \S\ref{sec: es-naturali} esercizio 5)
 \item e(x,y) $\in$ M(succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ M(x)] $\equiv$ h(0+x,x,y) $\in$ Id(Nat,0+succ(x),succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ Id(Nat,0+x,x)]
 \end{itemize}
 \item Conclusioni:
 \begin{itemize}
-\item El$_{Nat}$(z,c,e) $\equiv$ El$_{Nat}$(x,id(0),(w,z,v).h(0+z,z,v))
+\item El$_{Nat}$(z,c,e) $\equiv$ El$_{Nat}$(x,id(0),(z,v).h(0+z,z,v))
 \item M(z)[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+x,x)[x $\in$ Nat]
 \end{itemize}
 \end{itemize}
 
 
 \small
-\begin{adjustwidth}{-12.5em}{}
+\begin{adjustwidth}{-17.5em}{}
 \begin{prooftree}
 
 \AxiomC{\textbf{1}}
 \UnaryInfC{Id(Nat,0+x,x)type[x $\in$ Nat]}
-\AxiomC{\textbf{$\top$}}
+\AxiomC{\textbf{2}}
 \UnaryInfC{id(0) $\in$ Id(Nat,0+0,0)[ ]}
 \AxiomC{\textbf{3}}
 \UnaryInfC{h(z+0,z,v) $\in$ Id(Nat,0+succ(z),succ(z))[z $\in$ Nat,v $\in$ Id(Nat,0+z,z)]}
 \LeftLabel{E-Nat$_{dip}$}
-\TrinaryInfC{El$_{Nat}$(x,id(0),(w,z,v).h(0+z,z,v))Id(Nat,0+x,x)[x $\in$ Nat]}
+\TrinaryInfC{El$_{Nat}$(x,id(0),(z,v).h(0+z,z,v))Id(Nat,0+x,x)[x $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
 \vspace{0.5cm}
@@ -864,6 +910,74 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \TrinaryInfC{Id(Nat,0+x,x)type[x $\in$ Nat]}
 \end{prooftree}
 
+\vspace{0.5cm}
+\normalsize \textbf{2}
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I-Nat}
+\UnaryInfC{0 $\in$ Nat[ ]}
+\LeftLabel{I-Id}
+\UnaryInfC{id(0) $\in$ Id(Nat,0,0)[ ]}
+
+
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{ref}
+\UnaryInfC{Nat $=$ Nat type[ ]}
+
+\AxiomC{\textbf{2$^\backprime$}}
+\UnaryInfC{0 $=$ 0+0 $\in$ Nat[ ]}
+
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{0 $\in$ Nat[ ]}
+\LeftLabel{ref}
+\UnaryInfC{0 $=$ 0 $\in$ Nat[ ]}
+\LeftLabel{eq-F-Id}
+\TrinaryInfC{Id(Nat,0,0) $=$ Id(Nat,0+0,0)[ ]}
+\LeftLabel{conv}
+\BinaryInfC{id(0) $\in$ Id(Nat,0+0,0)[ ]}
+\end{prooftree}
+\end{adjustwidth}
+\normalsize
+
+\vspace{0.5cm}
+\normalsize \textbf{2$^\backprime$}\\\\
+El$_{Nat}$(0,c,e) $\equiv$ El$_{Nat}$(0,0,(w,x).succ(x))\\
+c $\in$ M(0)[$\Gamma$] $\equiv$ 0 $\in$ Nat[ ]
+\small
+\begin{adjustwidth}{-4em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I-Nat}
+\UnaryInfC{0 $\in$ Nat[ ]}
+
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{w $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[w $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ w $\in$ Nat}
+\UnaryInfC{w $\in$ Nat,x $\in$ Nat cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ Nat[w $\in$ Nat,x $\in$ Nat]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{succ(x) $\in$ Nat[w $\in$ Nat,x $\in$ Nat]}
+\LeftLabel{C$_1$-Nat}
+\TrinaryInfC{0+0 $=$ 0 $\in$ Nat[ ]}
+\LeftLabel{sym}
+\UnaryInfC{0 $=$ 0+0 $\in$ Nat[ ]}
+\end{prooftree}
+\end{adjustwidth}
+
 
 \normalsize \textbf{3}\\\\
 $\Delta$ $\equiv$ z $\in$ Nat,v $\in$ Id(Nat,0+z,z)
@@ -882,7 +996,7 @@ $\Delta$ $\equiv$ z $\in$ Nat,v $\in$ Id(Nat,0+z,z)
 \vspace{0.5cm}
 \normalsize \textbf{3$^\backprime$}\\\\
 \small
-\begin{adjustwidth}{-15em}{}
+\begin{adjustwidth}{-10em}{}
 \begin{prooftree}
 \AxiomC{\textbf{3$^\backprime_A$}}
 \UnaryInfC{Id(Nat,0+z,z)type[z $\in$ Nat]}
@@ -975,7 +1089,6 @@ c $\in$ M(0)[$\Gamma$] $\equiv$ succ(0+z) $\in$ Nat[$\Delta$]
 \textbf{$\heartsuit$} derivazione gi\`a risolta in \S\ref{sec: es-naturali}, esercizio 3 (necessaria applicazione di \textit{$\alpha$-eq}).\\
 \textbf{$\diamondsuit$} derivazione gi\`a risolta nell'esercizio 2, di questa sezione (necessaria applicazione di \textit{$\alpha$-eq}).\\
 \textbf{$\bigstar$} derivazione gi\`a risolte negli esercizi precedenti, Prevede una combinazioni di istruzioni di indebolimento/assunzione di variabili/formazione di contesto per verificare l'assioma [ ] cont.\\
-\textbf{$\top$} derivazione risolta nel punto precedente di questo stesso esercizio.
 
 \end{enumerate}
 
