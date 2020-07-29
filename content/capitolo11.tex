@@ -1,0 +1,83 @@
+\chapter{Principi di induzione per tipi induttivi}
+\label{cap:principi-di-induzione-per-tipi-induttivi}
+Principi di induzione associati alle regole di eliminazione dei cosidetti tipi induttivi \textit{T}, per renderne la ragione del nome, quando il tipo M(z) type[$\Gamma$,z $\in$ T] verso cui si elimina \`e in realt\`a una $\varphi$(z) prop[$\Gamma$,z $\in$ T].\\\\
+\noindent
+\textbf{Tipi induttivi:} N$_0$, N$_1$, List(A), Nat, B $+$ C, {\scriptsize $\sum$} $_{x \in B}$ C(x), Id(A,a,b)\\
+
+\section{Propriet\`a per i tipi induttivi}
+\label{sec:prorieta-per-i-tipi-induttivi}
+Per poter enunciare il principio di induzione, ci servono delle propriet\`a di manipolazione dei contesti.
+\begin{itemize}
+\item {\scriptsize $\sum$} serve per raggruppare le assunzioni in un contesto\\
+c(x,y) $\in$ C(x,y)[x $\in$ A,y $\in$ B] derivabile $\Rightarrow$ c($\pi_1$z,$\pi_2$z) $\in$ C($\pi_1$z,$\pi_2$z)[z $\in$ {\scriptsize $\sum\limits$}$_{x \in A}$B(x)] \`e derivabile\\
+Si pu\`o anche andare nella direzione opposta, dunque\\
+d(z) $\in$ D(z)[z $\in$ {\scriptsize $\sum\limits$}$_{x \in A}$B(x)] derivabile $\Rightarrow$ d($<$x,y$>$) $\in$  D($<$x,y$>$)[x $\in$ A,y $\in$ B(x)]
+\item {\scriptsize $\prod$} serve per togliere le assunzioni in un contesto\\
+c(x,y) $\in$ C(x,y)[x $\in$ A,y $\in$ B] derivabile $\Rightarrow$ $\lambda$y.C(x) $\in$ {\scriptsize $\prod$}$_{y \in B(x)}$C(x,y)[x $\in$ A]\\
+Per cui posso sempre togliere l'ultima assunzione.
+\end{itemize}
+\noindent
+\textbf{Notazione:} quando ho $\varphi$(z) $\rightarrow$ $\varphi_I$(z) \\\\
+
+\noindent
+Di seguito enuncio i vari tipi di induzione, con spiegazione per il principio dei numeri Naturali.
+\section{Principio di induzione numeri Naturali}
+\label{sec:principio-di-induzione-numeri-Naturali}
+\begin{prooftree}
+\AxiomC{M(z)type[$\Gamma$, z $\in$ Nat]}
+\AxiomC{c $\in$ M(0)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ M(x)]}
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(z,c,e) $\in$ M(z)[$\Gamma$,z $\in$ Nat]}
+\end{prooftree}
+\noindent
+\textit{Esempio}\\\\
+\begin{prooftree}
+\AxiomC{$\varphi$(z)prop[$\Gamma$, z $\in$ Nat]}
+\AxiomC{c $\in$ $\varphi$(0)[$\Gamma$]}
+\AxiomC{e(x,y) $\in$ $\varphi$(succ(x))[$\Gamma$,z $\in$ Nat,y $\in$ M(x)]}
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(z,c,e) $\in$ $\varphi$(z)[$\Gamma$,z $\in$ Nat]}
+\end{prooftree}
+\noindent
+$\Leftrightarrow$ $\lambda$z.El$_{Nat}$(z,c,e) $\in$ $\forall\varphi$(z) z $\in$ Nat\\
+A questo punto posso raggruppare in un unico sequente\\
+$\lambda$z.El$_{Nat}$(z,w,(x,y)e(x,y)) $\in$ $\forall_{z \in \varphi(z)}$[$\Gamma$,w $\in$ $\varphi$(0);z$_f$ $\in$ $\forall_{x \in Nat}$ ($\varphi$(x) $\rightarrow$ $\varphi$(succ(x)))] $\Rightarrow$
+$\lambda$z.El$_{Nat}$(z,w,(x,y).Ap(Ap(z,f,x),y) $\in$ $\forall_{z \in \varphi(z)}$[$\Gamma$,w $\in$ $\varphi$(0) $\times$ ($\&$) z$_f$ $\in$ $\forall_{x \in Nat}$ ($\varphi$(x) $\rightarrow$ $\varphi$(succ(x)))]\\\\
+\noindent
+Assumendo che, quando astraggo, $\varphi$true[$\Gamma$,$\Psi$ true] derivabile $\Leftrightarrow$ $\Psi$ $\leftrightarrow$ $\varphi$ true[$\Gamma$]\\\\
+\noindent
+In questo modo arrivo ad avere il principio di induzione che rende valido l'eliminatore dei numeri Naturali, che \`e il seguente\\
+Nat) $\varphi$(0) $\&$ $\forall_{x \in Nat}$($\varphi$(x) $\rightarrow$ $\varphi$(succ(x))) $\rightarrow$ $\forall_{z \in Nat}$ $\varphi$(z)\\
+\`E valido e segue dalla E-Nat$_{dip}$
+
+\section{Principio di induzione su N$_0$}
+\label{sec:principio-di-induzione-N0}
+N$0$) $\bot$ true $\rightarrow$ $\varphi$[$\Gamma$] \`e valido per ogni $\varphi$ prop[$\Gamma$]
+\section{Principio di induzione su N$_1$}
+\label{sec:principio-di-induzione-N1}
+N$_1$) $\varphi(\ast)$ $\rightarrow$ $\forall_{x \in N_1}$ $\varphi$(x)true[$\Gamma$] \`e valido per ogni $\varphi(z)$ prop[$\Gamma$,z $\in$ N$_1$]
+
+\section{Principio di induzione su List(A)}
+\label{sec:principio-di-induzione-List(A)}
+List(A)) $\varnothing(nil)$ $\&$ $\forall_{x \in List(A)}$ $\forall_{w \in A}$($\varnothing(x)$ $\rightarrow$ $\varnothing(cons(x,w))$) $\rightarrow$ $\forall_{z \in List(A)}$ $\varphi$(z) true[$\Gamma$] \`e derivabile\\
+Supponiamo A type[$\Gamma$] derivabile 
+\section{Principio di induzione su B+C}
+\label{sec:principio-di-induzione-B+C}
+$\varphi$(z) prop[$\Gamma$, z $\in$ B $+$ C] derivabile\\
+B$+$C) $\forall_{x_1 \in B}$  $\varphi(nl(x_1))$ $\&$ $\forall_{x_2 \in B}$  $\varphi(nr(x_2))$ $\rightarrow$ $\forall_{z\in B+C}$  $\varphi(z)$ true[$\Gamma$] derivabile
+\section{Principio di induzione su $\sum\limits_{x \in B}$ C(x)}
+\label{sec:principio-di-induzione-sum}
+{\scriptsize $\sum$}) $\forall_{x \in B}$ $\forall_{y \in C(x)}$ $\varnothing(<x,y>)$ $\rightarrow$ $\forall \in$ {\scriptsize$\sum$} $_{x \in B \hspace{0.1cm}C(x)}$ $\varphi$(z) true[$\Gamma$] derivabile\\
+con $\forall \in$ {\scriptsize$\sum$}$_{x \in B \hspace{0.1cm}C(x)}$ famiglia di insiemi $=$ unione indiciata disgiunta\\
+Supponiamo $\varphi$(z) prop[$\Gamma$,z $\in$ B $+$ C]
+
+\section{Principio di induzione su Id(A,a,b)}
+\label{sec:principio-di-induzione-Id}
+\`E un tipo induttivo, grande novit\`a, introdotta da \textit{Martin-L$\ddot{o}$f}, all'interno della teoria dei tipi.\\
+Dato $\varphi(z_1,z_2,z_3)$ prop[$\Gamma$,z$_1$ $\in$ A,z$_2$ $\in$ A,z$_3$ $\in$ Id(A,z$_1$,z$_2$)] derivabile\\
+$\forall_{x \in A}$ $\varphi(x,x,id(x))$ $\rightarrow$ $\forall_{z_1 \in A}$ $\forall_{z_2 \in A}$ $\forall_{z_3 \in Id(z_1,z_2,z_3)}$ $\varphi(z_1,z_2,z_3)$ true[$\Gamma$] \`e derivabile\\
+Tale principio non \`e formulato su $\varphi$(z) type[$\Gamma$,$z \in Id(A,a,b)$] con A e a,b fissati ma abbiamo che dipende da tre parametri z$_1$, z$_2$ e z$_3$, come accade nella regola del E$_{Id}$.\\\\
+\noindent In conclusione  ho mostrato come i \textbf{principi di induzione} servono per dimostrare le preposizioni e la \textbf{regola di eliminazione} non determinano solo ricorsori, ma anche regole di induzione.
+
+
