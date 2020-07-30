@@ -349,7 +349,7 @@
 \small
 \begin{prooftree}
 \AxiomC{M(z$_1$,z$_2$,z$_3$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)]}
-\AxiomC{e(x) $\in$ M(x,x,Id(x)))[$\Gamma$, x $\in$ A]}
+\AxiomC{e(x) $\in$ M(x,x,Id(x))[$\Gamma$, x $\in$ A]}
 \LeftLabel{E-Id$_{dip}$)}
 \BinaryInfC{El$_{Id}$(z$_3$, (x).e(x)) $\in$ M(z$_1$, z$_2$, z$_3$)[$\Gamma$,z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$, z$_2$)]}
 \end{prooftree}
@@ -524,6 +524,64 @@
 \LeftLabel{eq-I-$\rightarrow$)}
 \UnaryInfC{$\lambda$x$^B$.c$_1$(x) $=$ $\lambda$x$^B$.c$_2$(x) $\in$ B $\rightarrow$ C[$\Gamma$]}
 \end{prooftree}
+\newpage
+
+\section{Tipo prodotto dipendente}
+\label{sec: tipo-prodotto-dipendente}
+
+\subsection{Regole di Formazione}
+\begin{prooftree}
+\AxiomC{B type [$\Gamma$]}
+\AxiomC{C(x) type [$\Gamma$,x $\in$ B]}
+\LeftLabel{F-{\scriptsize$\prod$})}
+\BinaryInfC{$\prod\limits_{x \in B}$ C(x) type[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Introduzione}
+\begin{prooftree}
+\AxiomC{c(x) $\in$ C(x)[$\Gamma$,x $\in$ B]}
+\LeftLabel{I-{\scriptsize$\prod$})}
+\UnaryInfC{$\lambda$x$^B$.c(x) $\in$ $\prod\limits_{x \in B}$ C(x)[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Eliminazione}
+\begin{prooftree}
+\AxiomC{f $\in$ $\prod\limits_{x \in B}$ C(x)[$\Gamma$]}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\LeftLabel{E-{\scriptsize$\prod$})}
+\BinaryInfC{Ap(f,b) $\in$ C(b)[$\Gamma$]}
+\end{prooftree}
+\noindent
+
+\subsection{Regole di Conservazione}
+\begin{prooftree}
+\AxiomC{c(x) $\in$ C(x)[$\Gamma$, x $\in$ B]}
+\AxiomC{b $\in$ B[$\Gamma$]}
+\LeftLabel{C-{\scriptsize$\prod$})}
+\BinaryInfC{Ap($\lambda$x$^B$.c(x),b] $=$ c(b)$\in$ C(b)[$\Gamma$]}
+\end{prooftree}
+
+\subsection{Regole di Uguaglianza}
+\begin{prooftree}
+\AxiomC{f$_1$ $=$ f$_2$ $\in$  $\prod\limits_{x \in B}$ C(x)[$\Gamma$]}
+\AxiomC{b$_1$ $=$ b$_2$ $\in$ B[$\Gamma$]}
+\LeftLabel{eq-E-{\scriptsize$\prod$})}
+\BinaryInfC{Ap(f$_1$,b$_1$) $=$ Ap(f$_2$,b$_2$) $\in$ C(b$_1$)[$\Gamma$]}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{c$_1$(x) $=$ c$_2$(x) $\in$ C(x)[$\Gamma$,x $\in$ B]}
+\LeftLabel{eq-I-{\scriptsize$\prod$})}
+\UnaryInfC{$\lambda$x$^B$.c$_1$(x) $=$ $\lambda$x$^B$.c$_2$(x) $\in$  $\prod\limits_{x \in B}$ C(x)[$\Gamma$]}
+\end{prooftree}
+
+\begin{prooftree}
+\AxiomC{B$_1$ $=$ B$_2$ $\in$ type[$\Gamma$]}
+\AxiomC{c$_1$(x) $=$ c$_2$(x) type[$\Gamma$,x $\in$ B$_1$]}
+\LeftLabel{eq-F-{\scriptsize$\prod$})}
+\BinaryInfC{$\prod\limits_{x \in B}$ C$_1$(x)[$\Gamma$] $=$ $\prod\limits_{x \in B}$ C$_2$(x)[$\Gamma$]}
+\end{prooftree}
+\normalsize
 \newpage
 
 \section{Tipo vuoto}
