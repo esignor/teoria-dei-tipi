@@ -11,7 +11,7 @@ Di seguito do la definizione per induzione sulle formule. In queste il contesto 
 (\textit{tt})$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ N$_1$ (tipo singoletto) type[$\Gamma$]\\
 ($\varphi$ $\vee$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $+$ $\psi^I$ type[$\Gamma$]\\
 ($\varphi$ $\&$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\times$ $\psi^I$ type[$\Gamma$]\\
-($\varphi$ $\rightarrow$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\rightarrow$ $\psi^I$ type[$\Gamma$]\\
+($\varphi$ $\rightarrow$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\prod_{x \in \varphi^I}$ $\psi^I$ type[$\Gamma$]\\
 ($\neg$ $\varphi$)$^I$ ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\rightarrow$ $\bot^I$ ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\rightarrow$ N$_0$ type[$\Gamma$]\\
 ($\forall_{x \in A}$ $\varphi$(x)) ${\overset{\mathit{def}}{\equiv}}$ $\prod\limits_{x \in A}$($\varphi$(x))$^I$[$\Gamma$, x $\in$ A] type[$\Gamma$]\\
 (t $\equiv$ s)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ Id(A,t,s) type[$\Gamma$] $\Rightarrow$ \textit{unico predicato atomico}\\
