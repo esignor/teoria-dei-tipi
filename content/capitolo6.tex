@@ -122,24 +122,24 @@ Formalmente si pu\`o trovare con il tipo singoletto, nel modo seguente: "? $\in$
 
 \section{Esercizio di dimostrazione per induzione su addizione con zero}
 \label{sec:esercizio-di-dimostrazione-per-induzione-su-addizione-con-zero}
-\textit{Nel dettaglio l'esercizio presentato in questa sezione, e svolto a lezione, viene risolto in \S \ref{sec: es-id}, esercizio 5}.\\
-$\varphi$(0) $\&$ $\forall_{x \in Nat}$($\varphi$(x) $\rightarrow$ $\varphi$(succ(x))) $\rightarrow$ $\forall_{z \in Nat}$ $\varphi$(z) (\S \ref{cap:principi-di-induzione-per-tipi-induttivi}).
-\\\\
+\textit{Nel dettaglio l'esercizio presentato in questa sezione, e svolto a lezione, viene risolto in \S \ref{sec: es-id}, esercizio 5}.
 \noindent
-\textit{Definizione} \textbf{Somma dei numeri Naturali}
+\begin{center}Nat) $\varphi$(0) $\&$ $\forall_{x \in Nat}$($\varphi$(x) $\rightarrow$ $\varphi$(succ(x))) $\rightarrow$ $\forall_{z \in Nat}$ $\varphi$(z) (\S \ref{cap:principi-di-induzione-per-tipi-induttivi}).\end{center}
+\noindent
+\textit{Definizione} \textbf{Somma dei numeri Naturali}\\
 w $+$ z $\in$ Nat[w $\in$ Nat,z $\in$ Nat]\\
 w $+$ z ${\overset{\mathit{def}}{\equiv}}$ El$_{Nat}$(z,w,(x,y).succ(y))\\\\ 
 \noindent
 w $+$ 0 $=$ w $\in$ Nat[w $\in$ Nat] per \textit{$\beta_{1Nat}$-red}\\
 ma definizionalmente 0 $+$ z $\neq$ z\\
 El$_{Nat}$(z,0,(x,y).succ(y)) \`e in forma normale $\neq$ da z, anch'essa in forma normale\\
-$\rightarrow$ 0 $+$ z $=$ z $\in$ Nat[z $\in$ Nat] non \`e derivabile in teoria dei tipi sui Naturali.\\\\
+Per cui 0 $+$ z $=$ z $\in$ Nat[z $\in$ Nat], ricorrendo su z, non \`e derivabile in teoria dei tipi sui Naturali.\\\\
 \noindent 
 In realt\`a, si pu\`o risolvere 0 $+$ z $=$ z $\in$ Nat[z $\in$ Nat], non con l'uso dell'uguaglianza definizionale, ma con l'identit\`a proposizionale, nel modo seguente.\\
 \begin{center}\textbf{Obiettivo:} trovare pf $\in$ $\forall_{z \in Nat}$ Id(Nat,0$+$z,z)\end{center}
-Sappiamo che\\
-$\forall_{w \in Nat}$ Id(Nat,w+0,w) $\equiv$ $\lambda$w.id(w) [ ]\\
-Invece pf $\in$ $\forall_{z \in Nat}$ Id(Nat,0$+$z,z) va dimostrato per induzione.
+(N.B. So che
+$\forall_{w \in Nat}$ Id(Nat,w+0,w) [ ] $\equiv$ $\lambda$w.id(w)\\
+Invece pf $\in$ $\forall_{z \in Nat}$ Id(Nat,0$+$z,z) va dimostrato per induzione.)
 \noindent
 \\\\
 Uso il \textit{proof-term} cos\`i definito in una precedente lezione:
@@ -156,9 +156,9 @@ Uso il \textit{proof-term} cos\`i definito in una precedente lezione:
 \AxiomC{}
 \UnaryInfC{h$_2$(0+x,x,y) $\in$ Id(Nat,0+succ(x),succ(x))[x $\in$ Nat,y $\in$ Id(Nat,0+x,x)]}
 \LeftLabel{E-Nat$_{dip}$}
-\TrinaryInfC{El$_{Nat}$(z,id(0),(x,y).h$_2$(0+x,x,y))Id(Nat,0+z,z)[z $\in$ Nat]}
+\TrinaryInfC{El$_{Nat}$(z,id(0),(x,y).h$_2$(0+x,x,y)) $\in$ Id(Nat,0+z,z)[z $\in$ Nat]}
 \LeftLabel{I-{\scriptsize $\prod$}}
-\UnaryInfC{? $\in$ $\forall_{z \in Nat}$ Id(Nat,0+z,z)[ ]}
+\UnaryInfC{? $\in$ $\forall_{z \in Nat}$ Id(Nat,0+z,z)[z $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
 \noindent
@@ -608,7 +608,7 @@ in modo tale che esistano dei \textit{proof-term} pf$_1$ e pf$_2$ tali che
 \begin{center}
 pf$_1$ $\in$ Id(Nat,x+0,x)[x $\in$ Nat]
 \quad
-pf$_2$ $\in$ Id(Nat,0+x,x)[x $\in$ Nat]
+pf$_2$ $\in$ Id(Nat,0+y,y)[y $\in$ Nat]
 \end{center}
 }
 \noindent
@@ -616,9 +616,13 @@ pf$_2$ $\in$ Id(Nat,0+x,x)[x $\in$ Nat]
 \textbf{Soluzione}\\\\
 \begin{enumerate}
 \item pf$_1$ $\in$ Id(Nat,x+0,x)[x $\in$ Nat]\\\\
-$\forall_x \in Nat$ Id(Nat,x+0,x)[x $\in$ Nat] $\equiv$ $\lambda$x.id(x)\\
 \noindent
-Id(Nat,x+0,x)[x $\in$ Nat] ${\overset{\mathit{def}}{\equiv}}$ {\scriptsize $\prod$}$_{x \in Nat}$Id(Nat,x+0,x)[x $\in$ Nat]\\
+x $+$ y ${\overset{\mathit{def}}{\equiv}}$ El$_{Nat}$(y,x,(w,z).succ(z))\\
+x + $0$ $=$ x $\in$ Nat[w $\in$ Nat] per $\beta_{1Nat}$-red\\\\
+\noindent
+$\forall_{x \in Nat}$ Id(Nat,x+0,x)[ ] $\equiv$ $\lambda$x.id(x)\\
+\noindent
+$\forall_{x \in Nat}$ Id(Nat,x+0,x)[ ] ${\overset{\mathit{def}}{\equiv}}$ {\scriptsize $\prod$}$_{x \in Nat}$Id(Nat,x+0,x)[ ]\\
 
 \scriptsize
 \begin{adjustwidth}{-17.5em}{}
@@ -656,7 +660,7 @@ Id(Nat,x+0,x)[x $\in$ Nat] ${\overset{\mathit{def}}{\equiv}}$ {\scriptsize $\pro
 \LeftLabel{conv}
 \BinaryInfC{id(x) $\in$ Id(Nat,x+0,x)[x $\in$ Nat]}
 \LeftLabel{I-\scriptsize $\prod$}
-\UnaryInfC{$\lambda$x.id(x) $\in$ {\scriptsize $\prod$}$_{x \in Nat}$Id(Nat,x+0,x)[x $\in$ Nat]}
+\UnaryInfC{$\lambda$x.id(x) $\in$ {\scriptsize $\prod$}$_{x \in Nat}$Id(Nat,x+0,x)[ ]}
 \end{prooftree}
 \end{adjustwidth}
 \vspace{0.5cm}
@@ -686,7 +690,7 @@ $\Delta^\backprime$ $\equiv$ z $\in$ Nat, x $\in$ Nat, w $\in$ Nat
 \BinaryInfC{succ(z) $\in$ Nat [$\Delta^\backprime$]}
 
 \AxiomC{\textbf{$\bigstar$}}
-\UnaryInfC{$\Delta$}
+\UnaryInfC{$\Delta$ cont}
 \LeftLabel{ex-te}
 \BinaryInfC{succ(z) $\in$ Nat [$\Delta$]}
 \LeftLabel{C$_1$-Nat}
@@ -699,26 +703,25 @@ $\Delta^\backprime$ $\equiv$ z $\in$ Nat, x $\in$ Nat, w $\in$ Nat
 \normalsize
 \\\\
 \noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
-\textbf{$\heartsuit$} derivazione gi\`a risolta in \S\ref{sec: es-naturali}, esercizio 3 (necessaria applicazione di \textit{$\alpha$-eq}).\\
 \textbf{$\bigstar$} derivazione gi\`a risolte negli esercizi precedenti, Prevede una combinazioni di istruzioni di indebolimento/assunzione di variabili/formazione di contesto per verificare l'assioma [ ] cont.\\
 
 \noindent
-\item pf$_2$ $\in$ Id(Nat,0+x,x)[x $\in$ Nat]\\\\
+\item pf$_2$ $\in$ Id(Nat,0+y,y)[y $\in$ Nat]\\\\
 \noindent
 Uso l'eliminatore dipendente del tipo Nat.\\
-Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dalle richieste dell'esercizio), dunque
+Svolgo la ricorsione su y (altrimenti su x cambierei il contesto e "uscirei" dalle richieste dell'esercizio), dunque
 \begin{itemize}
 \item Premesse:
 \begin{itemize}
-\item M(z) type[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+x,x)[x $\in$ Nat]
+\item M(z) type[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+y,y)[y $\in$ Nat]
 \item c $\in$ M(0)[$\Gamma$] $\equiv$ id(0) $\in$ Id(Nat,0+0,0)[ ]
-\item M(z) $\equiv$ M(x) per $\alpha$-eq (dimostrazione in \S\ref{sec: es-naturali} esercizio 5)
-\item e(x,y) $\in$ M(succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ M(x)] $\equiv$ h(0+x,x,y) $\in$ Id(Nat,0+succ(x),succ(x))[$\Gamma$,x $\in$ Nat,y $\in$ Id(Nat,0+x,x)]
+\item M(z) $\equiv$ M(y) per $\alpha$-eq (dimostrazione in \S\ref{sec: es-naturali} esercizio 5)
+\item e(y,x) $\in$ M(succ(y))[$\Gamma$,y $\in$ Nat,x $\in$ M(y)] $\equiv$ h(0+y,y,x) $\in$ Id(Nat,0+succ(y),succ(y))[$\Gamma$,y $\in$ Nat,x $\in$ Id(Nat,0+y,y)]
 \end{itemize}
 \item Conclusioni:
 \begin{itemize}
-\item El$_{Nat}$(z,c,e) $\equiv$ El$_{Nat}$(x,id(0),(z,v).h(0+z,z,v))
-\item M(z)[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+x,x)[x $\in$ Nat]
+\item El$_{Nat}$(z,c,e) $\equiv$ El$_{Nat}$(y,id(0),(z,v).h(0+z,z,v))
+\item M(z)[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+y,y)[y $\in$ Nat]
 \end{itemize}
 \end{itemize}
 
@@ -728,13 +731,13 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \begin{prooftree}
 
 \AxiomC{\textbf{1}}
-\UnaryInfC{Id(Nat,0+x,x)type[x $\in$ Nat]}
+\UnaryInfC{Id(Nat,0+y,y)type[y $\in$ Nat]}
 \AxiomC{\textbf{2}}
 \UnaryInfC{id(0) $\in$ Id(Nat,0+0,0)[ ]}
 \AxiomC{\textbf{3}}
 \UnaryInfC{h(z+0,z,v) $\in$ Id(Nat,0+succ(z),succ(z))[z $\in$ Nat,v $\in$ Id(Nat,0+z,z)]}
 \LeftLabel{E-Nat$_{dip}$}
-\TrinaryInfC{El$_{Nat}$(x,id(0),(z,v).h(0+z,z,v))Id(Nat,0+x,x)[x $\in$ Nat]}
+\TrinaryInfC{El$_{Nat}$(y,id(0),(z,v).h$_2$(0+z,z,v))Id(Nat,0+y,y)[y $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
 \vspace{0.5cm}
@@ -745,20 +748,20 @@ Svolgo la ricorsione su x (altrimenti su y cambierei il contesto e "uscirei" dal
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type [ ]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
-\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{F-c}\RightLabel{(y $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{y $\in$ Nat cont}
 \LeftLabel{F-Nat}
-\UnaryInfC{Nat type[x $\in$ Nat]}
+\UnaryInfC{Nat type[y $\in$ Nat]}
 
 \AxiomC{\textbf{$\heartsuit$}}
-\UnaryInfC{0+x $\in$ Nat[x $\in$ Nat]}
+\UnaryInfC{0+y $\in$ Nat[y $\in$ Nat]}
 
 \AxiomC{\textbf{($\ast$)}}
-\UnaryInfC{x $\in$ Nat cont}
+\UnaryInfC{y $\in$ Nat cont}
 \LeftLabel{var}
-\UnaryInfC{x $\in$ Nat[x $\in$ Nat]}
+\UnaryInfC{y $\in$ Nat[y $\in$ Nat]}
 \LeftLabel{F-Id}
-\TrinaryInfC{Id(Nat,0+x,x)type[x $\in$ Nat]}
+\TrinaryInfC{Id(Nat,0+y,y)type[y $\in$ Nat]}
 \end{prooftree}
 
 
@@ -837,11 +840,11 @@ $\Delta$ $\equiv$ z $\in$ Nat,v $\in$ Id(Nat,0+z,z)
 \begin{adjustwidth}{-8em}{}
 \begin{prooftree}
 \AxiomC{\textbf{$\diamondsuit$}}
-\UnaryInfC{h(0+z,z,v) $\in$ Id(Nat,succ(0+z),succ(z))[$\Delta$]}
+\UnaryInfC{h$_2$(0+z,z,v) $\in$ Id(Nat,succ(0+z),succ(z))[$\Delta$]}
 \AxiomC{\textbf{3$^\backprime$}}
 \UnaryInfC{Id(Nat,succ(0+z),succ(z)) $=$ Id(Nat,0+succ(z),succ(z))[$\Delta$]}
 \LeftLabel{conv}
-\BinaryInfC{h(0+z,z,v) $\in$ Id(Nat,0+succ(z),succ(z))[$\Delta$]}
+\BinaryInfC{h$_2$(0+z,z,v) $\in$ Id(Nat,0+succ(z),succ(z))[$\Delta$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -888,7 +891,7 @@ $\Delta$ $\equiv$ z $\in$ Nat,v $\in$ Id(Nat,0+z,z)
 \UnaryInfC{Nat type[z $\in$ Nat]}
 
 \AxiomC{\textbf{$\heartsuit$}}
-\UnaryInfC{0+z $\in$ Nat[x $\in$ Nat]}
+\UnaryInfC{0+z $\in$ Nat[z $\in$ Nat]}
 
 \AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{z $\in$ Nat cont}
