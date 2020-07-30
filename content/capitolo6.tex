@@ -65,7 +65,7 @@ L'eliminatore ha anche la forma dipendente.
 \small
 \begin{prooftree}
 \AxiomC{M(z$_1$,z$_2$,z$_3$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)]}
-\AxiomC{e(x) $\in$ M(x,x,Id(x)))[$\Gamma$, x $\in$ A]}
+\AxiomC{e(x) $\in$ M(x,x,Id(x))[$\Gamma$, x $\in$ A]}
 \LeftLabel{E-Id$_{dip}$)}
 \BinaryInfC{El$_{Id}$(z$_3$, (x).e(x)) $\in$ M(z$_1$, z$_2$, z$_3$)[$\Gamma$,z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$, z$_2$)]}
 \end{prooftree}
@@ -618,7 +618,7 @@ pf$_2$ $\in$ Id(Nat,0+y,y)[y $\in$ Nat]
 \item pf$_1$ $\in$ Id(Nat,x+0,x)[x $\in$ Nat]\\\\
 \noindent
 x $+$ y ${\overset{\mathit{def}}{\equiv}}$ El$_{Nat}$(y,x,(w,z).succ(z))\\
-x + $0$ $=$ x $\in$ Nat[w $\in$ Nat] per $\beta_{1Nat}$-red\\\\
+x + $0$ $=$ x $\in$ Nat[x $\in$ Nat] per $\beta_{1Nat}$-red\\\\
 \noindent
 $\forall_{x \in Nat}$ Id(Nat,x+0,x)[ ] $\equiv$ $\lambda$x.id(x)\\
 \noindent
@@ -947,6 +947,23 @@ c $\in$ M(0)[$\Gamma$] $\equiv$ succ(0+z) $\in$ Nat[$\Delta$]
 
 \end{enumerate}
 
-%\paragraph{6)}
-%\textbf{Si dimostri che esiste un \textit{proof-term} del tipo
-%\begin{center} pf $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A,z $\in$ A,w$_1$ $\in$ Id(A,x,y),w$_2$ $\in$ Id(A,y,z)] \end{center}}
+\paragraph{6)}
+\textbf{Si dimostri che esiste un \textit{proof-term} del tipo
+\begin{center} pf $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A,z $\in$ A,w$_1$ $\in$ Id(A,x,y),w$_2$ $\in$ Id(A,y,z)]\end{center}}
+\noindent
+\textbf{Soluzione}\\\\
+\noindent
+pf $\in$ $\forall_{z \in A}$ $\forall_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)] $\equiv$ pf $\in$ {\scriptsize$\prod$}$_{z \in A}$ {\scriptsize$\prod$}$_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]\\\\
+Uso l'eliminatore dell'identit\`a dipendente (\textit{E-Id$_{dip}$}\\
+\begin{itemize}
+\item Premesse:
+\begin{itemize}
+\item M(z$_1$,z$_2$,z$_3$)type[$\Gamma,z_1 \in A,z_2 \in A,z_3 \in Id(A,z_1,z_2,z_3)]$ $\equiv$ {\scriptsize$\prod$}$_{z \in A}$ {\scriptsize$\prod$}$_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]
+\item e(x) $\in$ M(x,x,id(x))[$\Gamma,x \in A$] $\equiv$
+\end{itemize}
+\item Conclusione:
+\begin{itemize}
+\item El$_{Id}$(z$_3$, (x).e(x)) $\equiv$ El$_{Id}$(w$_1$, (x).e(x))
+\item M(z$_1$, z$_2$, z$_3$)[$\Gamma$,z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$, z$_2$)]$\equiv$ {\scriptsize$\prod$}$_{z \in A}$ {\scriptsize$\prod$}$_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]
+\end{itemize}
+\end{itemize}
