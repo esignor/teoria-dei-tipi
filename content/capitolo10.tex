@@ -92,3 +92,27 @@ Questa va ridotta in forma normale, che corrisponde a una delle due forme seguen
 \end{itemize}
 Ma \textit{G$\ddot{o}$del} ha dimostrato che n\`e $\vdash$ G$[$ $]$ e neanche $\vdash$ $\neg$G$[$ $]$ sono derivabili ($\Leftrightarrow$ non valido in teoria dei tipi.)
 
+\section{Esercizi}
+\label{sec:cap10}
+\paragraph{1}
+\textbf{Supposto A type [$\Gamma$], B type[$\Gamma$] e R(x,y) type[$\Gamma, x \in A, y \in B$}, dimostrare che il seguente principio di scelta, detto comunemente assioma di scelta
+\begin{center}$\forall_{x \in A}$ $\exists_{y \in B}$ $\rightarrow$ $\exists_{f \in A \rightarrow B}$ $\forall_{x \in A}$ $R(x,f(x)$) true[$\Gamma$]\end{center}
+\noindent
+\textbf{Soluzione}
+\\\\
+\noindent
+Devo verificare che pf $\in$ $\forall_{x \in A}$ $\exists_{y \in B}$ $\rightarrow$ $\exists_{f \in A \rightarrow B}$ $\forall_{x \in A}$ $R(x,f(x)$) [$\Gamma$]\\
+Applico la formula ($\varphi$ $\rightarrow$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\prod_{x \in \varphi^I}$ $\psi^I$ type[$\Gamma$]:\\\\
+\noindent
+$\Rightarrow$ pf $\in$ $\prod_{z \in (\prod x \in A \hspace{0.3cm} \sum y \in B R(x,y))}$ $\rightarrow$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]\\\\
+\noindent
+Ora posso applicare \textit{(I-{\scriptsize$\prod$})}:\\
+l'istanza deve rispettare le regole di introduzione del tipo prodotto dipendente, somma indiciata e del tipo funzione, dunque
+\begin{itemize}
+\item prima applicazione, considerando $\prod_{z \in (\prod x \in A \hspace{0.3cm} \sum y \in B R(x,y))}$ C(z) [$\Gamma$]: $\lambda$z.c(z)
+\item seconda applicazione considerando $\prod_{z \in (\prod x \in A \hspace{0.3cm} \sum y \in B R(x,y))}$ $\sum_{f \in A \rightarrow B}$ C(z) [$\Gamma$]: $\lambda$z.$<Ap(z,x)>$.c(z)
+\item terza applicazione, considerando $\prod_{z \in (\prod x \in A \hspace{0.3cm} \sum y \in B R(x,y))}$ $\rightarrow$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]: $\lambda$z.$<\lambda x.Ap(z,x)>$
+\item quarta applicazione, applico le proiezioni sulla somma indiciata, percui $\lambda$z.$<\pi_1 z(\lambda x.Ap(z,x)), \pi_2 z(\lambda x.Ap(z,x))>$
+\end{itemize}
+
+
