@@ -116,7 +116,7 @@ l'istanza deve rispettare le regole di introduzione del tipo prodotto dipendente
 \item quarta applicazione, considerando $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ $\rightarrow$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]: $\lambda$z.$<\lambda$ $x.\pi_1$($Ap(z,x)$), $\lambda$ $x.\pi_2$($Ap(z,x)$)$>$
 \end{itemize}
 
-
+$\theta$ $=$ $\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$
 \begin{prooftree}
 \scriptsize
 \AxiomC{\textbf{1}}
@@ -125,17 +125,18 @@ l'istanza deve rispettare le regole di introduzione del tipo prodotto dipendente
 
 \AxiomC{\textbf{3}}
 
-\TrinaryInfC{$<\lambda$ $x.\pi_1$($Ap(z,x)$), $\lambda$ $x.\pi_2$($Ap(z,x)$)$>$ $\in$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)]$}
+\TrinaryInfC{$<\lambda$ $x.\pi_1$($Ap(z,x)$), $\lambda$ $x.\pi_2$($Ap(z,x)$)$>$ $\in$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\theta$]}
 \LeftLabel{I-{\scriptsize $\prod$}}
 \UnaryInfC{$\lambda$z.$<\lambda$ $x.\pi_1$($Ap(z,x)$), $\lambda$ $x.\pi_2$($Ap(z,x)$)$>$ $\in$ $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]}
 \end{prooftree}
+
 
 \normalsize
 \noindent
 \vspace{0.5cm}
 \textbf{1}
 \scriptsize
-\begin{adjustwidth}{-14em}{}
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type[$\Gamma$]}
@@ -145,35 +146,52 @@ l'istanza deve rispettare le regole di introduzione del tipo prodotto dipendente
 \LeftLabel{{\scriptsize$\sum$}-F}
 \UnaryInfC{ $\sum_{y \in B} R(x,y)$ type[$\Gamma$,z $\in$ $\prod_{x \in A}$]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ A) $\in$ ($\Gamma$,z $\in$ $\prod_{x \in A}$)}
-\UnaryInfC{$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$ cont}
+\UnaryInfC{$\theta$ cont}
 \LeftLabel{ind-ty}
-\BinaryInfC{A type[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$)]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ A) $\in$ ($\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$)}
-\UnaryInfC{$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A cont}
+\BinaryInfC{A type[$\theta$)]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ A) $\in$ ($\theta$)}
+\UnaryInfC{$\theta$,x $\in$ A cont}
 \LeftLabel{var}
-\UnaryInfC{z $\in$ $\prod_{x \in A}$ $\sum_{y \in B}R(x,y)$[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A]}
+\UnaryInfC{z $\in$ $\prod_{x \in A}$ $\sum_{y \in B}R(x,y)$[$\theta$,x $\in$ A]}
 \AxiomC{(\textbf{$\ast$})}
-\UnaryInfC{$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A cont}
+\UnaryInfC{$\theta$,x $\in$ A cont}
 \LeftLabel{var}
-\UnaryInfC{$x \in A $[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A]}
+\UnaryInfC{$x \in A $[$\theta$,x $\in$ A]}
 \LeftLabel{E-{\scriptsize$\prod$}}
-\BinaryInfC{$Ap(z,x)$ $\in$ $\sum_{y \in B}R(x,y)$[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A]}
+\BinaryInfC{$Ap(z,x)$ $\in$ $\sum_{y \in B}R(x,y)$[$\theta$,x $\in$ A]}
 \LeftLabel{PJ$_1$-x}
-\UnaryInfC{$\pi_1$($Ap(z,x)$) $\in$ B[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A]}
+\UnaryInfC{$\pi_1$($Ap(z,x)$) $\in$ B[$\theta$,x $\in$ A]}
 \LeftLabel{I-$\rightarrow$}
-\UnaryInfC{$\lambda$ $x.\pi_1$($Ap(z,x)$) $\in$ A $\rightarrow$ B[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$]}
+\UnaryInfC{$\lambda$ $x.\pi_1$($Ap(z,x)$) $\in$ A $\rightarrow$ B[$\theta$]}
 \end{prooftree}
 \end{adjustwidth}
 
 \normalsize
+\textbf{2}\\\\
+\noindent
+R(x,Ap($\lambda$ $x.\pi_1$($Ap(z,x)$),x)) $\Rightarrow_1$ R(x, $\pi_1$($Ap(z,x)$) con \textit{$\beta_\rightarrow-red$}
 \noindent
 \vspace{0.5cm}
-\textbf{2}
 \scriptsize
+\begin{adjustwidth}{-10em}{}
 \begin{prooftree}
+\AxiomC{\textbf{$\ast$}}
+\UnaryInfC{z $\in$ $\prod_{x \in A}$ $\sum_{y \in B}$ R(x,y)[$\theta,x \in A]$}
+\AxiomC{\textbf{$\ast$}}
+\UnaryInfC{x $\in$ A [$\theta,x \in A]$}
+\LeftLabel{E-{\scriptsize $\prod$}}
+\BinaryInfC{$Ap(z,x)$ $\in$ $\sum_{y \in B}$ R(x,y)[$\theta,x \in A]$}
+\LeftLabel{PJ$_1$-x}
+\UnaryInfC{$\pi_2$($Ap(z,x)$) $\in$ R(x, $\pi_1$($Ap(z,x)$)[$\theta,x \in A]$}
 \AxiomC{}
-\UnaryInfC{$\lambda$ $x.\pi_2$($Ap(z,x)$) $\in$ $\prod_{x \in A}$ R(x,Ap($\lambda$ $x.\pi_1$($Ap(z,x)$),x))[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)]$}
+\UnaryInfC{ R(x, $\pi_1$($Ap(z,x)$) $=$ R(x,Ap($\lambda$ $x.\pi_1$($Ap(z,x)$),x))[$\theta,x \in A]$}
+
+\LeftLabel{conv}
+\BinaryInfC{$\pi_2$($Ap(z,x)$) $\in$ R(x,Ap($\lambda$ $x.\pi_1$($Ap(z,x)$),x))[$\theta,x \in A]$}
+\LeftLabel{I-{\scriptsize $\prod$}}
+\UnaryInfC{$\lambda$ $x.\pi_2$($Ap(z,x)$) $\in$ $\prod_{x \in A}$ R(x,Ap($\lambda$ $x.\pi_1$($Ap(z,x)$),x))[$\theta]$}
 \end{prooftree}
+\end{adjustwidth}
 
 
 \normalsize
@@ -183,7 +201,13 @@ l'istanza deve rispettare le regole di introduzione del tipo prodotto dipendente
 \scriptsize
 \begin{prooftree}
 \AxiomC{}
-\UnaryInfC{$\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)]$}
+\UnaryInfC{A type [$\theta],f \in A \rightarrow B$]}
+\AxiomC{}
+\UnaryInfC{$R(x,f(x))$ [$\theta],f \in A \rightarrow B,x \in A]$}
+\LeftLabel{F-{\scriptsize $\prod$}}
+\BinaryInfC{$\prod_{x \in A}$ $R(x,f(x))$ [$\theta,f \in A \rightarrow B$]}
+\LeftLabel{F-{\scriptsize $\sum$}}
+\UnaryInfC{$\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\theta]$}
 \end{prooftree}
 \noindent
 \normalsize
