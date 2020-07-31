@@ -11,7 +11,7 @@ Di seguito do la definizione per induzione sulle formule. In queste il contesto 
 (\textit{tt})$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ N$_1$ (tipo singoletto) type[$\Gamma$]\\
 ($\varphi$ $\vee$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $+$ $\psi^I$ type[$\Gamma$]\\
 ($\varphi$ $\&$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\times$ $\psi^I$ type[$\Gamma$]\\
-($\varphi$ $\rightarrow$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\prod_{x \in \varphi^I}$ $\psi^I$ type[$\Gamma$]\\
+($\varphi$ $\rightarrow$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\prod_{z \in \varphi^I}$ $\psi^I$ type[$\Gamma$]\\
 ($\neg$ $\varphi$)$^I$ ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\rightarrow$ $\bot^I$ ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\rightarrow$ N$_0$ type[$\Gamma$]\\
 ($\forall_{x \in A}$ $\varphi$(x)) ${\overset{\mathit{def}}{\equiv}}$ $\prod\limits_{x \in A}$($\varphi$(x))$^I$[$\Gamma$, x $\in$ A] type[$\Gamma$]\\
 (t $\equiv$ s)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ Id(A,t,s) type[$\Gamma$] $\Rightarrow$ \textit{unico predicato atomico}\\
@@ -94,25 +94,98 @@ Ma \textit{G$\ddot{o}$del} ha dimostrato che n\`e $\vdash$ G$[$ $]$ e neanche $\
 
 \section{Esercizi}
 \label{sec:cap10}
-\paragraph{1}
-\textbf{Supposto A type [$\Gamma$], B type[$\Gamma$] e R(x,y) type[$\Gamma, x \in A, y \in B$}, dimostrare che il seguente principio di scelta, detto comunemente assioma di scelta
+\paragraph{1)}
+\textbf{Supposto A type [$\Gamma$], B type[$\Gamma$] e R(x,y) type[$\Gamma, x \in A, y \in B$, dimostrare che il seguente principio di scelta, detto comunemente assioma di scelta
 \begin{center}$\forall_{x \in A}$ $\exists_{y \in B}$ $\rightarrow$ $\exists_{f \in A \rightarrow B}$ $\forall_{x \in A}$ $R(x,f(x)$) true[$\Gamma$]\end{center}
+}
 \noindent
 \textbf{Soluzione}
 \\\\
 \noindent
-Devo verificare che pf $\in$ $\forall_{x \in A}$ $\exists_{y \in B}$ $\rightarrow$ $\exists_{f \in A \rightarrow B}$ $\forall_{x \in A}$ $R(x,f(x)$) [$\Gamma$]\\
-Applico la formula ($\varphi$ $\rightarrow$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\prod_{x \in \varphi^I}$ $\psi^I$ type[$\Gamma$]:\\\\
+Devo verificare che pf $\in$ $\forall_{x \in A}$ $\exists_{y \in B}$R(x,y) $\rightarrow$ $\exists_{f \in A \rightarrow B}$ $\forall_{x \in A}$ $R(x,f(x)$) [$\Gamma$] sia derivabile in teoria dei tipi.\\
+Applico la formula ($\varphi$ $\rightarrow$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\prod_{z \in \varphi^I}$ $\psi^I$ type[$\Gamma$]:\\\\
 \noindent
-$\Rightarrow$ pf $\in$ $\prod_{z \in (\prod x \in A \hspace{0.3cm} \sum y \in B R(x,y))}$ $\rightarrow$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]\\\\
+$\Rightarrow$ pf $\in$ $\prod_{z \in (\prod_{x \in A} \hspace{0.3cm} \sum_{y \in B} R(x,y))}$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]\\\\
 \noindent
 Ora posso applicare \textit{(I-{\scriptsize$\prod$})}:\\
 l'istanza deve rispettare le regole di introduzione del tipo prodotto dipendente, somma indiciata e del tipo funzione, dunque
 \begin{itemize}
-\item prima applicazione, considerando $\prod_{z \in (\prod x \in A \hspace{0.3cm} \sum y \in B R(x,y))}$ C(z) [$\Gamma$]: $\lambda$z.c(z)
-\item seconda applicazione considerando $\prod_{z \in (\prod x \in A \hspace{0.3cm} \sum y \in B R(x,y))}$ $\sum_{f \in A \rightarrow B}$ C(z) [$\Gamma$]: $\lambda$z.$<Ap(z,x)>$.c(z)
-\item terza applicazione, considerando $\prod_{z \in (\prod x \in A \hspace{0.3cm} \sum y \in B R(x,y))}$ $\rightarrow$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]: $\lambda$z.$<\lambda x.Ap(z,x)>$
-\item quarta applicazione, applico le proiezioni sulla somma indiciata, percui $\lambda$z.$<\pi_1 z(\lambda x.Ap(z,x)), \pi_2 z(\lambda x.Ap(z,x))>$
+\item prima applicazione, considerando $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ C(z) [$\Gamma$]: $\lambda$z.c(z)
+\item seconda applicazione considerando $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ $\sum_{f \in A \rightarrow B}$ C(f) [$\Gamma$]: $\lambda$z.$<\pi_1z,\pi_2z>$.c(f), perch\`e per ogni z, z $\in$ f e z $\in$ C
+\item terza applicazione, considerando $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ $\sum_{f \in A \rightarrow B}$ C(f) [$\Gamma$] devo individuare un elemento che appartenga a A: $\lambda$z.$<\pi_1$($Ap(z,x)$), $\pi_2$($Ap(z,x)$)$>$.c(f)
+\item quarta applicazione, considerando $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ $\rightarrow$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]: $\lambda$z.$<\lambda$ $x.\pi_1$($Ap(z,x)$), $\lambda$ $x.\pi_2$($Ap(z,x)$)$>$
 \end{itemize}
 
 
+\begin{prooftree}
+\scriptsize
+\AxiomC{\textbf{1}}
+
+\AxiomC{\textbf{2}}
+
+\AxiomC{\textbf{3}}
+
+\TrinaryInfC{$<\lambda$ $x.\pi_1$($Ap(z,x)$), $\lambda$ $x.\pi_2$($Ap(z,x)$)$>$ $\in$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)]$}
+\LeftLabel{I-{\scriptsize $\prod$}}
+\UnaryInfC{$\lambda$z.$<\lambda$ $x.\pi_1$($Ap(z,x)$), $\lambda$ $x.\pi_2$($Ap(z,x)$)$>$ $\in$ $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]}
+\end{prooftree}
+
+\normalsize
+\noindent
+\vspace{0.5cm}
+\textbf{1}
+\scriptsize
+\begin{adjustwidth}{-14em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{A type[$\Gamma$]}
+
+\AxiomC{\textbf{$\bigstar$}}
+\UnaryInfC{R(x,y) type[$\Gamma$,z $\in$ $\prod_{x \in A}$]}
+\LeftLabel{{\scriptsize$\sum$}-F}
+\UnaryInfC{ $\sum_{y \in B} R(x,y)$ type[$\Gamma$,z $\in$ $\prod_{x \in A}$]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ A) $\in$ ($\Gamma$,z $\in$ $\prod_{x \in A}$)}
+\UnaryInfC{$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$ cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{A type[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$)]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ A) $\in$ ($\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$)}
+\UnaryInfC{$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A cont}
+\LeftLabel{var}
+\UnaryInfC{z $\in$ $\prod_{x \in A}$ $\sum_{y \in B}R(x,y)$[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A]}
+\AxiomC{(\textbf{$\ast$})}
+\UnaryInfC{$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A cont}
+\LeftLabel{var}
+\UnaryInfC{$x \in A $[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A]}
+\LeftLabel{E-{\scriptsize$\prod$}}
+\BinaryInfC{$Ap(z,x)$ $\in$ $\sum_{y \in B}R(x,y)$[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A]}
+\LeftLabel{PJ$_1$-x}
+\UnaryInfC{$\pi_1$($Ap(z,x)$) $\in$ B[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$,x $\in$ A]}
+\LeftLabel{I-$\rightarrow$}
+\UnaryInfC{$\lambda$ $x.\pi_1$($Ap(z,x)$) $\in$ A $\rightarrow$ B[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\normalsize
+\noindent
+\vspace{0.5cm}
+\textbf{2}
+\scriptsize
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\lambda$ $x.\pi_2$($Ap(z,x)$) $\in$ $\prod_{x \in A}$ R(x,Ap($\lambda$ $x.\pi_1$($Ap(z,x)$),x))[$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)]$}
+\end{prooftree}
+
+
+\normalsize
+\noindent
+\vspace{0.5cm}
+\textbf{3}
+\scriptsize
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)]$}
+\end{prooftree}
+\noindent
+\normalsize
+\noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
+\textbf{$\bigstar$} derivazioni gi\`a risolte, o simili, negli esercizi precedenti; che prevedono una combinazioni di istruzioni di indebolimento/assunzione di variabili/formazione di contesto per verificare l'assioma [ ] cont.\\
