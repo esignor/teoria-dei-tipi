@@ -126,7 +126,9 @@ $\equiv$ $\prod_{w \in(\varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \i
 
 $\Rightarrow$ Devo verificare che pf $\in$ $\prod_{w \in(\varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} (\prod_ {y \in \varphi(x)} \varphi(succ(x))))}$ $\prod_{z \in Nat}$($\varphi(z)$)[$\Gamma$] sia derivabile in teoria dei tipi.\\\\
 \noindent
-$\theta$ $=$ $\Gamma$,w $\in \varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} \prod_ {y \in \varphi(x)} \varphi(succ(x)),z \in Nat$
+$\theta$ $=$ $\Gamma$,w $\in \varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} \prod_ {y \in \varphi(x)} \varphi(succ(x)),z \in Nat$\\\\
+\noindent
+Per $z \in Nat$ $\varphi(z) \rightarrow \varphi(z)$ $\in$ Nat. Allora $\forall_{z \in Nat}$ $\varphi(z)$ $\equiv$ Nat
 \scriptsize
 \begin{adjustwidth}{-16em}{}
 \begin{prooftree}
@@ -164,17 +166,37 @@ Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'intern
 $\equiv$ $\prod_{z \in \varphi(\ast)}$ $\forall_{x \in N_1}$ $\varphi$(x) true[$\Gamma$]\\
 $\equiv$ $\prod_{z \in \varphi(\ast)}$ $\prod_{x \in N_1}$ $\varphi$(x) true[$\Gamma$]\\
 
-$\Rightarrow$ Devo verificare che pf $\in$ $\prod_{z \in \varphi(\ast)}$ $\prod_{x \in N_1}$ $\varphi$(x)[$\Gamma$]
+$\Rightarrow$ Devo verificare che pf $\in$ $\prod_{z \in \varphi(\ast)}$ $\prod_{x \in N_1}$ $\varphi$(x)[$\Gamma$]\\\\
+\noindent
+Per x$ \in N_1$ $\varphi(x) \rightarrow \varphi(x)$ $\in$ N$_1$. Allora $\forall_{x \in N_1}$ $\varphi(z)$ $\equiv$ N$_1$
 
+\begin{adjustwidth}{-5em}{}
 \begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\varphi(\ast)$ type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{($z \in \varphi(\ast)$) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$,$z \in \varphi(\ast)$ cont}
+
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{$N_1$ type[$\Gamma$]}
+\LeftLabel{ind-ty}
+\BinaryInfC{$N_1$ type[$\Gamma$,$z \in \varphi(\ast)$]}
+\LeftLabel{F-c}\RightLabel{($x \in N_1$) $\notin$ ($\Gamma$,$z \in \varphi(\ast)$)}
+\UnaryInfC{$\Gamma$,$z \in \varphi(\ast)$,$x \in N_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ N$_1$[$\Gamma$,$z \in \varphi(\ast)$,$x \in N_1$]}
 
 \AxiomC{}
-\UnaryInfC{x $\in$ $\varphi$(x)[$\Gamma$,$z \in \varphi(\ast)$,$x \in N_1$]}
+\UnaryInfC{N$_1$ $=$ $\varphi$(x)[$\Gamma$,$z \in \varphi(\ast)$,$x \in N_1$]}
+\LeftLabel{conv}
+\BinaryInfC{x $\in$ $\varphi$(x)[$\Gamma$,$z \in \varphi(\ast)$,$x \in N_1$]}
 \LeftLabel{I-{\scriptsize}$\prod$}
 \UnaryInfC{$\lambda$x.x $\in$ $\prod_{x \in N_1}$ $\varphi$(x)[$\Gamma$,$z \in \varphi(\ast)$]}
 \LeftLabel{I-{\scriptsize}$\prod$}
 \UnaryInfC{$\lambda$z.$\lambda$x.x   $\in$ $\prod_{z \in \varphi(\ast)}$ $\prod_{x \in N_1}$ $\varphi$(x)[$\Gamma$]}
 \end{prooftree}
+\end{adjustwidth}
 
 
 
