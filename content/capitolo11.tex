@@ -208,7 +208,7 @@ Per x$ \in N_1$ $\varphi(x) \rightarrow \varphi(x)$ $\in$ N$_1$. Allora $\forall
 \item \begin{center}Ind)$\forall_{x \in A}$ $\varphi(x,x,id(x))$ $\rightarrow$ $\forall_{z_1 \in A}$ $\forall_{z_2 \in A}$ $\forall_{z_3 \in Id(z_1,z_2,z_3)}$ $\varphi(z_1,z_2,z_3)$ true[$\Gamma$]\end{center}
 \end{itemize}
 
-\paragraph{2}
+\paragraph{2)}
 \textbf{Mostrare che per ogni tipo B $+$ C esiste un \textit{proof-term} del tipo\\
 \begin{center}Id(B $+$ C,z,z$^\backprime$) $\leftrightarrow$ \\ $\exists_{x \in B}$ $\exists_{x\backprime \in B}$ Id(B $+$ C,z,inl(x)) $\wedge$ Id(B $+$ C,z$\backprime$,inl(x$^\backprime$)) $\wedge$ Id(B,x,x$^\backprime$)\\
 $\vee$\\
@@ -217,5 +217,43 @@ $\exists_{y \in C}$ $\exists_{y^\backprime \in C}$ Id(B $+$ C,z,inr(y)) $\wedge$
 \noindent
 \textbf{Soluzione}\\\\
 \noindent
+Definisco:
+\begin{enumerate}
+\item $\phi$ $\equiv$ Id(B $+$ C,z,z$^\backprime$)
+\item $\psi$ $\equiv$ $\exists_{x \in B}$ $\exists_{x\backprime \in B}$ Id(B $+$ C,z,inl(x)) $\wedge$ Id(B $+$ C,z$\backprime$,inl(x$^\backprime$)) $\wedge$ Id(B,x,x$^\backprime$)\\
+$\vee$\\
+$\exists_{y \in C}$ $\exists_{y^\backprime \in C}$ Id(B $+$ C,z,inr(y)) $\wedge$ Id(B $+$ C,z$^\backprime$,inr(y$^\backprime$)) $\wedge$ Id(B,y,y$^\backprime$)) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C] $\equiv$ $\sum_{x \in B}$ $\sum_{x\backprime \in B}$ (Id(B $+$ C,z,inl(x)) $\times$ Id(B $+$ C,z$\backprime$,inl(x$^\backprime$)) $\times$ Id(B,x,x$^\backprime$))\\
+$+$\\
+$\sum_{y \in C}$ $\sum_{y^\backprime \in C}$ (Id(B $+$ C,z,inr(y)) $\times$ Id(B $+$ C,z$^\backprime$,inr(y$^\backprime$)) $\times$ Id(B,y,y$^\backprime$))\\
+type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]
+\item Dunque in
+\begin{itemize}
+\item teoria dei tipi
+\begin{center}pf $\in$ ($\phi \rightarrow \psi$) $\&$ ($\psi \rightarrow \phi$) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]\end{center}
+\item logica predicativa con l'uguaglianza
+\begin{center}pf $\in$ ($\prod_{w \in \phi} \psi$) $\times$ ($\prod_{w \in \psi} \phi$) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]\end{center}
+\end{itemize}
+\end{enumerate}
+\small
+
+\begin{adjustwidth}{-7em}{}
+\begin{prooftree}
+
+
+\AxiomC{}
+\UnaryInfC{$\pi_1$w $\in$ $\psi$ type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C,w $\in$ $\phi$]}
+\LeftLabel{I-{\scriptsize$\prod$}}
+\UnaryInfC{$\lambda$w.$\pi_1$w $\in$ $\prod_{w \in \phi} \psi$ type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]}
+
+\AxiomC{}
+
+\UnaryInfC{$\lambda$w.$\pi_2$w $\in$ ($\prod_{w \in \psi} \phi$) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C}
+
+\LeftLabel{I-x}
+\BinaryInfC{$<\lambda w.\pi_1$w,$\lambda$w.$\pi_2$w$>$ $\in$ ($\prod_{w \in \phi} \psi$) $\times$ ($\prod_{w \in \psi} \phi$) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]}
+\end{prooftree}
+\end{adjustwidth}
+
+\normalsize
 
 
