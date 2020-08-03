@@ -238,22 +238,61 @@ type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]
 
 \begin{adjustwidth}{-7em}{}
 \begin{prooftree}
-
-
 \AxiomC{}
-\UnaryInfC{$\pi_1$w $\in$ $\psi$ type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C,w $\in$ $\phi$]}
-\LeftLabel{I-{\scriptsize$\prod$}}
-\UnaryInfC{$\lambda$w.$\pi_1$w $\in$ $\prod_{w \in \phi} \psi$ type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]}
-
-\AxiomC{}
-
-\UnaryInfC{$\lambda$w.$\pi_2$w $\in$ ($\prod_{w \in \psi} \phi$) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C}
-
-\LeftLabel{I-x}
-\BinaryInfC{$<\lambda w.\pi_1$w,$\lambda$w.$\pi_2$w$>$ $\in$ ($\prod_{w \in \phi} \psi$) $\times$ ($\prod_{w \in \psi} \phi$) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]}
+\UnaryInfC{$<pf_1,pf_2>$ $\in$ ($\prod_{w \in \phi} \psi$) $\times$ ($\prod_{w \in \psi} \phi$) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]}
 \end{prooftree}
 \end{adjustwidth}
 
 \normalsize
+\noindent
+\begin{itemize}
+\item Devo individuare $pf_1$ tale che $\prod_{w \in Id(B + C,z,z^\backprime)}$ $\psi$ type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]
+\item Devo individuare $pf_2$ tale che $\prod_{w \in \psi}$ $\phi$ type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]] 
+\end{itemize}
+
+\noindent
+Devo indivuduare un pf che appartenga all'Id, dunque uso la regola dell'eliminatore dipendente:\\
+pf$_1$ $\equiv$ $\lambda$w.pf$_1$(w) $\equiv$  $\lambda$w.El$_{Id}$(w,(t).El$_+$(t,e$_B$,e$_C$))\\\\\\
+\noindent
+e$_B$???\\
+e$_C$???\\\\\\
+\noindent
+pf$_2$ $\equiv$ $\lambda$w.pf$_2$(w) \\
+?\\
 
 
+\paragraph{3)}
+\textbf{Si dimostri che esiste un \textit{proof-term} del tipo
+\begin{center} pf $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A,z $\in$ A,w$_1$ $\in$ Id(A,x,y),w$_2$ $\in$ Id(A,y,z)]\end{center}}
+\noindent
+\textbf{Soluzione}\\\\
+\noindent
+Utilizzo {\scriptsize $\prod$} per togliere le assunzioni in un contesto (\S \ref{sec:prorieta-per-i-tipi-induttivi}):\\
+$\Rightarrow$ $\lambda w_2.w_2$ $\in$ $\prod_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,z $\in$ A,w$_1$ $\in$ Id(A,x,y)]\\
+$\Rightarrow$ $\lambda z.\lambda w_2.w_2$ $\in$ $\prod_{z \in A}$ $\prod_{w_2 \in Id(A,y,z)}$ $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]\\
+Applico \textit(E-Id).
+
+\begin{itemize}
+\item Premesse:
+\begin{itemize}
+\item M(z$_1$,z$_2$,z$_3$) $\equiv$ M(x,y,w$_1$)
+\item M(z$_1$,z$_2$,z$_3$)type[$\Gamma,z_1 \in A,z_2 \in A,z_3 \in Id(A,z_1,z_2)]$ $\equiv$ {\scriptsize$\prod$}$_{z \in A}$ {\scriptsize$\prod$}$_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]
+\item e(x) $\in$ M(x,x,id(x))[$\Gamma,x \in A$] $\equiv$ $\lambda z.\lambda w_2.w_2$ $\in$ ${\scriptsize\prod}_{z \in A}$ ${\scriptsize\prod}_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A]
+\end{itemize}
+\item Conclusione:
+\begin{itemize}
+\item El$_{Id}$(z$_3$, (x).e(x)) $\equiv$ El$_{Id}$(w$_1$, (x).$\lambda z.\lambda w_2.w_2$)
+\item M(z$_1$, z$_2$, z$_3$)[$\Gamma$,z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$, z$_2$)]$\equiv$ {\scriptsize$\prod$}$_{z \in A}$ {\scriptsize$\prod$}$_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]
+\end{itemize}
+\end{itemize}
+
+\begin{adjustwidth}{-13em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{{\scriptsize$\prod$}$_{z \in A}$ {\scriptsize$\prod$}$_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]}
+\AxiomC{}
+\UnaryInfC{$\lambda z.\lambda w_2.w_2$ $\in$ ${\scriptsize\prod}_{z \in A}$ ${\scriptsize\prod}_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A]}
+\LeftLabel{E-Id}
+\BinaryInfC{El$_{Id}$(w$_1$, (x).$\lambda z.\lambda w_2.w_2$) $\in$ {\scriptsize$\prod$}$_{z \in A}$ {\scriptsize$\prod$}$_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]}
+\end{prooftree}
+\end{adjustwidth}
