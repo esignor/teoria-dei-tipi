@@ -41,7 +41,7 @@ Di seguito illustro le principali regole di contesto comuni a tutte le teorie de
 L'uguaglianza, in una teoria dei tipi, consiste in una relazione di equivalenza sia fra tipi che fra termini. Sono perci\`o valide le seguenti regole di uguaglianza tra tipi:
 \[ ref) \quad \frac{A\hspace{0.1cm}type[\Gamma]}{A=A\hspace{0.1cm}type[\Gamma]} \qquad sym) \quad \frac{A=B\hspace{0.1cm}type[\Gamma]}{B=A\hspace{0.1cm}type[\Gamma]} \]
 \[ tra) \quad \frac{A=B\hspace{0.1cm}type[\Gamma] \qquad B=C\hspace{0.1cm}type[\Gamma]}{A=C\hspace{0.1cm}type[\Gamma]} \]
-E allo stesso modo anche le regole di uguaglianza definizonale/computazionale tra termini:
+E allo stesso modo anche le regole di uguaglianza definizionale/computazionale tra termini:
 \[ ref) \quad \frac{a \in A\hspace{0.1cm}[\Gamma]}{a=a \in A\hspace{0.1cm}[\Gamma]} \qquad sym) \quad \frac{a=b\in A \hspace{0.1cm}[\Gamma]}{b=a \in A\hspace{0.1cm}[\Gamma]} \]
 \[ tra) \quad \frac{a=b \in A\hspace{0.1cm}[\Gamma] \qquad b=c \in A\hspace{0.1cm}[\Gamma]}{a=c \in A\hspace{0.1cm}[\Gamma]} \]
 \subsection{Regole di conversione dell'uguaglianza per tipi uguali}
@@ -126,7 +126,7 @@ Questi presenta una dipendenza continua, esemplificata nel seguente giudizio
 Inoltre si parla di contesti rigidi, ovvero senza possibilit\`a di scambio. Come appare dall'esempio sotto. \\
 $[x \in Nat, y \in Nat, z \in Mat(x,y)]$ cont  $\Rightarrow$ \textbf{\`e derivabile}\\
 $[y \in Nat, x \in Nat, z \in Mat(x,y)]$ cont $\Rightarrow$ \textbf{\`e derivabile}\\
-$[y \in Nat, z \in Mat(x,y), x \in Nat]$ $\Rightarrow$ \textbf{non \`e un contesto}. \\\\ Percui non esiste lo scambio arbitrario, si deve porre attenzione alle dipendenza delle assunzioni, che provoca una sostituzione rigida.
+$[y \in Nat, z \in Mat(x,y), x \in Nat]$ $\Rightarrow$ \textbf{non \`e un contesto}. \\\\ Per cui non esiste lo scambio arbitrario, si deve porre attenzione alle dipendenza delle assunzioni, che provoca una sostituzione rigida.
 \subsection{Esempi di applicazione}
 \label{subsec:esempi-di-applicazione}
 Attenzione all'ordine di sostituzione si deve partire sempre da quello con meno dipendenze.
@@ -143,7 +143,7 @@ Attenzione all'ordine di sostituzione si deve partire sempre da quello con meno 
 \AxiomC{A(x,y) type[x $\in$ C, y $\in$ B(x)]}
 \TrinaryInfC{a(c,b) $\in$ A(c,b) $[\Gamma]$}
 \end{prooftree}
-Se si ha un tipo puo' venire usato il giudizio di uguaglianza tra termini e la sostituzione.
+Se si ha un tipo pu\`o venire usato il giudizio di uguaglianza tra termini e la sostituzione.
 \begin{prooftree}
 \AxiomC{A(x) type[$\Gamma$, x $\in$ C]}
 \AxiomC{c $=$ e $\in$ C[$\Gamma$]}
@@ -269,7 +269,7 @@ Inoltre vale anche il viceversa, da \textit{E-S} si riesce a ottenere \textit{E-
 L'eliminatore El$_{N1}$(z, c) rappresenta una funzione definita per ricorsione su N$_1$, difatti in \textit{C-S} si ha che El$_{N1}$(z, c)[$\frac{z}{\ast}$] = El$_{N1}$($\ast$, c).\\
 Supposto che se $\ast$ $\in$ N$_1$[$\Gamma$] in \textit{E-S}, allora per la singola conversione vale che El$_{N1}$ = c $\in$ M($\ast$).
 Dunque El$_{N1}$(z, c) rappresenta un programma funzionale per ricorsione. Questi \`e definito su N$_1$, a partire da c $\in$ M($\ast$), perci\`o El$_{N1}$($\ast$, c) = c.\\
-La regola di eliminazione permette di definire un programma funzionale da N$_1$ a M(z) esclusivamente con c $\in$ M($\ast$), ovvero definendo $\ast$ come \textbf{elemento canonico}. Inoltre non svolge solo il compito di ricorsione, ma anche d'nduzione.
+La regola di eliminazione permette di definire un programma funzionale da N$_1$ a M(z) esclusivamente con c $\in$ M($\ast$), ovvero definendo $\ast$ come \textbf{elemento canonico}. Inoltre non svolge solo il compito di ricorsione, ma anche d'induzione.
 \\\\
 In \begin{prooftree}
 \AxiomC{t $\in$ N$_1$[$\Gamma$]}
@@ -282,7 +282,7 @@ No, non \`e vera. La regola di eliminazione consente di dare un valore al termin
 \label{sec:sanitary-checks}
 Le \textit{Sanitary checks} sono regole strutturali utili per abbreviare le derivazioni. Queste sono derivabili solo se la teoria dei tipi \`e corretta.\\\\
 \noindent
-Assumento \textit{T}, come una teoria dei tipi di riferimento, le \textit{sanitary checks} sono le seguenti:
+Assumendo \textit{T}, come una teoria dei tipi di riferimento, le \textit{sanitary checks} sono le seguenti:
 \begin{prooftree}
 \AxiomC{[$\Gamma$, $\Delta$] cont}
 \UnaryInfC{$\Gamma$ cont}
@@ -332,7 +332,7 @@ Identificate con il preambolo F-\textit{T}, con \textit{T} teoria dei tipi in es
 \UnaryInfC{\textit{T} type[$\Gamma$]}
 \DisplayProof
 \item \textbf{Regole di Introduzione}
-identificate con il preambolo I-\textit{T}, con \textit{T} teoria dei tipi in esame e t$\backprime$ elemento canonico.\\Tali regole consistono nella forma introduttiva degli elementi canonici di \textit{T} e rispettono la forma
+identificate con il preambolo I-\textit{T}, con \textit{T} teoria dei tipi in esame e t$\backprime$ elemento canonico.\\Tali regole consistono nella forma introduttiva degli elementi canonici di \textit{T} e rispettano la forma
 \AxiomC{[$\Gamma$] cont}
 \UnaryInfC{t$\backprime$ $\in$ \textit{T}[$\Gamma$]}
 \DisplayProof
@@ -345,7 +345,7 @@ Tali regole sono del tipo k e rispettano la forma
 \TrinaryInfC{$El_{\textit{T}}$(t, c) $\in$ M(t)[$\Gamma$]}
 \DisplayProof
 \item \textbf{Regole di Conversione}
-identificate con il preambolo C-\textit{T}, con \textit{T} teoria dei tipi in esame e t$\backprime$ elemento canonico.\\, che stabilscono che gli eliminatori in (3) sono stabiliti per ricorsione a partire dalle ipotesi.
+identificate con il preambolo C-\textit{T}, con \textit{T} teoria dei tipi in esame e t$\backprime$ elemento canonico.\\, che stabiliscono che gli eliminatori in (3) sono stabiliti per ricorsione a partire dalle ipotesi.
 Tali regole sono del tipo k e rispettano la forma
 \AxiomC{M(z) type[$\Gamma$, z $\in$ \textit{T}]}
 \AxiomC{c $\in$ M(t$\backprime$)[$\Gamma$]}
@@ -370,14 +370,14 @@ Le regole (5) sono implicite in \textit{T}, ma non ovvie dal punto di vista comp
 \textit{$P_1$, $P_2$: Nat$^m$  $\rightarrow$ Nat \quad allora \quad
 $P_1$ = $P_2$ sse $\forall$ n$_1$...n$_m$ e P$_1$(n$_1$...n$_m$) = P$_2$(n$_1$...n$_m$)} non \`e decidibile.\\\\
 Ovvero le funzioni ricorsive per P$_1$ e P$_2$ non sono decidibili. A seguito di ci\`o non esiste un algoritmo in grado di decidere se due programmi P$_1$ e P$_2$ sono estensionalmente (proposizionalmente) uguali o meno.\\\\
-Risulta per\`o vero il concetto di \textbf{ugualianza definizionale}/computazionale (in teoria dei tipi intensionali). Dati a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] derivabili, nella nostra teoria \textit{T} di \textit{Martin-L$\ddot{o}$f}, esiste un algoritmo \textit{H} (a $\in$ A[$\Gamma$], b $\in$ A[$\Gamma$]) =
+Risulta per\`o vero il concetto di \textbf{uguaglianza definizionale}/computazionale (in teoria dei tipi intensionali). Dati a $\in$ A[$\Gamma$] e b $\in$ A[$\Gamma$] derivabili, nella nostra teoria \textit{T} di \textit{Martin-L$\ddot{o}$f}, esiste un algoritmo \textit{H} (a $\in$ A[$\Gamma$], b $\in$ A[$\Gamma$]) =
 $
 \begin{cases}
 \text{\textbf{sì} sse a = b} \in A[\Gamma]  \text{ è derivabile in \textit{T}} \\
 \text{\textbf{no} sse a = b} \in A[\Gamma] \text{ non ha derivazione in \textit{T}}
 \end{cases}
 $
-Il giudizio a $=$ b $\in$ A[$\Gamma$] \`e decidibile, anche con \textit{J} giuduzio, in teoria dei tipi di \textit{Martin-L$\ddot{o}$f}, derivabile. Percui con H si scrive: Giudizi di \textit{T} $\rightarrow$ \{0,1\}\\
+Il giudizio a $=$ b $\in$ A[$\Gamma$] \`e decidibile, anche con \textit{J} giudizio, in teoria dei tipi di \textit{Martin-L$\ddot{o}$f}, derivabile. Per cui con H si scrive: Giudizi di \textit{T} $\rightarrow$ \{0,1\}\\
 H[\textit{J}] =
 $
 \begin{cases}
@@ -391,7 +391,7 @@ H lavora come un \textit{proof assistant} (esempio \textit{COQ}).\\\\
 
 \subsection{Applicazione dell'uguaglianza definizionale tra termini}
 \label{subsec: applicazione-uguaglianza-definizionale-tra-termini}
-\textit{Definzione}: i termini \textit{untyped} sono
+\textit{Definizione}: i termini \textit{untyped} sono
 \begin{center}t = x $|$ $\ast$ $|$ El$_{N1}$(t$_1$, t$_2$)\end{center}
 \textit{Definizione}: relazione di riduzione
 \begin{center}$\rightarrow$ $_1$ $\subseteq$ term x term\end{center}
@@ -400,7 +400,7 @@ Le \textbf{relazioni di computazione}, dell'uguaglianza definizionale, le ho des
 \\\\
 \textit{Definizione}: t termine \textit{untyped} \`e in forma normale (in NF) sse non esiste termine s tale che t $\rightarrow$ $_1$ s. Ovvero non \`e pi\`u riducibile a nulla. \\  Le forme normali sono i valori assumibili dai programmi.\\
 \\\\
-\textit{Definzione}:\textbf{Teoria di Validit\`a}\\ Dati t $\in$ A[$\Gamma$] e s $\in$ A[$\Gamma$] in \textit{T$_1$} \quad allora \quad $\rightarrow$ $_1$ s $\Rightarrow$ t = s $\in$ A[$\Gamma$] derivabile in \textit{T}.
+\textit{Definizione}:\textbf{Teoria di Validit\`a}\\ Dati t $\in$ A[$\Gamma$] e s $\in$ A[$\Gamma$] in \textit{T$_1$} \quad allora \quad $\rightarrow$ $_1$ s $\Rightarrow$ t = s $\in$ A[$\Gamma$] derivabile in \textit{T}.
 
 
 \begin{table}[H]
@@ -434,7 +434,7 @@ $
 \noindent
 \textit{Definizione} \textbf{Teorema di Confluenza}$\rightarrow _1$ per \textit{T} computabile\\
 Dato t (termine) e s$_1$ e s$_2$ (in NF) tale che \textbf{t \textit{Red$_{NF}$ }s$_1$} e \textbf{t \textit{Red$_{NF}$} s$_2$} allora s$_1$ $\equiv$ s$_2$ (coincide a meno di rinomina di variabile  vincolante).\\
-Quando t si riduce s$_1$ e in s$_2$ c'e' l'unicit\`a della forma normale.
+Quando t si riduce s$_1$ e in s$_2$ c'\`e l'unicit\`a della forma normale.
 \\\\
 \noindent
 \textit{Definizione} \textbf{Teorema della forma normale (debole)}\\
@@ -445,7 +445,7 @@ Questo significa che \`e sempre possibile rendere un programma convergente. Ma s
 \textit{Definizione} \textbf{Teorema della forma normale (forte)}\\
 Per ogni termine t, l'albero dei cammini di riduzione di t \`e ben formato (ovvero $\nexists$ un cammino di riduzioni $\rightarrow$ $_1$ infinito).\\
 In questo modo ogni strategia deterministica \`e convergente.\\
-Con quanto appena enunciato sopra possiamo denfinire quanto segue.\\
+Con quanto appena enunciato sopra possiamo definire quanto segue.\\
 Dato t $\in$ A[$\Gamma$] derivabile in \textit{T}\\
 NF(t$_1$) $\equiv$
 $
@@ -464,7 +464,7 @@ Sono cos\`i in grado di dimostrare che, dati a $\in$ A[$\Gamma$] e b $\in$ A[$\G
 \item n\'e a n\'e b sono in NF esiste s in NF tale che \textbf{a \textit{Red$_{NF}$ }s} e \textbf{b \textit{Red$_{NF}$ }s}
 \end{enumerate}
 Per i punti elencanti sopra trova validit\`a la relazione \textbf{a \textit{Red$_{NF}$ }NF(a)} $\Rightarrow$ a = NF(a) $\in$ A[$\Gamma$] \`e derivabile (la forma normale \`e uguale al termine stesso).\\ Questo rende l'uguaglianza computabile, si \`e difatti in grado di dimostrare che esiste P programma tale che P(a) = NF(a), per ogni a termine \textit{untyped} in \textit{T}(incluso \textit{T$_1$}).\\\\
-In conclusione la computabilit\`a dell'uguaglianza (uguaglianza definizionale) tra due termini, si riduce a computare le forme normali del primo termine con quelle del secondo e a verificare se sono identicamente la stessa (a meno di rinomia di variabili).
+In conclusione la computabilit\`a dell'uguaglianza (uguaglianza definizionale) tra due termini, si riduce a computare le forme normali del primo termine con quelle del secondo e a verificare se sono identicamente la stessa (a meno di rinomina di variabili).
 
 \section{Semantica operazionale del singoletto}
 \label{sec: semantica-operazionale-singoletto}
@@ -479,7 +479,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \LeftLabel{red$_{II}$)}
 \UnaryInfC{El$_{N1}$(t, c$_1$) $\rightarrow_1$ El$_{N1}$(t, c$_2$)}
 \DisplayProof 
-\item red$_{I}$ e red$_{II}$ possono venire simultate da un'unica regola
+\item red$_{I}$ e red$_{II}$ possono venire simulate da un'unica regola
 \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
 \BinaryInfC{El$_{N1}$(t$_1$, c$_1$) $\rightarrow_1$ El$_{N1}$(t$_2$, c$_2$)}
@@ -557,7 +557,7 @@ In E-$N_{1prog}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, w $\in$ N$_1$ che p
 
 
 \paragraph{2)} 
-\textbf{Dimostrare che la regola \textit{E-S} \`e derivabile in una teoria dei tipi \textit{T$_1$}, in cui si \`e rimpiazziata la regola di eliminazione \textit{E-S} con la regola \textit{E-N${_1prog}$}, aggiungendovi le regole di indebolimento, sostituzione e di \textit{sanitary checks}}.
+\textbf{Dimostrare che la regola \textit{E-S} \`e derivabile in una teoria dei tipi \textit{T$_1$}, in cui si \`e rimpiazzata la regola di eliminazione \textit{E-S} con la regola \textit{E-N${_1prog}$}, aggiungendovi le regole di indebolimento, sostituzione e di \textit{sanitary checks}}.
 \begin{prooftree}
 \AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
 \AxiomC{d $\in$ M($\ast$)[$\Gamma$]}
@@ -908,7 +908,7 @@ $\beta$-red:\\
 \noindent
  $\Rightarrow$ (w, (red$_II$, red$_I$, $\beta_{N1red}$)) rappresenta un programma.\\\\
 \noindent
-Termine t non pi\`u riducibile significa che \`e un termine \textit{untyped} che \`e in forma normale perch\`e non esiste alcun altro termine s tale che t $\rightarrow_1$ s. Dunque l'infinit\`a di termini singoletto, non pi\`u riducibili rispetterano la definizione data sopra\\
+Termine t non pi\`u riducibile significa che \`e un termine \textit{untyped} che \`e in forma normale perch\`e non esiste alcun altro termine s tale che t $\rightarrow_1$ s. Dunque l'infinit\`a di termini singoletto, non pi\`u riducibili rispettano la definizione data sopra\\
 \begin{center}
 t $\equiv$
 $

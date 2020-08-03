@@ -1,6 +1,6 @@
 \chapter{Principi di induzione per tipi induttivi}
 \label{cap:principi-di-induzione-per-tipi-induttivi}
-Principi di induzione associati alle regole di eliminazione dei cosidetti tipi induttivi \textit{T}, per renderne la ragione del nome; quando il tipo M(z) type[$\Gamma$,z $\in$ \textit{T}], verso cui si elimina, \`e in realt\`a una $\varphi$(z) prop[$\Gamma$,z $\in$ \textit{T}].\\\\
+Principi di induzione associati alle regole di eliminazione dei cosiddetti tipi induttivi \textit{T}, per renderne la ragione del nome; quando il tipo M(z) type[$\Gamma$,z $\in$ \textit{T}], verso cui si elimina, \`e in realt\`a una $\varphi$(z) prop[$\Gamma$,z $\in$ \textit{T}].\\\\
 \noindent
 \textbf{Tipi induttivi:} N$_0$, N$_1$, List(A), Nat, B $+$ C, {\scriptsize $\sum$} $_{x \in B}$ C(x), Id(A,a,b)\\
 
@@ -88,12 +88,12 @@ Tale principio non \`e formulato su $\varphi$(z) type[$\Gamma$,$z \in Id(A,a,b)$
 \section{Esercizi}
 \label{sec:esercizi-principi-induzione}
 \paragraph{1)}
-\textbf{Dimostrare che i prinicipi di induzione sono validi in teoria dei tipi.}\\\\
+\textbf{Dimostrare che i principi di induzione sono validi in teoria dei tipi.}\\\\
 \textbf{Soluzione}\\\\
 \begin{itemize}
 \item \begin{center}N$0$) $\bot$ true $\rightarrow$ $\varphi$[$\Gamma$]\end{center}
 \noindent\\
-Per semplicit\`a di notavione definisco $\bot$ true $\rightarrow$ $\varphi$[$\Gamma$] $\equiv$ $\bot$ true $\rightarrow$ $\phi$[$\Gamma$]\\
+Per semplicit\`a di notazione definisco $\bot$ true $\rightarrow$ $\varphi$[$\Gamma$] $\equiv$ $\bot$ true $\rightarrow$ $\phi$[$\Gamma$]\\
 In questo modo:\\
 $\equiv$ {\scriptsize $\prod$}$_{z \in \bot true}$ $\phi$ type[$\Gamma$]\\
 $\equiv$ {\scriptsize $\prod$}$_{z \in N_0 true}$ $\phi$ type[$\Gamma$]\\
@@ -251,7 +251,7 @@ type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]
 \end{itemize}
 
 \noindent
-Devo indivuduare un pf che appartenga all'Id, dunque uso la regola dell'eliminatore dipendente:\\
+Devo individuare un pf che appartenga all'Id, dunque uso la regola dell'eliminatore dipendente:\\
 pf$_1$ $\equiv$ $\lambda$w.pf$_1$(w) $\equiv$  $\lambda$w.El$_{Id}$(w,(t).El$_+$(t,e$_B$,e$_C$))\\\\\\
 \noindent
 e$_B$???\\

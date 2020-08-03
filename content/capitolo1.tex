@@ -5,7 +5,7 @@
 La teoria dei tipi offre una base teorica a fondamento dello sviluppo di:
 \begin{itemize}
 \item \textbf{Matematica}: nella teoria degli insiemi;
-\item \textbf{Logica}: come fondamento dei connettivi logici e dei quantificatori, con trattazione mediate tecniche di \textit{proof-teory} per dimostrarne la non falsit\`a o non contradditoriet\`a;
+\item \textbf{Logica}: come fondamento dei connettivi logici e dei quantificatori, con trattazione mediate tecniche di \textit{proof-theory} per dimostrarne la non falsit\`a o non contradditoriet\`a;
 \item \textbf{Informatica}: per la correttezza dei programmi, da una semantica operazionale a un certo tipo di operazioni.\\ 
 Con riferimento alla teoria degli insiemi, visto come linguaggio di programmazione funzionale, \`e possibile specificare con formule l'obiettivo di un programma e dimostrarne la correttezza attraverso la specifica.
 \end{itemize}
@@ -25,15 +25,15 @@ Per la matematica la correttezza delle dimostrazioni \`e irrilevante solo quando
 Un'esempio di problema, dove la soluzione non \`e certa, \`e il Teorema dei Quattro Colori, risolto da un \textit{computer} e la cui prova di correttezza della dimostrazione fu data dal \textit{proof assistant} Coq. Quest'ultimo basato sulla teoria dei tipi e intellegibile dall'essere umano.\\\\
 Una citazione importante va al matematico Russo V.V. \textit{Voevodsky}, vincitore della medaglia \textit{ Fields}. Esso si batt\`e per la creazione di un \textit{proof assistant}, per rendere le dimostrazioni da informali, per problemi complessi, a completamente formalizzate, con l'impiego della teoria dei tipi. I suoi studi trovano principale applicazione in campo algebrico e geometrico; ma i concetti emersi assunsero delle 1connotazioni pi\`u ampie. \textit{Voevodsky}, difatti, si rese conto che formalizzare equivale a programmare. Ci\`o significa che la teoria dei tipi permette di vedere una dimostrazione come un programma.
 \\\\
-Esiste la certezza assoluta per una certa teoria, esclusivamente, quando ha un numero di assiomi, accettati per fede, molto limitato. In quanto assiomalizzabile da un calcolatore.
+Esiste la certezza assoluta per una certa teoria, esclusivamente, quando ha un numero di assiomi, accettati per fede, molto limitato. In quanto assiomatizzabile da un calcolatore.
 \\\\
-In coclusione formalizzare in una teoria dei tipi (come quella degli insiemi) equivale a programmare un programma.
+In conclusione formalizzare in una teoria dei tipi (come quella degli insiemi) equivale a programmare un programma.
 
 \section{Il Paradosso di Russell}
 \label{sec:paradosso-di-russell}
 La base della teoria dei tipi, compresa quella di \textit{Martin-L$\ddot{o}$f}, si deve a B. \textit{Russell}. \\
-Siamo nel 1907 quando nasce la teoria dei tipi, sviluppata nei \textit{Principia Mathematica} da B. \textit{Russel} assieme ad A.N. \textit{Whitehead}. Tale teoria, intesa come logica e non informatica, nasce come soluzione alternativa alla teoria degli insiemi, di allora, con lo scopo di fondare la matematica su un sistema formale accettabile e non contradditorio.\\
-Di seguito espongo un sistema contradditorio della teoria degli insiemi.\\
+Siamo nel 1907 quando nasce la teoria dei tipi, sviluppata nei \textit{Principia Mathematica} da B. \textit{Russel} assieme ad A.N. \textit{Whitehead}. Tale teoria, intesa come logica e non informatica, nasce come soluzione alternativa alla teoria degli insiemi, di allora, con lo scopo di fondare la matematica su un sistema formale accettabile e non contraddittorio.\\
+Di seguito espongo un sistema contraddittorio della teoria degli insiemi.\\
 \\
 \textbf{Linguaggio \textit{L} di una teoria degli insiemi \textit{F}}\mbox{}
 \begin{itemize}
@@ -44,13 +44,13 @@ Di seguito espongo un sistema contradditorio della teoria degli insiemi.\\
 dove x, y, z sono da intendersi come insiemi e x $\epsilon$ y = "x appartiene a y".\\\\
 All'interno di \textit{L} c'\`e una teoria degli insiemi. Tra cui prende posto l'\textbf{assioma di comprensione di \textit{Frege}}, definito nel modo seguente:\\
 Per ogni formula $\phi$(x) vale che $\exists$z $\forall$y (y$\in$z $\Leftrightarrow$ $\phi$(y)) [$\equiv$ $\exists$z z = \{x $\big|$ $\phi$(x)\}]\\\\
-\textbf{Teorema (o Paradosso) di \textit{Russell}}: la teoria \textit{F} \`e contradditoria.\\
+\textbf{Teorema (o Paradosso) di \textit{Russell}}: la teoria \textit{F} \`e contraddittoria.\\
 
 \noindent \textbf{Dimostrazione}:\\
 $\phi$(x) = x$\notin$x ($\equiv$ $\neg$ (x $\in$ x))\\
 Per l'assioma di comprensione	$\exists$z z = \{x $|$ x$\notin$x\} ($\exists$z $\forall$y (y$\in$z $\Leftrightarrow$ y$\notin$y))\\
 Ponendo y=z ottengo che z$\in$z $\Leftrightarrow$ z$\notin$z, risulta una \textbf{contraddizione}.\\\\
-L'assioma di comprensione \`e contradditorio perch\`e permette di formare insiemi che non appartengono a se stessi.\\\\
+L'assioma di comprensione \`e contraddittorio perch\`e permette di formare insiemi che non appartengono a se stessi.\\\\
 Come correggere la contraddizione?\\
 La soluzione accettabile \`e porre agli insiemi una \textbf{gerarchia di tipi}. In questo modo l'assioma di comprensione diventa:\\
 $\exists$z $\forall$y (y$\in$a $\to$ (y$\in$z $\Leftrightarrow$ $\phi$(y)) $\equiv$ z = \{x$\in$a $\big|$ $\phi$(x)\}\\\\
@@ -82,7 +82,7 @@ che seguendo la computazione si riduce a: \[x(x)[\frac{x}{\lambda x.x(x)}] \equi
 Dunque esiste una catena di (t$_i$)$_{i\in\mathbb{N}}$ di termini t$_i \rightarrow$ t$_{i+1}$. Ci\`o significa che
 $\Lambda$ non termina in qualunque linguaggio sia interpretato.\\\\
 $\Lambda$ risulta un buon metodo per rappresentare le funzioni, ma non \`e completo, rispetto all'intuizione matematica di funzione. \`E necessario, per questo, tipare le variabili; ovvero $\lambda$x.x$\in$A$\rightarrow$B(x$\in$A).\\\\
-Il $\lambda$-cacolo tipato, nato dal $\lambda$-calcolo "puro", \`e anch'esso un linguaggio di programmazione. Essendo tipato pu\`o essere trattato come una teoria degli insiemi.
+Il $\lambda$-calcolo tipato, nato dal $\lambda$-calcolo "puro", \`e anch'esso un linguaggio di programmazione. Essendo tipato pu\`o essere trattato come una teoria degli insiemi.
 
 \section{Che cosa \`e un tipo?}
 \label{sec:cosa e un tipo}
@@ -107,13 +107,13 @@ Per la sintassi:
 \begin{itemize} 
 \item nella \textbf{teoria dei tipi moderna} \textit{a} rappresenta un termine e \textit{A} un tipo;
 \item nella sintassi in una \textbf{teoria degli insiemi} \textit{a} \`e un elemento e \textit{A} un insieme. Coincidendo con la corrispondenza originale in mente da \textit{Russell}.
-\item nella sitassi in un \textbf{linguaggio logico} \textit{a} rappresenta una proposizione di \textit{A}, inteso come insieme di tipo delle sue dimostrazioni. Perci\`o un \textit{proof-term} affermante come la proposizione di A sia vera.
+\item nella sintassi in un \textbf{linguaggio logico} \textit{a} rappresenta una proposizione di \textit{A}, inteso come insieme di tipo delle sue dimostrazioni. Perci\`o un \textit{proof-term} affermante come la proposizione di A sia vera.
 \item nella teoria in una sintassi di un \textbf{linguaggio di programmazione} \textit{a} rappresenta un programma e \textit{A} una specifica.
 \end{itemize}
 \noindent
 Dunque quando parliamo di tipo ci riferiamo a un insieme, una proposizione o \textit{data type}, a seconda dell'applicazione di tipo che si ha in mente.\\\\
-Dal punto di vista logico non si hanno solo proposizioni, ma anche predicati. Parlare solo di tipo non risulta quindi sufficiente. Per questo se si vuole rappresentare non una proposizione, ma un predicato A(x) si usa la seguente sitassi: \textbf{A(x) prop[x$\in$D]}.\\
-Dalla logica si sa che i predicati $\phi$(x) hanno x senza un dominio specifico, perch\`e la sintasssi non determina che cosa \`e in x. Al seguito di tutto questo i predicati hanno una variabile che deve essere tipata come \textbf{$\phi$(x) prop[x$\in$D]}.\\
+Dal punto di vista logico non si hanno solo proposizioni, ma anche predicati. Parlare solo di tipo non risulta quindi sufficiente. Per questo se si vuole rappresentare non una proposizione, ma un predicato A(x) si usa la seguente sintassi: \textbf{A(x) prop[x$\in$D]}.\\
+Dalla logica si sa che i predicati $\phi$(x) hanno x senza un dominio specifico, perch\`e la sintassi non determina che cosa \`e in x. Al seguito di tutto questo i predicati hanno una variabile che deve essere tipata come \textbf{$\phi$(x) prop[x$\in$D]}.\\
 Dunque (definizione di predicato)
 \begin{center}\textbf{$\exists$ z $\quad$ z=\{x$\in$ a$|$ $\phi$(x)\} $\qquad$ $\equiv$ $\qquad$ $\phi$(x)prop[x$\in$ a]}\end{center}
 \noindent
@@ -148,11 +148,11 @@ N$_1$ singoletto & l'insieme singoletto & \textit{tt} costante vero & tipo Unit 
 \hline 
 N$_0$ vuoto & l'insieme vuoto & \textit{$\bot$} costante falso & vuoto come datatype \\
 \hline
-BxC (tipo prodotto) & l'insieme prodotto cartesiano dell'insieme B con l'insieme C & B\&C congiunzione della proposizione B e della proposizione C & tipo prodotto cartesiamo (come in \textit{set theory})\\ 
+BxC (tipo prodotto) & l'insieme prodotto cartesiano dell'insieme B con l'insieme C & B\&C congiunzione della proposizione B e della proposizione C & tipo prodotto cartesiano (come in \textit{set theory})\\ 
 \hline 
 B+C (tipo somma binaria) & l'insieme unione disgiunta dell'insieme B con l'insieme C & B$\lor$C disgiunta della  proposizione B e della proposizione C & tipo unione disgiunta con codifica \\
 \hline 
-B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \small{A$\rightarrow$B $\equiv$ \{f $|$ f: B$\rightarrow$C\}} & B$\rightarrow$C, implicazione della proposizone B e della proposizione C & insieme delle funzioni dal \textit{datatype} B al \textit{datatype} C \\
+B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \small{A$\rightarrow$B $\equiv$ \{f $|$ f: B$\rightarrow$C\}} & B$\rightarrow$C, implicazione della proposizione B e della proposizione C & insieme delle funzioni dal \textit{datatype} B al \textit{datatype} C \\
 \hline
 \end{tabularx}
 \caption{\label{tab:famiglia-di-tipi}Famiglia di tipi.} 
@@ -193,7 +193,7 @@ $\displaystyle\prod\limits_{x\epsilon B} C(x)$\end{tabular}\\
 \end{table}
 \noindent
 Lo slogan principale della teoria dei tipi \`e quello di tipare le variabili in un linguaggio formale set teorico/computazionale.\\\\
-Esite anche il \textbf{tipo uguaglianza}:
+Esiste anche il \textbf{tipo uguaglianza}:
 \begin{itemize}
 \item intensionale: Id(B,c,d);
 \item estensionale: Eq(B,c,d).
@@ -324,10 +324,10 @@ Cosa che non \`e possibile con la strategia $\rightarrow_1^\ast$. In quanto (($\
 In conclusione risulta vero che L($\rightarrow_1^\ast$) $\nsubseteq$ L($\rightarrow_1$).
 \item Per provare l'inclusione di L($\rightarrow_1^\ast$) in L($\rightarrow_1$) basta che dimostro, per una valutazione che usa entrambe le strategie, il sempre possibile rimpiazzo della regola R$_I$ con la sua regola corrispondente in $\nrightarrow_1$ (A$_I$ + A$_{II}$) . Pi\`u formalmente significa provare che per ogni valutazione di un termine M, che usa la regola R$_I$, si pu\`o sempre ottenere una valutazione che usa solo regole della strategia $\nrightarrow_1$.\\ Per farlo procedo per induzione sul numero di volte n che la regola R$_I$ viene utilizzata durante la valutazione di M.
 \begin{itemize}
-\item (n=0): caso base. La regola R$_I$ non viene mai utilizzata nella valutazione di M, e dunque M \`e gi\`a impicitamente dimostrato con la strategia $\nrightarrow_1$
+\item (n=0): caso base. La regola R$_I$ non viene mai utilizzata nella valutazione di M, e dunque M \`e gi\`a implicitamente dimostrato con la strategia $\nrightarrow_1$
 \item (n $\rightarrow$ n+1): caso induttivo. Per n risulta vero che L($\rightarrow_1^\ast$) $\subset$ L($\rightarrow$), devo provare che vale anche per n+1. Inoltre la valutazione di M utilizza almeno una volta la regola R$_I$.\\
 Dunque ho M $\rightarrow$...$\xrightarrow[]{R_I}_1^\ast$M$^I$ e voglio costruire una derivazione M $\rightarrow$...$\xrightarrow[]{A_I}_1M_1\xrightarrow[]{A_{II}}_1M^I$.
-Le strategie di valutazione sono deterministiche, portano pertanto allo stesso risultato della sequenza di derivazione, percui R$_I$ = A$_I$ + A$_{II}$ risulta vero. Inoltre per ipotesi induttiva \`e sempre possibile avere una valutazione con l'utilizzo di solo regole $\rightarrow_1$ (A$_I$ + A$_{II}$ esistono). Perci\`o risulta corretto rimpiazzare $\rightarrow_1^\ast$ con $\rightarrow_1$.\\ In conclusione risulta vero che L($\rightarrow_1^\ast$) $\subset$ L($\rightarrow_1$).
+Le strategie di valutazione sono deterministiche, portano pertanto allo stesso risultato della sequenza di derivazione, per cui R$_I$ = A$_I$ + A$_{II}$ risulta vero. Inoltre per ipotesi induttiva \`e sempre possibile avere una valutazione con l'utilizzo di solo regole $\rightarrow_1$ (A$_I$ + A$_{II}$ esistono). Perci\`o risulta corretto rimpiazzare $\rightarrow_1^\ast$ con $\rightarrow_1$.\\ In conclusione risulta vero che L($\rightarrow_1^\ast$) $\subset$ L($\rightarrow_1$).
 \end{itemize}
 \end{enumerate}
 

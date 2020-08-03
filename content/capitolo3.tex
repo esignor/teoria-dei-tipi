@@ -83,7 +83,7 @@ Il medesimo discorso vale per la regola di eliminazione
 \TrinaryInfC{El$_{Nat}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ Nat]}
 \end{prooftree}
 \noindent
-\textit{E-Nat} \`e equivalente a \textit{E-Nat$_{dip}$}. Difatti la teoria \textit{T$_{N1Nat}$}, in cui c'\`e \textit{E-Nat}, \`e equivalente a \textit{T$\backprime$} senza \textit{E-Nat}, ma con \textit{E-Nat$_{dip}$}, le regole di sosituzione e di \textit{sanitary check}.
+\textit{E-Nat} \`e equivalente a \textit{E-Nat$_{dip}$}. Difatti la teoria \textit{T$_{N1Nat}$}, in cui c'\`e \textit{E-Nat}, \`e equivalente a \textit{T$\backprime$} senza \textit{E-Nat}, ma con \textit{E-Nat$_{dip}$}, le regole di sostituzione e di \textit{sanitary check}.
 
 
 \section{Semantica operazionale dei numeri Naturali}
@@ -122,7 +122,7 @@ rec(n$_1$...n$_m$, k+1) $\equiv$ g$_0$(n$_1$...n$_m$, k, rec(n$_1$...n$_m$, k))
 \\\\
 La somma, tra numeri naturali, viene definita usando l'eliminatore dipendente \textit{E-Nat$_{dip}$}(\S \ref{subsec:introduzione-eliminatore dipendente-naturale}). In questo modo si riesce a definire per la nostra teoria \textit{T$_{1Nat}$}
 \begin{center} w + z $\in$ Nat [w $\in$ Nat, z $\in$ Nat] \\ come \\ El$_{Nat}$(z, w, (x,y).succ(y))[w $\in$ Nat, z $\in$ Nat]\end{center}
-Usando la nozione di primitava ricorsiva e decidendo di ricorrere su z \begin{center} w + 0 $\equiv$ w \\ w + succ(z) $\equiv$ succ(w+z) $\equiv$ succ(y)\end{center}
+Usando la nozione di primitiva ricorsiva e decidendo di ricorrere su z \begin{center} w + 0 $\equiv$ w \\ w + succ(z) $\equiv$ succ(w+z) $\equiv$ succ(y)\end{center}
 Ecco che l'albero di derivazione assume la seguente forma:
 \scriptsize
 \begin{adjustwidth}{-11em}{}
@@ -181,9 +181,9 @@ w $+_1$ z $\equiv$ El$_{Nat}$(z, w, (x,y), succ(y)) $\neq$ come NF da z.\\
 Se sostituisco w con 0, allora 0 $+_1$ z $\equiv$ w $+_1$ z[$\frac{w}{0}$] $\equiv$ El$_{Nat}$(z, 0, (x,y), succ(y)) \`e in NF (dunque non riesco pi\`u a ridurla ulteriormente). 
 \\Ecco che 0 $+_1$ z \`e un valore in NF $\neq$ da z, da cui \`e impossibile dimostrare che 0 $+_1$ z = z $\in$ Nat[z $\in$ Nat].\\
 Questo non accade per w $+_1$ 0 = w (\S \ref{subsec: addizione-per-ricorsione}).\\ 
-Perci\`o, se noi scriviamo la somma ricorrendo sul secondo membro, riusciamo a dire che \textit{primo-membro $+_1$ 0 = primo-membro}, ma non che \textit{0 $+_1$ secondo-membro = secondo - membro}. In quanto non esiste alcuna sottostrategia deterministica, per il secondo caso, per cui il programma si ferma.
+Perci\`o, se noi scriviamo la somma ricorrendo sul secondo membro, riusciamo a dire che \textit{primo-membro $+_1$ 0 = primo-membro}, ma non che \textit{0 $+_1$ secondo-membro = secondo - membro}. In quanto non esiste alcuna sotto-strategia deterministica, per il secondo caso, per cui il programma si ferma.
 \\\\
-In conclusione, l'uguaglianza definizionale di termini con variabili \`e diversa dall'uguaglianza aritmentica. Eccezione fatta per le espressioni chiuse, senza variabili, perch\`e il termine chiuso si riduce a un'unica NF, che si dimostra essere un numero arabico.
+In conclusione, l'uguaglianza definizionale di termini con variabili \`e diversa dall'uguaglianza aritmetica. Eccezione fatta per le espressioni chiuse, senza variabili, perch\`e il termine chiuso si riduce a un'unica NF, che si dimostra essere un numero arabico.
 
 \section{Esercizi}
 \label{sec: es-naturali}
@@ -358,7 +358,7 @@ Assumo che le premesse di \textit{E-Nat$_{dip}$} (\textit{M(z) type[$\Gamma$, z 
 \textbf{Definire w + 2 $\in$ Nat[w $\in$ Nat], ove 2 \`e l'abbreviazione del termine ottenuto applicando 2 $\equiv$ succ(succ(0)).}
 \\\\
 \textbf{Soluzione}\\\\
-La ricorsione la faccio w, usando lo schema di ricorsione primitva, vale che w + 2 $\equiv$ El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]
+La ricorsione la faccio w, usando lo schema di ricorsione primitiva, vale che w + 2 $\equiv$ El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]
 
 \small
 \begin{adjustwidth}{-5em}{}
@@ -401,7 +401,7 @@ La ricorsione la faccio w, usando lo schema di ricorsione primitva, vale che w +
 in modo tale che valga x + 0 = x $\in$  Nat[x $\in$ Nat]
 \\\\
 \textbf{Soluzione}\\\\
-La ricorsione la faccio sulla y, usando lo schema di ricorsione primitva, vale che x + y $\equiv$ El$_{Nat}$(y, x, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]
+La ricorsione la faccio sulla y, usando lo schema di ricorsione primitiva, vale che x + y $\equiv$ El$_{Nat}$(y, x, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]
 
 
 \scriptsize
@@ -453,7 +453,7 @@ La ricorsione la faccio sulla y, usando lo schema di ricorsione primitva, vale c
 in modo tale che valga 0 + y = y $\in$  Nat[y $\in$ Nat]
 \\\\
 \textbf{Soluzione}\\\\
-La ricorsione la faccio sulla x, percui, usando lo schema di ricorsione primitva, vale che x + y $\equiv$ El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]
+La ricorsione la faccio sulla x, percui, usando lo schema di ricorsione primitiva, vale che x + y $\equiv$ El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]
 
 \small
 \begin{adjustwidth}{-6em}{}
