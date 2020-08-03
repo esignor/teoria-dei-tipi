@@ -1,0 +1,159 @@
+\chapter{Tipi Universo \`a la Tarski}
+\label{cap:tipo-universo}
+Il tipo Universo non \`e induttivo ed \`e rivolto alla teoria dei tipi di  \textit{Martin-L$\ddot{o}$f} intensionale.
+\begin{center} U$_0$, U$_1$,..., U$_n$ \qquad con n $\in$ Nat\end{center}.
+\begin{center} U$_0$ $\notin$ U$_0$ \qquad U$_0$ $\in$ U$_0$ \`e una contraddizione\end{center}
+U$_i$, nel senso di  \textit{Martin-L$\ddot{o}$f},  \`e un contenitore predicativo,  tramite codifica, dei tipi fino costruiti, ed \`e chiuso sulla loro formazione.\\\\
+\noindent
+Il tipo Universo alla Tarski \`e definito dalle regole seguenti.\\\\
+\noindent
+\textbf{T} indica la decodifica.
+\section{Regole di Formazione}
+\label{sec: formazione-U0}
+\begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{F-Uno)}
+\UnaryInfC{U$_0$ type[$\Gamma$]}
+\end{prooftree}
+
+\section{Regole di Introduzione}
+\label{sec: introduzione-U0}
+\begin{center}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_1$-Uno)}
+\UnaryInfC{$\hat{N_0}$ $\in$ U$_0$[$\Gamma$]}
+\DisplayProof \qquad
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_2$-Uno)}
+\UnaryInfC{$\hat{N_1}$ $\in$ U$_0$[$\Gamma$]}
+\DisplayProof
+\vspace{0.5cm}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_3$-Uno)}
+\UnaryInfC{Nat $\in$ U$_0$[$\Gamma$]}
+\DisplayProof
+\vspace{0.5cm}
+\AxiomC{c(x) $\in$ U$_0$[$\Gamma$,x $\in$ \textbf{T}(b)]}
+\AxiomC{b $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{I$_4$-Uno)}
+\BinaryInfC{$\hat{\sum}_{x \in b}$ c(x) $\in$ U$_0$[$\Gamma$]}
+\DisplayProof \quad
+\AxiomC{c(x) $\in$ U$_0$[$\Gamma$,x $\in$ \textbf{T}(b)]}
+\AxiomC{b $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{I$_5$-Uno)}
+\BinaryInfC{$\hat{\prod}_{x \in b}$ c(x) $\in$ U$_0$[$\Gamma$]}
+\DisplayProof \\
+\vspace{0.5cm}
+\AxiomC{b $\in$ U$_0$[$\Gamma$]}
+\AxiomC{c $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{I$_6$-Uno)}
+\BinaryInfC{b $\hat{+}$ c $\in$ U$_0$[$\Gamma$]}
+\DisplayProof \quad
+\AxiomC{b $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{I$_7$-Uno)}
+\UnaryInfC{List(b) $\in$ U$_0$[$\Gamma$]}
+\DisplayProof\\
+\vspace{0.5cm}
+\begin{prooftree}
+\AxiomC{b $\in$ U$_0$[$\Gamma$]}
+\AxiomC{c $\in$ \textbf{T}(b)[$\Gamma$]}
+\AxiomC{d $\in$ \textbf{T}(b)[$\Gamma$]}
+\LeftLabel{I$_8$-Uno)}
+\TrinaryInfC{Id(b,c,d) $\in$ U$_0$[$\Gamma$]}
+\end{prooftree}
+\end{center}
+
+\section{Regole di Eliminazione}
+\label{sec:eliminzione-U0}
+\begin{prooftree}
+\AxiomC{a $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{E-Uno)}
+\UnaryInfC{\textbf{T}(a) type[$\Gamma$]}
+\end{prooftree}
+
+\section{Regole di Conversione}
+\label{sec:conversione-U0}
+\begin{center}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{C$_1$-Uno)}
+\UnaryInfC{\textbf{T}($\hat{N_0}$) $=$ N$_0$ type[$\Gamma$]}
+\DisplayProof \quad
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{C$_2$-Uno)}
+\UnaryInfC{\textbf{T}($\hat{N_1}$) $=$ N$_1$ type[$\Gamma$]}
+\DisplayProof\\
+\vspace{0.5cm}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{C$_3$-Uno)}
+\UnaryInfC{\textbf{T}(Nat) $=$ Nat type[$\Gamma$]}
+\DisplayProof\\
+\vspace{0.5cm}
+\AxiomC{c(x) $\in$ U$_0$[$\Gamma$,x $\in$ \textbf{T}(b)]}
+\AxiomC{b $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{C$_4$-Uno)}
+\BinaryInfC{\textbf{T}($\hat{\sum}_{x \in b} c(x)$ $=$ ($\sum$ x $\in$ \textbf{T}(b))T(c(x)) type[$\Gamma$]}
+\DisplayProof\\
+\vspace{0.5cm}
+\AxiomC{c(x) $\in$ U$_0$[$\Gamma$,x $\in$ \textbf{T}(b)]}
+\AxiomC{b $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{C$_5$-Uno)}
+\BinaryInfC{\textbf{T}($\hat{\prod}_{x \in b} c(x)$ $=$ ($\prod$ x $\in$ \textbf{T}(b))T(c(x)) type[$\Gamma$]}
+\DisplayProof\\
+\end{center}
+\vspace{0.5cm}
+\AxiomC{b $\in$ U$_0$[$\Gamma$]}
+\AxiomC{c $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{C$_6$-Uno)}
+\BinaryInfC{\textbf{T}(b $\hat{+}$ c) $=$ \textbf{T}(b) $+$ \textbf{T}(c) type[$\Gamma$]}
+\DisplayProof \quad
+\AxiomC{b $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{C$_7$-Uno)}
+\UnaryInfC{\textbf{T}(List(b)) $=$ List(\textbf{T}(b)) type[$\Gamma$]}
+\DisplayProof
+\begin{center}
+\vspace{0.5cm}
+\AxiomC{b $\in$ U$_0$[$\Gamma$]}
+\AxiomC{c $\in$ \textbf{T}(b)[$\Gamma$]}
+\AxiomC{d $\in$ \textbf{T}(b)[$\Gamma$]}
+\LeftLabel{C$_8$-Uno)}
+\TrinaryInfC{\textbf{T}(Id(b,c,d)) $=$ Id(\textbf{T}(b),c,d) type[$\Gamma$]}
+\DisplayProof
+\end{center}
+
+\section{Regole di Uguaglianza}
+\label{subsec: uguaglianza-U0}
+\begin{center}
+\vspace{0.5cm}
+\AxiomC{c$_1$(x) $=$ c$_2$(x) $\in$ U$_0$[$\Gamma$,x $\in$ \textbf{T}(b)]}
+\AxiomC{b$_1$ $=$ b$_2$ $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{eq-I$_4$-Uno)}
+\BinaryInfC{$\hat{\sum}_{x \in b_1}$ c$_1$(x) $=$ $\hat{\sum}_{x \in b_2}$ c$_2$(x) $\in$ U$_0$[$\Gamma$]}
+\DisplayProof \\ \vspace{0.5cm}
+\AxiomC{c$_1$(x) $=$ c$_2$(x) $\in$ U$_0$[$\Gamma$,x $\in$ \textbf{T}(b)]}
+\AxiomC{b$_1$ $=$ b$_2$ $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{eq-I$_5$-Uno)}
+\BinaryInfC{$\hat{\prod}_{x \in b_1}$ c$_1$(x) $=$ $\hat{\prod}_{x \in b_2}$ c$_2$(x) $\in$ U$_0$[$\Gamma$]}
+\DisplayProof \\
+\vspace{0.5cm}
+\AxiomC{b$_1$ $=$ b$_2$ $\in$ U$_0$[$\Gamma$]}
+\AxiomC{c$_1$ $=$ c$_2$ $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{eq-I$_6$-Uno)}
+\BinaryInfC{b$_1$ $\hat{+}$ c$_1$ $=$ b$_2$ $\hat{+}$ c$_2$ $\in$ U$_0$[$\Gamma$]}
+\DisplayProof \\ \vspace{0.5cm}
+\AxiomC{b$_1$ $=$ b$_2$ $\in$ U$_0$[$\Gamma$]}
+\LeftLabel{eq-I$_7$-Uno)}
+\UnaryInfC{List(b$_1$) $=$ List(b$_2$) $\in$ U$_0$[$\Gamma$]}
+\DisplayProof\\
+\vspace{0.5cm}
+\begin{prooftree}
+\AxiomC{b$_1$ $=$ b$_2$ $\in$ U$_0$[$\Gamma$]}
+\AxiomC{c$_1$ $=$ c$_2$ $\in$ \textbf{T}(b)[$\Gamma$]}
+\AxiomC{d$_1$ $=$ d$_2$ $\in$ \textbf{T}(b)[$\Gamma$]}
+\LeftLabel{eq-I$_8$-Uno)}
+\TrinaryInfC{Id(b$_1$,c$_1$,d$_1$) $=$ Id(b$_2$,c$_2$,d$_2$) $\in$ U$_0$[$\Gamma$]}
+\end{prooftree}
+\end{center}
+
+
+
+
