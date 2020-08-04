@@ -1,18 +1,19 @@
 \chapter{Tipi Universo \`a la Tarski}
 \label{cap:tipo-universo}
 Il tipo Universo, \textbf{schema di tipi}, non \`e induttivo ed \`e rivolto, in questo caso, alla teoria dei tipi di  \textit{Martin-L$\ddot{o}$f} intensionale.\\
-Esiste il tipo Universo \`a la \textit{Tarski} e alla \textit{Russell}. Il primo, che espongo nel capitolo, pi\`u preciso ma pesante nella sintassi, pi\`u facile da capire e da modellare (soprattutto per fare delle semantiche nella teoria dei tipi), per cui migliore quando si programma con un \textit{prood assistant}; e il secondo pi\`u semplice da utilizzare nelle dimostrazioni, ma meno preciso.\\\\
+Esiste il tipo Universo \`a la \textit{Tarski} e alla \textit{Russell}. Il primo, che espongo nel capitolo, pi\`u preciso ma pesante nella sintassi, pi\`u facile da capire e da modellare (soprattutto per fare delle semantiche nella teoria dei tipi), per cui migliore quando si programma con un \textit{proof assistant}; e il secondo pi\`u semplice da utilizzare nelle dimostrazioni, ma meno preciso.\\\\
 Caratteristica del tipo Universo \`e che permette la ripetizione delle costruzioni per generare una gerarchia di universi, legati fra di loro
 \begin{center} U$_0$, U$_1$,..., U$_n$ \qquad con n $\in$ Nat\end{center}
-Nella prima versione \textit{Martin-L$\ddot{o}$f} permetteva che U$_0$ $\in$ U$_0$, generando per\`o una contraddizione.
+Nella prima versione \textit{Martin-L$\ddot{o}$f} permetteva che U$_0$ appartenesse a U$_0$, generando per\`o una contraddizione.
 \textbf{\begin{center} U$_0$ $\notin$ U$_0$ \quad $\rightarrow$ \quad U$_0$ $\in$ U$_0$ \`e una contraddizione\end{center}}
-Universo, nel senso di  \textit{Martin-L$\ddot{o}$f},  \`e un contenitore, di tipi, predicativo. Predicativo, ovvero U$_0$ $\notin$ U$_0$.\\\\
+\noindent
+Universo \`e un contenitore, di tipi, predicativo, ovvero U$_0$ $\notin$ U$_0$.\\\\
 \noindent
 \textit{Fondamentale}\\
 Essenziale per avere commutativit\`a  \`e non permettere che $\hat{U_0}$ $\in$ U$_0$ (un codice U$_0$ dentro a U$_0$) altrimenti, come gi\`a detto, si ricade nella contraddizione. Per cui si dichiara  come "\textit{small}" o piccoli tutti i tipi con codice in U$_0$; e invece come "\textit{large}" i tipi costruiti con U$_0$, ad esempio U$_0$ $\rightarrow$ U$_0$ type[ ].\\
 Ecco che per la natura della regola di Eliminazione e dal fatto che contiene esclusivamente \textit{small} e non se stesso, posso affermare che l'Universo \`e \textbf{predicativo e non induttivo}.\\\\
 \noindent
-Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regole seguenti, dove \textbf{T} indica la decodifica del codice a, e trasforma il codice in un tipo.
+Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regole seguenti, dove \textbf{T} indica la decodifica.
 \section{Regole di Formazione}
 \label{sec: formazione-U0}
 \begin{prooftree}
@@ -24,6 +25,7 @@ Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regol
 
 \section{Regole di Introduzione}
 \label{sec: introduzione-U0}
+\textit{Per le regole di Introduzione U$_0$ funge da contenitore di tipi, tramite codifica, ed \`e chiuso rispetto ai tipi finora introdotti, nei capitolo precedenti. Inoltre le regole di Introduzione usano quelle di Eliminazione.}
 \begin{center}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{I$_1$-Uno)}
@@ -61,7 +63,7 @@ Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regol
 \DisplayProof
 \end{center}
 \noindent
-\textit{Dove b rappresenta la codifica di un tipo in un contenitore e $\hat{List}(b)$ il codice delle liste associate a b.}
+\textit{In (I$_7$-Uno) b rappresenta la codifica di un tipo in un contenitore e $\hat{List}(b)$ il codice delle liste associate a b.}
 \vspace{0.5cm}
 \begin{center}
 \begin{prooftree}
@@ -69,10 +71,10 @@ Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regol
 \AxiomC{c $\in$ \textbf{T}(b)[$\Gamma$]}
 \AxiomC{d $\in$ \textbf{T}(b)[$\Gamma$]}
 \LeftLabel{I$_8$-Uno)}
-\TrinaryInfC{Id(b,c,d) $\in$ U$_0$[$\Gamma$]}
+\TrinaryInfC{$\hat{Id}$(b,c,d) $\in$ U$_0$[$\Gamma$]}
 \end{prooftree}
 \end{center}
-\textit{Per le regole di Introduzione va sottolineato che U$_0$ funge da contenitore di tipi, tramite codifica, ed \`e chiuso rispetto ai tipi finora introdotti, nei capitolo precedenti. Inoltre le regole di Introduzione usano quelle di Eliminazione.}
+
 
 \section{Regole di Eliminazione}
 \label{sec:eliminzione-U0}
@@ -81,6 +83,8 @@ Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regol
 \LeftLabel{E-Uno)}
 \UnaryInfC{\textbf{T}(a) type[$\Gamma$]}
 \end{prooftree}
+\noindent 
+\textit{\textbf{T} indica la decodifica del codice a, e trasforma il codice in un tipo.}
 
 \section{Regole di Conversione}
 \label{sec:conversione-U0}
@@ -127,7 +131,7 @@ Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regol
 \AxiomC{c $\in$ \textbf{T}(b)[$\Gamma$]}
 \AxiomC{d $\in$ \textbf{T}(b)[$\Gamma$]}
 \LeftLabel{C$_8$-Uno)}
-\TrinaryInfC{\textbf{T}(Id(b,c,d)) $=$ Id(\textbf{T}(b),c,d) type[$\Gamma$]}
+\TrinaryInfC{\textbf{T}($\hat{Id}$(b,c,d)) $=$ Id(\textbf{T}(b),c,d) type[$\Gamma$]}
 \DisplayProof
 \end{center}
 
@@ -165,22 +169,22 @@ Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regol
 \end{prooftree}
 \end{center}
 
-\section{Semantica operazionale tipo Universo}
+\section{Semantica operazionale tipo Primo Universo}
 \label{subsec: semantica-operazionale-U0}
 Negli universi normalizzare i termini \`e pi\`u difficile e richiede una relazione di riduzione che coinvolge anche i tipi, vale dunque il \textbf{teorema di forte normalizzazione} (\S \ref{subsec: applicazione-uguaglianza-definizionale-tra-termini}).\\
 La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
 \begin{itemize}
-\item $\beta_{Uno}$-I$_1$-red) \textbf{T}($\hat{N_0}$) $\rightarrow_1$ N$_0$
-\item $\beta_{Uno}$-I$_2$-red) \textbf{T}($\hat{N_1}$) $\rightarrow_1$ N$_1$
-\item $\beta_{Uno}$-I$_3$-red) \textbf{T}($\hat{Nat}$) $\rightarrow_1$ Nat
-\item $\beta_{Uno}$-I$_4$-red) \textbf{T}($\hat{\sum}_{x \in b} c(x)$) $\rightarrow_1$ $\sum_{x \in \textbf{T}(b)} \textbf{T}(c(x))$
-\item $\beta_{Uno}$-I$_5$-red) \textbf{T}($\hat{\prod}_{x \in b} c(x)$) $\rightarrow_1$ $\prod_{x \in \textbf{T}(b)} \textbf{T}(c(x))$
-\item $\beta_{Uno}$-I$_6$-red) \textbf{T}(b $\hat{+}$ c) $\rightarrow_1$ \textbf{T}(b) $+$ \textbf{T}(c)
-\item $\beta_{Uno}$-I$_7$-red) \textbf{T}($\hat{List}$(b)) $\rightarrow_1$ List(\textbf{T}(b))
-\item $\beta_{Uno}$-I$_9$-red) \textbf{T}($\hat{Id}(b,c,d)$) $\rightarrow_1$ Id(\textbf{T}(b),c,d)
+\item $\beta_{Uno}$-C$_1$-red) \textbf{T}($\hat{N_0}$) $\rightarrow_1$ N$_0$
+\item $\beta_{Uno}$-C$_2$-red) \textbf{T}($\hat{N_1}$) $\rightarrow_1$ N$_1$
+\item $\beta_{Uno}$-C$_3$-red) \textbf{T}($\hat{Nat}$) $\rightarrow_1$ Nat
+\item $\beta_{Uno}$-C$_4$-red) \textbf{T}($\hat{\sum}_{x \in b} c(x)$) $\rightarrow_1$ $\sum_{x \in \textbf{T}(b)} \textbf{T}(c(x))$
+\item $\beta_{Uno}$-C$_5$-red) \textbf{T}($\hat{\prod}_{x \in b} c(x)$) $\rightarrow_1$ $\prod_{x \in \textbf{T}(b)} \textbf{T}(c(x))$
+\item $\beta_{Uno}$-C$_6$-red) \textbf{T}(b $\hat{+}$ c) $\rightarrow_1$ \textbf{T}(b) $+$ \textbf{T}(c)
+\item $\beta_{Uno}$-C$_7$-red) \textbf{T}($\hat{List}$(b)) $\rightarrow_1$ List(\textbf{T}(b))
+\item $\beta_{Uno}$-C$_8$-red) \textbf{T}($\hat{Id}(b,c,d)$) $\rightarrow_1$ Id(\textbf{T}(b),c,d)
 \item \AxiomC{a$_1$ $\rightarrow$ a$_2$}
 \LeftLabel{Uno-red)}
-\UnaryInfC{\textbf{T}(a$_1$) $\rightarrow$ \textbf{T}(a$_2$) type[$\Gamma$]}
+\UnaryInfC{\textbf{T}(a$_1$) $\rightarrow_1$ \textbf{T}(a$_2$) type[$\Gamma$]}
 \DisplayProof \qquad
 \item Novit\`a del tipo Universo rispetto al tipo singoletto
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
