@@ -54,7 +54,7 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \AxiomC{\begin{tabular}[c]{ccc} s $\in$ List(A)[$\Gamma$] \\ a $\in$ A[$\Gamma$] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
 \LeftLabel{C$_2$-list)}
-\TrinaryInfC{El$_{list}$(cons(s,a),c,e) $=$ e(s,a, E$_{list}$(s,c,e) $\in$ M(cons(s,a))[$\Gamma$]}
+\TrinaryInfC{El$_{list}$(cons(s,a),c,e) $=$ e(s,a, E$_{list}$(s,c,e)) $\in$ M(cons(s,a))[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
