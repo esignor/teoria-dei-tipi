@@ -20,11 +20,11 @@
 \usepackage[ddmmyyyy]{datetime}
 \usepackage{cancel} % barra il testo
 \begin{document}
-\setcounter{section}{0}
-\frontmatter
+
+%-----------------------------------------------------------------------------------%
 \pagenumbering{Roman}
 \setcounter{page}{0}
-%-----------------------------------------------------------------------------------%
+
 % FIRST PAGE
 \begin{figure}[H]
 \centering
@@ -44,7 +44,8 @@ Eleonora Signor, 1237581
 % INDEX OF PAGES
 \tableofcontents \pagebreak
 %-----------------------------------------------------------------------------------%
-\frontmatter
+
+\setcounter{section}{0}
 \pagenumbering{arabic}
 \setcounter{page}{1}
 \input{./content/capitolo1.tex}\newpage
