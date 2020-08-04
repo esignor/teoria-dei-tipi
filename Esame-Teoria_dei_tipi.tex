@@ -21,8 +21,9 @@
 \usepackage{cancel} % barra il testo
 \begin{document}
 \setcounter{section}{0}
-\setcounter{page}{1}
-
+\frontmatter
+\pagenumbering{Roman}
+\setcounter{page}{0}
 %-----------------------------------------------------------------------------------%
 % FIRST PAGE
 \begin{figure}[H]
@@ -43,7 +44,9 @@ Eleonora Signor, 1237581
 % INDEX OF PAGES
 \tableofcontents \pagebreak
 %-----------------------------------------------------------------------------------%
-
+\frontmatter
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \input{./content/capitolo1.tex}\newpage
 \input{./content/capitolo2.tex}\newpage
 \input{./content/capitolo3.tex}\newpage

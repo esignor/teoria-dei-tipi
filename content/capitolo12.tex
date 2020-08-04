@@ -154,6 +154,43 @@ Il tipo Universo alla Tarski \`e definito dalle regole seguenti.\\\\
 \end{prooftree}
 \end{center}
 
+\section{Semantica operazionale tipo Universo}
+\label{subsec: semantica-operazionale-U0}
+Negli universi normalizzare i termini \`e pi\`u difficile e richiede una relazione di riduzione che coinvolge anche i tipi, vale dunque il \textbf{teorema di forte normalizzazione} (\S \ref{subsec: applicazione-uguaglianza-definizionale-tra-termini}).\\
+La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
+\begin{itemize}
+\item $\beta_{Uno}$-red) \textbf{T}($\hat{Nat}$) $\rightarrow_1$ Nat
+\item \AxiomC{a$_1$ $\rightarrow$ a$_2$}
+\LeftLabel{Uno-red)}
+\UnaryInfC{\textbf{T}(a$_1$) $\rightarrow$ \textbf{T}(a$_2$) type[$\Gamma$]}
+\DisplayProof \qquad
+\item Novit\`a del tipo Universo rispetto al tipo singoletto
+\AxiomC{b$_1$ $\rightarrow_1$ b$_2$}
+\LeftLabel{$Uno$-I$_6$-red$_I$)}
+\UnaryInfC{b$_1$ $\hat{+}$ c $\rightarrow_1$ b$_2$ $\hat{+}$ c}
+\DisplayProof
+\item \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
+\LeftLabel{$Uno$-I$_6$-red$_{II}$)}
+\UnaryInfC{b$\hat{+}$ c$_1$  $\rightarrow_1$ b $\hat{+}$ c$_2$}
+\DisplayProof
+\item \AxiomC{d$_1$ $\rightarrow_1$ d$_2$}
+\LeftLabel{$Uno$-I$_7$-red$_I$)}
+\UnaryInfC{List(d$_1$) $\rightarrow_1$ List(d$_2$)}
+\DisplayProof
+\item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
+\LeftLabel{$Uno$-I$_8$-red$_I$)}
+\UnaryInfC{Id(t$_1$,w,z) $\rightarrow_1$ Id(t$_2$,w,z)}
+\DisplayProof
+\item \AxiomC{w$_1$ $\rightarrow_1$ w$_2$}
+\LeftLabel{$Uno$-I$_8$-red$_{II}$)}
+\UnaryInfC{Id(t,w$_1$,z) $\rightarrow_1$ Id(t,w$_2$,z)}
+\DisplayProof
+\item \AxiomC{z$_1$ $\rightarrow_1$ z$_2$}
+\LeftLabel{$Uno$-I$_8$-red$_{III}$)}
+\UnaryInfC{Id(t,w,z$_1$) $\rightarrow_1$ Id(t,w,z$_2$)}
+\DisplayProof
+\end{itemize}
+
 
 
 

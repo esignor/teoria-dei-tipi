@@ -16,9 +16,9 @@ La teoria dei tipi nasce per garantire la \textit{Certified Proof Correctness}. 
 \label{sec:come-nasce}
 Gli errori di programmazione sono stati preponderanti alla nascita di metodi automatici, che assicurassero la correttezza del \textit{software}. Alcuni di questi, degni di nota, sono stati:
 \begin{itemize}
-\item Incidente nel lancio dell'Apollo 11;
-\item Tragedie sanitarie: incidenti avvenuti tra il 1985-1987, in cui dei pazienti ricevettero una massiccia \textit{overdose} di radiazioni e per la quali alcuni morirono;
-\item Errori di vita civile: riserva di solo due cifre per il campo et\`a all'interno dei \textit{database}. Ecco che una signora danese ricevette per il suo 107-esimo compleanno, una mail dalle autorit\`a della scuola locale per iscriversi alla prima elementare.
+\item incidente nel lancio dell'Apollo 11;
+\item tragedie sanitarie: incidenti avvenuti tra il 1985-1987, in cui dei pazienti ricevettero una massiccia \textit{overdose} di radiazioni e per la quali alcuni morirono;
+\item errori di vita civile: riserva di solo due cifre per il campo et\`a all'interno dei \textit{database}. Ecco che una signora danese ricevette per il suo 107-esimo compleanno, una mail dalle autorit\`a della scuola locale per iscriversi alla prima elementare.
 \end{itemize}
 \noindent 
 Per la matematica la correttezza delle dimostrazioni \`e irrilevante solo quando la soluzione \`e certa (come accade con il cubo di \textit{Rubik}, dove so che la soluzione \`e corretta quando ognuno dei lati \`e uniformemente colorato); e in generale questo \`e difficile che accada.\\
@@ -256,8 +256,8 @@ x(\textbf{\textcolor{red}{$\lambda$x}}.((\textbf{\textcolor{red}{$\lambda$x}}.x)
 Le variabili legate sono le x all'interno delle parentesi tonde. Una possibile rinomina, per evitare che queste variabili legate abbiano lo stesso nome, \`e x($\lambda$x.(($\lambda$y.y)x)), dove la x della parentesi pi\`u interna \`e stata sostituita con la y.
 
 \paragraph{3)}
-Evidenziare di due colori diversi quali sono le variabili libere e quali quelle legate.
-\begin{center}($\lambda$x.(z($\lambda$z.((xyz)x))zx))x($\lambda$x.(($\lambda$y.yy)($\lambda$z.zz)))\end{center}
+\textbf{Evidenziare di due colori diversi quali sono le variabili libere e quali quelle legate.
+\begin{center}($\lambda$x.(z($\lambda$z.((xyz)x))zx))x($\lambda$x.(($\lambda$y.yy)($\lambda$z.zz)))\end{center}}
 \textbf{Soluzione}\\\\
 ($\lambda$x.(\textbf{\textcolor{green}{z}}($\lambda$z.((\textbf{\textcolor{red}{x}\textcolor{green}{y}\textcolor{red}{z}})\textbf{\textcolor{red}{x}}))\textbf{\textcolor{green}{z}\textcolor{red}{x}}))\textbf{\textcolor{green}{x}}($\lambda$x.(($\lambda$y.\textbf{\textcolor{red}{yy}})($\lambda$z.\textbf{\textcolor{red}{zz}})))
 \begin{itemize}
@@ -266,14 +266,14 @@ Evidenziare di due colori diversi quali sono le variabili libere e quali quelle 
 \end{itemize}
 
 \paragraph{4)}
-Descrivere un termine del $\lambda$-calcolo, descritto in \S{\ref{subsec:lambda-calcolo},  che \`e convergente con almeno un passo di riduzione rispetto ad una specifica strategia di riduzione deterministica.\\\\
+\textbf{Descrivere un termine del $\lambda$-calcolo, descritto in \S\ref{subsec:lambda-calcolo},  che \`e convergente con almeno un passo di riduzione rispetto ad una specifica strategia di riduzione deterministica.}\\\\
 \textit{Soluzione}\\\\
 Per definizione un termine t \`e convergente, rispetto a una strategia di
 riduzione deterministica, se esiste un numero finito n >= 1 di termini s$_1$,..., s$_n$ tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i + 1}$ per i = 1,..., n-1 e s$_n$ non \`e riducibile ad alcun termine.\\
 Prendendo in considerazione una strategia di riduzione deterministica \textbf{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di termine t del $\lambda$-calcolo convergente in almeno un passo di riduzione \`e:
 \begin{center}t $\equiv$ (($\lambda$x.x)z)(($\lambda$y.y)w) $\rightarrow_1$ z(($\lambda$y.y)w) $\rightarrow_1$ z(w) $\equiv$ s$_n$ $\equiv$ s\end{center}
 \paragraph{5)} 
-Descrivere due termini diversi del $\lambda$-calcolo, descritto in \S{\ref{subsec:lambda-calcolo}, che non sono convergenti sempre rispetto a una strategia di riduzione deterministica.\\\\
+\textbf{Descrivere due termini diversi del $\lambda$-calcolo, descritto in \S\ref{subsec:lambda-calcolo}, che non sono convergenti sempre rispetto a una strategia di riduzione deterministica.}\\\\
 \textbf{Soluzione}\\\\
 Per definizione un termine t diverge (\`e non convergente), rispetto a una strategia
 di riduzione deterministica, se esiste una quantit\`a numerabile di termini s$_i$ al variare di i $\in$ Nat tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i+1}$. Per ogni i $\in$ Nat (ossia esiste una lista infinita di passi computazioni a partire da t).
@@ -281,7 +281,7 @@ Prendendo in considerazione una strategia di riduzione deterministica \textit{ca
 \begin{center}($\lambda$x x(x))($\lambda$y y(y)) $\rightarrow_1$ ($\lambda$y y(y))($\lambda$y y(y))  $\rightarrow_1$ ... $\rightarrow_1$ ($\lambda$y y(y))($\lambda$y y(y)) $\rightarrow_1$ ... \end{center}
 Si riduce sempre a se stessa, a qualunque passo di computazione. Perci\`o ammette computazione infinita (diverge) non raggiungendo mai un valore finale.
 \paragraph{6)} 
-Che relazione c'\`e tra il lambda-calcolo puro con le regole di riduzione date in \S{\ref{subsec:lambda-calcolo}, rispetto a quello in cui, adottando la stessa sintassi di termini, imponiamo la seguente definizione di riduzione $\rightarrow_1^\ast$.
+\textbf{Che relazione c'\`e tra il lambda-calcolo puro con le regole di riduzione date in \S\ref{subsec:lambda-calcolo}, rispetto a quello in cui, adottando la stessa sintassi di termini, imponiamo la seguente definizione di riduzione $\rightarrow_1^\ast$.}
 \begin{itemize}
 \item per ogni termine t e b ($\lambda$x.t)(b) $\rightarrow_1^\ast$ t[$\frac{x}{b}$]
 \item per ogni termine b, b$_1$, b$_2$ e a, a$_1$, a$_2$
