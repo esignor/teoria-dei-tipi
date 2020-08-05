@@ -229,7 +229,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \noindent
 Voglio dimonstrare che $\neg$Id(Nat,0,1) \`e derivabile, ovvero che esiste pf tale che 
 \begin{center}\textbf{pf $\in$ Id(Nat,0,1) $\rightarrow$ N$_0$[ ]}\end{center}
-Questo perch\`e N$_0$ $\equiv$ $\bot$ e Id(Nat,0,1) $\equiv$ $\neg0$ $=_{Nat}$ 1\\
+Questo perch\`e N$_0$ $\equiv$ $\bot$ e Id(Nat,0,1) $\equiv$ $0$ $=_{Nat}$ 1\\
 Che \`e equivalente  a trovare 
 \begin{center}\textbf{pf$^\backprime$(z) $\in$ N$_0$[z $\in$ Id(Nat,0,1)]}\end{center}
 \noindent \textit{Ricordo che l'uguaglianza \`e Id e non 0 $=$ 1 $\in$ Nat (0 \`e una NF $\neq$ succ(0) $=$ 1 che \`e una NF) che difatti non \`e derivabile}.\\\\
@@ -246,14 +246,14 @@ Al netto di ci\`o, in questo esercizio, basterebbe usare un Universo U$_k$ e non
 
 \subsection{Lemma 1}
 Definisco la funzione \textit{isZero}, indispensabile per capire se z \`e 0 oppure 1. Dunque\\
-\begin{center}isZero(z)[z $\in$ Nat]\end{center}
+\begin{center}\textbf{isZero(z)[z $\in$ Nat]}\end{center}
 Idea: pensare a U$_0$ come se fosse Bool (in realt\`a U$_0$ ne contiene molti di pi\`u).
 \begin{itemize}
 \item vero: $\hat{N}_1$ $\rightarrow$ T(N$_1$) $=$ N$_1$ = \textit{tt}$^I$
 \item falso: $\hat{N}_0$ $\rightarrow$ T(N$_0$) $=$ N$_0$ = \textit{$\bot$}$^I$
 \end{itemize}
 \noindent
-\textit{\`E vero che z \`e zero, percui nel caso base va messo N$_1$\\
+\textit{\`E vero che z \`e zero, per cui nel caso base va messo N$_1$\\
 Il successore di qualcosa non \`e zero, e dunque va messo N$_0$}
 \small
 \begin{adjustwidth}{-9.5em}{}
@@ -292,7 +292,8 @@ Il successore di qualcosa non \`e zero, e dunque va messo N$_0$}
 \end{adjustwidth}
 \noindent
 \normalsize
-Dunque verifico che z $=$ 0 $\in$ N$_1$ (\textit{per farlo uso la regola di Conversione dei Naturali})
+\begin{enumerate}
+\item Verifico che \textit{isZero}(0) $=$ $\hat{N}_1$ $\in$ U$_0$[ ] (\textit{per farlo uso la regola di Conversione dei Naturali})
 
 \begin{prooftree}
 \AxiomC{[ ] cont}
@@ -311,7 +312,8 @@ Dunque verifico che z $=$ 0 $\in$ N$_1$ (\textit{per farlo uso la regola di Conv
 \TrinaryInfC{El$_{Nat}$(0,$\hat{N_1}$,(x,y).$\hat{N_0}$) $=$ $\hat{N_1}$ $\in$ U$_0$ [ ]}
 \end{prooftree}
 \noindent
-Verifico che z $=$ succ(z) $\in$ N$_0$
+
+\item Verifico che \textit{isZero}(1) $=$ $\hat{N}_0$ $\in$ U$_0$[ ]
 
 \begin{prooftree}
 \AxiomC{[ ] cont}
@@ -333,6 +335,44 @@ Verifico che z $=$ succ(z) $\in$ N$_0$
 \LeftLabel{C$_2$-Nat}
 \QuaternaryInfC{El$_{Nat}$(succ(0),$\hat{N_1}$,(x,y).$\hat{N_0}$) $=$ $\hat{N_0}$ $\in$ U$_0$ [ ]}
 \end{prooftree}
+\noindent
+\end{enumerate}
+\noindent
+Dunque \textit{isZero}(z) equivale a El$_{Nat}$(z,$\hat{N}_1$,(x,y).$\hat{N}_0$)\\
+con \textit{isZero}(0) $=$ $\hat{N}_1$ $\in$ U$_0$[ ] e \textit{isZero}(1) $=$ $\hat{N}_0$ $\in$ U$_0$[ ]
+
+\subsection{Lemma 2}
+h$_{isZero}$(z$_1$,z$_2$,z$_3$) $\in$ Id(U$_0$,isZero(z$_1$),isZero(z$_2$))[z$_1$ $\in$ Nat,z$_2$ $\in$ Nat,z$_3$ $\in$ Id(Nat,z$_1$,z$_2$)] \`e derivabile.\\
+h$_{isZero}$(z$_1$,z$_2$,z$_3$) $\in$ Id(U$_0$,isZero(z$_1$),isZero(z$_2$)) \`e equivalente a El$_{Id}$(z$_3$,(x).id(isZero(x)) (derivazione presente in \S\ref{sec: es-id} esercizio 2) \`e anch'essa derivabile.
+
+\subsubsection{Corollario}
+h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,isZero(0),isZero(1))[z $\in$ Id(Nat,0,1)] \`e derivabile.\\
+Inoltre visto che \textit{isZero}(0) $=$ N$_1$ e \textit{isZero}(1) $=$ N$_0$ anche h$_{isZero}$(0,1,z) Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)] \`e derivabile.
+\small
+\begin{adjustwidth}{-9.5em}{}
+\begin{prooftree}
+\AxiomC{U$_0$ $=$ U$_0$ type[z $\in$ Id(Nat,0,1)}
+\AxiomC{isZero(0) $=$ N$_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)}
+\AxiomC{isZero(1) $=$ N$_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)}
+\LeftLabel{eq-F-Id}
+\TrinaryInfC{Id(U$_0$,isZero(0),isZero(1) $=$ Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)}
+\end{prooftree}
+\end{adjustwidth}
+\vspace{0.5cm}
+\noindent
+\normalsize
+Ecco che se 0 $=$ 1 siamo vicino alla contraddizione, in quanto usando che \textit{isZero}(0) $=$ N$_1$ e \textit{isZero}(1) $=$ N$_0$, allora anche N$_0$ $=$ N$_1$ nell'Universo. Ma N$_0$ \`e \textit{true} e  N$_1$ \`e \textit{false}  e se \textit{true} fosse uguale a \textit{false} avremmo una logica inconsistente.
+\subsection{Lemma 3}
+\textit{Serve per arrivare ad avere una contraddizione.}\\\\
+\noindent
+q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)] \`e derivabile, equivalente a El$_{Id}$(z,(x).$<\lambda$x.w,$\lambda$w.w$>$) $\in$ (T(x) $\rightarrow$ T(x)) $\times$ (T(x) $\rightarrow$ T(x)).\\
+(T(x) $\rightarrow$ T(x)) $\times$ (T(x) $\rightarrow$ T(x)) perch\`e M(z$_1$,z$_2$,z$_3$) $\equiv$ (T(z$_1$) $\rightarrow$ T(z$_2$)) $\times$ (T(z$_2$) $\rightarrow$ T(z$_1$)) e M(x,x,id(x)) $\equiv$ (T(x) $\rightarrow$ T(x)) $\times$ (T(x) $\rightarrow$ T(x)).
+\subsubsection{Corollario}
+Da q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)] sostituendo x con N$_1$ e y con N$_0$ ottengo \begin{center} q$_{U_0}$($\hat{N_1}$,$\hat{N_0}$,z) $\in$ (T(N$_1$) $\rightarrow$ T(N$_0$)) $\times$ (T(N$_1$) $\rightarrow$ T(N$_0$))[z $\in$ Id(Nat,0,1)] \end{center} che \`e derivabile.
+
+
+
+
 
 
 
