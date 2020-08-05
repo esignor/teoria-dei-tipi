@@ -223,6 +223,117 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \DisplayProof
 \end{itemize}
 
+\section{Esercizio su Universo: $0$ diverso da $1$ proposizionalmente}
+\label{sec:esercizio-su-universo}
+\textit{Il sequente esercizio \`e utile a comprendere come la logica si interpreta all'interno della teoria dei tipi.}\\\\
+\noindent
+Voglio dimonstrare che $\neg$Id(Nat,0,1) \`e derivabile, ovvero che esiste pf tale che 
+\begin{center}\textbf{pf $\in$ Id(Nat,0,1) $\rightarrow$ N$_0$[ ]}\end{center}
+Questo perch\`e N$_0$ $\equiv$ $\bot$ e Id(Nat,0,1) $\equiv$ $\neg0$ $=_{Nat}$ 1\\
+Che \`e equivalente  a trovare 
+\begin{center}\textbf{pf$^\backprime$(z) $\in$ N$_0$[z $\in$ Id(Nat,0,1)]}\end{center}
+\noindent \textit{Ricordo che l'uguaglianza \`e Id e non 0 $=$ 1 $\in$ Nat (0 \`e una NF $\neq$ succ(0) $=$ 1 che \`e una NF) che difatti non \`e derivabile}.\\\\
+\noindent \textbf{L'unico modo per trovare pf$^\backprime$ \`e solo utilizzando un Universo (U$_0$)}.
+\begin{center}
+U$_0$\\
+$\hat{U_0}$ $\in$ U$_1$\\
+$\hat{U_1}$ $\in$ U$_2$\\
+...
+\end{center}
+\noindent
+Nella teoria dei tipi di \textit{Martin-L$\ddot{o}$f} \`e possibile sempre definire U$_0$ e poi mettere il codice di U$_0$ dento a U$_1$, il codice di U$_1$ dentro a U$_2$, e cosi via, senza mai far collassare gli universi.\\
+Al netto di ci\`o, in questo esercizio, basterebbe usare un Universo U$_k$ e non solo U$_0$.
+
+\subsection{Lemma 1}
+Definisco la funzione \textit{isZero}, indispensabile per capire se z \`e 0 oppure 1. Dunque\\
+\begin{center}isZero(z)[z $\in$ Nat]\end{center}
+Idea: pensare a U$_0$ come se fosse Bool (in realt\`a U$_0$ ne contiene molti di pi\`u).
+\begin{itemize}
+\item vero: $\hat{N}_1$ $\rightarrow$ T(N$_1$) $=$ N$_1$ = \textit{tt}$^I$
+\item falso: $\hat{N}_0$ $\rightarrow$ T(N$_0$) $=$ N$_0$ = \textit{$\bot$}$^I$
+\end{itemize}
+\noindent
+\textit{\`E vero che z \`e zero, percui nel caso base va messo N$_1$\\
+Il successore di qualcosa non \`e zero, e dunque va messo N$_0$}
+\small
+\begin{adjustwidth}{-9.5em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type [ ]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{z $\in$ Nat cont}
+\LeftLabel{F-Uno}
+\UnaryInfC{U$_0$ type[z $\in$ Nat]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I$_2$-Uno}
+\UnaryInfC{$\hat{N}_1$ $\in$ U$_0$[ ]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I$_1$-Uno}
+\UnaryInfC{$\hat{N}_0$ $\in$ U$_0$[ ]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{F-Uno}
+\UnaryInfC{U$_0$ type[x $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ U$_0$) $\notin$ x $\in$ Nat}
+\UnaryInfC{x $\in$ Nat, y $\in$ U$_0$ cont}
+\LeftLabel{ind-te}
+\BinaryInfC{$\hat{N}_0$ $\in$ U$_0$[x $\in$ Nat, y $\in$ U$_0$]}
+
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(z,$\hat{N_1}$,(x,y).$\hat{N_0}$) $\in$ U$_0$[z $\in$ Nat]}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\normalsize
+Dunque verifico che z $=$ 0 $\in$ N$_1$ (\textit{per farlo uso la regola di Conversione dei Naturali})
+
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Uno}
+\UnaryInfC{U$_0$ type[ ]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I$_2$-Uno}
+\UnaryInfC{$\hat{N}_1$ $\in$ U$_0$[ ]}
+
+
+\AxiomC{[ ] cont}
+\LeftLabel{I$_1$-Uno}
+\UnaryInfC{$\hat{N}_0$ $\in$ U$_0$[ ]}
+\LeftLabel{C$_1$-Nat}
+\TrinaryInfC{El$_{Nat}$(0,$\hat{N_1}$,(x,y).$\hat{N_0}$) $=$ $\hat{N_1}$ $\in$ U$_0$ [ ]}
+\end{prooftree}
+\noindent
+Verifico che z $=$ succ(z) $\in$ N$_0$
+
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{I$_1$-Nat}
+\UnaryInfC{0 $\in$ Nat [ ]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{F-Uno}
+\UnaryInfC{U$_0$ type[ ]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I$_2$-Uno}
+\UnaryInfC{$\hat{N}_1$ $\in$ U$_0$[ ]}
+
+
+\AxiomC{[ ] cont}
+\LeftLabel{I$_1$-Uno}
+\UnaryInfC{$\hat{N}_0$ $\in$ U$_0$[ ]}
+\LeftLabel{C$_2$-Nat}
+\QuaternaryInfC{El$_{Nat}$(succ(0),$\hat{N_1}$,(x,y).$\hat{N_0}$) $=$ $\hat{N_0}$ $\in$ U$_0$ [ ]}
+\end{prooftree}
+
 
 
 
