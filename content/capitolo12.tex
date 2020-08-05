@@ -338,8 +338,8 @@ Il successore di qualcosa non \`e zero, e dunque va messo N$_0$}
 \noindent
 \end{enumerate}
 \noindent
-Dunque \textit{isZero}(z) equivale a El$_{Nat}$(z,$\hat{N}_1$,(x,y).$\hat{N}_0$)\\
-con \textit{isZero}(0) $=$ $\hat{N}_1$ $\in$ U$_0$[ ] e \textit{isZero}(1) $=$ $\hat{N}_0$ $\in$ U$_0$[ ]
+Dunque \begin{center}\textbf{\textit{isZero}(z) equivale a El$_{Nat}$(z,$\hat{N}_1$,(x,y).$\hat{N}_0$)\\
+con \textit{isZero}(0) $=$ $\hat{N}_1$ $\in$ U$_0$[ ] e \textit{isZero}(1) $=$ $\hat{N}_0$ $\in$ U$_0$[ ]}\end{center}
 
 \subsection{Lemma 2}
 h$_{isZero}$(z$_1$,z$_2$,z$_3$) $\in$ Id(U$_0$,isZero(z$_1$),isZero(z$_2$))[z$_1$ $\in$ Nat,z$_2$ $\in$ Nat,z$_3$ $\in$ Id(Nat,z$_1$,z$_2$)] \`e derivabile.\\
@@ -347,7 +347,8 @@ h$_{isZero}$(z$_1$,z$_2$,z$_3$) $\in$ Id(U$_0$,isZero(z$_1$),isZero(z$_2$)) \`e 
 
 \subsubsection{Corollario}
 h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,isZero(0),isZero(1))[z $\in$ Id(Nat,0,1)] \`e derivabile.\\
-Inoltre visto che \textit{isZero}(0) $=$ N$_1$ e \textit{isZero}(1) $=$ N$_0$ anche h$_{isZero}$(0,1,z) Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)] \`e derivabile.
+Inoltre visto che \textit{isZero}(0) $=$ N$_1$ e \textit{isZero}(1) $=$ N$_0$ anche
+\begin{center} \textbf{h$_{isZero}$(0,1,z) Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)]} \end{center}\`e derivabile.
 \small
 \begin{adjustwidth}{-9.5em}{}
 \begin{prooftree}
@@ -365,10 +366,55 @@ Ecco che se 0 $=$ 1 siamo vicino alla contraddizione, in quanto usando che \text
 \subsection{Lemma 3}
 \textit{Serve per arrivare ad avere una contraddizione.}\\\\
 \noindent
-q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)] \`e derivabile, equivalente a El$_{Id}$(z,(x).$<\lambda$x.w,$\lambda$w.w$>$) $\in$ (T(x) $\rightarrow$ T(x)) $\times$ (T(x) $\rightarrow$ T(x)).\\
-(T(x) $\rightarrow$ T(x)) $\times$ (T(x) $\rightarrow$ T(x)) perch\`e M(z$_1$,z$_2$,z$_3$) $\equiv$ (T(z$_1$) $\rightarrow$ T(z$_2$)) $\times$ (T(z$_2$) $\rightarrow$ T(z$_1$)) e M(x,x,id(x)) $\equiv$ (T(x) $\rightarrow$ T(x)) $\times$ (T(x) $\rightarrow$ T(x)).
+q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)] \`e derivabile, equivalente a El$_{Id}$(z,(x).$<\lambda$w.w,$\lambda$w.w$>$) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(x) $\rightarrow$ T(y)).\\\\
+\noindent
+$\Delta$ $\equiv$ x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)
+\scriptsize
+\begin{adjustwidth}{-13em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{(T(x) $\rightarrow$ T(y))[$\Delta$]}
+\AxiomC{}
+\UnaryInfC{(T(x) $\rightarrow$ T(y))[$\Delta$]}
+\LeftLabel{F-x}
+\BinaryInfC{(T(x) $\rightarrow$ T(y)) $\times$ (T(x) $\rightarrow$ T(y))[$\Delta$]}
+
+\AxiomC{}
+\UnaryInfC{T(x) type[x $\in$ U$_0$]}
+\LeftLabel{F-c}\RightLabel{(w $\in$ T(x)) $\notin$ x $\in$ U$_0$}
+\UnaryInfC{x $\in$ U$_0$,w $\in$ T(x) cont}
+\LeftLabel{var}
+\UnaryInfC{w $\in$ T(x)[x $\in$ U$_0$,w $\in$ T(x)]}
+\LeftLabel{I-$\rightarrow$}
+\UnaryInfC{$\lambda$w.w $\in$ T(x) $\rightarrow$ T(x)[x $\in$ U$_0$]}
+\AxiomC{$\ast$}
+\UnaryInfC{$\lambda$w.w $\in$ T(x) $\rightarrow$ T(x)[x $\in$ U$_0$]}
+\LeftLabel{I-x}
+\BinaryInfC{$<\lambda$w.w,$\lambda$w.w$>$ $\in$ (T(x) $\rightarrow$ T(x)) $\times$ (T(x) $\rightarrow$ T(x))[x $\in$ U$_0$]}
+\LeftLabel{E-Id$_{dip}$}
+\BinaryInfC{El$_{Id}$(z,(x).$<\lambda$w.w,$\lambda$w.w$>$) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(x) $\rightarrow$ T(y))[]}
+\end{prooftree}
+\end{adjustwidth}
+\normalsize
+\vspace{0.3cm}
+\noindent
+Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.
 \subsubsection{Corollario}
-Da q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)] sostituendo x con N$_1$ e y con N$_0$ ottengo \begin{center} q$_{U_0}$($\hat{N_1}$,$\hat{N_0}$,z) $\in$ (T(N$_1$) $\rightarrow$ T(N$_0$)) $\times$ (T(N$_1$) $\rightarrow$ T(N$_0$))[z $\in$ Id(Nat,0,1)] \end{center} che \`e derivabile.
+Da q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[$\Delta$] sostituendo x con N$_1$ e y con N$_0$ ottengo \begin{center} q$_{U_0}$($\hat{N_1}$,$\hat{N_0}$,z) $\in$ (T(N$_1$) $\rightarrow$ T(N$_0$)) $\times$ (T(N$_1$) $\rightarrow$ T(N$_0$))[z $\in$ Id(Nat,0,1)] \end{center} che \`e derivabile.\\
+Inoltre mediante sostituzione\\
+Posso dire che
+\begin{center}\textbf{q$_{U_0}$($\hat{N_1}$,$\hat{N_0}$,z) $\in$ (N$_1$ $\rightarrow$ N$_0$) $\times$ (N$_1$) $\rightarrow$ N$_0$)}\end{center} \`e derivabile.
+\\\\
+\noindent
+\textbf{Corollario finale}\\
+Ap($\pi_1 (q_{U_0}(\hat{N}_1,\hat{N}_0,z^\backprime))$ $\ast$ $\in$ N$_1$)$\in$ N$_0$[z$\backprime$ $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)]\\
+Dunque $\bot$ true [Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true] \`e derivabile\\\\
+\noindent
+Si sta dicendo che h$_{isZero}$(0,1,z) Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)] \`e equivalente a Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true[z $\in$ Id(Nat,0,1)] che  \`e derivabile.\\
+Percui mettendo assieme, usando la logica, che Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true[z $\in$ Id(Nat,0,1)]  e $\bot$ true [Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true] si ottiene $\bot$ true [Id(Nat,0,1)] \`e derivabile\\\\
+\noindent 
+Il \textit{proof-term} non \`e altro che prendere Ap($\pi_1 (q(\hat{N}_1,\hat{N}_0,z^\backprime))$ $\ast$ $\in$ N$_1$)$\in$ N$_0$[z$\backprime$ $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)] e comporlo con h$_{isZero}$(0,1,z) Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)]
+\begin{center}\textbf{$\lambda$z.Ap($\pi_1 (q_{U_0}(\hat{N}_1,\hat{N}_0,h$_{isZero}$(0,1,z)),x)0$ $\in$ N$_0$[z $\in$ Id(Nat,0,1)]}\end{center)
 
 
 
