@@ -461,7 +461,106 @@ Se prendiamo la teoria \textbf{MLTT$_0$ senza l'Universo} \begin{center}$\equiv$
 \`e \textbf{inadeguata} per formalizzare la matematica, perch\`e non dimostra che i Naturali sono formati da infiniti numeri. In particolare non \`e in grado di dimostrare che 0 $\neq$ 1 proposizionalmente. Formalmente significa
 \begin{center}\textbf{$\neg$ Id(Nat,0,1) true[ ] non \`e derivabile in MLTT$_0$ (ma lo \`e con l'Universo)}\end{center}
 \noindent
-Al massimo in \textbf{MLTT} si pu\`o formalizzare in \textit{Costructive Math} $=$ \textit{Math}(matematica usuale che si pu\`o dimostrare con la logica intuizionisitica) $+$ Logica Intuizionistica.\\
+Al massimo in \textbf{MLTT} si pu\`o formalizzare in \textit{Costructive Math} $=$ \textit{Math}(matematica usuale che si pu\`o dimostrare con la Logica intuizionisitica) $+$ Logica Intuizionistica.\\
 Invece \textit{Classic Math} $=$ \textit{Math} $+$ Logica Intuizionistica $+$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$\\
-$\rightarrow$ Logica Intuizionistica $+$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$ $=$ Logica Classica\\
-$\rightarrow$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$ non vale in \textbf{MLLT}
+$\Rightarrow$ Logica Intuizionistica $+$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$ $=$ Logica Classica\\
+$\Rightarrow$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$ non vale in \textbf{MLLT}.\\
+In \textbf{MLTT} non si pu\`o formalizzare la \textit{Classic Math}, al massimo solo quella \textit{Costructive}.
+\subsubsection{Dimostrazione del perch\`e MLLT$_0$, senza Universo, \`e indeguata}
+\label{subsec:dimostro-perch\`e-MLLT$_0$-senza-Universo-\`e-indeguata}
+Per dimostrare l'aritmetica intuizionistica bisogna almeno essere in MLTT$_1$, ci vuole almeno U$_0$ Universo.\\\\
+\textit{Dimostro che MLTT$_0$ non \`e sufficiente, con il seguente esempio}
+\begin{center}
+\textbf{0 $\neq$ 1 prop $\equiv$ $\neg$Id(Nat,0,1)}
+\end{center}
+\noindent
+\begin{enumerate}
+\item \textbf{Costruire un contromodello interno di MLLT$_0$}, che renda valido tutte le regole di \textbf{MLLT$_0$} con l'assunzione che \textbf{MLLT$_0$} sia consistente.\\
+Ma ($\neg$Id(Nat,0,1))$^J$ $=$ N$_0$ type [ ] $=$ $\bot$ type [ ].\\\\
+\noindent
+Idea: ( )$^J$ tipi di MLLT$_0$ $\rightarrow$ \{N$_0$,N$_1$\} $\equiv$ Bool (ovvero ogni tipo viene interpretato come proposizione \textit{true} o \textit{false})\\
+Ci\`o significa che interpreto (B type[$\Gamma$])$^J$, all'interno di \textbf{MLLT$_0$} stesso, come B$^J$ type[z $\in$ N$^J$]\\
+Inoltre interpreto un \textit{proof-term} (pf $\in$ B type[$\Gamma$])$^J$ ${\overset{\mathit{def}}{=}}$ $\ast$ $\in$ B$^J$[$\Gamma$] sse B$^J$ $=$ N$_1$ (\textit{interpretazione parziale}).\\\\
+\noindent
+Con tale interpretazione si ottiene il seguente \textbf{Teorema}\\
+pf $\in$ B[$\Gamma$] \`e derivabile $\rightarrow$ $\ast$ $\in$ B$^J$[$\Gamma^J$] \`e derivabile in \textbf{MTT$_0$}. Questo vale anche per i tipi, dunque se B type[$\Gamma$] \`e derivabile $\rightarrow$ B$^J$ type[$\Gamma^J$]
+\item \textbf{Interpretazione}
+\begin{center}
+N$_0^J$ ${\overset{\mathit{def}}{=}}$ N$_0$\\
+N$_1^J$ ${\overset{\mathit{def}}{=}}$ N$_1$\\
+List(A)$^J$ ${\overset{\mathit{def}}{=}}$ List(A)\\
+Nat$^J$ ${\overset{\mathit{def}}{=}}$ N$_1$\\
+Id(A,a,b)$^J$ ${\overset{\mathit{def}}{=}}$ A$^J$
+\end{center}
+\noindent
+Con questo modello allora se scrivo Id(A,a,b)$^J$ viene interpretato come Nat$^J$ $=$ N$_1$\\
+Inoltre possiamo derivare $\ast$ $\in$ Id(A,a,b)$^J$ in \textbf{MTT$_0$}.
+\textit{Se Id(A,a,b)$^J$ \`e abitata non pu\`o per\`o essere abitata la negazione.} Formalmente deve essere interpretata la negazione come
+\begin{center}\textbf{$\neg$ Id(Nat,0,1) ${\overset{\mathit{def}}{=}}$ (Id(Nat,0,1)$\rightarrow$ N$_0$)$^J$ }\end{center}
+Qui va data l'interpretazione dello spazio di funzioni, caso particolare di $\scriptsize$prod
+\begin{center}
+($\prod\limits_{x \in A}$ B)$^J$ $=$
+$
+\begin{cases}
+\textbf{N}_0\text{ se } A^J =  N_1  \text{ e } B^J = N_0\\
+\textbf{N}_1 \text{ altrimenti}
+\end{cases}
+$
+\end{center}
+\noindent
+Pensate come preposizioni \\
+($\prod\limits_{x \in A}$ B)$^J$ $\equiv$ A$^J$ $\rightarrow$ B$^J$ $\equiv$\\
+\textit{tt} $\rightarrow$ \textit{tt} $\equiv$ \textit{tt}\\
+$\bot$ $\rightarrow$ \textit{tt} $\equiv$ \textit{tt}\\
+$\bot$ $\rightarrow$ $\bot$ $\equiv$ \textit{tt}\\
+\textit{tt} $\rightarrow$ $\bot$ $\equiv$ $\bot$\\\\
+\noindent
+Dunque $\neg$ Id(Nat,0,1) ${\overset{\mathit{def}}{=}}$ (Id(Nat,0,1)$\rightarrow$ N$_0$)$^J$ $=$ $\prod\limits_{x \in Id(Nat,0,1)^J}$ N$_0$ $=$ $\prod\limits_{x \in N_1}$ N$_0$ $=$ N$_0$ $\rightarrow$ N$_0$($\bot$)\\
+\textbf{In questo modo ho dimostrato che non \`e vero che 0 $\neq$ 1 proposizionalemente.}\\\\
+\noindent
+Per completezza do anche le interpretazioni di  {\scriptsize}$\sum$ e  $+$
+
+\begin{center}
+($\sum\limits_{x \in A}$ B)$^J$ $=$
+$
+\begin{cases}
+\textbf{N}_1\text{ se } A^J =  N_1  \text{ e } B^J = N_1\\
+\textbf{N}_0 \text{ altrimenti}
+\end{cases}
+$
+\end{center}
+\noindent
+Pensate come preposizioni \\
+($\sum\limits_{x \in A}$ B)$^J$ $\equiv$ A$^J$ $\times$ B$^J$ $\equiv$\\
+\textit{tt} $\times$ \textit{tt} $\equiv$ \textit{tt}\\
+$\bot$ $\times$ \textit{tt} $\equiv$ $\bot$  \\
+$\bot$ $\times$ $\bot$ $\equiv$ $\bot$ \\
+\textit{tt} $\rightarrow$ $\bot$ $\equiv$ $\bot$\\\\
+
+\begin{center}
+(A $+$ B)$^J$ $=$
+$
+\begin{cases}
+\textbf{N}_0\text{ se } A^J = B^J = N_0\\
+\textbf{N}_1 \text{ altrimenti}
+\end{cases}
+$
+\end{center}
+\noindent
+Pensate come preposizioni \\
+(A $+$ B)$^J$ $\equiv$ A$^J$ $\vee$ B$^J$ $\equiv$\\
+$\bot$  $\vee$ $\bot$  $\equiv$ $\bot$ \\
+$\bot$ $\vee$ \textit{tt} $\equiv$ \textit{tt}  \\
+\textit{tt} $\vee$ \textit{tt} $\equiv$ \textit{tt} \\
+\textit{tt} $\vee$ $\bot$ $\equiv$ \textit{tt}\\\\
+
+\end{enumerate}
+\noindent
+In questo modo abbiamo costruito (tipi $+$ termini di \textbf{MLTT$_0$})$^J$ $\rightarrow$ \textbf{MLTT$_0$}. Che rappresenta, difatti, uno schiacciamento dei tipi \textit{tt}(N$_1$) o $\bot$(N$_0$), pensando ai tipi come proposizioni, riuscendo a provare che 0 $=$1 \`e vero, in quanto tutti i tipi dei Naturali vengono interpretati unicamente dal singoletto.\\\\
+\noindent
+\textbf{Questa interpretazione non funziona pi\`u con l'Universo}, perch\`e
+\begin{center}\textbf{U$_0^J$  $=$ N$_1$ $\Leftrightarrow$ MLLT$_1$ \`e inconsistente, poich\`e ($\bot$)$^J$ $=$ (\textit{tt})$^J$} \end{center}
+in quanto U$_0$, essendo \textit{Bool}, contiene sia il codice di $\hat{N_1}$ che il codice di $\hat{N_0}$
+
+
+
