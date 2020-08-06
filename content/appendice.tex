@@ -204,11 +204,10 @@
 \small
 \begin{adjustwidth}{-6em}{}
 \begin{prooftree}
-\AxiomC{M(z) type[$\Gamma$, z $\in$ List(A)]}
-\AxiomC{c $\in$ M(nil)[$\Gamma$]}
+\AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ List(A)] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
 \LeftLabel{E-List$_{dip}$)}
-\TrinaryInfC{El$_{list}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ List(A)]}
+\BinaryInfC{El$_{list}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ List(A)]}
 \end{prooftree}
 \end{adjustwidth}
 \newpage
