@@ -145,8 +145,8 @@ Invece pf $\in$ $\forall_{z \in Nat}$ Id(Nat,0$+$z,z) va dimostrato per induzion
 Uso il \textit{proof-term} cos\`i definito in una precedente lezione:
 \begin{center} h$_2$(z$_1$,z$_2$,z$_3$) $\in$ Id(Nat,succ(z$_1$),succ(z$_2$))[z$_1$ $\in$ Nat,z$_2$ $\in$ Nat,z$_3$ $\in$ Id(Nat,z$_2$,z$_3$)]\end{center}
 
-\small
-\begin{adjustwidth}{-9.5em}{}
+\scriptsize
+\begin{adjustwidth}{-7em}{}
 \begin{prooftree}
 
 \AxiomC{}
@@ -212,7 +212,7 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \normalsize
 \textbf{1$_A$}
 \small
-\begin{adjustwidth}{-8em}{}
+\begin{adjustwidth}{-9.5em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type [$\Gamma$]}
@@ -321,7 +321,7 @@ h$_1$(z$_1$,z$_2$,z$_3$) $\equiv$ El$_{Id}$(z$_3$,(x).id(x))
 \noindent $\Delta$ $=$ $\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)\\
 \noindent $\theta$ $=$ A, z$_1$ $\in$ A, z$_2$ $\in$ A\\
 \scriptsize
-\begin{adjustwidth}{-10em}{}
+\begin{adjustwidth}{-9em}{}
 \begin{prooftree}
 \AxiomC{($\ast$)}
 \UnaryInfC{z$_2$ $\in$ A[$\Delta$]}
@@ -393,7 +393,7 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 \normalsize
 \textbf{1$_A$}
 \small
-\begin{adjustwidth}{-11em}{}
+\begin{adjustwidth}{-12em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{Nat type [ ]}
@@ -444,7 +444,7 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 \normalsize
 \textbf{1$_B^\backprime$}
 \small
-\begin{adjustwidth}{-6em}{}
+\begin{adjustwidth}{-8em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
@@ -716,7 +716,7 @@ Svolgo la ricorsione su y (altrimenti su x cambierei il contesto e "uscirei" dal
 \item M(z) type[$\Gamma$,z $\in$ Nat] $\equiv$ Id(Nat,0+y,y)[y $\in$ Nat]
 \item c $\in$ M(0)[$\Gamma$] $\equiv$ id(0) $\in$ Id(Nat,0+0,0)[ ]
 \item M(z) $\equiv$ M(y) per $\alpha$-eq (dimostrazione in \S\ref{sec: es-naturali} esercizio 5)
-\item e(y,x) $\in$ M(succ(y))[$\Gamma$,y $\in$ Nat,x $\in$ M(y)] $\equiv$ h(0+y,y,x) $\in$ Id(Nat,0+succ(y),succ(y))[$\Gamma$,y $\in$ Nat,x $\in$ Id(Nat,0+y,y)]
+\item e(y,x) $\in$ M(succ(y))[$\Gamma$,y $\in$ Nat,x $\in$ M(y)] $\equiv$ \\ h(0+y,y,x) $\in$ Id(Nat,0+succ(y),succ(y))[$\Gamma$,y $\in$ Nat,x $\in$ Id(Nat,0+y,y)]
 \end{itemize}
 \item Conclusioni:
 \begin{itemize}
@@ -726,7 +726,7 @@ Svolgo la ricorsione su y (altrimenti su x cambierei il contesto e "uscirei" dal
 \end{itemize}
 
 
-\small
+\scriptsize
 \begin{adjustwidth}{-11.5em}{}
 \begin{prooftree}
 
@@ -851,11 +851,11 @@ $\Delta$ $\equiv$ z $\in$ Nat,v $\in$ Id(Nat,0+z,z)
 \vspace{0.5cm}
 \normalsize \textbf{3$^\backprime$}\\\\
 \small
-\begin{adjustwidth}{-14em}{}
+\begin{adjustwidth}{-15em}{}
 \begin{prooftree}
 \AxiomC{\textbf{3$^\backprime_A$}}
 \UnaryInfC{Id(Nat,0+z,z)type[z $\in$ Nat]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ Id(Nat,0+z,z))\\ $\notin$ z $\in$ Nat\end{tabular}}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$  Id(Nat,0+z,z))\\ $\notin$ z $\in$ Nat\end{tabular}}
 \UnaryInfC{$\Delta$ cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[$\Delta$]}

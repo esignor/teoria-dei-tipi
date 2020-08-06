@@ -256,8 +256,8 @@ Idea: pensare a U$_0$ come se fosse Bool (in realt\`a U$_0$ ne contiene molti di
 \noindent
 \textit{\`E vero che z \`e zero, per cui nel caso base va messo N$_1$\\
 Il successore di qualcosa non \`e zero, e dunque va messo N$_0$}
-\small
-\begin{adjustwidth}{-9.5em}{}
+\scriptsize
+\begin{adjustwidth}{-7em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
@@ -282,7 +282,7 @@ Il successore di qualcosa non \`e zero, e dunque va messo N$_0$}
 \UnaryInfC{x $\in$ Nat cont}
 \LeftLabel{F-Uno}
 \UnaryInfC{U$_0$ type[x $\in$ Nat]}
-\LeftLabel{F-c}\RightLabel{(y $\in$ U$_0$) $\notin$ x $\in$ Nat}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ U$_0$) \\ $\notin$ x $\in$ Nat\end{tabular}}
 \UnaryInfC{x $\in$ Nat, y $\in$ U$_0$ cont}
 \LeftLabel{ind-te}
 \BinaryInfC{$\hat{N}_0$ $\in$ U$_0$[x $\in$ Nat, y $\in$ U$_0$]}
@@ -351,7 +351,7 @@ h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,isZero(0),isZero(1))[z $\in$ Id(Nat,0,1)] \`e
 Inoltre visto che \textit{isZero}(0) $=$ N$_1$ e \textit{isZero}(1) $=$ N$_0$ anche
 \begin{center} \textbf{h$_{isZero}$(0,1,z) Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)]} \end{center}\`e derivabile.
 \small
-\begin{adjustwidth}{-9.5em}{}
+\begin{adjustwidth}{-6.5em}{}
 \begin{prooftree}
 \AxiomC{U$_0$ $=$ U$_0$ type[z $\in$ Id(Nat,0,1)}
 \AxiomC{isZero(0) $=$ N$_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)}

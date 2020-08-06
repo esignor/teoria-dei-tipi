@@ -27,7 +27,7 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \section{Regole di Eliminazione}
 \label{subsec: eliminazione-liste}
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-5em}{}
 \begin{prooftree}
 \AxiomC{\begin{tabular}[c]{ccc}M(z) type[$\Gamma$, z $\in$ List(A)]\\t $\in$ List(A)[$\Gamma$] \\c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
@@ -48,7 +48,7 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \end{prooftree}
 \end{adjustwidth}
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ List(A)]}
 \AxiomC{\begin{tabular}[c]{ccc} s $\in$ List(A)[$\Gamma$] \\ a $\in$ A[$\Gamma$] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
@@ -74,7 +74,7 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \BinaryInfC{cons(s$_1$,a$_1$) = cons(s$_2$,a$_2$) $\in$ List(A)($\Gamma$)}
 \end{prooftree}
 \small
-\begin{adjustwidth}{-10em}{}
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{\begin{tabular}[c]{ccc} M(z) type[$\Gamma$, z $\in$ List(A)] \\ t$_1$ = t$_2$ $\in$ list(A)[$\Gamma$] \\ c$_1$ $=$ c$_2$ $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e$_1$(x,w,y) $=$ e$_2$(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
@@ -87,7 +87,7 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \label{subsec:eliminatore dipendente-lista}
 L'eliminatore ha anche la forma dipendente, conveniente da usare soprattutto per motivi pratici.
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ List(A)]}
 \AxiomC{c $\in$ M(nil)[$\Gamma$]}
@@ -118,7 +118,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
 \LeftLabel{List-red$_1$)}
 \UnaryInfC{El$_{list}$(t$_1$, c, e) $\rightarrow_1$ El$_{list}$(t$_2$, c, e)}
-\DisplayProof \qquad
+\DisplayProof \vspace{0.3cm} \\
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
 \LeftLabel{List-red$_2$)}
 \UnaryInfC{El$_{list}$(t, c$_1$, e) $\rightarrow_1$ El$_{list}$(t, c$_2$, e)}
@@ -266,7 +266,7 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \vspace{1cm}
 \normalsize \textbf{4}
 \small
-\begin{adjustwidth}{-8em}{}
+\begin{adjustwidth}{-5em}{}
 \begin{prooftree}
 \AxiomC{\textbf{4$^\backprime$}}
 \UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A), y$\in$ A}
@@ -493,8 +493,8 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \end{prooftree}
 \vspace{1cm}
 \normalsize \textbf{3}
-\small
-\begin{adjustwidth}{-14em}{}
+\scriptsize
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type[ ]}
@@ -534,7 +534,7 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \vspace{1cm}
 \normalsize \textbf{4}
 \small
-\begin{adjustwidth}{-11em}{}
+\begin{adjustwidth}{-7em}{}
 \begin{prooftree}
 \AxiomC{\textbf{4$^\backprime$}}
 \UnaryInfC{x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A cont}

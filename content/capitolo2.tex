@@ -701,7 +701,7 @@ El$_{N1}$($\ast$, y) \`e uguale definizionalmente.\\\\
 \noindent
 \textbf{4}\\\\
 \scriptsize
-\begin{adjustwidth}{-17em}{}
+\begin{adjustwidth}{-14em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-S}
@@ -710,7 +710,7 @@ El$_{N1}$($\ast$, y) \`e uguale definizionalmente.\\\\
 \UnaryInfC{x $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
-\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ x $\in$ N$_1$}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ N$_1$) \\ $\notin$ x $\in$ N$_1$\end{tabular}}
 \UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
 \LeftLabel{var}
 \UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
@@ -721,11 +721,11 @@ El$_{N1}$($\ast$, y) \`e uguale definizionalmente.\\\\
 \UnaryInfC{x $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
-\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ (x $\in$ N$_1$)}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ N$_1$) \\ $\notin$ (x $\in$ N$_1$)\end{tabular}}
 \UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[x $\in$ N$_1$, y $\in$ N$_1$]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ N$_1$) $\notin$ (x $\in$  \\N$_1$, y $\in$ N$_1$)\end{tabular}}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ N$_1$) $\notin$ \\ (x $\in$ N$_1$, y $\in$ N$_1$)\end{tabular}}
 \UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$, z $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[x $\in$ N$_1$, y $\in$ N$_1$, z $\in$ N$_1$]}
@@ -736,7 +736,7 @@ El$_{N1}$($\ast$, y) \`e uguale definizionalmente.\\\\
 \UnaryInfC{x $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
-\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ x $\in$ N$_1$}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ N$_1$) \\ $\notin$ x $\in$ N$_1$\end{tabular}}
 \UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
 \LeftLabel{var}
 \UnaryInfC{y $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
@@ -808,8 +808,8 @@ El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
 
 \newpage
 \textbf{5$_C$}
-\small
-\begin{adjustwidth}{-7em}{}
+\scriptsize
+\begin{adjustwidth}{-3em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$]}

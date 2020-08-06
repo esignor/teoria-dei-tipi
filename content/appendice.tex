@@ -68,10 +68,9 @@
 \begin{prooftree}
 \AxiomC{t $\in$ Nat[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
-\AxiomC{c $\in$ M(0)[$\Gamma$]}
-\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+\AxiomC{\begin{tabular}[c]{cc}c $\in$ M(0)[$\Gamma$] \\ e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]\end{tabular}}
 \LeftLabel{E-Nat)}
-\QuaternaryInfC{El$_{Nat}$(t,c,e) $\in$ M(t)[$\Gamma$]}
+\TrinaryInfC{El$_{Nat}$(t,c,e) $\in$ M(t)[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -91,10 +90,9 @@
 \begin{prooftree}
 \AxiomC{m  $\in$ Nat[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
-\AxiomC{c $\in$ M(0)[$\Gamma$]}
-\AxiomC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+\AxiomC{\begin{tabular}[c]{cc}c $\in$ M(0)[$\Gamma$] \\ e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]\end{tabular}}
 \LeftLabel{C$_2$-Nat)}
-\QuaternaryInfC{El$_{Nat}$(succ(m),c,e) = e(m, El$_{Nat}$(m,c,e)) $\in$ M(succ(m))[$\Gamma$]}
+\TrinaryInfC{El$_{Nat}$(succ(m),c,e) = e(m, El$_{Nat}$(m,c,e)) $\in$ M(succ(m))[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -148,7 +146,7 @@
 
 \subsection{Regole di Eliminazione}
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-5em}{}
 \begin{prooftree}
 \AxiomC{\begin{tabular}[c]{ccc}M(z) type[$\Gamma$, z $\in$ List(A)]\\t $\in$ List(A)[$\Gamma$] \\c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
@@ -159,7 +157,7 @@
 
 \subsection{Regole di Conservazione}
 \small
-\begin{adjustwidth}{-5em}{}
+\begin{adjustwidth}{-4em}{}
 \begin{prooftree}
 \AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ List(A)] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
@@ -168,7 +166,7 @@
 \end{prooftree}
 \end{adjustwidth}
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ List(A)]}
 \AxiomC{\begin{tabular}[c]{ccc} s $\in$ List(A)[$\Gamma$] \\ a $\in$ A[$\Gamma$] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
@@ -193,7 +191,7 @@
 \BinaryInfC{cons(s$_1$,a$_1$) = cons(s$_2$,a$_2$) $\in$ List(A)($\Gamma$)}
 \end{prooftree}
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{\begin{tabular}[c]{ccc} M(z) type[$\Gamma$, z $\in$ List(A)] \\ t$_1$ = t$_2$ $\in$ list(A)[$\Gamma$] \\ c$_1$ $=$ c$_2$ $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e$_1$(x,w,y) $=$ e$_2$(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
@@ -204,7 +202,7 @@
 \normalsize
 \subsection{Eliminatore dipendente}
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ List(A)]}
 \AxiomC{c $\in$ M(nil)[$\Gamma$]}
@@ -377,10 +375,9 @@
 \begin{adjustwidth}{-4em}{}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $\sum\limits_{x \in B}$ C(x)]}
-\AxiomC{t $\in$ $\sum\limits_{x \in B}$ C(x)[$\Gamma$]}
-\AxiomC{e(x,y) $\in$ M($<$x,y$>$)[$\Gamma$, x $\in$ B, y $\in$ C(x)]}
+\AxiomC{\begin{tabular}[c]{cc}t $\in$ $\sum\limits_{x \in B}$ C(x)[$\Gamma$] \\ e(x,y) $\in$ M($<$x,y$>$)[$\Gamma$, x $\in$ B, y $\in$ C(x)]\end{tabular}}
 \LeftLabel{E-$\Sigma$)}
-\TrinaryInfC{El$_\Sigma$(t,(x,y).e(x,y)) $\in$ M(t)[$\Gamma$]}
+\BinaryInfC{El$_\Sigma$(t,(x,y).e(x,y)) $\in$ M(t)[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -389,11 +386,10 @@
 \begin{adjustwidth}{-4em}{}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $\sum\limits_{x \in B}$ C(x)]}
-\AxiomC{b $\in$ B[$\Gamma$]}
-\AxiomC{c $\in$ C(b)}
+\AxiomC{\begin{tabular}[c]{cc}b $\in$ B[$\Gamma$] \\ c $\in$ C(b)\end{tabular}}
 \AxiomC{e(x,y) $\in$ M($<$x,y$>$)[$\Gamma$, x $\in$ B, y $\in$ C(x)]}
 \LeftLabel{C-$\Sigma$)}
-\QuaternaryInfC{El$_\Sigma$($<$b,c$>$,e) $=$ e(b,c) $\in$ M($<$b,c$>$)[$\Gamma$]}
+\TrinaryInfC{El$_\Sigma$($<$b,c$>$,e) $=$ e(b,c) $\in$ M($<$b,c$>$)[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -415,10 +411,9 @@
 \begin{adjustwidth}{-8em}{}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ $\sum\limits_{x \in B}$ C(x)]}
-\AxiomC{t$_1$ $=$ t$_2$ $\in$ $\sum\limits_{x \in B}$ C(x)[$\Gamma$]}
-\AxiomC{e$_1$(x,y) $=$ e$_2$(x,y) $\in$ M($<$x,y$>$)[$\Gamma$, x $\in$ B, y $\in$ C(x)]}
+\AxiomC{\begin{tabular}[c]{cc}t$_1$ $=$ t$_2$ $\in$ $\sum\limits_{x \in B}$ C(x)[$\Gamma$] \\ e$_1$(x,y) $=$ e$_2$(x,y) $\in$ M($<$x,y$>$)[$\Gamma$, x $\in$ B, y $\in$ C(x)]\end{tabular}}
 \LeftLabel{eq-E-$\Sigma$)}
-\TrinaryInfC{El$_\Sigma$(t$_1$,e$_1$) $=$ El$_\Sigma$(t$_2$,e$_2$) $\in$ M(t$_1$)[$\Gamma$]}
+\BinaryInfC{El$_\Sigma$(t$_1$,e$_1$) $=$ El$_\Sigma$(t$_2$,e$_2$) $\in$ M(t$_1$)[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
