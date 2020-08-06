@@ -226,15 +226,15 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \section{Esercizio su Universo: $0$ diverso da $1$ proposizionalmente}
 \label{sec:esercizio-su-universo}
 \textit{Il sequente esercizio \`e utile a comprendere come la logica si interpreta all'interno della teoria dei tipi.\\
-Inoltre mette in luce, come l'uso degli Universi, permette di dimostrare alcuni fatti banali dell'aritmetica, come si vede in questo caso, l'assioma di Peano.}\\\\
+Inoltre mette in luce, come l'uso degli Universi, permette di dimostrare alcuni fatti banali dell'aritmetica, e in questo caso, l'assioma di Peano.}\\\\
 \noindent
 \textbf{Voglio dimonstrare che $\neg$Id(Nat,0,1) \`e derivabile, ovvero che esiste pf tale che} 
 \begin{center}\textbf{pf $\in$ Id(Nat,0,1) $\rightarrow$ N$_0$[ ]}\end{center}
 Questo perch\`e N$_0$ $\equiv$ $\bot$ e Id(Nat,0,1) $\equiv$ $0$ $=_{Nat}$ 1\\
 Che \`e equivalente  a trovare 
-\begin{center}\textbf{pf$^\backprime$(z) $\in$ N$_0$[z $\in$ Id(Nat,0,1)]}\end{center}
+\begin{center}\textbf{pf(z) $\in$ N$_0$[z $\in$ Id(Nat,0,1)]}\end{center}
 \noindent \textit{Ricordo che l'uguaglianza \`e Id e non 0 $=$ 1 $\in$ Nat (0 \`e una NF $\neq$ succ(0) $=$ 1 che \`e una NF) che difatti non \`e derivabile}.\\\\
-\noindent \textbf{L'unico modo per trovare pf$^\backprime$ \`e solo utilizzando un Universo (U$_0$)}.
+\noindent \textbf{L'unico modo per trovare pf \`e solo utilizzando un Universo (U$_0$)}.
 \begin{center}
 U$_0$\\
 $\hat{U_0}$ $\in$ U$_1$\\
@@ -344,18 +344,18 @@ con \textit{isZero}(0) $=$ $\hat{N}_1$ $\in$ U$_0$[ ] e \textit{isZero}(1) $=$ $
 
 \subsection{Lemma 2}
 h$_{isZero}$(z$_1$,z$_2$,z$_3$) $\in$ Id(U$_0$,isZero(z$_1$),isZero(z$_2$))[z$_1$ $\in$ Nat,z$_2$ $\in$ Nat,z$_3$ $\in$ Id(Nat,z$_1$,z$_2$)] \`e derivabile.\\
-h$_{isZero}$(z$_1$,z$_2$,z$_3$) $\in$ Id(U$_0$,isZero(z$_1$),isZero(z$_2$)) \`e equivalente a El$_{Id}$(z$_3$,(x).id(isZero(x)) (derivazione presente in \S\ref{sec: es-id} esercizio 2) \`e anch'essa derivabile.
+h$_{isZero}$(z$_1$,z$_2$,z$_3$) \`e equivalente a El$_{Id}$(z$_3$,(x).id(isZero(x)) (derivazione presente in \S\ref{sec: es-id} esercizio 2) \`e anch'essa derivabile.
 
 \subsubsection{Corollario}
 h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,isZero(0),isZero(1))[z $\in$ Id(Nat,0,1)] \`e derivabile.\\
 Inoltre visto che \textit{isZero}(0) $=$ N$_1$ e \textit{isZero}(1) $=$ N$_0$ anche
 \begin{center} \textbf{h$_{isZero}$(0,1,z) Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)]} \end{center}\`e derivabile.
 \small
-\begin{adjustwidth}{-6.5em}{}
+\begin{adjustwidth}{-11em}{}
 \begin{prooftree}
 \AxiomC{U$_0$ $=$ U$_0$ type[z $\in$ Id(Nat,0,1)}
-\AxiomC{isZero(0) $=$ N$_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)}
-\AxiomC{isZero(1) $=$ N$_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)}
+\AxiomC{isZero(0) $=$ N$_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
+\AxiomC{isZero(1) $=$ N$_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
 \LeftLabel{eq-F-Id}
 \TrinaryInfC{Id(U$_0$,isZero(0),isZero(1) $=$ Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)}
 \end{prooftree}
@@ -401,7 +401,7 @@ $\Delta$ $\equiv$ x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)
 \noindent
 Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.
 \subsubsection{Corollario}
-Da q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[$\Delta$] sostituendo x con N$_1$ e y con N$_0$ ottengo \begin{center} q$_{U_0}$($\hat{N_1}$,$\hat{N_0}$,z) $\in$ (T(N$_1$) $\rightarrow$ T(N$_0$)) $\times$ (T(N$_0$) $\rightarrow$ T(N$_1$))[z $\in$ Id(Nat,0,1)] \end{center} che \`e derivabile. Inoltre mediante sostituzione ottengo che
+Da q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[$\Delta$] sostituendo x con N$_1$ e y con N$_0$ ottengo \begin{center} q$_{U_0}$($\hat{N_1}$,$\hat{N_0}$,z) $\in$ (T(N$_1$) $\rightarrow$ T(N$_0$)) $\times$ (T(N$_0$) $\rightarrow$ T(N$_1$))[z $\in$ Id(Nat,0,1)] \end{center} che \`e derivabile. Inoltre mediante sostituzione trovo che
 \scriptsize
 \begin{adjustwidth}{-6em}{}
 \begin{prooftree}
@@ -428,14 +428,14 @@ Da q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$
 \noindent
 \textbf{Corollario finale}\\\\
 \noindent
-Ap($\pi_1 (q_{U_0}(\hat{N}_1,\hat{N}_0,z^\backprime))$, $\ast$)$\in$ N$_0$[z$\backprime$ $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)]\\
+Ap($\pi_1 q_{U_0}(\hat{N}_1,\hat{N}_0,z^\backprime))$, $\ast$)$\in$ N$_0$[z$\backprime$ $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)]\\
 Dunque $\bot$ true [Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true] \`e derivabile.\\\\
 \noindent
-Inoltre h$_{isZero}$(0,1,z) Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)] \`e equivalente a Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true[z $\in$ Id(Nat,0,1)] che  \`e derivabile.\\
+Inoltre h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)] \`e equivalente a Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true[z $\in$ Id(Nat,0,1)] che  \`e derivabile.\\
 Per cui mettendo assieme, usando la logica, che Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true[z $\in$ Id(Nat,0,1)]  e $\bot$ true [Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true] si ottiene $\bot$ true [Id(Nat,0,1)] che \`e ancora derivabile.\\\\
 \noindent 
-Il \textit{proof-term} non \`e altro che prendere Ap($\pi_1 (q(\hat{N}_1,\hat{N}_0,z^\backprime))$,$\ast$)$\in$ N$_0$[z$\backprime$ $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)] e comporlo con h$_{isZero}$(0,1,z) Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)]
-\begin{center}\textbf{Ap($\pi_1 (q_{U_0}(\hat{N}_1,\hat{N}_0,h_{isZero}$(0,1,z)),$\ast$) $\in$ N$_0$ $\in$ N$_0$[z $\in$ Id(Nat,0,1)]} \\ \textbf{$\lambda$z.Ap($\pi_1 (q_{U_0}(\hat{N}_1,\hat{N}_0,h_{isZero}$(0,1,z)),$\ast$) $\in$ $\neg$Id(Nat,0,1) }\end{center}
+Il \textit{proof-term} non \`e altro che prendere Ap($\pi_1 q_{U_0}(\hat{N}_1,\hat{N}_0,z^\backprime))$,$\ast$)$\in$ N$_0$[z$\backprime$ $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)] e comporlo con h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)]
+\begin{center}\textbf{Ap($\pi_1 q_{U_0}(\hat{N}_1,\hat{N}_0,h_{isZero}$(0,1,z)),$\ast$) $\in$ N$_0$[z $\in$ Id(Nat,0,1)]} \\ \textbf{$\lambda$z.Ap($\pi_1 q_{U_0}(\hat{N}_1,\hat{N}_0,h_{isZero}$(0,1,z)),$\ast$) $\in$ $\neg$Id(Nat,0,1) }\end{center}
 \noindent
 Tale \textit{proof-term}, non \`e altro che la codifica del \textit{proof-assistant}, della dimostrazione che $\neg$Id(Nat,0,1) true[ ].
 
