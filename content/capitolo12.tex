@@ -438,3 +438,30 @@ Il \textit{proof-term} non \`e altro che prendere Ap($\pi_1 (q(\hat{N}_1,\hat{N}
 \begin{center}\textbf{Ap($\pi_1 (q_{U_0}(\hat{N}_1,\hat{N}_0,h_{isZero}$(0,1,z)),$\ast$) $\in$ N$_0$ $\in$ N$_0$[z $\in$ Id(Nat,0,1)]} \\ \textbf{$\lambda$z.Ap($\pi_1 (q_{U_0}(\hat{N}_1,\hat{N}_0,h_{isZero}$(0,1,z)),$\ast$) $\in$ $\neg$Id(Nat,0,1) }\end{center}
 \noindent
 Tale \textit{proof-term}, non \`e altro che la codifica del \textit{proof-assistant}, della dimostrazione che $\neg$Id(Nat,0,1) true[ ].
+
+\section{Peculiarit\`a della teoria dei tipi di \textit{Martin-L$\ddot{o}$f}}
+\label{sec:peculiarit\`a-della-teoria-dei-tipi}
+Per teoria dei tipi di \textit{Martin-L$\ddot{o}$f} si intende
+\begin{center}
+N$_0$,N$_1$, Nat, List, B $+$ C, Id(A,a,b), $\sum\limits_{x \in A}$ B(x), $\prod\limits_{x \in A}$ B(x), U$_0$ $+$ altri universi
+\end{center}
+\noindent
+Questa \`e la teoria \textbf{MLTT}.\\
+La teoria \textbf{MLTT} \`e aperta, ovvero si intende anche l'estensione della teoria specifica, con i tipi elencati, con altri tipi induttivi, secondo lo schema delle regole date in \S\ref{sec: schema-generale}, in modo predicativo. In tale teoria deve sempre valere il teorema della forma normale \S \ref{subsec: applicazione-uguaglianza-definizionale-tra-termini} (la confluenza), e in generale la correttezza dei 4 giudizi deve essere decidibile (\textbf{decidable type checking}).\\\\
+\noindent
+\begin{center}\textbf{MLTT$_0$} ${\overset{\mathit{def}}{=}}$ \textbf{MLLT} $-$ Universo e con solo i tipi elencati sopra\\
+\textbf{MLLT$_1$} ${\overset{\mathit{def}}{=}}$ \textbf{MLTT$_0$} $+$ U$_0$ universo\end{center}
+\noindent
+La teoria \textbf{MLLT$_1$} \`e quella spiegata nella teoria del corso.
+
+\subsection{Necessit\`a di un Universo per formalizzare l'aritmetica}
+\label{subsec:Necessit\`a-di-un-Universo-per-formalizzare-l'aritmetica}
+Se prendiamo la teoria \textbf{MLTT$_0$ senza l'Universo} \begin{center}$\equiv$ N$_0$, N$_1$, List(A), Nat, B $+$ C, Id(A,a,b), $\sum\limits_{x \in A}$ B(x), $\prod\limits_{x \in A}$ B(x)\end{center}
+\noindent
+\`e \textbf{inadeguata} per formalizzare la matematica, perch\`e non dimostra che i Naturali sono formati da infiniti numeri. In particolare non \`e in grado di dimostrare che 0 $\neq$ 1 proposizionalmente. Formalmente significa
+\begin{center}\textbf{$\neg$ Id(Nat,0,1) true[ ] non \`e derivabile in MLTT$_0$ (ma lo \`e con l'Universo)}\end{center}
+\noindent
+Al massimo in \textbf{MLTT} si pu\`o formalizzare in \textit{Costructive Math} $=$ \textit{Math}(matematica usuale che si pu\`o dimostrare con la logica intuizionisitica) $+$ Logica Intuizionistica.\\
+Invece \textit{Classic Math} $=$ \textit{Math} $+$ Logica Intuizionistica $+$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$\\
+$\rightarrow$ Logica Intuizionistica $+$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$ $=$ Logica Classica\\
+$\rightarrow$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$ non vale in \textbf{MLLT}
