@@ -461,7 +461,7 @@ Se prendiamo la teoria \textbf{MLTT$_0$} (senza l'Universo) \begin{center}$\equi
 \`e \textbf{inadeguata} per formalizzare la matematica, perch\`e non dimostra che i Naturali sono formati da infiniti numeri. In particolare non \`e in grado di dimostrare che 0 $\neq$ 1 proposizionalmente. Formalmente significa
 \begin{center}\textbf{$\neg$ Id(Nat,0,1) true[ ] non \`e derivabile in MLTT$_0$ (ma lo \`e con l'Universo)}\end{center}
 \noindent
-Al massimo in \textbf{MLTT} si pu\`o formalizzare in \textit{Costructive Math} $=$ \textit{Math}  (matematica usuale che si pu\`o dimostrare con la Logica intuizionisitica) $+$ Logica intuizionistica.\\
+Al massimo in \textbf{MLTT}(\textit{Martin-L$\ddot{o}$f's style theory}) si pu\`o formalizzare in \textit{Costructive Math} $=$ \textit{Math}  (matematica usuale che si pu\`o dimostrare con la Logica intuizionisitica) $+$ Logica intuizionistica.\\
 Invece \textit{Classic Math} $=$ \textit{Math} $+$ Logica intuizionistica $+$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$\\
 $\Rightarrow$ Logica intuizionistica $+$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$ $=$ Logica classica\\
 $\Rightarrow$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$ non vale in \textbf{MLTT}.\\
@@ -508,7 +508,7 @@ $
 $
 \end{center}
 \noindent
-Pensate come preposizioni \\
+Pensate come proposizioni \\
 ($\prod\limits_{x \in A}$ B)$^J$ $\equiv$ A$^J$ $\rightarrow$ B$^J$ $\equiv$\\
 \textit{tt} $\rightarrow$ \textit{tt} $\equiv$ \textit{tt}\\
 $\bot$ $\rightarrow$ \textit{tt} $\equiv$ \textit{tt}\\
@@ -560,7 +560,42 @@ In questo modo abbiamo costruito (tipi $+$ termini di \textbf{MLTT$_0$})$^J$ $\r
 \noindent
 \textbf{Questa interpretazione non funziona pi\`u con l'Universo}, perch\`e
 \begin{center}\textbf{U$_0^J$  $=$ N$_1$ $\Leftrightarrow$ MLTT$_1$ \`e inconsistente, poich\`e ($\bot$)$^J$ $=$ (\textit{tt})$^J$} \end{center}
-in quanto U$_0$, essendo Bool, contiene sia il codice di $\hat{N_1}$ che il codice di $\hat{N_0}$
+In quanto U$_0$, essendo Bool, contiene sia il codice di $\hat{N_1}$ che il codice di $\hat{N_0}$.
+
+\section{Principi di scelta per estrazioni di programmi da dimostrazioni}
+\label{sec:principi-di-scelta-per-estrazioni-di-programmi-da-dimostrazioni}
+La \textbf{MLTT} ha una peculiare propriet\`a, dipendente dal fatto che abbiamo identificato la quantificazione esistenziale con l'unione indiciata.
+\begin{center}\textbf{$\exists_{x \in A}$ $\varphi(x)$ }${\overset{\mathit{def}}{\equiv}}$ $\sum\limits_{x \in A}$ $\varphi(x)$\end{center}
+\noindent
+Da notarsi che quanto descritto successivamente \`e interno a \textbf{MLTT}. Difatti, per altre teorie, pu\`o verificarsi la derivazione in una teoria T$_1$ e l'estrazione della funzione in un'altra T$_2$.
+
+\subsection{Regola di scelta}
+\label{subsec:regola-di-scelta}
+Vale, in questa teoria, l'\textbf{estrazione dei programmi} (intesi come funzioni) da dimostrazioni di validit\`a di \textbf{specifiche date}.\\ Ci\`o significa che se ho una relazione R(x,y) prop[$\Gamma$,x $\in$ A,y $\in$ B] e ho dimostrato $\forall_{x \in A}$ $\exists_{y \in B}$ R(x,y) true[$\Gamma$] derivato in \textbf{MLTT}, allora\\
+$\Rightarrow$ esiste f $\in$ A $\rightarrow$ B[$\Gamma$] in \textbf{MLLT} tale che $\forall_{x \in A}$ R(x,Ap(f,x)) true[$\Gamma$] derivabile in \textbf{MLTT}.
+\\\\
+\noindent
+\textit{Esempio}\\\\
+\noindent
+Supponiamo di aver dimostrato (\textit{specifica propriet\`a di un programma}) che $\forall$x $\in$ Nat $\exists$y $\in$ Nat B$_p$(x,y) ($=$ il programma \textit{P} su input \textit{x} si ferma al pi\`u in y passi) true[$\Gamma$], che \`e equivalente a un'equazione $\forall$x $\in$ Nat $\exists$y $\in$ Nat  ax $+$ bx $=$ c\\
+Percui\\
+$\Rightarrow$ esiste b $\in$ Nat $\rightarrow$ Nat[$\Gamma$] tale che $\forall$x $\in$ Nat B$_p$(x,Ap(b,x)) true[$\Gamma$] (\textit{restituisce in quanti passi il programma computa}) derivabile, che equivale in termini di equazione a f tale che ax $+$ Ap(f,x) $=$ c $\forall$x $\in$ Nat\\\\
+\noindent
+Questo permette di risolvere delle disuguaglianze o riuscire a provare l'arrestabilit\`a di un programma, sempre su un certo y, dopo n passi, ed estrarne l'algoritmo che calcola il \textit{bound}/la funzione che da la soluzione dell'equazione.\\\\
+\noindent
+Suppongo pf $\in$ $\forall$x $\in$ Nat $\exists$y $\in$ Nat B$_p$(x,y)[$\Gamma$]\\
+Si deriva b ${\overset{\mathit{def}}{=}}$ $\lambda$x.$\pi_1$(Ap(pf,x)) $\in$ Nat $\rightarrow$ Nat \`e derivabile\\  $\lambda$x.$\pi_2$(Ap(pf,x)) $\in$ $\forall$x $\in$ Nat B$_p$(x,Ap(b,x))[$\Gamma$] \`e derivabile.
+
+\subsection{Assioma di scelta}
+\label{subsec:assioma-di-scelta}
+La propriet\`a della regola della scelta, pu\`o venire rafforzata nel modo seguente.\\\\
+\noindent
+Data una relazione derivabile in \textbf{MLTT} vale che $\rightarrow$ (l'implica) diventa un'implicazione interna\\
+$\forall_{x \in A}$ $\exists_{y \in B}$ R(x,y) $\rightarrow$ $\exists_{f \in A \rightarrow B}$ $\forall_{x \in A}$ R(x,Ap(f,x)) true[$\Gamma$] \`e derivabile in \textbf{MLTT}.
+\\\\
+\noindent
+\textit{In generale l'assioma di scelta e la regola non sono equivalenti.}
+
 
 
 
