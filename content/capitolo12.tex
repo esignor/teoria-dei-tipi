@@ -186,7 +186,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \LeftLabel{Uno-red)}
 \UnaryInfC{\textbf{T}(a$_1$) $\rightarrow_1$ \textbf{T}(a$_2$) type[$\Gamma$]}
 \DisplayProof \qquad
-\item Novit\`a del tipo Universo rispetto al tipo singoletto
+\item Novit\`a del tipo Universo rispetto al tipo singoletto\\
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
 \AxiomC{b$_1$ $\rightarrow_1$ b$_2$}
 \LeftLabel{$Uno$-I$_4$-red$_I$)}
@@ -486,11 +486,11 @@ Con tale interpretazione si ottiene il seguente \textbf{Teorema}\\
 pf $\in$ B[$\Gamma$] \`e derivabile $\rightarrow$ $\ast$ $\in$ B$^J$[$\Gamma^J$] \`e derivabile in \textbf{MLTT$_0$}. Questo vale anche per i tipi, dunque se B type[$\Gamma$] \`e derivabile $\rightarrow$ B$^J$ type[$\Gamma^J$] \`e derivabile.
 \item \textbf{Interpretazione}
 \begin{center}
-N$_0^J$ ${\overset{\mathit{def}}{=}}$ N$_0$\\
-N$_1^J$ ${\overset{\mathit{def}}{=}}$ N$_1$\\
-List(A)$^J$ ${\overset{\mathit{def}}{=}}$ List(A)\\
-Nat$^J$ ${\overset{\mathit{def}}{=}}$ N$_1$\\
-Id(A,a,b)$^J$ ${\overset{\mathit{def}}{=}}$ A$^J$
+(N$_0[\Gamma])^J$ ${\overset{\mathit{def}}{=}}$ N$_0[\Gamma^J]$\\
+(N$_1[\Gamma])^J$ ${\overset{\mathit{def}}{=}}$ N$_1[\Gamma^J]$\\
+(List(A)[$\Gamma$])$^J$ ${\overset{\mathit{def}}{=}}$ A$^J[\Gamma^J]$\\
+(Nat[$\Gamma$])$^J$ ${\overset{\mathit{def}}{=}}$ N$_1[\Gamma^J]$\\
+(Id(A,a,b)[$\Gamma$])$^J$ ${\overset{\mathit{def}}{=}}$ A$^J[\Gamma^J]$
 \end{center}
 \noindent
 Con questo modello allora se scrivo Id(A,a,b)$^J$ viene interpretato come Nat$^J$ $=$ N$_1$\\
@@ -644,3 +644,45 @@ Ancora riesco a dimostrare che $\Omega$ \`e ben fondato e che porta a una contra
 \noindent
 Anche altre quantificazioni, come quelle illustrate sopra, allo stesso modo possono essere dimostrate inconsistenti.\\
 Tutto questo rende evidente come l'uso dei paradossi permette di vedere i limiti dei sistemi formali dal punto di vista logico.
+
+\section{Esercizi}
+\label{sec:es-UO}
+\paragraph{1)}
+\textbf{Dimostrare in teoria dei tipi con un universo con almeno il codice del tipo vuoto e del tipo singoletto, ad esempio con U$_0$, si pu\`o derivare
+\begin{center}
+$\neg$Id(Nat,0,1) true[ ]
+\end{center}
+}
+\noindent
+\textbf{Soluzione}\\\\
+\noindent
+\textit{Devo dimostrare che esiste pf $\in$ Id(Nat,0,1) true[ ] $\equiv$ pf(z) $\in$ N$_0$[z $\in$ Id(Nat,0,1)], come gi\`a dimostrato in \S\ref{sec:esercizio-su-universo}. Per completezza, di seguito, mostro la derivabilit\`a di $\neg$ Id(Nat,0,1)type[ ].}\\\\
+\noindent
+$\neg$ Id(Nat,0,1) type[ ] $\equiv$ Id(Nat,0,1) $\rightarrow$ $\bot$ type[ ] $\equiv$ Id(Nat,0,1) $\rightarrow$N$_0$ type[ ] $\equiv$ $\prod_{z \in Id(Nat,0,1)}$ N$_0$ type[ ]
+
+\begin{adjustwidth}{-6em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{I$_1$-Nat}
+\UnaryInfC{0 $\in$ Nat[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{I$_1$-Nat}
+\UnaryInfC{0 $\in$ Nat[ ]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{1 $\in$ Nat[ ]}
+\LeftLabel{F-Id}
+\TrinaryInfC{Id(Nat,0,1)type[ ]}
+
+\AxiomC{\textbf($\ast$)}
+\UnaryInfC{Id(Nat,0,1) type[ ]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ Id(Nat,0,1)) $\notin$ [ ]}
+\UnaryInfC{z $\in$ Id(Nat,0,1) cont}
+\LeftLabel{F-N$_0$}
+\UnaryInfC{N$_0$ type[z $\in$ Id(Nat,0,1)]}
+\LeftLabel{F-{\scriptsize$\prod$}}
+\BinaryInfC{$\prod_{z \in Id(Nat,0,1)}$ N$_0$ type[ ]}
+\end{prooftree}
+\end{adjustwidth}
