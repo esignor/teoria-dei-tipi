@@ -25,7 +25,7 @@
 \section{Regole di Eliminazione}
 \label{subsec: eliminazione-nat}
 \small
-\begin{adjustwidth}{-5em}{}
+\begin{adjustwidth}{-3em}{}
 \begin{prooftree}
 \AxiomC{t $\in$ Nat[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
@@ -38,7 +38,7 @@
 \section{Regole di Conversione}
 \label{subsec: convesione-nat}
 \small
-\begin{adjustwidth}{-5em}{}
+\begin{adjustwidth}{-3em}{}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
 \AxiomC{c $\in$ M(0)[$\Gamma$]}
@@ -48,7 +48,7 @@
 \end{prooftree}
 \end{adjustwidth}
 
-\begin{adjustwidth}{-5em}{}
+\begin{adjustwidth}{-3em}{}
 \begin{prooftree}
 \AxiomC{m  $\in$ Nat[$\Gamma$]}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
@@ -79,6 +79,7 @@ Ad esempio la regola di introduzione del successore di un numero naturale si pu\
 \UnaryInfC{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}
 \end{prooftree}
 Il medesimo discorso vale per la regola di eliminazione
+\begin{adjustwidth}{-3em}{}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Nat]}
 \AxiomC{c $\in$ M(0)[$\Gamma$]}
@@ -86,6 +87,7 @@ Il medesimo discorso vale per la regola di eliminazione
 \LeftLabel{E-Nat$_{dip}$)}
 \TrinaryInfC{El$_{Nat}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ Nat]}
 \end{prooftree}
+\end{adjustwidth}
 \noindent
 \textit{E-Nat} \`e equivalente a \textit{E-Nat$_{dip}$}. Difatti la teoria \textit{T$_{N1Nat}$}, in cui c'\`e \textit{E-Nat}, \`e equivalente a \textit{T$\backprime$} senza \textit{E-Nat}, ma con \textit{E-Nat$_{dip}$}, le regole di sostituzione e di \textit{sanitary check}.
 
@@ -129,7 +131,7 @@ La somma, tra numeri naturali, viene definita usando l'eliminatore dipendente \t
 Usando la nozione di primitiva ricorsiva e decidendo di ricorrere su z \begin{center} w + 0 $\equiv$ w \\ w + succ(z) $\equiv$ succ(w+z) $\equiv$ succ(y)\end{center}
 Ecco che l'albero di derivazione assume la seguente forma:
 \tiny
-\begin{adjustwidth}{-11em}{}
+\begin{adjustwidth}{-9em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
@@ -280,7 +282,7 @@ In E-Nat$_{dip}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, z $\in$ Nat, che pe
 \noindent
 \small
 \textbf{2$_A$}
-\begin{adjustwidth}{11em}{}
+\begin{adjustwidth}{4em}{}
 \begin{prooftree}
 %\AxiomC{$\Gamma$ cont}
 %\LeftLabel{F-Nat}
@@ -341,7 +343,7 @@ In E-Nat$_{dip}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, z $\in$ Nat, che pe
 \vspace{0.5cm}
 \textbf{2$_C$}
 \small
-\begin{adjustwidth}{9em}{}
+\begin{adjustwidth}{4em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{M(z) type[$\Gamma$, z $\in$ Nat]}
@@ -375,18 +377,18 @@ La ricorsione la faccio w, usando lo schema di ricorsione primitiva, vale che w 
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[w $\in$ Nat]}
 \AxiomC{[ ] cont}
-\LeftLabel{I$1$-Nat}
+\LeftLabel{I$_1$-Nat}
 \UnaryInfC{0 $\in$ Nat[ ]}
-\LeftLabel{I$2$-Nat}
+\LeftLabel{I$_2$-Nat}
 \UnaryInfC{1 $\in$ Nat[ ]}
-\LeftLabel{I$2$-Nat}
+\LeftLabel{I$_2$-Nat}
 \UnaryInfC{2 $\in$ Nat[ ]}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type [ ]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
 \UnaryInfC{x $\in$ Nat cont}
-\LeftLabel{I$2$-Nat$_{prog}$}
+\LeftLabel{I$_2$-Nat$_{prog}$}
 \UnaryInfC{succ(y) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]}
 \LeftLabel{E-Nat$_{dip}$}
 \TrinaryInfC{El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]}
@@ -460,7 +462,7 @@ in modo tale che valga 0 + y = y $\in$  Nat[y $\in$ Nat]
 La ricorsione la faccio sulla x, percui, usando lo schema di ricorsione primitiva, vale che x + y $\equiv$ El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]
 
 \small
-\begin{adjustwidth}{-6em}{}
+\begin{adjustwidth}{-9em}{}
 \begin{prooftree}
 \AxiomC{\textbf{1}}
 \UnaryInfC{El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[y $\in$ Nat, x $\in$ Nat]}
@@ -480,7 +482,7 @@ La ricorsione la faccio sulla x, percui, usando lo schema di ricorsione primitiv
 \vspace{0.5cm}
 \textbf{1}
 \tiny
-\begin{adjustwidth}{-10em}{}
+\begin{adjustwidth}{-14em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
