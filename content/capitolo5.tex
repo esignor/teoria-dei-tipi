@@ -220,10 +220,9 @@ inr($\ast$) $\equiv$ false\\
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
 \AxiomC{t $\in$ Bool[$\Gamma$]}
-\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
-\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
+\AxiomC{\begin{tabular}[c]{cc}e$_B$ $\in$ M(true)[$\Gamma$] \\ e$_C$ $\in$ M(false)[$\Gamma$]\end{tabular}}
 \LeftLabel{E-Bool)}
-\QuaternaryInfC{El$_{Bool}$(t,e$_B$,e$_C$) $\in$ M(t)[$\Gamma$]}
+\TrinaryInfC{El$_{Bool}$(t,e$_B$,e$_C$) $\in$ M(t)[$\Gamma$]}
 \end{prooftree}
 
 \item\normalsize\textit{Regole di Conversione}
@@ -247,24 +246,22 @@ inr($\ast$) $\equiv$ false\\
 \small
 \begin{center}
 \AxiomC{M(z) type [$\Gamma$, z $\in$ Bool]}
-\AxiomC{e$_B$ = s $\in$ M(true)[$\Gamma$]}
-\AxiomC{e$_C$ = t $\in$ M(false)[$\Gamma$]}
+\AxiomC{\begin{tabular}[c]{cc}e$_B$ = s $\in$ M(true)[$\Gamma$]\\e$_C$ = t $\in$ M(false)[$\Gamma$]\end{tabular}}
 \LeftLabel{eq$_1$-E-Bool)}
-\TrinaryInfC{El$_{Bool}$(true,e$_B$,e$_C$) = El$_{Bool}$(true,s,t) $\in$ M(true)[$\Gamma$]}
+\BinaryInfC{El$_{Bool}$(true,e$_B$,e$_C$) = El$_{Bool}$(true,s,t) $\in$ M(true)[$\Gamma$]}
 \DisplayProof \\
 \vspace{0.3cm}
 \AxiomC{M(z) type [$\Gamma$, z $\in$ Bool]}
-\AxiomC{e$_B$ = s $\in$ M(true)[$\Gamma$]}
-\AxiomC{e$_C$ = t $\in$ M(false)[$\Gamma$]}
+\AxiomC{\begin{tabular}[c]{cc}e$_B$ = s $\in$ M(true)[$\Gamma$] \\ e$_C$ = t $\in$ M(false)[$\Gamma$]\end{tabular}}
 \LeftLabel{eq$_2$-E-Bool)}
-\TrinaryInfC{El$_{Bool}$(false,e$_B$,e$_C$) = El$_{Bool}$(false,s,t) $\in$ M(false)[$\Gamma$]}
+\BinaryInfC{El$_{Bool}$(false,e$_B$,e$_C$) = El$_{Bool}$(false,s,t) $\in$ M(false)[$\Gamma$]}
 \DisplayProof  \\
 \vspace{0.3cm}
 \AxiomC{t = t$\backprime$ $\in$ Bool[$\Gamma$]]}
 \AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
 \AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
 \LeftLabel{eq$_1$-Bool)}
-\TrinaryInfC{M(t) = M(t$\backprime$) $\in$ M(true)[$Gamma$]}
+\TrinaryInfC{M(t) = M(t$\backprime$) $\in$ M(true)[$\Gamma$]}
 \DisplayProof \\
 \vspace{0.3cm}
 \AxiomC{t = t$\backprime$ $\in$ Bool[$\Gamma$]]}
