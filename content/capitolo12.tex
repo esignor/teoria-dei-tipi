@@ -603,7 +603,7 @@ Non esiste una versione impredicativa di \textbf{MLTT} (includendo almeno U$_0$)
 \item \textbf{\textit{T} \`e predicativa:}
 con univeso di oggetti \textit{small} U$_0$ $\rightarrow$ U$_0$ non \`e \textit{small}.
 Dunque non si pu\`o considerare \textbf{MLTT} $+$ $\hat{U}_0$ $\in$ U$_0$ (versione \`a la \textit{Tarski}), oppure U$_0$ $\in$ U$_0$ nella versione di \textit{Russell}.
-\item \textbf{\textit{T} \`e impredicativa:} (almeno con gli esempi introdotti in letteratura) Non solo U$_0$ $\in$ U$_0$), ma se data la premessa b(x) $\in$ U$_0$[$\Gamma$,x $\in$ A], allora
+\item \textbf{\textit{T} \`e impredicativa:} almeno con gli esempi introdotti in letteratura. Non solo U$_0$ $\in$ U$_0$, ma se data la premessa b(x) $\in$ U$_0$[$\Gamma$,x $\in$ A], allora
 \begin{center}
 \AxiomC{b(x) $\in$ U$_0$[$\Gamma$,x $\in$ A]}
 \UnaryInfC{$\prod\limits_{x \in A}$ b(x) $\in$ U$_0$[$\Gamma$]}
@@ -628,17 +628,19 @@ Per questo W si pu\`o scrivere, in teoria degli insiemi, unicamente come una cla
 \textit{Definizione}:
 X \`e \textit{set} ed \`e ben fondato sse non esiste una cantena discentende (y$_i$)$_{i \in Nat}$ con y$_i$ \textit{set} tale che x$\in$y$_0\in$y$_i$... $\in$y$_i\in$y$_{i+1}$ $\forall$i $\in$ Nat (sono finite ecco che \`e ben fondato).\\\\
 \noindent
-Suppongo W \textit{set}, allora si dimostra come \textit{lemma cruciale} che W \`e ben fondato. In quanto se esistesse una cantena (y$_i$)$_{i \in Nat}$ w$\in$y$_0\in$y$_i$... $\in$y$_i\in$y$_{i+1}$ per il fatto che y$_i$ \`e un elemento di w allora \`e ben fondato. Ma riusciremmo ad avere che la catena (y$_i$)$_i>=1$ \`e infinita e questo porterebbe a una contraddizione.\\\\
+Suppongo W \textit{set}, allora si dimostra come \textit{lemma cruciale} che W \`e ben fondato. In quanto se esistesse una cantena (y$_i$)$_{i \in Nat}$ w$\in$y$_0\in$y$_i$... $\in$y$_i\in$y$_{i+1}$ per il fatto che y$_i$ \`e un elemento di w allora \`e ben fondato. Ma riusciremmo ad avere che la catena (y$_i$)$_{i>=1}$ \`e infinita e questo porterebbe a una contraddizione.\\\\
 \noindent
-\textit{Corollario}: Ma allora se w \`e un insieme e ben fondato, allora w $\in$ W.\\
+\textit{Corollario}: Ma allora se W \`e un insieme e ben fondato, allora w $\in$ W.\\
 Ma ancora abbiamo trovato una contraddizione, perch\`e grazie alla valenza del corollario possiamo dire che esiste (y$_i^\backprime$)$_{i \in Nat}$ tale che y$_i^\backprime$ $\equiv$ W per cui w$\in$w$\in$w...$\in$w e questo mi premette nuovamente di dire che W non \`e ben fondato.\\\\
 \noindent
-\textit{Conclusione}: non esiste W $=$ \{X \textit{set} $|$ X \`e ben fondato\}. Ecco che in \textbf{MLTT} $+$ $\hat{U}_0$ $in$ U$_0$ \`e inconsistente, ovvero $\bot$ true [ ] in tale teoria.
+\textit{Conclusione}: non esiste W $=$ \{X \textit{set} $|$ X \`e ben fondato\}. 
 \\\\
 \noindent
 In teoria dei tipi W viene simultato
 \begin{center}\textbf{$\Omega$ $\equiv$ $W$ ${\overset{\mathit{def}}{=}}$  \{(X,c) tipi $|$ (X,c) \`e ben fondato\}} \end{center}
 in relazione x < y prop[x,y $\in$ X]\\\\
+\noindent
+Ancora riesco a dimostrare che $\Omega$ \`e ben fondato e che porta a una contraddizione. Ecco che si \`e dimostrato che in \textbf{MLTT} $+$ $\hat{U}_0$ $in$ U$_0$ \`e inconsistente, ovvero $\bot$ true [ ] in tale teoria.\\\\
 \noindent
 Anche altre quantificazioni, come quelle illustrate sopra, allo stesso modo possono essere dimostrate inconsistenti.\\
 Tutto questo rende evidente come l'uso dei paradossi permette di vedere i limiti dei sistemi formali dal punto di vista logico.
