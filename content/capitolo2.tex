@@ -514,12 +514,13 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \LeftLabel{E-N$_{1prog}$)}
 \BinaryInfC{El$_{N1}$(w, d) $\in$ M(w) type[$\Gamma$, w $\in$ N$_1$]}
 \end{prooftree}
-\textbf{dimostrare che in \textit{T$_1$} la regola \textit{E-N$_1prog$} \`e derivabile. Al fine di ci\`o basta mostrare che se i giudizi premessa sono derivabili, allora lo \`e anche il giudizio di conclusione.}\\\\
+\textbf{dimostrare che in \textit{T$_1$} la regola \textit{E-N$_{1prog}$} \`e derivabile. Al fine di ci\`o basta mostrare che se i giudizi premessa sono derivabili, allora lo \`e anche il giudizio di conclusione.}\\\\
 \textbf{Soluzione}\\\\
 \textit{Per una maggiore comprensione delle derivazioni, ho ritenuto opportuno, ove necessario, spezzare l'albero in pi\`u parti.}\\\\
 \noindent 
 In E-$N_{1prog}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, w $\in$ N$_1$ che permette l'applicazione di E-S.
 
+\begin{adjustwidth}{-4em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
@@ -528,51 +529,54 @@ In E-$N_{1prog}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, w $\in$ N$_1$ che p
 \LeftLabel{var}
 \UnaryInfC{w $\in$ N$_1$[$\Gamma$, w $\in$ N$_1$]}
 \AxiomC{\textbf{1}}
-\UnaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
+\UnaryInfC{M(z) type[$\Gamma$, w $\in$ N$_1$, z $\in$ N$_1$]}
 \AxiomC{}
 \UnaryInfC{d $\in$ M($\ast$)[$\Gamma$, w $\in$ N$_1$]}
 \LeftLabel{E-S}
 \TrinaryInfC{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
 \end{prooftree}
+\end{adjustwidth}
 
 \vspace{0.5cm}
 \textbf{1}
 \scriptsize{
-\begin{adjustwidth}{-10em}{}
+\begin{adjustwidth}{-12em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
-\AxiomC{}
-\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
 \LeftLabel{s-checks}
-\UnaryInfC{[$\Gamma$, w $\in$ N$_1$] cont}
-\LeftLabel{F-S}
-\UnaryInfC{N$_1$ type[$\Gamma$, w $\in$ N$_1$]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ $\Gamma$}
-\UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$] cont}
-\LeftLabel{ind-ty}
-\BinaryInfC{M(w) type[$\Gamma$, z $\in$ N$_1$, w $\in$ $N_1$]}
-\AxiomC{}
-\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
-\LeftLabel{s-checks}
-\UnaryInfC{[$\Gamma$, w $\in$ N$_1$] cont}
+\UnaryInfC{$\Gamma$, w $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type [$\Gamma$, w $\in$ N$_1$]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ $\Gamma$}
-\UnaryInfC{[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$] cont}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ N$_1$) $\notin$\\ ($\Gamma$, w $\in$ N$_1$)\end{tabular}}
+\UnaryInfC{$\Gamma$, w $\in$ N$_1$, z $\in$ N$_1$ cont}
 \LeftLabel{var}
-\UnaryInfC{z $\in$ $N_1$[$\Gamma$, z $\in$ $N_1$, w $\in$ N$_1$]}
+\UnaryInfC{z $\in$ $N_1$[$\Gamma$, w $\in$ $N_1$, z $\in$ N$_1$]}
+
+\AxiomC{}
+\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{s-checks}
+\UnaryInfC{$\Gamma$, w $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[$\Gamma$, w $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ N$_1$) $\notin$\\ ($\Gamma$, w $\in$ N$_1$)\end{tabular}}
+\UnaryInfC{$\Gamma$, w $\in$ N$_1$, z $\in$ $N_1$ cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{M(w) type[$\Gamma$, w $\in$ N$_1$,  z$\in$ $N_1$]}
+
 \LeftLabel{sub-typ}
-\BinaryInfC{M(z) type[$\Gamma$, z $\in$ N$_1$, w $\in$ N$_1$]}
+\BinaryInfC{M(z) type[$\Gamma$, w $\in$ N$_1$, z $\in$ N$_1$]}
 \end{prooftree}
 \end{adjustwidth}
 }
 \noindent
-\normalsize{Assumo che le premesse di \textit{E-N$_1prog$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$)[$\Gamma$]}) siano valide, p\`erci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.}
+\normalsize{Assumo che le premesse di \textit{E-N$_{1prog}$} (\textit{M(w) type [$\Gamma$,w $\in$ N$_1$]} e \textit{d $\in$ M($\ast$)[$\Gamma$]}) siano valide, perci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}, di conseguenza derivabile in \textit{T$_1$}.}
 
 
 \paragraph{2)} 
-\textbf{Dimostrare che la regola \textit{E-S} \`e derivabile in una teoria dei tipi \textit{T$_1$}, in cui si \`e rimpiazzata la regola di eliminazione \textit{E-S} con la regola \textit{E-N${_1prog}$}, aggiungendovi le regole di indebolimento, sostituzione e di \textit{sanitary checks}}.
+\textbf{Dimostrare che la regola \textit{E-S} \`e derivabile in una teoria dei tipi \textit{T$_1$}, in cui si \`e rimpiazzata la regola di eliminazione \textit{E-S} con la regola \textit{E-N$_{1prog}$}, aggiungendovi le regole di indebolimento, sostituzione e di \textit{Sanitary checks}}.
 \begin{prooftree}
 \AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
 \AxiomC{d $\in$ M($\ast$)[$\Gamma$]}
@@ -580,27 +584,27 @@ In E-$N_{1prog}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, w $\in$ N$_1$ che p
 \BinaryInfC{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
 \end{prooftree}
 \begin{prooftree}
-\AxiomC{t$\backprime$ $\in$ N$_1$[$\sum$] }
+\AxiomC{t$^\backprime$ $\in$ N$_1$[$\Gamma$] }
 \AxiomC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
-\AxiomC{d$\backprime$ $\in$ M($\ast$)[$\sum$] }
+\AxiomC{d $\in$ M($\ast$)[$\Gamma$] }
 \LeftLabel{E-S)}
-\TrinaryInfC{El$_{N1}$(t$\backprime$, d$\backprime$) $\in$ M(t$\backprime$)[$\Gamma$]}
+\TrinaryInfC{El$_{N1}$(t$^\backprime$, d) $\in$ M(t$^\backprime$)[$\Gamma$]}
 \end{prooftree}
 \textbf{Soluzione}\\\\
-\textit{Idea: parto dalla regola di eliminazione E-S, vi applico la regola di sostituzione sub-typ giungendo cos\`i alle premessi di E-N$_{1prog}$}
+\textit{Idea: parto dalla regola di eliminazione E-S, vi applico la regola di sostituzione sub-typ giungendo cos\`i alle premesse di E-N$_{1prog}$}
 \begin{prooftree}
 \AxiomC{}
-\UnaryInfC{t$\backprime$ $\in$ N$_1$[$\Gamma$]}
+\UnaryInfC{t$^\backprime$ $\in$ N$_1$[$\Gamma$]}
 \AxiomC{}
 \UnaryInfC{M(w) type [$\Gamma$, w $\in$ N$_1$]}
 \AxiomC{}
 \UnaryInfC{d $\in$ D($\ast$)[$\Gamma$]}
 \LeftLabel{E-N$_{1prog}$}
-\BinaryInfC{El$_{N1}$(w, d$\backprime$) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
+\BinaryInfC{El$_{N1}$(w, d) $\in$ M(w)[$\Gamma$, w $\in$ N$_1$]}
 \LeftLabel{sub-typ}
-\BinaryInfC{El$_{N1}$(t$\backprime$, d$\backprime$) $\in$ M(t$\backprime$)[$\Gamma$]}
+\BinaryInfC{El$_{N1}$(t$^\backprime$, d) $\in$ M(t$^\backprime$)[$\Gamma$]}
 \end{prooftree}
-Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (come dimostro nell'esercizio 2) e di \textit{E-S}.
+Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (come dimostro nell'esercizio 1) e di \textit{E-S}.
 
 \paragraph{3)} \textbf{Sia \textit{T$_1$} la teoria dei tipi definita del tipo singoletto con le regole strutturali, definite in questo capitolo, incluse quelle di sostituzione e indebolimento. Allora stabilire se i seguenti termini sono tipabili come termini del tipo singoletto, secondo \textit{T$_1$} e quali sono uguali definizionalmente.}
 \begin{itemize}
@@ -874,7 +878,7 @@ Pi\`u nel dettaglio la riduzione \`e la seguente
 \begin{center} t $\equiv$ v $|$ $\ast$ $|$ El$_{N1}$(t$_1$, t$_2$)\end{center}
 con v $\in$ \{x,y,w,z\} $\bigcup$ \{x$_i$ $|$ i $\in$ Nat\}, ovvero considerando come variabili le ultime lettere dell'alfabeto inglese e poi tutte le variabili ottenute ponendo alla variabili x un indice che varia nei numeri naturali.\\
 Sia $\rightarrow_1$ una relazione binaria tra questi termini \textit{untyped} definita a partire dalle seguenti regole
-\begin{center} $\beta_{N1})$ red \qquad El$_{Nat}$(0,c) $\rightarrow_1$ c\end{center} 
+\begin{center} $\beta_{N1})$ red \qquad El$_{Nat}$($\ast$,c) $\rightarrow_1$ c\end{center} 
 }
 \textbf{
 \AxiomC{t$_1$ $\rightarrow$ t$_2$}
@@ -894,14 +898,13 @@ Dati due di questi termini , si riesce a dire che sono definionalmente uguali se
 \end{itemize}
 }  
 
-
+\noindent
 \textbf{Soluzione}\\\\
-\textit{Idea: uso un albero di derivazione per mostrare ogni passo derivazione di ogni cammino.\\
-Se w = El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x)) combino il lambda termine w  con l'applicazione della strategia deterministica di riduzione ($\rightarrow_1$), con la quale il termine si riduce eventualmente a forma normale (implicando la definizione di riducibilit\`a).\\
-$\beta$-red:\\
+\textit{Idea: uso un albero di derivazione per mostrare ogni passo di derivazione di ogni cammino.}\\
+Se w $=$ El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x)) combino il lambda termine w  con l'applicazione della strategia deterministica di riduzione ($\rightarrow_1$), con la quale il termine si riduce eventualmente a forma normale (implicando la definizione di riducibilit\`a).\\
+$\beta_{N1}$-red:\\
 \textit{El$_{N1}$($\ast$, $\ast$) $\rightarrow_1$ $\ast$}\\
 \textit{El$_{N1}$($\ast$, x) $\rightarrow_1$ x}
-}
 
 \begin{prooftree}
 \AxiomC{x}
@@ -921,9 +924,9 @@ $\beta$-red:\\
 \BinaryInfC{El$_{N1}$(El$_{N1}$($\ast$, $\ast$), El$_{N1}$($\ast$, x))}
 \end{prooftree}
 \noindent
- $\Rightarrow$ (w, (red$_II$, red$_I$, $\beta_{N1red}$)) rappresenta un programma.\\\\
+ $\Rightarrow$ (w, (red$_{II}$, red$_I$, $\beta_{N1}$-red)) rappresenta un programma.\\\\
 \noindent
-Termine t non pi\`u riducibile significa che \`e un termine \textit{untyped} che \`e in forma normale perch\`e non esiste alcun altro termine s tale che t $\rightarrow_1$ s. Dunque l'infinit\`a di termini singoletto, non pi\`u riducibili rispettano la definizione data sopra\\
+Termine t non pi\`u riducibile significa che \`e un termine \textit{untyped} che \`e in forma normale, perch\`e non esiste alcun altro termine s tale che t $\rightarrow_1$ s. Dunque l'infinit\`a di termini singoletto, non pi\`u riducibili rispettano la definizione data sopra corrisponde a\\
 \begin{center}
 t $\equiv$
 $
@@ -934,7 +937,7 @@ El_{N1}(t_1, t_2)
 \end{cases}
 $
 \end{center}
-\noindent Dati due termini t$^I$ e t$^{II}$ termini \textit{untyped} non riesco a dire che sono definizionalmente uguali perch\`e gi\`a e in forma normale. Difatti  per il teorema della forma normale forte vale $\rightarrow_0$.
+\noindent Dati due termini t$^\backprime$ e t$^{\backprime\backprime}$ termini \textit{untyped} non riesco a dire che sono definizionalmente uguali perch\`e gi\`a in forma normale. Difatti,  per il teorema della forma normale forte, vale $\rightarrow_0$.
 
 
 
