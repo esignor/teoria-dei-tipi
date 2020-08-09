@@ -118,59 +118,63 @@ Una regola r) $\frac{J_1,...,J_n}{J}$ \`e ammissibile in un calcolo t sse i giud
 \subsection{Nozione di contesto telescopico}
 \label{subsec:contesto-telescopico}
 Un giudizio, in teoria dei tipi dipendenti si esprime nella forma
-\[A(x_1,...,x_n)[x_1 \in B_1,...,x_n \in B_n]\]
+\begin{center}\textbf{A(x$_1$,...,x$_n$)[x$_1$ $\in$ B$_1$,...,x$_n$ $\in$ B$_n$]}\end{center}
 e prende il nome di \textbf{contesto telescopico}.
 Questi presenta una dipendenza continua, esemplificata nel seguente giudizio
 \[A(x_1,x_2,x_3)\hspace{0.1cm}type[x \in C_1, x_2 \in C(x_1), x_3 \in C(x_1 x_2)..)\]
-Inoltre si parla di contesti rigidi, ovvero senza possibilit\`a di scambio. Come appare dall'esempio sotto. \\
+Si parla di contesti rigidi, ovvero senza possibilit\`a di scambio. Come appare dall'esempio sotto. \\
 $[x \in Nat, y \in Nat, z \in Mat(x,y)]$ cont  $\Rightarrow$ \textbf{\`e derivabile}\\
 $[y \in Nat, x \in Nat, z \in Mat(x,y)]$ cont $\Rightarrow$ \textbf{\`e derivabile}\\
-$[y \in Nat, z \in Mat(x,y), x \in Nat]$ $\Rightarrow$ \textbf{non \`e un contesto}. \\\\ Per cui non esiste lo scambio arbitrario, si deve porre attenzione alle dipendenza delle assunzioni, che provoca una sostituzione rigida.
-\subsection{Esempi di applicazione}
+$[y \in Nat, z \in Mat(x,y), x \in Nat]$ $\Rightarrow$ \textbf{non \`e un contesto}. \\\\ Per cui non esiste lo scambio arbitrario, e si deve porre attenzione alle dipendenza delle assunzioni, che provoca una sostituzione rigida.
+\subsection{Esempi di applicazione delle regole di sostituzione}
 \label{subsec:esempi-di-applicazione}
-Attenzione all'ordine di sostituzione si deve partire sempre da quello con meno dipendenze.
+\textit{Nota: attenzione all'ordine di sostituzione, si deve partire sempre da quello con meno dipendenze.}
 \begin{prooftree}
 \AxiomC{c $\in$ [C, $\Gamma$]}
 \AxiomC{b $\in$ [B(c), $\Gamma]$}
 \AxiomC{A(x,y) type[x $\in$ C, y $\in$ B(x)]}
+\LeftLabel{sost}
 \TrinaryInfC{A(c,b) type$[\Gamma]$}
 \end{prooftree}
 
 \begin{prooftree}
 \AxiomC{c $\in$ [C,$\Gamma$]}
 \AxiomC{b $\in$ [B(c),$\Gamma]$}
-\AxiomC{A(x,y) type[x $\in$ C, y $\in$ B(x)]}
+\AxiomC{a(x,y) $\in$ A(x,y)[x $\in$ C, y $\in$ B(x)]}
+\LeftLabel{sost}
 \TrinaryInfC{a(c,b) $\in$ A(c,b) $[\Gamma]$}
 \end{prooftree}
-Se si ha un tipo pu\`o venire usato il giudizio di uguaglianza tra termini e la sostituzione.
+Se si ha un giudizio di tipo pu\`o venire usato il giudizio di uguaglianza tra termini e la sostituzione.
 \begin{prooftree}
 \AxiomC{A(x) type[$\Gamma$, x $\in$ C]}
 \AxiomC{c $=$ e $\in$ C[$\Gamma$]}
+\LeftLabel{sost-eq}
 \BinaryInfC{A(c) $=$ A(e) type[$\Gamma$]}
 \end{prooftree}
 \noindent
-\`E dunque fondamentale il concetto di uguaglianza fra tipi. Se considero che ci sia un elemento
+\`E dunque fondamentale, tra tipi dipendenti, il concetto di uguaglianza fra tipi. \\Allo stesso modo posso considerare il caso in cui si ha un elemento
 
 \begin{prooftree}
 \AxiomC{a(x) $\in$ A(x) [$\Gamma$, x $\in$ C]}
 \AxiomC{c $=$ e $\in$ C[$\Gamma$]}
+\LeftLabel{sost-eq}
 \BinaryInfC{a(c) $=$ a(e) $\in$ A(c) [$\Gamma$]}
 \end{prooftree}
 \noindent
-Per poter affermare che A(e) $=$ A(c) devo poterlo dedurre. Per farlo mi sono indispensabili le \textbf{regole di conversione dell'uguaglianza del tipaggio (\S\ref{subsec:regole-tipaggio})}.
+Per poter affermare che A(e) $=$ A(c) devo poterlo dedurre. Per farlo mi sono indispensabili le \textbf{regole di Conversione dell'uguaglianza del tipaggio (\S\ref{subsec:regole-tipaggio})}.
 
 \subsection{Regole di tipaggio}
 \label{subsec:regole-tipaggio}
 
 \subsubsection{Regole di Conversione}
 \label{subsubsec:regole-di-conversione}
-\[\frac{c \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{C \in D\hspace{0.1cm}[\Gamma]}\]
+\[conv)\frac{c \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{c \in D\hspace{0.1cm}[\Gamma]}\]
 Se due tipi sono uguali allora hanno gli stessi termini: $C=D \Rightarrow (c \in C \Leftrightarrow c \in D)$. L'uguaglianza fra tipi \`e per questo simmetrica.\\
 Tuttavia non sempre l'unicit\`a del tipaggio di un termine (il $\Leftrightarrow$) \`e garantito per ogni teoria. Nei casi trattati dal corso s\`i, in quanto verr\`a inteso che $C = D\hspace{0.1cm}type[\Gamma]$ sse due tipi hanno gli stessi elementi (come gi\`a accade in \textit{set theory}), ma pu\`o non essere sempre vero.
 
 \subsubsection{Regole di Conversione dell'uguaglianza}
 \label{subsubsec:regole-di-conversione-uguaglianza}
-\[\frac{c=d \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{c = d \in D \hspace{0.1cm} [\Gamma]}\]
+\[conv-eq)\frac{c=d \in C[\Gamma] \qquad C = D\hspace{0.1cm}type[\Gamma]}{c = d \in D \hspace{0.1cm} [\Gamma]}\]
 Questa regola permette di convertire le uguaglianze nel tipaggio di un termine.
 
 
