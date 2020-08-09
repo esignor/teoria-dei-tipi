@@ -16,8 +16,8 @@ Se la teoria dei tipi \`e dipendente si ha bisogno di tutti i giudizi. Invece in
 
 \section{Regole strutturali}
 \label{sec:regole-strutturali}
-Assioma unico: [\hspace{0.1cm}] cont\\\\
-Nel calcolo dei sequenti, in logica classica, le derivazioni di giudizio, valide in una teoria dei tipi con solo le regole singoletto, diventano derivazioni di sequenti nella forma $\Gamma$ $\dashv$ A e unico assioma $\varphi$ $\dashv$ $\varphi$.
+\textbf{Assioma unico: [\hspace{0.1cm}] cont}\\\\
+Nel calcolo dei sequenti, in Logica classica, le derivazioni di giudizio, valide in una teoria dei tipi con solo le regole singoletto, diventano derivazioni di sequenti nella forma $\Gamma$ $\dashv$ A e unico assioma $\varphi$ $\dashv$ $\varphi$.
 \\\\
 Di seguito illustro le principali regole di contesto comuni a tutte le teorie dei tipi.
 \subsection{Regole di formazione dei contesti}
@@ -25,16 +25,15 @@ Di seguito illustro le principali regole di contesto comuni a tutte le teorie de
 \begin{center} [\hspace{0.1cm}] cont \quad dove \quad [\hspace{0.1cm}] $=$ $\varnothing$ \end{center}
 \begin{prooftree}
 \AxiomC{A type[$\Gamma$]}
-\LeftLabel{F-c)}\RightLabel{x $\in$ A $\notin$ $\Gamma$}
+\LeftLabel{F-c)}\RightLabel{(x $\in$ A) $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$, x $\in$ A}
 \end{prooftree}
 \subsection{Regole di assunzione delle variabili}
 \label{subsec:assunzione-variabili}
 \begin{prooftree}
-\AxiomC{$\Gamma$, x $\in$ A, $\Delta$}
-\AxiomC{cont}
-\LeftLabel{var-ass)}
-\BinaryInfC{x $\in$ [$\Gamma$,x $\in$ A, $\Delta$]}
+\AxiomC{$\Gamma$, x $\in$ A, $\Delta$ cont}
+\LeftLabel{var)}
+\UnaryInfC{x $\in$ A[$\Gamma$,x $\in$ A, $\Delta$]}
 \end{prooftree}
 \subsection{Regole strutturali addizionali sull'uguaglianza}
 \label{subsec:uguaglianza}
@@ -54,57 +53,57 @@ L'appartenenza si conserva con l'uguaglianza di termini e tipi. Le regole da agg
 \subsubsection{Indebolimento}
 \label{subsec:indebolimento}
 \[ ind-ty) \quad \frac{A\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{A\hspace{0.1cm}type[\Gamma,\Delta]} \quad ind-ty-eq) \quad \frac{A=B\hspace{0.1cm}type[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{A=B\hspace{0.1cm}type[\Gamma,\Delta]} \]
-\[ ind-te) \quad \frac{a \in A\hspace{0.1cm}[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a \in A\hspace{0.1cm}[\Gamma,\Delta]} \quad ind-te) \quad \frac{a=b \in A\hspace{0.1cm}
+\[ ind-te) \quad \frac{a \in A\hspace{0.1cm}[\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a \in A\hspace{0.1cm}[\Gamma,\Delta]} \quad ind-te-eq) \quad \frac{a=b \in A\hspace{0.1cm}
 [\Gamma] \quad \Gamma,\Delta\hspace{0.1cm}cont}{a=b \in A\hspace{0.1cm}[\Gamma,\Delta]} \]
 \subsubsection{Sostituzione}
 \label{subsec:sostituzione}
-\begin{equation}
+\[
 \begin{split}
 C(x_1,...,x_n)\hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-typ) \quad \frac{a_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
-\end{equation}
+\]
 
-\begin{equation}
+\[
 \begin{split}
 C(x_1,...,x_n)\hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-typ) \quad \frac{a_1 = b_1  \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{C(a_1,...,a_n) = C(b_1,...,b_n) \hspace{0.1cm}type[\Gamma]}
 \end{split}
-\end{equation}
+\]
 
-\begin{equation}
+\[
 \begin{split}
 C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-Eqtyp) \quad \frac{a_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
-\end{equation}
+\]
 
-\begin{equation}
+\[
 \begin{split}
-C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-Eqtyp) \quad \frac{a_1 = b_1\in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{C(a_1,...,a_n) = D(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+C(x_1,...,x_n) = D(x_1,...,x_n) \hspace{0.1cm}type[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-Eqtyp) \quad \frac{a_1 = b_1\in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{C(a_1,...,a_n) = D(b_1,...,b_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
-\end{equation}
+\]
 
-\begin{equation}
+\[
 \begin{split}
-c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-ter) \quad \frac{a_1 in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
+c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-ter) \quad \frac{a_1 \in A_1\hspace{0.1cm}type[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}type[\Gamma]}
 \end{split}
-\end{equation}
+\]
 
-\begin{equation}
+\[
 \begin{split}
 c(x_1,...,x_n) = d(x_1,...,x_n)  \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eqter) \quad \frac{a_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) = d(a_1,...,a_n) \in C(a_1,...,a_n)\hspace{0.1cm}[\Gamma]}
 \end{split}
-\end{equation}
+\]
 
-\begin{equation}
+\[
 \begin{split}
 c(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-ter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) = c(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}[\Gamma]}
 \end{split}
-\end{equation}
+\]
 
-\begin{equation}
+\[
 \begin{split}
-c(x_1,...,x_n) = d(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-eqter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}type[\Gamma]}{ c(a_1,...,a_n) = d(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}[\Gamma]}
+c(x_1,...,x_n) = d(x_1,...,x_n) \in C(x_1,...,x_n) \hspace{0.1cm}[\Gamma, x_1 \in A_1,...,x_n \in A_n(x_1,...,x_{n-1})] \\ sub-eq-eqter) \quad \frac{a_1 = b_1 \in A_1\hspace{0.1cm}[\Gamma]\hspace{0.1cm}...a_n = b_n \in A_n(a_1,...,a_{n-1})\hspace{0.1cm}[\Gamma]}{ c(a_1,...,a_n) = d(b_1,...,b_n) \in C(a_1,...,a_n)\hspace{0.1cm}[\Gamma]}
 \end{split}
-\end{equation}
+\]
 
 \subsection{Regole proprie e derivabili}
 \label{subsec:regole-proprie-derivabili}
@@ -114,7 +113,7 @@ In una teoria formale ci sono due tipi di regole:
 \item \textbf{regole derivabili}, come le regole di sostituzione, utili per abbreviare le derivazioni.
 \end{itemize}
 \noindent
-Una regola r $\frac{J_1,...,J_n}{J}$ \`e ammissibile in un calcolo t sse i giudizi derivabili in $t+r$ sono gli stessi dei giudizi derivabili in t. Ci\`o comporta che l'aggiunta di una regola rt non cambia i giudizi che ne possono derivare.\\ Quando un assioma \`e ammissibili e derivabile questo coincide con un giudizio derivabile.
+Una regola r) $\frac{J_1,...,J_n}{J}$ \`e ammissibile in un calcolo t sse i giudizi derivabili in $t+r$ sono gli stessi dei giudizi derivabili in t. Ci\`o comporta che l'aggiunta di una regola rt non cambia i giudizi che ne possono derivare.\\ Quando un assioma \`e ammissibili e derivabile questo coincide con un giudizio derivabile.
 
 \subsection{Nozione di contesto telescopico}
 \label{subsec:contesto-telescopico}
