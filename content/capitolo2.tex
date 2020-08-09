@@ -422,7 +422,7 @@ Le \textbf{relazioni di computazione}, dell'uguaglianza definizionale, le ho des
 \centering
 \begin{tabularx}{\textwidth}{XXX}
 \hline 
-\rowcolor{orange}
+\rowcolor{amethyst}
 {\color[HTML]{FFFFFF}\textbf{termini}} & {\color[HTML]{FFFFFF} \textbf{termini in forma canonica}} & {\color[HTML]{FFFFFF}\textbf{termini non in forma canonica o introduttiva}}\\
 \hline\hline
 termini in NF & $\ast$ & x, El$_{N1}$(x, $\ast$)\\
@@ -629,8 +629,8 @@ Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (c
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[ ]}
 \LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ [ ]}
-\UnaryInfC{[z $\in$ N$_1$] cont}
-\LeftLabel{I-S}
+\UnaryInfC{z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[z $\in$ N$_1$]}
 \AxiomC{[ ] cont}
 \LeftLabel{I-S}
@@ -639,7 +639,7 @@ Assumo che siano valide per costruzione le premesse di \textit{E-N$_{1prog}$} (c
 \TrinaryInfC{El$_{N1}$($\ast$, $\ast$) $\in$ $N_1$[ ]}
 \end{prooftree}
 \normalsize
-Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$($\ast$, $\ast$) $\rightarrow_1$ $\ast$ \\
+Applicando la \textit{$\beta$ N$_1$-red} allora El$_{N1}$($\ast$, $\ast$) $\rightarrow_1$ $\ast$ \\
 El$_{N1}$($\ast$, $\ast$) \`e uguale definizionalmente.
 \\\\\\
 \noindent
@@ -651,8 +651,8 @@ El$_{N1}$($\ast$, $\ast$) \`e uguale definizionalmente.
 \UnaryInfC{N$_1$ type[ ]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
 \UnaryInfC{x $\in$ N$_1$ cont}
-\LeftLabel{I-S}
-\UnaryInfC{$\ast$ $\in$ N$_1$[x $\in$ N$_1$]}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$]}
 \AxiomC{[ ] cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type [ ]}
@@ -660,7 +660,7 @@ El$_{N1}$($\ast$, $\ast$) \`e uguale definizionalmente.
 \UnaryInfC{x $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ (x $\in$ N$_1$)}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ x $\in$ N$_1$}
 \UnaryInfC{x $\in$ N$_1$, z $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[x $\in$ N$_1$, z $\in$ N$_1$]}
@@ -669,15 +669,15 @@ El$_{N1}$($\ast$, $\ast$) \`e uguale definizionalmente.
 \UnaryInfC{N$_1$ type[ ]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
 \UnaryInfC{x $\in$ N$_1$ cont}
-\LeftLabel{var}
-\UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$]}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[x $\in$ N$_1$]}
 \LeftLabel{E-S}
 \TrinaryInfC{El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$]}
 \end{prooftree}
 
 \noindent
 \normalsize
-Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$(x, $\ast$) $\nrightarrow_1$ \\
+Applicando la \textit{$\beta$ N$_1$-red} allora El$_{N1}$(x, $\ast$) $\nrightarrow_1$ \\
 El$_{N1}$(x, $\ast$) non \`e uguale definizionalmente.
 \\\\\\
 \noindent
@@ -715,7 +715,7 @@ El$_{N1}$(x, $\ast$) non \`e uguale definizionalmente.
 
 \noindent
 \normalsize
-Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$($\ast$, y) $\rightarrow_1$ y \\
+Applicando la \textit{$\beta$ N$_1$-red} allora El$_{N1}$($\ast$, y) $\rightarrow_1$ y \\
 El$_{N1}$($\ast$, y) \`e uguale definizionalmente.\\\\
 \noindent
 \textbf{4}\\\\
@@ -766,13 +766,13 @@ El$_{N1}$($\ast$, y) \`e uguale definizionalmente.\\\\
 \noindent
 \\
 \normalsize
-Applicando la \textit{$\beta$ N$_1$red} allora El$_{N1}$(x, y)$\nrightarrow_1$ \\
-El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
+Applicando la \textit{$\beta$ N$_1$-red} allora El$_{N1}$(x, y)$\nrightarrow_1$ \\
+El$_{N1}$(x, y) non \`e uguale definizionalmente.
 \\\\\\
 \noindent
 \textbf{5}\\
 \small
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-9em}{}
 \begin{prooftree}
 \AxiomC{\textbf{5$_A$}}
 \UnaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$, x $\in$ N$_1$]}
@@ -798,7 +798,7 @@ El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
 \UnaryInfC{y $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[y $\in$ N$_1$]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ (y $\in$ N$_1$)}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ y $\in$ N$_1$}
 \UnaryInfC{y $\in$ N$_1$, x $\in$ N$_1$ cont}
 \LeftLabel{ind-te}
 \BinaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$, x $\in$ N$_1$]}
@@ -815,7 +815,7 @@ El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
 \UnaryInfC{y $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[y $\in$ N$_1$]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ (y $\in$ N$_1$)}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ y $\in$ N$_1$}
 \UnaryInfC{y $\in$ N$_1$, x $\in$ N$_1$ cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[y $\in$ N$_1$, x $\in$ N$_1$]}
@@ -846,7 +846,7 @@ El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
 \AxiomC{[ ] cont}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type [ ]}
-\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ y $\in$ [ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
 \UnaryInfC{y $\in$ N$_1$ count}
 \LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[y $\in$ N$_1$]}
@@ -858,16 +858,16 @@ El$_{N1}$($\ast$, y) non \`e uguale definizionalmente.
 \end{adjustwidth}
 \noindent
 \\
-\normalsize Per i giudizi conclusione El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$] e El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$] ho gi\`a dimostrato sopra (in 3 e 2) la loro tipabilit\`a per il tipo singoletto.
+\normalsize Per le premesse \textit{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$]} e \textit{El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$]} ho gi\`a dimostrato sopra (in 3 e 2) la loro tipabilit\`a per il tipo singoletto.
 
 \noindent
 \normalsize
-Applicando la \textit{red$_I$} e \textit{$\beta$ N$_1$red} allora El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$)) $\rightarrow_1$ El$_{N1}$(y, El$_{N1}$(x, $\ast$)). \\
+Applicando la \textit{red$_I$} e \textit{$\beta$ N$_1$-red} allora El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$)) $\rightarrow_1$ El$_{N1}$(y, El$_{N1}$(x, $\ast$)). \\
 Pi\`u nel dettaglio la riduzione \`e la seguente
 \small
 \begin{prooftree}
 \AxiomC{}
-\LeftLabel{$\beta$ N$_1$red}
+\LeftLabel{$\beta$ N$_1$-red}
 \UnaryInfC{El$_{N1}$($\ast$, y) $\rightarrow_1$ y}
 \LeftLabel{red$_I$}
 \UnaryInfC{El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$))$\rightarrow_1$ El$_{N1}$(y, El$_{N1}$(x, $\ast$))}
