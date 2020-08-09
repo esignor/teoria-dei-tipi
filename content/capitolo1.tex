@@ -18,12 +18,12 @@ Gli errori di programmazione sono stati preponderanti alla nascita di metodi aut
 \begin{itemize}
 \item incidente nel lancio dell'Apollo 11;
 \item tragedie sanitarie: incidenti avvenuti tra il 1985-1987, in cui dei pazienti ricevettero una massiccia \textit{overdose} di radiazioni e per la quali alcuni morirono;
-\item errori di vita civile: riserva di solo due cifre per il campo et\`a all'interno dei \textit{database}. Ecco che una signora danese ricevette per il suo 107-esimo compleanno, una mail dalle autorit\`a della scuola locale per iscriversi alla prima elementare.
+\item errori di vita civile: riserva di solo due cifre per il campo et\`a all'interno dei \textit{database}. Ecco che una signora danese ricevette per il suo 107-esimo compleanno, una mail, dalle autorit\`a della scuola locale, per iscriversi alla prima elementare.
 \end{itemize}
 \noindent 
 Per la matematica la correttezza delle dimostrazioni \`e irrilevante solo quando la soluzione \`e certa (come accade con il cubo di \textit{Rubik}, dove so che la soluzione \`e corretta quando ognuno dei lati \`e uniformemente colorato); e in generale questo \`e difficile che accada.\\
-Un'esempio di problema, dove la soluzione non \`e certa, \`e il Teorema dei Quattro Colori, risolto da un \textit{computer} e la cui prova di correttezza della dimostrazione fu data dal \textit{proof assistant} Coq. Quest'ultimo basato sulla teoria dei tipi e intellegibile dall'essere umano.\\\\
-Una citazione importante va al matematico Russo V.V. \textit{Voevodsky}, vincitore della medaglia \textit{ Fields}. Esso si batt\`e per la creazione di un \textit{proof assistant}, per rendere le dimostrazioni da informali, per problemi complessi, a completamente formalizzate, con l'impiego della teoria dei tipi. I suoi studi trovano principale applicazione in campo algebrico e geometrico; ma i concetti emersi assunsero delle 1connotazioni pi\`u ampie. \textit{Voevodsky}, difatti, si rese conto che formalizzare equivale a programmare. Ci\`o significa che la teoria dei tipi permette di vedere una dimostrazione come un programma.
+Un'esempio di problema, dove la soluzione non \`e certa, \`e il Teorema dei Quattro Colori, risolto da un \textit{computer} e la cui prova di correttezza della dimostrazione fu data dal \textit{proof- assistant} Coq. Quest'ultimo basato sulla teoria dei tipi e intellegibile dall'essere umano.\\\\
+Una citazione importante va al matematico Russo V.V. \textit{Voevodsky}, vincitore della medaglia \textit{ Fields}. Esso si batt\`e per la creazione di un \textit{proof assistant}, per rendere le dimostrazioni da informali, per problemi complessi, a completamente formalizzate, con l'impiego della teoria dei tipi. I suoi studi trovano principale applicazione in campo algebrico e geometrico; ma i concetti emersi assunsero delle connotazioni pi\`u ampie. \textit{Voevodsky}, difatti, si rese conto che formalizzare equivale a programmare. Ci\`o significa che la teoria dei tipi permette di vedere una dimostrazione come un programma.
 \\\\
 Esiste la certezza assoluta per una certa teoria, esclusivamente, quando ha un numero di assiomi, accettati per fede, molto limitato. In quanto assiomatizzabile da un calcolatore.
 \\\\
@@ -37,23 +37,24 @@ Di seguito espongo un sistema contraddittorio della teoria degli insiemi.\\
 \\
 \textbf{Linguaggio \textit{L} di una teoria degli insiemi \textit{F}}\mbox{}
 \begin{itemize}
-\item \textit{L} linguaggio del primo ordine (=, \&, $\rightarrow$, $\lor$, $\forall{x}$, $\exists{x}$), con l'aggiunta del predicato $\in$ "appartiene"
+\item \textit{L} linguaggio del primo ordine ($=$, $\&$, $\rightarrow$, $\lor$, $\forall{x}$, $\exists{x}$), con l'aggiunta del predicato $\in$ "appartiene"
 \item variabili VAR $\ni$ \{x, y, z, w,\dots \}
 \end{itemize}
 \noindent
-dove x, y, z sono da intendersi come insiemi e x $\epsilon$ y = "x appartiene a y".\\\\
+dove x, y, z sono da intendersi come insiemi e x $\in$ y $=$ "x appartiene a y".\\\\
 All'interno di \textit{L} c'\`e una teoria degli insiemi. Tra cui prende posto l'\textbf{assioma di comprensione di \textit{Frege}}, definito nel modo seguente:\\
-Per ogni formula $\phi$(x) vale che $\exists$z $\forall$y (y$\in$z $\Leftrightarrow$ $\phi$(y)) [$\equiv$ $\exists$z z = \{x $\big|$ $\phi$(x)\}]\\\\
+Per ogni formula $\phi$(x) vale che $\exists$z $\forall$y (y$\in$z $\Leftrightarrow$ $\phi$(y)) [$\equiv$ $\exists$z z $=$ \{x $\big|$ $\phi$(x)\}]\\\\
 \textbf{Teorema (o Paradosso) di \textit{Russell}}: la teoria \textit{F} \`e contraddittoria.\\
 
 \noindent \textbf{Dimostrazione}:\\
-$\phi$(x) = x$\notin$x ($\equiv$ $\neg$ (x $\in$ x))\\
-Per l'assioma di comprensione	$\exists$z z = \{x $|$ x$\notin$x\} ($\exists$z $\forall$y (y$\in$z $\Leftrightarrow$ y$\notin$y))\\
-Ponendo y=z ottengo che z$\in$z $\Leftrightarrow$ z$\notin$z, risulta una \textbf{contraddizione}.\\\\
+$\phi$(x) $=$ x$\notin$x ($\equiv$ $\neg$ (x $\in$ x))\\
+Per l'assioma di comprensione	$\exists$z z $=$ \{x $|$ x$\notin$x\} ($\exists$z $\forall$y (y$\in$z $\Leftrightarrow$ y$\notin$y)).\\
+Ponendo y$=$z ottengo che z$\in$z $\Leftrightarrow$ z$\notin$z, che risulta una \textbf{contraddizione}.\\\\
 L'assioma di comprensione \`e contraddittorio perch\`e permette di formare insiemi che non appartengono a se stessi.\\\\
-Come correggere la contraddizione?\\
-La soluzione accettabile \`e porre agli insiemi una \textbf{gerarchia di tipi}. In questo modo l'assioma di comprensione diventa:\\
-$\exists$z $\forall$y (y$\in$a $\to$ (y$\in$z $\Leftrightarrow$ $\phi$(y)) $\equiv$ z = \{x$\in$a $\big|$ $\phi$(x)\}\\\\
+\textit{Come correggere la contraddizione?}\\
+La soluzione accettabile \`e porre agli insiemi una \textbf{gerarchia di tipi}. In questo modo l'assioma di comprensione diventa\\
+\begin{center}$\exists$z $\forall$y (y$\in$a $\to$ (y$\in$z $\Leftrightarrow$ $\phi$(y)) $\equiv$ z $=$ \{x$\in$a $\big|$ $\phi$(x)\}\end{center}
+\noindent
 In questo modo non posso pi\`u creare il Paradosso di \textit{Russell}.\\\\
 Al momento questa teoria dei tipi non \`e utilizzata. Una sua evoluzione diretta \`e 
 la teoria dei tipi di \textit{Martin-L$\ddot{o}$f}.\\\\
@@ -74,11 +75,11 @@ Esempio di applicazione: tg(x) $\equiv$ $\lambda$x.tg(x)
 \frac{b_1 \rightarrow b_2	\qquad a_1 \rightarrow a_2 }{b_1(a_1) \rightarrow b_2(a_2)} \qquad 
 \frac{b_1 \rightarrow b_2}{\lambda x.b_1 \rightarrow \lambda x.b_2} \]
 \noindent
-Si dice che un programma si riduca a un altro, cio\`e converge, solo se c'\`e una sequenza di riduzioni (applicazione di regole e/o assiomi), che connettono il primo programma con l'ultimo. Si parla, in questo modo, di \textbf{chiusura transitiva e simmetrica}, che si conclude quando il programma non \`e pi\`u riducibile. Quanto appena descritto pu\`o venire espresso nel seguente modo:\\\\ $t \rightarrow t'$ sse esiste un numero finito di passi per cui $t$ si riduce a $t'$, ovvero esiste $b_1 \dots b_m$ t.c. $t \rightarrow b_1 \rightarrow b_2 \dots \rightarrow b_m \rightarrow t'$.\\\\
+Si dice che un programma si riduca a un altro, cio\`e converge, solo se c'\`e una sequenza di riduzioni (applicazione di regole e/o assiomi), che connettono il primo programma con l'ultimo. Si parla, in questo modo, di \textbf{chiusura transitiva e simmetrica}, che si conclude quando il programma non \`e pi\`u riducibile. Quanto appena descritto pu\`o venire definito in\\\\ $t \rightarrow t'$ sse esiste un numero finito di passi per cui $t$ si riduce a $t'$, ovvero esiste $b_1 \dots b_m$ t.c. $t \rightarrow b_1 \rightarrow b_2 \dots \rightarrow b_m \rightarrow t'$.\\\\
 Il $\lambda$ calcolo permette di codificare qualsiasi programma scritto in qualunque linguaggio (imperativo, dichiarativo, Java, C++, BASIC, \dots). Tuttavia tale linguaggio non codifica solo programmi che terminano, ma anche programmi che non lo fanno.
-Un esempio di applicazione, per quest'ultima categoria, \`e un programma con computazione infinita: $\lambda x.x(x)$\\
+Un esempio di applicazione, per quest'ultima categoria, \`e un programma con computazione infinita: $\lambda x.x(x)$.\\
 $\lambda x.x(x)$ lo applichiamo a se stesso. Perci\'o diventa $\Lambda \equiv (\lambda x.x(x))(\lambda x.x(x))$
-che seguendo la computazione si riduce a: \[x(x)[\frac{x}{\lambda x.x(x)}] \equiv (\lambda x.x(x))(\lambda x.x(x))\]\\
+che seguendo la computazione si riduce a \[x(x)[\frac{x}{\lambda x.x(x)}] \equiv (\lambda x.x(x))(\lambda x.x(x))\]\\
 Dunque esiste una catena di (t$_i$)$_{i\in\mathbb{N}}$ di termini t$_i \rightarrow$ t$_{i+1}$. Ci\`o significa che
 $\Lambda$ non termina in qualunque linguaggio sia interpretato.\\\\
 $\Lambda$ risulta un buon metodo per rappresentare le funzioni, ma non \`e completo, rispetto all'intuizione matematica di funzione. \`E necessario, per questo, tipare le variabili; ovvero $\lambda$x.x$\in$A$\rightarrow$B(x$\in$A).\\\\
@@ -95,9 +96,9 @@ Per rispondere a questa domanda \`e necessario fornire la semantica intuitiva di
 \rowcolor{orange}
 {\color[HTML]{FFFFFF}\textbf{Sintassi in teoria dei tipi moderna}} & {\color[HTML]{FFFFFF}\textbf{Sintassi in teoria degli insiemi}} & {\color[HTML]{FFFFFF} \textbf{Sintassi in un linguaggio logico/per una logica (anche predicativo)}} & {\color[HTML]{FFFFFF}\textbf{Sintassi in un linguaggio di programmazione}} \\
 \hline\hline 
-A type & A set & A prop & A data type \\ 
+A \textit{type} & A \textit{set} & A \textit{prop} & A \textit{data type} \\ 
 \hline 
-a$\in$A & a$\in$A set & a$\in$A & a$\in$A \\ 
+a$\in$A & a$\in$A & a$\in$A & a$\in$A \\ 
 \hline 
 \end{tabularx}
 \caption{\label{tab:sintassi-paradigmi-funzionali}Sintassi per i diversi paradigmi funzionali.} 
@@ -107,17 +108,17 @@ Per la sintassi:
 \begin{itemize} 
 \item nella \textbf{teoria dei tipi moderna} \textit{a} rappresenta un termine e \textit{A} un tipo;
 \item nella sintassi in una \textbf{teoria degli insiemi} \textit{a} \`e un elemento e \textit{A} un insieme. Coincidendo con la corrispondenza originale in mente da \textit{Russell}.
-\item nella sintassi in un \textbf{linguaggio logico} \textit{a} rappresenta una proposizione di \textit{A}, inteso come insieme di tipo delle sue dimostrazioni. Perci\`o un \textit{proof-term} affermante come la proposizione di A sia vera.
+\item nella sintassi in un \textbf{linguaggio logico} \textit{a} rappresenta una dimostrazione di \textit{A}, e \textit{A} viene inteso come insieme o tipo delle sue dimostrazioni. Perci\`o \textit{a} rappresenta un \textit{proof-term} affermante come la proposizione di A sia vera.
 \item nella teoria in una sintassi di un \textbf{linguaggio di programmazione} \textit{a} rappresenta un programma e \textit{A} una specifica.
 \end{itemize}
 \noindent
 Dunque quando parliamo di tipo ci riferiamo a un insieme, una proposizione o \textit{data type}, a seconda dell'applicazione di tipo che si ha in mente.\\\\
-Dal punto di vista logico non si hanno solo proposizioni, ma anche predicati. Parlare solo di tipo non risulta quindi sufficiente. Per questo se si vuole rappresentare non una proposizione, ma un predicato A(x) si usa la seguente sintassi: \textbf{A(x) prop[x$\in$D]}.\\
+Dal punto di vista logico non si hanno solo proposizioni, ma anche predicati. Parlare solo di tipo non risulta quindi sufficiente. Per questo se si vuole rappresentare non una proposizione, ma un predicato A(x) si usa la sintassi \textbf{A(x) prop[x$\in$D]}.\\
 Dalla logica si sa che i predicati $\phi$(x) hanno x senza un dominio specifico, perch\`e la sintassi non determina che cosa \`e in x. Al seguito di tutto questo i predicati hanno una variabile che deve essere tipata come \textbf{$\phi$(x) prop[x$\in$D]}.\\
 Dunque (definizione di predicato)
 \begin{center}\textbf{$\exists$ z $\quad$ z=\{x$\in$ a$|$ $\phi$(x)\} $\qquad$ $\equiv$ $\qquad$ $\phi$(x)prop[x$\in$ a]}\end{center}
 \noindent
-Quanto appena definito da origine al concetto di \textbf{tipo dipendente}, nel quale vengono tipate tutte le variabili che appartengono ad una \textbf{famiglia di tipo}.\\\\
+Quanto appena definito da origine al concetto di \textbf{tipo dipendente}, nel quale vengono tipate tutte le variabili che appartengono a una \textbf{famiglia di tipo}.\\\\
 Le famiglie di tipo sono indispensabili per rappresentare il concetto di predicato. Di seguito ho riassunto in forma tabellare le diverse famiglie.\\
 
 \begin{table}[h]
@@ -146,16 +147,16 @@ Il concetto di tipo dipendente \`e stato introdotto per la prima volta da \texti
 \hline\hline 
 N$_1$ singoletto & l'insieme singoletto & \textit{tt} costante vero & tipo Unit  \\
 \hline 
-N$_0$ vuoto & l'insieme vuoto & \textit{$\bot$} costante falso & vuoto come datatype \\
+N$_0$ vuoto & l'insieme vuoto & \textit{$\bot$} costante falso & vuoto come \textit{datatype} \\
 \hline
-BxC (tipo prodotto) & l'insieme prodotto cartesiano dell'insieme B con l'insieme C & B\&C congiunzione della proposizione B e della proposizione C & tipo prodotto cartesiano (come in \textit{set theory})\\ 
+B$\times$C (tipo prodotto) & l'insieme prodotto cartesiano dell'insieme B con l'insieme C & B\&C congiunzione della proposizione B e della proposizione C & tipo prodotto cartesiano (come in \textit{set theory})\\ 
 \hline 
 B+C (tipo somma binaria) & l'insieme unione disgiunta dell'insieme B con l'insieme C & B$\lor$C disgiunta della  proposizione B e della proposizione C & tipo unione disgiunta con codifica \\
 \hline 
 B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \small{A$\rightarrow$B $\equiv$ \{f $|$ f: B$\rightarrow$C\}} & B$\rightarrow$C, implicazione della proposizione B e della proposizione C & insieme delle funzioni dal \textit{datatype} B al \textit{datatype} C \\
 \hline
 \end{tabularx}
-\caption{\label{tab:famiglia-di-tipi}Famiglia di tipi.} 
+\caption{\label{tab:famiglia-di-tipi}Esempi di tipi.} 
 \end{table}
 \noindent
 
@@ -170,9 +171,9 @@ B$\rightarrow$C & l'insieme delle funzioni dall'insieme B verso l'insieme C: \sm
 {\color[HTML]{FFFFFF}\textbf{A(x)type[x$\in$B]}}\\
 \hline\hline
 \begin{tabular}[c]{cc}tipo prodotto dipendente\\ 
-$\displaystyle\prod\limits_{x\epsilon B} C(x)$\end{tabular}\\
+$\displaystyle\prod\limits_{x\in B} C(x)$\end{tabular}\\
 \hline
-\begin{tabular}[c]{cc}tipo somma dipendente disgiunta indiciata \\ $\displaystyle\sum\limits_{x\epsilon B} C(x)$ \end{tabular}\\
+\begin{tabular}[c]{cc}tipo somma dipendente disgiunta indiciata \\ $\displaystyle\sum\limits_{x\in B} C(x)$ \end{tabular}\\
 \hline
 \end{tabular}
 \end{table}
@@ -185,22 +186,22 @@ $\displaystyle\prod\limits_{x\epsilon B} C(x)$\end{tabular}\\
 \rowcolor{orange}
 {\color[HTML]{FFFFFF}\textbf{A(x)set[x$\in$B]}} & {\color[HTML]{FFFFFF} \textbf{A(x)prop[x$\in$B]}} & {\color[HTML]{FFFFFF}\textbf{A(x)datatype[x$\in$B]}}\\
 \hline\hline
-\centering \scriptsize{\{$\displaystyle f: B \rightarrow \displaystyle\coprod\limits_{x \epsilon B} C(x)$\}} \scriptsize{$\displaystyle\coprod\limits_{x \epsilon B} C(x) =$ \{$b,c | b\epsilon B \quad c\epsilon C(b)$\}}& \centering \small{$\displaystyle \forall {x \epsilon B} \quad C(x)$} & tipo prodotto indiciato come in \textit{set theory} (non esiste un \textit{data-type} specifico)\\
+\centering \scriptsize{\{$\displaystyle f: B \rightarrow \displaystyle\coprod\limits_{x \in B} C(x)$\}} \scriptsize{$\displaystyle\coprod\limits_{x \in B} C(x) =$ \{$b,c | b\in B \quad c\in C(b)$\}}& \centering \small{$\displaystyle \forall {x \in B} \quad C(x)$} & tipo prodotto indiciato come in \textit{set theory} (non esiste un \textit{datatype} specifico)\\
 \hline
-\centering \scriptsize{$\displaystyle\bigcup\limits_{x \epsilon B}^. C(x)$} \qquad \qquad \qquad \scriptsize{$\displaystyle\coprod\limits_{x \epsilon B} C(x) =$ \{$b,c | b\epsilon B \quad c\epsilon C(b)$\}} & \centering \small{$\displaystyle \exists{x \epsilon B} \quad C(x)$} & non \`e primitivo deriva sempre dalla \textit{set theory}\\
+\centering \scriptsize{$\displaystyle\bigcup\limits_{x \in B}^. C(x)$} \qquad \qquad \qquad \scriptsize{$\displaystyle\coprod\limits_{x \in B} C(x) =$ \{$b,c | b\in B \quad c\in C(b)$\}} & \centering \small{$\displaystyle \exists{x \in B} \quad C(x)$} & non \`e primitivo, deriva sempre dalla \textit{set theory}\\
 \end{tabularx}
 \caption{\label{tab:tipi-dipendenti}Tipi dipendenti.} 
 \end{table}
 \noindent
-Lo slogan principale della teoria dei tipi \`e quello di tipare le variabili in un linguaggio formale set teorico/computazionale.\\\\
-Esiste anche il \textbf{tipo uguaglianza}:
+Lo \textit{slogan} principale della teoria dei tipi \`e quello di tipare le variabili in un linguaggio formale set teorico/computazionale.\\\\
+Esiste anche il \textbf{Tipo uguaglianza}:
 \begin{itemize}
 \item intensionale: Id(B,c,d);
 \item estensionale: Eq(B,c,d).
 \end{itemize}
 \noindent
 Introdotte da \textit{Martin-L$\ddot{o}$f}.\\
-E i costrutti degli \textbf{universi}, in cui U \`e universo di proposizioni e di insiemi.
+E i costrutti degli \textbf{Universi}, in cui U \`e universo di proposizioni e di insiemi.
 \section{Regole paradigmatiche per caratterizzare la teoria dei tipi}
 \label{sec:prime-regole-teoria-dei-tipi}
 La teoria dei tipi \`e stata formalizzata usando la nozione di \textbf{giudizio}, dove si asserisce qualcosa come vero.\\
@@ -213,33 +214,33 @@ Ci sono quattro forme di giudizio (nelle quali $\Gamma$ identifica il contesto):
 \end{itemize}
 \noindent
 All'interno di ogni singolo giudizio si lavora con la teoria dei tipi.\\
-I giudizi solo esclusivamente asserzioni, dicono solo qualcosa quando \`e vero (non si usano i quantificatori). Essi limitano le frasi che si possono fare per codificare la logica intuizionistica. 
+I giudizi sono esclusivamente asserzioni, dicono solo qualcosa quando \`e vero (non si usano i quantificatori). Essi limitano le frasi che si possono fare per codificare la Logica intuizionistica. 
 \subsection{Simbolo $\in$}
 \label{subsec:simbolo-appartiene}
 Il significato di a$\in$A in teoria dei tipi \`e differente da quello insiemistico. Espongo il concetto con un esempio trattato a lezione:
-\begin{equation}
-1 \in Nat \label{esempio-eq:appartiene}
-\end{equation}
+\begin{center}
+\textbf{1 $\in$ Nat}
+\end{center}
 
 
 \begin{itemize}
-\item In \textbf{\textit{set theory}} usuale $\in$ \`e tra insiemi. Nell'equazione \ref{esempio-eq:appartiene}, 1 rappresenta lui stesso un'insieme e Nat l'insieme dei numeri Naturali.
+\item in \textbf{\textit{set theory}} usuale $\in$ \`e tra insiemi. Nell'equazione sopra, 1 rappresenta lui stesso un'insieme e Nat l'insieme dei numeri Naturali.
 Risulta vero che 1$\equiv$\{$\varnothing$\}, poich\`e 0 $\equiv$ $\varnothing$.
-\item Invece in \textbf{teoria dei tipi} (di \textit{Martin-L$\ddot{o}$f} come di \textit{Russell})
+\item invece in \textbf{teoria dei tipi} (di \textit{Martin-L$\ddot{o}$f} come di \textit{Russell})
 1 rappresenta un elemento ma non un tipo e Nat il tipo dei Naturali. Vi \`e dunque la distinzione tra elemento e tipo (come esiste quella tra programmi e tipi).
 \end{itemize}
 \subsection{Uguaglianza definizionale vs uguaglianza proposizionale}
 \label{subsec:uguaglianza-computazionale-proposizionale}
-Specifico \textbf{a = b$\in$ A[$\Gamma$]} come l'uguaglianza computazionale/definizionale, che viene data come primitiva e non va confusa con l'uguaglianza proposizionale/estensionale tra a e b.\\L'uguaglianza proposizionale a =$_A$ b \`e rappresentata non da un giudizio, che asserisce solo ci\`o che \`e vero, ma bens\`i da un tipo Eq(A,a,b) che pu\`o anche essere senza termini e/o essere falso, dal punto di vista logico.\\\\
+Specifico \textbf{a $=$ b$\in$ A[$\Gamma$]} come l'uguaglianza computazionale/definizionale, che viene data come primitiva e non va confusa con l'uguaglianza proposizionale/estensionale tra a e b.\\L'uguaglianza proposizionale a =$_A$ b \`e rappresentata non da un giudizio, che asserisce solo ci\`o che \`e vero, ma bens\`i da un tipo Eq(A,a,b) che pu\`o anche essere senza termini e/o essere falso, dal punto di vista logico.\\\\
 Visti come programmi, a e b rappresentano lo stesso programma. In $\lambda$-calcolo a$\rightarrow$b oppure b$\rightarrow$a (si riducono). Inoltre a e b possono essere sia termini finali che trovarsi in mezzo alla computazione.
 \subsection{Generazione di contesti}
 \label{subsec:generazione-di-contesti}
-Esiste anche un quinto giudizio ausiliario (\$ \ref{subsec:formazione-contesti}) \textit{F-C}, che permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
+Esiste anche un quinto giudizio ausiliario (\$ \ref{subsec:formazione-contesti}) \textit{(F-c)}, che permette di generare i contesti. Tale giudizio, a differenza dei primi quattro, rimane immutato in ogni teoria dei tipi.
 
 \section{Esercizi}
 \label{subsec: lambda-calcolo-puro}
 \paragraph{1)} 
-\textbf{Dato il seguente termine, elencare quali sono le sue variabili libere e le sue variabili legate con i lambda relativi.}
+\textbf{Dato il seguente termine, elencare quali sono le sue variabili libere e le sue variabili legate con i lambda termini relativi.}
 \begin{center}$\lambda$z.((($\lambda$x.$\lambda$x.yx)x)(v$\lambda$z.$\lambda$w.v))\end{center}
 \textbf{Soluzione}\\\\
 $\lambda$z.((($\lambda$x.\textbf{\textcolor{red}{$\lambda$x}}.\textbf{\textcolor{green}{y}\textcolor{red}{x}})\textbf{\textcolor{green}{x}})(\textbf{\textcolor{green}{v}}$\lambda$z.$\lambda$w.\textbf{\textcolor{green}{v}}))
@@ -258,43 +259,43 @@ Le variabili legate sono le x all'interno delle parentesi tonde. Una possibile r
 \paragraph{3)}
 \textbf{Evidenziare di due colori diversi quali sono le variabili libere e quali quelle legate.
 \begin{center}($\lambda$x.(z($\lambda$z.((xyz)x))zx))x($\lambda$x.(($\lambda$y.yy)($\lambda$z.zz)))\end{center}}
-\textbf{Soluzione}\\\\
+\noindent \textbf{Soluzione}\\\\
 ($\lambda$x.(\textbf{\textcolor{green}{z}}($\lambda$z.((\textbf{\textcolor{red}{x}\textcolor{green}{y}\textcolor{red}{z}})\textbf{\textcolor{red}{x}}))\textbf{\textcolor{green}{z}\textcolor{red}{x}}))\textbf{\textcolor{green}{x}}($\lambda$x.(($\lambda$y.\textbf{\textcolor{red}{yy}})($\lambda$z.\textbf{\textcolor{red}{zz}})))
 \begin{itemize}
-\item le variabili libere sono le \textit{z, y} e \textit{x} colorate in verde
-\item le variabili legate sono le \textit{x, y} e \textit{z} colorate in rosso
+\item le variabili libere (colorate in verde) sono \textit{z, y} e \textit{x} 
+\item le variabili legate (colorate in rosso) sono \textit{x, y} e \textit{z}
 \end{itemize}
 
 \paragraph{4)}
-\textbf{Descrivere un termine del $\lambda$-calcolo, descritto in \S\ref{subsec:lambda-calcolo},  che \`e convergente con almeno un passo di riduzione rispetto ad una specifica strategia di riduzione deterministica.}\\\\
-\textit{Soluzione}\\\\
+\textbf{Descrivere un termine del $\lambda$-calcolo, descritto in \S\ref{subsec:lambda-calcolo},  che \`e convergente con almeno un passo di riduzione rispetto a una specifica strategia di riduzione deterministica.}\\\\
+\textbf{Soluzione}\\\\
 Per definizione un termine t \`e convergente, rispetto a una strategia di
-riduzione deterministica, se esiste un numero finito n >= 1 di termini s$_1$,..., s$_n$ tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i + 1}$ per i = 1,..., n-1 e s$_n$ non \`e riducibile ad alcun termine.\\
-Prendendo in considerazione una strategia di riduzione deterministica \textbf{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di termine t del $\lambda$-calcolo convergente in almeno un passo di riduzione \`e:
+riduzione deterministica, se esiste un numero finito n $>=$ 1 di termini s$_1$,..., s$_n$ tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i + 1}$ per i $=$ 1,..., n-1 e s$_n$ non \`e riducibile ad alcun termine.\\
+Prendendo in considerazione una strategia di riduzione deterministica \textit{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di termine t del $\lambda$-calcolo, convergente in almeno un passo di riduzione, \`e:
 \begin{center}t $\equiv$ (($\lambda$x.x)z)(($\lambda$y.y)w) $\rightarrow_1$ z(($\lambda$y.y)w) $\rightarrow_1$ z(w) $\equiv$ s$_n$ $\equiv$ s\end{center}
 \paragraph{5)} 
-\textbf{Descrivere due termini diversi del $\lambda$-calcolo, descritto in \S\ref{subsec:lambda-calcolo}, che non sono convergenti sempre rispetto a una strategia di riduzione deterministica.}\\\\
+\textbf{Descrivere due termini diversi del $\lambda$-calcolo, descritto in \S\ref{subsec:lambda-calcolo}, che non sono convergenti, sempre rispetto a una strategia di riduzione deterministica.}\\\\
 \textbf{Soluzione}\\\\
 Per definizione un termine t diverge (\`e non convergente), rispetto a una strategia
-di riduzione deterministica, se esiste una quantit\`a numerabile di termini s$_i$ al variare di i $\in$ Nat tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i+1}$. Per ogni i $\in$ Nat (ossia esiste una lista infinita di passi computazioni a partire da t).
-Prendendo in considerazione una strategia di riduzione deterministica \textit{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di due termine diversi del $\lambda$-calcolo che sono convergenti \`e:
+di riduzione deterministica, se esiste una quantit\`a numerabile di termini s$_i$ al variare di i $\in$ Nat tale che s$_1$ $\equiv$ t e s$_i$ $\rightarrow_1$ s$_{i+1}$, per ogni i $\in$ Nat (ossia esiste una lista infinita di passi computazioni a partire da t).
+Prendendo in considerazione una strategia di riduzione deterministica \textit{call-by value}, usata per la semantica nei linguaggi di programmazione, allora un esempio di due termine diversi del $\lambda$-calcolo che non sono convergenti \`e:
 \begin{center}($\lambda$x x(x))($\lambda$y y(y)) $\rightarrow_1$ ($\lambda$y y(y))($\lambda$y y(y))  $\rightarrow_1$ ... $\rightarrow_1$ ($\lambda$y y(y))($\lambda$y y(y)) $\rightarrow_1$ ... \end{center}
 Si riduce sempre a se stessa, a qualunque passo di computazione. Perci\`o ammette computazione infinita (diverge) non raggiungendo mai un valore finale.
 \paragraph{6)} 
-\textbf{Che relazione c'\`e tra il lambda-calcolo puro con le regole di riduzione date in \S\ref{subsec:lambda-calcolo}, rispetto a quello in cui, adottando la stessa sintassi di termini, imponiamo la seguente definizione di riduzione $\rightarrow_1^\ast$.}
+\textbf{Che relazione c'\`e tra il $\lambda$-calcolo puro con le regole di riduzione date in \S\ref{subsec:lambda-calcolo}, rispetto a quello in cui, adottando la stessa sintassi di termini, imponiamo la seguente definizione di riduzione $\rightarrow_1^\ast$.}
 \begin{itemize}
 \item per ogni termine t e b ($\lambda$x.t)(b) $\rightarrow_1^\ast$ t[$\frac{x}{b}$]
 \item per ogni termine b, b$_1$, b$_2$ e a, a$_1$, a$_2$
-\AxiomC{a1 $\rightarrow_1^\ast$ a2}
-\AxiomC{b1 $\rightarrow_1^\ast$ b2}
+\AxiomC{a$_1$ $\rightarrow_1^\ast$ a$_2$}
+\AxiomC{b$_1$ $\rightarrow_1^\ast$ b$_2$}
 \begin{center}
 \LeftLabel{R$_I$}
-\BinaryInfC{a1(b1)$ \rightarrow_1^\ast$ a2(b2)}
+\BinaryInfC{a$_1(b_1)$ $ \rightarrow_1^\ast$ a$_2(b_2)$}
 \DisplayProof
 \qquad
-\AxiomC{t1 $\rightarrow_1^\ast$ t2}
+\AxiomC{t$_1$ $\rightarrow_1^\ast$ t$_2$}
 \LeftLabel{R$_{II}$}
-\UnaryInfC{$\lambda$ x.t1 $\rightarrow_1^\ast$ $\lambda$x.t2}
+\UnaryInfC{$\lambda$x.t$_1$ $\rightarrow_1^\ast$ $\lambda$x.t$_2$}
 \DisplayProof
 \end{center}
 \end{itemize}
@@ -320,14 +321,20 @@ Allora applicando la strategia di riduzione $\rightarrow$, ottengo
 \UnaryInfC{z(($\lambda$y.y)w) $\rightarrow$ z(w)}
 \end{prooftree}
 \noindent Dunque riesco a giungere a una forma normale.\\
-Cosa che non \`e possibile con la strategia $\rightarrow_1^\ast$. In quanto (($\lambda$x.x)z)(($\lambda$y.y)w) $\rightarrow_1^\ast$ (($\lambda$x.x)z)(($\lambda$y.y)w)  che non \`e in forma normale ((($\lambda$x.x)z)(($\lambda$y.y)w) $\nrightarrow_1^\ast$).\\
+Cosa che non \`e possibile con la strategia $\rightarrow_1^\ast$. In quanto (($\lambda$x.x)z)(($\lambda$y.y)w) $\rightarrow_1^\ast$ z(($\lambda$y.y)w)  che non \`e in forma normale. Per cui ((($\lambda$x.x)z)(($\lambda$y.y)w) $\nrightarrow_1^\ast$.\\
 In conclusione risulta vero che L($\rightarrow_1^\ast$) $\nsubseteq$ L($\rightarrow_1$).
-\item Per provare l'inclusione di L($\rightarrow_1^\ast$) in L($\rightarrow_1$) basta che dimostro, per una valutazione che usa entrambe le strategie, il sempre possibile rimpiazzo della regola R$_I$ con la sua regola corrispondente in $\nrightarrow_1$ (A$_I$ + A$_{II}$) . Pi\`u formalmente significa provare che per ogni valutazione di un termine M, che usa la regola R$_I$, si pu\`o sempre ottenere una valutazione che usa solo regole della strategia $\nrightarrow_1$.\\ Per farlo procedo per induzione sul numero di volte n che la regola R$_I$ viene utilizzata durante la valutazione di M.
+\item Per provare l'inclusione di L($\rightarrow_1^\ast$) in L($\rightarrow_1$) basta che dimostro, per una valutazione che usa entrambe le strategie, il sempre possibile rimpiazzo della regola R$_I$ con la sua regola corrispondente in $\rightarrow_1$ (A$_I$ + A$_{II}$) . Pi\`u formalmente significa provare che per ogni valutazione di un termine M, che usa la regola R$_I$, si pu\`o sempre ottenere una valutazione che usa solo regole della strategia $\rightarrow_1$.\\ Per farlo procedo per induzione sul numero di volte n che la regola R$_I$ viene utilizzata durante la valutazione di M.
 \begin{itemize}
-\item (n=0): caso base. La regola R$_I$ non viene mai utilizzata nella valutazione di M, e dunque M \`e gi\`a implicitamente dimostrato con la strategia $\nrightarrow_1$
-\item (n $\rightarrow$ n+1): caso induttivo. Per n risulta vero che L($\rightarrow_1^\ast$) $\subset$ L($\rightarrow$), devo provare che vale anche per n+1. Inoltre la valutazione di M utilizza almeno una volta la regola R$_I$.\\
-Dunque ho M $\rightarrow$...$\xrightarrow[]{R_I}_1^\ast$M$^I$ e voglio costruire una derivazione M $\rightarrow$...$\xrightarrow[]{A_I}_1M_1\xrightarrow[]{A_{II}}_1M^I$.
-Le strategie di valutazione sono deterministiche, portano pertanto allo stesso risultato della sequenza di derivazione, per cui R$_I$ = A$_I$ + A$_{II}$ risulta vero. Inoltre per ipotesi induttiva \`e sempre possibile avere una valutazione con l'utilizzo di solo regole $\rightarrow_1$ (A$_I$ + A$_{II}$ esistono). Perci\`o risulta corretto rimpiazzare $\rightarrow_1^\ast$ con $\rightarrow_1$.\\ In conclusione risulta vero che L($\rightarrow_1^\ast$) $\subset$ L($\rightarrow_1$).
+\item (n=0): caso base. La regola R$_I$ non viene mai utilizzata nella valutazione di M, e dunque M \`e gi\`a implicitamente dimostrato, usando l'ipotesi induttiva, con la strategia $\rightarrow_1$.
+\item (n $\rightarrow$ n+1): caso induttivo. Premesse:
+\begin{enumerate}
+\item per n risulta vero che L($\rightarrow_1^\ast$) $\subset$ L($\rightarrow_1$), devo provare che vale anche per n+1;
+\item inoltre la valutazione di M utilizza almeno una volta la regola R$_I$;
+\item per ipotesi induttuva, esiste almeno una valutazione di M con solo regole della strategia $\rightarrow_1$.
+\end{enumerate}
+\noindent
+Dunque ho M $\rightarrow$...$\xrightarrow[]{R_I}_1^\ast$M$^I$ e voglio costruire una derivazione M $\rightarrow$...$\xrightarrow[]{A_I}_1M_1\xrightarrow[]{A_{II}}_1M^I$.\\
+Le strategie di valutazione sono deterministiche, portano pertanto allo stesso risultato della sequenza di derivazione, per cui R$_I$ $=$ A$_I$ + A$_{II}$ risulta vero. Inoltre, per ipotesi induttiva, \`e sempre possibile avere una valutazione con l'utilizzo di solo regole $\rightarrow_1$ (A$_I$ + A$_{II}$ esistono). Perci\`o risulta corretto rimpiazzare $\rightarrow_1^\ast$ con $\rightarrow_1$.\\ In conclusione risulta vero che L($\rightarrow_1^\ast$) $\subset$ L($\rightarrow_1$).
 \end{itemize}
 \end{enumerate}
 
