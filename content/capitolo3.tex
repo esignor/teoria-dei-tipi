@@ -71,8 +71,8 @@
 
 \section{Introduzione ed Eliminatore dipendente}
 \label{subsec:introduzione-eliminatore dipendente-naturale}
-Le regole di formazione dei tipi e dei loro termini sono formulate in modo da rendere la regole si sostituzione per tipi e termini ammissibili.\\
-Ad esempio la regola di introduzione del successore di un numero naturale si pu\`o formulare come un esplicito programma funzionale visto come termine dipendente.
+Le regole di formazione dei tipi e dei loro termini sono formulate, in modo, da rendere la regole di sostituzione per tipi e termini ammissibili.\\
+Ad esempio la regola di introduzione del successore di un numero naturale, si pu\`o formulare come un esplicito programma funzionale visto come termine dipendente.
 \begin{prooftree}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{I$_2$-Nat$_{prog}$)}
@@ -89,7 +89,7 @@ Il medesimo discorso vale per la regola di eliminazione
 \end{prooftree}
 \end{adjustwidth}
 \noindent
-\textit{E-Nat} \`e equivalente a \textit{E-Nat$_{dip}$}. Difatti la teoria \textit{T$_{N1Nat}$}, in cui c'\`e \textit{E-Nat}, \`e equivalente a \textit{T$\backprime$} senza \textit{E-Nat}, ma con \textit{E-Nat$_{dip}$}, le regole di sostituzione e di \textit{sanitary check}.
+\textit{(E-Nat)} \`e equivalente a \textit{(E-Nat$_{dip}$)}. Difatti la teoria \textit{T$_{N1Nat}$}, in cui c'\`e \textit{(E-Nat)}, \`e equivalente a \textit{T$^\backprime$} senza \textit{(E-Nat)}, ma con \textit{(E-Nat$_{dip}$)}, le regole di sostituzione e di \textit{Sanitary check}.
 
 
 \section{Semantica operazionale dei numeri Naturali}
@@ -106,7 +106,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \LeftLabel{Nat-red$_2$)}
 \UnaryInfC{El$_{Nat}$(t, c$_1$, e) $\rightarrow_1$ El$_{Nat}$(t, c$_2$, e)}
 \DisplayProof 
-\item Novit\`a dei numeri naturali rispetto al tipo singoletto
+\item Novit\`a dei numeri Naturali rispetto al tipo singoletto
 \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
 \LeftLabel{Nat-red)}
 \UnaryInfC{succ(t$_1$) $\rightarrow_1$ succ(t$_2$)}
@@ -118,9 +118,13 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \textit{Definizione}\\\\
 Nat$^n$ $\times$ Nat $\rightarrow$ Nat\\
 Dati g$_0$: Nat$^m$ $\rightarrow$ Nat e g$_1$: Nat$^m$ $\times$ Nat $\times$ Nat $\rightarrow$ Nat\\
-n$_1$...n$_m$ $\in$ Nat allora\\\\
-rec(n$_1$...n$_m$, 0) $\equiv$ g$_0$(n$_1$...n$_m$)\\
-rec(n$_1$...n$_m$, k+1) $\equiv$ g$_0$(n$_1$...n$_m$, k, rec(n$_1$...n$_m$, k))
+n$_1$...n$_m$ $\in$ Nat allora
+\begin{center}
+\textbf{
+rec(n$_1$...n$_m$, 0) ${\overset{\mathit{def}}{=}}$ g$_0$(n$_1$...n$_m$)\\
+rec(n$_1$...n$_m$, k+1) ${\overset{\mathit{def}}{=}}$ g$_0$(n$_1$...n$_m$, k, rec(n$_1$...n$_m$, k))
+}
+\end{center}
 
 \section{Addizione per ricorsione}
 \label{subsec: addizione-per-ricorsione}
@@ -158,10 +162,10 @@ Ecco che l'albero di derivazione assume la seguente forma:
 \UnaryInfC{w $\in$ Nat cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[w $\in$ Nat]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ Nat) $\notin$ \\ w $\in$ Nat \end{tabular}}
-\UnaryInfC{w $\in$ Nat, z $\in$ Nat cont}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(x $\in$ Nat) $\notin$ \\ w $\in$ Nat \end{tabular}}
+\UnaryInfC{w $\in$ Nat, x $\in$ Nat cont}
 \LeftLabel{I$_2$-Nat$_{prog}$}
-\UnaryInfC{succ(y) $\in$ $\in$ Nat [w $\in$ Nat, z $\in$ Nat, y $\in$ Nat]}
+\UnaryInfC{succ(y) $\in$ Nat [w $\in$ Nat, x $\in$ Nat, y $\in$ Nat]}
 \LeftLabel{E-Nat$_{dip}$}
 \TrinaryInfC{El$_{Nat}$(z, w, (x,y).succ(y))$\in$ Nat[w $\in$ Nat, z $\in$ Nat]}
 \end{prooftree}
@@ -172,10 +176,10 @@ Ecco che l'albero di derivazione assume la seguente forma:
 \item Prova induttiva (minimo dei controlli da fare per verificare l'esattezza della derivazione)
 \begin{itemize}
 \item Caso base: cosa accade se poniamo al posto di z lo 0?\\
-El$_{Nat}$(0, w, (x,y).succ(y)) $\rightarrow_1$ w per \textit{$\beta_{1Nat}$-red} ($\equiv$ w + 0 = w)
-\item Passo induttivo: ricorro su z (esempio succ(0) = 1)\\
-El$_{Nat}$(succ(0), w, (x,y).succ(y)) per \textit{$\beta_{1Nat}$-red} $\rightarrow_1$ succ(El$_{Nat}$(0, w, (x,y).succ(y))) $\rightarrow_1$ succ(w) \\
-Dunque w + 1 = succ(w) $\in$ Nat
+El$_{Nat}$(0, w, (x,y).succ(y)) $\rightarrow_1$ w per \textit{$\beta_{1Nat}$-red} ($\equiv$ w + 0 $=$ w)
+\item Passo induttivo: ricorro su z (esempio succ(0) $=$ 1)\\
+El$_{Nat}$(succ(0), w, (x,y).succ(y)) $\rightarrow_1$ succ(El$_{Nat}$(0, w, (x,y).succ(y))) per \textit{$\beta_{1Nat}$-red} $\rightarrow_1$ succ(w)\\
+Dunque w + 1 $=$ succ(w) $\in$ Nat
 \end{itemize}
 \noindent
 $\Rightarrow$ Il programma fa effettivamente quello che dovrebbe.
@@ -185,9 +189,9 @@ $\Rightarrow$ Il programma fa effettivamente quello che dovrebbe.
 \label{subsubsec: osservazioni-addizione}
 w $+_1$ z $\equiv$ El$_{Nat}$(z, w, (x,y), succ(y)) $\neq$ come NF da z.\\
 Se sostituisco w con 0, allora 0 $+_1$ z $\equiv$ w $+_1$ z[$\frac{w}{0}$] $\equiv$ El$_{Nat}$(z, 0, (x,y), succ(y)) \`e in NF (dunque non riesco pi\`u a ridurla ulteriormente). 
-\\Ecco che 0 $+_1$ z \`e un valore in NF $\neq$ da z, da cui \`e impossibile dimostrare che 0 $+_1$ z = z $\in$ Nat[z $\in$ Nat].\\
+\\Ecco che 0 $+_1$ z \`e un valore in NF $\neq$ da z, da cui \`e impossibile dimostrare che 0 $+_1$ z $=$ z $\in$ Nat[z $\in$ Nat].\\
 Questo non accade per w $+_1$ 0 = w (\S \ref{subsec: addizione-per-ricorsione}).\\ 
-Perci\`o, se noi scriviamo la somma ricorrendo sul secondo membro, riusciamo a dire che \textit{primo-membro $+_1$ 0 = primo-membro}, ma non che \textit{0 $+_1$ secondo-membro = secondo - membro}. In quanto non esiste alcuna sotto-strategia deterministica, per il secondo caso, per cui il programma si ferma.
+Perci\`o, se noi scriviamo la somma ricorrendo sul secondo membro, riusciamo a dire che \textit{primo-membro $+_1$ 0 $=$ primo-membro}, ma non che \textit{0 $+_1$ secondo-membro $=$ secondo-membro}. In quanto non esiste alcuna sotto-strategia deterministica, per il secondo caso, per cui il programma si ferma.
 \\\\
 In conclusione, l'uguaglianza definizionale di termini con variabili \`e diversa dall'uguaglianza aritmetica. Eccezione fatta per le espressioni chiuse, senza variabili, perch\`e il termine chiuso si riduce a un'unica NF, che si dimostra essere un numero arabico.
 
@@ -195,11 +199,12 @@ In conclusione, l'uguaglianza definizionale di termini con variabili \`e diversa
 \label{sec: es-naturali}
 
 \paragraph{1)}
-\textbf{Dimostrare che le regole enunciate in \S\ref{cap: tipo-naturali}, \textit{I$_2$-Nat$_{prog}$} ed \textit{E-Nat$_{dip}$}, sono ammissibili nel sistema di teoria dei tipi dei numeri naturali.}
+\textbf{Dimostrare che le regole enunciate in \S\ref{cap: tipo-naturali}, \textit{I$_2$-Nat$_{prog}$} ed \textit{E-Nat$_{dip}$}, sono ammissibili nel sistema di teoria dei tipi dei numeri Naturali.}
 \\\\
 \textbf{Soluzione}\\\\
 \noindent
-In I$_2$-Nat$_{prog}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, x $\in$ Nat che permette l'applicazione di I$_2$ Nat.
+\begin{itemize}
+\item In I$_2$-Nat$_{prog}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, x $\in$ Nat che permette l'applicazione di I$_2$ Nat.
 \begin{prooftree}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{F-Nat}
@@ -215,12 +220,10 @@ In I$_2$-Nat$_{prog}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, x $\in$ Nat ch
 \end{prooftree}
 \vspace{0.5cm}
 \noindent
-\normalsize{Assumo che le premesse di \textit{I$_2$-Nat$_{prog}$} (\textit{$\Gamma$ count}) sia valida, perci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}, di conseguenza derivabile in \textit{T$^\backprime$}.}
-\\\\\\
-\noindent
-In E-Nat$_{dip}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, z $\in$ Nat, che permette l'applicazione di E-Nat.
+\normalsize{Assumo che le premesse di \textit{I$_2$-Nat$_{prog}$} (\textit{$\Gamma$ count}) siano valide, perci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{succ(x) $\in$ Nat[$\Gamma$, x $\in$ Nat]}, di conseguenza derivabile in \textit{T$^\backprime$}.}
+\item In E-Nat$_{dip}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, z $\in$ Nat, che permette l'applicazione di E-Nat.
 \scriptsize
-\begin{adjustwidth}{-15em}{}
+\begin{adjustwidth}{-18em}{}
 \begin{prooftree}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{F-Nat}
@@ -231,59 +234,59 @@ In E-Nat$_{dip}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, z $\in$ Nat, che pe
 \UnaryInfC{z $\in$ Nat[$\Gamma$, z $\in$ Nat]}
 \AxiomC{}
 \UnaryInfC{M(z) type[$\Gamma$,z $\in$ Nat]}
-\AxiomC{\textbf{1}}
+\AxiomC{}
 \UnaryInfC{c $\in$ M(0)[$\Gamma$,z $\in$ Nat]}
-\AxiomC{\textbf{2}}
+\AxiomC{}
 \UnaryInfC{e(x,y) $\in$ M(succ(x))[$\Gamma$, z $\in$ Nat, x $\in$ Nat, y $\in$ M(x)]}
 \LeftLabel{E-Nat}
 \QuaternaryInfC{El$_{Nat}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
-\vspace{0.5cm}
-\small
-\textbf{1}
-\begin{prooftree}
-\AxiomC{}
-\UnaryInfC{c $\in$ M(0)[$\Gamma$]}
-\AxiomC{$\Gamma$ cont}
-\LeftLabel{F-Nat}
-\UnaryInfC{Nat type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ $\Gamma$}
-\UnaryInfC{$\Gamma$, z $\in$ Nat cont}
-\LeftLabel{ind-te}
-\BinaryInfC{c $\in$ M(0)[$\Gamma$,z $\in$ Nat]}
-\end{prooftree}
-\noindent
-\textbf{2} \\\\
-\noindent \normalsize $\Delta$ $=$ $\Gamma$, x $\in$ Nat, y $\in$ M(x), z $\in$ Nat\\
-\noindent $\Omega$ $=$ $\Gamma$, z $\in$ Nat, x $\in$ Nat, y $\in$ M(x)
-\scriptsize
-\begin{adjustwidth}{-14em}{}
-\begin{prooftree}
-\AxiomC{}
-\UnaryInfC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
-\AxiomC{\textbf{2$_A$}}
-\UnaryInfC{$\Delta$ cont}
-\LeftLabel{ind-te}
-\BinaryInfC{e(x,y) $\in$ M(succ(x))[$\Delta$]}
+%\vspace{0.5cm}
+%\small
+%\textbf{1}
+%\begin{prooftree}
+%\AxiomC{}
+%\UnaryInfC{c $\in$ M(0)[$\Gamma$]}
+%\AxiomC{$\Gamma$ cont}
+%\LeftLabel{F-Nat}
+%\UnaryInfC{Nat type[$\Gamma$]}
+%\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ $\Gamma$}
+%\UnaryInfC{$\Gamma$, z $\in$ Nat cont}
+%\LeftLabel{ind-te}
+%\BinaryInfC{c $\in$ M(0)[$\Gamma$,z $\in$ Nat]}
+%\end{prooftree}
+%\noindent
+%\textbf{2} \\\\
+%\noindent \normalsize $\Delta$ $=$ $\Gamma$, x $\in$ Nat, y $\in$ M(x), z $\in$ Nat\\
+%\noindent $\Omega$ $=$ $\Gamma$, z $\in$ Nat, x $\in$ Nat, y $\in$ M(x)
+%\scriptsize
+%\begin{adjustwidth}{-14em}{}
+%\begin{prooftree}
+%\AxiomC{}
+%\UnaryInfC{e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+%\AxiomC{\textbf{2$_A$}}
+%\UnaryInfC{$\Delta$ cont}
+%\LeftLabel{ind-te}
+%\BinaryInfC{e(x,y) $\in$ M(succ(x))[$\Delta$]}
 
-\AxiomC{\textbf{2$_B$}}
-\UnaryInfC{x $\in$ Nat[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
-\AxiomC{\textbf{2$_C$}}
-\UnaryInfC{M(z) type[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
-\LeftLabel{sub-typ}
-\BinaryInfC{M(x) type[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ M(x)) $\notin$ \\  ($\Gamma$  z $\in$ Nat, \\ x $\in$ Nat)\end{tabular}}
-\UnaryInfC{$\Omega$ cont}
-\LeftLabel{ex-te}
-\BinaryInfC{e(x,y) $\in$ M(succ(x))[$\Omega$]}
-\end{prooftree}
-\end{adjustwidth}
-\noindent
-\small
-\textbf{2$_A$}
-\begin{adjustwidth}{4em}{}
-\begin{prooftree}
+%\AxiomC{\textbf{2$_B$}}
+%\UnaryInfC{x $\in$ Nat[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
+%\AxiomC{\textbf{2$_C$}}
+%\UnaryInfC{M(z) type[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
+%\LeftLabel{sub-typ}
+%\BinaryInfC{M(x) type[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
+%\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ M(x)) $\notin$ \\  ($\Gamma$  z $\in$ Nat, %\\ x $\in$ Nat)\end{tabular}}
+%\UnaryInfC{$\Omega$ cont}
+%\LeftLabel{ex-te}
+%\BinaryInfC{e(x,y) $\in$ M(succ(x))[$\Omega$]}
+%\end{prooftree}
+%\end{adjustwidth}
+%\noindent
+%\small
+%\textbf{2$_A$}
+%\begin{adjustwidth}{4em}{}
+%\begin{prooftree}
 %\AxiomC{$\Gamma$ cont}
 %\LeftLabel{F-Nat}
 %\UnaryInfC{Nat type[$\Gamma$]}
@@ -307,64 +310,68 @@ In E-Nat$_{dip}$ il contesto \`e $\Sigma$ $\equiv$ $\Gamma$, z $\in$ Nat, che pe
 %\LeftLabel{ex-te}
 %\BinaryInfC{M(z) type[$\Gamma$, x $\in$ Nat, z $\in$ Nat]}
 %\LeftLabel{sub-typ}
-\AxiomC{}
-\UnaryInfC{M(z) type[$\Gamma$, z $\in$ Nat]}
-\LeftLabel{$\alpha-eq$}
-\UnaryInfC{M(x) type[$\Gamma$, x $\in$ Nat]}
-\LeftLabel{F-c}\RightLabel{(y $\in$ M(x)) $\notin$ ($\Gamma$, x $\in$ Nat)}
-\UnaryInfC{$\Gamma$, x $\in$ Nat, y $\in$ M(x) cont}
-\LeftLabel{F-Nat}
-\UnaryInfC{Nat type[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ ($\Gamma$, x $\in$ Nat, y $\in$ M(x))}
-\UnaryInfC{$\Gamma$, x $\in$ Nat, y $\in$ M(x), z $\in$ Nat cont}
-\end{prooftree}
-\end{adjustwidth}
-\noindent
+%\AxiomC{}
+%\UnaryInfC{M(z) type[$\Gamma$, z $\in$ Nat]}
+%\LeftLabel{$\alpha-eq$}
+%\UnaryInfC{M(x) type[$\Gamma$, x $\in$ Nat]}
+%\LeftLabel{F-c}\RightLabel{(y $\in$ M(x)) $\notin$ ($\Gamma$, x $\in$ Nat)}
+%\UnaryInfC{$\Gamma$, x $\in$ Nat, y $\in$ M(x) cont}
+%\LeftLabel{F-Nat}
+%\UnaryInfC{Nat type[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}
+%\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ ($\Gamma$, x $\in$ Nat, y $\in$ M(x))}
+%\UnaryInfC{$\Gamma$, x $\in$ Nat, y $\in$ M(x), z $\in$ Nat cont}
+%\end{prooftree}
+%\end{adjustwidth}
+%\noindent
+%\vspace{0.5cm}
+%\textbf{2$_B$}
+%\small
+%\begin{adjustwidth}{11em}{}
+%\begin{prooftree}
+%\AxiomC{$\Gamma$ cont}
+%\LeftLabel{F-Nat}
+%\UnaryInfC{Nat type[$\Gamma$]}
+%\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ $\Gamma$}
+%\UnaryInfC{$\Gamma$, z $\in$ Nat cont}
+%\LeftLabel{F-Nat}
+%\UnaryInfC{Nat type[$\Gamma$, z $\in$ Nat]}
+%\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ ($\Gamma$, z $\in$ Nat)}
+%\UnaryInfC{$\Gamma$, z $\in$ Nat, x $\in$ Nat cont}
+%\LeftLabel{var}
+%\UnaryInfC{x $\in$ Nat[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
+%\end{prooftree}
+%\end{adjustwidth}
+%\vspace{0.5cm}
+%\noindent
+%\vspace{0.5cm}
+%\textbf{2$_C$}
+%\small
+%\begin{adjustwidth}{4em}{}
+%\begin{prooftree}
+%\AxiomC{}
+%\UnaryInfC{M(z) type[$\Gamma$, z $\in$ Nat]}
+%\AxiomC{($\ast$)}
+%\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ ($\Gamma$, z $\in$ Nat)}
+%\UnaryInfC{$\Gamma$, z $\in$ Nat, x $\in$ Nat cont}
+%\LeftLabel{ind-ty}
+%\BinaryInfC{M(z) type[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
+%\end{prooftree}
+%\end{adjustwidth}
+%\vspace{0.5cm}
+%\noindent
+%\normalsize Le derivazioni contrassegnate con ($\ast$) indicano che le ho gi\`a svolte all'interno dell'esercizio e che le ho omesse per evitare ripetizioni.\\\\
 \vspace{0.5cm}
-\textbf{2$_B$}
-\small
-\begin{adjustwidth}{11em}{}
-\begin{prooftree}
-\AxiomC{$\Gamma$ cont}
-\LeftLabel{F-Nat}
-\UnaryInfC{Nat type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ $\Gamma$}
-\UnaryInfC{$\Gamma$, z $\in$ Nat cont}
-\LeftLabel{F-Nat}
-\UnaryInfC{Nat type[$\Gamma$, z $\in$ Nat]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ ($\Gamma$, z $\in$ Nat)}
-\UnaryInfC{$\Gamma$, z $\in$ Nat, x $\in$ Nat cont}
-\LeftLabel{var}
-\UnaryInfC{x $\in$ Nat[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
-\end{prooftree}
-\end{adjustwidth}
-\vspace{0.5cm}
 \noindent
-\vspace{0.5cm}
-\textbf{2$_C$}
-\small
-\begin{adjustwidth}{4em}{}
-\begin{prooftree}
-\AxiomC{}
-\UnaryInfC{M(z) type[$\Gamma$, z $\in$ Nat]}
-\AxiomC{($\ast$)}
-\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ ($\Gamma$, z $\in$ Nat)}
-\UnaryInfC{$\Gamma$, z $\in$ Nat, x $\in$ Nat cont}
-\LeftLabel{ind-ty}
-\BinaryInfC{M(z) type[$\Gamma$, z $\in$ Nat, x $\in$ Nat]}
-\end{prooftree}
-\end{adjustwidth}
-\vspace{0.5cm}
-\noindent
-\normalsize Le derivazioni contrassegnate con ($\ast$) indicano che le ho gi\`a svolte all'interno dell'esercizio e che le ho omesse per evitare ripetizioni.\\\\
-\noindent
-Assumo che le premesse di \textit{E-Nat$_{dip}$} (\textit{M(z) type[$\Gamma$, z $\in$ Nat], c $\in$ M(0)[$\Gamma$], e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)]}) siano valide e che $\Gamma$ cont sia assioma ([ ] cont = [$\Gamma$] cont con $\Gamma$ = $\varnothing$), perci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{Nat}$(z,c,e) $\in$ M(z)[$\Gamma$, w $\in$ Nat]}, di conseguenza derivabile in \textit{T$^\backprime$}.
+\normalsize
+Assumo che le premesse di \textit{E-Nat$_{dip}$} (\textit{M(z) type[$\Gamma$, z $\in$ Nat], c $\in$ M(0)[$\Gamma$], e(x,y) $\in$ M(succ(x))[$\Sigma$, x $\in$ Nat, y $\in$ M(x)]}) siano valide e che $\Gamma$ cont sia assioma ([ ] cont $=$ [$\Gamma$] cont con $\Gamma$ $=$ $\varnothing$), perci\`o \`e valido, dalla prova sopra, anche il giudizio di conclusione \textit{El$_{Nat}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ Nat]}, di conseguenza derivabile in \textit{T$^\backprime$}.
+\end{itemize}
+\pagebreak
 
 \paragraph{2)}
 \textbf{Definire w + 2 $\in$ Nat[w $\in$ Nat], ove 2 \`e l'abbreviazione del termine ottenuto applicando 2 $\equiv$ succ(succ(0)).}
 \\\\
 \textbf{Soluzione}\\\\
-La ricorsione la faccio w, usando lo schema di ricorsione primitiva, vale che w + 2 $\equiv$ El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]
+La ricorsione la faccio su w, usando lo schema di ricorsione primitiva, vale che w + 2 $\equiv$ El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat].
 
 \small
 \begin{adjustwidth}{-5em}{}
@@ -394,24 +401,25 @@ La ricorsione la faccio w, usando lo schema di ricorsione primitiva, vale che w 
 \TrinaryInfC{El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
+\vspace{0.2cm}
 \noindent
 \normalsize \textit{Dimostrazione di correttezza di El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]}
 \begin{itemize}
 \item El$_{Nat}$(0, 2, (x,y).succ(y)) $\rightarrow_1$ 2 per \textit{$\beta_{1Nat}$-red}
-\item El$_{Nat}$(succ(m), 2, (x,y).succ(y)) $\rightarrow_1$ succ(El$_{Nat}$(m, 2, (x,y).succ(y))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per m = 0 $\equiv$ succ(El$_{Nat}$(0, 2, (x,y).succ(y))) $\rightarrow_1$ succ(2) $\in$ Nat = 3 (dal punto precedente).
+\item El$_{Nat}$(succ(m), 2, (x,y).succ(y)) $\rightarrow_1$ succ(El$_{Nat}$(m, 2, (x,y).succ(y))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per m $=$ 0 $\equiv$ succ(El$_{Nat}$(0, 2, (x,y).succ(y))) $\rightarrow_1$ succ(2) $\in$ Nat $=$ 3 (dal punto precedente).
 \end{itemize}
 
 \paragraph{3)}
-\textbf{Definire l'operazione di addizione usando le regole del tipo dei numeri naturali.}
+\textbf{Definire l'operazione di addizione usando le regole del tipo dei numeri Naturali.}
 \begin{center} x + y $\in$ Nat[x $\in$ Nat, y $\in$ Nat]\end{center}
-in modo tale che valga x + 0 = x $\in$  Nat[x $\in$ Nat]
+in modo tale che valga x + 0 $=$ x $\in$  Nat[x $\in$ Nat]
 \\\\
 \textbf{Soluzione}\\\\
-La ricorsione la faccio sulla y, usando lo schema di ricorsione primitiva, vale che x + y $\equiv$ El$_{Nat}$(y, x, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]
+La ricorsione la faccio sulla y, usando lo schema di ricorsione primitiva, vale che x + y $\equiv$ El$_{Nat}$(y, x, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat].
 
 
 \tiny
-\begin{adjustwidth}{-16em}{}
+\begin{adjustwidth}{-8em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
@@ -446,20 +454,21 @@ La ricorsione la faccio sulla y, usando lo schema di ricorsione primitiva, vale 
 \TrinaryInfC{El$_{Nat}$(y, x, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
+\vspace{0.2cm}
 \noindent
 \normalsize \textit{Dimostrazione di correttezza di El$_{Nat}$(y, x, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]}
 \begin{itemize}
 \item El$_{Nat}$(0, x, (w,z).succ(z))  $\rightarrow_1$ x per \textit{$\beta_{1Nat}$-red}
-\item El$_{Nat}$(succ(y), x, (w,z).succ(z)) $\rightarrow_1$ succ(El$_{Nat}$(y, x, (w,z).succ(z))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per y=0 $\equiv$ succ(El$_{Nat}$(0, x, (w,z).succ(z))) $\rightarrow_1$ succ(x) $\in$ Nat = x + 1  (dal punto precedente).
+\item El$_{Nat}$(succ(y), x, (w,z).succ(z)) $\rightarrow_1$ succ(El$_{Nat}$(y, x, (w,z).succ(z))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per y$=$0 $\equiv$ succ(El$_{Nat}$(0, x, (w,z).succ(z))) $\rightarrow_1$ succ(x) $\in$ Nat $=$ x + 1  (dal punto precedente).
 \end{itemize}
 
 \paragraph{4)}
-\textbf{Definire l'operazione di addizione usando le regole del tipo dei numeri naturali.}
+\textbf{Definire l'operazione di addizione usando le regole del tipo dei numeri Naturali.}
 \begin{center} x + y $\in$ Nat[x $\in$ Nat, y $\in$ Nat]\end{center}
-in modo tale che valga 0 + y = y $\in$  Nat[y $\in$ Nat]
+in modo tale che valga 0 + y $=$ y $\in$  Nat[y $\in$ Nat]
 \\\\
 \textbf{Soluzione}\\\\
-La ricorsione la faccio sulla x, percui, usando lo schema di ricorsione primitiva, vale che x + y $\equiv$ El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]
+La ricorsione la faccio sulla x, percui, usando lo schema di ricorsione primitiva, vale che x + y $\equiv$ El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[x $\in$ Nat, y $\in$ Nat].
 
 \small
 \begin{adjustwidth}{-9em}{}
@@ -512,21 +521,22 @@ La ricorsione la faccio sulla x, percui, usando lo schema di ricorsione primitiv
 \LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(w $\in$ Nat) $\notin$ \\ y $\in$ Nat \end{tabular}}
 \UnaryInfC{y $\in$ Nat, w $\in$ Nat cont}
 \LeftLabel{I$_2$-Nat$_{prog}$}
-\UnaryInfC{succ(z) $\in$[y $\in$ Nat, w $\in$ Nat, z $\in$ Nat]}
+\UnaryInfC{succ(z) $\in$ Nat[y $\in$ Nat, w $\in$ Nat, z $\in$ Nat]}
 \LeftLabel{E-Nat$_{dip}$}
 \TrinaryInfC{El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[y $\in$ Nat, x $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
+\vspace{0.2cm}
 \noindent\\
 \normalsize \textit{Dimostrazione di correttezza di El$_{Nat}$(x, y, (w,z).succ(z)) $\in$ Nat[y $\in$ Nat, x $\in$ Nat]}
 \begin{itemize}
 \item El$_{Nat}$(0, y, (w,z).succ(z))  $\rightarrow_1$ y per \textit{$\beta_{1Nat}$-red}
-\item El$_{Nat}$(succ(x), y, (w,z).succ(z)) $\rightarrow_1$ succ(El$_{Nat}$(x, y, (w,z).succ(z))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per x=0 $\equiv$ succ(El$_{Nat}$(0, y, (w,z).succ(z))) $\rightarrow_1$ succ(y) $\in$ Nat = y + 1  (dal punto precedente).
+\item El$_{Nat}$(succ(x), y, (w,z).succ(z)) $\rightarrow_1$ succ(El$_{Nat}$(x, y, (w,z).succ(z))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per x$=$0 $\equiv$ succ(El$_{Nat}$(0, y, (w,z).succ(z))) $\rightarrow_1$ succ(y) $\in$ Nat $=$ y + 1  (dal punto precedente).
 \end{itemize}
 
 \paragraph{5)}
 \textbf{Un concetto importante del $\lambda$-cacolo \`e $\alpha$-equivalenza ($\alpha$-eq).
-Questa consiste in una forma base di equivalenza, definibile in termini \textit{lambda}, dove una qualsiasi variabile legata pu\`o essere convertita in un'altra. Per esempio, $\lambda$ x.x e $\lambda$ y.y lambda sono termini \textit{$\alpha$-eq} che rappresentano la medesima funzione.\\
+Questa consiste in una forma base di equivalenza, definibile in termini \textit{lambda}, dove una qualsiasi variabile legata pu\`o essere convertita in un'altra. Per esempio, $\lambda$x.x e $\lambda$y.y lambda sono termini \textit{$\alpha$-eq} che rappresentano la medesima funzione.\\
 Nella dispensa ho utilizzato \textit{$\alpha$-eq} per provare la validit\`a delle conclusioni , quando ne sussistevano le premesse per farlo.\\ Di seguito dimostro la validit\`a di \textit{$\alpha$-eq} derivando
 la sua stessa regola.}
 \begin{prooftree}
@@ -537,7 +547,7 @@ la sua stessa regola.}
 \\\\
 \textbf{Soluzione}\\\\
 \noindent
-Assumo per ipotesi che A sia un tipo non dipendente (A $\equiv$ Nat), vale per\`o per qualsiasi teoria dei tipi.
+Assumo, per ipotesi, che A sia un tipo non dipendente (A $\equiv$ Nat). Vale per\`o per qualsiasi teoria dei tipi.
 
 \scriptsize
 \begin{prooftree}
