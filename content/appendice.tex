@@ -263,7 +263,7 @@
 \AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
 \AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
 \LeftLabel{C$_1$-$+$)}
-\TrinaryInfC{El$_+$(inl(b),e$_B$,e$_C$) = e$_B$(b) $\in$ M(inl(b))[$\Gamma$]}
+\TrinaryInfC{El$_+$(inl(b),e$_B$,e$_C$) $=$ e$_B$(b) $\in$ M(inl(b))[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 \small
@@ -272,7 +272,7 @@
 \AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ B + C]\\c $\in$ C[$\Gamma$]\end{tabular}}
 \AxiomC{e$_B$(x$_1$) $\in$ M(inl(x$_1$))[$\Gamma$, x$_1$ $\in$ B]}
 \AxiomC{e$_C$(x$_2$) $\in$ M(inr(x$_2$))[$\Gamma$, x$_2$ $\in$ C]}
-\LeftLabel{C$_1$-$+$)}
+\LeftLabel{C$_2$-$+$)}
 \TrinaryInfC{El$_+$(inr(c),e$_B$,e$_C$) $=$ e$_C$(c) $\in$ M(inr(c))[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
@@ -281,8 +281,8 @@
 \subsection{Regole di Uguaglianza}
 \normalsize
 \begin{prooftree}
-\AxiomC{B$_1$ $=$ B$_2$ $\in$ type[$\Gamma$]}
-\AxiomC{C$_1$ $=$ C$_2$ $\in$ type[$\Gamma$]}
+\AxiomC{B$_1$ $=$ B$_2$ type[$\Gamma$]}
+\AxiomC{C$_1$ $=$ C$_2$ type[$\Gamma$]}
 \LeftLabel{eq-F-$+$)}
 \BinaryInfC{B$_1$ + C$_1$ $=$ B$_2$ + C$_2$ type($\Gamma$)}
 \end{prooftree}
