@@ -7,19 +7,19 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \begin{prooftree}
 \AxiomC{A type [$\Gamma$]}
 \LeftLabel{F-cost)}
-\UnaryInfC{List(A)type [$\Gamma$]}
+\UnaryInfC{List(A) type[$\Gamma$]}
 \end{prooftree}
 
 \section{Regole di Introduzione}
 \label{subsec: introduzione-liste}
 \begin{center}
-\AxiomC{list(A) type [$\Gamma$]}
-\LeftLabel{I$_1$-list)}
+\AxiomC{List(A) type [$\Gamma$]}
+\LeftLabel{I$_1$-List)}
 \UnaryInfC{nil $\in$ List(A)[$\Gamma$]}
 \DisplayProof \qquad
 \AxiomC{s $\in$ List(A)[$\Gamma$]}
 \AxiomC{a $\in$ A[$\Gamma$]}
-\LeftLabel{I$_2$-list)}
+\LeftLabel{I$_2$-List)}
 \BinaryInfC{cons(s,a) $\in$ List(A)[$\Gamma$]}
 \DisplayProof
 \end{center}
@@ -32,7 +32,7 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \AxiomC{\begin{tabular}[c]{ccc}M(z) type[$\Gamma$, z $\in$ List(A)]\\t $\in$ List(A)[$\Gamma$] \\c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
 \LeftLabel{E-List)}
-\BinaryInfC{El$_{list}$(t,c,e) $\in$ M(t)[$\Gamma$]}
+\BinaryInfC{El$_{List}$(t,c,e) $\in$ M(t)[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -43,8 +43,8 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \begin{prooftree}
 \AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ List(A)] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
-\LeftLabel{C$_1$-list)}
-\BinaryInfC{El$_{list}$(nil,c,e) = c $\in$ M(nil)[$\Gamma$]}
+\LeftLabel{C$_1$-List)}
+\BinaryInfC{El$_{List}$(nil,c,e) $=$ c $\in$ M(nil)[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 \small
@@ -53,8 +53,8 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \AxiomC{M(z) type[$\Gamma$, z $\in$ List(A)]}
 \AxiomC{\begin{tabular}[c]{ccc} s $\in$ List(A)[$\Gamma$] \\ a $\in$ A[$\Gamma$] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
-\LeftLabel{C$_2$-list)}
-\TrinaryInfC{El$_{list}$(cons(s,a),c,e) $=$ e(s,a, E$_{list}$(s,c,e)) $\in$ M(cons(s,a))[$\Gamma$]}
+\LeftLabel{C$_2$-List)}
+\TrinaryInfC{El$_{List}$(cons(s,a),c,e) $=$ e(s,a, E$_{List}$(s,c,e)) $\in$ M(cons(s,a))[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -63,7 +63,7 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \label{subsec: uguaglianza-liste}
 \normalsize
 \begin{prooftree}
-\AxiomC{A$_1$ $=$ A$_2$ $\in$ type[$\Gamma$]}
+\AxiomC{A$_1$ $=$ A$_2$ type[$\Gamma$]}
 \LeftLabel{eq-I$_1$-List)}
 \UnaryInfC{List(A$_1$) $=$ List(A$_2$) type($\Gamma$)}
 \end{prooftree}
@@ -71,15 +71,15 @@ Il tipo delle liste di elementi costruisce un costruttore delle liste ed \`e def
 \AxiomC{s$_1$ $=$ s$_2$ $\in$ List(A)[$\Gamma$]}
 \AxiomC{a$_1$ $=$ a$_2$ $\in$ A[$\Gamma$]}
 \LeftLabel{eq-I$_2$-List)}
-\BinaryInfC{cons(s$_1$,a$_1$) = cons(s$_2$,a$_2$) $\in$ List(A)($\Gamma$)}
+\BinaryInfC{cons(s$_1$,a$_1$) $=$ cons(s$_2$,a$_2$) $\in$ List(A)($\Gamma$)}
 \end{prooftree}
 \small
-\begin{adjustwidth}{-6em}{}
+\begin{adjustwidth}{-8em}{}
 \begin{prooftree}
-\AxiomC{\begin{tabular}[c]{ccc} M(z) type[$\Gamma$, z $\in$ List(A)] \\ t$_1$ = t$_2$ $\in$ list(A)[$\Gamma$] \\ c$_1$ $=$ c$_2$ $\in$ M(nil)[$\Gamma$]\end{tabular}}
+\AxiomC{\begin{tabular}[c]{ccc} M(z) type[$\Gamma$, z $\in$ List(A)] \\ t$_1$ $=$ t$_2$ $\in$ List(A)[$\Gamma$] \\ c$_1$ $=$ c$_2$ $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e$_1$(x,w,y) $=$ e$_2$(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A), w $\in$ A, y $\in$ M(x)]}
 \LeftLabel{eq-E-List)}
-\BinaryInfC{El$_{list}$(t$_1$, c$_1$, e$_1$) $=$ El$_{list}$(t$_2$, c$_2$, e$_2$ $\in$ M(t$_1$)[$\Gamma$]}
+\BinaryInfC{El$_{List}$(t$_1$, c$_1$, e$_1$) $=$ El$_{List}$(t$_2$, c$_2$, e$_2$) $\in$ M(t$_1$)[$\Gamma$]}
 \end{prooftree}
 \end{adjustwidth}
 \normalsize
@@ -92,17 +92,18 @@ L'eliminatore ha anche la forma dipendente, conveniente da usare soprattutto per
 \AxiomC{\begin{tabular}[c]{cc}M(z) type[$\Gamma$, z $\in$ List(A)] \\ c $\in$ M(nil)[$\Gamma$]\end{tabular}}
 \AxiomC{e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)]}
 \LeftLabel{E-List$_{dip}$)}
-\BinaryInfC{El$_{list}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ List(A)]}
+\BinaryInfC{El$_{List}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ List(A)]}
 \end{prooftree}
 \end{adjustwidth}
-Quando si scrive un programma \'e bene scrivere la sostituzione espressamente, come riporto sotto.
+\normalsize
+Quando si scrive un programma \`e bene scrivere la sostituzione espressamente, come riporto sotto.
 \small
 \begin{adjustwidth}{-7em}{}
 \begin{prooftree}
 \AxiomC{\begin{tabular}[c]{cc}D type[$\Gamma$, z $\in$ List(A)] \\ c $\in$ D($\frac{z}{nil}$)[$\Gamma$]\end{tabular}}
-\AxiomC{e(x,w,y) $\in$ M($\frac{z}{cons(x,w)}$)[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ D($\frac{z}{x}$)]}
+\AxiomC{e(x,w,y) $\in$ D($\frac{z}{cons(x,w)}$)[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ D($\frac{z}{x}$)]}
 \LeftLabel{E-List$_{dip}$)}
-\BinaryInfC{El$_{list}$(z,c,e) $\in$ M(z)[$\Gamma$, z $\in$ List(A)]}
+\BinaryInfC{El$_{List}$(z,c,e) $\in$ D(z)[$\Gamma$, z $\in$ List(A)]}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -111,17 +112,17 @@ Quando si scrive un programma \'e bene scrivere la sostituzione espressamente, c
 \label{subsec: semantica-operazionale-lista}
 La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
 \begin{itemize}
-\item $\beta_{1list}$-red) El$_{list}$(nil, c, e) $\rightarrow_1$ c
-\item $\beta_{2list}$-red) El$_{list}$(cons(s,a), c, e) $\rightarrow_1$ e(s,a,El$_{list}$(s, c, e))
+\item $\beta_{1List}$-red) El$_{List}$(nil, c, e) $\rightarrow_1$ c
+\item $\beta_{2List}$-red) El$_{List}$(cons(s,a), c, e) $\rightarrow_1$ e(s,a,El$_{List}$(s, c, e))
 \item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
 \LeftLabel{List-red$_1$)}
-\UnaryInfC{El$_{list}$(t$_1$, c, e) $\rightarrow_1$ El$_{list}$(t$_2$, c, e)}
+\UnaryInfC{El$_{List}$(t$_1$, c, e) $\rightarrow_1$ El$_{List}$(t$_2$, c, e)}
 \DisplayProof \vspace{0.3cm} \\
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
 \LeftLabel{List-red$_2$)}
-\UnaryInfC{El$_{list}$(t, c$_1$, e) $\rightarrow_1$ El$_{list}$(t, c$_2$, e)}
+\UnaryInfC{El$_{List}$(t, c$_1$, e) $\rightarrow_1$ El$_{List}$(t, c$_2$, e)}
 \DisplayProof 
-\item Novit\`a delle liste rispetto al tipo singoletto
+\item novit\`a delle liste rispetto al tipo singoletto
 \AxiomC{s$_1$ $\rightarrow_1$ s$_2$}
 \LeftLabel{List-red$_I$)}
 \UnaryInfC{cons(s$_1$,a) $\rightarrow_1$ cons(s$_2$,a)}
@@ -135,42 +136,42 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \section{Esercizi}
 \label{sec: es-liste}
 \paragraph{1)}
-\textbf{Dati i tipi singoletto e delle liste \`e possibile definire un tipo dei numeri naturali \textit{Nat}?}
+\textbf{Dati i tipi singoletto e delle liste \`e possibile definire un tipo dei numeri Naturali \textit{Nat}?}
 \\\\
 \textbf{Soluzione}\\\\
-Posso vedere una lista come una collezione di n singoletti. Ecco che posso definire il tipo dei numeri naturali su questa lista, per ricorsione primitiva, nel modo sottostante:
+Posso vedere una lista come una collezione di n singoletti. Ecco che posso definire il tipo dei numeri Naturali su questa lista, per ricorsione primitiva, nel modo sottostante:
 \begin{center}
-0 = nil \\
-1 = cons(nil, $\ast$) \\
-n = cons(cons(n-1), $\ast$)
+0 $=$ nil \\
+1 $=$ cons(nil, $\ast$) \\
+n $=$ cons(cons(n-1), $\ast$)
 \end{center}
 
 \paragraph{2)}
-\textbf{Dato un tipo A semplice, ovvero non dipendente, per esempio A = N{$_1$}, se si vuole definire un'operazione \begin{center} append$_1$(x$^\backprime$,y$^\backprime$) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]\end{center}
-\noindent tale che l'elemento y$^\backprime$ venga posto alla fine della lista x$^\backprime$, allora basta definire append$_1$ nel modo seguente \begin{center}append$_1$(x$^\backprime$,y$^\backprime$) = cons(x$^\backprime$,y$^\backprime$) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]\end{center}
+\textbf{Dato un tipo A semplice, ovvero non dipendente, per esempio A $=$ N{$_1$}, se si vuole definire un'operazione \begin{center} append$_1$(x$^\backprime$,y$^\backprime$) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]\end{center}
+\noindent tale che l'elemento y$^\backprime$ venga posto alla fine della lista x$^\backprime$, allora basta definire append$_1$ nel modo seguente \begin{center}append$_1$(x$^\backprime$,y$^\backprime$) $=$ cons(x$^\backprime$,y$^\backprime$) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]\end{center}
 \noindent Ma se si vuole definire un'operazione \begin{center} append$_2$(x$^\backprime$,y$^\backprime$) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]\end{center} 
 \noindent tale che y$^\backprime$ venga posto all'inizio della lista x$^\backprime$, allora come occorre procedere?}\\\\
-\textbf{Soluzione} (\textit{Procedimento preso dalle note})
+\textbf{Soluzione}
 \\\\
 Per riuscire a porre y$^\backprime$ all'inizio della lista x$^\backprime$, devo usare la regola di eliminazione sulla lista x$^\backprime$. Per farlo, devo prima di tutto dare equazionalmente la definizione ricorsiva di append$_2$
 \begin{center}
-append$_2$(nil, y$^\backprime$) =  cons(nil, y$^\backprime$) = y$^\backprime$\\
-append$_2$(cons(s, x$^\backprime$), y$^\backprime$) = cons(append$_2$(s, y$^\backprime$), x$^\backprime$)\\
+append$_2$(nil, y$^\backprime$) $=$  cons(nil, y$^\backprime$) $=$ y$^\backprime$\\
+append$_2$(cons(s, x$^\backprime$), y$^\backprime$) $=$ cons(append$_2$(s, y$^\backprime$), x$^\backprime$)\\
 \end{center}
 Ora posso applicare la regola dell'eliminazione nel modo seguente:
 \begin{itemize}
 \item Premesse:
 \begin{itemize}
-\item M(z) type[$\Gamma$, z $\in$ List(A)] $\equiv$ List(A) type[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]
+\item M(z) type[$\Gamma$, z $\in$ List(A)] $\equiv$ List(A) type[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A] (\textit{z $\in$ List(A) risulta superfluo})
 \item t $\in$ List(A)[$\Gamma$] $\equiv$ x$^\backprime$ $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]
 \item c $\in$ M(nil)[$\Gamma$] $\equiv$ y$^\backprime$ $\in$ A[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]
 \item e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)] $\equiv$
-cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A), y$\in$ A]
+cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, y$\in$ A, z $\in$ List(A)]
 \end{itemize}
 \noindent
 \item Giudizio di conclusione:
 \begin{itemize}
-\item El$_{list}$(t,c,e) $\in$ M(t)[$\Gamma$] $\equiv$ El$_{list}$(x$^\backprime$, y$^\backprime$,(x,y,z).cons(z,y)) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]
+\item El$_{List}$(t,c,e) $\in$ M(t)[$\Gamma$] $\equiv$ El$_{List}$(x$^\backprime$, y$^\backprime$,(x,y,z).cons(z,y)) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]
 \end{itemize}
 \end{itemize}
 
@@ -180,8 +181,8 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \AxiomC{\textbf{2}}
 \AxiomC{\textbf{3}}
 \AxiomC{\textbf{4}}
-\LeftLabel{E-list}
-\QuaternaryInfC{El$_{list}$(x$^\backprime$, y$^\backprime$,(x,y,z).cons(z,y)) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]}
+\LeftLabel{E-List}
+\QuaternaryInfC{El$_{List}$(x$^\backprime$, y$^\backprime$,(x,y,z).cons(z,y)) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]}
 \end{prooftree}
 \vspace{1cm}
 \normalsize \textbf{1}
@@ -189,7 +190,7 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type[ ]}
-\AxiomC{[ ] cont}
+\AxiomC{}
 \LeftLabel{}
 \UnaryInfC{A type[ ]}
 \AxiomC{}
@@ -208,9 +209,11 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \UnaryInfC{List(A) type[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]}
 \end{prooftree}
 \vspace{1cm}
-\normalsize \textbf{2}
+\normalsize \textbf{2}\\\\
+\noindent
+\textit{La regola di scambio di contesto (ex-ty) pu\`o venire anche omessa.}
 \small
-\begin{adjustwidth}{-10em}{}
+\begin{adjustwidth}{-12em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type[ ]}
@@ -267,15 +270,15 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \begin{adjustwidth}{-5em}{}
 \begin{prooftree}
 \AxiomC{\textbf{4$^\backprime$}}
-\UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A), y$\in$ A}
+\UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A), y$\in$ A, z $\in$ List(A) cont}
 \LeftLabel{var}
-\UnaryInfC{z $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A), y$\in$ A]}
+\UnaryInfC{z $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, y$\in$ A, z $\in$ List(A)]}
 \AxiomC{\textbf{4$^\backprime$}}
-\UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A), y$\in$ A}
+\UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, y$\in$ A, z $\in$ List(A) cont}
 \LeftLabel{var}
-\UnaryInfC{y $\in$ A[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A), y$\in$ A]}
-\LeftLabel{I$_2$-list}
-\BinaryInfC{cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A), y$\in$ A]}
+\UnaryInfC{y $\in$ A[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, y$\in$ A, z $\in$ List(A)]}
+\LeftLabel{I$_2$-List}
+\BinaryInfC{cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, y$\in$ A, z $\in$ List(A)]}
 \end{prooftree}
 \end{adjustwidth}
 \vspace{1cm}
@@ -290,9 +293,9 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \AxiomC{}
 \UnaryInfC{A type[ ]}
 \AxiomC{}
-\UnaryInfC{A type [ ]}
+\UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
-\UnaryInfC{List(A) type [ ]}
+\UnaryInfC{List(A) type[ ]}
 \LeftLabel{F-c}\RightLabel{(x$^\backprime$ $\in$ List(A)) $\notin$ [ ]}
 \UnaryInfC{x$^\backprime$ $\in$ List(A) cont}
 \LeftLabel{ind-ty}
@@ -301,54 +304,52 @@ cons(z,y) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z 
 \UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A cont}
 \LeftLabel{ind-ty}
 \BinaryInfC{A type[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]}
-\LeftLabel{F-cost}
-\UnaryInfC{List(A) type[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ List(A)) $\notin$ (x$^\backprime$ $\in$ List(A), \\ y$^\backprime$ $\in$ A)\end{tabular}}
-\UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A) cont}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ A) $\notin$ (x$^\backprime$ $\in$ List(A), \\ y$^\backprime$ $\in$ A)\end{tabular}}
+\UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, y $\in$ A cont}
 \LeftLabel{ind-ty}
-\BinaryInfC{A type[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A)]}
-\LeftLabel{F-c}\RightLabel{(y $\in$ A) $\notin$  (x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A))}
-\UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, z $\in$ List(A), y$\in$ A}
+\BinaryInfC{List(A) type[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, y $\in$ A]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ List(A)) $\notin$  (x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, y $\in$ A)}
+\UnaryInfC{x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A, y $\in$ A, z $\in$ List(A) cont}
 \end{prooftree}
 \end{adjustwidth}
 \vspace{0.5cm}
 \noindent
-\normalsize \textit{Dimostrazione di correttezza di El$_{list}$(x$^\backprime$, y$^\backprime$,(x,y,z).cons(z,y)) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]}
+\normalsize \textit{Dimostrazione di correttezza di El$_{List}$(x$^\backprime$, y$^\backprime$,(x,y,z).cons(z,y)) $\in$ List(A)[x$^\backprime$ $\in$ List(A), y$^\backprime$ $\in$ A]}
 \begin{itemize}
-\item El$_{list}$(nil, y$^\backprime$,(x,y,z).cons(z,y)) $\rightarrow_1$ y$^\backprime$ per \textit{$\beta_{1list}$-red}
-\item El$_{list}$(cons(s,x$^\backprime$), y$^\backprime$,(x,y,z).cons(z,y)) $\rightarrow_1$ cons(El$_{list}$(x$^\backprime$, y$^\backprime$, (x,y,z).cons(z,y))) per \textit{$\beta_{2list}$-red} $\Rightarrow$ per x$^\backprime$ = nil $\equiv$ cons(El$_{list}$(nil, y$^\backprime$, (x,y,z).cons(z,y))) $\rightarrow_1$ cons(nil, y$^\backprime$) $\in$ List(A) = y$^\backprime$ (dal punto precedente).
+\item El$_{List}$(nil, y$^\backprime$,(x,y,z).cons(z,y)) $\rightarrow_1$ y$^\backprime$ per \textit{$\beta_{1List}$-red}
+\item El$_{List}$(cons(s,x$^\backprime$), y$^\backprime$,(x,y,z).cons(z,y)) $\rightarrow_1$ cons(El$_{List}$(x$^\backprime$, y$^\backprime$, (x,y,z).cons(z,y))) per \textit{$\beta_{2List}$-red} $\Rightarrow$ per x$^\backprime$ $=$ nil $\equiv$ cons(El$_{List}$(nil, y$^\backprime$, (x,y,z).cons(z,y))) $\rightarrow_1$ cons(nil, y$^\backprime$) $\in$ List(A) $=$ y$^\backprime$ (dal punto precedente).
 \end{itemize}
 
 
 
 \paragraph{3)}
 \textbf{Definire l'operazione \textit{append} di accostamento di una lista a un'altra di tipo A type[ ] usando le regole del tipo delle liste
-\begin{center}append(x,y) $\in$ List(A)[x $\in$ List(A), x $\in$ List(A)]\end{center}
+\begin{center}append(x,y) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]\end{center}
 in modo tale che valga append(x,nil) = x $\in$ List(A)[x $\in$ List(A)]
 }
 \\\\
 \noindent
 \textbf{Soluzione}
 \\\\
-Per riuscire a poter concatenare la lista x alla lista y, devo usare la regola di eliminazione sulla lista x. Per farlo, devo prima di tutto definire equazionalmente la definizione ricorsiva di append
+Per riuscire a poter concatenare la lista x alla lista y, devo usare la regola di eliminazione sulla lista y. Per farlo, devo prima di tutto definire equazionalmente la definizione ricorsiva di append
 \begin{center}
-append(x, nil) =  cons(x, nil) = x\\
-append(x, cons(y, a)) = cons(x, append(y, a))\\
+append(x, nil) $=$  cons(x, nil) $=$ x\\
+append(x, cons(y, a)) $=$ cons(x, append(y, a))\\
 \end{center}
 Ora posso applicare la regola dell'eliminazione nel modo seguente:
 \begin{itemize}
 \item Premesse:
 \begin{itemize}
-\item M(z) type[$\Gamma$, z $\in$ List(A)] $\equiv$ List(A) type[x $\in$ List(A), y $\in$ List(A)]
+\item M(z) type[$\Gamma$, z $\in$ List(A)] $\equiv$ List(A) type[x $\in$ List(A), y $\in$ List(A)] (\textit{z $\in$ List(A) risulta superfluo})
 \item t $\in$ List(A)[$\Gamma$] $\equiv$ y $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]
 \item c $\in$ M(nil)[$\Gamma$] $\equiv$ x $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]
 \item e(x,w,y) $\in$ M(cons(x,w))[$\Gamma$, x $\in$ List(A),  w $\in$ A, y $\in$ M(x)] $\equiv$
-cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$ A]
+cons(z,v) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), v $\in$ A, z $\in$ List(A)]
 \end{itemize}
 \noindent
 \item Giudizio di conclusione:
 \begin{itemize}
-\item El$_{list}$(t,c,e) $\in$ M(t)[$\Gamma$] $\equiv$ El$_{list}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]
+\item El$_{List}$(t,c,e) $\in$ M(t)[$\Gamma$] $\equiv$ El$_{List}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]
 \end{itemize}
 \end{itemize}
 \vspace{0.5cm}
@@ -440,8 +441,8 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 %\LeftLabel{ex-te}
 \AxiomC{\textbf{3}}%\BinaryInfC{x $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
 \AxiomC{\textbf{4}}%\UnaryInfC{cons(z,w) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A]}
-\LeftLabel{E-list}
-\QuaternaryInfC{El$_{list}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
+\LeftLabel{E-List}
+\QuaternaryInfC{El$_{List}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
 \end{prooftree}
 \vspace{1cm}
 \normalsize \textbf{1}
@@ -454,7 +455,7 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \AxiomC{}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
-\UnaryInfC{List(A) type [ ]}
+\UnaryInfC{List(A) type[ ]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
 \UnaryInfC{x $\in$ List(A) cont}
 \LeftLabel{ind-ty}
@@ -477,7 +478,7 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \AxiomC{}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
-\UnaryInfC{List(A) type [ ]}
+\UnaryInfC{List(A) type[ ]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
 \UnaryInfC{x $\in$ List(A) cont}
 \LeftLabel{ind-ty}
@@ -490,16 +491,18 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \UnaryInfC{y $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
 \end{prooftree}
 \vspace{1cm}
-\normalsize \textbf{3}
+\normalsize \textbf{3}\\\\
+\noindent
+\textit{La regola di scambio di contesto (ex-ty) pu\`o venire anche omessa.}
 \scriptsize
-\begin{adjustwidth}{-6em}{}
+\begin{adjustwidth}{-4.5em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type[ ]}
 \AxiomC{}
 \UnaryInfC{A type[ ]}
 \LeftLabel{F-cost}
-\UnaryInfC{List(A) type [ ]}
+\UnaryInfC{List(A) type[ ]}
 \LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ [ ]}
 \UnaryInfC{y $\in$ List(A) cont}
 \LeftLabel{ind-ty}
@@ -523,7 +526,7 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \BinaryInfC{A type[x $\in$ List(A)]}
 \LeftLabel{F-cost}
 \UnaryInfC{List(A)type[x $\in$ List(A)]}
-\LeftLabel{F-c}\RightLabel{(y $\in$ List(A)) $\notin$ x $\in$ List(A)}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ List(A)) $\notin$ \\ x $\in$ List(A)\end{tabular}}
 \UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
 \LeftLabel{ex-ty}
 \BinaryInfC{x $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
@@ -535,15 +538,15 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \begin{adjustwidth}{-7em}{}
 \begin{prooftree}
 \AxiomC{\textbf{4$^\backprime$}}
-\UnaryInfC{x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A cont}
+\UnaryInfC{x $\in$ List(A), y $\in$ List(A), v $\in$ A, z $\in$ List(A) cont}
 \LeftLabel{var}
-\UnaryInfC{z $\in$ List(A)[x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A]}
+\UnaryInfC{z $\in$ List(A)[x $\in$ List(A), y $\in$ List(A), v $\in$ A, z $\in$ List(A)]}
 \AxiomC{\textbf{4$^\backprime$}}
-\UnaryInfC{x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$ A cont}
+\UnaryInfC{x $\in$ List(A) y $\in$ List(A), v$\in$ A, z $\in$ List(A) cont}
 \LeftLabel{var}
-\UnaryInfC{w $\in$ A[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$ A]}
-\LeftLabel{I$_2$-list}
-\BinaryInfC{cons(z,w) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A), z $\in$ List(A), w$\in$ A]}
+\UnaryInfC{v $\in$ A[x $\in$ List(A) y $\in$ List(A), v $\in$ A, z $\in$ List(A)]}
+\LeftLabel{I$_2$-List}
+\BinaryInfC{cons(z,v) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A), v $\in$ A, z $\in$ List(A)]}
 \end{prooftree}
 \end{adjustwidth}
 \vspace{1cm}
@@ -551,16 +554,17 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \small
 \begin{adjustwidth}{-4em}{}
 \begin{prooftree}
-\AxiomC{}
-\UnaryInfC{A type[ ]}
-\AxiomC{}
-\UnaryInfC{A type[ ]}
-\AxiomC{}
-\UnaryInfC{A type[ ]}
-\AxiomC{}
-\UnaryInfC{A type [ ]}
+\AxiomC{A type[ ]}
 \LeftLabel{F-cost}
-\UnaryInfC{List(A) type [ ]}
+\UnaryInfC{List(A) type[ ]}
+\AxiomC{}
+\UnaryInfC{A type[ ]}
+\AxiomC{}
+\UnaryInfC{A type[ ]}
+\AxiomC{}
+\UnaryInfC{A type[ ]}
+\LeftLabel{F-cost}
+\UnaryInfC{List(A) type[ ]}
 \LeftLabel{F-c}\RightLabel{(x $\in$ List(A)) $\notin$ [ ]}
 \UnaryInfC{x $\in$ List(A) cont}
 \LeftLabel{ind-ty}
@@ -571,20 +575,18 @@ cons(z,w) $\in$ List(A)[x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$
 \UnaryInfC{x $\in$ List(A), y $\in$ List(A) cont}
 \LeftLabel{ind-ty}
 \BinaryInfC{A type[x $\in$ List(A), y $\in$ List(A)]}
-\LeftLabel{F-cost}
-\UnaryInfC{List(A) type[x $\in$ List(A), y $\in$ List(A)]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ List(A)) $\notin$ (x $\in$ List(A), \\ y $\in$ List(A)))\end{tabular}}
-\UnaryInfC{x $\in$ List(A), y $\in$ List(A), z $\in$ List(A) cont}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(v $\in$ A) $\notin$ (x $\in$ List(A), \\ y $\in$ List(A)))\end{tabular}}
+\UnaryInfC{x $\in$ List(A), y $\in$ List(A), v $\in$ A cont}
 \LeftLabel{ind-ty}
-\BinaryInfC{A type[x $\in$ List(A), y $\in$ List(A), z $\in$ List(A)]}
-\LeftLabel{F-c}\RightLabel{(w $\in$ A) $\notin$  (x $\in$ List(A), y $\in$ List(A), z $\in$ List(A))}
-\UnaryInfC{x $\in$ List(A) y $\in$ List(A), z $\in$ List(A), w$\in$ A cont}
+\BinaryInfC{List(A) type[x $\in$ List(A), y $\in$ List(A), v $\in$ A]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ List(A)) $\notin$  (x $\in$ List(A), y $\in$ List(A), v $\in$ A)}
+\UnaryInfC{x $\in$ List(A) y $\in$ List(A), v $\in$ A,  z $\in$ List(A) cont}
 \end{prooftree}
 \end{adjustwidth}
 \vspace{0.5cm}
 \noindent
-\normalsize \textit{Dimostrazione di correttezza di El$_{list}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
+\normalsize \textit{Dimostrazione di correttezza di El$_{List}$(y, x,(u,v,z).cons(z,v)) $\in$ List(A)[x $\in$ List(A), y $\in$ List(A)]}
 \begin{itemize}
-\item El$_{list}$(nil, x,(u,v,z).cons(z,v)) $\rightarrow_1$ x per \textit{$\beta_{1list}$-red}
-\item  El$_{list}$(cons(y,a), x,(u,v,z).cons(z,v)) $\rightarrow_1$ cons(El$_{list}$(y, x, (u,v,z).cons(z,v))) per \textit{$\beta_{2list}$-red} $\Rightarrow$ per y = nil $\equiv$ cons(El$_{list}$(nil, x, (u,v,z).cons(z,v))) $\rightarrow_1$ cons(x, nil) $\in$ List(A) = x (dal punto precedente).
+\item El$_{List}$(nil, x,(u,v,z).cons(z,v)) $\rightarrow_1$ x per \textit{$\beta_{1List}$-red}
+\item  El$_{List}$(cons(y,a), x,(u,v,z).cons(z,v)) $\rightarrow_1$ cons(El$_{List}$(y, x, (u,v,z).cons(z,v))) per \textit{$\beta_{2List}$-red} $\Rightarrow$ per y $=$ nil $\equiv$ cons(El$_{List}$(nil, x, (u,v,z).cons(z,v))) $\rightarrow_1$ cons(x, nil) $\in$ List(A) $=$ x (dal punto precedente).
 \end{itemize}
