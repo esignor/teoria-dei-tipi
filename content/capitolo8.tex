@@ -65,7 +65,7 @@ Il tipo delle funzione \`e definito dalle regole seguenti.
 La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
 \begin{itemize}
 \item $\beta_{\rightarrow}$-red) Ap($\lambda$x.c(x),b) $\rightarrow_1$ c(b) \\
-\textit{Per la programmazione:} Ap($\lambda$x.c,b) $\rightarrow_1$ c[$\frac{x}{b}$] 
+\textit{per la programmazione:} Ap($\lambda$x.c,b) $\rightarrow_1$ c[$\frac{x}{b}$] 
 \item \AxiomC{f$_1$ $\rightarrow_1$ f$_2$}
 \LeftLabel{$\rightarrow$-red$_1$)}
 \UnaryInfC{Ap(f$_1$,b) $\rightarrow_1$ Ap(f$_2$,b)}
@@ -74,7 +74,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \LeftLabel{$\rightarrow$-red$_2$)}
 \UnaryInfC{Ap(f,b$_1$) $\rightarrow_1$ Ap(f,b$_2$)}
 \DisplayProof
-\item Novit\`a della somma indiciata forte rispetto al tipo singoletto
+\item novit\`a della somma indiciata forte rispetto al tipo singoletto
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
 \LeftLabel{$\rightarrow$-red)}
 \UnaryInfC{$\lambda$x.c$_1$ $\rightarrow_1$ $\lambda$x.c$_2$}
