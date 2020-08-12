@@ -121,7 +121,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 Le regole di \textit{Eliminazione/Introduzione} partono dalle regole di congiunzione nella logica (nel caso in cui sia B che C siano proposizioni), inoltre nel caso dell'eliminazione si va a eliminare verso altre proposizioni.\\Tale concetto \`e stato voluto da \textit{Martin-L$\ddot{o}$f}, per riuscire a interpretare la logica con la teoria dei tipi.
 \subsection{La regola di Formazione}
 \label{subsec:la-regola-di-formazione-osservazioni-disjointsum}
-Se si hanno le preposizioni $\beta$ prop[$\Gamma$] e $\gamma$ prop[$\Gamma$] e si interpreta la somma come disgiunzione, allora la regola di \textit{Formazione} diventa
+Se si hanno le proposizioni $\beta$ prop[$\Gamma$] e $\gamma$ prop[$\Gamma$] e si interpreta la somma come disgiunzione, allora la regola di \textit{Formazione} diventa
 \begin{prooftree}
 \AxiomC{$\beta$ prop [$\Gamma$]}
 \AxiomC{$\gamma$ prop [$\Gamma$]}
@@ -156,7 +156,7 @@ Allo stesso modo le regole di \textit{Introduzione} si possono vedere in modo mo
 \BinaryInfC{inl(b) $\in$ $\beta$ $\vee$ $\gamma$}
 \end{prooftree}
 b $\in$ $\beta$ $\equiv$ $\beta$ vero\\
-$\beta$ $\vee$ $\gamma$ $\equiv$ $\beta$ $\vee$ $\gamma$ \`e vero\\
+$\beta$ $\vee$ $\gamma$ $\equiv$ $\beta$ $\vee$ $\gamma$ vero\\
 Questa, nel calcolo dei sequenti, equivale alla or a destra\\
 Con $\Delta$ contesto, allora
 \begin{prooftree}
@@ -173,7 +173,7 @@ Lo stesso si pu\`o fare sulla seconda regola di \textit{Introduzione}.
 \BinaryInfC{inr(c) $\in$ $\beta$ $\vee$ $\gamma$}
 \end{prooftree}
 c $\in$ $\gamma$ $\equiv$ $\gamma$ vero\\
-$\beta$ $\vee$ $\gamma$ $\equiv$ $\beta$ $\vee$ $\gamma$ \`e vero\\
+$\beta$ $\vee$ $\gamma$ $\equiv$ $\beta$ $\vee$ $\gamma$ vero\\
 Questa, nel calcolo dei sequenti, equivale alla regola di riduzione naturale nella logica\\
 Con $\Delta$ contesto, allora
 \begin{prooftree}
@@ -191,9 +191,10 @@ Con $\Delta$ contesto, allora
 \textbf{Si scrivano le regole del tipo booleano come tipo semplice e si provi che \`e rappresentabile come N$_1$ + N$_2$.}\\\\
 \textbf{Soluzione}\\\\
 Definisco il tipo Bool nel modo seguente
-Bool = {true || false}\\
+Bool $=$ {true || false}\\
 inl($\ast$) $\equiv$ true\\
 inr($\ast$) $\equiv$ false\\
+\noindent Per definire regole e semantica operazionale uso che N$_1$ + N$_2$ $=$ Bool.
 \begin{itemize}
 \item \textbf{Regole del tipo Bool:}
 
@@ -226,6 +227,13 @@ inr($\ast$) $\equiv$ false\\
 \LeftLabel{E-Bool)}
 \TrinaryInfC{El$_{Bool}$(t,e$_B$,e$_C$) $\in$ M(t)[$\Gamma$]}
 \end{prooftree}
+\small
+\begin{prooftree}
+\AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
+\AxiomC{\begin{tabular}[c]{cc}e$_B$ $\in$ M(true)[$\Gamma$] \\ e$_C$ $\in$ M(false)[$\Gamma$]\end{tabular}}
+\LeftLabel{E-Bool$_{dip}$)}
+\BinaryInfC{El$_{Bool}$(z,e$_B$,e$_C$) $\in$ M(z)[$\Gamma$,z $\in$ Bool]}
+\end{prooftree}
 
 \item\normalsize\textit{Regole di Conversione}
 \small
@@ -234,56 +242,37 @@ inr($\ast$) $\equiv$ false\\
 \AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
 \AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
 \LeftLabel{C$_1$-Bool)}
-\TrinaryInfC{El$_{Bool}$(true,e$_B$,e$_C$) = e$_C$ $\in$ M(true)[$\Gamma$]}
+\TrinaryInfC{El$_{Bool}$(true,e$_B$,e$_C$) $=$ e$_B$ $\in$ M(true)[$\Gamma$]}
 \end{prooftree}
 \begin{prooftree}
 \AxiomC{M(z) type[$\Gamma$, z $\in$ Bool]}
 \AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
 \AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
-\LeftLabel{C$_1$-Bool)}
-\TrinaryInfC{El$_{Bool}$(false,e$_B$,e$_C$) = e$_C$ $\in$ M(false)[$\Gamma$]}
+\LeftLabel{C$_2$-Bool)}
+\TrinaryInfC{El$_{Bool}$(false,e$_B$,e$_C$) $=$ e$_C$ $\in$ M(false)[$\Gamma$]}
 \end{prooftree}
 
 \item\normalsize\textit{Regole di Uguaglianza}
 \small
 \begin{center}
 \AxiomC{M(z) type [$\Gamma$, z $\in$ Bool]}
-\AxiomC{\begin{tabular}[c]{cc}e$_B$ = s $\in$ M(true)[$\Gamma$]\\e$_C$ = t $\in$ M(false)[$\Gamma$]\end{tabular}}
-\LeftLabel{eq$_1$-E-Bool)}
-\BinaryInfC{El$_{Bool}$(true,e$_B$,e$_C$) = El$_{Bool}$(true,s,t) $\in$ M(true)[$\Gamma$]}
-\DisplayProof \\
-\vspace{0.3cm}
-\AxiomC{M(z) type [$\Gamma$, z $\in$ Bool]}
-\AxiomC{\begin{tabular}[c]{cc}e$_B$ = s $\in$ M(true)[$\Gamma$] \\ e$_C$ = t $\in$ M(false)[$\Gamma$]\end{tabular}}
-\LeftLabel{eq$_2$-E-Bool)}
-\BinaryInfC{El$_{Bool}$(false,e$_B$,e$_C$) = El$_{Bool}$(false,s,t) $\in$ M(false)[$\Gamma$]}
-\DisplayProof  \\
-\vspace{0.3cm}
-\AxiomC{t = t$\backprime$ $\in$ Bool[$\Gamma$]]}
-\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
-\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
-\LeftLabel{eq$_1$-Bool)}
-\TrinaryInfC{M(t) = M(t$\backprime$) $\in$ M(true)[$\Gamma$]}
-\DisplayProof \\
-\vspace{0.3cm}
-\AxiomC{t = t$\backprime$ $\in$ Bool[$\Gamma$]]}
-\AxiomC{e$_B$ $\in$ M(true)[$\Gamma$]}
-\AxiomC{e$_C$ $\in$ M(false)[$\Gamma$]}
-\LeftLabel{eq$_2$-Bool)}
-\TrinaryInfC{M(t) = M(t$\backprime$) $\in$ M(false)[$\Gamma$]}
+\AxiomC{t $=$ t$^\backprime$ $\in$ Bool[$\Gamma$]}
+\AxiomC{\begin{tabular}[c]{cc}e$_B$ $=$ s $\in$ M(true)[$\Gamma$]\\e$_C$ $=$ u $\in$ M(false)[$\Gamma$]\end{tabular}}
+\LeftLabel{eq-E-Bool)}
+\TrinaryInfC{El$_{Bool}$(t,e$_B$,e$_C$) $=$ El$_{Bool}$(t$^\backprime$,s,u) $\in$ M(t$^\backprime$)[$\Gamma$]}
 \DisplayProof
 \end{center}
 \end{itemize}
 
 \item \textbf{Semantica operazionale del tipo Bool:}
 \begin{itemize}
-\item $\beta_{1Bool}$-red) El$_{list}$(true, e$_B$, e$_C$) $\rightarrow_1$ e$_B$(x)
-\item $\beta_{2Bool}$-red) El$_{list}$(true, e$_B$, e$_C$) $\rightarrow_1$ e$_C$(x)
+\item $\beta_{1Bool}$-red) El$_{Bool}$(true, e$_B$, e$_C$) $\rightarrow_1$ e$_B$
+\item $\beta_{2Bool}$-red) El$_{Bool}$(false, e$_B$, e$_C$) $\rightarrow_1$ e$_C$
 \item IF-true) if true then M else N $\rightarrow_1$ M
 \item IF-false) if false then M else N $\rightarrow_1$ N
 \item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
 \LeftLabel{Bool-red)}
-\UnaryInfC{El$_{list}$(t$_1$, e$_B$, e$_C$) $\rightarrow_1$ El$_{list}$(t$_2$, e$_B$, e$_C$)}
+\UnaryInfC{El$_{Bool}$(t$_1$, e$_B$, e$_C$) $\rightarrow_1$ El$_{Bool}$(t$_2$, e$_B$, e$_C$)}
 \DisplayProof
 \item \AxiomC{M$_1$ $\rightarrow_1$ M$_1^\backprime$}
 \LeftLabel{IF)}
