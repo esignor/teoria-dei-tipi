@@ -332,23 +332,23 @@
 \begin{prooftree}
 \AxiomC{\begin{tabular}[c]{cc}M(z$_1$,z$_2$,z$_3$) type[$\Gamma$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A, z$_1$, z$_2$)] \\ a $\in$ A[$\Gamma$]\end{tabular}}
 \AxiomC{e(x) $\in$ M(x,x,Id(x))[$\Gamma$, x $\in$ A]}
-\LeftLabel{E-Id)}
+\LeftLabel{C-Id)}
 \BinaryInfC{El$_{Id}$(Id(a), (x).e(x)) $=$ e(a) $\in$ M(a,a,Id(a))[$\Gamma$]}
 \end{prooftree}
 
 
 \subsection{Regole di Uguaglianza}
 \normalsize
-\AxiomC{A$_1$ = A$_2$ type[$\Gamma$]}
-\AxiomC{a$_1$ = a$_2$ $\in$ A[$\Gamma$]}
-\AxiomC{b$_1$ = b$_2$ $\in$ A[$\Gamma$]}
+\AxiomC{A$_1$ $=$ A$_2$ type[$\Gamma$]}
+\AxiomC{a$_1$ $=$ a$_2$ $\in$ A[$\Gamma$]}
+\AxiomC{b$_1$ $=$ b$_2$ $\in$ A[$\Gamma$]}
 \LeftLabel{eq-F-Id)}
-\TrinaryInfC{Id(A$_1$,a$_1$,b$_1$) = Id(A$_2$,a$_2$,b$_2$) type[$\Gamma$]}
+\TrinaryInfC{Id(A$_1$,a$_1$,b$_1$) $=$ Id(A$_2$,a$_2$,b$_2$) type[$\Gamma$]}
 \DisplayProof  \\
 \vspace{0.5cm}\\
-\AxiomC{a$_1$ = a$_2$ $\in$ A[$\Gamma$]}
+\AxiomC{a$_1$ $=$ a$_2$ $\in$ A[$\Gamma$]}
 \LeftLabel{eq-I-Id)}
-\UnaryInfC{Id(a$_1$) = Id(a$_2$) $\in$ Id(A,a$_1$,a$_1$)[$\Gamma$]}
+\UnaryInfC{id(a$_1$) $=$ id(a$_2$) $\in$ Id(A,a$_1$,a$_1$)[$\Gamma$]}
 \DisplayProof
 
 \subsection{Eliminatore dipendente}
