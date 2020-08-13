@@ -279,7 +279,7 @@ Supposto che
 \LeftLabel{ind-ty}
 \UnaryInfC{C type[$\Gamma$, x $\in$ B]}
 \LeftLabel{F-$\Sigma$}
-\BinaryInfC{B $\times$ C ${\overset{\mathit{def}}{=}}$ $\sum\in_{x \epsilon B}$C}
+\BinaryInfC{B $\times$ C ${\overset{\mathit{def}}{=}}$ $\sum\in_{x \in B}$C}
 \end{prooftree}
 \noindent
 Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
@@ -327,7 +327,7 @@ Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
 \AxiomC{b $\in$ B[$\Gamma$]}
 \AxiomC{c $\in$ C[$\Gamma$]}
 \LeftLabel{PJ$_2$-eq)}
-\BinaryInfC{$\pi_2$($<$b,c$>$) $=$ c $\in$ B[$\Gamma$]}
+\BinaryInfC{$\pi_2$($<$b,c$>$) $=$ c $\in$ C[$\Gamma$]}
 \end{prooftree}
 
 \subsection{Semantica operazionale del prodotto cartesiano}
@@ -335,7 +335,7 @@ Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
 \begin{itemize}
 \item $\beta_\times$-red$_1$) El$_\Sigma$($<$b,c$>$, e) $\rightarrow_1$ e(b,c)
 \item $\beta_\times$-red$_2$) $\pi_1$($<$b,c$>$) $\rightarrow_1$ b
-\item $\beta_\times$-red$_3$) $\pi_1$($<$b,c$>$) $\rightarrow_1$ c
+\item $\beta_\times$-red$_3$) $\pi_2$($<$b,c$>$) $\rightarrow_1$ c
 \item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
 \LeftLabel{$\times$-red)}
 \UnaryInfC{El$_\Sigma$ (t$_1$, e) $\rightarrow_1$ El$_\Sigma$ (t$_2$, e)}
@@ -355,12 +355,12 @@ Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
 \label{subsec:correttezza-del-prod-cart}
 \textit{Dimostrazione}\\\\
 \noindent
-Dimostro che B $\times$ C ${\overset{\mathit{def}}{=}}$ $\bigcup\limits_{x \epsilon B\hspace{0.1cm}set}^.$C, trovando \textit{PJ$_1$-x} e \textit{PJ$_2$-x} usando E-$\Sigma_{dip}$.
+Dimostro che B $\times$ C ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \in B\hspace{0.1cm}set}$C, trovando \textit{(PJ$_1$-$\times$)} e \textit{(PJ$_2$-$\times$)} usando \textit{(E-$\Sigma_{dip}$)}.
 
 \begin{center}
 M(z) $\equiv$ B\\
 \noindent
-$\sum\limits_{x \epsilon B}$C $\equiv$ B $\times$ C
+$\sum\limits_{x \in B}$C $\equiv$ B $\times$ C
 \end{center}
 \noindent
 \textit{Assumo derivabili B type[$\Gamma$] e C type[$\Gamma$]}
@@ -383,12 +383,12 @@ La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e x\\\\
 \UnaryInfC{B type[$\Gamma$]}
 \AxiomC{}
 \UnaryInfC{C type[$\Gamma$]}
-\LeftLabel{F-x}
-\BinaryInfC{$\sum\limits_{x \epsilon B}$C type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ $\sum\limits_{x \epsilon B}$C) $\notin$ $\Gamma$}
-\UnaryInfC{$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C cont}
+\LeftLabel{F-$\times$}
+\BinaryInfC{$\sum\limits_{x \in B}$C type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ $\sum\limits_{x \in B}$C) $\notin$ $\Gamma$}
+\UnaryInfC{$\Gamma$,z $\in$ $\sum\limits_{x \in B}$C cont}
 \LeftLabel{ind-ty}
-\BinaryInfC{B type[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]}
+\BinaryInfC{B type[$\Gamma$,z $\in$ $\sum\limits_{x \in B}$C]}
 
 
 \AxiomC{}
@@ -404,7 +404,7 @@ La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e x\\\\
 \LeftLabel{var}
 \UnaryInfC{x $\in$ B[$\Gamma$,x $\in$ B,y $\in$ C]}
 \LeftLabel{E-$\Sigma_{dip}$}
-\BinaryInfC{$\pi_1$z $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]}
+\BinaryInfC{$\pi_1$z $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \in B}$C]}
 \end{prooftree}
 \end{adjustwidth}
 \noindent
@@ -412,21 +412,21 @@ La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e x\\\\
 
 \noindent
 In conclusione
-\begin{center}$\pi_1$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]\end{center}
+\begin{center}$\pi_1$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $\in$ B[$\Gamma$,z $\in$ $\sum\limits_{x \in B}$C]\end{center}
 
-\item Sulla seconda proiezione\\
+\item Sulla seconda proiezione\\\\
 \noindent
 El$_\Sigma$(z,(x,y).y) $\equiv$ $\pi_2$z
 
 \noindent
-La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e y\\\\
+La seconda proiezione sulla coppia canonica M($<$x,y$>$) \`e y\\\\
 \small
 \begin{adjustwidth}{-3em}{}
 \begin{prooftree}
 
 
 \AxiomC{\textbf{($\ast$)}}
-\UnaryInfC{B type[$\Gamma$, z $\in$ $\sum\limits_{x \epsilon B}$C]}
+\UnaryInfC{B type[$\Gamma$, z $\in$ $\sum\limits_{x \in B}$C]}
 
 \AxiomC{}
 \UnaryInfC{C type[$\Gamma$]}
@@ -441,7 +441,7 @@ La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e y\\\\
 \LeftLabel{var}
 \UnaryInfC{y $\in$ C[$\Gamma$,x $\in$ B,y $\in$ C]}
 \LeftLabel{E-$\Sigma_{dip}$}
-\BinaryInfC{$\pi_2$z $\in$ C[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]}
+\BinaryInfC{$\pi_2$z $\in$ C[$\Gamma$,z $\in$ $\sum\limits_{x \in B}$C]}
 \end{prooftree}
 \end{adjustwidth}
 \noindent
@@ -449,35 +449,35 @@ La prima proiezione sulla coppia canonica M($<$x,y$>$) \`e y\\\\
 
 \noindent
 In conclusione
-\begin{center}$\pi_2$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).y) $\in$ C[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}$C]\end{center}
+\begin{center}$\pi_2$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).y) $\in$ C[$\Gamma$,z $\in$ $\sum\limits_{x \in B}$C]\end{center}
 \noindent
-Ho concluso con ($\ast$) i sequenti gi\`a risolti, per evitare ripetizioni.\\
+Ho concluso con \textbf{($\ast$)} i sequenti gi\`a risolti, per evitare ripetizioni.\\
 \end{enumerate}
-Per verificare che effettivamente \textbf{$\pi_1$z} e \textbf{$\pi_2$z} siano \textit{PJ$_1$-x} e \textit{PJ$_2$-x}, utilizzo le riduzioni \textit{$\beta_x$-red$_1$} e \textit{$\beta_x$-red$_2$}.\\
+Per verificare che effettivamente \textbf{$\pi_1$z} e \textbf{$\pi_2$z} siano \textit{(PJ$_1$-$\times$)} e \textit{(PJ$_2$-$\times$)}, utilizzo le riduzioni \textit{$\beta_\times$-red$_1$} e \textit{$\beta_\times$-red$_2$}.\\
 La riduzione El$_\Sigma$($<$b,c$>$, e) $\rightarrow_1$ e(b,c) riscritta con sostituzioni diventa El$_\Sigma$($<$b,c$>$, e) $\rightarrow_1$ e[$\frac{x}{b}$,$\frac{y}{c}$]\\\\
 \noindent
 Allora applicata a una coppia $<$b,c$>$:
 \begin{itemize}
-\item  $\pi_1$($<$b,c$>$) ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) = El$_\Sigma$($<$b,c$>$,(x,y).x) $\rightarrow_1$ x[$\frac{x}{b}$, $\frac{y}{c}$] $\rightarrow$ b
-\item $\pi_2$($<$b,c$>$) ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).y) = El$_\Sigma$($<$b,c$>$,(x,y).y) $\rightarrow_1$ y[$\frac{x}{b}$, $\frac{y}{c}$] $\rightarrow$ c
+\item  $\pi_1$($<$b,c$>$) ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $=$ El$_\Sigma$($<$b,c$>$,(x,y).x) $\rightarrow_1$ x[$\frac{x}{b}$, $\frac{y}{c}$] $\rightarrow$ b
+\item $\pi_2$($<$b,c$>$) ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).y) $=$ El$_\Sigma$($<$b,c$>$,(x,y).y) $\rightarrow_1$ y[$\frac{x}{b}$, $\frac{y}{c}$] $\rightarrow$ c
 \end{itemize}
 \noindent
-Entrambe le \textit{$\beta_x$-red} sono verificate. Percui la definizione B $\times$ C ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \epsilon B}$C \`e giustificata.
+Entrambe le \textit{$\beta_\times$-red} sono verificate. Percui la definizione B $\times$ C ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \in B}$C \`e giustificata.
 
 \subsection{Esempi}
 \label{subsec:esempi}
 L'unione disgiunta non \`e l'unione insiemistica e questo lo si vede chiaramente dalla relazione sotto\\
 \noindent
-$\bigcup\limits_{x \epsilon Nat}^.$Nat $\equiv$ \{(x,y) $\bullet$ x $\in$ Nat,y $\in$ Nat\} $\equiv$ Nat $\times$ Nat $\neq$ $\bigcup\limits_{x \epsilon Nat}$Nat \{y: y $\in$ Nat, per un certo x $\in$ Nat\}\\
+$\bigcup\limits_{x \in Nat}^.$Nat $\equiv$ \{(x,y) $\bullet$ x $\in$ Nat,y $\in$ Nat\} $\equiv$ Nat $\times$ Nat $\neq$ $\bigcup\limits_{x \in Nat}$Nat \{y: y $\in$ Nat, per un certo x $\in$ Nat\}\\
 \noindent
 La prima parte della relazione, se la famiglia \`e costante ingloba il prodotto cartesiano.\\\\
 \noindent
-Un esempio di unioni genuine, che si possono formare con tipi che non coincidono con il prodotto cartesiano, \`e $\sum\limits_{x \epsilon Nat}$ Mat(x $\bullet$ x), ove Mat sono le matrici quadratiche.\\
-A livello insiemisitico potremmo dover proiettare, data una coppia $<$x,k$>$ (con x elementi e k una certa matrice), sull'indice o sull'elemento di cui stiamo parlando. Dunque dovremmo poter avere a disposizione le due proiezioni \textit{PJ$_1$-x} e \textit{PJ$_2$-x} anche su famiglie non costanti.\\\\
+Un esempio di unioni genuine, che si possono formare con tipi che non coincidono con il prodotto cartesiano, \`e $\sum\limits_{x \in Nat}$ Mat(x $\bullet$ x), ove Mat sono le matrici quadratiche.\\
+A livello insiemisitico potremmo dover proiettare, data una coppia $<$x,k$>$ (con x elementi e k una certa matrice), sull'indice o sull'elemento di cui stiamo parlando. Dunque dovremmo poter avere a disposizione le due proiezioni \textit{(PJ$_1$-$\times$)} e \textit{(PJ$_2$-$\times$)} anche su famiglie non costanti.\\\\
 \noindent
-Per individuare correttamente $\pi_1$(z) e $\pi_2$(z) assumo che $\sum\limits_{x \epsilon B}$C(x) type[$\Gamma$] sia derivabile. Tale ipotesi \`e vincolante per l'ottenimento della famiglia. \\\\
+Per individuare correttamente $\pi_1$(z) e $\pi_2$(z) assumo che $\sum\limits_{x \in B}$C(x) type[$\Gamma$] sia derivabile. Tale ipotesi \`e vincolante per l'ottenimento della famiglia. \\\\
 \noindent
-Definisco $\omega$ = z $\in$ $\sum\limits_{x \epsilon B}$C(x)
+Definisco $\omega$ $=$ z $\in$ $\sum\limits_{x \in B}$C(x)
 \begin{enumerate}
 \item Per la prima proiezione
 \small
@@ -492,7 +492,7 @@ Definisco $\omega$ = z $\in$ $\sum\limits_{x \epsilon B}$C(x)
 %\LeftLabel{ind-ty}
 %\UnaryInfC{C(x) type[$\Gamma$, x $\in$ B]}
 %\LeftLabel{F-$\Sigma$}
-\UnaryInfC{$\sum\limits_{x \epsilon B}$C(x)type[$\Gamma$]}
+\UnaryInfC{$\sum\limits_{x \in B}$C(x)type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{$\omega$ $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$, $\omega$ cont}
 \LeftLabel{ind-ty}
@@ -515,11 +515,11 @@ Definisco $\omega$ = z $\in$ $\sum\limits_{x \epsilon B}$C(x)
 \noindent
 \normalsize
 In conclusione
-\begin{center}$\pi_1$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $\in$ B[$\omega$]\end{center}
+\begin{center}$\pi_1$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).x) $\in$ B[$\Gamma$,$\omega$]\end{center}
 
 \item Per la seconda proiezione\\
 \noindent
-$\pi_2$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).y) $\in$ C($\pi_1(z)$)[$\omega$]\\\\
+$\pi_2$z ${\overset{\mathit{def}}{=}}$ El$_\Sigma$(z,(x,y).y) $\in$ C($\pi_1(z)$)[$\Gamma$,$\omega$]\\\\
 \noindent
 Allora usando che M(z) $\equiv$ C($\pi_1$z) $\Rightarrow$ M($<$x,y$>$) $\equiv$ C($\pi_1<$x,y$>$)\\
 \noindent
@@ -536,23 +536,26 @@ Allora usando che M(z) $\equiv$ C($\pi_1$z) $\Rightarrow$ M($<$x,y$>$) $\equiv$ 
 \vspace{0.5cm}
 \textbf{\textbf{1}}
 \small
-\begin{adjustwidth}{-15em}{}
+\begin{adjustwidth}{-16.5em}{}
 \begin{prooftree}
-\AxiomC{($\ast$)}
-\LeftLabel{E-$\Sigma_{dip}$}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{z $\in$ $\sum\limits_{x \in B}$C(x)[$\Gamma$,$\omega$]}
+\LeftLabel{PJ$_1$-$\times$}
 \UnaryInfC{$\pi_1$z $\in$ B[$\Gamma$,$\omega$]}
 
 
 \AxiomC{}
 \UnaryInfC{C(x) type[$\Gamma$,x $\in$ B]}
-\AxiomC{($\ast$)}
+\AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{$\Gamma$,x $\in$ B,$\omega$ cont}
 \LeftLabel{ind-ty}
 \BinaryInfC{C(x) type[$\Gamma$,x $\in$ B,$\omega$]}
 \AxiomC{}
 \UnaryInfC{B type[$\Gamma$]}
 \AxiomC{}
-\UnaryInfC{$\sum\limits_{x \epsilon B}$C(x) type[$\Gamma$]}
+\UnaryInfC{C(x) type[$\Gamma$, x $\in$ B]}
+\LeftLabel{F-$\Sigma$}
+\UnaryInfC{$\sum\limits_{x \in B}$C(x) type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{$\omega$ $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$,$\omega$ cont}
 \LeftLabel{ind-ty}
@@ -570,9 +573,9 @@ Allora usando che M(z) $\equiv$ C($\pi_1$z) $\Rightarrow$ M($<$x,y$>$) $\equiv$ 
 \vspace{0.5cm}
 \textbf{\textbf{2}}
 \small
-\begin{adjustwidth}{-15em}{}
+\begin{adjustwidth}{-9.5em}{}
 \begin{prooftree}
-\AxiomC{($\ast$)}
+\AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C(x) cont}
 \LeftLabel{var}
 \UnaryInfC{y $\in$ C(x)[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
@@ -581,10 +584,10 @@ Allora usando che M(z) $\equiv$ C($\pi_1$z) $\Rightarrow$ M($<$x,y$>$) $\equiv$ 
 \UnaryInfC{x $=$ $\pi_1<$x,y$> \in$ B[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
 
 \AxiomC{\textbf{2$^B$}}
-\UnaryInfC{C(w)type[$\Gamma$,x $\in$ B,y $\in$ C(x),w $\in$ B]}
+\UnaryInfC{C(w) type[$\Gamma$,x $\in$ B,y $\in$ C(x),w $\in$ B]}
 
 \LeftLabel{sub-eq-typ}
-\BinaryInfC{C(x) $=$ C($\pi_1<$x,y$>$)[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
+\BinaryInfC{C(x) $=$ C($\pi_1<$x,y$>$) type[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
 \LeftLabel{conv}
 \BinaryInfC{y $\in$ C($\pi_1<$x,y$>$)[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
 \end{prooftree}
@@ -597,20 +600,20 @@ Allora usando che M(z) $\equiv$ C($\pi_1$z) $\Rightarrow$ M($<$x,y$>$) $\equiv$ 
 \small
 \begin{adjustwidth}{-5em}{}
 \begin{prooftree}
-\AxiomC{($\ast$)}
+\AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{B type[$\Gamma$]}
-\AxiomC{($\ast$)}
+\AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{x $\in$ B[$\Gamma$]}
-\AxiomC{($\ast$)}
+\AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{y $\in$ C(x)}
-\AxiomC{($\ast$)}
+\AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{x $\in$ B[$\Gamma$, x $\in$ B, y $\in$ C(x)]}
 \LeftLabel{C-$\Sigma$}
-\QuaternaryInfC{$\pi_1<$x,y$> $=$ x \in$ B[$\Gamma$]}
-\AxiomC{($\ast$)}
+\QuaternaryInfC{$\pi_1<$x,y$>$ $=$ x $\in$ B[$\Gamma$]}
+\AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C(x) cont}
-\LeftLabel{ind-ty}
-\BinaryInfC{$\pi_1<$x,y$> $=$ x \in$ B[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
+\LeftLabel{ind-te-eq}
+\BinaryInfC{$\pi_1<$x,y$>$ $=$ x $\in$ B[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
 \LeftLabel{sym}
 \UnaryInfC{x $=$ $\pi_1<$x,y$> \in$ B[$\Gamma$,x $\in$ B,y $\in$ C(x)]}
 \end{prooftree}
@@ -621,42 +624,38 @@ Allora usando che M(z) $\equiv$ C($\pi_1$z) $\Rightarrow$ M($<$x,y$>$) $\equiv$ 
 \vspace{0.5cm}
 \textbf{\textbf{2$^B$}}
 \small
-\begin{adjustwidth}{-5em}{}
+\begin{adjustwidth}{-6em}{}
 \begin{prooftree}
 \AxiomC{}
-\UnaryInfC{C(x)type[$\Gamma$,x $\in$ B]}
-\AxiomC{($\ast$)}
-\UnaryInfC{$\Gamma$,x $\in$ B cont}
-\LeftLabel{ind-ty}
-\BinaryInfC{C(x)type[$\Gamma$,x $\in$ B]}
+\UnaryInfC{C(x) type[$\Gamma$,x $\in$ B]}
 \LeftLabel{$\alpha$-eq}
 \UnaryInfC{C(w)type[$\Gamma$,w $\in$ B]}
-\AxiomC{($\ast$)}
+\AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{$\Gamma$,w $\in$ B,x $\in$ B,y $\in$ C(x) cont}
 \LeftLabel{ind-ty}
-\BinaryInfC{C(w)type[$\Gamma$,w $\in$ B,x $\in$ B,y $\in$ C(x)]}
-\AxiomC{($\ast$)}
+\BinaryInfC{C(w) type[$\Gamma$,w $\in$ B,x $\in$ B,y $\in$ C(x)]}
+\AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{$\Gamma$,x $\in$ B,y $\in$ C(x),w $\in$ B cont}
 \LeftLabel{ex-ty}
-\BinaryInfC{C(w)type[$\Gamma$,x $\in$ B,y $\in$ C(x),w $\in$ B]}
+\BinaryInfC{C(w) type[$\Gamma$,x $\in$ B,y $\in$ C(x),w $\in$ B]}
 \end{prooftree}
 \end{adjustwidth}
 
 \noindent
 \normalsize
-In conclusione vale $\pi_2$z\\
+In conclusione vale $\pi_2$z\\\\
 \noindent
-Ho concluso con ($\ast$) una derivazione per semplificare o evitare ripetizioni nella derivazione stessa.
+Ho concluso con \textbf{($\ast$)} una derivazione per semplificare o evitare ripetizioni nella derivazione stessa.
 
 \end{enumerate}
 
 \section{Usi del tipo somma indiciata per rappresentare l'assioma di separazione e di quantificazione universale}
 \label{sec:usi-del-tipo-somma-indiciata}
-Il tipo $\sum\limits_{x \epsilon B}$C(x) viene usato per rappresentare:
+Il tipo \textbf{$\sum\limits_{x \in B}$C(x)} viene usato per rappresentare:
 \begin{enumerate}
-\item uso \textit{set} teoretico: l'unione indiciata disgiunta insiemistica (C(x) set[x $\in$ B])
-\item uso \textit{set} teoretico: con assioma di separazione
-\item uso logico: proposizionale
+\item \textbf{uso \textit{set} teoretico:} l'unione indiciata disgiunta insiemistica (C(x) set[x $\in$ B]);
+\item \textbf{uso \textit{set} teoretico:} con assioma di separazione;
+\item \textbf{uso logico:} proposizionale.
 \end{enumerate}
 \noindent
 Il punto (1) l'ho gi\`a spiegato nella prima parte di questo capitolo, ora presento le implicazioni di (2) e (3).\\\\
@@ -669,15 +668,15 @@ Si pu\`o, dunque, simulare l'insieme degli y per cui vale $\varphi$(y) nel momen
 \begin{prooftree}
 \AxiomC{$\varphi$(x) $\cancel{prop}_{\textbf{type}}$[$\Gamma$,x $\in$ B]}
 \LeftLabel{F-$\Sigma$}
-\UnaryInfC{$\sum\limits_{x \epsilon B}$ $\varphi$(x) $\cancel{type}_{\textbf{set}}$[$\Gamma$]}
+\UnaryInfC{$\sum\limits_{x \in B}$ $\varphi$(x) $\cancel{type}_{\textbf{set}}$[$\Gamma$]}
 \end{prooftree}
 \noindent
 dove, nella regola sopra, prop viene pensato come un type\\\\
 \noindent
 \textit{Dimostrazione}
 \begin{itemize}
-\item ($\Leftarrow$) Da $\sum\limits_{x \epsilon B}$ $\varphi$(x) significa avere b $\in$ B $+$ pf $\in$ $\varphi$(b), e quindi b soddisfa $\varphi$(x). Ecco che non \`e solo b ma $<$b,pf$>$ $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con pf $\in$ $\varphi$(b) $_{I-\Sigma}\Leftarrow$ $\varphi$(b).\\
-\item ($\Rightarrow$) z $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con z che sarebbe una coppia e x $\in$ B $\equiv$ $\sum\limits_{x \epsilon B}$ $\varphi$(x) $\nRightarrow$ $\varphi$(z) vale, in quanto z \`e una coppia tipata.\\ 
+\item ($\Leftarrow$) Da $\sum\limits_{x \in B}$ $\varphi$(x) significa avere b $\in$ B $+$ pf $\in$ $\varphi$(b), e quindi b soddisfa $\varphi$(x). Ecco che non \`e solo b ma $<$b,pf$>$ $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con pf $\in$ $\varphi$(b) $_{I-\Sigma}\Leftarrow$ $\varphi$(b).\\
+\item ($\Rightarrow$) z $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con z che sarebbe una coppia e x $\in$ B $\equiv$ $\sum\limits_{x \in B}$ $\varphi$(x) $\nRightarrow$ $\varphi$(z) vale, in quanto z \`e una coppia tipata.\\ 
 Ma posso tuttavia dimostrare che $\varphi(\pi_1z)$ vale usando le proiezioni. Ecco che $\pi_2$(z) $\in$ $\varphi$($\pi_1$z). $\pi_2$(z) \`e cosi \textit{proof term} per cui $\varphi$($\pi_1$z) vale.
 \end{itemize}
 \noindent
@@ -688,7 +687,7 @@ Questo ha permesso a \textit{Martin-L$\ddot{o}$f} di inglobare la \textit{set th
 \begin{prooftree}
 \AxiomC{C(x) type[$\Gamma$,x $\in$ B$_{set}$] $\equiv$ $\varphi$(x) prop}
 \LeftLabel{$\Sigma$-F}
-\UnaryInfC{$\sum\limits_{x \epsilon B}$ $\varphi$(x) $\cancel{type}_{\textbf{prop}}$[$\Gamma$] ${\overset{\mathit{def}}{=}} \exists_{x \in B} \varphi(x)$}
+\UnaryInfC{$\sum\limits_{x \in B}$ $\varphi$(x) $\cancel{type}_{\textbf{prop}}$[$\Gamma$] ${\overset{\mathit{def}}{=}} \exists_{x \in B} \varphi(x)$}
 \end{prooftree}
 \noindent
 \`E la quantificazione esistenziale, in logica, di $\varphi$ che varia sull'insieme B.\\
@@ -717,11 +716,11 @@ Assumendo che $\exists_{x \in B}$ $\varphi$(x) type[$\Gamma$] sia ben formata
 \AxiomC{b $\in$ B$_{set}$[$\Gamma$]}
 \AxiomC{c $\in$ $\varphi$(b)[$\Gamma$]}
 \LeftLabel{$\Sigma$-I}
-\BinaryInfC{\cancel{$<b,c>$} $\in$ $\sum\limits_{x \epsilon B}$ C(x)[$\Gamma$]}
+\BinaryInfC{\cancel{$<b,c>$} $\in$ $\sum\limits_{x \in B}$ C(x)[$\Gamma$]}
 \end{prooftree}
 \noindent
 c $\in$ $\varphi$(b)[$\Gamma$] $\equiv$ $\varphi$(b) \`e vero [$\Gamma$,x$_1$ $\in$ $\gamma_1$,...,x$_n$ $\in$ $\gamma_n$] $\equiv$ $\gamma_1$,...,$\gamma_n$ $\vdash$ $\varphi$(b)\\
-$\sum\limits_{x \epsilon B}$ C(x)[$\Gamma$] $\equiv$ $\exists$ x $\in$ B $\varphi$(x) vero[$\Gamma$]\\\\
+$\sum\limits_{x \in B}$ C(x)[$\Gamma$] $\equiv$ $\exists$ x $\in$ B $\varphi$(x) vero[$\Gamma$]\\\\
 \noindent
 In conclusione, riscritta, la regola di Introduzione, con il calcolo dei sequenti diventa\\
 \begin{prooftree}
@@ -738,7 +737,7 @@ Ora definisco la regola dell'Eliminatore dipendente.\\
 Per farlo suppongo di avere un'altra proposizione definita come segue
 \begin{prooftree}
 \AxiomC{$\phi$ prop[$\Gamma$]}
-\UnaryInfC{$\phi$ prop[$\Gamma$,z $\in$ $\sum\limits_{x \epsilon B}\varphi(x)$]}
+\UnaryInfC{$\phi$ prop[$\Gamma$,z $\in$ $\sum\limits_{x \in B}\varphi(x)$]}
 \end{prooftree}
 \noindent
 
@@ -770,12 +769,12 @@ Che non \`e altro che la regola a sinistra dell'esiste.
 \label{subsec:conclusioni-usi-somma-indiciata-disgiunta}
 Per
 \begin{enumerate}
-\item $\sum\limits_{x \epsilon B}C(x)$ \`e un \textit{set} (dove sia x $\in$ B che C(x) sono rispettivamente dei \textit{set}) $\Rightarrow$ B $\times$ C \`e il prodotto cartesiano
-\item $\sum\limits_{x \epsilon B}\varphi(x)$ dove $\varphi$ \`e una proposizione $\Rightarrow$ rappresenta l'assioma di separazione \{x $\in$ B $|$ $\varphi$(x)\}\\\
+\item $\sum\limits_{x \in B}C(x)$ \`e un \textit{set} (dove sia x $\in$ B che C(x) sono rispettivamente dei \textit{set}) $\Rightarrow$ B $\times$ C \`e il prodotto cartesiano
+\item $\sum\limits_{x \in B}\varphi(x)$ dove $\varphi$ \`e una proposizione $\Rightarrow$ rappresenta l'assioma di separazione \{x $\in$ B $|$ $\varphi$(x)\}\\\
 \noindent
 Esempio:
-$\sum\limits_{z \epsilon list(Nat)}$ Id(Nat,lh(z),2) $\Rightarrow$ rappresenta il sottoinsieme delle liste di lunghezza 2
-\item $\exists$ x $\in$ B $\varphi$(x) $\Rightarrow$ $\sum\limits_{x \epsilon B}$ $\varphi$(x), ove $\varphi$(x) e $\sum\limits_{x \epsilon B}$ $\varphi$(x) sono proposizioni
+$\sum\limits_{z \in list(Nat)}$ Id(Nat,lh(z),2) $\Rightarrow$ rappresenta il sottoinsieme delle liste di lunghezza 2
+\item $\exists$ x $\in$ B $\varphi$(x) $\Rightarrow$ $\sum\limits_{x \in B}$ $\varphi$(x), ove $\varphi$(x) e $\sum\limits_{x \in B}$ $\varphi$(x) sono proposizioni
 \end{enumerate}
 \noindent
 Questo serve per:
@@ -836,6 +835,6 @@ Questo  perch\`e una formula e\`vera quando
 $\varphi$ true[$\Gamma$] sse \textit{(def)} $\exists$ pf $\in$ $\varphi$[$\Gamma$]. Tale definizione di \textit{proof-term} rende vera entrambe le propriet\`a (1) e (2), e quindi si pu\`o ben interpretare la congiunzione come prodotto cartesiano.
 \\\\
 \noindent 
-In conclusione $\varphi$ \& $\psi$ ${\overset{\mathit{def}}{=}}$  $\varphi$ $\times$ $\psi$ $\equiv$ $\sum\limits_{x \epsilon \varphi}$ $\psi$.\\\\
+In conclusione $\varphi$ \& $\psi$ ${\overset{\mathit{def}}{=}}$  $\varphi$ $\times$ $\psi$ $\equiv$ $\sum\limits_{x \in \varphi}$ $\psi$.\\\\
 \noindent
 Nella teoria dei tipi semplici $\varphi$ \& $\psi$ ${\overset{\mathit{def}}{=}}$ $\varphi$ $\times$ $\psi$ era gi\`a stato introdotto da \textit{Curry-Howard}.
