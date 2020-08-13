@@ -2,12 +2,12 @@
 \label{cap: indexed-sum-type}
 %17 inclusa
 \normalsize
-La somma indiciata forte \`e il potenziamento indiciato della somma disgiunta binaria (\S\ref{cap: tipo-somma-disgiunta}). Tipo induttivo, ovvero generato con il principio d'induzione della regola di eliminazione, di tipi dipendente.\\\\
+La somma indiciata forte \`e il potenziamento indiciato della \textbf{somma disgiunta binaria} (\S\ref{cap: tipo-somma-disgiunta}). Tipo induttivo, ovvero generato con il principio d'induzione della regola di eliminazione, di tipi dipendente.\\\\
 \noindent
 \textit{Definizione set-teorica}\\
 \noindent
 \textbf{
-\begin{center}$\bigcup\limits_{x \epsilon B\hspace{0.1cm}set}^.$C(x) \qquad (C(x) set) x $\in$ B \end{center}
+\begin{center}$\bigcup\limits_{x \in B\hspace{0.1cm}set}^.$C(x) \qquad (C(x) set) x $\in$ B \end{center}
 $\neq$ \quad $\bigcup$ \{y : $\exists$ x $\in$ B \quad y $\in$ C(x)\}\\
 \begin{center}${\overset{\mathit{def}}{=}}$ \{(b,c)$:$ b $\in$ B e c $\in$ C(b)\}\end{center}
 }
@@ -28,7 +28,7 @@ $\neq$ \quad $\bigcup$ \{y : $\exists$ x $\in$ B \quad y $\in$ C(x)\}\\
 \AxiomC{c $\in$ C(b)[$\Gamma$]}
 \AxiomC{$\sum\limits_{x \in B}$ C(x) type[$\Gamma$]}
 \LeftLabel{I-$\Sigma$)}
-\TrinaryInfC{$<$b,c$>$ $\in$ $\sum\limits_{x\in B}$ C(x) type[$\Gamma$]}
+\TrinaryInfC{$<$b,c$>$ $\in$ $\sum\limits_{x\in B}$ C(x)[$\Gamma$]}
 \end{prooftree}
 
 \section{Regole di Eliminazione}
@@ -69,7 +69,7 @@ $\neq$ \quad $\bigcup$ \{y : $\exists$ x $\in$ B \quad y $\in$ C(x)\}\\
 \AxiomC{b$_1$ $=$ b$_2$ $\in$ B[$\Gamma$]}
 \AxiomC{c$_1$ $=$ c$_2$ $\in$ C(b$_1$)[$\Gamma$]}
 \LeftLabel{eq-I-$\Sigma$)}
-\TrinaryInfC{$<$b$_1$,c$_1$$>$ $=$ $<$b$_2$,c$_2$$>$ $\in$ $\sum\limits_{x \in B}$ C(x) type[$\Gamma$]}
+\TrinaryInfC{$<$b$_1$,c$_1$$>$ $=$ $<$b$_2$,c$_2$$>$ $\in$ $\sum\limits_{x \in B}$ C(x)[$\Gamma$]}
 \end{prooftree}
 \begin{adjustwidth}{-8em}{}
 \begin{prooftree}
@@ -130,7 +130,7 @@ A $\times$ B ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \in A}$ B\\\\
 \begin{prooftree}
 \AxiomC{A type [$\Gamma$]}
 \AxiomC{B type [$\Gamma$]}
-\LeftLabel{F-x)} 
+\LeftLabel{F-$\times$)} 
 \BinaryInfC{A $\times$ B type[$\Gamma$]}
 \end{prooftree}
 
@@ -138,19 +138,19 @@ A $\times$ B ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \in A}$ B\\\\
 \begin{prooftree}
 \AxiomC{a $\in$ A[$\Gamma$]}
 \AxiomC{b $\in$ B[$\Gamma$]}
-\LeftLabel{I-x)}
+\LeftLabel{I-$\times$)}
 \BinaryInfC{$<$a,b$>$ $\in$ A $\times$ B[$\Gamma$]}
 \end{prooftree}
 
 \item \textit{Regole di Proiezione}
 \begin{prooftree}
 \AxiomC{d $\in$ A $\times$ B[$\Gamma$]}
-\LeftLabel{PJ$_1$-x)}
+\LeftLabel{PJ$_1$-$\times$)}
 \UnaryInfC{$\pi_1$d $\in$ A[$\Gamma$]}
 \end{prooftree}
 \begin{prooftree}
 \AxiomC{d $\in$ A $\times$ B[$\Gamma$]}
-\LeftLabel{PJ$_2$-x)}
+\LeftLabel{PJ$_2$-$\times$)}
 \UnaryInfC{$\pi_2$d $\in$ B[$\Gamma$]}
 \end{prooftree}
 \item \textit{Regole di Uguaglianza delle proiezioni}
@@ -169,19 +169,19 @@ A $\times$ B ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \in A}$ B\\\\
 \end{itemize}
 \item \textbf{Semantica operazionale del tipo prodotto cartesiano:}
 \begin{itemize}
-\item $\beta_x$-red$_1$) El$_\Sigma$($<$a,b$>$, e) $\rightarrow_1$ e(a,b)
-\item $\beta_x$-red$_2$) $\pi_1$($<$a,b$>$) $\rightarrow_1$ a
-\item $\beta_x$-red$_3$) $\pi_1$($<$a,b$>$) $\rightarrow_1$ b
+\item $\beta_\times$-red$_1$) El$_\Sigma$($<$a,b$>$, e) $\rightarrow_1$ e(a,b)
+\item $\beta_\times$-red$_2$) $\pi_1$($<$a,b$>$) $\rightarrow_1$ a
+\item $\beta_\times$-red$_3$) $\pi_2$($<$a,b$>$) $\rightarrow_1$ b
 \item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
-\LeftLabel{x-red)}
+\LeftLabel{$\times$-red)}
 \UnaryInfC{El$_\Sigma$ (t$_1$, e) $\rightarrow_1$ El$_\Sigma$ (t$_2$, e)}
 \DisplayProof \qquad
 \item \AxiomC{a$_1$ $\rightarrow_1$ a$_2$}
-\LeftLabel{x-red$_I$)}
+\LeftLabel{$\times$-red$_I$)}
 \UnaryInfC{$<$a$_1$, b$>$ $\rightarrow_1$ $<$a$_2$, b$>$}
 \DisplayProof
 \item \AxiomC{b$_1$ $\rightarrow_1$ b$_2$}
-\LeftLabel{x-red$_{II}$)}
+\LeftLabel{$\times$-red$_{II}$)}
 \UnaryInfC{$<$a, b$_1>$ $\rightarrow_1$ $<$a, b$_2>$}
 \DisplayProof
 \end{itemize}
@@ -241,9 +241,9 @@ A $\times$ B ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \in A}$ B\\\\
 \end{prooftree}
 \end{itemize}
 
-\item \textbf{Semantica operazionale del tipo prodotto cartesiano:}
+\item \textbf{Semantica operazionale del tipo delle funzioni:}
 \begin{itemize}
-\item $\beta_x$-red) Ap($\lambda$x$^A$.b(x), a) $\rightarrow_1$ b(a)
+\item $\beta_\rightarrow$-red) Ap($\lambda$x$^A$.b(x), a) $\rightarrow_1$ b(a)
 \item \AxiomC{f$_1$ $\rightarrow_1$ f$_2$}
 \LeftLabel{$\rightarrow$-red$_1$)}
 \UnaryInfC{Ap(f$_1$, a) $\rightarrow_1$ Ap(f$_2$, a)}
@@ -261,15 +261,15 @@ A $\times$ B ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \in A}$ B\\\\
 
 \section{Rappresentazione del tipo prodotto cartesiano}
 \label{sec: rappresentazione-del-tipo-prodotto-cartesiano}
-Il \textbf{tipo somma indiciata forte} \`e un potenziamento con tipi dipendenti del tipo prodotto cartesiano.\\
+Il \textbf{tipo somma indiciata forte} \`e un potenziamento, con tipi dipendenti, del tipo prodotto cartesiano.\\
 Allora ripartendo dal concetto di somma indiciata forte \\
 \noindent
-\begin{center}$\bigcup\limits_{x \epsilon B\hspace{0.1cm}set}^.$C(x) \qquad (C(x) set) x $\in$ B ${\overset{\mathit{def}}{=}}$ \{(b,c)$:$ b $\in$ B e c $\in$ C(b)\}\end{center}
+\begin{center}$\bigcup\limits_{x \in B\hspace{0.1cm}set}^.$C(x) \qquad (C(x) set) x $\in$ B ${\overset{\mathit{def}}{=}}$ \{(b,c)$:$ b $\in$ B e c $\in$ C(b)\}\end{center}
 Se
 \noindent C(x) $\equiv$ C$^\backprime$ dove C$^\backprime$ non varia \quad $\Rightarrow$ \quad ${\overset{\mathit{def}}{=}}$ \{(b,c)$:$ b$\in$ B e c $\in$ C(b)\} $\simeq$ B $\times$
 C$^\backprime$ \\\\
 \noindent
-\begin{center} B $\times$ C ${\overset{\mathit{def}}{=}}$ $\bigcup\limits_{x \epsilon B\hspace{0.1cm}set}^.$C\end{center}
+\begin{center} B $\times$ C ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \in B\hspace{0.1cm}set}$C\end{center}
 \vspace{1cm}
 \noindent
 Supposto che 
@@ -279,7 +279,7 @@ Supposto che
 \LeftLabel{ind-ty}
 \UnaryInfC{C type[$\Gamma$, x $\in$ B]}
 \LeftLabel{F-$\Sigma$}
-\BinaryInfC{B $\times$ C ${\overset{\mathit{def}}{=}}$ $\sum\limits_{x \epsilon B}$C}
+\BinaryInfC{B $\times$ C ${\overset{\mathit{def}}{=}}$ $\sum\in_{x \epsilon B}$C}
 \end{prooftree}
 \noindent
 Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
@@ -289,7 +289,7 @@ Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
 \begin{prooftree}
 \AxiomC{B type [$\Gamma$]}
 \AxiomC{C type [$\Gamma$]}
-\LeftLabel{F-x)}
+\LeftLabel{F-$\times$)}
 \BinaryInfC{B $\times$ C type[$\Gamma$]}
 \end{prooftree}
 
@@ -298,7 +298,7 @@ Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
 \begin{prooftree}
 \AxiomC{b $\in$ B[$\Gamma$]}
 \AxiomC{c $\in$ C[$\Gamma$]}
-\LeftLabel{I-x)}
+\LeftLabel{I-$\times$)}
 \BinaryInfC{$<$b,c$>$ $\in$ B $\times$ C[$\Gamma$]}
 \end{prooftree}
 
@@ -306,12 +306,12 @@ Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
 \label{subsec: proiezione-prod-cart}
 \begin{prooftree}
 \AxiomC{d $\in$ B $\times$ C[$\Gamma$]}
-\LeftLabel{PJ$_1$-x)}
+\LeftLabel{PJ$_1$-$\times$)}
 \UnaryInfC{$\pi_1$d $\in$ B[$\Gamma$]}
 \end{prooftree}
 \begin{prooftree}
 \AxiomC{d $\in$ B $\times$ C[$\Gamma$]}
-\LeftLabel{PJ$_2$-x)}
+\LeftLabel{PJ$_2$-$\times$)}
 \UnaryInfC{$\pi_2$d $\in$ C[$\Gamma$]}
 \end{prooftree}
 
@@ -333,19 +333,19 @@ Il tipo prodotto cartesiano \`e definito dalle seguenti regole.
 \subsection{Semantica operazionale del prodotto cartesiano}
 \label{subsec: semantica-operazionale-prod-cart}
 \begin{itemize}
-\item $\beta_x$-red$_1$) El$_\Sigma$($<$b,c$>$, e) $\rightarrow_1$ e(b,c)
-\item $\beta_x$-red$_2$) $\pi_1$($<$b,c$>$) $\rightarrow_1$ b
-\item $\beta_x$-red$_3$) $\pi_1$($<$b,c$>$) $\rightarrow_1$ c
+\item $\beta_\times$-red$_1$) El$_\Sigma$($<$b,c$>$, e) $\rightarrow_1$ e(b,c)
+\item $\beta_\times$-red$_2$) $\pi_1$($<$b,c$>$) $\rightarrow_1$ b
+\item $\beta_\times$-red$_3$) $\pi_1$($<$b,c$>$) $\rightarrow_1$ c
 \item \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
-\LeftLabel{x-red)}
+\LeftLabel{$\times$-red)}
 \UnaryInfC{El$_\Sigma$ (t$_1$, e) $\rightarrow_1$ El$_\Sigma$ (t$_2$, e)}
 \DisplayProof \qquad
 \item \AxiomC{b$_1$ $\rightarrow_1$ b$_2$}
-\LeftLabel{x-red$_I$)}
+\LeftLabel{$\times$-red$_I$)}
 \UnaryInfC{$<$b$_1$, c$>$ $\rightarrow_1$ $<$b$_2$, c$>$}
 \DisplayProof
 \item \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
-\LeftLabel{x-red$_{II}$)}
+\LeftLabel{$\times$-red$_{II}$)}
 \UnaryInfC{$<$b, c$_1>$ $\rightarrow_1$ $<$b, c$_2>$}
 \DisplayProof
 \end{itemize}

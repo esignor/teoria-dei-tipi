@@ -376,7 +376,7 @@
 \AxiomC{c $\in$ C(b)[$\Gamma$]}
 \AxiomC{$\sum\limits_{x \in B}$ C(x) type[$\Gamma$]}
 \LeftLabel{I-$\Sigma$)}
-\TrinaryInfC{$<$b,c$>$ $\in$ $\sum\limits_{x\in B}$ C(x) type[$\Gamma$]}
+\TrinaryInfC{$<$b,c$>$ $\in$ $\sum\limits_{x\in B}$ C(x)[$\Gamma$]}
 \end{prooftree}
 
 \subsection{Regole di Eliminazione}
@@ -414,7 +414,7 @@
 \AxiomC{b$_1$ $=$ b$_2$ $\in$ B[$\Gamma$]}
 \AxiomC{c$_1$ $=$ c$_2$ $\in$ C(b$_1$)[$\Gamma$]}
 \LeftLabel{eq-I-$\Sigma$)}
-\TrinaryInfC{$<$b$_1$,c$_1$$>$ $=$ $<$b$_2$,c$_2$$>$ $\in$ $\sum\limits_{x \in B}$ C(x) type[$\Gamma$]}
+\TrinaryInfC{$<$b$_1$,c$_1$$>$ $=$ $<$b$_2$,c$_2$$>$ $\in$ $\sum\limits_{x \in B}$ C(x)[$\Gamma$]}
 \end{prooftree}
 \begin{adjustwidth}{-8em}{}
 \begin{prooftree}
@@ -442,7 +442,7 @@
 \begin{prooftree}
 \AxiomC{B type [$\Gamma$]}
 \AxiomC{C type [$\Gamma$]}
-\LeftLabel{F-x)}
+\LeftLabel{F-$\times$)}
 \BinaryInfC{B $\times$ C type[$\Gamma$]}
 \end{prooftree}
 
@@ -450,19 +450,19 @@
 \begin{prooftree}
 \AxiomC{b $\in$ B[$\Gamma$]}
 \AxiomC{c $\in$ C[$\Gamma$]}
-\LeftLabel{I-x)}
+\LeftLabel{I-$\times$)}
 \BinaryInfC{$<$b,c$>$ $\in$ B $\times$ C[$\Gamma$]}
 \end{prooftree}
 
 \subsection{Regole di Proiezione}
 \begin{prooftree}
 \AxiomC{d $\in$ B $\times$ C[$\Gamma$]}
-\LeftLabel{PJ$_1$-x)}
+\LeftLabel{PJ$_1$-$\times$)}
 \UnaryInfC{$\pi_1$d $\in$ B[$\Gamma$]}
 \end{prooftree}
 \begin{prooftree}
 \AxiomC{d $\in$ B $\times$ C[$\Gamma$]}
-\LeftLabel{PJ$_2$-x)}
+\LeftLabel{PJ$_2$-$\times$)}
 \UnaryInfC{$\pi_2$d $\in$ C[$\Gamma$]}
 \end{prooftree}
 
