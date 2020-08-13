@@ -662,8 +662,8 @@ Il punto (1) l'ho gi\`a spiegato nella prima parte di questo capitolo, ora prese
 
 \subsection{L'assioma di separazione}
 \label{subsec:assioma-di-separazione}
-L'assioma di separazione dice che dato B, insieme, esiste l'insieme ottenuto per separazione da B tramite $\varphi$(x) definito come  \{x $\in$ B $|$ $\varphi$(x)\} con $\varphi$(x) predicato.\\
-Perci\`o per ogni y insieme, y \& \{x $\in$ B $|$ $\varphi$(x)\} $\Leftrightarrow$ $\varphi$(y) vale.\\
+L'assioma di separazione dice che dato B, insieme, esiste l'insieme ottenuto per separazione da B tramite $\varphi$(x), definito come  \{x $\in$ B $|$ $\varphi$(x)\} con $\varphi$(x) predicato.\\
+Perci\`o per ogni y insieme, y \& \{x $\in$ B $|$ $\varphi$(x)\} $\Leftrightarrow$ $\varphi$(y) vale (come gi\`a enunciato in $\S$\ref{sec:paradosso-di-russell}).\\
 Si pu\`o, dunque, simulare l'insieme degli y per cui vale $\varphi$(y) nel momento in cui si ha una proposizione 
 \begin{prooftree}
 \AxiomC{$\varphi$(x) $\cancel{prop}_{\textbf{type}}$[$\Gamma$,x $\in$ B]}
@@ -671,12 +671,12 @@ Si pu\`o, dunque, simulare l'insieme degli y per cui vale $\varphi$(y) nel momen
 \UnaryInfC{$\sum\limits_{x \in B}$ $\varphi$(x) $\cancel{type}_{\textbf{set}}$[$\Gamma$]}
 \end{prooftree}
 \noindent
-dove, nella regola sopra, prop viene pensato come un type\\\\
+dove, nella regola sopra, prop viene pensato come un type.\\\\
 \noindent
 \textit{Dimostrazione}
 \begin{itemize}
-\item ($\Leftarrow$) Da $\sum\limits_{x \in B}$ $\varphi$(x) significa avere b $\in$ B $+$ pf $\in$ $\varphi$(b), e quindi b soddisfa $\varphi$(x). Ecco che non \`e solo b ma $<$b,pf$>$ $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con pf $\in$ $\varphi$(b) $_{I-\Sigma}\Leftarrow$ $\varphi$(b).\\
-\item ($\Rightarrow$) z $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con z che sarebbe una coppia e x $\in$ B $\equiv$ $\sum\limits_{x \in B}$ $\varphi$(x) $\nRightarrow$ $\varphi$(z) vale, in quanto z \`e una coppia tipata.\\ 
+\item ($\Leftarrow$) da $\sum\limits_{x \in B}$ $\varphi$(x) significa avere b $\in$ B $+$ pf $\in$ $\varphi$(b), e quindi b soddisfa $\varphi$(x). Ecco che non \`e solo b ma $<$b,pf$>$ $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con pf $\in$ $\varphi$(b) $_{I-\Sigma}\Leftarrow$ $\varphi$(b).\\
+\item ($\Rightarrow$) z $\in$ \{x $\in$ B $|$ $\varphi$(x)\} con z che sarebbe una coppia e \{x $\in$ B $|$ $\varphi$(x)\} $\equiv$ $\sum\limits_{x \in B}$ $\varphi$(x) $\nRightarrow$ $\varphi$(z) vale, in quanto z \`e una coppia tipata.\\ 
 Ma posso tuttavia dimostrare che $\varphi(\pi_1z)$ vale usando le proiezioni. Ecco che $\pi_2$(z) $\in$ $\varphi$($\pi_1$z). $\pi_2$(z) \`e cosi \textit{proof term} per cui $\varphi$($\pi_1$z) vale.
 \end{itemize}
 \noindent
@@ -686,11 +686,11 @@ Questo ha permesso a \textit{Martin-L$\ddot{o}$f} di inglobare la \textit{set th
 \label{subsec:proposizionale}
 \begin{prooftree}
 \AxiomC{C(x) type[$\Gamma$,x $\in$ B$_{set}$] $\equiv$ $\varphi$(x) prop}
-\LeftLabel{$\Sigma$-F}
+\LeftLabel{F-$\Sigma$}
 \UnaryInfC{$\sum\limits_{x \in B}$ $\varphi$(x) $\cancel{type}_{\textbf{prop}}$[$\Gamma$] ${\overset{\mathit{def}}{=}} \exists_{x \in B} \varphi(x)$}
 \end{prooftree}
 \noindent
-\`E la quantificazione esistenziale, in logica, di $\varphi$ che varia sull'insieme B.\\
+\`E la \textbf{quantificazione esistenziale}, in logica, di $\varphi$(x) che varia sull'insieme B.\\
 \noindent
 \paragraph{Giustificazione}\mbox{}\\\\
 \noindent
@@ -702,37 +702,37 @@ $\phi$ prop[$\Gamma,x_1 \in \varphi_1,...,x_n \in \varphi_n]$\\
 \noindent 
 Se devo dire che
 pf $\in \phi[\Gamma,x_1 \in \varphi_1,...,x_n \in \varphi_n]$
-$\equiv \phi$ \`e vero[$\Gamma, \varphi$ vero,...,$\varphi_n$ vero] (nessuno degli elementi del contesto dipende dal precedente)
-$\equiv$ $\varphi_1,...,\varphi_n$ $\vdash_\Gamma$ $\phi$
+$\equiv \phi$ \`e vero[$\Gamma, \varphi_1$ vero,...,$\varphi_n$ vero] (nessuno degli elementi del contesto dipende dal precedente)
+$\equiv$ $\varphi_1,...,\varphi_n$ $\vdash_\Gamma$ $\phi$.
 \\\\\\
 \noindent
-Sappiamo che la logica lavora con variabili \textit{untyped}, dunque noi ora aggiungiamo in  $\exists_{ x\in B}$ $\varphi$(x) e $\forall$x$_{\in B}$ $\varphi$(x) l'informazione sul tipo.
+Sappiamo che la logica lavora con variabili \textit{untyped}, dunque noi ora aggiungiamo in  $\exists_{ x\in B}$ $\varphi$(x) l'informazione sul tipo.
 \\\\
 \noindent
-Per quanto assunto sopra, la regola di Introduzione viene nel modo sequente riscritta\\\\
+Per quanto assunto sopra, la regola di \textit{Introduzione} viene nel modo sequente riscritta\\\\
 \noindent
-Assumendo che $\exists_{x \in B}$ $\varphi$(x) type[$\Gamma$] sia ben formata
+Assumendo che $\exists_{x \in B}$ $\varphi$(x) type[$\Gamma$] sia ben formato
 \begin{prooftree}
 \AxiomC{b $\in$ B$_{set}$[$\Gamma$]}
 \AxiomC{c $\in$ $\varphi$(b)[$\Gamma$]}
-\LeftLabel{$\Sigma$-I}
+\LeftLabel{I-$\Sigma$}
 \BinaryInfC{\cancel{$<b,c>$} $\in$ $\sum\limits_{x \in B}$ C(x)[$\Gamma$]}
 \end{prooftree}
 \noindent
-c $\in$ $\varphi$(b)[$\Gamma$] $\equiv$ $\varphi$(b) \`e vero [$\Gamma$,x$_1$ $\in$ $\gamma_1$,...,x$_n$ $\in$ $\gamma_n$] $\equiv$ $\gamma_1$,...,$\gamma_n$ $\vdash$ $\varphi$(b)\\
+c $\in$ $\varphi$(b)[$\Gamma$] $\equiv$ $\varphi$(b) \`e vero [$\Gamma$,x$_1$ $\in$ $\varphi_1$,...,x$_n$ $\in$ $\varphi_n$] $\equiv$ $\gamma_1$,...,$\gamma_n$ $\vdash$ $\varphi$(b)\\
 $\sum\limits_{x \in B}$ C(x)[$\Gamma$] $\equiv$ $\exists$ x $\in$ B $\varphi$(x) vero[$\Gamma$]\\\\
 \noindent
-In conclusione, riscritta, la regola di Introduzione, con il calcolo dei sequenti diventa\\
+In conclusione, riscritta, la regola di \textit{Introduzione}, con il calcolo dei sequenti diventa\\
 \begin{prooftree}
-\AxiomC{$\gamma_1$,...,$\gamma_n$ $\vdash$ $\varphi$(b)}
-\LeftLabel{$\Sigma$-I}
+\AxiomC{$\gamma_1$,...,$\gamma_n$ $\vdash_\Gamma$ $\varphi$(b)}
+\LeftLabel{I-$\Sigma$}
 \UnaryInfC{$\gamma_1$,...,$\gamma_n$ $\vdash_\Gamma$ $\exists$ x $\in$ B $\varphi$(x)}
 \end{prooftree}
 \noindent
 Che non \`e altro che la regola a destra dell'esiste.
 \\\\
 \noindent
-Ora definisco la regola dell'Eliminatore dipendente.\\
+Ora definisco la regola dell'\textit{Eliminatore dipendente}.\\
 \noindent
 Per farlo suppongo di avere un'altra proposizione definita come segue
 \begin{prooftree}
@@ -745,7 +745,7 @@ Per farlo suppongo di avere un'altra proposizione definita come segue
 \AxiomC{$\phi$ prop[$\Gamma$]}
 \AxiomC{e(x,y) $\in$ $\phi$[$\Gamma$,x $\in$ B,y $\in$ $\varphi$(x)]}
 \LeftLabel{E-$\Sigma_{dip}$}
-\BinaryInfC{$\gamma$ $\in$ $\phi$[$\Gamma$,z $\in$ $\exists$ x $\in$ B $\varphi$(x)}
+\BinaryInfC{$\gamma$ $\in$ $\phi$[$\Gamma$,z $\in$ $\exists$ x $\in$ B $\varphi$(x)]}
 \end{prooftree}
 \noindent
 e(x,y) $\equiv$ $\varphi$ vero\\
@@ -756,7 +756,7 @@ $\gamma$ $\in$ $\phi$ $\equiv$ $\phi$ vera\\
 \noindent
 z $\in$ $\exists$ x $\in$ B $\varphi$(x) $\equiv$ $\exists$ x $\in$ B $\varphi$(x) vero\\\\
 \noindent
-In conclusione, riscritta, la regola dell'Eliminatore dipendente, con il calcolo dei sequenti diventa\\
+In conclusione, riscritta, la regola dell'\textit{Eliminatore dipendente}, con il calcolo dei sequenti diventa\\
 \begin{prooftree}
 \AxiomC{$\gamma_1$,...,$\gamma_n$ $\varphi$(x) vero $\vdash_{\Gamma,x \in B}$ $\phi$}
 \LeftLabel{E-$\Sigma_{dip}$}
@@ -773,45 +773,45 @@ Per
 \item $\sum\limits_{x \in B}\varphi(x)$ dove $\varphi$ \`e una proposizione $\Rightarrow$ rappresenta l'assioma di separazione \{x $\in$ B $|$ $\varphi$(x)\}\\\
 \noindent
 Esempio:
-$\sum\limits_{z \in list(Nat)}$ Id(Nat,lh(z),2) $\Rightarrow$ rappresenta il sottoinsieme delle liste di lunghezza 2
+$\sum\limits_{z \in List(Nat)}$ Id(Nat,lh(z),2) $\Rightarrow$ rappresenta il sottoinsieme delle liste di lunghezza 2
 \item $\exists$ x $\in$ B $\varphi$(x) $\Rightarrow$ $\sum\limits_{x \in B}$ $\varphi$(x), ove $\varphi$(x) e $\sum\limits_{x \in B}$ $\varphi$(x) sono proposizioni
 \end{enumerate}
 \noindent
 Questo serve per:
 \begin{itemize}
-\item Capire in che modo formalizzare
-\item Comprendere il significato della teoria dei tipi che sto leggendo
+\item capire in che modo formalizzare;
+\item comprendere il significato della teoria dei tipi che sto leggendo.
 \end{itemize}
 
 \section{Congiunzione come tipo prodotto cartesiano}
 \label{sec:congiunzione-come-tipo-prodotto-cartesiano}
 Il tipo prodotto cartesiano permette di interpretare la congiunzione della logica.\\\\
 \noindent
-Date due preposizioni $\varphi$ prop[$\Gamma$] e $\psi$ prop[$\Gamma$]
+Date due proposizioni $\varphi$ prop[$\Gamma$] e $\psi$ prop[$\Gamma$]
 \begin{center}
 $\varphi$ \& $\psi$ ${\overset{\mathit{def}}{=}}$ $\varphi$ $\times$ $\psi$
 \end{center}
-L'uguaglianza vale in quanto $\varphi$ prop[$\Gamma$] $\equiv$ $\varphi$ type[$\Gamma$] che \`e il tipo delle sue dimostrazioni \\\\
+L'uguaglianza vale in quanto $\varphi$ prop[$\Gamma$] $\equiv$ $\varphi$ type[$\Gamma$], che \`e il tipo delle sue dimostrazioni \\\\
 \noindent 
 La regola di \textit{Introduzione} del prodotto cartesiano \`e la seguente
 \begin{prooftree}
 \AxiomC{a $\in$ $\varphi$[$\Gamma$]}
 \AxiomC{b $\in$ $\psi$[$\Gamma$]}
-\LeftLabel{I-x}
+\LeftLabel{I-$\times$}
 \BinaryInfC{$<a,b>$ $\in$ $\varphi$ $\times$ $\psi$ [$\Gamma$]}
 \end{prooftree}
 \noindent
 $\Rightarrow$ a $\in$ $\varphi$[$\Gamma$] $\equiv$ $\varphi$ true[$\Gamma$]\\
 $\Rightarrow$ b $\in$ $\psi$[$\Gamma$] $\equiv$ $\psi$ true[$\Gamma$]\\
 $\Rightarrow$ $\varphi$ $\times$ $\psi$ $\equiv$ $\varphi$ \& $\psi$\\
-$\Rightarrow$ $\varphi$ \& $\psi$ vero[$\Gamma$]\\
+$\Rightarrow$ $<a,b>$ $\in$ $\varphi$ $\times$ $\psi$ [$\Gamma$] $\equiv$ $\varphi$ \& $\psi$ vero[$\Gamma$]\\\\
 \noindent
-\textbf{$(1)$} Dunque $\varphi$ true[$\Gamma$] e $\psi$ true[$\Gamma$] ($\Rightarrow$) $\varphi$ \& $\psi$ true[$\Gamma$]\\\\
+\textbf{$(1)$} Dunque $\varphi$ true[$\Gamma$] e $\psi$ true[$\Gamma$] $\Rightarrow$ $\varphi$ \& $\psi$ true[$\Gamma$].\\\\
 \noindent
 Con la regole di \textit{Eliminazione} riesco a provare anche il verso opposto dell'implicazione. In quanto d $\in$ $\varphi$ $\times$ $\psi$[$\Gamma$] \`e come dire $\varphi$ \& $\psi$ true[$\Gamma$], per cui, grazie alle regole di Proiezione del prodotto cartesiano
 \begin{center}
 \AxiomC{d $\in$ $\varphi$ \& $\psi$[$\Gamma$]}
-\LeftLabel{PJ$_1$-x}
+\LeftLabel{PJ$_1$-$\times$}
 \UnaryInfC{$\pi_1$d $\in$ $\varphi$ [$\Gamma$]}
 \DisplayProof
 \end{center}
@@ -819,7 +819,7 @@ d $\in$ $\varphi$ \& $\psi$[$\Gamma$] $\equiv$ $\varphi$ \& $\psi$ true[$\Gamma$
 $\pi_1$d $\in$ $\varphi$ [$\Gamma$] $\equiv$ $\varphi$ vero[$\Gamma$]\\
 \begin{center}
 \AxiomC{d $\in$ $\varphi$ \& $\psi$[$\Gamma$]}
-\LeftLabel{PJ$_1$-x}
+\LeftLabel{PJ$_2$-$\times$}
 \UnaryInfC{$\pi_2$d $\in$ $\psi$ [$\Gamma$]}
 \DisplayProof
 \end{center}
@@ -827,11 +827,11 @@ d $\in$ $\varphi$ \& $\psi$[$\Gamma$] $\equiv$ $\varphi$ \& $\psi$ true[$\Gamma$
 $\pi_2$d $\in$ $\varphi$ [$\Gamma$] $\equiv$ $\psi$ vero[$\Gamma$]\\
 
 \noindent
-\textbf{$(2)$} Dunque con le regole di Eliminazione si \`e mostrato come se $\varphi$ \& $\psi$ true[$\Gamma$] $\Rightarrow$ $\varphi$ true[$\Gamma$] e $\psi$ true[$\Gamma$].
+\textbf{$(2)$} Dunque con le \textit{regole di Eliminazione} si \`e mostrato come se $\varphi$ \& $\psi$ true[$\Gamma$] $\Rightarrow$ $\varphi$ true[$\Gamma$] e $\psi$ true[$\Gamma$].
 \\\\
 \noindent
 Quanto definito in (1) e (2) permettono di concludere che date $\varphi$ prop[$\Gamma$] e $\psi$ prop[$\Gamma$] (interpretate come tipi delle loro dimostrazioni), \`e corretto definire  $\varphi$ \& $\psi$ ${\overset{\mathit{def}}{=}}$ $\varphi$ $\times$ $\psi$.\\
-Questo  perch\`e una formula e\`vera quando
+Questo  perch\`e una formula \`e vera quando
 $\varphi$ true[$\Gamma$] sse \textit{(def)} $\exists$ pf $\in$ $\varphi$[$\Gamma$]. Tale definizione di \textit{proof-term} rende vera entrambe le propriet\`a (1) e (2), e quindi si pu\`o ben interpretare la congiunzione come prodotto cartesiano.
 \\\\
 \noindent 
