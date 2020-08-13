@@ -912,29 +912,24 @@ $\Delta$ $\equiv$ z $\in$ Nat,v $\in$ Id(Nat,0+z,z)
 
 \vspace{0.5cm}
 \normalsize \textbf{3$^\backprime_B$}\\\\
-El$_{Nat}$(succ(m),c,e) $\equiv$ El$_{Nat}$(succ(z),0,(w,u).succ(u))\\
-e(m,El$_{Nat}$(m,c,e)) $\in$ M(succ(m))[$\Gamma$] $\equiv$ succ(El$_{Nat}$(z,0,(w,u).succ(u)) $\in$ Nat [$\Delta$] $\equiv$ succ(0+z) $\in$ Nat[$\Delta$]
+El$_{Nat}$(0,c,e) $\equiv$ El$_{Nat}$(0,succ(0+z),(w,u).succ(u))\\
+c $\in$ M(0)[$\Gamma$] $\equiv$ succ(0+z) $\in$ Nat [$\Delta$] $\equiv$ 0 + z + 1 $\in$ Nat [$\Delta$] $\equiv$ 0 + succ(z) $\in$ Nat [$\Delta$]\\
+e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)] $\equiv$ succ(0+z) + succ(w) $\in$ Nat[$\Delta$] $\equiv$ succ(succ(0+z) + w) $\in$ Nat[$\Delta$] $\equiv$ succ(u) $\in$ Nat[$\Delta$] $\equiv$ u + 1 $\in$ Nat[$\Delta$] $\equiv$ succ(0+z+1+w) $\in$ Nat[$\Delta$] $\equiv$ 0+z+1+w+1 $\in$ Nat[$\Delta$] $\equiv$ 0+z+w+2 $\in$ Nat[$\Delta$] $\equiv$ 0+z+2 $\in$ Nat[$\Delta$]
+
 \small
 \begin{adjustwidth}{-12em}{}
 \begin{prooftree}
 \AxiomC{\textbf{$\bigstar$}}
-\UnaryInfC{z $\in$ Nat[$\Delta$]}
-
-\AxiomC{\textbf{$\bigstar$}}
 \UnaryInfC{Nat type[$\Delta$]}
 
-%\AxiomC{\textbf{$\heartsuit$}}
-%\UnaryInfC{0+z $\in$ Nat[z $\in$ Nat]}
-%\AxiomC{\textbf{$\bigstar$}}
-%\UnaryInfC{$\Delta$ cont}
-%\LeftLabel{ind-te}
-%\BinaryInfC{0+z $\in$ Nat[$\Delta$]}
-%\LeftLabel{I$_2$-Nat}
-%\UnaryInfC{succ(0+z) $\in$ Nat[$\Delta$]}
+\AxiomC{\textbf{$\heartsuit$}}
+\UnaryInfC{0+z $\in$ Nat[z $\in$ Nat]}
 \AxiomC{\textbf{$\bigstar$}}
 \UnaryInfC{$\Delta$ cont}
-\LeftLabel{I-Nat}
-\UnaryInfC{0 $\in$ Nat[$\Delta$]}
+\LeftLabel{ind-te}
+\BinaryInfC{0+z $\in$ Nat[$\Delta$]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{succ(0+z) $\in$ Nat[$\Delta$]}
 
 \AxiomC{\textbf{$\bigstar$}}
 \UnaryInfC{$\Delta$, w $\in$ Nat, u $\in$ Nat cont}
@@ -944,7 +939,7 @@ e(m,El$_{Nat}$(m,c,e)) $\in$ M(succ(m))[$\Gamma$] $\equiv$ succ(El$_{Nat}$(z,0,(
 \UnaryInfC{succ(u) $\in$ Nat[$\Delta$, w $\in$ Nat, u $\in$ Nat]}
 
 \LeftLabel{C$_2$-Nat}
-\QuaternaryInfC{0+succ(z)  $=$ succ(0+z) $\in$ Nat[$\Delta$]}
+\TrinaryInfC{0+succ(z)  $=$ succ(0+z) $\in$ Nat[$\Delta$]}
 \LeftLabel{sym}
 \UnaryInfC{succ(0+z) $=$ 0+succ(z) $\in$ Nat[$\Delta$]}
 
