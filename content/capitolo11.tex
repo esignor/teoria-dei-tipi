@@ -1,17 +1,17 @@
 \chapter{Principi di induzione per tipi induttivi}
 \label{cap:principi-di-induzione-per-tipi-induttivi}
-Principi di induzione associati alle regole di eliminazione dei cosiddetti tipi induttivi \textit{T}, per renderne la ragione del nome; quando il tipo M(z) type[$\Gamma$,z $\in$ \textit{T}], verso cui si elimina, \`e in realt\`a una $\varphi$(z) prop[$\Gamma$,z $\in$ \textit{T}].\\\\
+Di seguito tratto i principi di induzione, associati alle regole di \textit{Eliminazione} dei cosiddetti tipi induttivi \textit{T}, per renderne la ragione del nome; quando il tipo M(z) type[$\Gamma$,z $\in$ \textit{T}], verso cui si elimina, \`e in realt\`a una $\varphi$(z) prop[$\Gamma$,z $\in$ \textit{T}].\\\\
 \noindent
-\textbf{Tipi induttivi:} N$_0$, N$_1$, List(A), Nat, B $+$ C, {\scriptsize $\sum$} $_{x \in B}$ C(x), Id(A,a,b)\\
+\textbf{Tipi induttivi:} N$_0$, N$_1$, List(A), Nat, B $+$ C, {\scriptsize $\sum$} $_{x \in B}$ C(x), Id(A,a,b)
 
 \section{Propriet\`a per i tipi induttivi}
 \label{sec:prorieta-per-i-tipi-induttivi}
 Per poter enunciare il principio di induzione, ci servono delle \textbf{propriet\`a di manipolazione dei contesti}.
 \begin{itemize}
 \item {\scriptsize $\sum$} serve per \textbf{raggruppare le assunzioni in un contesto}:\\
-c(x,y) $\in$ C(x,y)[x $\in$ A,y $\in$ B] derivabile $\Rightarrow$ c($\pi_1$z,$\pi_2$z) $\in$ C($\pi_1$z,$\pi_2$z)[z $\in$ {\scriptsize $\sum\limits$}$_{x \in A}$B(x)] \`e derivabile\\
+c(x,y) $\in$ C(x,y)[x $\in$ A,y $\in$ B(x)] derivabile $\Rightarrow$ c($\pi_1$z,$\pi_2$z) $\in$ C($\pi_1$z,$\pi_2$z)[z $\in$ {\scriptsize $\sum\limits$}$_{x \in A}$B(x)] \`e derivabile\\
 Si pu\`o anche andare nella direzione opposta, dunque\\
-d(z) $\in$ D(z)[z $\in$ {\scriptsize $\sum\limits$}$_{x \in A}$B(x)] derivabile $\Rightarrow$ d($<$x,y$>$) $\in$  D($<$x,y$>$)[x $\in$ A,y $\in$ B(x)]
+d(z) $\in$ D(z)[z $\in$ {\scriptsize $\sum\limits$}$_{x \in A}$B(x)] derivabile $\Rightarrow$ d($<$x,y$>$) $\in$  D($<$x,y$>$)[x $\in$ A,y $\in$ B(x)] derivabile
 \item {\scriptsize $\prod$} serve per \textbf{togliere le assunzioni in un contesto}:\\
 c(x,y) $\in$ C(x,y)[x $\in$ A,y $\in$ B(x)] derivabile $\Rightarrow$ $\lambda$y.c(x) $\in$ {\scriptsize $\prod$}$_{y \in B(x)}$C(x,y)[x $\in$ A]\\
 Per cui posso sempre togliere l'ultima assunzione.
@@ -40,16 +40,16 @@ Di seguito enuncio i vari tipi di induzione, con spiegazione per il principio de
 \BinaryInfC{El$_{Nat}$(z,c,e) $\in$ $\varphi$(z)[$\Gamma$,z $\in$ Nat]}
 \end{prooftree}
 \noindent
-$\Leftrightarrow$ $\lambda$z.El$_{Nat}$(z,c,e) $\in$ $\forall_{z \in Nat} \hspace{0.1cm}\varphi$(z)\\
-A questo punto posso raggruppare in un unico sequente\\
-$\lambda$z.El$_{Nat}$(z,w,(x,y)e(x,y)) $\in$ $\forall_{z \in \varphi(z)}$[$\Gamma$,w $\in$ $\varphi$(0);z$_f$ $\in$ $\forall_{x \in Nat}$ ($\varphi$(x) $\rightarrow$ $\varphi$(succ(x)))] $\Rightarrow$
-$\lambda$z.El$_{Nat}$(z,w,(x,y).Ap(Ap(z,f,x),y) $\in$ $\forall_{z \in \varphi(z)}$[$\Gamma$,w $\in$ $\varphi$(0) $\times$/$\&$ z$_f$ $\in$ $\forall_{x \in Nat}$ ($\varphi$(x) $\rightarrow$ $\varphi$(succ(x)))]\\\\
+$\Leftrightarrow$ $\lambda$z.El$_{Nat}$(z,c,e) $\in$ $\forall_{z \in Nat} \hspace{0.1cm}\varphi$(z) (usando {\scriptsize $\prod$} per togliere le assunzioni di contesto)\\
+A questo punto posso raggrupparlo in un unico termine, non solo con la manipolazione del contesto ma anche trasformando le assunzioni della regola in variabili\\
+$\lambda$z.El$_{Nat}$(z,w,(x,y)e(x,y)) $\in$ $\forall_{z \in Nat} \varphi(z)$[$\Gamma$,w $\in$ $\varphi$(0);z$_f$ $\in$ $\forall_{x \in Nat}$ ($\varphi$(x) $\rightarrow$ $\varphi$(succ(x)))] $\Rightarrow$
+$\lambda$z.El$_{Nat}$(z,w,(x,y).Ap(Ap(z$_f$,x),y) $\in$ $\forall_{z \in Nat} \varphi(z)$[$\Gamma$,w $\in$ $\varphi$(0) $\times$/$\&$ z$_f$ $\in$ $\forall_{x \in Nat}$ ($\varphi$(x) $\rightarrow$ $\varphi$(succ(x)))]\\\\
 \noindent
 Assumendo che, quando astraggo, $\varphi$ true[$\Gamma$,$\Psi$ true] derivabile $\Leftrightarrow$ $\Psi$ $\rightarrow$ $\varphi$ true[$\Gamma$]\\\\
 \noindent
 In questo modo arrivo ad avere il principio di induzione che rende valido l'eliminatore dei numeri Naturali\\
-\begin{center}Nat) $\varphi$(0) $\&$ $\forall_{x \in Nat}$($\varphi$(x) $\rightarrow$ $\varphi$(succ(x))) $\rightarrow$ $\forall_{z \in Nat}$ $\varphi$(z)\end{center}
-\`e valido e segue dalla E-Nat$_{dip}$
+\begin{center}Nat) $\varphi$(0) $\&$ $\forall_{x \in Nat}$($\varphi$(x) $\rightarrow$ $\varphi$(succ(x)) $\rightarrow$ $\forall_{z \in Nat}$ $\varphi$(z)\end{center}
+\`e valido e segue dalla \textit{E-Nat$_{dip}$}
 
 \section{Principio di induzione su N$_0$}
 \label{sec:principio-di-induzione-N0}
@@ -78,10 +78,10 @@ con $\forall_{z \in}$ {\scriptsize$_{\sum}$} $_{x \in B \hspace{0.1cm}C(x)}$ fam
 \label{sec:principio-di-induzione-Id}
 \`E un tipo induttivo, grande novit\`a, introdotta da \textit{Martin-L$\ddot{o}$f}, all'interno della teoria dei tipi.\\
 \begin{center}Dato $\varphi(z_1,z_2,z_3)$ prop[$\Gamma$,z$_1$ $\in$ A,z$_2$ $\in$ A,z$_3$ $\in$ Id(A,z$_1$,z$_2$)] derivabile\\
-Ind) $\forall_{x \in A}$ $\varphi(x,x,id(x))$ $\rightarrow$ $\forall_{z_1 \in A}$ $\forall_{z_2 \in A}$ $\forall_{z_3 \in Id(z_1,z_2,z_3)}$ $\varphi(z_1,z_2,z_3)$ true[$\Gamma$]\end{center} \`e derivabile\\\\
+Ind) $\forall_{x \in A}$ $\varphi(x,x,id(x))$ $\rightarrow$ $\forall_{z_1 \in A}$ $\forall_{z_2 \in A}$ $\forall_{z_3 \in Id(A,z_1,z_2)}$ $\varphi(z_1,z_2,z_3)$ true[$\Gamma$]\end{center} \`e derivabile\\\\
 \noindent
-Tale principio non \`e formulato su $\varphi$(z) type[$\Gamma$,$z \in Id(A,a,b)$] con A e a,b fissati, ma dipende da tre parametri z$_1$, z$_2$ e z$_3$, come accade nella regola del E-Id.\\\\
-\noindent In conclusione,  ho mostrato, come i \textbf{principi di induzione} servono per dimostrare le preposizioni; e le \textbf{regola di eliminazione} non determinano solo ricorsori, ma anche regole di induzione.
+Tale principio non \`e formulato su $\varphi$(z) type[$\Gamma$,$z \in Id(A,a,b)$] con A e a,b fissati, ma dipende da tre parametri z$_1$, z$_2$ e z$_3$, come accade nella regola del \textit{E-Id}.\\\\
+\noindent In conclusione,  ho mostrato, come i \textbf{principi di induzione} servono per dimostrare le proposizioni; e le \textbf{regola di eliminazione} non determinano solo ricorsori, ma anche regole di induzione.
 
 \section{Esercizi}
 \label{sec:esercizi-principi-induzione}
