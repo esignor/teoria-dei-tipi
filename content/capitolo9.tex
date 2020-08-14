@@ -15,7 +15,7 @@ Il tipo vuoto (N$_0$, \textit{empty-set}) \`e un tipo induttivo generato dalle s
 \label{sec: introduzione-N0}
 N$_0$[$\Gamma$] $=$ $\varnothing$ $\Rightarrow$ non ci sono valori canonici\\\\
 \noindent
-\textit{Non ci sono le regole di Introduzione, in quanto N$_0$ si vuole che sia un tipo vuoto, e di conseguenza non serve introdurre elementi}
+\textit{Non ci sono le regole di Introduzione, in quanto N$_0$ si vuole che sia un tipo vuoto, e di conseguenza non serve introdurre elementi.}
 
 \section{Regole di Eliminazione}
 \label{sec: eliminazione-N0}
@@ -39,7 +39,7 @@ N$_0$[$\Gamma$] $=$ $\varnothing$ $\Rightarrow$ non ci sono valori canonici\\\\
 \BinaryInfC{El$_{N0}$(t$_1$) $=$ El$_{N0}$(t$_2$) $\in$ M(t$_1$)[$\Gamma$]}
 \end{prooftree}
 \noindent
-\textit{Non serve nessun'altra ipotesi non essendoci alcun elemento canonico.\\ Inoltre questo comporta la non necessit\`a delle altre regole di uguaglianza}
+\textit{Non serve nessun'altra ipotesi, non essendoci alcun elemento canonico.\\ Inoltre questo comporta la non necessit\`a delle altre regole di uguaglianza.}
 
 \section{Eliminatore dipendente}
 \label{sec:eliminatore dipendente-N0}
@@ -54,8 +54,8 @@ N$_0$[$\Gamma$] $=$ $\varnothing$ $\Rightarrow$ non ci sono valori canonici\\\\
 \label{sec: semantica-operazionale-funzione}
 La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso delle seguenti regole di riduzione:
 \begin{itemize}
-\item $\beta_{\rightarrow}$-red) NON ESISTE 
-\item Per far interagire N$_0$ con altri tipi (altrimenti N$_0$ da solo non fa nulla)
+\item $\beta_{N_0}$-red) NON ESISTE 
+\item per far interagire N$_0$ con altri tipi (altrimenti N$_0$ da solo non fa nulla)
 \AxiomC{t$_1$ $\rightarrow_1$ t$_2$}
 \LeftLabel{N$_0$-red)}
 \UnaryInfC{El$_{N0}$(t$_1$) $\rightarrow_1$ El$_{N0}$(t$_2$)}
@@ -67,16 +67,16 @@ La regola \textit{(N$_0$-red)} \`e associata all'uguaglianza dell'eliminazione.
 \section{Osservazioni dal punto di vista logico}
 \label{sec:osservazioni-dal-punto-di-vista-logico-N0}
 Il tipo vuoto serve in logica per interpretare il falso
-\begin{center}$\bot$ ${\overset{\mathit{def}}{\equiv}}$ N$_0$\end{center}
+\begin{center}\textbf{$\bot$ ${\overset{\mathit{def}}{\equiv}}$ N$_0$}\end{center}
 \noindent
-$\bot$ \`e vero sse $\exists$ $\in$ N$_0$
+$\bot$ \`e vero sse $\exists$ t $\in$ N$_0$
 \begin{prooftree}
 \AxiomC{t $\in$ N$_0$[$\Gamma$]}
 \AxiomC{$\bot$ \`e vero[$\Gamma$]}
 \AxiomC{$\varphi$ prop[$\Gamma$]}
 \LeftLabel{ind-ty}
 \BinaryInfC{$\varphi$ prop[$\Gamma$,z $\in$ N$_0$]}
-\LeftLabel{E$_{N0}$}
+\LeftLabel{E-N$_0$}
 \BinaryInfC{El$_{N0}$(t) $\in$ $\varphi$[$\Gamma$]}
 \end{prooftree}
 Quella appena definita rappresenta la regola
@@ -86,8 +86,8 @@ Quella appena definita rappresenta la regola
 \\\\
 \noindent Inoltre, con la regola di \textit{Eliminazione dipendente}, definita in \S \ref{sec:eliminatore dipendente-N0}, posso dire che, per ogni $\varphi$ prop[$\Gamma$]\\
 $\Rightarrow$M(z) type[$\Gamma$,z $\in$ N$_0$] $\equiv$ $\varphi$(z) \`e prop\\
-$\Rightarrow$El$_{N0}$(z) $\in$ M(z)[$\Gamma$,z $\in$ N$_0$] $\equiv$ $\varphi$ \`e vero[$\Gamma$,$\Delta$,N$_0$ vero] $\equiv$ $\bot$ $\vdash$ $\varphi$ che \`e l'\textbf{assioma del falso} in logica \textit{($\bot$-ax)}\\\\
+$\Rightarrow$El$_{N0}$(z) $\in$ M(z)[$\Gamma$,z $\in$ N$_0$] $\equiv$ $\varphi$ \`e vero[$\Gamma$,$\Delta$,N$_0$ vero] $\equiv$ $\bot$ $\vdash$ $\varphi$ che \`e l'\textbf{assioma del falso} in logica \textit{($\bot$-ax)}\\
 \noindent
-In conclusione, dunque, la regola di eliminazione di N$_0$ rappresenta \textit{$\bot$-ax} in calcolo dei sequenti/regola del falso \textit{quodlibet} in deduzione naturale.
+In conclusione, dunque, la regola di \textit{Eliminazione} di N$_0$ rappresenta \textit{($\bot$-ax)} in calcolo dei sequenti/regola del falso \textit{quodlibet} in deduzione naturale.
 
 

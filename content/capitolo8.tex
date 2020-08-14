@@ -20,7 +20,7 @@ Il tipo delle funzione \`e definito dalle regole seguenti.
 \UnaryInfC{$\lambda$x$^B$.c(x) $\in$ B $\rightarrow$ C[$\Gamma$]}
 \end{prooftree}
 \noindent
-\textit{C'\`e una meta-variabile, con il quale si indica un termine che pu\`o dipendere o meno da x.}
+\textit{c \`e una meta-variabile, con il quale si indica un termine che pu\`o dipendere o meno da x.}
 
 \section{Regole di Eliminazione}
 \label{sec: eliminazione-funzione}
@@ -74,7 +74,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \LeftLabel{$\rightarrow$-red$_2$)}
 \UnaryInfC{Ap(f,b$_1$) $\rightarrow_1$ Ap(f,b$_2$)}
 \DisplayProof
-\item novit\`a della somma indiciata forte rispetto al tipo singoletto
+\item novit\`a della funzioni rispetto al tipo singoletto
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
 \LeftLabel{$\rightarrow$-red)}
 \UnaryInfC{$\lambda$x.c$_1$ $\rightarrow_1$ $\lambda$x.c$_2$}
@@ -138,8 +138,8 @@ Che non \`e altro che la regola, nel calcolo dei sequenti, del Modus Pones
 
 \section{Tipo prodotto dipendente}
 \label{sec: tipo-prodotto-dipendente}
-Il tipo prodotto dipendente o  indiciato (si chiama anche {\scriptsize $\prod$}), come gi\`a riscontrato per il tipo funzione, \`e un tipo non induttivo. Inoltre \`e un potenziamento espressivo, sempre, del tipo dello spazio delle funzioni (tipo funzioni \`e un caso particolare).\\
-Le regole del prodotto indiciato dipendente che agisce su un tipo dipendente sono le seguenti.
+Il tipo prodotto dipendente o  indiciato (si chiama anche {\scriptsize $\prod$}), come gi\`a riscontrato per il tipo funzione, \`e un tipo non induttivo. Inoltre \`e un potenziamento espressivo, sempre, del \textbf{tipo dello spazio delle funzioni} (tipo funzioni \`e un caso particolare).\\
+Le regole del prodotto indiciato dipendente, che agisce su un tipo dipendente, sono le seguenti.
 
 \subsection{Regole di Formazione}
 \label{subsec: formazione-prodotto-dip}
@@ -194,10 +194,10 @@ Le regole del prodotto indiciato dipendente che agisce su un tipo dipendente son
 \textit{La regola (eq-I-{\scriptsize$\prod$}) prende anche il nome di $\xi$-rule ed \`e una regola difficile da modellare.}
 
 \begin{prooftree}
-\AxiomC{B$_1$ $=$ B$_2$ $\in$ type[$\Gamma$]}
-\AxiomC{c$_1$(x) $=$ c$_2$(x) type[$\Gamma$,x $\in$ B$_1$]}
+\AxiomC{B$_1$ $=$ B$_2$ type[$\Gamma$]}
+\AxiomC{C$_1$(x) $=$ C$_2$(x) type[$\Gamma$,x $\in$ B$_1$]}
 \LeftLabel{eq-F-{\scriptsize$\prod$})}
-\BinaryInfC{$\prod\limits_{x \in B}$ C$_1$(x)[$\Gamma$] $=$ $\prod\limits_{x \in B}$ C$_2$(x)[$\Gamma$]}
+\BinaryInfC{$\prod\limits_{x \in B}$ C$_1$(x) $=$ $\prod\limits_{x \in B}$ C$_2$(x)[$\Gamma$]}
 \end{prooftree}
 \normalsize
 
@@ -206,9 +206,9 @@ Le regole del prodotto indiciato dipendente che agisce su un tipo dipendente son
 
 \subsubsection{La regola di Formazione}
 \label{subsubsec:osservazioni-formazione-prodotto-dip}
-Se prendo la regola di \textit{Formazione} e ci metto le preposizioni, questa diventa
+Se prendo la regola di \textit{Formazione} e ci metto le proposizioni, questa diventa
 \begin{prooftree}
-\AxiomC{B type [$\Gamma$]}
+\AxiomC{B set [$\Gamma$]}
 \AxiomC{$\varphi$(x) prop [$\Gamma$,x $\in$ B]}
 \LeftLabel{F-{\scriptsize$\prod$})}
 \BinaryInfC{$\forall_{x \in B}$ $\varphi$(x) prop[$\Gamma$]}
