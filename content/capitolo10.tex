@@ -1,21 +1,21 @@
 \chapter{La logica della teoria dei tipi di \textit{Martin-L$\ddot{o}$f}}
 \label{cap:la-logica-della-teoria-dei-tipi-di-Martin-Lof}
-Molti tipi, come visto nei capitoli precedenti hanno un significato logico.\\\textit{Ma qual'\`e la logica che viene affrontata in \textit{type-theory}?}\\\\
+Molti tipi, come visto nei capitoli precedenti hanno un significato logico.\\\\\textit{Ma qual'\`e la logica che viene affrontata in \textit{type-theory}?}\\\\
 \noindent I tipi descritti fino a ora sono sufficienti per interpretare le formule, con predicati dipendenti dal tipo, della logica \textbf{predicativa con l'uguaglianza}. Tuttavia la logica che la teoria dei tipi, di questi tipi, rende valida \`e la \textbf{Logica intuizionistica} e non quella classica.\\\\
 \noindent
 \textit{Quale \`e la logica valida in teoria dei tipi?}\\\\
 \noindent Dipende dalla teoria dei tipi (dalla teoria dei tipi di \textit{Martin-L$\ddot{o}$f} si rende valida solo quella intuizionistica).\\
 Di seguito do la definizione per induzione sulle formule. In queste il contesto tipa le variabili libere della formula.
 \begin{center}
-($\bot$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ N$_0$ (tipo vuoto) type[$\Gamma$]\\
-(\textit{tt})$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ N$_1$ (tipo singoletto) type[$\Gamma$]\\
+($\bot$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ N$_0$ type[$\Gamma$]\\
+(\textit{tt})$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ N$_1$ type[$\Gamma$]\\
 ($\varphi$ $\vee$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $+$ $\psi^I$ type[$\Gamma$]\\
 ($\varphi$ $\&$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\times$ $\psi^I$ type[$\Gamma$]\\
 ($\varphi$ $\rightarrow$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\prod_{z \in \varphi^I}$ $\psi^I$ type[$\Gamma$]\\
 ($\neg$ $\varphi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\rightarrow$ $\bot^I$type[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\varphi^I$ $\rightarrow$ N$_0$ type[$\Gamma$]\\
 ($\forall_{x \in A}$ $\varphi$(x))[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\prod\limits_{x \in A}$($\varphi$(x))$^I$ type[$\Gamma$]\\
-(t $\equiv$ s)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ Id(A,t,s) type[$\Gamma$] $\Rightarrow$ \textit{unico predicato atomico}\\
-($\exists_{x \in A}$ $\varphi$(x))$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\sum\limits_{x \in A}$($\varphi$(x))$^I$[$\Gamma$]
+(t $=$ s)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ Id(A,t,s) type[$\Gamma$] $\Rightarrow$ \textit{unico predicato atomico}\\
+($\exists_{x \in A}$ $\varphi$(x))$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\sum\limits_{x \in A}$($\varphi$(x))$^I$ type[$\Gamma$]
 \end{center}
 \noindent
 Da tenere presente che per noi vale
@@ -34,22 +34,22 @@ si intende il giudizio \textbf{$\alpha^I$ type[$\Gamma$]} (in teoria dei tipi), 
 \noindent
 Va ricordato che $\alpha$ prop[$\Gamma$] $\equiv$ predicato che \`e una formula proposizionale su $\Gamma$
 \begin{center}
-\textbf{$\alpha$ prop} (secondo il solito uso di preposizione) \quad \textbf{sse} \quad \textbf{$\alpha$ prop[$\Gamma$]}
+\textbf{$\alpha$ prop} (secondo il solito uso di proposizione) \quad \textbf{sse} \quad \textbf{$\alpha$ prop[$\Gamma$]}
 \end{center}
 \vspace{0.3cm}
 \textit{Definizione}\\\\
 \noindent
 Introduciamo il concetto di \textbf{dimostrazioni logiche}.\\
-Date le preposizioni $\phi$ prop[$\Gamma$] e $\alpha_i$ prop[$\Gamma$] per i $=$ 1,..,n derivabili in teoria dei tipi.\\
+Date le proposizioni $\phi$ prop[$\Gamma$] e $\alpha_i$ prop[$\Gamma$] per i $=$ 1,..,n derivabili in teoria dei tipi.\\
 Introduciamo il \textbf{giudizio $\phi$ true[$\Gamma$,$\alpha_1$ true,...,$\alpha_n$ true]}. In questo modo, si definisce il \textbf{contesto spuro}, dove $\Gamma$ \`e il solito contesto e $\alpha_1$ true,...,$\alpha_n$ true \`e un contesto nuovo di assunzioni di proposizioni.\\\\
 \noindent
-Introdotto il giudizio diciamo che \`e derivabile se esiste un termine (detto \textit{proof-term}) pf tale che pf $\in$ $\phi$[$\Gamma$,x$_1$ $\in$ $\alpha_1$,...,x$_n$ $\in$ $\alpha_n$] \`e derivabile in una teoria dei tipi.\\\\
+Introdotto il giudizio diciamo che \`e derivabile se esiste un termine (detto \textit{proof-term}) pf tale che pf $\in$ $\phi$[$\Gamma$,x$_1$ $\in$ $\alpha_1$,...,x$_n$ $\in$ $\alpha_n$] che \`e derivabile in una teoria dei tipi.\\\\
 \noindent \textit{Definizione}\\
 (Per ricollegare il calcolo del primo ordine con la logica del primo anno)\\\\
 \noindent 
-Preso un sequente, in formule della logica predicativa con l'uguaglianza  e variabili, nel linguaggio \textit{L}, tipate vale che\\
+Preso un sequente, in formule della logica predicativa con l'uguaglianza  e variabili, nel linguaggio \textit{L}, tipate, vale che\\
 \textbf{({\scriptsize$\sum$} $\vdash_\Gamma$ $\Delta$)$^I$ ${\overset{\mathit{def}}{=}}$ ($\Delta^\vee$)$^I$ type $[$ $\Gamma$,x $\in$ ({\scriptsize$\sum$}$^\&$)$^I$ $]$}\\
-Per il quale vale una definizione per induzione dei termini:
+Per il quale vale una definizione per induzione, dei termini:
 \begin{itemize}
 \item {\scriptsize$\sum$}$^\&$
 \begin{itemize}
@@ -70,7 +70,8 @@ Ovvero se esiste un pf tale che pf $\in$ ($\Delta^\vee$)$^I$[$\Gamma$,x $\in$ ({
 Si pu\`o dimostrare ({\scriptsize$\sum$} $\vdash_\Gamma$ $\Delta$)$^I$ \`e derivabile sse ($\Delta^\vee$)$^I$ type[$\Gamma$] \`e derivabile.
 \\\\
 \noindent
-\textbf{Teorema} i sequenti derivabili del calcolo della deduzione naturale \textit{DNI}\footnote{Logica Intuizionistica.} sono validi.\\
+\textbf{Teorema} i sequenti derivabili, del calcolo della deduzione naturale \textit{DNI},\footnote{Logica Intuizionistica.} sono validi in teoria dei tipi.\\\\
+\noindent
 \textit{Non sono validi quelli della Logica classica. Perch\`e?} Per il Principio del terzo escluso.\\\\
 \noindent
 \textbf{Il Principio del terzo escluso} non \`e valido in teoria dei tipi perch\`e per ogni $\varphi$ noi dovremmo dedurre, in teoria dei tipi, un \textbf{pf $\in$ ($\varphi$ $\vee$ $\neg\varphi$)$^I$ $[$ $]$ $\equiv$ $\varphi^I$ $+$ $\neg\varphi^I$ $[$ $]$}. 
@@ -96,14 +97,14 @@ Ma \textit{G$\ddot{o}$del} ha dimostrato che n\`e $\vdash$ G$[$ $]$ e neanche $\
 \label{sec:cap10}
 \paragraph{1)}
 \textbf{Supposto A type [$\Gamma$], B type[$\Gamma$] e R(x,y) type[$\Gamma, x \in A, y \in B$], dimostrare che il seguente principio di scelta, detto comunemente assioma di scelta
-\begin{center}$\forall_{x \in A}$ $\exists_{y \in B}$ $\rightarrow$ $\exists_{f \in A \rightarrow B}$ $\forall_{x \in A}$ $R(x,f(x)$) true[$\Gamma$]\end{center}
+\begin{center}$\forall_{x \in A}$ $\exists_{y \in B} R(x,y)$ $\rightarrow$ $\exists_{f \in A \rightarrow B}$ $\forall_{x \in A}$ $R(x,f(x)$) true[$\Gamma$]\end{center}
 }
 \noindent
 \textbf{Soluzione}
 \\\\
 \noindent
 Devo verificare che pf $\in$ $\forall_{x \in A}$ $\exists_{y \in B}$R(x,y) $\rightarrow$ $\exists_{f \in A \rightarrow B}$ $\forall_{x \in A}$ $R(x,f(x)$) [$\Gamma$] sia derivabile in teoria dei tipi.\\
-Applico la formula ($\varphi$ $\rightarrow$ $\psi$)$^I$[$\Gamma$] ${\overset{\mathit{def}}{\equiv}}$ $\prod_{z \in \varphi^I}$ $\psi^I$ type[$\Gamma$]:\\\\
+In logica predicativa con l'uguaglianza diventa:\\\\
 \noindent
 $\Rightarrow$ pf $\in$ $\prod_{z \in (\prod_{x \in A} \hspace{0.3cm} \sum_{y \in B} R(x,y))}$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]\\\\
 \noindent
@@ -112,7 +113,7 @@ l'istanza deve rispettare le regole di introduzione del tipo prodotto dipendente
 \begin{itemize}
 \item prima applicazione, considerando $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ C(z) [$\Gamma$]: $\lambda$z.c(z)
 \item seconda applicazione considerando $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ $\sum_{f \in A \rightarrow B}$ C(f) [$\Gamma$]: $\lambda$z.$<\pi_1z,\pi_2z>$.c(f), perch\`e per ogni z, z $\in$ f e z $\in$ C
-\item terza applicazione, considerando $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ $\sum_{f \in A \rightarrow B}$ C(f) [$\Gamma$] devo individuare un elemento che appartenga a A: $\lambda$z.$<\pi_1$($Ap(z,x)$), $\pi_2$($Ap(z,x)$)$>$.c(f)
+\item terza applicazione, considerando $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ $\sum_{f \in A \rightarrow B}$ C(f) [$\Gamma$] devo individuare un elemento che appartenga a B: $\lambda$z.$<\pi_1$($Ap(z,x)$), $\pi_2$($Ap(z,x)$)$>$.c(f)
 \item quarta applicazione, considerando $\prod_{z \in (\prod_{x \in A} \hspace{0.2cm} \sum_{y \in B} R(x,y))}$ $\rightarrow$ $\sum_{f \in A \rightarrow B}$ $\prod_{x \in A}$ $R(x,f(x))$ [$\Gamma$]: $\lambda$z.$<\lambda$ $x.\pi_1$($Ap(z,x)$), $\lambda$ $x.\pi_2$($Ap(z,x)$)$>$
 \end{itemize}
 \noindent
@@ -137,20 +138,22 @@ $\theta$ $=$ $\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$
 \vspace{0.5cm}
 \textbf{1}
 \scriptsize
-\begin{adjustwidth}{-6em}{}
+\begin{adjustwidth}{-9em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type[$\Gamma$]}
 
-\AxiomC{\textbf{$\bigstar$}}
-\UnaryInfC{R(x,y) type[$\Gamma$,z $\in$ $\prod_{x \in A}$]}
-\LeftLabel{{\scriptsize$\sum$}-F}
-\UnaryInfC{ $\sum_{y \in B} R(x,y)$ type[$\Gamma$,z $\in$ $\prod_{x \in A}$]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ A) $\in$ ($\Gamma$,z $\in$ $\prod_{x \in A}$)}
+\AxiomC{}
+\UnaryInfC{A type[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{$\sum_{y \in B} R(x,y)$ type[$\Gamma$,x $\in$ A]}
+\LeftLabel{F-{\scriptsize$\prod$}}
+\BinaryInfC{$\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$ type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$) $\notin$ $\Gamma$}
 \UnaryInfC{$\theta$ cont}
 \LeftLabel{ind-ty}
 \BinaryInfC{A type[$\theta$]}
-\LeftLabel{F-c}\RightLabel{(x $\in$ A) $\in$ $\theta$}
+\LeftLabel{F-c}\RightLabel{(x $\in$ A) $\notin$ $\theta$}
 \UnaryInfC{$\theta$,x $\in$ A cont}
 \LeftLabel{var}
 \UnaryInfC{z $\in$ $\prod_{x \in A}$ $\sum_{y \in B}R(x,y)$[$\theta$,x $\in$ A]}
@@ -160,7 +163,7 @@ $\theta$ $=$ $\Gamma$,z $\in$ $\prod_{x \in A}$ $\sum_{y \in B} R(x,y)$
 \UnaryInfC{$x \in A $[$\theta$,x $\in$ A]}
 \LeftLabel{E-{\scriptsize$\prod$}}
 \BinaryInfC{$Ap(z,x)$ $\in$ $\sum_{y \in B}R(x,y)$[$\theta$,x $\in$ A]}
-\LeftLabel{PJ$_1$-x}
+\LeftLabel{PJ$_1$-$\times$}
 \UnaryInfC{$\pi_1$($Ap(z,x)$) $\in$ B[$\theta$,x $\in$ A]}
 \LeftLabel{I-$\rightarrow$}
 \UnaryInfC{$\lambda$ $x.\pi_1$($Ap(z,x)$) $\in$ A $\rightarrow$ B[$\theta$]}
@@ -182,7 +185,7 @@ R(x,Ap($\lambda$ $x.\pi_1$($Ap(z,x)$),x)) $\rightarrow_1$ R(x, $\pi_1$($Ap(z,x)$
 \UnaryInfC{x $\in$ A [$\theta,x \in A]$}
 \LeftLabel{E-{\scriptsize $\prod$}}
 \BinaryInfC{$Ap(z,x)$ $\in$ $\sum_{y \in B}$ R(x,y)[$\theta,x \in A]$}
-\LeftLabel{PJ$_2$-x}
+\LeftLabel{PJ$_2$-$\times$}
 \UnaryInfC{$\pi_2$($Ap(z,x)$) $\in$ R(x, $\pi_1$($Ap(z,x)$)[$\theta,x \in A]$}
 \AxiomC{}
 \UnaryInfC{ R(x, $\pi_1$($Ap(z,x)$) $=$ R(x,Ap($\lambda$ $x.\pi_1$($Ap(z,x)$),x))[$\theta,x \in A]$}
@@ -213,4 +216,3 @@ R(x,Ap($\lambda$ $x.\pi_1$($Ap(z,x)$),x)) $\rightarrow_1$ R(x, $\pi_1$($Ap(z,x)$
 \noindent
 \normalsize
 \noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
-\textbf{$\bigstar$} derivazioni gi\`a risolte, o simili, negli esercizi precedenti; che prevedono una combinazioni di istruzioni di indebolimento/assunzione di variabili/formazione di contesto per verificare l'assioma [ ] cont.\\
