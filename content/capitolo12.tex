@@ -451,24 +451,24 @@ N$_0$,N$_1$, Nat, List, B $+$ C, Id(A,a,b), $\sum\limits_{x \in A}$ B(x), $\prod
 \end{center}
 \noindent
 Questa \`e la teoria \textbf{MLTT}.\\
-La teoria \textbf{MLTT} \`e \textbf{aperta}, ovvero si intende anche l'estensione della teoria specifica, con i tipi elencati, con altri tipi induttivi, secondo lo schema delle regole date in \S\ref{sec: schema-generale}, in modo predicativo. In tale teoria deve sempre valere il teorema della forma normale \S \ref{subsec: applicazione-uguaglianza-definizionale-tra-termini} (la confluenza), e in generale la correttezza dei 4 giudizi deve essere decidibile (\textit{decidable type checking}).\\\\
+La teoria \textbf{MLTT} \`e \textbf{aperta}, ovvero si intende anche l'estensione della teoria specifica, con i tipi elencati, con altri tipi induttivi, secondo lo schema delle regole date in \S\ref{sec: schema-generale}, in modo predicativo. In tale teoria deve sempre valere il teorema della forma normale \S \ref{subsec: applicazione-uguaglianza-definizionale-tra-termini} (la confluenza), e in generale la correttezza dei 4 giudizi deve essere decidibile (\textit{decidable type checking}).
 \noindent
 \begin{center}\textbf{MLTT$_0$} ${\overset{\mathit{def}}{=}}$ \textbf{MLTT} $-$ Universo e con solo i tipi elencati sopra\\
 \textbf{MLTT$_1$} ${\overset{\mathit{def}}{=}}$ \textbf{MLTT$_0$} $+$ U$_0$ universo\end{center}
 \noindent
-La teoria \textbf{MLTT$_1$} \`e quella spiegata nella teoria del corso.
+A titolo di esempio, la teoria \textbf{MLTT$_1$} \`e quella spiegata nella teoria del corso.
 
 \subsection{Necessit\`a di un Universo per formalizzare l'aritmetica}
 \label{subsec:Necessit\`a-di-un-Universo-per-formalizzare-l'aritmetica}
 Se prendiamo la teoria \textbf{MLTT$_0$} (senza l'Universo) \begin{center}$\equiv$ N$_0$, N$_1$, List(A), Nat, B $+$ C, Id(A,a,b), $\sum\limits_{x \in A}$ B(x), $\prod\limits_{x \in A}$ B(x)\end{center}
 \noindent
-\`e \textbf{inadeguata} per formalizzare la matematica, perch\`e non dimostra che i Naturali sono formati da infiniti numeri. In particolare non \`e in grado di dimostrare che 0 $\neq$ 1 proposizionalmente. Formalmente significa
+risulta \textbf{inadeguata} per formalizzare la matematica, perch\`e non dimostra che i Naturali sono formati da infiniti numeri. In particolare non \`e in grado di dimostrare che 0 $\neq$ 1 proposizionalmente. Formalmente significa
 \begin{center}\textbf{$\neg$ Id(Nat,0,1) true[ ] non \`e derivabile in MLTT$_0$ (ma lo \`e con l'Universo)}\end{center}
 \noindent
 Al massimo in \textbf{MLTT}(\textit{Martin-L$\ddot{o}$f's style theory}) si pu\`o formalizzare in \textit{Costructive Math} $=$ \textit{Math}  (matematica usuale che si pu\`o dimostrare con la Logica intuizionisitica) $+$ Logica intuizionistica.\\
-Invece \textit{Classic Math} $=$ \textit{Math} $+$ Logica intuizionistica $+$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$\\
-$\Rightarrow$ Logica intuizionistica $+$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$ $=$ Logica classica\\
-$\Rightarrow$ $\varphi \vee \neq\varphi$ true[$\Gamma$] per ogni $\varphi$ non vale in \textbf{MLTT}.\\
+Invece \textit{Classic Math} $=$ \textit{Math} $+$ Logica intuizionistica $+$ $\varphi \vee \neg\varphi$ true[$\Gamma$] per ogni $\varphi$\\
+$\Rightarrow$ Logica intuizionistica $+$ $\varphi \vee \neg\varphi$ true[$\Gamma$] per ogni $\varphi$ $=$ Logica classica\\
+$\Rightarrow$ $\varphi \vee \neg\varphi$ true[$\Gamma$] per ogni $\varphi$ non vale in \textbf{MLTT} (come gi\`a accennato all'interno di \S\ref{cap:la-logica-della-teoria-dei-tipi-di-Martin-Lof}).\\
 In \textbf{MLTT} non si pu\`o formalizzare la \textit{Classic Math}, al massimo solo quella \textit{Costructive}.
 \subsubsection{Dimostrazione del perch\`e MLTT$_0$, senza Universo, \`e indeguata}
 \label{subsec:dimostro-perch\`e-MLTT$_0$-senza-Universo-\`e-indeguata}
@@ -479,7 +479,7 @@ Per dimostrare l'aritmetica intuizionistica bisogna almeno essere in MLTT$_1$, c
 \end{center}
 \noindent
 \begin{enumerate}
-\item \textbf{Costruire un contromodello interno di MLTT$_0$}, che renda valido tutte le regole di \textbf{MLTT$_0$} con l'assunzione che \textbf{MLTT$_0$} sia consistente.\\
+\item \textbf{Costruire un contromodello interno di MLTT$_0$}, che renda valido tutte le regole di \textbf{MLTT$_0$}, con l'assunzione che \textbf{MLTT$_0$} sia consistente.\\
 Ma ($\neg$Id(Nat,0,1))$^J$ $=$ N$_0$ type [ ] $=$ $\bot$ type [ ].\\\\
 \noindent
 Idea: ( )$^J$ tipi di MLTT$_0$ $\rightarrow$ \{N$_0$,N$_1$\} $\equiv$ Bool (ovvero ogni tipo viene interpretato come proposizione \textit{true} o \textit{false})\\
@@ -499,7 +499,7 @@ pf $\in$ B[$\Gamma$] \`e derivabile $\rightarrow$ $\ast$ $\in$ B$^J$[$\Gamma^J$]
 \noindent
 Con questo modello allora se scrivo Id(A,a,b)$^J$ viene interpretato come Nat$^J$ $=$ N$_1$\\
 Inoltre possiamo derivare $\ast$ $\in$ Id(A,a,b)$^J$ in \textbf{MTT$_0$}.\\
-\textit{Se Id(A,a,b)$^J$ \`e abitata, ed \`e vero, non pu\`o per\`o essere abitata la negazione.} Per cui formalmente la negazione viene interpretata come
+\textit{Se Id(A,a,b)$^J$ \`e abitata, ed \`e vero, non pu\`o per\`o essere abitata la negazione.} Formalmente la negazione viene interpretata come
 \begin{center}\textbf{$\neg$ Id(Nat,0,1) ${\overset{\mathit{def}}{=}}$ (Id(Nat,0,1)$\rightarrow$ N$_0$)$^J$ }\end{center}
 Qui va data l'interpretazione dello spazio di funzioni, caso particolare di {\scriptsize$\prod$}
 \begin{center}
@@ -519,7 +519,7 @@ $\bot$ $\rightarrow$ \textit{tt} $\equiv$ \textit{tt}\\
 $\bot$ $\rightarrow$ $\bot$ $\equiv$ \textit{tt}\\
 \textit{tt} $\rightarrow$ $\bot$ $\equiv$ $\bot$\\\\
 \noindent
-Dunque $\neg$ Id(Nat,0,1) ${\overset{\mathit{def}}{=}}$ (Id(Nat,0,1)$\rightarrow$ N$_0$)$^J$ $=$ $\prod\limits_{x \in Id(Nat,0,1)^J}$ N$_0$ $=$ $\prod\limits_{x \in N_1}$ N$_0$ $=$ N$_0$ $\rightarrow$ N$_0$($\bot$)\\
+Dunque $\neg$ Id(Nat,0,1) ${\overset{\mathit{def}}{=}}$ (Id(Nat,0,1)$\rightarrow$ N$_0$)$^J$ $=$ $\prod\limits_{x \in Id(Nat,0,1)^J}$ N$_0$ $=$ $\prod\limits_{x \in N_1}$ N$_0$ $=$ N$_0$ $=$ N$_0$($\bot$)\\
 \textbf{In questo modo ho dimostrato che non \`e vero che 0 $\neq$ 1 proposizionalemente.}\\\\
 \noindent
 Per completezza do anche le interpretazioni di  {\scriptsize}$\sum$ e  $+$
@@ -534,7 +534,7 @@ $
 $
 \end{center}
 \noindent
-Pensate come preposizioni \\
+Pensate come proposizioni \\
 ($\sum\limits_{x \in A}$ B)$^J$ $\equiv$ A$^J$ $\times$ B$^J$ $\equiv$\\
 \textit{tt} $\times$ \textit{tt} $\equiv$ \textit{tt}\\
 $\bot$ $\times$ \textit{tt} $\equiv$ $\bot$  \\
@@ -551,23 +551,23 @@ $
 $
 \end{center}
 \noindent
-Pensate come preposizioni \\
+Pensate come proposizioni \\
 (A $+$ B)$^J$ $\equiv$ A$^J$ $\vee$ B$^J$ $\equiv$\\
 $\bot$  $\vee$ $\bot$  $\equiv$ $\bot$ \\
 $\bot$ $\vee$ \textit{tt} $\equiv$ \textit{tt}  \\
 \textit{tt} $\vee$ \textit{tt} $\equiv$ \textit{tt} \\
-\textit{tt} $\vee$ $\bot$ $\equiv$ \textit{tt}\\\\
+\textit{tt} $\vee$ $\bot$ $\equiv$ \textit{tt}
 
 \end{enumerate}
 \noindent
-In questo modo abbiamo costruito (tipi $+$ termini di \textbf{MLTT$_0$})$^J$ $\rightarrow$ \textbf{MLTT$_0$}. Che rappresenta, difatti, uno schiacciamento dei tipi \textit{tt}(N$_1$) o $\bot$(N$_0$), pensando ai tipi come proposizioni, riuscendo a provare che 0 $=$1 \`e vero, in quanto tutti i tipi dei Naturali vengono interpretati unicamente dal singoletto.\\\\
+In questo modo abbiamo costruito (tipi $+$ termini di \textbf{MLTT$_0$})$^J$ $\rightarrow$ \textbf{MLTT$_0$}. Che rappresenta, difatti, uno schiacciamento dei tipi \textit{tt} (N$_1$) o $\bot$ (N$_0$), pensando ai tipi come proposizioni, riuscendo a provare che 0 $=$1 \`e vero, in quanto tutti i tipi dei Naturali vengono interpretati unicamente dal singoletto.\\\\
 \noindent
 \textbf{Questa interpretazione non funziona pi\`u con l'Universo}, perch\`e
 \begin{center}\textbf{U$_0^J$  $=$ N$_1$ $\Leftrightarrow$ MLTT$_1$ \`e inconsistente, poich\`e ($\bot$)$^J$ $=$ (\textit{tt})$^J$} \end{center}
-In quanto U$_0$, essendo Bool, contiene sia il codice di $\hat{N_1}$ che il codice di $\hat{N_0}$.
+Invece U$_0$, essendo Bool, contiene sia il codice di $\hat{N_1}$ che il codice di $\hat{N_0}$.
 
-\section{Principi di scelta per estrazioni di programmi da dimostrazioni}
-\label{sec:principi-di-scelta-per-estrazioni-di-programmi-da-dimostrazioni}
+\section{Principi di scelta per estrazione di programmi da dimostrazioni}
+\label{sec:principi-di-scelta-per-estrazione-di-programmi-da-dimostrazioni}
 La \textbf{MLTT} ha una peculiare propriet\`a, dipendente dal fatto che abbiamo identificato la quantificazione esistenziale con l'unione indiciata.
 \begin{center}\textbf{$\exists_{x \in A}$ $\varphi(x)$ }${\overset{\mathit{def}}{\equiv}}$ $\sum\limits_{x \in A}$ $\varphi(x)$\end{center}
 \noindent
@@ -588,7 +588,7 @@ $\Rightarrow$ esiste b $\in$ Nat $\rightarrow$ Nat[$\Gamma$] tale che $\forall$x
 Questo permette di risolvere delle disuguaglianze o riuscire a provare l'arrestabilit\`a di un programma, sempre su un certo y, dopo n passi, ed estrarne l'algoritmo che calcola il \textit{bound}/la funzione che da la soluzione dell'equazione.\\\\
 \noindent
 Suppongo pf $\in$ $\forall$x $\in$ Nat $\exists$y $\in$ Nat B$_p$(x,y)[$\Gamma$]\\
-Si deriva b ${\overset{\mathit{def}}{=}}$ $\lambda$x.$\pi_1$(Ap(pf,x)) $\in$ Nat $\rightarrow$ Nat \`e derivabile\\  $\lambda$x.$\pi_2$(Ap(pf,x)) $\in$ $\forall$x $\in$ Nat B$_p$(x,Ap(b,x))[$\Gamma$] \`e derivabile.
+Si deriva b ${\overset{\mathit{def}}{=}}$ $\lambda$x.$\pi_1$(Ap(pf,x)) $\in$ Nat $\rightarrow$ Nat[$\Gamma$] \`e derivabile\\  $\lambda$x.$\pi_2$(Ap(pf,x)) $\in$ $\forall$x $\in$ Nat B$_p$(x,Ap(b,x))[$\Gamma$] \`e derivabile
 
 \subsection{Assioma di scelta}
 \label{subsec:assioma-di-scelta}
@@ -641,10 +641,10 @@ Ma ancora abbiamo trovato una contraddizione, perch\`e grazie alla valenza del c
 \\\\
 \noindent
 In teoria dei tipi W viene simultato
-\begin{center}\textbf{$\Omega$ $\equiv$ $W$ ${\overset{\mathit{def}}{=}}$  \{(X,c) tipi $|$ (X,c) \`e ben fondato\}} \end{center}
+\begin{center}\textbf{$\Omega$ $\equiv$ $W$ ${\overset{\mathit{def}}{=}}$  \{(X,$<$) tipi $|$ (X,$<$) \`e ben fondato\}} \end{center}
 in relazione x < y prop[x,y $\in$ X]\\\\
 \noindent
-Ancora riesco a dimostrare che $\Omega$ \`e ben fondato e che porta a una contraddizione. Ecco che si \`e dimostrato che in \textbf{MLTT} $+$ $\hat{U}_0$ $in$ U$_0$ \`e inconsistente, ovvero $\bot$ true [ ] in tale teoria.\\\\
+Ancora riesco a dimostrare che $\Omega$ \`e ben fondato e che porta a una contraddizione. Ecco che si \`e dimostrato che in \textbf{MLTT} $+$ $\hat{U}_0$ $\in$ U$_0$ \`e inconsistente, ovvero $\bot$ true [ ] in tale teoria.\\\\
 \noindent
 Anche altre quantificazioni, come quelle illustrate sopra, allo stesso modo possono essere dimostrate inconsistenti.\\
 Tutto questo rende evidente come l'uso dei paradossi permette di vedere i limiti dei sistemi formali dal punto di vista logico.
@@ -652,7 +652,7 @@ Tutto questo rende evidente come l'uso dei paradossi permette di vedere i limiti
 \section{Esercizi}
 \label{sec:es-UO}
 \paragraph{1)}
-\textbf{Dimostrare in teoria dei tipi con un universo con almeno il codice del tipo vuoto e del tipo singoletto, ad esempio con U$_0$, si pu\`o derivare
+\textbf{Dimostrare in teoria dei tipi con un universo, con almeno il codice del tipo vuoto e del tipo singoletto, ad esempio con U$_0$, si pu\`o derivare
 \begin{center}
 $\neg$Id(Nat,0,1) true[ ]
 \end{center}
@@ -660,11 +660,11 @@ $\neg$Id(Nat,0,1) true[ ]
 \noindent
 \textbf{Soluzione}\\\\
 \noindent
-\textit{Devo dimostrare che esiste pf $\in$ Id(Nat,0,1) true[ ] $\equiv$ pf(z) $\in$ N$_0$[z $\in$ Id(Nat,0,1)], come gi\`a dimostrato in \S\ref{sec:esercizio-su-universo}. Per completezza, di seguito, mostro la derivabilit\`a di $\neg$ Id(Nat,0,1)type[ ].}\\\\
+\textit{Devo dimostrare che esiste pf $\in$ $\neg$Id(Nat,0,1)[ ] $\equiv$ pf(z) $\in$ N$_0$[z $\in$ Id(Nat,0,1)], come gi\`a dimostrato in \S\ref{sec:esercizio-su-universo}. Per completezza, di seguito, mostro la derivabilit\`a di $\neg$ Id(Nat,0,1) type[ ].}\\\\
 \noindent
 $\neg$ Id(Nat,0,1) type[ ] $\equiv$ Id(Nat,0,1) $\rightarrow$ $\bot$ type[ ] $\equiv$ Id(Nat,0,1) $\rightarrow$N$_0$ type[ ] $\equiv$ $\prod_{z \in Id(Nat,0,1)}$ N$_0$ type[ ]
 
-\begin{adjustwidth}{-6em}{}
+\begin{adjustwidth}{-10.5em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
@@ -678,7 +678,7 @@ $\neg$ Id(Nat,0,1) type[ ] $\equiv$ Id(Nat,0,1) $\rightarrow$ $\bot$ type[ ] $\e
 \LeftLabel{I$_2$-Nat}
 \UnaryInfC{1 $\in$ Nat[ ]}
 \LeftLabel{F-Id}
-\TrinaryInfC{Id(Nat,0,1)type[ ]}
+\TrinaryInfC{Id(Nat,0,1) type[ ]}
 
 \AxiomC{\textbf($\ast$)}
 \UnaryInfC{Id(Nat,0,1) type[ ]}
@@ -690,3 +690,6 @@ $\neg$ Id(Nat,0,1) type[ ] $\equiv$ Id(Nat,0,1) $\rightarrow$ $\bot$ type[ ] $\e
 \BinaryInfC{$\prod_{z \in Id(Nat,0,1)}$ N$_0$ type[ ]}
 \end{prooftree}
 \end{adjustwidth}
+\noindent
+\normalsize
+Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.
