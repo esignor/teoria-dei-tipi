@@ -1,17 +1,18 @@
 \chapter{Tipi Universo \`a la Tarski}
 \label{cap:tipo-universo}
 Il tipo Universo, \textbf{schema di tipi}, non \`e induttivo ed \`e rivolto, in questo caso, alla teoria dei tipi di  \textit{Martin-L$\ddot{o}$f} intensionale.\\
-Esiste il tipo Universo \`a la \textit{Tarski} e alla \textit{Russell}. Il primo, che espongo nel capitolo, pi\`u preciso ma pesante nella sintassi, pi\`u facile da capire e da modellare (soprattutto per fare delle semantiche nella teoria dei tipi), per cui migliore quando si programma con un \textit{proof assistant}; e il secondo pi\`u semplice da utilizzare nelle dimostrazioni, ma meno preciso.\\\\
+Esiste il tipo Universo \`a la \textit{Tarski} e alla \textit{Russell}. Il primo, che espongo nel capitolo, pi\`u preciso ma pesante nella sintassi, pi\`u facile da capire e da modellare (soprattutto per fare delle semantiche nella teoria dei tipi), per cui migliore quando si programma con un \textit{proof-assistant}; e il secondo pi\`u semplice da utilizzare nelle dimostrazioni, ma meno preciso.\\\\
 Caratteristica del tipo Universo \`e che permette la ripetizione delle costruzioni per generare una gerarchia di universi, legati fra di loro
 \begin{center} U$_0$, U$_1$,..., U$_n$ \qquad con n $\in$ Nat\end{center}
 Nella prima versione \textit{Martin-L$\ddot{o}$f} permetteva che U$_0$ appartenesse a U$_0$, generando per\`o una contraddizione.
 \textbf{\begin{center} U$_0$ $\notin$ U$_0$ \quad $\rightarrow$ \quad U$_0$ $\in$ U$_0$ \`e una contraddizione\end{center}}
 \noindent
-Universo \`e un contenitore, di tipi, predicativo, ovvero U$_0$ $\notin$ U$_0$.\\\\
+Universo \`e per questo un contenitore, di tipi, predicativo, ovvero U$_0$ $\notin$ U$_0$.\\\\
 \noindent
-\textit{Fondamentale}\\
-Essenziale per avere commutativit\`a  \`e non permettere che $\hat{U_0}$ $\in$ U$_0$ (un codice U$_0$ dentro a U$_0$) altrimenti, come gi\`a detto, si ricade nella contraddizione. Per cui si dichiara  come "\textit{small}" o piccoli tutti i tipi con codice in U$_0$; e invece come "\textit{large}" i tipi costruiti con U$_0$, ad esempio U$_0$ $\rightarrow$ U$_0$ type[ ].\\
-Ecco che per la natura della regola di Eliminazione e dal fatto che contiene esclusivamente \textit{small} e non se stesso, posso affermare che l'Universo \`e \textbf{predicativo e non induttivo}.\\\\
+\textit{Fondamentale}\\\\
+\noindent
+Essenziale, per avere commutativit\`a,  \`e non permettere che $\hat{U_0}$ $\in$ U$_0$ (un codice U$_0$ dentro a U$_0$) altrimenti, come gi\`a detto, si ricade nella contraddizione. Per cui si dichiara  come "\textit{small}" o piccoli tutti i tipi con codice in U$_0$; e invece come "\textit{large}" i tipi costruiti con U$_0$, ad esempio U$_0$ $\rightarrow$ U$_0$ type[ ].\\
+Ecco che per la natura della \textit{regola di Eliminazione} e dal fatto che contiene esclusivamente \textit{small} e non se stesso, posso affermare che l'Universo \`e \textbf{predicativo e non induttivo}.\\\\
 \noindent
 Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regole seguenti, dove \textbf{T} indica la decodifica.
 \section{Regole di Formazione}
@@ -25,7 +26,7 @@ Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regol
 
 \section{Regole di Introduzione}
 \label{sec: introduzione-U0}
-\textit{Per le regole di Introduzione U$_0$ funge da contenitore di tipi, tramite codifica, ed \`e chiuso rispetto ai tipi finora introdotti, nei capitolo precedenti. Inoltre le regole di Introduzione usano quelle di Eliminazione.}
+\textit{Per le regole di Introduzione U$_0$ funge da contenitore di tipi, tramite codifica, ed \`e chiuso rispetto ai tipi introdotti, nei capitolo precedenti. Inoltre le regole di Introduzione usano quelle di Eliminazione.}
 \begin{center}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{I$_1$-Uno)}
@@ -100,7 +101,7 @@ Il tipo del \textbf{Primo Universo (U$_0$) alla Tarski} \`e definito dalle regol
 \vspace{0.5cm}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{C$_3$-Uno)}
-\UnaryInfC{\textbf{T}(Nat) $=$ Nat type[$\Gamma$]}
+\UnaryInfC{\textbf{T}($\hat{Nat}$) $=$ Nat type[$\Gamma$]}
 \DisplayProof\\
 \vspace{0.5cm}
 \AxiomC{c(x) $\in$ U$_0$[$\Gamma$,x $\in$ \textbf{T}(b)]}
@@ -184,7 +185,7 @@ La relazione $\rightarrow_1$ viene definita all'interno dei termini con l'uso de
 \item $\beta_{Uno}$-C$_8$-red) \textbf{T}($\hat{Id}(b,c,d)$) $\rightarrow_1$ Id(\textbf{T}(b),c,d)
 \item \AxiomC{a$_1$ $\rightarrow$ a$_2$}
 \LeftLabel{Uno-red)}
-\UnaryInfC{\textbf{T}(a$_1$) $\rightarrow_1$ \textbf{T}(a$_2$) type[$\Gamma$]}
+\UnaryInfC{\textbf{T}(a$_1$) $\rightarrow_1$ \textbf{T}(a$_2$)}
 \DisplayProof \qquad
 \item novit\`a del tipo Universo rispetto al tipo singoletto\\
 \AxiomC{c$_1$ $\rightarrow_1$ c$_2$}
@@ -231,7 +232,7 @@ Inoltre mette in luce, come l'uso degli Universi, permette di dimostrare alcuni 
 \textbf{Voglio dimonstrare che $\neg$Id(Nat,0,1) \`e derivabile, ovvero che esiste pf tale che} 
 \begin{center}\textbf{pf $\in$ Id(Nat,0,1) $\rightarrow$ N$_0$[ ]}\end{center}
 Questo perch\`e N$_0$ $\equiv$ $\bot$ e Id(Nat,0,1) $\equiv$ $0$ $=_{Nat}$ 1\\
-Che \`e equivalente  a trovare 
+Che \`e equivalente  a trovare  (con \textit{(I-$\rightarrow$)})
 \begin{center}\textbf{pf(z) $\in$ N$_0$[z $\in$ Id(Nat,0,1)]}\end{center}
 \noindent \textit{Ricordo che l'uguaglianza \`e Id e non 0 $=$ 1 $\in$ Nat (0 \`e una NF $\neq$ succ(0) $=$ 1 che \`e una NF) che difatti non \`e derivabile}.\\\\
 \noindent \textbf{L'unico modo per trovare pf \`e solo utilizzando un Universo (U$_0$)}.
@@ -250,22 +251,18 @@ Definisco la funzione \textit{isZero}, indispensabile per capire se z \`e 0 oppu
 \begin{center}\textbf{isZero(z)[z $\in$ Nat]}\end{center}
 Idea: pensare a U$_0$ come se fosse Bool (in realt\`a U$_0$ ne contiene molti di pi\`u).
 \begin{itemize}
-\item vero: $\hat{N}_1$ $\rightarrow$ T(N$_1$) $=$ N$_1$ = \textit{tt}$^I$
-\item falso: $\hat{N}_0$ $\rightarrow$ T(N$_0$) $=$ N$_0$ = \textit{$\bot$}$^I$
+\item vero: $\hat{N}_1$ $\rightarrow$ T($\hat{N}_1$) $=$ N$_1$ $=$ \textit{tt}$^I$
+\item falso: $\hat{N}_0$ $\rightarrow$ T($\hat{N}_0$) $=$ N$_0$ $=$ \textit{$\bot$}$^I$
 \end{itemize}
 \noindent
 \textit{\`E vero che z \`e zero, per cui nel caso base va messo N$_1$\\
 Il successore di qualcosa non \`e zero, e dunque va messo N$_0$}
-\scriptsize
-\begin{adjustwidth}{-7em}{}
+\small
+\begin{adjustwidth}{-4em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
-\LeftLabel{F-Nat}
-\UnaryInfC{Nat type [ ]}
-\LeftLabel{F-c}\RightLabel{(z $\in$ Nat) $\notin$ [ ]}
-\UnaryInfC{z $\in$ Nat cont}
 \LeftLabel{F-Uno}
-\UnaryInfC{U$_0$ type[z $\in$ Nat]}
+\UnaryInfC{U$_0$ type[ ]}
 
 \AxiomC{[ ] cont}
 \LeftLabel{I$_2$-Uno}
@@ -306,9 +303,8 @@ Il successore di qualcosa non \`e zero, e dunque va messo N$_0$}
 \UnaryInfC{$\hat{N}_1$ $\in$ U$_0$[ ]}
 
 
-\AxiomC{[ ] cont}
-\LeftLabel{I$_1$-Uno}
-\UnaryInfC{$\hat{N}_0$ $\in$ U$_0$[ ]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\hat{N}_0$ $\in$ U$_0$[x $\in$ Nat, y $\in$ U$_0$]}
 \LeftLabel{C$_1$-Nat}
 \TrinaryInfC{El$_{Nat}$(0,$\hat{N_1}$,(x,y).$\hat{N_0}$) $=$ $\hat{N_1}$ $\in$ U$_0$ [ ]}
 \end{prooftree}
@@ -318,26 +314,27 @@ Il successore di qualcosa non \`e zero, e dunque va messo N$_0$}
 
 \begin{prooftree}
 \AxiomC{[ ] cont}
-\LeftLabel{I$_1$-Nat}
-\UnaryInfC{0 $\in$ Nat [ ]}
-
-\AxiomC{[ ] cont}
 \LeftLabel{F-Uno}
 \UnaryInfC{U$_0$ type[ ]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I$_1$-Nat}
+\UnaryInfC{0 $\in$ Nat [ ]}
 
 \AxiomC{[ ] cont}
 \LeftLabel{I$_2$-Uno}
 \UnaryInfC{$\hat{N}_1$ $\in$ U$_0$[ ]}
 
 
-\AxiomC{[ ] cont}
-\LeftLabel{I$_1$-Uno}
-\UnaryInfC{$\hat{N}_0$ $\in$ U$_0$[ ]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\hat{N}_0$ $\in$ U$_0$[x $\in$ Nat, y $\in$ U$_0$]}
 \LeftLabel{C$_2$-Nat}
 \QuaternaryInfC{El$_{Nat}$(succ(0),$\hat{N_1}$,(x,y).$\hat{N_0}$) $=$ $\hat{N_0}$ $\in$ U$_0$ [ ]}
 \end{prooftree}
 \noindent
 \end{enumerate}
+\noindent
+Uso \textbf{($\ast$)} per indicare le derivazioni gi\`a svolte all'interno dello stesso esercizio.\\\\
 \noindent
 Dunque \begin{center}\textbf{\textit{isZero}(z) equivale a El$_{Nat}$(z,$\hat{N}_1$,(x,y).$\hat{N}_0$)\\
 con \textit{isZero}(0) $=$ $\hat{N}_1$ $\in$ U$_0$[ ] e \textit{isZero}(1) $=$ $\hat{N}_0$ $\in$ U$_0$[ ]}\end{center}
@@ -348,22 +345,25 @@ h$_{isZero}$(z$_1$,z$_2$,z$_3$) \`e equivalente a El$_{Id}$(z$_3$,(x).id(isZero(
 
 \subsubsection{Corollario}
 h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,isZero(0),isZero(1))[z $\in$ Id(Nat,0,1)] \`e derivabile.\\
-Inoltre visto che \textit{isZero}(0) $=$ N$_1$ e \textit{isZero}(1) $=$ N$_0$ anche
-\begin{center} \textbf{h$_{isZero}$(0,1,z) Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)]} \end{center}\`e derivabile.
+Inoltre visto che \textit{isZero}(0) $=$ $\hat{N}_1$ e \textit{isZero}(1) $=$ $\hat{N}_0$ anche
+\begin{center} \textbf{h$_{isZero}$(0,1,z) Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)[z $\in$ Id(Nat,0,1)]} \end{center}\`e derivabile.
 \small
-\begin{adjustwidth}{-11em}{}
+\begin{adjustwidth}{-12em}{}
 \begin{prooftree}
-\AxiomC{U$_0$ $=$ U$_0$ type[z $\in$ Id(Nat,0,1)}
-\AxiomC{isZero(0) $=$ N$_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
-\AxiomC{isZero(1) $=$ N$_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
+\AxiomC{}
+\UnaryInfC{U$_0$ $=$ U$_0$ type[z $\in$ Id(Nat,0,1)]}
+\AxiomC{}
+\UnaryInfC{isZero(0) $=$ $\hat{N}_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
+\AxiomC{}
+\UnaryInfC{isZero(1) $=$ $\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
 \LeftLabel{eq-F-Id}
-\TrinaryInfC{Id(U$_0$,isZero(0),isZero(1) $=$ Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)}
+\TrinaryInfC{Id(U$_0$,isZero(0),isZero(1)) $=$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)[z $\in$ Id(Nat,0,1)]}
 \end{prooftree}
 \end{adjustwidth}
 \vspace{0.5cm}
 \noindent
 \normalsize
-Ecco che se 0 $=$ 1 siamo vicino alla contraddizione, in quanto usando che \textit{isZero}(0) $=$ N$_1$ e \textit{isZero}(1) $=$ N$_0$, allora anche N$_0$ $=$ N$_1$ nell'Universo. Ma N$_0$ \`e \textit{true} e  N$_1$ \`e \textit{false} e se \textit{true} fosse uguale a \textit{false} avremmo una logica inconsistente.
+Ecco che se 0 $=$ 1 siamo vicino alla contraddizione, in quanto usando che \textit{isZero}(0) $=$ $\hat{N}_1$ e \textit{isZero}(1) $=$ $\hat{N}_0$, allora anche $\hat{N}_0$ $=$ $\hat{N}_1$ nell'Universo. Ma $\hat{N}_0$ \`e \textit{false} e  $\hat{N}_1$ \`e \textit{true} e se \textit{true} fosse uguale a \textit{false} avremmo una logica inconsistente.
 \subsection{Lemma 3}
 \textit{Serve per arrivare ad avere una contraddizione.}\\\\
 \noindent
@@ -371,14 +371,14 @@ q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(
 \noindent
 $\Delta$ $\equiv$ x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)
 \scriptsize
-\begin{adjustwidth}{-13em}{}
+\begin{adjustwidth}{-15em}{}
 \begin{prooftree}
 \AxiomC{}
-\UnaryInfC{(T(x) $\rightarrow$ T(y))[$\Delta$]}
+\UnaryInfC{(T(x) $\rightarrow$ T(y)) type[$\Delta$]}
 \AxiomC{}
-\UnaryInfC{(T(x) $\rightarrow$ T(y))[$\Delta$]}
-\LeftLabel{F-x}
-\BinaryInfC{(T(x) $\rightarrow$ T(y)) $\times$ (T(x) $\rightarrow$ T(y))[$\Delta$]}
+\UnaryInfC{(T(x) $\rightarrow$ T(y)) type[$\Delta$]}
+\LeftLabel{F-$\times$}
+\BinaryInfC{(T(x) $\rightarrow$ T(y)) $\times$ (T(x) $\rightarrow$ T(y)) type[$\Delta$]}
 
 \AxiomC{}
 \UnaryInfC{T(x) type[x $\in$ U$_0$]}
@@ -388,12 +388,12 @@ $\Delta$ $\equiv$ x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)
 \UnaryInfC{w $\in$ T(x)[x $\in$ U$_0$,w $\in$ T(x)]}
 \LeftLabel{I-$\rightarrow$}
 \UnaryInfC{$\lambda$w.w $\in$ T(x) $\rightarrow$ T(x)[x $\in$ U$_0$]}
-\AxiomC{$\ast$}
+\AxiomC{($\ast$)}
 \UnaryInfC{$\lambda$w.w $\in$ T(x) $\rightarrow$ T(x)[x $\in$ U$_0$]}
-\LeftLabel{I-x}
+\LeftLabel{I-$\times$}
 \BinaryInfC{$<\lambda$w.w,$\lambda$w.w$>$ $\in$ (T(x) $\rightarrow$ T(x)) $\times$ (T(x) $\rightarrow$ T(x))[x $\in$ U$_0$]}
 \LeftLabel{E-Id$_{dip}$}
-\BinaryInfC{El$_{Id}$(z,(x).$<\lambda$w.w,$\lambda$w.w$>$) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(x) $\rightarrow$ T(y))[]}
+\BinaryInfC{El$_{Id}$(z,(x).$<\lambda$w.w,$\lambda$w.w$>$) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(x) $\rightarrow$ T(y))[$\Delta$]}
 \end{prooftree}
 \end{adjustwidth}
 \normalsize
@@ -401,24 +401,28 @@ $\Delta$ $\equiv$ x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)
 \noindent
 Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.
 \subsubsection{Corollario}
-Da q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[$\Delta$] sostituendo x con N$_1$ e y con N$_0$ ottengo \begin{center} q$_{U_0}$($\hat{N_1}$,$\hat{N_0}$,z) $\in$ (T(N$_1$) $\rightarrow$ T(N$_0$)) $\times$ (T(N$_0$) $\rightarrow$ T(N$_1$))[z $\in$ Id(Nat,0,1)] \end{center} che \`e derivabile. Inoltre mediante sostituzione trovo che
+Da q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[$\Delta$] sostituendo x con $\hat{N}_1$ e y con $\hat{N}_0$ ottengo \begin{center} q$_{U_0}$($\hat{N_1}$,$\hat{N_0}$,z) $\in$ (T($\hat{N}_1$) $\rightarrow$ T($\hat{N}_0$)) $\times$ (T($\hat{N}_0$) $\rightarrow$ T($\hat{N}_1$))[z $\in$ Id(Nat,0,1)] \end{center} che \`e derivabile. Inoltre mediante sostituzione trovo che
 \scriptsize
-\begin{adjustwidth}{-6em}{}
+\begin{adjustwidth}{-10em}{}
 \begin{prooftree}
 \AxiomC{$\Gamma$ cont}
-\UnaryInfC{T(N$_1$) $=$ N$_1$ type[$\Gamma$]}
+\LeftLabel{C$_2$-Uno}
+\UnaryInfC{T($\hat{N}_1$) $=$ N$_1$ type[$\Gamma$]}
 \AxiomC{$\Gamma$ cont}
-\UnaryInfC{T(N$_0$) $=$ N$_0$ type[$\Gamma$]}
+\LeftLabel{C$_1$-Uno}
+\UnaryInfC{T($\hat{N}_0$) $=$ N$_0$ type[$\Gamma$]}
 \LeftLabel{eq-F-{\scriptsize$\prod$}}
-\BinaryInfC{T(N$_1$) $\rightarrow$ T(N$_0$) $=$ N$_1$ $\rightarrow$ N$_0$}
+\BinaryInfC{T($\hat{N}_1$) $\rightarrow$ T($\hat{N}_0$) $=$ N$_1$ $\rightarrow$ N$_0$}
 \AxiomC{$\Gamma$ cont}
-\UnaryInfC{T(N$_0$) $=$ N$_0$ type[$\Gamma$]}
+\LeftLabel{C$_1$-Uno}
+\UnaryInfC{T($\hat{N}_0$) $=$ N$_0$ type[$\Gamma$]}
 \AxiomC{$\Gamma$ cont}
-\UnaryInfC{T(N$_1$) $=$ N$_1$ type[$\Gamma$]}
+\LeftLabel{C$_2$-Uno}
+\UnaryInfC{T($\hat{N}_1$) $=$ N$_1$ type[$\Gamma$]}
 \LeftLabel{eq-F-{\scriptsize$\prod$}-F}
-\BinaryInfC{T(N$_0$) $\rightarrow$ T(N$_1$) $=$ N$_0$ $\rightarrow$ N$_1$}
-\LeftLabel{eq-F-x}
-\BinaryInfC{(T(N$_1$) $\rightarrow$ T(N$_0$)) $\times$ (T(N$_0$) $\rightarrow$ T(N$_1$)) $=$ (N$_1$ $\rightarrow$ N$_0$) $\times$ (N$_0$ $\rightarrow$ N$_1$)}
+\BinaryInfC{T($\hat{N}_0$) $\rightarrow$ T($\hat{N}_1$) $=$ N$_0$ $\rightarrow$ N$_1$}
+\LeftLabel{eq-F-$\times$}
+\BinaryInfC{(T($\hat{N}_1$) $\rightarrow$ T($\hat{N}_0$)) $\times$ (T($\hat{N}_0$) $\rightarrow$ T($\hat{N}_1$)) $=$ (N$_1$ $\rightarrow$ N$_0$) $\times$ (N$_0$ $\rightarrow$ N$_1$)}
 \end{prooftree}
 \end{adjustwidth}
 
@@ -428,13 +432,13 @@ Da q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$
 \noindent
 \textbf{Corollario finale}\\\\
 \noindent
-Ap($\pi_1 q_{U_0}(\hat{N}_1,\hat{N}_0,z^\backprime))$, $\ast$)$\in$ N$_0$[z$\backprime$ $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)]\\
+Ap($\pi_1 q_{U_0}(\hat{N}_1,\hat{N}_0,z^\backprime))$, $\ast$)$\in$ N$_0$[z$^\backprime$ $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)]\\
 Dunque $\bot$ true [Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true] \`e derivabile.\\\\
 \noindent
-Inoltre h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)] \`e equivalente a Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true[z $\in$ Id(Nat,0,1)] che  \`e derivabile.\\
+Inoltre h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)[z $\in$ Id(Nat,0,1)] \`e equivalente a Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true[z $\in$ Id(Nat,0,1)] che  \`e derivabile.\\
 Per cui mettendo assieme, usando la logica, che Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true[z $\in$ Id(Nat,0,1)]  e $\bot$ true [Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$) true] si ottiene $\bot$ true [Id(Nat,0,1)] che \`e ancora derivabile.\\\\
 \noindent 
-Il \textit{proof-term} non \`e altro che prendere Ap($\pi_1 q_{U_0}(\hat{N}_1,\hat{N}_0,z^\backprime))$,$\ast$)$\in$ N$_0$[z$\backprime$ $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)] e comporlo con h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,N$_1$,N$_0$)[z $\in$ Id(Nat,0,1)]
+Il \textit{proof-term} non \`e altro che prendere Ap($\pi_1 q_{U_0}(\hat{N}_1,\hat{N}_0,z^\backprime))$,$\ast$)$\in$ N$_0$[z$^\backprime$ $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)] e comporlo con h$_{isZero}$(0,1,z) $\in$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)[z $\in$ Id(Nat,0,1)]
 \begin{center}\textbf{Ap($\pi_1 q_{U_0}(\hat{N}_1,\hat{N}_0,h_{isZero}$(0,1,z)),$\ast$) $\in$ N$_0$[z $\in$ Id(Nat,0,1)]} \\ \textbf{$\lambda$z.Ap($\pi_1 q_{U_0}(\hat{N}_1,\hat{N}_0,h_{isZero}$(0,1,z)),$\ast$) $\in$ $\neg$Id(Nat,0,1) }\end{center}
 \noindent
 Tale \textit{proof-term}, non \`e altro che la codifica del \textit{proof-assistant}, della dimostrazione che $\neg$Id(Nat,0,1) true[ ].
