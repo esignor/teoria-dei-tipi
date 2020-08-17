@@ -267,7 +267,8 @@ pf$_2$ $\equiv$ $\lambda$w.pf$_2$(w) \\
 \noindent
 Utilizzo {\scriptsize $\prod$} per togliere le assunzioni in un contesto (\S \ref{sec:prorieta-per-i-tipi-induttivi}):\\
 $\Rightarrow$ $\lambda w_2.id(w_2)$ $\in$ $\prod_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,z $\in$ A,w$_1$ $\in$ Id(A,x,y)]\\
-$\Rightarrow$ $\lambda z.\lambda w_2.id(w_2)$ $\in$ $\prod_{z \in A}$ $\prod_{w_2 \in Id(A,y,z)}$ $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]\\
+$\Rightarrow$ $\lambda z.id(w_2)$ $\in$ $\prod_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]\\
+$\Rightarrow$ $\lambda w_1. \lambda z.\lambda w_2.id(w_2)$ $\in$ $\prod_{w_1 \in Id(A,x,y)}$ $\prod_{z \in A}$ $\prod_{w_2 \in Id(A,y,z)}$ $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A]\\
 Applico \textit{(I-{\scriptsize $\prod$})} per poter poi derivare con \textit(E-Id$_{dip}$).
 
 \begin{itemize}
