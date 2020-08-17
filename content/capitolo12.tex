@@ -255,8 +255,8 @@ Idea: pensare a U$_0$ come se fosse Bool (in realt\`a U$_0$ ne contiene molti di
 \item falso: $\hat{N}_0$ $\rightarrow$ T($\hat{N}_0$) $=$ N$_0$ $=$ \textit{$\bot$}$^I$
 \end{itemize}
 \noindent
-\textit{\`E vero che z \`e zero, per cui nel caso base va messo N$_1$\\
-Il successore di qualcosa non \`e zero, e dunque va messo N$_0$}
+\textit{\`E vero che z \`e zero, per cui nel caso base va messo $\hat{N}_1$\\
+Il successore di qualcosa non \`e zero, e dunque va messo $\hat{N}_0$}
 \small
 \begin{adjustwidth}{-4em}{}
 \begin{prooftree}
@@ -350,16 +350,98 @@ Inoltre visto che \textit{isZero}(0) $=$ $\hat{N}_1$ e \textit{isZero}(1) $=$ $\
 \small
 \begin{adjustwidth}{-12em}{}
 \begin{prooftree}
-\AxiomC{}
+\AxiomC{\textbf{1}}
 \UnaryInfC{U$_0$ $=$ U$_0$ type[z $\in$ Id(Nat,0,1)]}
-\AxiomC{}
+\AxiomC{\textbf{2}}
 \UnaryInfC{isZero(0) $=$ $\hat{N}_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
-\AxiomC{}
+\AxiomC{\textbf{3}}
 \UnaryInfC{isZero(1) $=$ $\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
 \LeftLabel{eq-F-Id}
 \TrinaryInfC{Id(U$_0$,isZero(0),isZero(1)) $=$ Id(U$_0$,$\hat{N}_1$,$\hat{N}_0$)[z $\in$ Id(Nat,0,1)]}
 \end{prooftree}
 \end{adjustwidth}
+
+\normalsize \textbf{1}
+\small
+\begin{adjustwidth}{-10em}{}
+\begin{prooftree}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type [ ]}
+\AxiomC{$\Gamma$ cont}
+\LeftLabel{I$_1$-Nat}
+\UnaryInfC{0 $\in$ Nat [ ]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{0 $\in$ Nat [ ]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{1 $\in$ Nat [ ]}
+\LeftLabel{F-Id}
+\TrinaryInfC{Id(Nat,0,1) type [ ]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ Id(Nat,0,1)) $\notin$ [ ]}
+\UnaryInfC{z $\in$ Id(Nat,0,1) cont}
+\LeftLabel{F-Uno}
+\UnaryInfC{U$_0$ type[z $\in$ Id(Nat,0,1)]}
+\LeftLabel{ref}
+\UnaryInfC{U$_0$ $=$ U$_0$ type[z $\in$ Id(Nat,0,1)]}
+\end{prooftree}
+\end{adjustwidth}
+
+
+\normalsize \textbf{2}\\\\
+\textit{isZero}(0) $=$ $\hat{N}_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)] $\equiv$ El$_{Nat}$(0, $\hat{N}_1$,(x,y).$\hat{N}_0$) $=$ $\hat{N}_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]
+\scriptsize
+\begin{adjustwidth}{-15em}{}
+\begin{prooftree}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{U$_0$ type [z $\in$ Id(Nat,0,1)]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{z $\in$ Id(Nat,0,1) cont}
+\LeftLabel{I$_2$-Uno}
+\UnaryInfC{$\hat{N}_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{z $\in$ Id(Nat,0,1) cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[z $\in$ Id(Nat,0,1)]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(x $\in$ Nat) $\notin$ \\ (z $\in$ Id(Nat,0,1))\end{tabular}}
+\UnaryInfC{z $\in$ Id(Nat,0,1), x $\in$ Nat cont}
+\LeftLabel{F-Uno}
+\UnaryInfC{U$_0$ type[z $\in$ Id(Nat,0,1), x $\in$ Nat]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ U$_0$) $\notin$  (z $\in$ \\ Id(Nat,0,1), x $\in$ Nat)\end{tabular}}
+\UnaryInfC{z $\in$ Id(Nat,0,1), x $\in$ Nat, y $\in$ U$_0$ cont}
+\LeftLabel{I$_1$-Uno}
+\UnaryInfC{$\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1), x $\in$ Nat, y $\in$ U$_0$]}
+\LeftLabel{C$_1$-Nat}
+\TrinaryInfC{isZero(0) $=$ $\hat{N}_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+
+\normalsize \textbf{3}\\\\
+\textit{isZero}(1) $=$ $\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)] $\equiv$ El$_{Nat}$(succ(0), $\hat{N}_1$,(x,y).$\hat{N}_0$) $=$ $\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]
+\scriptsize
+\begin{adjustwidth}{-15em}{}
+\begin{prooftree}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{z $\in$ Id(Nat,0,1) cont}
+\LeftLabel{I$_1$ Nat}
+\UnaryInfC{0 $\in$ Nat [z $\in$ Id(Nat,0,1)]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{U$_0$ type [z $\in$ Id(Nat,0,1)]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{z $\in$ Id(Nat,0,1) cont}
+\LeftLabel{I$_1$-Uno}
+\UnaryInfC{$\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1), x $\in$ Nat, y $\in$ U$_0$]}
+\LeftLabel{C$_2$-Nat}
+\QuaternaryInfC{El$_{Nat}$(succ(0), $\hat{N}_1$,(x,y).$\hat{N}_0$) $=$ $\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
+\end{prooftree}
+\end{adjustwidth}
+\vspace{0.3cm}
+\noindent
+\normalsize
+Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.
+
 \vspace{0.5cm}
 \noindent
 \normalsize
@@ -371,7 +453,7 @@ q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(
 \noindent
 $\Delta$ $\equiv$ x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)
 \scriptsize
-\begin{adjustwidth}{-15em}{}
+\begin{adjustwidth}{-9em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{(T(x) $\rightarrow$ T(y)) type[$\Delta$]}
@@ -388,7 +470,7 @@ $\Delta$ $\equiv$ x $\in$ U$_0$,y $\in$ U$_0$,z $\in$ Id(U$_0$,x,y)
 \UnaryInfC{w $\in$ T(x)[x $\in$ U$_0$,w $\in$ T(x)]}
 \LeftLabel{I-$\rightarrow$}
 \UnaryInfC{$\lambda$w.w $\in$ T(x) $\rightarrow$ T(x)[x $\in$ U$_0$]}
-\AxiomC{($\ast$)}
+\AxiomC{\textbf{($\ast$}}
 \UnaryInfC{$\lambda$w.w $\in$ T(x) $\rightarrow$ T(x)[x $\in$ U$_0$]}
 \LeftLabel{I-$\times$}
 \BinaryInfC{$<\lambda$w.w,$\lambda$w.w$>$ $\in$ (T(x) $\rightarrow$ T(x)) $\times$ (T(x) $\rightarrow$ T(x))[x $\in$ U$_0$]}
@@ -403,7 +485,7 @@ Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'intern
 \subsubsection{Corollario}
 Da q$_{U_0}$(x,y,z) $\in$ (T(x) $\rightarrow$ T(y)) $\times$ (T(y) $\rightarrow$ T(x))[$\Delta$] sostituendo x con $\hat{N}_1$ e y con $\hat{N}_0$ ottengo \begin{center} q$_{U_0}$($\hat{N_1}$,$\hat{N_0}$,z) $\in$ (T($\hat{N}_1$) $\rightarrow$ T($\hat{N}_0$)) $\times$ (T($\hat{N}_0$) $\rightarrow$ T($\hat{N}_1$))[z $\in$ Id(Nat,0,1)] \end{center} che \`e derivabile. Inoltre mediante sostituzione trovo che
 \scriptsize
-\begin{adjustwidth}{-10em}{}
+\begin{adjustwidth}{-5em}{}
 \begin{prooftree}
 \AxiomC{$\Gamma$ cont}
 \LeftLabel{C$_2$-Uno}
@@ -663,8 +745,8 @@ $\neg$Id(Nat,0,1) true[ ]
 \textit{Devo dimostrare che esiste pf $\in$ $\neg$Id(Nat,0,1)[ ] $\equiv$ pf(z) $\in$ N$_0$[z $\in$ Id(Nat,0,1)], come gi\`a dimostrato in \S\ref{sec:esercizio-su-universo}. Per completezza, di seguito, mostro la derivabilit\`a di $\neg$ Id(Nat,0,1) type[ ].}\\\\
 \noindent
 $\neg$ Id(Nat,0,1) type[ ] $\equiv$ Id(Nat,0,1) $\rightarrow$ $\bot$ type[ ] $\equiv$ Id(Nat,0,1) $\rightarrow$N$_0$ type[ ] $\equiv$ $\prod_{z \in Id(Nat,0,1)}$ N$_0$ type[ ]
-
-\begin{adjustwidth}{-10.5em}{}
+\small
+\begin{adjustwidth}{-5em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
