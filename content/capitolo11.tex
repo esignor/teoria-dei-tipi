@@ -49,7 +49,7 @@ Assumendo che, quando astraggo, $\varphi$ true[$\Gamma$,$\Psi$ true] derivabile 
 \noindent
 In questo modo arrivo ad avere il principio di induzione che rende valido l'eliminatore dei numeri Naturali\\
 \begin{center}Nat) $\varphi$(0) $\&$ $\forall_{x \in Nat}$($\varphi$(x) $\rightarrow$ $\varphi$(succ(x)) $\rightarrow$ $\forall_{z \in Nat}$ $\varphi$(z)\end{center}
-\`e valido e segue dalla \textit{E-Nat$_{dip}$}
+\`e valido e segue dalla \textit{(E-Nat$_{dip}$)}
 
 \section{Principio di induzione su N$_0$}
 \label{sec:principio-di-induzione-N0}
@@ -80,7 +80,7 @@ con $\forall_{z \in}$ {\scriptsize$_{\sum}$}$_{x \in B \hspace{0.1cm}C(x)}$ fami
 \begin{center}Dato $\varphi(z_1,z_2,z_3)$ prop[$\Gamma$,z$_1$ $\in$ A,z$_2$ $\in$ A,z$_3$ $\in$ Id(A,z$_1$,z$_2$)] derivabile\\
 Ind) $\forall_{x \in A}$ $\varphi(x,x,id(x))$ $\rightarrow$ $\forall_{z_1 \in A}$ $\forall_{z_2 \in A}$ $\forall_{z_3 \in Id(A,z_1,z_2)}$ $\varphi(z_1,z_2,z_3)$ true[$\Gamma$]\end{center} \`e derivabile\\\\
 \noindent
-Tale principio non \`e formulato su $\varphi$(z) type[$\Gamma$,$z \in Id(A,a,b)$] con A e a,b fissati, ma dipende da tre parametri z$_1$, z$_2$ e z$_3$, come accade nella regola del \textit{E-Id}.\\\\
+Tale principio non \`e formulato su $\varphi$(z) type[$\Gamma$,$z \in Id(A,a,b)$] con A e a,b fissati, ma dipende da tre parametri z$_1$, z$_2$ e z$_3$, come accade nella regola del \textit{(E-Id)}.\\\\
 \noindent In conclusione,  ho mostrato, come i \textbf{principi di induzione} servono per dimostrare le proposizioni; e le \textbf{regola di eliminazione} non determinano solo ricorsori, ma anche regole di induzione.
 
 \section{Esercizi}
@@ -89,112 +89,85 @@ Tale principio non \`e formulato su $\varphi$(z) type[$\Gamma$,$z \in Id(A,a,b)$
 \textbf{Dimostrare che i principi di induzione sono validi in teoria dei tipi.}\\\\
 \textbf{Soluzione}\\\\
 \begin{itemize}
-\item \begin{center}N$0$) $\bot$ true $\rightarrow$ $\varphi$[$\Gamma$]\end{center}
+\item \begin{center}N$_0$) $\bot$ true $\rightarrow$ $\varphi$[$\Gamma$]\end{center}
 \noindent\\
-Per semplicit\`a di notazione definisco $\bot$ true $\rightarrow$ $\varphi$[$\Gamma$] $\equiv$ $\bot$ true $\rightarrow$ $\phi$[$\Gamma$]\\
-In questo modo:\\
-$\equiv$ {\scriptsize $\prod$}$_{z \in \bot true}$ $\phi$ type[$\Gamma$]\\
-$\equiv$ {\scriptsize $\prod$}$_{z \in N_0 true}$ $\phi$ type[$\Gamma$]\\
-$\Rightarrow$ Devo verificare che pf $\in$ {\scriptsize $\prod$}$_{z \in N_0}$ $\phi$ type[$\Gamma$] sia derivabile in teoria dei tipi.\\
-{\scriptsize $\prod$}$_{z \in N_0}$ $\phi$ type[$\Gamma$] $\equiv$ N$0$ $\rightarrow$ $\phi$ type[$\Gamma$]\\\\
+Devo verificare che pf $\in$ $\bot$ $\rightarrow$ $\varphi[\Gamma]$ $\equiv$ pf $\in$ {\scriptsize $\prod$}$_{z \in \bot}$ $\varphi$ type[$\Gamma$] $\equiv$ pf $\in$ {\scriptsize $\prod$}$_{z \in N_0}$ $\varphi$ type[$\Gamma$] sia derivabile in teoria dei tipi.\\\\
 \noindent
-$\varphi(z)$ $\in$ $\phi$ per costruzione, e assumo che $\phi$ type[$\Gamma$] sia derivabile, per cui
-
+pf $\in$ {\scriptsize $\prod$}$_{z \in N_0}$ $\varphi$ type[$\Gamma$] applicando \textit{(I-{\scriptsize $\prod$})} diventa El$_{N_0}$(z) $\in$ $\varphi$ type[$\Gamma$,z $\in$ N$_0$]
 
 \begin{prooftree}
-
 \AxiomC{}
-\UnaryInfC{$\varphi(z)$ $\in$ $\phi$ type[$\Gamma$]}
+\UnaryInfC{$\varphi$ type[$\Gamma$]}
 
 \AxiomC{$\Gamma$ cont}
-\LeftLabel{N$_0$-F}
+\LeftLabel{F-N$_0$}
 \UnaryInfC{N$_0$ type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{(z $\in$ N$_0$) $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$,z $\in$ N$_0$ cont}
-\LeftLabel{ind-te}
-\BinaryInfC{$\varphi(z)$ $\in$ $\phi$ type[$\Gamma$,z $\in$ N$_0$]}
-\LeftLabel{I-$\rightarrow$}
-\UnaryInfC{$\lambda$z.$\varphi$(z) $\in$ N$0$ $\rightarrow$ $\phi$ type[$\Gamma$]}
+\LeftLabel{ind-ty}
+\BinaryInfC{$\varphi$ type[$\Gamma$,z $\in$ N$_0$]}
+\LeftLabel{E-N$_{0dip}$}
+\UnaryInfC{El$_{N_0}$(z) $\in$ $\varphi$ type[$\Gamma$,z $\in$ N$_0$]}
 \end{prooftree}
 
 
-\item \begin{center}Nat) $\varphi$(0) $\&$ $\forall_{x \in Nat}$($\varphi$(x) $\rightarrow$ $\varphi$(succ(x))) $\rightarrow$ $\forall_{z \in Nat}$ $\varphi$(z) true[$\Gamma$]\end{center}
-$\equiv$ $\varphi$(0) $\times$ $\prod_{x \in Nat}$ ($\prod_ {y \in \varphi(x)}$ $\varphi(succ(x))$) $\rightarrow$ $\prod_{z \in Nat}$($\varphi(z)$) true [$\Gamma$]\\
-$\equiv$ $\prod_{w \in(\varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} (\prod_ {y \in \varphi(x)} \varphi(succ(x))))}$ $\prod_{z \in Nat}$($\varphi(z)$) true [$\Gamma$]\\
-
-$\Rightarrow$ Devo verificare che pf $\in$ $\prod_{w \in(\varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} (\prod_ {y \in \varphi(x)} \varphi(succ(x))))}$ $\prod_{z \in Nat}$($\varphi(z)$)[$\Gamma$] sia derivabile in teoria dei tipi.\\\\
+\item \begin{center}Nat) $\varphi$(0) $\&$ $\forall_{x \in Nat}$($\varphi$(x) $\rightarrow$ $\varphi$(succ(x)) $\rightarrow$ $\forall_{z \in Nat}$ $\varphi$(z) true[$\Gamma$]\end{center}
+Devo verificare che pf $\in$ ${\scriptsize \prod}_{y \in (\varphi(0) \times \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))}$ ${\scriptsize \prod}_{z \in Nat} \varphi(z)$ type[$\Gamma$] che equivale a\\
+$\lambda z$.El$_{Nat}$(z,w,Ap(Ap(k,x),y)) $\in$ ${\scriptsize \prod}_{z \in Nat} \varphi(z)$ type[$\Gamma$, z $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$]\\
+Applico \textit{(I-{\scriptsize $\prod$})} e ottengo \\
+El$_{Nat}$(z,w,Ap(Ap(k,x),y)) $\in$ $\varphi(z)$ type[$\Gamma$, z $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$, z $\in$ Nat]\\
+\\\\
 \noindent
-$\theta$ $=$ $\Gamma$,w $\in \varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} \prod_ {y \in \varphi(x)} \varphi(succ(x)),z \in Nat$\\\\
-\noindent
-Per $z \in Nat$ $\varphi(z) \rightarrow \varphi(z)$ $\in$ Nat. Allora $\forall_{z \in Nat}$ $\varphi(z)$ $\equiv$ Nat
-\scriptsize
-\begin{adjustwidth}{-16em}{}
+$\Delta$ $\equiv$ $\Gamma$, z $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$
+\small
+\begin{adjustwidth}{-7em}{}
 \begin{prooftree}
-\AxiomC{($\ast$)}
-\UnaryInfC{Nat type[$\Gamma$]}
-
 \AxiomC{}
-\UnaryInfC{$\varphi$(0) type[$\Gamma$]}
-\AxiomC{}
-\UnaryInfC{$\prod_{x \in Nat} \prod_ {y \in \varphi(x)} \varphi(succ(x))$ type[$\Gamma$]}
-\LeftLabel{F-x}
-\BinaryInfC{$\varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} \prod_ {y \in \varphi(x)} \varphi(succ(x))[\Gamma]$}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}($w \in \varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat}$\\$ \prod_ {y \in \varphi(x)} \varphi(succ(x))$) $\notin$ $\Gamma$\end{tabular}}
-\UnaryInfC{$\Gamma,w \in \varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} \prod_ {y \in \varphi(x)} \varphi(succ(x))$ cont}
-\LeftLabel{ind-ty}
-\BinaryInfC{Nat type[$\Gamma,w \in \varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} \prod_ {y \in \varphi(x)} \varphi(succ(x))$]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ Nat) $\notin$ ($\Gamma$, w $\in \varphi(0) \hspace{0.1cm}\times\hspace{0.1cm}$\\ $\prod_{x \in Nat} \prod_ {y \in \varphi(x)} \varphi(succ(x))$\end{tabular}}
-\UnaryInfC{$\theta$ cont}
-\LeftLabel{var}
-\UnaryInfC{z $\in$ Nat[$\theta$]}
-\AxiomC{}
-\UnaryInfC{Nat $=$ $\varphi(z)$ type[$\theta$]}
-\LeftLabel{conv}
-\BinaryInfC{z $\in$($\varphi(z)$)[$\theta$]}
-\LeftLabel{I-{\scriptsize}$\prod$}
-\UnaryInfC{$\lambda$z.z $\in$ $\prod_{z \in Nat}$($\varphi(z)$)[$\Gamma$,w $\in \varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} \prod_ {y \in \varphi(x)} \varphi(succ(x))$]}
-\LeftLabel{I-{\scriptsize}$\prod$}
-\UnaryInfC{$\lambda$w.$\lambda$z.z $\in$ $\prod_{w \in(\varphi(0) \hspace{0.1cm}\times\hspace{0.1cm} \prod_{x \in Nat} (\prod_ {y \in \varphi(x)} \varphi(succ(x))))}$ $\prod_{z \in Nat}$($\varphi(z)$)[$\Gamma$]}
+\UnaryInfC{$\varphi(z)$ type[$\Delta$,z $\in$ Nat]}
+\AxiomC{\textbf{1}}
+\UnaryInfC{w $\in$ $\varphi$(0)[$\Delta$]}
+\AxiomC{\textbf{2}}
+\UnaryInfC{Ap(Ap(k,x),y) $\in$ $\varphi(succ(x))$[$\Delta$, x $\in$ Nat, y $\in$ $\varphi(x)$]}
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(z,w,Ap(Ap(k,x),y)) $\in$ $\varphi(z)$ type[$\Delta$,z $\in$ Nat]}
 \end{prooftree}
 \end{adjustwidth}
-\noindent
 \normalsize
-Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.
+\textbf{1}\\\\
+\noindent
+\small
+\begin{adjustwidth}{-7em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$w \in \varphi(0)$ type[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{$k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$ type[$\Gamma$]}
+\LeftLabel{F-{\scriptsize $\sum$}}
+\BinaryInfC{$w \in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$ type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[cc]{c}(z $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}$ \\$(\prod_{s \in \varphi(x)}\varphi(succ(x))))$) $\notin$ $\Gamma$\end{tabular}}
+\UnaryInfC{$\Delta$ cont}
+\LeftLabel{var}
+\UnaryInfC{w $\in$ $\varphi$(0)[$\Delta$]}
+\end{prooftree}
+\end{adjustwidth}
+\normalsize
+
+
+
+
+
+
+
+
+
+
 \item \begin{center}N$_1$) $\varphi(\ast)$ $\rightarrow$ $\forall_{x \in N_1}$ $\varphi$(x) true[$\Gamma$] \end{center}
 $\equiv$ $\prod_{z \in \varphi(\ast)}$ $\forall_{x \in N_1}$ $\varphi$(x) true[$\Gamma$]\\
 $\equiv$ $\prod_{z \in \varphi(\ast)}$ $\prod_{x \in N_1}$ $\varphi$(x) true[$\Gamma$]\\
 
 $\Rightarrow$ Devo verificare che pf $\in$ $\prod_{z \in \varphi(\ast)}$ $\prod_{x \in N_1}$ $\varphi$(x)[$\Gamma$]\\\\
 \noindent
-Per x$ \in N_1$ $\varphi(x) \rightarrow \varphi(x)$ $\in$ N$_1$. Allora $\forall_{x \in N_1}$ $\varphi(z)$ $\equiv$ N$_1$
 
-\begin{adjustwidth}{-5em}{}
-\begin{prooftree}
-\AxiomC{}
-\UnaryInfC{$\varphi(\ast)$ type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{($z \in \varphi(\ast)$) $\notin$ $\Gamma$}
-\UnaryInfC{$\Gamma$,$z \in \varphi(\ast)$ cont}
-
-\AxiomC{$\Gamma$ cont}
-\LeftLabel{F-S}
-\UnaryInfC{$N_1$ type[$\Gamma$]}
-\LeftLabel{ind-ty}
-\BinaryInfC{$N_1$ type[$\Gamma$,$z \in \varphi(\ast)$]}
-\LeftLabel{F-c}\RightLabel{($x \in N_1$) $\notin$ ($\Gamma$,$z \in \varphi(\ast)$)}
-\UnaryInfC{$\Gamma$,$z \in \varphi(\ast)$,$x \in N_1$ cont}
-\LeftLabel{var}
-\UnaryInfC{x $\in$ N$_1$[$\Gamma$,$z \in \varphi(\ast)$,$x \in N_1$]}
-
-\AxiomC{}
-\UnaryInfC{N$_1$ $=$ $\varphi$(x)[$\Gamma$,$z \in \varphi(\ast)$,$x \in N_1$]}
-\LeftLabel{conv}
-\BinaryInfC{x $\in$ $\varphi$(x)[$\Gamma$,$z \in \varphi(\ast)$,$x \in N_1$]}
-\LeftLabel{I-{\scriptsize}$\prod$}
-\UnaryInfC{$\lambda$x.x $\in$ $\prod_{x \in N_1}$ $\varphi$(x)[$\Gamma$,$z \in \varphi(\ast)$]}
-\LeftLabel{I-{\scriptsize}$\prod$}
-\UnaryInfC{$\lambda$z.$\lambda$x.x   $\in$ $\prod_{z \in \varphi(\ast)}$ $\prod_{x \in N_1}$ $\varphi$(x)[$\Gamma$]}
-\end{prooftree}
-\end{adjustwidth}
 
 
 
@@ -269,6 +242,7 @@ Utilizzo {\scriptsize $\prod$} per togliere le assunzioni in un contesto (\S \re
 $\Rightarrow$ $\lambda w_2.id(w_2)$ $\in$ $\prod_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,z $\in$ A,w$_1$ $\in$ Id(A,x,y)]\\
 $\Rightarrow$ $\lambda z.\lambda w_2.id(w_2)$ $\in$ $\prod_{z \in A} \prod_{w_2 \in Id(A,y,z)}$ Id(A,x,z)[x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y)]\\
 $\Rightarrow$ $\lambda w_1. \lambda z.\lambda w_2.id(w_2)$ $\in$ $\prod_{w_1 \in Id(A,x,y)}$ $\prod_{z \in A}$ $\prod_{w_2 \in Id(A,y,z)}$ $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A]\\
+$\Rightarrow$ $\lambda w_1.(El_{Id}(w_1, (k).\lambda z.\lambda w_2.w_2))$ $\in$ $\prod_{w_1 \in Id(A,x,y)}$ $\prod_{z \in A}$ $\prod_{w_2 \in Id(A,y,z)}$ $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A]\\
 Applico \textit{(I-{\scriptsize $\prod$})} per poter poi derivare con \textit(E-Id$_{dip}$).
 
 \begin{itemize}
