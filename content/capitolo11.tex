@@ -119,6 +119,9 @@ El$_{Nat}$(z,w,Ap(Ap(k,x),y)) $\in$ $\varphi(z)$[$\Gamma$, z $\in$ $(w \in \varp
 \\\\
 \noindent
 $\Delta$ $\equiv$ $\Gamma$, z $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$
+\noindent
+\\\\\\
+Supposto che $\varphi$(z) type[$\Delta$, z $\in$ Nat] sia derivabile, allora
 \small
 \begin{adjustwidth}{-7em}{}
 \begin{prooftree}
@@ -158,6 +161,8 @@ $\Delta$ $\equiv$ $\Gamma$, z $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in
 \begin{adjustwidth}{-12em}{}
 \begin{prooftree}
 \AxiomC{}
+\UnaryInfC{$\varphi(z)$ type[$\Delta$,z $\in$ Nat]}
+\LeftLabel{$\alpha$-eq}
 \UnaryInfC{$\varphi(x)$ type[$\Delta$, x $\in$ Nat]}
 \LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ $\varphi(x)$) $\notin$ \\ ($\Delta$, x $\in$ Nat)\end{tabular}}
 \UnaryInfC{$\Delta$, x $\in$ Nat, y $\in$ $\varphi(x)$ cont}
@@ -180,6 +185,7 @@ $\Delta$ $\equiv$ $\Gamma$, z $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in
 \noindent
 \normalsize
 \noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
+La validit\`a di $\alpha$-eq l'ho gi\`a dimostrata in \S\ref{sec: es-naturali}, esercizio 5.
 
 
 \item \begin{center}N$_1$) $\varphi(\ast)$ $\rightarrow$ $\forall_{x \in N_1}$ $\varphi$(x) true[$\Gamma$] \end{center}
@@ -188,8 +194,12 @@ $\lambda$x.El$_{N1}$(x,z) $\in$ $\prod_{x \in N_1}$ $\varphi$(x)[$\Gamma$, z $\i
 Applico \textit{(I-{\scriptsize $\prod$})} e ottengo\\
 El$_{N1}$(x,z) $\in$ $\varphi$(x)[$\Gamma$, z $\in$ $\varphi(\ast)$, x $\in$ N$_1$]\\
 \noindent
+\\\\
+Supposto che $\ast$ appartenga a $\varphi(\ast)$ per costruzione e $\varphi$(z) type[$\Delta$, z $\in$ N$_1$] sia derivabile, allora
 \begin{prooftree}
 \AxiomC{}
+\UnaryInfC{$\varphi$(z)[$\Gamma$, x $\in$ $\varphi(\ast)$, z $\in$ N$_1$]}
+\LeftLabel{$\alpha-eq$}
 \UnaryInfC{$\varphi$(x)[$\Gamma$, z $\in$ $\varphi(\ast)$, x $\in$ N$_1$]}
 \AxiomC{}
 \UnaryInfC{$\ast$ $\in$ $\varphi(\ast)$ type[$\Gamma$]}
@@ -203,7 +213,9 @@ El$_{N1}$(x,z) $\in$ $\varphi$(x)[$\Gamma$, z $\in$ $\varphi(\ast)$, x $\in$ N$_
 \BinaryInfC{El$_{N1}$(x,z) $\in$ $\varphi$(x)[$\Gamma$, z $\in$ $\varphi(\ast)$, x $\in$ N$_1$]}
 \end{prooftree}
 \normalsize
-
+\noindent
+\\
+La validit\`a di $\alpha$-eq l'ho gi\`a dimostrata in \S\ref{sec: es-naturali}, esercizio 5.
 \item \begin{center}List(A)) $\varphi(nil)$ $\&$ $\forall_{x \in List(A)}$ $\forall_{w \in A}$($\varphi(x)$ $\rightarrow$ $\varphi(cons(x,w))$) $\rightarrow$ $\forall_{z \in List(A)}$ $\varphi$(z) true[$\Gamma$]\end{center}
 \noindent
 Devo verificare che pf $\in$ $\varphi(nil)$ $\times$ {\small $\prod_{x \in List(A)}$} {\small $\prod_{w \in A}$} ({\small $\prod_{z^\backprime \in \varphi(x)}$} $\varphi(cons(x,w))$) $\rightarrow$ {\small $\prod_{z \in  List(A)}$ $\varphi(z)$} [$\Gamma$]\\
@@ -214,8 +226,11 @@ El$_{List}$(z,c,(Ap,Ap(Ap(k,x),w),y)) $\in$ $\varphi(z)$ [$\Gamma$, z$^{\backpri
 \\\\
 \noindent
 $\Delta$ $\equiv$ $\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$ 
+\\\\\\
+\noindent
+Supposto che $\varphi$(z) type[$\Delta$, z $\in$ List(A)]  e A type[$\Gamma$] siano derivabili, allora
 \scriptsize
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-14em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{$\varphi(z)$ [$\Delta$,z $\in$ List(A)]}
@@ -250,8 +265,8 @@ $\Delta$ $\equiv$ $\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil
 \normalsize
 \textbf{2}\\\\
 $\zeta$ $\equiv$ $\Delta$, x $\in$ List(A), w $\in$ A, y $ \in$ $\varphi(x)$
-\scriptsize
-\begin{adjustwidth}{-18em}{}
+\small
+\begin{adjustwidth}{-9em}{}
 \begin{prooftree}
 \AxiomC{\textbf{2$^\backprime$}}
 \UnaryInfC{Ap(k,x) $\in$  {\scriptsize $\prod_{w \in A}$} {\scriptsize $\prod_{z^\backprime \in \varphi(x)}$} $\varphi(cons(x,w))$[$\zeta$]}
@@ -274,11 +289,19 @@ $\zeta$ $\equiv$ $\Delta$, x $\in$ List(A), w $\in$ A, y $ \in$ $\varphi(x)$
 \noindent
 \normalsize
 \textbf{2$^\backprime$}\\\\
-\scriptsize
+\small
 \begin{adjustwidth}{-13em}{}
 \begin{prooftree}
 \AxiomC{}
-\UnaryInfC{$\varphi(x)$ type[$\Delta$, x $\in$ List(A), w $\in$ A]}
+\UnaryInfC{$\varphi(z)$ type[$\Delta$, z $\in$ List(A)]}
+\LeftLabel{$\alpha-eq$}
+\UnaryInfC{$\varphi(x)$ type[$\Delta$, x $\in$ List(A)]}
+\AxiomC{}
+\UnaryInfC{A type[$\Delta$, x $\in$ List(A)]}
+\LeftLabel{F-c}\RightLabel{(w $\in$ A) $\notin$ ($\Delta$, x $\in$ List(A))}
+\UnaryInfC{$\Delta$, x $\in$ List(A), w $\in$ A cont}
+\LeftLabel{ind-ty}
+\BinaryInfC{$\varphi(x)$ type[$\Delta$, x $\in$ List(A), w $\in$ A]}
 \LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $ \in$ $\varphi(x)$) $\notin$ ($\Delta$,\\ x $\in$ List(A), w $\in$ A)\end{tabular}}
 \UnaryInfC{$\zeta$ cont}
 \LeftLabel{var}
@@ -304,9 +327,11 @@ El$_{B+C}$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$ $\varphi(z)$ $[\Gamma, z^\backprime 
 \vspace{0.2cm}
 \noindent
 \\\\
-$\Delta$ $\equiv$ $\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times w \in \prod_{x_2 \in C} \varphi(inr(x_2)))$
-\scriptsize
-\begin{adjustwidth}{-10em}{}
+$\Delta$ $\equiv$ $\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times w \in \prod_{x_2 \in C} \varphi(inr(x_2)))$\\\\\\
+\noindent
+Supposto che $\varphi$(z) type[$\Delta$, z $\in$ B $+$ C], B type[$\Delta$] e  C type[$\Delta$] siano derivabili, allora
+\small
+\begin{adjustwidth}{-4em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{$\varphi(z)$ type$[\Delta, z \in B + C]$}
@@ -321,7 +346,7 @@ $\Delta$ $\equiv$ $\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl
 \noindent
 \normalsize
 \textbf{1}\\\\
-\begin{adjustwidth}{-10em}{}
+\begin{adjustwidth}{-4em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{B type[$\Delta$]}
@@ -341,7 +366,7 @@ $\Delta$ $\equiv$ $\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl
 \noindent
 \normalsize
 \textbf{2}\\\\
-\begin{adjustwidth}{-10em}{}
+\begin{adjustwidth}{-4em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{C type[$\Delta$]}
@@ -368,7 +393,9 @@ $\lambda z.El_\Sigma(z,Ap(Ap(z^\backprime,x),y))$ $\in$ {\scriptsize $\prod_{z \
 Applico \textit{(I-\scriptsize $\prod$)} e ottengo \\
 $El_\Sigma(z,Ap(Ap(z^\backprime,x),y))$ $\in$ $\varphi(z)$[$\Gamma$, z $^\backprime \in ({\scriptsize \prod}_{x \in B} {\scriptsize \prod}_{y \in C(x)} \varphi(<x,y>))$,  z $\in$ {\scriptsize  $\sum_{x \in B} C(x)$}]\\\\
 \noindent
-$\Delta$ $\equiv$ $\Gamma$, z $^\backprime \in ({\scriptsize \prod}_{x \in B} {\scriptsize \prod}_{y \in C(x)} \varphi(<x,y>))$\\
+$\Delta$ $\equiv$ $\Gamma$, z $^\backprime \in ({\scriptsize \prod}_{x \in B} {\scriptsize \prod}_{y \in C(x)} \varphi(<x,y>))$\\\\\\
+\noindent
+Supposto che $\varphi$(z) type[$\Delta$, z $\in$ {\scriptsize  $\sum_{x \in B} C(x)$}]  e C(x) type[$\Delta$, x $\in$ B] siano derivabili, allora
 \small
 \begin{adjustwidth}{-11em}{}
 \begin{prooftree}
@@ -392,7 +419,7 @@ $\Delta$ $\equiv$ $\Gamma$, z $^\backprime \in ({\scriptsize \prod}_{x \in B} {\
 \noindent
 \textbf{1}\\\\
 \small
-\begin{adjustwidth}{-6em}{}
+\begin{adjustwidth}{-10em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{C(x) type[$\Delta$, x $\in$ B]}
@@ -420,8 +447,10 @@ $El_{Id}(z_3,Ap(z,x))$ $\in$ $\varphi(z_1,z_2,z_3)$ [$\Gamma$, z $\in$ $({\scrip
 \\\\
 \noindent
 $\Delta$ $\equiv$ $\Gamma$, z $\in$ $({\scriptsize \prod}_{x \in A} \varphi(x,x,id(x)))$
-\small
-\begin{adjustwidth}{-11em}{}
+\\\\\\
+Supposto che $\varphi(z_1,z_2,z_3)$ [$\Delta$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)] e  A type[$\Delta$] siano derivabili, allora
+\scriptsize
+\begin{adjustwidth}{-14em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{$\varphi(z_1,z_2,z_3)$ [$\Delta$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
