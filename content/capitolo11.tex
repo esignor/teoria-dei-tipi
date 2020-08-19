@@ -67,7 +67,7 @@ Supponiamo A type[$\Gamma$] derivabile \\
 \label{sec:principio-di-induzione-B+C}
 $\varphi$(z) prop[$\Gamma$, z $\in$ B $+$ C] derivabile
 \noindent
-\begin{center}B$+$C) $\forall_{x_1 \in B}$  $\varphi(nl(x_1))$ $\&$ $\forall_{x_2 \in C}$  $\varphi(nr(x_2))$ $\rightarrow$ $\forall_{z\in B+C}$  $\varphi(z)$ true[$\Gamma$]\end{center} \`e derivabile
+\begin{center}B$+$C) $\forall_{x_1 \in B}$  $\varphi(inl(x_1))$ $\&$ $\forall_{x_2 \in C}$  $\varphi(inr(x_2))$ $\rightarrow$ $\forall_{z\in B+C}$  $\varphi(z)$ true[$\Gamma$]\end{center} \`e derivabile
 \section{Principio di induzione su $\sum\limits_{x \in B}$ C(x)}
 \label{sec:principio-di-induzione-sum}
 Supponiamo $\varphi$(z) prop[$\Gamma$,z $\in$ B $+$ C]
@@ -177,6 +177,7 @@ $\Delta$ $\equiv$ $\Gamma$, z $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in
 \BinaryInfC{Ap(Ap(k,x),y) $\in$ $\varphi(succ(x))$[$\Delta$, x $\in$ Nat, y $\in$ $\varphi(x)$]}
 \end{prooftree}
 \end{adjustwidth}
+\noindent
 \normalsize
 \noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
 
@@ -205,9 +206,9 @@ El$_{N1}$(x,z) $\in$ $\varphi$(x)[$\Gamma$, z $\in$ $\varphi(\ast)$, x $\in$ N$_
 \noindent
 Devo verificare che pf $\in$ $\varphi(nil)$ $\times$ {\small $\prod_{x \in List(A)}$} {\small $\prod_{w \in A}$} ({\small $\prod_{z^\backprime \in \varphi(x)}$} $\varphi(cons(x,w))$) $\rightarrow$ {\small $\prod_{z \in  List(A)}$ $\varphi(z)$} [$\Gamma$]\\
 pf $\in$ {\small $\prod_{z^{\backprime\backprime} \in (\varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}} ({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))}$} {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$] che equivale a
-$\lambda z$.El$_{List}$(z,c,(Ap,Ap(Ap(k,x)w)y)) $\in$ {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$]\\
+$\lambda z$.El$_{List}$(z,c,(Ap,Ap(Ap(k,x),w),y)) $\in$ {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$]\\
 Applico \textit{I- {\scriptsize $\prod$}} e ottengo \\
-El$_{List}$(z,c,(Ap,Ap(Ap(k,x)w)y)) $\in$ $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$ z $\in$ List(A)]\\
+El$_{List}$(z,c,(Ap,Ap(Ap(k,x),w),y)) $\in$ $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$ z $\in$ List(A)]\\
 \\\\
 \noindent
 $\Delta$ $\equiv$ $\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$ 
@@ -219,9 +220,9 @@ $\Delta$ $\equiv$ $\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil
 \AxiomC{\textbf{1}}
 \UnaryInfC{c $\in$ $\varphi(nil)$[$\Delta$]}
 \AxiomC{\textbf{2}}
-\UnaryInfC{(Ap,Ap(Ap(k,x)w)y)) $\in$ $\varphi(cons(x,w))$[$\Delta$, x $\in$ List(A), w $\in$ A, y $\in$ $\varphi(x)$]}
+\UnaryInfC{(Ap,Ap(Ap(k,x),w),y)) $\in$ $\varphi(cons(x,w))$[$\Delta$, x $\in$ List(A), w $\in$ A, y $\in$ $\varphi(x)$]}
 \LeftLabel{E-List$_{dip}$}
-\TrinaryInfC{El$_{List}$(z,c,(Ap,Ap(Ap(k,x)w)y)) $\in$ $\varphi(z)$ [$\Delta$,z $\in$ List(A)]}
+\TrinaryInfC{El$_{List}$(z,c,(Ap,Ap(Ap(k,x),w),y)) $\in$ $\varphi(z)$ [$\Delta$,z $\in$ List(A)]}
 \end{prooftree}
 \end{adjustwidth}
 \noindent
@@ -245,75 +246,131 @@ $\Delta$ $\equiv$ $\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil
 \end{adjustwidth}
 \noindent
 \normalsize
-\textbf{2}
+\textbf{2}\\\\
+$\zeta$ $\equiv$ $\Delta$, x $\in$ List(A), w $\in$ A, y $ \in$ $\varphi(x)$
 \scriptsize
-\begin{adjustwidth}{-7em}{}
+\begin{adjustwidth}{-18em}{}
 \begin{prooftree}
-\AxiomC{}
-\UnaryInfC{(Ap,Ap(Ap(k,x)w)y)) $\in$ $\varphi(cons(x,w))$[$\Delta$, x $\in$ List(A), w $\in$ A, y $
+\AxiomC{\textbf{2$^\backprime$}}
+\UnaryInfC{Ap(k,x) $\in$  {\scriptsize $\prod_{w \in A}$} {\scriptsize $\prod_{z^\backprime \in \varphi(x)}$} $\varphi(cons(x,w))$[$\zeta$]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\zeta$ cont}
+\LeftLabel{var}
+\UnaryInfC{w $\in$ A [$\zeta$]}
+\LeftLabel{E-{\scriptsize $\prod$}}
+\BinaryInfC{Ap(Ap(k,x),w) $\in$ {\scriptsize $\prod_{z^\backprime \in \varphi(x)}$} $\varphi(cons(x,w))$[$\zeta$]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\zeta$ cont}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ $\varphi(x)$ [$\zeta$]}
+\LeftLabel{E-{\scriptsize $\prod$}}
+\BinaryInfC{(Ap(Ap(Ap(k,x),w),y)) $\in$ $\varphi(cons(x,w))$[$\Delta$, x $\in$ List(A), w $\in$ A, y $
 \in$ $\varphi(x)$]}
 \end{prooftree}
 \end{adjustwidth}
 
-\item \begin{center}B$+$C) $\forall_{x_1 \in B}$  $\varphi(nl(x_1))$ $\&$ $\forall_{x_2 \in C}$  $\varphi(nr(x_2))$ $\rightarrow$ $\forall_{z\in B+C}$  $\varphi(z)$ true[$\Gamma$]\end{center}
+\noindent
+\normalsize
+\textbf{2$^\backprime$}\\\\
+\scriptsize
+\begin{adjustwidth}{-13em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\varphi(x)$ type[$\Delta$, x $\in$ List(A), w $\in$ A]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $ \in$ $\varphi(x)$) $\notin$ ($\Delta$,\\ x $\in$ List(A), w $\in$ A)\end{tabular}}
+\UnaryInfC{$\zeta$ cont}
+\LeftLabel{var}
+\UnaryInfC{k $\in$  {\scriptsize $\prod_{x \in List(A)}$} {\scriptsize $\prod_{w \in A}$} {\scriptsize $\prod_{z^\backprime \in \varphi(x)}$} $\varphi(cons(x,w))$[$\zeta$]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\zeta$ cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ List(A)[$\zeta$]}
+\LeftLabel{E-{\scriptsize $\prod$}}
+\BinaryInfC{Ap(k,x) $\in$  {\scriptsize $\prod_{w \in A}$} {\scriptsize $\prod_{z^\backprime \in \varphi(x)}$} $\varphi(cons(x,w))$[$\zeta$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\noindent
+\normalsize
+\noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
+
+\item \begin{center}B$+$C) $\forall_{x_1 \in B}$  $\varphi(inl(x_1))$ $\&$ $\forall_{x_2 \in C}$  $\varphi(inr(x_2))$ $\rightarrow$ $\forall_{z\in B+C}$  $\varphi(z)$ true[$\Gamma$]\end{center}
+Devo verificare che pf $\in$ {\scriptsize $\prod$}$_{x_1 \in B}$ $\varphi(inl(x_1))$ $\times$ {\scriptsize $\prod$}$_{x_2 \in C}$ $\varphi(inr(x_2))$ $\rightarrow$ {\scriptsize $\prod$}$_{z \in B + C}$ $\varphi(z)$ $[\Gamma]$ $\equiv$ pf $\in$ {\scriptsize $\prod_{z^\backprime \in (\prod_{x_1 \in B} \varphi(inl(x_1)) \times \prod_{x_2 \in C} \varphi(inr(x_2)))}$} {\scriptsize $\prod$}$_{z \in B + C}$ $\varphi(z)$ $[\Gamma]$ che equivale a \\
+$\lambda$z.El$_{B+C}$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$  {\small $\prod$}$_{z \in B + C}$ $\varphi(z)$ $[\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times w \in \prod_{x_2 \in C} \varphi(inr(x_2)))$]\\
+Applico \textit{(I-{\scriptsize $\prod$})} e ottengo\\
+El$_{B+C}$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$ $\varphi(z)$ $[\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times w \in \prod_{x_2 \in C} \varphi(inr(x_2)))$, $z \in B + C$]
+\vspace{0.2cm}
+\noindent
+\\\\
+$\Delta$ $\equiv$ $\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times w \in \prod_{x_2 \in C} \varphi(inr(x_2)))$, $z \in B + C$
+\scriptsize
+\begin{adjustwidth}{-10em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\varphi(z)$ type$[\Delta]$}
+\AxiomC{\textbf{1}}
+\UnaryInfC{Ap(k,x$_1$) $\in$ $\varphi(inl(x_1))$ $[\Delta,x_1 \in B]$}
+\AxiomC{\textbf{2}}
+\UnaryInfC{Ap(w,x$_2$) $\in$ $\varphi(inr(x_2))$ $[\Delta,x_2 \in C]$}
+\LeftLabel{E-$+$}
+\TrinaryInfC{El$_{B+C}$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$ $\varphi(z)$ $[\Delta]$}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\normalsize
+\textbf{1}\\\\
+\begin{adjustwidth}{-10em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{B type[$\Delta$]}
+\LeftLabel{F-c}\RightLabel{($x_1 \in B$) $\notin$ $\Delta$}
+\UnaryInfC{$\Delta,x_1 \in B$ cont}
+\LeftLabel{var}
+\UnaryInfC{k $\in$ {\scriptsize $\prod$}$_{x_1 \in B}$ $\varphi(inl(x_1))$ $[\Delta,x_1 \in B]$}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\Delta,x_1 \in B$ cont}
+\LeftLabel{var}
+\UnaryInfC{x$_1$ $\in$ B $[\Delta,x_1 \in B]$}
+\LeftLabel{E-{\scriptsize $\prod$}}
+\BinaryInfC{Ap(k,x$_1$) $\in$ $\varphi(inl(x_1))$ $[\Delta,x_1 \in B]$}
+\end{prooftree}
+\end{adjustwidth}
+
+\noindent
+\normalsize
+\textbf{2}\\\\
+\begin{adjustwidth}{-10em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{C type[$\Delta$]}
+\LeftLabel{F-c}\RightLabel{($x_2 \in C$) $\notin$ $\Delta$}
+\UnaryInfC{$\Delta,x_2 \in C$ cont}
+\LeftLabel{var}
+\UnaryInfC{w $\in$ {\scriptsize $\prod$}$_{x_2 \in C}$ $\varphi(inr(x_2))$ $[\Delta,x_2 \in C]$}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\Delta,x_2 \in C$ cont}
+\LeftLabel{var}
+\UnaryInfC{x$_2$ $\in$ C $[\Delta,x_2 \in C]$}
+\LeftLabel{E-{\scriptsize $\prod$}}
+\BinaryInfC{Ap(w,x$_2$) $\in$ $\varphi(inr(x_2))$ $[\Delta,x_2 \in C]$}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\normalsize
+\noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
+
+
+
+
+
+
+
 \item \begin{center}{\scriptsize $\sum$}) $\forall_{x \in B}$ $\forall_{y \in C(x)}$ $\varphi(<x,y>)$ $\rightarrow$ $\forall_{z \in}$ {\scriptsize$_{\sum}$} $_{x \in B \hspace{0.1cm}C(x)}$ $\varphi$(z) true[$\Gamma$]\end{center}
 \item \begin{center}Ind)$\forall_{x \in A}$ $\varphi(x,x,id(x))$ $\rightarrow$ $\forall_{z_1 \in A}$ $\forall_{z_2 \in A}$ $\forall_{z_3 \in Id(z_1,z_2,z_3)}$ $\varphi(z_1,z_2,z_3)$ true[$\Gamma$]\end{center}
 \end{itemize}
 
+
 \paragraph{2)}
-\textbf{Mostrare che per ogni tipo B $+$ C esiste un \textit{proof-term} del tipo\\
-\begin{center}Id(B $+$ C,z,z$^\backprime$) $\leftrightarrow$ \\ $\exists_{x \in B}$ $\exists_{x\backprime \in B}$ Id(B $+$ C,z,inl(x)) $\wedge$ Id(B $+$ C,z$\backprime$,inl(x$^\backprime$)) $\wedge$ Id(B,x,x$^\backprime$)\\
-$\vee$\\
-$\exists_{y \in C}$ $\exists_{y^\backprime \in C}$ Id(B $+$ C,z,inr(y)) $\wedge$ Id(B $+$ C,z$^\backprime$,inr(y$^\backprime$)) $\wedge$ Id(B,y,y$^\backprime$)) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]\end{center}
-}
-\noindent
-\textbf{Soluzione}\\\\
-\noindent
-Definisco:
-\begin{enumerate}
-\item $\phi$ $\equiv$ Id(B $+$ C,z,z$^\backprime$)
-\item $\psi$ $\equiv$ $\exists_{x \in B}$ $\exists_{x\backprime \in B}$ Id(B $+$ C,z,inl(x)) $\wedge$ Id(B $+$ C,z$\backprime$,inl(x$^\backprime$)) $\wedge$ Id(B,x,x$^\backprime$)\\
-$\vee$\\
-$\exists_{y \in C}$ $\exists_{y^\backprime \in C}$ Id(B $+$ C,z,inr(y)) $\wedge$ Id(B $+$ C,z$^\backprime$,inr(y$^\backprime$)) $\wedge$ Id(B,y,y$^\backprime$)) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C] $\equiv$ $\sum_{x \in B}$ $\sum_{x\backprime \in B}$ (Id(B $+$ C,z,inl(x)) $\times$ Id(B $+$ C,z$\backprime$,inl(x$^\backprime$)) $\times$ Id(B,x,x$^\backprime$))\\
-$+$\\
-$\sum_{y \in C}$ $\sum_{y^\backprime \in C}$ (Id(B $+$ C,z,inr(y)) $\times$ Id(B $+$ C,z$^\backprime$,inr(y$^\backprime$)) $\times$ Id(B,y,y$^\backprime$))\\
-type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]
-\item Dunque in
-\begin{itemize}
-\item teoria dei tipi
-\begin{center}pf $\in$ ($\phi \rightarrow \psi$) $\&$ ($\psi \rightarrow \phi$) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]\end{center}
-\item logica predicativa con l'uguaglianza
-\begin{center}pf $\in$ ($\prod_{w \in \phi} \psi$) $\times$ ($\prod_{w \in \psi} \phi$) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]\end{center}
-\end{itemize}
-\end{enumerate}
-\small
-
-\begin{adjustwidth}{-7em}{}
-\begin{prooftree}
-\AxiomC{}
-\UnaryInfC{$<pf_1,pf_2>$ $\in$ ($\prod_{w \in \phi} \psi$) $\times$ ($\prod_{w \in \psi} \phi$) type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]}
-\end{prooftree}
-\end{adjustwidth}
-
-\normalsize
-\noindent
-\begin{itemize}
-\item Devo individuare $pf_1$ tale che $\prod_{w \in Id(B + C,z,z^\backprime)}$ $\psi$ type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]
-\item Devo individuare $pf_2$ tale che $\prod_{w \in \psi}$ $\phi$ type[z $\in$ B $+$ C,z$^\backprime$ $\in$ B $+$ C]] 
-\end{itemize}
-
-\noindent
-Devo individuare un pf che appartenga all'Id, dunque uso la regola dell'eliminatore dipendente:\\
-pf$_1$ $\equiv$ $\lambda$w.pf$_1$(w) $\equiv$  $\lambda$w.El$_{Id}$(w,(t).El$_+$(t,e$_B$,e$_C$))\\\\\\
-\noindent
-e$_B$???\\
-e$_C$???\\\\\\
-\noindent
-pf$_2$ $\equiv$ $\lambda$w.pf$_2$(w) \\
-?\\
-
-
-\paragraph{3)}
 \textbf{Si dimostri che esiste un \textit{proof-term} del tipo
 \begin{center} pf $\in$ Id(A,x,z)[x $\in$ A,y $\in$ A,z $\in$ A,w$_1$ $\in$ Id(A,x,y),w$_2$ $\in$ Id(A,y,z)]\end{center}}
 \noindent
