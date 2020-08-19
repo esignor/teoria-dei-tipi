@@ -192,6 +192,8 @@ El$_{N1}$(x,z) $\in$ $\varphi$(x)[$\Gamma$, z $\in$ $\varphi(\ast)$, x $\in$ N$_
 \AxiomC{}
 \UnaryInfC{$\varphi$(x)[$\Gamma$, z $\in$ $\varphi(\ast)$, x $\in$ N$_1$]}
 \AxiomC{}
+\UnaryInfC{$\ast$ $\in$ $\varphi(\ast)$ type[$\Gamma$]}
+\LeftLabel{s-checks}
 \UnaryInfC{$\varphi(\ast)$ type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{(z $\in$ $\varphi(\ast)$) $\notin$ $\Gamma$}
 \UnaryInfC{$\Gamma$, z $\in$ $\varphi(\ast)$ cont}
@@ -302,18 +304,18 @@ El$_{B+C}$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$ $\varphi(z)$ $[\Gamma, z^\backprime 
 \vspace{0.2cm}
 \noindent
 \\\\
-$\Delta$ $\equiv$ $\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times w \in \prod_{x_2 \in C} \varphi(inr(x_2)))$, $z \in B + C$
+$\Delta$ $\equiv$ $\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times w \in \prod_{x_2 \in C} \varphi(inr(x_2)))$
 \scriptsize
 \begin{adjustwidth}{-10em}{}
 \begin{prooftree}
 \AxiomC{}
-\UnaryInfC{$\varphi(z)$ type$[\Delta]$}
+\UnaryInfC{$\varphi(z)$ type$[\Delta, z \in B + C]$}
 \AxiomC{\textbf{1}}
 \UnaryInfC{Ap(k,x$_1$) $\in$ $\varphi(inl(x_1))$ $[\Delta,x_1 \in B]$}
 \AxiomC{\textbf{2}}
 \UnaryInfC{Ap(w,x$_2$) $\in$ $\varphi(inr(x_2))$ $[\Delta,x_2 \in C]$}
 \LeftLabel{E-$+$}
-\TrinaryInfC{El$_{B+C}$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$ $\varphi(z)$ $[\Delta]$}
+\TrinaryInfC{El$_{B+C}$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$ $\varphi(z)$ $[\Delta, z \in B + C]$}
 \end{prooftree}
 \end{adjustwidth}
 \noindent
@@ -360,15 +362,89 @@ $\Delta$ $\equiv$ $\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl
 \noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
 
 
-
-
-
-
-
 \item \begin{center}{\scriptsize $\sum$}) $\forall_{x \in B}$ $\forall_{y \in C(x)}$ $\varphi(<x,y>)$ $\rightarrow$ $\forall_{z \in}$ {\scriptsize$_{\sum}$} $_{x \in B \hspace{0.1cm}C(x)}$ $\varphi$(z) true[$\Gamma$]\end{center}
-\item \begin{center}Ind)$\forall_{x \in A}$ $\varphi(x,x,id(x))$ $\rightarrow$ $\forall_{z_1 \in A}$ $\forall_{z_2 \in A}$ $\forall_{z_3 \in Id(z_1,z_2,z_3)}$ $\varphi(z_1,z_2,z_3)$ true[$\Gamma$]\end{center}
-\end{itemize}
+Devo verificare che pf $\in$ {\scriptsize $\prod$}$_{x \in B}$ {\scriptsize $\prod$}$_{y \in C(x)}$ $\varphi(<x,y>)$ $\rightarrow$ {\scriptsize $\prod_{z \in \sum_{x \in B} C(x)}$} $\varphi(z)$ [$\Gamma$] $\equiv$ pf $\in$ {\small $\prod_{z^\backprime \in ({\small \prod}_{x \in B} {\small \prod}_{y \in C(x)} \varphi(<x,y>))}$} {\small $\prod_{z \in \sum_{x \in B} C(x)}$} $\varphi(z)$ [$\Gamma$] che equivale a \\
+$\lambda z.El_\Sigma(z,Ap(Ap(z^\backprime,x),y))$ $\in$ {\scriptsize $\prod_{z \in \sum_{x \in B} C(x)}$} $\varphi(z)$[$\Gamma$, z $^\backprime \in ({\scriptsize \prod}_{x \in B} {\scriptsize \prod}_{y \in C(x)} \varphi(<x,y>))$\\
+Applico \textit{(I-\scriptsize $\prod$)} e ottengo \\
+$El_\Sigma(z,Ap(Ap(z^\backprime,x),y))$ $\in$ $\varphi(z)$[$\Gamma$, z $^\backprime \in ({\scriptsize \prod}_{x \in B} {\scriptsize \prod}_{y \in C(x)} \varphi(<x,y>))$,  z $\in$ {\scriptsize  $\sum_{x \in B} C(x)$}]\\\\
+\noindent
+$\Delta$ $\equiv$ $\Gamma$, z $^\backprime \in ({\scriptsize \prod}_{x \in B} {\scriptsize \prod}_{y \in C(x)} \varphi(<x,y>))$\\
+\small
+\begin{adjustwidth}{-11em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\varphi(z)$[$\Delta$, z $\in$ {\scriptsize  $\sum_{x \in B} C(x)$}]}
 
+\AxiomC{\textbf{1}}
+\UnaryInfC{Ap(z$^\backprime$,x) $\in$ {\scriptsize $\prod_{y \in C(x)}$} $\varphi(<x,y>)$[$\Delta$, x $\in$ B, y $\in$ C(x)]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\Delta$, x $\in$ B, y $\in$ C(x) cont}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ C(x)[$\Delta$, x $\in$ B, y $\in$ C(x)]}
+\LeftLabel{E-{\scriptsize $\prod$}}
+\BinaryInfC{Ap(Ap(z$^\backprime$,x),y) $\in$ $\varphi(<x,y>)$[$\Delta$, x $\in$ B, y $\in$ C(x)]}
+\LeftLabel{E-{\scriptsize $\sum$}}
+\BinaryInfC{$El_\Sigma(z,Ap(Ap(z^\backprime,x),y))$ $\in$ $\varphi(z)$[$\Delta$, z $\in$ {\scriptsize  $\sum_{x \in B} C(x)$}]}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\normalsize
+\noindent
+\textbf{1}\\\\
+\small
+\begin{adjustwidth}{-6em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{C(x) type[$\Delta$, x $\in$ B]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ C(x)) $\notin$ ($\Delta$, x $\in$ B)}
+\UnaryInfC{$\Delta$, x $\in$ B, y $\in$ C(x) cont}
+\LeftLabel{var}
+\UnaryInfC{z$^\backprime$ $\in$ {\scriptsize $\prod_{x \in B}$} {\scriptsize $\prod_{y \in C(x)}$} $\varphi(<x,y>)$[$\Delta$, x $\in$ B, y $\in$ C(x)]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\Delta$, x $\in$ B, y $\in$ C(x) cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ B [$\Delta$, x $\in$ B, y $\in$ C(x)]}
+\LeftLabel{E-{\scriptsize $\prod$}}
+\BinaryInfC{Ap(z$^\backprime$,x) $\in$ {\scriptsize $\prod_{y \in C(x)}$} $\varphi(<x,y>)$[$\Delta$, x $\in$ B, y $\in$ C(x)]}
+\scriptsize
+\end{prooftree}
+\end{adjustwidth}
+\normalsize
+\noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
+\item \begin{center}Ind) $\forall_{x \in A}$ $\varphi(x,x,id(x))$ $\rightarrow$ $\forall_{z_1 \in A}$ $\forall_{z_2 \in A}$ $\forall_{z_3 \in Id(z_1,z_2,z_3)}$ $\varphi(z_1,z_2,z_3)$ true[$\Gamma$]\end{center}
+\noindent
+Devo verificare che pf $\in$ {\scriptsize $\prod$}$_{x \in A}$ $\varphi(x,x,id(x))$ $\rightarrow$ {\scriptsize $\prod$}$_{z_1 \in A}$ {\scriptsize $\prod$}$_{z_2 \in A}$ {\scriptsize $\prod$}$_{z_3 \in Id(A,z_1,z_2)}$ $\varphi(z_1,z_2,z_3)$ [$\Gamma$] $\equiv$ pf $\in$ {\small $\prod_{z \in ({\scriptsize \prod}_{x \in A} \varphi(x,x,id(x)))}$} {\scriptsize $\prod$}$_{z_1 \in A}$ {\scriptsize $\prod$}$_{z_2 \in A}$ {\scriptsize $\prod$}$_{z_3 \in Id(A,z_1,z_2)}$ $\varphi(z_1,z_2,z_3)$ [$\Gamma$] che equivale a \\
+$\lambda z_1.\lambda z_2.\lambda z_3.El_{Id}(z_3,Ap(z,x))$ $\in$ {\scriptsize $\prod$}$_{z_1 \in A}$ {\scriptsize $\prod$}$_{z_2 \in A}$ {\scriptsize $\prod$}$_{z_3 \in Id(A,z_1,z_2)}$ $\varphi(z_1,z_2,z_3)$ [$\Gamma$, z $\in$ $({\scriptsize \prod}_{x \in A} \varphi(x,x,id(x)))$]\\
+Applico \textit{(I-\scriptsize $\prod$)} e ottengo \\
+$El_{Id}(z_3,Ap(z,x))$ $\in$ $\varphi(z_1,z_2,z_3)$ [$\Gamma$, z $\in$ $({\scriptsize \prod}_{x \in A} \varphi(x,x,id(x)))$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]
+\\\\
+\noindent
+$\Delta$ $\equiv$ $\Gamma$, z $\in$ $({\scriptsize \prod}_{x \in A} \varphi(x,x,id(x)))$
+\small
+\begin{adjustwidth}{-11em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{$\varphi(z_1,z_2,z_3)$ [$\Delta$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
+\AxiomC{}
+\UnaryInfC{A type[$\Delta$]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ A) $\notin$ $\Delta$}
+\UnaryInfC{$\Delta$, x $\in$ A cont}
+\LeftLabel{var}
+\UnaryInfC{z $\in$ {\scriptsize $\prod$}$_{x \in A}$ $\varphi(x,x,id(x))$ [$\Delta$, x $\in$ A]}
+\AxiomC{\textbf{($\ast$)}}
+\UnaryInfC{$\Delta$, x $\in$ A cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ A[$\Delta$, x $\in$ A]}
+\LeftLabel{E-{\scriptsize $\prod$}}
+\BinaryInfC{Ap(z,x) $\in$ $\varphi(x,x,id(x))$ [$\Delta$, x $\in$ A]}
+\LeftLabel{E-Id}
+\BinaryInfC{$El_{Id}(z_3,Ap(z,x))$ $\in$ $\varphi(z_1,z_2,z_3)$ [$\Delta$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)]}
+\end{prooftree}
+\end{adjustwidth}
+
+
+\noindent Ho usato \textbf{($\ast$)} per concludere le derivazioni gi\`a svolte all'interno dell'albero.\\
+\end{itemize}
 
 \paragraph{2)}
 \textbf{Si dimostri che esiste un \textit{proof-term} del tipo
