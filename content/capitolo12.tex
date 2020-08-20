@@ -365,10 +365,10 @@ Inoltre visto che \textit{isZero}(0) $=$ $\hat{N}_1$ e \textit{isZero}(1) $=$ $\
 \small
 \begin{adjustwidth}{-10em}{}
 \begin{prooftree}
-\AxiomC{$\Gamma$ cont}
+\AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type [ ]}
-\AxiomC{$\Gamma$ cont}
+\AxiomC{[ ] cont}
 \LeftLabel{I$_1$-Nat}
 \UnaryInfC{0 $\in$ Nat [ ]}
 \AxiomC{\textbf{($\ast$)}}
@@ -402,7 +402,7 @@ Inoltre visto che \textit{isZero}(0) $=$ $\hat{N}_1$ e \textit{isZero}(1) $=$ $\
 \UnaryInfC{z $\in$ Id(Nat,0,1) cont}
 \LeftLabel{F-Nat}
 \UnaryInfC{Nat type[z $\in$ Id(Nat,0,1)]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(x $\in$ Nat) $\notin$ \\ (z $\in$ Id(Nat,0,1))\end{tabular}}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(x $\in$ Nat) $\notin$ \\ z $\in$ Id(Nat,0,1)\end{tabular}}
 \UnaryInfC{z $\in$ Id(Nat,0,1), x $\in$ Nat cont}
 \LeftLabel{F-Uno}
 \UnaryInfC{U$_0$ type[z $\in$ Id(Nat,0,1), x $\in$ Nat]}
@@ -411,7 +411,7 @@ Inoltre visto che \textit{isZero}(0) $=$ $\hat{N}_1$ e \textit{isZero}(1) $=$ $\
 \LeftLabel{I$_1$-Uno}
 \UnaryInfC{$\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1), x $\in$ Nat, y $\in$ U$_0$]}
 \LeftLabel{C$_1$-Nat}
-\TrinaryInfC{isZero(0) $=$ $\hat{N}_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
+\TrinaryInfC{El$_{Nat}$(0, $\hat{N}_1$,(x,y).$\hat{N}_0$) $=$ $\hat{N}_1$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]}
 \end{prooftree}
 \end{adjustwidth}
 \noindent
@@ -419,7 +419,7 @@ Inoltre visto che \textit{isZero}(0) $=$ $\hat{N}_1$ e \textit{isZero}(1) $=$ $\
 \normalsize \textbf{3}\\\\
 \textit{isZero}(1) $=$ $\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)] $\equiv$ El$_{Nat}$(succ(0), $\hat{N}_1$,(x,y).$\hat{N}_0$) $=$ $\hat{N}_0$ $\in$ U$_0$ [z $\in$ Id(Nat,0,1)]
 \scriptsize
-\begin{adjustwidth}{-15em}{}
+\begin{adjustwidth}{-16em}{}
 \begin{prooftree}
 \AxiomC{\textbf{($\ast$)}}
 \UnaryInfC{z $\in$ Id(Nat,0,1) cont}
