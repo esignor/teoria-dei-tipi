@@ -115,12 +115,12 @@ Supposto che $\varphi$ type[$\Gamma$] sia derivabile, allora
 
 \item \begin{center}Nat) $\varphi$(0) $\&$ $\forall_{x \in Nat}$($\varphi$(x) $\rightarrow$ $\varphi$(succ(x)) $\rightarrow$ $\forall_{z \in Nat}$ $\varphi$(z) true[$\Gamma$]\end{center}
 Devo verificare che pf $\in$ ${\scriptsize \prod}_{y \in (\varphi(0) \times \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))}$ ${\scriptsize \prod}_{z \in Nat} \varphi(z)$[$\Gamma$] in teoria dei tipi; che equivale a\\
-$\lambda z$.El$_{Nat}$(z,w,Ap(Ap(k,x),y)) $\in$ ${\scriptsize \prod}_{z \in Nat} \varphi(z)$[$\Gamma$, y $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$]\\
+$\lambda z$.El$_{Nat}$(z,w,Ap(Ap(k,x),y)) $\in$ ${\scriptsize \prod}_{z \in Nat} \varphi(z)$[$\Gamma$, y $\in$ $(<w,k> \in \varphi(0) \times \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$]\\
 Applico \textit{(I-{\scriptsize $\prod$})} e ottengo \\
-El$_{Nat}$(z,w,Ap(Ap(k,x),y)) $\in$ $\varphi(z)$[$\Gamma$, y $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$, z $\in$ Nat]\\
+El$_{Nat}$(z,w,Ap(Ap(k,x),y)) $\in$ $\varphi(z)$[$\Gamma$, y $\in$ $(<w,k> \in \varphi(0) \times \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$, z $\in$ Nat]\\
 \\\\
 \noindent
-$\Delta$ $\equiv$ $\Gamma$, y $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$
+$\Delta$ $\equiv$ $\Gamma$, y $\in$ $(<w,k> \in \varphi(0) \times \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$
 \noindent
 \\\\\\
 Supposto che $\varphi$(z) type[$\Delta$, z $\in$ Nat] sia derivabile, allora
@@ -147,9 +147,9 @@ Supposto che $\varphi$(z) type[$\Delta$, z $\in$ Nat] sia derivabile, allora
 \UnaryInfC{$w \in \varphi(0)$ type[$\Gamma$]}
 \AxiomC{}
 \UnaryInfC{$k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ type[$\Gamma$]}
-\LeftLabel{F-{$\times$}}
-\BinaryInfC{$w \in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}$ \\$(\prod_{s \in \varphi(x)}\varphi(succ(x))))$) $\notin$ $\Gamma$\end{tabular}}
+\LeftLabel{I-{$\times$}}
+\BinaryInfC{$<w,k> \in \varphi(0) \times \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ $(<w,k> \in \varphi(0) \times \prod_{x \in Nat}$ \\$(\prod_{s \in \varphi(x)}\varphi(succ(x))))$) $\notin$ $\Gamma$\end{tabular}}
 \UnaryInfC{$\Delta$ cont}
 \LeftLabel{var}
 \UnaryInfC{w $\in$ $\varphi$(0)[$\Delta$]}
@@ -222,12 +222,12 @@ La validit\`a di $\alpha$-eq l'ho gi\`a dimostrata in \S\ref{sec: es-naturali}, 
 \noindent
 Devo verificare che pf $\in$ $\varphi(nil)$ $\times$ {\small $\prod_{x \in List(A)}$} {\small $\prod_{w \in A}$} ({\small $\prod_{z^\backprime \in \varphi(x)}$} $\varphi(cons(x,w))$) $\rightarrow$ {\small $\prod_{z \in  List(A)}$ $\varphi(z)$} [$\Gamma$]\\
 pf $\in$ {\small $\prod_{z^{\backprime\backprime} \in (\varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}} ({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))}$} {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$] in teoria dei tipi; che equivale a\\
-$\lambda z$.El$_{List}$(z,c,(Ap(Ap(Ap(k,x),w),y)) $\in$ {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$]\\
+$\lambda z$.El$_{List}$(z,c,(Ap(Ap(Ap(k,x),w),y)) $\in$ {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(<c,k> \in \varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$]\\
 Applico \textit{(I- {\scriptsize $\prod$})} e ottengo \\
-El$_{List}$(z,c,Ap(Ap(Ap(k,x),w),y)) $\in$ $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$, z $\in$ List(A)]\\
+El$_{List}$(z,c,Ap(Ap(Ap(k,x),w),y)) $\in$ $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(<c,k> \in \varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$, z $\in$ List(A)]\\
 \\\\
 \noindent
-$\Delta$ $\equiv$ $\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$ 
+$\Delta$ $\equiv$ $\Gamma$, z$^{\backprime\backprime}$ $\in$ $(<c,k> \in \varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$ 
 \\\\\\
 \noindent
 Supposto che $\varphi$(z) type[$\Delta$, z $\in$ List(A)]  e A type[$\Gamma$] siano derivabili, allora
@@ -254,9 +254,9 @@ Supposto che $\varphi$(z) type[$\Delta$, z $\in$ List(A)]  e A type[$\Gamma$] si
 \UnaryInfC{c $\in$ $\varphi(nil)$ type[$\Gamma$]}
 \AxiomC{}
 \UnaryInfC{k $\in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$ type[$\Gamma$]}
-\LeftLabel{F-{$\times$}}
-\BinaryInfC{$c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$ type[$\Gamma$]}
-\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}}$ \\$ {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$) $\notin$ $\Gamma$ \end{tabular}}
+\LeftLabel{I-{$\times$}}
+\BinaryInfC{$<c,k> \in \varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$ type[$\Gamma$]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z$^{\backprime\backprime}$ $\in$ $(<c,k> \in \varphi(nil) \times {\scriptsize \prod_{x \in List(A)}}$ \\$ {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$) $\notin$ $\Gamma$ \end{tabular}}
 \UnaryInfC{$\Delta$ cont}
 \LeftLabel{var}
 \UnaryInfC{c $\in$ $\varphi(nil)$[$\Delta$]}
@@ -322,13 +322,13 @@ $\zeta$ $\equiv$ $\Delta$, x $\in$ List(A), w $\in$ A, y $ \in$ $\varphi(x)$
 
 \item \begin{center}B$+$C) $\forall_{x_1 \in B}$  $\varphi(inl(x_1))$ $\&$ $\forall_{x_2 \in C}$  $\varphi(inr(x_2))$ $\rightarrow$ $\forall_{z\in B+C}$  $\varphi(z)$ true[$\Gamma$]\end{center}
 Devo verificare che pf $\in$ {\scriptsize $\prod$}$_{x_1 \in B}$ $\varphi(inl(x_1))$ $\times$ {\scriptsize $\prod$}$_{x_2 \in C}$ $\varphi(inr(x_2))$ $\rightarrow$ {\scriptsize $\prod$}$_{z \in B + C}$ $\varphi(z)$ $[\Gamma]$ $\equiv$ pf $\in$ {\small $\prod_{z^\backprime \in (\prod_{x_1 \in B} \varphi(inl(x_1)) \times \prod_{x_2 \in C} \varphi(inr(x_2)))}$} {\scriptsize $\prod$}$_{z \in B + C}$ $\varphi(z)$ $[\Gamma]$ in teoria dei tipi; che equivale a \\
-$\lambda$z.El$_+$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$  {\small $\prod$}$_{z \in B + C}$ $\varphi(z)$ $[\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times w \in \prod_{x_2 \in C} \varphi(inr(x_2)))$]\\
+$\lambda$z.El$_+$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$  {\small $\prod$}$_{z \in B + C}$ $\varphi(z)$ $[\Gamma, z^\backprime \in (<k,w> \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times \prod_{x_2 \in C} \varphi(inr(x_2)))$]\\
 Applico \textit{(I-{\scriptsize $\prod$})} e ottengo\\
-El$_+$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$ $\varphi(z)$ $[\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times w \in \prod_{x_2 \in C} \varphi(inr(x_2)))$, $z \in B + C$]
+El$_+$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$ $\varphi(z)$ $[\Gamma, z^\backprime \in (<k,w> \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times \prod_{x_2 \in C} \varphi(inr(x_2)))$, $z \in B + C$]
 \vspace{0.2cm}
 \noindent
 \\\\
-$\Delta$ $\equiv$ $\Gamma, z^\backprime \in (k \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times w \in \prod_{x_2 \in C} \varphi(inr(x_2)))$\\\\\\
+$\Delta$ $\equiv$ $\Gamma, z^\backprime \in (<k,w> \in \prod_{x_1 \in B} \varphi(inl(x_1)) \times \prod_{x_2 \in C} \varphi(inr(x_2)))$\\\\\\
 \noindent
 Supposto che $\varphi$(z) type[$\Delta$, z $\in$ B $+$ C], B type[$\Delta$] e  C type[$\Delta$] siano derivabili, allora
 \small
