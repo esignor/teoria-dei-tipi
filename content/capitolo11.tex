@@ -123,7 +123,7 @@ El$_{Nat}$(z,w,Ap(Ap(k,x),y)) $\in$ $\varphi(z)$[$\Gamma$, y $\in$ $(<w,k> \in \
 $\Delta$ $\equiv$ $\Gamma$, y $\in$ $(<w,k> \in \varphi(0) \times \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$
 \noindent
 \\\\\\
-Supposto che $\varphi$(z) type[$\Delta$, z $\in$ Nat] sia derivabile, allora
+Supposto che w appartenga a $\varphi(0) $ e  k appartenga a $\prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ per costruzione, e $\varphi$(z) type[$\Delta$, z $\in$ Nat] sia derivabile, allora
 \small
 \begin{adjustwidth}{-7em}{}
 \begin{prooftree}
@@ -223,14 +223,14 @@ La validit\`a di $\alpha$-eq l'ho gi\`a dimostrata in \S\ref{sec: es-naturali}, 
 Devo verificare che pf $\in$ $\varphi(nil)$ $\times$ {\small $\prod_{x \in List(A)}$} {\small $\prod_{w \in A}$} ({\small $\prod_{z^\backprime \in \varphi(x)}$} $\varphi(cons(x,w))$) $\rightarrow$ {\small $\prod_{z \in  List(A)}$ $\varphi(z)$} [$\Gamma$]\\
 pf $\in$ {\small $\prod_{z^{\backprime\backprime} \in (\varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}} ({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))}$} {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$] in teoria dei tipi; che equivale a\\
 $\lambda z$.El$_{List}$(z,c,(Ap(Ap(Ap(k,x),w),y)) $\in$ {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(<c,k> \in \varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$]\\
-Applico \textit{(I- {\scriptsize $\prod$})} e ottengo \\
+Applico \textit{(I-{\scriptsize $\prod$})} e ottengo \\
 El$_{List}$(z,c,Ap(Ap(Ap(k,x),w),y)) $\in$ $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(<c,k> \in \varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$, z $\in$ List(A)]\\
 \\\\
 \noindent
 $\Delta$ $\equiv$ $\Gamma$, z$^{\backprime\backprime}$ $\in$ $(<c,k> \in \varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$ 
 \\\\\\
 \noindent
-Supposto che $\varphi$(z) type[$\Delta$, z $\in$ List(A)]  e A type[$\Gamma$] siano derivabili, allora
+Supposto che c appartenga a $\varphi(nil)$ e k appartenga a ${\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}} ({\scriptsize \prod_{z^\backprime \in \varphi(x)}}$ $\varphi(cons(x,w)))$ per costruzione, e $\varphi$(z) type[$\Delta$, z $\in$ List(A)]  e A type[$\Gamma$] siano derivabili, allora
 \scriptsize
 \begin{adjustwidth}{-14em}{}
 \begin{prooftree}
