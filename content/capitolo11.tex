@@ -123,7 +123,7 @@ El$_{Nat}$(z,w,Ap(Ap(k,x),y)) $\in$ $\varphi(z)$[$\Gamma$, y $\in$ $(w \in \varp
 $\Delta$ $\equiv$ $\Gamma$, y $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x))))$
 \noindent
 \\\\\\
-Supposto che w appartenga a $\varphi(0) $ e  k appartenga a $\prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ legati da $\times$ per costruzione, e $\varphi$(z) type[$\Delta$, z $\in$ Nat] sia derivabile, allora
+Supposto che $\varphi(0)$ type[$\Gamma]$, $\prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ type[$\Gamma$], $\varphi$(z) type[$\Delta$, z $\in$ Nat] siano derivabili, allora
 \small
 \begin{adjustwidth}{-7em}{}
 \begin{prooftree}
@@ -144,11 +144,11 @@ Supposto che w appartenga a $\varphi(0) $ e  k appartenga a $\prod_{x \in Nat}(\
 \begin{adjustwidth}{-2em}{}
 \begin{prooftree}
 \AxiomC{}
-%\UnaryInfC{$w \in \varphi(0)$ type[$\Gamma$]}
-%\AxiomC{}
-%\UnaryInfC{$k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ type[$\Gamma$]}
-%\LeftLabel{I-{$\times$}}
-\UnaryInfC{w $\in \varphi(0) \times k \in \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ type[$\Gamma$]}
+\UnaryInfC{$\varphi(0)$ type[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{$\prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ type[$\Gamma$]}
+\LeftLabel{F-{$\times$}}
+\BinaryInfC{$\varphi(0) \times \prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ $(w \in \varphi(0) \times k \in \prod_{x \in Nat}$ \\$(\prod_{s \in \varphi(x)}\varphi(succ(x))))$) $\notin$ $\Gamma$\end{tabular}}
 \UnaryInfC{$\Delta$ cont}
 \LeftLabel{var}
@@ -230,7 +230,7 @@ El$_{List}$(z,c,Ap(Ap(Ap(k,x),w),y)) $\in$ $\varphi(z)$ [$\Gamma$, z$^{\backprim
 $\Delta$ $\equiv$ $\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil)$ $\times$ $k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$ 
 \\\\\\
 \noindent
-Supposto che c appartenga a $\varphi(nil)$ e k appartenga a ${\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}} ({\scriptsize \prod_{z^\backprime \in \varphi(x)}}$ $\varphi(cons(x,w)))$ legati da $\times$ per costruzione, e $\varphi$(z) type[$\Delta$, z $\in$ List(A)]  e A type[$\Gamma$] siano derivabili, allora
+Supposto che  $\varphi(nil)$ type[$\Gamma$], ${\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$ type[$\Gamma$], $\varphi$(z) type[$\Delta$, z $\in$ List(A)]  e A type[$\Gamma$] siano derivabili, allora
 \scriptsize
 \begin{adjustwidth}{-14em}{}
 \begin{prooftree}
@@ -251,11 +251,11 @@ Supposto che c appartenga a $\varphi(nil)$ e k appartenga a ${\scriptsize \prod_
 \begin{adjustwidth}{-7em}{}
 \begin{prooftree}
 \AxiomC{}
-%\UnaryInfC{c $\in$ $\varphi(nil)$ type[$\Gamma$]}
-%\AxiomC{}
-%\UnaryInfC{k $\in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$ type[$\Gamma$]}
-%\LeftLabel{I-{$\times$}}
-\UnaryInfC{$c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$ type[$\Gamma$]}
+\UnaryInfC{$\varphi(nil)$ type[$\Gamma$]}
+\AxiomC{}
+\UnaryInfC{${\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$ type[$\Gamma$]}
+\LeftLabel{F-{$\times$}}
+\BinaryInfC{$\varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$ type[$\Gamma$]}
 \LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil) \times k \in {\scriptsize \prod_{x \in List(A)}}$ \\$ {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$) $\notin$ $\Gamma$ \end{tabular}}
 \UnaryInfC{$\Delta$ cont}
 \LeftLabel{var}
@@ -398,7 +398,7 @@ $\Delta$ $\equiv$ $\Gamma$, z $^\backprime \in ({\scriptsize \prod}_{x \in B} {\
 \noindent
 Supposto che $\varphi$(z) type[$\Delta$, z $\in$ {\scriptsize  $\sum_{x \in B} C(x)$}]  e C(x) type[$\Delta$, x $\in$ B] siano derivabili, allora
 \small
-\begin{adjustwidth}{-11em}{}
+\begin{adjustwidth}{-15em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{$\varphi(z)$[$\Delta$, z $\in$ {\scriptsize  $\sum_{x \in B} C(x)$}]}
