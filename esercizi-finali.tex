@@ -346,14 +346,29 @@ M(z) $\equiv$ Id(N$_1$,x,$\ast$)\\
 c $\in$ M($\ast$)[$\Gamma$] $\equiv$ id($\ast$) $\in$ Id(N$_1$,$\ast$,$\ast$)[ ]\\
 
 \small
-\begin{adjustwidth}{-4em}{}
+\begin{adjustwidth}{-11em}{}
 \begin{prooftree}
-
-\AxiomC{}
+\scriptsize
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
 \UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
-\AxiomC{}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{var}
 \UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$]}
-\AxiomC{}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{I-S}
 \UnaryInfC{$\ast$ $\in$ N$_1$[x $\in$ N$_1$]}
 \LeftLabel{F-Id}
 \TrinaryInfC{Id(N$_1$,x,$\ast$)type[x $\in$ N$_1$]}
@@ -367,7 +382,7 @@ c $\in$ M($\ast$)[$\Gamma$] $\equiv$ id($\ast$) $\in$ Id(N$_1$,$\ast$,$\ast$)[ ]
 \BinaryInfC{El$_{N1}$(x,x.id($\ast$)) $\in$ Id(N$_1$,x,$\ast$)[x $\in$ N$_1$]}
 \end{prooftree}
 \end{adjustwidth}
-
+\normalsize
 
 
 
