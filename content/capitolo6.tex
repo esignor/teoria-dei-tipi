@@ -534,7 +534,7 @@ $\Sigma$ $\equiv$ z$_1$ $\in$ Nat, z$_2$ $\in$ Nat, z$_3$ $\in$ Id(Nat,z$_1$,z$_
 Un \textbf{pf} \`e un qualsiasi elemento di un qualsiasi tipo di uguaglianza proposizionale. Per essere conforme con le regole fornite in \S\ref{cap: uguaglianza-proposizionale} definisco pf $\equiv$ id(a).
 
 \small
-\begin{adjustwidth}{-4em}{}
+\begin{adjustwidth}{-2em}{}
 \begin{prooftree}
 
 \AxiomC{}
@@ -585,7 +585,6 @@ M(z) $\equiv$ Id(N$_1$,x,$\ast$)\\
 c $\in$ M($\ast$)[$\Gamma$] $\equiv$ id($\ast$) $\in$ Id(N$_1$,$\ast$,$\ast$)[x $\in$ N$_1$]\\
 
 \small
-\begin{adjustwidth}{-4em}{}
 \begin{prooftree}
 
 \AxiomC{}
@@ -605,8 +604,7 @@ c $\in$ M($\ast$)[$\Gamma$] $\equiv$ id($\ast$) $\in$ Id(N$_1$,$\ast$,$\ast$)[x 
 \LeftLabel{E-S$_{dip}$}
 \BinaryInfC{El$_{N1}$(x,x.id($\ast$)) $\in$ Id(N$_1$,x,$\ast$)[x $\in$ N$_1$]}
 \end{prooftree}
-\end{adjustwidth}
-
+\normalsize
 \paragraph{5)}
 \textbf{Si dimostri che esiste un \textit{proof-term} pf tale che sia possibile definire l'addizione tra numeri naturali
 \begin{center} x $+$ y$ \in$ Nat[x $\in$ Nat,y $\in$ Nat] \end{center} 
@@ -810,7 +808,7 @@ Svolgo la ricorsione su y (altrimenti su x cambierei il contesto e "uscirei" dal
 El$_{Nat}$(0,c,e) $\equiv$ El$_{Nat}$(0,0,(w,x).succ(x))\\
 c $\in$ M(0)[$\Gamma$] $\equiv$ 0 $\in$ Nat[ ]
 \small
-\begin{adjustwidth}{-4em}{}
+\begin{adjustwidth}{-7em}{}
 \begin{prooftree}
 \AxiomC{[ ] cont}
 \LeftLabel{F-Nat}
@@ -843,7 +841,7 @@ c $\in$ M(0)[$\Gamma$] $\equiv$ 0 $\in$ Nat[ ]
 \normalsize \textbf{3}\\\\
 $\Delta$ $\equiv$ z $\in$ Nat,v $\in$ Id(Nat,0+z,z)
 \small
-\begin{adjustwidth}{-8em}{}
+\begin{adjustwidth}{-10em}{}
 \begin{prooftree}
 \AxiomC{\textbf{$\diamondsuit$}}
 \UnaryInfC{h$_2$(0+z,z,v) $\in$ Id(Nat,succ(0+z),succ(z))[$\Delta$]}
@@ -917,7 +915,7 @@ c $\in$ M(0)[$\Gamma$] $\equiv$ succ(0+z) $\in$ Nat [$\Delta$] $\equiv$ 0 + z + 
 e(x,y) $\in$ M(succ(x))[$\Gamma$, x $\in$ Nat, y $\in$ M(x)] $\equiv$ succ(0+z) + succ(w) $\in$ Nat[$\Delta$] $\equiv$ succ(succ(0+z) + w) $\in$ Nat[$\Delta$] $\equiv$ succ(u) $\in$ Nat[$\Delta$] $\equiv$ u + 1 $\in$ Nat[$\Delta$] $\equiv$ succ(0+z+1+w) $\in$ Nat[$\Delta$] $\equiv$ 0+z+1+w+1 $\in$ Nat[$\Delta$] $\equiv$ 0+z+w+2 $\in$ Nat[$\Delta$] $\equiv$ 0+z+2 $\in$ Nat[$\Delta$]
 
 \small
-\begin{adjustwidth}{-12em}{}
+\begin{adjustwidth}{-7em}{}
 \begin{prooftree}
 \AxiomC{\textbf{$\bigstar$}}
 \UnaryInfC{Nat type[$\Delta$]}
