@@ -1,0 +1,396 @@
+\documentclass[10pt,a4paper, italian]{book}
+\usepackage[italian]{babel}
+\usepackage[T1]{fontenc} % riconosce gli acenti
+\usepackage[utf8]{inputenc} % riconosce gli acenti
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=linkcolor
+}	
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{bussproofs} % per alberi di deduzione naturale
+\usepackage{graphicx} % per le immagini
+\usepackage[strict]{changepage}
+\usepackage[ddmmyyyy]{datetime}
+\usepackage{cancel} % barra il testo
+\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
+\begin{document}
+\noindent
+\section{Esercizi finali}
+\paragraph{1)} \textbf{Sia \textit{T$_1$} la teoria dei tipi definita del tipo singoletto con le regole strutturali, definite in questo capitolo, incluse quelle di sostituzione e indebolimento. Allora stabilire se i seguenti termini sono tipabili come termini del tipo singoletto, secondo \textit{T$_1$} e quali sono uguali definizionalmente.}
+\begin{itemize}
+\item El$_{N1}$($\ast$, $\ast$)
+\item El$_{N1}$(x, $\ast$)
+\item El$_{N1}$($\ast$, y)
+\item El$_{N1}$(x, y)
+\item El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$))
+\end{itemize}
+\noindent
+\\
+\textbf{Soluzione}\\\\
+\textit{Per una maggiore comprensione delle derivazioni, ho ritenuto opportuno, ove necessario, spezzare l'albero in pi\`u parti.}\\
+\noindent
+\textbf{1}\\
+\small
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$1$[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[ ]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$($\ast$, $\ast$) $\in$ $N_1$[ ]}
+\end{prooftree}
+\normalsize
+Applicando la \textit{$\beta$ N$_1$-red} allora El$_{N1}$($\ast$, $\ast$) $\rightarrow_1$ $\ast$ \\
+El$_{N1}$($\ast$, $\ast$) \`e uguale definizionalmente.
+\\\\\\
+\noindent
+\textbf{2}\\
+\scriptsize
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ x $\in$ N$_1$}
+\UnaryInfC{x $\in$ N$_1$, z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$, z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[x $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$]}
+\end{prooftree}
+
+\noindent
+\normalsize
+Applicando la \textit{$\beta$ N$_1$-red} allora El$_{N1}$(x, $\ast$) $\nrightarrow_1$ \\
+El$_{N1}$(x, $\ast$) non \`e uguale definizionalmente.
+\\\\\\
+\noindent
+\textbf{3}\\
+\scriptsize
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$ cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[y $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$  cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ y $\in$ N$_1$} 
+\UnaryInfC{y $\in$ N$_1$, z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$, z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ N$_1$[y $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$]}
+\end{prooftree}
+
+\noindent
+\normalsize
+Applicando la \textit{$\beta$ N$_1$-red} allora El$_{N1}$($\ast$, y) $\rightarrow_1$ y \\
+El$_{N1}$($\ast$, y) \`e uguale definizionalmente.\\\\
+\noindent
+\textbf{4}\\\\
+\scriptsize
+\begin{adjustwidth}{-14em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ N$_1$) \\ $\notin$ x $\in$ N$_1$\end{tabular}}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ N$_1$) \\ $\notin$ (x $\in$ N$_1$)\end{tabular}}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$, y $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(z $\in$ N$_1$) $\notin$ \\ (x $\in$ N$_1$, y $\in$ N$_1$)\end{tabular}}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$, z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$, y $\in$ N$_1$, z $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{\begin{tabular}[c]{cc}(y $\in$ N$_1$) \\ $\notin$ x $\in$ N$_1$\end{tabular}}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
+\LeftLabel{var}
+\UnaryInfC{y $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$(x, y) $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\\
+\normalsize
+Applicando la \textit{$\beta$ N$_1$-red} allora El$_{N1}$(x, y)$\nrightarrow_1$ \\
+El$_{N1}$(x, y) non \`e uguale definizionalmente.
+\\\\\\
+\noindent
+\textbf{5}\\
+\small
+\begin{adjustwidth}{-9em}{}
+\begin{prooftree}
+\AxiomC{\textbf{5$_A$}}
+\UnaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$, x $\in$ N$_1$]}
+\AxiomC{\textbf{5$_B$}}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$, x $\in$ N$_1$, z $\in$ N$_1$]}
+\AxiomC{\textbf{5$_C$}}
+\UnaryInfC{El$_{N1}$(x, $\ast$) $\in$ N$_1$[y $\in$ N$_1$, x $\in$ N$_1$]}
+\LeftLabel{E-S}
+\TrinaryInfC{El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$)) $\in $ N$_1$[y $\in$ N$_1$, x $\in$ N$_1$]}
+\end{prooftree}
+\end{adjustwidth}
+
+\vspace{0.5cm}
+\textbf{5$_A$}
+\small
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ y $\in$ N$_1$}
+\UnaryInfC{y $\in$ N$_1$, x $\in$ N$_1$ cont}
+\LeftLabel{ind-te}
+\BinaryInfC{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$, x $\in$ N$_1$]}
+\end{prooftree}
+
+\vspace{0.5cm}
+\textbf{5$_B$}
+\small
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ y $\in$ N$_1$}
+\UnaryInfC{y $\in$ N$_1$, x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$, x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(z $\in$ N$_1$) $\notin$ (y $\in$ N$_1$, x $\in$ N$_1$)}
+\UnaryInfC{y $\in$ N$_1$, x $\in$ N$_1$, z $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$, x $\in$ N$_1$, z $\in$ N$_1$]}
+\end{prooftree}
+
+\newpage
+\textbf{5$_C$}
+\scriptsize
+\begin{adjustwidth}{-3em}{}
+\begin{prooftree}
+\AxiomC{}
+\UnaryInfC{El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{x $\in$ N$_1$ cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ x $\in$ N$_1$}
+\UnaryInfC{x $\in$ N$_1$, y $\in$ N$_1$ cont}
+\LeftLabel{ind-te}
+\BinaryInfC{El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$, y $\in$ N$_1$]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type [ ]}
+\LeftLabel{F-c}\RightLabel{(y $\in$ N$_1$) $\notin$ [ ]}
+\UnaryInfC{y $\in$ N$_1$ count}
+\LeftLabel{F-S}
+\UnaryInfC{N$_1$ type[y $\in$ N$_1$]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ N$_1$) $\notin$ y $\in$ N$_1$}
+\UnaryInfC{y $\in$ N$_1$, x $\in$ N$_1$ cont}
+\LeftLabel{ex-te}
+\BinaryInfC{El$_{N1}$(x, $\ast$) $\in$ N$_1$[y $\in$ N$_1$, x $\in$ N$_1$]}
+\end{prooftree}
+\end{adjustwidth}
+\noindent
+\\
+\normalsize Per le premesse \textit{El$_{N1}$($\ast$, y) $\in$ N$_1$[y $\in$ N$_1$]} e \textit{El$_{N1}$(x, $\ast$) $\in$ N$_1$[x $\in$ N$_1$]} ho gi\`a dimostrato sopra (in 3 e 2) la loro tipabilit\`a per il tipo singoletto.
+
+\noindent
+\normalsize
+Applicando la \textit{red$_I$} e \textit{$\beta$ N$_1$-red} allora El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$)) $\rightarrow_1$ El$_{N1}$(y, El$_{N1}$(x, $\ast$)). \\
+Pi\`u nel dettaglio la riduzione \`e la seguente
+\small
+\begin{prooftree}
+\AxiomC{}
+\LeftLabel{$\beta$ N$_1$-red}
+\UnaryInfC{El$_{N1}$($\ast$, y) $\rightarrow_1$ y}
+\LeftLabel{red$_I$}
+\UnaryInfC{El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$))$\rightarrow_1$ El$_{N1}$(y, El$_{N1}$(x, $\ast$))}
+\end{prooftree}
+\normalsize El$_{N1}$(El$_{N1}$($\ast$, y), El$_{N1}$(x, $\ast$)) \`e uguale definizionalmente.
+
+
+\paragraph{2)}
+\textbf{Definire w + 2 $\in$ Nat[w $\in$ Nat], ove 2 \`e l'abbreviazione del termine ottenuto applicando 2 $\equiv$ succ(succ(0)).}
+\\\\
+\textbf{Soluzione}\\\\
+La ricorsione la faccio su w, usando lo schema di ricorsione primitiva, vale che w + 2 $\equiv$ El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat].
+
+\small
+\begin{adjustwidth}{-5em}{}
+\begin{prooftree}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[ ]}
+\LeftLabel{F-c}\RightLabel{(w $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{w $\in$ Nat cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type[w $\in$ Nat]}
+\AxiomC{[ ] cont}
+\LeftLabel{I$_1$-Nat}
+\UnaryInfC{0 $\in$ Nat[ ]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{1 $\in$ Nat[ ]}
+\LeftLabel{I$_2$-Nat}
+\UnaryInfC{2 $\in$ Nat[ ]}
+\AxiomC{[ ] cont}
+\LeftLabel{F-Nat}
+\UnaryInfC{Nat type [ ]}
+\LeftLabel{F-c}\RightLabel{(x $\in$ Nat) $\notin$ [ ]}
+\UnaryInfC{x $\in$ Nat cont}
+\LeftLabel{I$_2$-Nat$_{prog}$}
+\UnaryInfC{succ(y) $\in$ Nat[x $\in$ Nat, y $\in$ Nat]}
+\LeftLabel{E-Nat$_{dip}$}
+\TrinaryInfC{El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]}
+\end{prooftree}
+\end{adjustwidth}
+\vspace{0.2cm}
+\noindent
+\normalsize \textit{Dimostrazione di correttezza di El$_{Nat}$(w, 2, (x,y).succ(y)) $\in$ Nat[w $\in$ Nat]}
+\begin{itemize}
+\item El$_{Nat}$(0, 2, (x,y).succ(y)) $\rightarrow_1$ 2 per \textit{$\beta_{1Nat}$-red}
+\item El$_{Nat}$(succ(m), 2, (x,y).succ(y)) $\rightarrow_1$ succ(El$_{Nat}$(m, 2, (x,y).succ(y))) per \textit{$\beta_{2Nat}$-red} $\Rightarrow$ per m $=$ 0 $\equiv$ succ(El$_{Nat}$(0, 2, (x,y).succ(y))) $\rightarrow_1$ succ(2) $\in$ Nat $=$ 3 (dal punto precedente).
+\end{itemize}
+
+
+\paragraph{4)}
+\textbf{Si dimostri che esiste un \textit{proof-term} pf del tipo
+\begin{center} pf $\in$ Id(N$_1$,x,$\ast$)[x $\in$ N$_1$] \end{center}}
+\noindent
+\\\\
+\textbf{Soluzione}\\\\
+\noindent
+z $\equiv$ x\\
+El$_{N1}$(z,c) $\equiv$ pf $\equiv$ El$_{N1}$(x,x.id($\ast$))\\
+M(z) $\equiv$ Id(N$_1$,x,$\ast$)\\
+c $\in$ M($\ast$)[$\Gamma$] $\equiv$ id($\ast$) $\in$ Id(N$_1$,$\ast$,$\ast$)[x $\in$ N$_1$]\\
+
+\small
+\begin{adjustwidth}{-4em}{}
+\begin{prooftree}
+
+\AxiomC{}
+\UnaryInfC{N$_1$ type[x $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{x $\in$ N$_1$[x $\in$ N$_1$]}
+\AxiomC{}
+\UnaryInfC{$\ast$ $\in$ N$_1$[x $\in$ N$_1$]}
+\LeftLabel{F-Id}
+\TrinaryInfC{Id(N$_1$,x,$\ast$)type[x $\in$ N$_1$]}
+
+\AxiomC{[ ] cont}
+\LeftLabel{I-S}
+\UnaryInfC{$\ast$ $\in$ N$_1$[ ]}
+\LeftLabel{I-Id}
+\UnaryInfC{id($\ast$) $\in$ Id(N$_1$,$\ast$,$\ast$)[ ]}
+\LeftLabel{E-S$_{dip}$}
+\BinaryInfC{El$_{N1}$(x,x.id($\ast$)) $\in$ Id(N$_1$,x,$\ast$)[x $\in$ N$_1$]}
+\end{prooftree}
+\end{adjustwidth}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
