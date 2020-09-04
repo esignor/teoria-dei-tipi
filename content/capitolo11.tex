@@ -96,7 +96,7 @@ Devo verificare che pf $\in$ $\bot$ $\rightarrow$ $\varphi[\Gamma]$ $\equiv$ pf 
 pf $\in$ {\scriptsize $\prod$}$_{z \in N_0}$ $\varphi$[$\Gamma$] applicando \textit{(I-{\scriptsize $\prod$})} diventa El$_{N_0}$(z) $\in$ $\varphi$[$\Gamma$,z $\in$ N$_0$]
 \\\\\\
 \noindent
-Supposto che $\varphi$ type[$\Gamma$] sia derivabile, allora
+Supposto che $\varphi$ type[$\Gamma$] sia derivabile e $\Gamma$ $\equiv$ [ ], allora
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{$\varphi$ type[$\Gamma$]}
@@ -124,7 +124,7 @@ $\Delta$ $\equiv$ $\Gamma$, y $\in$ $(\varphi(0) \times \prod_{x \in Nat}(\prod_
 \noindent
 \\\\\\
 Supposto che $\varphi(0)$ type[$\Gamma]$, $\prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$ type[$\Gamma$], $\varphi$(z) type[$\Delta$, z $\in$ Nat] siano derivabili;
-w appartenga a $\varphi(0)$ e k appartenga a $\prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$,
+e $\Gamma$ $\equiv$ w $\in$ $\varphi(0)$, k $\in$ $\prod_{x \in Nat}(\prod_{s \in \varphi(x)}\varphi(succ(x)))$,
  allora
 \small
 \begin{adjustwidth}{-7em}{}
@@ -199,7 +199,7 @@ Applico \textit{(I-{\scriptsize $\prod$})} e ottengo\\
 El$_{N1}$(x,z) $\in$ $\varphi$(x)[$\Gamma$, z $\in$ $\varphi(\ast)$, x $\in$ N$_1$]\\
 \noindent
 \\\\
-Supposto che $\ast$ appartenga a $\varphi(\ast)$ per costruzione e $\varphi$(z) type[$\Delta$, z $\in$ N$_1$] sia derivabile, allora
+Supposto che $\ast$ appartenga a $\varphi(\ast)$ per costruzione, $\varphi$(z) type[$\Delta$, z $\in$ N$_1$] sia derivabile e $\Gamma$ $\equiv$ [ ], allora
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{$\varphi$(z)[$\Gamma$, x $\in$ $\varphi(\ast)$, z $\in$ N$_1$]}
@@ -224,16 +224,16 @@ La validit\`a di $\alpha$-eq l'ho gi\`a dimostrata in \S\ref{sec: es-naturali}, 
 \noindent
 Devo verificare che pf $\in$ $\varphi(nil)$ $\times$ {\small $\prod_{x \in List(A)}$} {\small $\prod_{w \in A}$} ({\small $\prod_{z^\backprime \in \varphi(x)}$} $\varphi(cons(x,w))$) $\rightarrow$ {\small $\prod_{z \in  List(A)}$ $\varphi(z)$} [$\Gamma$]\\
 pf $\in$ {\small $\prod_{z^{\backprime\backprime} \in (\varphi(nil) \times {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}} ({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))}$} {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$] in teoria dei tipi; che equivale a\\
-$\lambda z$.El$_{List}$(z,c,(Ap(Ap(Ap(k,x),w),y)) $\in$ {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil)$ $\times$ $k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$]\\
+$\lambda z$.El$_{List}$(z,c,(Ap(Ap(Ap(k,x),w),y)) $\in$ {\small $\prod_{z \in  List(A)}$} $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(\varphi(nil)$ $\times$ ${\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$]\\
 Applico \textit{(I-{\scriptsize $\prod$})} e ottengo \\
-El$_{List}$(z,c,Ap(Ap(Ap(k,x),w),y)) $\in$ $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(c \in \varphi(nil)$ $\times$ $k \in {\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$, z $\in$ List(A)]\\
+El$_{List}$(z,c,Ap(Ap(Ap(k,x),w),y)) $\in$ $\varphi(z)$ [$\Gamma$, z$^{\backprime\backprime}$ $\in$ $(\varphi(nil)$ $\times$ ${\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$, z $\in$ List(A)]\\
 \\\\
 \noindent
 $\Delta$ $\equiv$ $\Gamma$, z$^{\backprime\backprime}$ $\in$ $(\varphi(nil)$ $\times$ ${\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$ 
 \\\\\\
 \noindent
 Supposto che  $\varphi(nil)$ type[$\Gamma$], ${\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w)))$ type[$\Gamma$], $\varphi$(z) type[$\Delta$, z $\in$ List(A)]  e A type[$\Gamma$] siano derivabili;
-c appartenga a $\varphi(nil)$ e k appartenga a ${\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$, 
+e $\Gamma$ $\equiv$ c $\in$ $\varphi(nil)$, k $\in$ ${\scriptsize \prod_{x \in List(A)}} {\scriptsize \prod_{w \in A}}$ $({\scriptsize \prod_{z^\backprime \in \varphi(x)}} \varphi(cons(x,w))))$, 
  allora
 \scriptsize
 \begin{adjustwidth}{-14em}{}
@@ -335,7 +335,7 @@ El$_+$(z,Ap(k,x$_1$),Ap(w,x$_2$)) $\in$ $\varphi(z)$ $[\Gamma, z^\backprime \in 
 $\Delta$ $\equiv$ $\Gamma, z^\backprime \in (\prod_{x_1 \in B} \varphi(inl(x_1))$ $\times$ $\prod_{x_2 \in C} \varphi(inr(x_2)))$\\\\\\
 \noindent
 Supposto che $\varphi$(z) type[$\Delta$, z $\in$ B $+$ C], B type[$\Delta$] e  C type[$\Delta$] siano derivabili;
-k appartenga a $\prod_{x_1 \in B} \varphi(inl(x_1))$ e  w appartenga a $\prod_{x_2 \in C} \varphi(inr(x_2)))$, allora
+e $\Gamma$ $\equiv$ k $\in$ $\prod_{x_1 \in B} \varphi(inl(x_1))$, w $\in$ $\prod_{x_2 \in C} \varphi(inr(x_2)))$, allora
 \small
 \begin{adjustwidth}{-4em}{}
 \begin{prooftree}
@@ -401,7 +401,7 @@ $El_\Sigma(z,Ap(Ap(z^\backprime,x),y))$ $\in$ $\varphi(z)$[$\Gamma$, z $^\backpr
 \noindent
 $\Delta$ $\equiv$ $\Gamma$, z $^\backprime \in ({\scriptsize \prod}_{x \in B} {\scriptsize \prod}_{y \in C(x)} \varphi(<x,y>))$\\\\\\
 \noindent
-Supposto che $\varphi$(z) type[$\Delta$, z $\in$ {\scriptsize  $\sum_{x \in B} C(x)$}]  e C(x) type[$\Delta$, x $\in$ B] siano derivabili, allora
+Supposto che $\varphi$(z) type[$\Delta$, z $\in$ {\scriptsize  $\sum_{x \in B} C(x)$}], C(x) type[$\Delta$, x $\in$ B] siano derivabili e e $\Gamma$ $\equiv$ [ ], allora
 \small
 \begin{adjustwidth}{-15em}{}
 \begin{prooftree}
@@ -454,7 +454,7 @@ $El_{Id}(z_3,Ap(z,x))$ $\in$ $\varphi(z_1,z_2,z_3)$ [$\Gamma$, z $\in$ $({\scrip
 \noindent
 $\Delta$ $\equiv$ $\Gamma$, z $\in$ $({\scriptsize \prod}_{x \in A} \varphi(x,x,id(x)))$
 \\\\\\
-Supposto che $\varphi(z_1,z_2,z_3)$ [$\Delta$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)] e  A type[$\Delta$] siano derivabili, allora
+Supposto che $\varphi(z_1,z_2,z_3)$ [$\Delta$, z$_1$ $\in$ A, z$_2$ $\in$ A, z$_3$ $\in$ Id(A,z$_1$,z$_2$)] e  A type[$\Delta$] siano derivabili e e $\Gamma$ $\equiv$ [ ], allora
 \small
 \begin{adjustwidth}{-15.5em}{}
 \begin{prooftree}
@@ -581,7 +581,7 @@ $\Delta$ $\equiv$ x $\in$ A,y $\in$ A,w$_1$ $\in$ Id(A,x,y), z $\in$ A
 \normalsize
 \textbf{2}\\\\
 \small
-\begin{adjustwidth}{2em}{}
+\begin{adjustwidth}{-5em}{}
 \begin{prooftree}
 \AxiomC{}
 \UnaryInfC{A type[x $\in$ A, z $\in$ A]}
