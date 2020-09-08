@@ -1,31 +1,13 @@
-\documentclass[10pt,a4paper, italian]{book}
-\usepackage[italian]{babel}
-\usepackage[T1]{fontenc} % riconosce gli acenti
-\usepackage[utf8]{inputenc} % riconosce gli acenti
-\usepackage{amssymb}
-\usepackage[table]{xcolor}
-\usepackage{tabularx}
-\usepackage{float}
-\usepackage{hyperref}
-\hypersetup{
-	colorlinks=true,
-	linkcolor=blue,
-	urlcolor=linkcolor
-}	
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{bussproofs} % per alberi di deduzione naturale
-\usepackage{graphicx} % per le immagini
-\usepackage[strict]{changepage}
-\usepackage[ddmmyyyy]{datetime}
-\usepackage{cancel} % barra il testo
-\definecolor{amethyst}{rgb}{0.6, 0.4, 0.8}
-\begin{document}
+\chapter{Domande \& Esercizi finali}
 \noindent
+\section{Domande}
 \textbf{domanda 1.\\
-Se non si hanno regole di tipi, ma solo quelle di \textit{pagina 13}, che contesti posso derivare, partendo dall'unico assioma [ ] cont (ovvero che il contesto vuoto \`e un contesto)?}\\
+Se non si hanno regole di tipi, ma solo quelle di \textit{pagina 13}, che contesti posso derivare, partendo dall'unico assioma [ ] cont (ovvero che il contesto vuoto \`e un contesto)?}
+\vspace{1cm}
+\\
+\noindent
 Esclusivamente [ ] cont, in quanto \`e a sua volta un giudizio di contesto e il solo ausilio delle regole di formazione dei contesti \textit{(F-c)}, su di esso, non mi \`e possibile e perci\`o non mi permette di generarne di nuovi.
-\\\\
+\newpage
 \noindent
 \textbf{domanda 2.\\
 Se si aggiunge  alla regola dei contesti la sola regola 
@@ -35,7 +17,9 @@ Se si aggiunge  alla regola dei contesti la sola regola
 \UnaryInfC{Nat type[$\Gamma$]}
 \end{prooftree}
 \noindent 
-che contesti posso scrivere? quali giudizi posso derivare?}\\\\
+che contesti posso scrivere? quali giudizi posso derivare?}
+\vspace{1cm}
+\\
 \noindent
 Riempio $\Gamma$ cont con un "vero" contesto. Dunque \`e lecito che sia [ ] cont.
 \begin{prooftree}
@@ -52,5 +36,3 @@ Riempio $\Gamma$ cont con un "vero" contesto. Dunque \`e lecito che sia [ ] cont
 \noindent
 Partendo dal giudizio di contesto [ ] cont e applicando alternativamente  \textit{(F-Nat)} e \textit{(F-c)}, ottengo i contesti di giudizio [x$_1$ $\in$ Nat] cont e [x$_1$ $\in$ Nat, x$_2$ $\in$ Nat] cont. Questi sono a loro volta derivabili e mi permettono di ottenere sempre nuovi contesti, con una nuova variabile che non appartiene al contesto precedente. Nella derivazione sopra, una nuova applicazione di \textit{(F-Nat)} e \textit{(F-c)} mi permette di ottenere [x$_1$ $\in$ Nat, x$_2$ $\in$ Nat, x$_3$ $\in$ Nat] cont, dove difatti (x$_3$ $\in$ Nat) $\notin$ x$_1$ $\in$ Nat, x$_2$ $\in$ Nat.\\
 Sono invece giudizi di tipo i giudizi che rispettano la forma Nat type[$\Gamma$] con $\Gamma$ meta-variabile riempita.
-
-\end{document}
